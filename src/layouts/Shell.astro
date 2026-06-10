@@ -1,0 +1,86 @@
+---
+// Shared shell layout — wraps every page.
+// Props: title (page title), description (meta), activePage (for future use)
+import TopBar from '../components/shell/TopBar.astro';
+import Nav    from '../components/shell/Nav.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const {
+  title,
+  description = 'Caribbean macroeconomic research — data, news, publications, and deals for the Caribbean region.',
+} = Astro.props;
+
+const fullTitle = title === 'Home'
+  ? 'Caribbean Macro Almanac'
+  : `${title} — Caribbean Macro Almanac`;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <title>{fullTitle}</title>
+
+    <!-- Preconnect for Google Fonts (CDN, Phase 1; replace with self-hosted in Phase 2) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Favicon placeholder -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  </head>
+
+  <body>
+    <TopBar />
+    <Nav />
+
+    <main id="main-content">
+      <slot />
+    </main>
+
+    <footer class="site-footer">
+      <div class="page-wrapper footer-inner">
+        <span class="mono">Caribbean Macro Almanac</span>
+        <span class="mono">Data: IMF · World Bank · UNCTAD · national sources</span>
+        <span class="mono">Phase 1 — static dataset · Guyana + Trinidad & Tobago</span>
+      </div>
+    </footer>
+  </body>
+</html>
+
+<style is:global>
+  @import '../styles/tokens.css';
+  @import '../styles/base.css';
+</style>
+
+<style>
+  .site-footer {
+    border-top: 1px solid var(--line);
+    background-color: var(--paper-warm);
+    padding: 20px 0;
+    margin-top: var(--section-gap);
+  }
+
+  .footer-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .footer-inner .mono {
+    font-size: 10px;
+    color: var(--ink-faint);
+    letter-spacing: 0.05em;
+  }
+
+  @media (max-width: 640px) {
+    .footer-inner { flex-direction: column; align-items: flex-start; gap: 4px; }
+  }
+</style>

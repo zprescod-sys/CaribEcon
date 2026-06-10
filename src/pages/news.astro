@@ -1,0 +1,62 @@
+---
+import Shell    from '../layouts/Shell.astro';
+import NewsFeed from '../components/news/NewsFeed.astro';
+import { getNews } from '../lib/dataHub';
+
+const news = getNews();
+---
+
+<Shell
+  title="News"
+  description="Latest Caribbean economic and business news, filterable by country."
+>
+  <div class="page-wrapper news-page">
+
+    <header class="page-header fade-up fade-up-1">
+      <span class="eyebrow">News</span>
+      <h1 class="page-title">Caribbean News</h1>
+      <p class="page-sub">
+        Economic and business headlines across the Caribbean.
+        Filter by country or browse all. Links open source publications.
+      </p>
+    </header>
+
+    <section class="fade-up fade-up-2">
+      <NewsFeed news={news} />
+    </section>
+
+    <div class="dataset-note card emphasis-teal fade-up">
+      <span class="eyebrow">Dataset Note</span>
+      <p>
+        Phase 1 contains a curated selection of articles for 2023–2024.
+        Phase 2 will add a scheduled news fetcher with rolling coverage.
+      </p>
+    </div>
+
+  </div>
+</Shell>
+
+<style>
+  .news-page {
+    padding-top: 36px;
+    padding-bottom: 60px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--section-gap);
+  }
+
+  .page-title { font-size: var(--text-page); margin: 6px 0 10px; }
+  .page-sub   { font-size: 15px; color: var(--ink-soft); max-width: 68ch; }
+
+  .dataset-note {
+    padding: 16px 20px;
+    max-width: 600px;
+  }
+
+  .dataset-note p {
+    font-size: 14px;
+    color: var(--ink-soft);
+    margin-top: 6px;
+    line-height: 1.6;
+  }
+</style>

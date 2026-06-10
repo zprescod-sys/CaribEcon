@@ -1,0 +1,154 @@
+---
+import Shell         from '../layouts/Shell.astro';
+import DailyBriefing from '../components/home/DailyBriefing.astro';
+import RegionalChart  from '../components/home/RegionalChart.astro';
+import { getNews }   from '../lib/dataHub';
+
+const recentNews = getNews().slice(0, 5);
+
+function formatDate(d: string) {
+  return new Date(d).toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+}
+---
+
+<Shell
+  title="Home"
+  description="Caribbean Macro Almanac — daily briefing, regional GDP chart, and quick access to data, news, publications, and deals."
+>
+  <div class="page-wrapper home-page">
+
+    <!-- ── Daily briefing ─────────────────────────────────────── -->
+    <section class="section-top fade-up fade-up-1">
+      <DailyBriefing
+        date="2024-10-14"
+        eyebrow="Daily Briefing"
+        headline="Guyana's oil production surpasses 600,000 bpd as Yellowtail project nears FID"
+        standfirst="With Liza Phase 2 at plateau and the Yellowtail FPSO on schedule for 2025 delivery, Guyana is cementing its position as one of the world's fastest-growing hydrocarbon producers — and a critical test case for how a small developing economy manages extraordinary resource wealth."
+        source="Stabroek News · IMF WEO October 2024"
+        sourceUrl="https://www.imf.org/en/Publications/WEO"
+      />
+    </section>
+
+    <hr class="section-divider" />
+
+    <!-- ── Regional chart ────────────────────────────────────── -->
+    <section class="fade-up fade-up-2">
+      <RegionalChart baseYear={2018} />
+    </section>
+
+    <hr class="section-divider" />
+
+    <!-- ── Quick links ───────────────────────────────────────── -->
+    <section class="quick-links fade-up fade-up-3">
+      <span class="eyebrow">Explore</span>
+      <div class="links-grid">
+        <a href="/data" class="quick-link card">
+          <span class="link-eyebrow mono">Data</span>
+          <h3>Chart Explorer</h3>
+          <p>GDP, inflation, unemployment, FDI, debt — multi-country, multi-year.</p>
+        </a>
+        <a href="/news" class="quick-link card">
+          <span class="link-eyebrow mono">News</span>
+          <h3>Latest News</h3>
+          <p>Caribbean economic and business news, filterable by country.</p>
+        </a>
+        <a href="/publications" class="quick-link card">
+          <span class="link-eyebrow mono">Publications</span>
+          <h3>Research Index</h3>
+          <p>IMF, World Bank, CDB, and ECLAC reports with summaries.</p>
+        </a>
+        <a href="/deals" class="quick-link card">
+          <span class="link-eyebrow mono">Deals</span>
+          <h3>Investment &amp; M&amp;A</h3>
+          <p>Major transactions, FDI deals, and capital market activity.</p>
+        </a>
+      </div>
+    </section>
+
+    <hr class="section-divider" />
+
+    <!-- ── Recent news strip ─────────────────────────────────── -->
+    <section class="recent-news fade-up">
+      <span class="eyebrow">Recent News</span>
+      <ul class="recent-list">
+        {recentNews.map(item => (
+          <li class="recent-item">
+            <a href={item.url} target="_blank" rel="noopener noreferrer" class="recent-title">
+              {item.title}
+            </a>
+            <span class="recent-meta mono">
+              {item.source} · {formatDate(item.date)}
+            </span>
+          </li>
+        ))}
+      </ul>
+      <a href="/news" class="btn" style="margin-top:16px; display:inline-block;">All News →</a>
+    </section>
+
+  </div>
+</Shell>
+
+<style>
+  .home-page {
+    padding-top: 36px;
+    padding-bottom: 60px;
+  }
+
+  .section-top { margin-bottom: 0; }
+  .quick-links { margin-top: 0; }
+
+  .links-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--gap-sm);
+    margin-top: 16px;
+  }
+
+  .quick-link {
+    display: block;
+    padding: 20px;
+    text-decoration: none;
+    transition: background-color 0.12s ease;
+  }
+
+  .quick-link:hover { background-color: var(--card-tint); text-decoration: none; }
+
+  .link-eyebrow {
+    font-size: 10px;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--teal);
+    display: block;
+    margin-bottom: 6px;
+  }
+
+  .quick-link h3 { font-size: 17px; font-weight: 700; margin-bottom: 6px; color: var(--ink); }
+  .quick-link p  { font-size: 13px; color: var(--ink-soft); line-height: 1.5; }
+
+  .recent-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    margin-top: 14px;
+  }
+
+  .recent-item {
+    padding: 12px 0;
+    border-bottom: 1px solid var(--line);
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .recent-title {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--ink);
+    text-decoration: none;
+    max-width: 72ch;
+    line-height: 1.4;
+  }
+
+  .recent-title:hover { color: var(--teal); text-decoration: underline; }
+  .recent-meta { font-size: 10px; color: var(--ink-faint); }
+</style>

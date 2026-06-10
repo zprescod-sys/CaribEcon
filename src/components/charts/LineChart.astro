@@ -1,0 +1,353 @@
+---
+// Interactive line chart — D3, client-side.
+// Renders a placeholder; JS draws the chart after controls fire events.
+// Supports: multi-country series, hover tooltips, click-year → year-in-focus panel.
+
+import type { IndicatorSeries } from '../../lib/types';
+
+interface Props {
+  initialSeries: IndicatorSeries[];
+  initialIndicator: string;
+}
+
+const { initialSeries, initialIndicator } = Astro.props;
+const seriesJSON = JSON.stringify(initialSeries);
+---
+
+<div class="line-chart-wrapper">
+  <div class="chart-title-row" id="chart-title-row">
+    <div>
+      <h3 class="chart-heading" id="chart-heading">—</h3>
+      <p class="chart-subheading mono" id="chart-subheading">Select an indicator</p>
+    </div>
+    <button class="btn export-btn mono" id="csv-export-btn" aria-label="Export current chart data as CSV">
+      Export CSV
+    </button>
+  </div>
+
+  <div
+    id="line-chart"
+    class="chart-canvas"
+    role="img"
+    aria-label="Economic indicator line chart"
+  >
+    <div class="chart-loading mono">Rendering chart…</div>
+  </div>
+
+  <div id="chart-source" class="source-line" style="display:none"></div>
+</div>
+
+<!-- Pass server-side data to client script via data attribute -->
+<div id="chart-data" data-series={seriesJSON} data-indicator={initialIndicator} hidden></div>
+
+<script>
+  import * as d3 from 'd3';
+  import { downloadCSV } from './csvExport';
+  import type { IndicatorSeries, IndicatorPoint } from '../../lib/types';
+
+  const SERIES_COLORS: Record<string, string> = {
+    GY: '#0E5E4E',
+    TT: '#BC8A2E',
+    BB: '#1E3A5F',
+    JM: '#A8542E',
+    BS: '#6A4A6E',
+  };
+  const FALLBACK_COLORS = ['#5A6B6E', '#5C6B3A', '#9A5B2E'];
+
+  // ── State ──────────────────────────────────────────────────────────────
+  const dataEl = document.getElementById('chart-data') as HTMLElement;
+  let allSeries: IndicatorSeries[] = JSON.parse(dataEl.dataset.series ?? '[]');
+  let currentIndicator = dataEl.dataset.indicator ?? 'gdp_growth';
+  let activeCountries  = allSeries.map(s => s.country);
+
+  // ── Chart draw ──────────────────────────────────────────────────────────
+  function drawChart() {
+    const container = document.getElementById('line-chart');
+    const headingEl  = document.getElementById('chart-heading');
+    const subheadEl  = document.getElementById('chart-subheading');
+    const sourceEl   = document.getElementById('chart-source');
+    if (!container) return;
+
+    const filtered = allSeries.filter(
+      s => s.indicator === currentIndicator && activeCountries.includes(s.country)
+    );
+    if (filtered.length === 0) {
+      container.innerHTML = '<div class="chart-loading mono">No data for selection.</div>';
+      return;
+    }
+
+    const first = filtered[0];
+    if (headingEl) headingEl.textContent = first.indicatorLabel;
+    if (subheadEl) subheadEl.textContent = `${first.unit} · annual data`;
+    if (sourceEl) {
+      sourceEl.style.display = 'flex';
+      sourceEl.innerHTML = `<span>Source:</span> <a href="${first.sourceUrl}" target="_blank" rel="noopener noreferrer">${first.source}</a>`;
+    }
+
+    const margin = { top: 16, right: 32, bottom: 40, left: 56 };
+    const w = container.clientWidth  - margin.left - margin.right;
+    const h = Math.min(340, Math.max(220, container.clientWidth * 0.38)) - margin.top - margin.bottom;
+
+    container.innerHTML = '';
+
+    const svg = d3.select(container)
+      .append('svg')
+      .attr('width',  w + margin.left + margin.right)
+      .attr('height', h + margin.top  + margin.bottom)
+      .append('g')
+      .attr('transform', `translate(${margin.left},${margin.top})`);
+
+    const allYears = [...new Set(filtered.flatMap(s => s.series.map(d => d.year)))].sort();
+    const allVals  = filtered.flatMap(s => s.series.filter(d => d.value !== null).map(d => d.value as number));
+
+    const xScale = d3.scalePoint<number>()
+      .domain(allYears)
+      .range([0, w])
+      .padding(0.1);
+
+    const yScale = d3.scaleLinear()
+      .domain(d3.extent(allVals) as [number, number])
+      .range([h, 0])
+      .nice();
+
+    // Grid
+    svg.append('g')
+      .call(d3.axisLeft(yScale).tickSize(-w).tickFormat('' as any).ticks(5))
+      .call(g => {
+        g.select('.domain').remove();
+        g.selectAll('.tick line')
+          .attr('stroke', 'rgba(15,35,30,0.08)')
+          .attr('stroke-dasharray', '3,3');
+      });
+
+    // Axes
+    svg.append('g')
+      .attr('transform', `translate(0,${h})`)
+      .call(d3.axisBottom(xScale).tickFormat(d => String(d)))
+      .call(g => {
+        g.select('.domain').attr('stroke', 'rgba(15,35,30,0.15)');
+        g.selectAll('text').attr('font-family', 'JetBrains Mono, monospace').attr('font-size', '10').attr('fill', '#8A958F');
+        g.selectAll('.tick line').remove();
+      });
+
+    svg.append('g')
+      .call(d3.axisLeft(yScale).ticks(5))
+      .call(g => {
+        g.select('.domain').remove();
+        g.selectAll('text').attr('font-family', 'JetBrains Mono, monospace').attr('font-size', '10').attr('fill', '#8A958F');
+        g.selectAll('.tick line').remove();
+      });
+
+    // Tooltip
+    const tooltip = d3.select(container)
+      .append('div')
+      .attr('class', 'chart-tooltip')
+      .style('display', 'none');
+
+    const line = d3.line<IndicatorPoint>()
+      .defined(d => d.value !== null)
+      .x(d => xScale(d.year)!)
+      .y(d => yScale(d.value as number))
+      .curve(d3.curveMonotoneX);
+
+    // Draw series
+    filtered.forEach((series, i) => {
+      const color = SERIES_COLORS[series.country] ?? FALLBACK_COLORS[i % FALLBACK_COLORS.length];
+      const validPoints = series.series.filter(d => d.value !== null);
+
+      // Dashed segment for estimates/projections
+      const actualPoints = validPoints.filter(d => d.type === 'actual');
+      const nonActualPoints = validPoints.filter(d => d.type !== 'actual');
+
+      if (actualPoints.length > 0) {
+        svg.append('path').datum(actualPoints)
+          .attr('fill', 'none').attr('stroke', color).attr('stroke-width', 2)
+          .attr('d', line as any);
+      }
+
+      if (nonActualPoints.length > 0) {
+        // Include last actual point to connect the line
+        const bridge = actualPoints.slice(-1).concat(nonActualPoints);
+        svg.append('path').datum(bridge)
+          .attr('fill', 'none').attr('stroke', color).attr('stroke-width', 2)
+          .attr('stroke-dasharray', '4,3').attr('opacity', 0.7)
+          .attr('d', line as any);
+      }
+
+      // Dots — gold for non-actuals
+      svg.selectAll(`.dot-${series.country}`)
+        .data(validPoints)
+        .join('circle')
+        .attr('cx', d => xScale(d.year)!)
+        .attr('cy', d => yScale(d.value as number))
+        .attr('r', 4)
+        .attr('fill', d => d.type !== 'actual' ? '#BC8A2E' : color)
+        .attr('stroke', 'var(--paper)').attr('stroke-width', 1.5)
+        .style('cursor', 'pointer')
+        .on('mouseenter', (event, d) => {
+          tooltip.style('display', 'block')
+            .html(`<span class="tt-country">${series.country}</span> <span class="tt-year">${d.year}</span><br/><span class="tt-value">${d.value?.toFixed(1)} ${series.unit}</span>${d.type !== 'actual' ? `<br/><span class="tt-type">${d.type}</span>` : ''}`)
+            .style('left', `${(event as MouseEvent).offsetX + 12}px`)
+            .style('top',  `${(event as MouseEvent).offsetY - 10}px`);
+        })
+        .on('mouseleave', () => tooltip.style('display', 'none'))
+        .on('click', (_, d) => openYearInFocus(d.year, allSeries));
+
+      // Country label on last point
+      const last = validPoints[validPoints.length - 1];
+      if (last) {
+        svg.append('text')
+          .attr('x', xScale(last.year)! + 6)
+          .attr('y', yScale(last.value as number) + 4)
+          .attr('font-family', 'JetBrains Mono, monospace')
+          .attr('font-size', '10')
+          .attr('fill', color)
+          .text(series.country);
+      }
+    });
+  }
+
+  // ── Year-in-focus panel ────────────────────────────────────────────────
+  const YEAR_EVENTS: Record<number, string> = {
+    2020: 'COVID-19 pandemic; Guyana begins commercial oil production (Liza Phase 1, Dec 2019 on-stream).',
+    2021: 'Post-COVID recovery; Guyana\'s oil ramp-up accelerates with Liza Phase 1 reaching plateau.',
+    2022: 'Global commodity price spike (Russia-Ukraine war); Guyana GDP surges 57.8% — world\'s fastest growth.',
+    2023: 'Liza Phase 2 and Payara developments progress; T&T signs new upstream exploration agreements.',
+    2024: 'Yellowtail FPSO on track; Guyana Natural Resource Fund surpasses USD 2bn.',
+  };
+
+  function openYearInFocus(year: number, series: IndicatorSeries[]) {
+    const panel  = document.getElementById('year-in-focus') as HTMLElement | null;
+    const yearEl  = document.getElementById('yif-year');
+    const eventEl = document.getElementById('yif-event');
+    const hlEl    = document.getElementById('yif-headlines');
+    if (!panel || !yearEl || !eventEl || !hlEl) return;
+
+    yearEl.textContent  = String(year);
+    eventEl.textContent = YEAR_EVENTS[year] ?? 'No notable event recorded for this year.';
+
+    // Build a summary of values across all loaded series for that year
+    const rows = series
+      .filter(s => activeCountries.includes(s.country))
+      .map(s => {
+        const pt = s.series.find(d => d.year === year);
+        if (!pt || pt.value === null) return null;
+        return `<div class="yif-headline-item">
+          <strong>${s.country} ${s.indicatorLabel}:</strong> ${pt.value.toFixed(1)} ${s.unit}
+          <span class="yif-headline-source">${pt.type !== 'actual' ? `[${pt.type}] ` : ''}${s.source}</span>
+        </div>`;
+      })
+      .filter(Boolean);
+
+    hlEl.innerHTML = rows.join('') || '<p class="mono" style="font-size:11px;color:var(--ink-faint)">No data for this year.</p>';
+    panel.hidden = false;
+    panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  // ── Event listeners ────────────────────────────────────────────────────
+  document.addEventListener('countries-changed', (e: Event) => {
+    const evt = e as CustomEvent<{ countries: string[] }>;
+    activeCountries = evt.detail.countries;
+    drawChart();
+  });
+
+  document.addEventListener('indicator-changed', (e: Event) => {
+    const evt = e as CustomEvent<{ indicator: string }>;
+    currentIndicator = evt.detail.indicator;
+    drawChart();
+  });
+
+  // CSV export
+  document.getElementById('csv-export-btn')?.addEventListener('click', () => {
+    const filtered = allSeries.filter(
+      s => s.indicator === currentIndicator && activeCountries.includes(s.country)
+    );
+    const rows = filtered.flatMap(s =>
+      s.series
+        .filter(d => d.value !== null)
+        .map(d => ({
+          country: s.country,
+          indicator: s.indicator,
+          indicator_label: s.indicatorLabel,
+          unit: s.unit,
+          year: d.year,
+          value: d.value,
+          type: d.type,
+          source: s.source,
+          vintage: d.vintage,
+        }))
+    );
+    downloadCSV(rows, `caribbean-macro-${currentIndicator}`);
+  });
+
+  // Initial render
+  drawChart();
+</script>
+
+<style>
+  .line-chart-wrapper {
+    border: var(--border);
+    background-color: var(--card);
+  }
+
+  .chart-title-row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 16px 16px 0;
+    gap: var(--gap-md);
+    flex-wrap: wrap;
+  }
+
+  .chart-heading {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 2px;
+  }
+
+  .chart-subheading {
+    color: var(--ink-faint);
+    font-size: 10px;
+    letter-spacing: 0.05em;
+  }
+
+  .export-btn {
+    margin-top: 4px;
+    font-size: 10px;
+  }
+
+  .chart-canvas {
+    padding: 8px;
+    min-height: 220px;
+  }
+
+  .chart-canvas svg { display: block; width: 100%; }
+
+  .chart-loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 220px;
+    color: var(--ink-faint);
+    font-size: 11px;
+  }
+
+  :global(.chart-tooltip) {
+    position: absolute;
+    background: var(--teal-deep);
+    color: var(--paper);
+    padding: 8px 10px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    line-height: 1.5;
+    pointer-events: none;
+    z-index: 10;
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+
+  :global(.tt-country) { font-weight: 600; }
+  :global(.tt-year)    { color: rgba(236,238,232,0.6); }
+  :global(.tt-type)    { color: #BC8A2E; font-size: 10px; }
+
+  #chart-source { padding: 0 16px 14px; }
+</style>

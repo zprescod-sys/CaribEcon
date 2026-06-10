@@ -1,0 +1,110 @@
+[
+  {
+    "id": "gy-oil-prod-record-2024",
+    "title": "Guyana's oil production tops 600,000 barrels per day as Yellowtail project advances",
+    "source": "Stabroek News",
+    "date": "2024-10-14",
+    "country": "GY",
+    "url": "https://www.stabroeknews.com",
+    "tags": ["oil", "energy", "ExxonMobil", "Stabroek Block"]
+  },
+  {
+    "id": "gy-budget-2024-presentation",
+    "title": "Budget 2024: Government presents GYD 1.147 trillion spending plan, largest in national history",
+    "source": "Stabroek News",
+    "date": "2024-01-15",
+    "country": "GY",
+    "url": "https://www.stabroeknews.com",
+    "tags": ["budget", "fiscal", "government"]
+  },
+  {
+    "id": "gy-natural-gas-deal-brazil",
+    "title": "Guyana and Brazil sign framework agreement for natural gas pipeline exploration",
+    "source": "Caribbean Business Report",
+    "date": "2024-08-22",
+    "country": ["GY"],
+    "url": "https://caribbeanbusiness.com",
+    "tags": ["gas", "energy", "Brazil", "infrastructure"]
+  },
+  {
+    "id": "tt-budget-2024-25",
+    "title": "Finance Minister Colm Imbert tables TT$63.86bn budget, focused on energy transition",
+    "source": "Trinidad Express",
+    "date": "2024-09-30",
+    "country": "TT",
+    "url": "https://trinidadexpress.com",
+    "tags": ["budget", "fiscal", "energy"]
+  },
+  {
+    "id": "tt-lng-expansion",
+    "title": "Atlantic LNG targets new supply agreements as TT eyes LNG export expansion to Europe",
+    "source": "Trinidad Guardian",
+    "date": "2024-07-18",
+    "country": "TT",
+    "url": "https://www.guardian.co.tt",
+    "tags": ["LNG", "energy", "exports", "Atlantic LNG"]
+  },
+  {
+    "id": "tt-crime-impact-investment",
+    "title": "Business coalition warns elevated crime rates are dampening FDI appetite in T&T",
+    "source": "Trinidad Guardian",
+    "date": "2024-06-04",
+    "country": "TT",
+    "url": "https://www.guardian.co.tt",
+    "tags": ["crime", "FDI", "business environment"]
+  },
+  {
+    "id": "caribbean-caricom-digital-economy",
+    "title": "CARICOM summit endorses regional digital economy strategy with focus on fintech and e-commerce",
+    "source": "Caribbean Journal",
+    "date": "2024-07-05",
+    "country": "ALL",
+    "url": "https://caribjournal.com",
+    "tags": ["CARICOM", "digital economy", "fintech", "regional"]
+  },
+  {
+    "id": "caribbean-imf-regional-outlook-2024",
+    "title": "IMF: Caribbean economies showing resilience but face headwinds from elevated US interest rates",
+    "source": "IMF News",
+    "date": "2024-05-10",
+    "country": "ALL",
+    "url": "https://www.imf.org/en/News",
+    "tags": ["IMF", "macroeconomics", "regional", "interest rates"]
+  },
+  {
+    "id": "gy-sovereign-wealth-fund",
+    "title": "Guyana's Natural Resource Fund tops USD 2 billion as oil revenues surge",
+    "source": "Kaieteur News",
+    "date": "2024-09-03",
+    "country": "GY",
+    "url": "https://www.kaieteurnewsonline.com",
+    "tags": ["sovereign wealth fund", "oil revenue", "NRF", "fiscal"]
+  },
+  {
+    "id": "tt-petrotrin-successor",
+    "title": "Trinidad Petroleum Holdings reports profitability improvement as Heritage Petroleum output rises",
+    "source": "Trinidad Express",
+    "date": "2024-04-29",
+    "country": "TT",
+    "url": "https://trinidadexpress.com",
+    "tags": ["Heritage Petroleum", "TPHL", "oil", "energy"]
+  },
+  {
+    "id": "caribbean-climate-finance",
+    "title": "Caribbean leaders call for loss-and-damage fund reform at COP29, citing debt-climate nexus",
+    "source": "Caribbean Journal",
+    "date": "2024-11-14",
+    "country": "ALL",
+    "url": "https://caribjournal.com",
+    "tags": ["climate", "COP29", "debt", "regional"]
+  },
+  {
+    "id": "gy-demerara-bridge-update",
+    "title": "Construction on Demerara River fixed-span bridge expected to begin in first quarter 2025",
+    "source": "Stabroek News",
+    "date": "2024-10-28",
+    "country": "GY",
+    "url": "https://www.stabroeknews.com",
+    "tags": ["infrastructure", "bridge", "construction"]
+  }
+]

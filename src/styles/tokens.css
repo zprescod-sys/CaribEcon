@@ -1,0 +1,68 @@
+/* Design system tokens — Caribbean Macro Almanac
+   Source of truth for all color, type, spacing, and geometry values.
+   Do not override these with inline styles — extend via component classes. */
+
+:root {
+  /* ── Color ───────────────────────────────────────────────────────────── */
+  --paper:       #ECEEE8;  /* page background (cool off-white) */
+  --paper-warm:  #E6E9E0;  /* alternate section band */
+  --card:        #F6F7F2;  /* raised surfaces */
+  --card-tint:   #E8EFE9;  /* emphasis card (faint teal-green) */
+
+  --ink:         #0F231E;  /* primary text (deep petrol green-black) */
+  --ink-soft:    #4C5A54;  /* secondary text */
+  --ink-faint:   #8A958F;  /* captions, axis labels */
+
+  --line:        rgba(15, 35, 30, 0.12);  /* hairlines + borders */
+
+  --teal:        #0E5E4E;  /* brand / primary */
+  --teal-deep:   #093F34;  /* dark panels */
+  --gold:        #BC8A2E;  /* signal accent only — live point, key emphasis */
+
+  --pos:         #2F7D5B;  /* positive deltas */
+  --neg:         #B4543E;  /* negative deltas */
+
+  /* Chart series palette (muted, designed) */
+  --series-1:    #0E5E4E;  /* teal */
+  --series-2:    #BC8A2E;  /* gold */
+  --series-3:    #1E3A5F;  /* navy */
+  --series-4:    #A8542E;  /* clay */
+  --series-5:    #6A4A6E;  /* plum */
+  --series-6:    #5A6B6E;  /* slate */
+  --series-7:    #5C6B3A;  /* moss */
+  --series-8:    #9A5B2E;  /* rust */
+
+  /* ── Typography ──────────────────────────────────────────────────────── */
+  --font-display: 'Bricolage Grotesque', sans-serif;
+  --font-body:    'Hanken Grotesk', sans-serif;
+  --font-mono:    'JetBrains Mono', monospace;
+
+  --text-page:    clamp(34px, 4vw, 52px);
+  --text-section: 28px;
+  --text-card:    18px;
+  --text-body:    16px;
+  --text-caption: 12px;
+
+  --lh-tight:  1.0;
+  --lh-body:   1.6;
+
+  /* ── Geometry ────────────────────────────────────────────────────────── */
+  --radius:        0;     /* hard edges everywhere — no rounding */
+  --border:        1px solid var(--line);
+  --border-left-teal: 3px solid var(--teal);
+  --border-left-gold: 3px solid var(--gold);
+
+  /* ── Layout ──────────────────────────────────────────────────────────── */
+  --max-width:     1180px;
+  --side-padding:  28px;
+  --gap-sm:        14px;
+  --gap-md:        20px;
+  --section-gap:   52px;
+
+  /* ── Shell ───────────────────────────────────────────────────────────── */
+  --topbar-height: 48px;
+  --nav-height:    40px;
+
+  /* ── Focus ring ──────────────────────────────────────────────────────── */
+  --focus-ring: 2px solid var(--teal);
+}

@@ -1,0 +1,82 @@
+[
+  {
+    "id": "imf-gy-art-iv-2024",
+    "title": "Guyana: 2024 Article IV Consultation — Staff Report",
+    "body": "International Monetary Fund",
+    "type": "Article IV",
+    "date": "2024-07-12",
+    "country": "GY",
+    "summary": "The IMF finds Guyana's near-term outlook remains exceptionally strong, underpinned by rapid oil production growth, but flags medium-term risks including Dutch disease pressures, absorptive capacity constraints in public investment, and the need to diversify the non-oil economy.",
+    "url": "https://www.imf.org/en/Publications/CR/Issues/2024/07/12/Guyana-2024-Article-IV-Consultation-Press-Release-Staff-Report-and-Statement-by-the-Exec"
+  },
+  {
+    "id": "imf-tt-art-iv-2024",
+    "title": "Trinidad and Tobago: 2024 Article IV Consultation — Staff Report",
+    "body": "International Monetary Fund",
+    "type": "Article IV",
+    "date": "2024-03-15",
+    "country": "TT",
+    "summary": "The IMF assesses T&T's economy as gradually recovering but constrained by declining hydrocarbon output. Staff recommend accelerating energy sector diversification, reducing fiscal reliance on petroleum revenues, and addressing structural impediments to private investment in the non-energy sector.",
+    "url": "https://www.imf.org/en/Publications/CR/Issues/2024/03/15/Trinidad-and-Tobago-2024-Article-IV-Consultation"
+  },
+  {
+    "id": "wb-gy-country-report-2024",
+    "title": "Guyana Economic Update: Managing Rapid Oil Wealth",
+    "body": "World Bank",
+    "type": "Country Report",
+    "date": "2024-06-01",
+    "country": "GY",
+    "summary": "The World Bank examines how Guyana can channel oil windfalls into inclusive growth. The report highlights strong performance in social spending and infrastructure but calls for urgent improvements in governance of the Natural Resource Fund, human capital development, and institutional capacity ahead of peak oil revenues.",
+    "url": "https://www.worldbank.org/en/country/guyana/publication/guyana-economic-update"
+  },
+  {
+    "id": "wb-tt-country-report-2024",
+    "title": "Trinidad and Tobago Economic Update 2024",
+    "body": "World Bank",
+    "type": "Country Report",
+    "date": "2024-05-20",
+    "country": "TT",
+    "summary": "World Bank analysis shows T&T faces a structural fiscal challenge as legacy oil and gas fields mature. The update recommends a medium-term fiscal consolidation plan, targeted subsidy reform, and investment in renewable energy and services sectors to build post-hydrocarbon economic resilience.",
+    "url": "https://www.worldbank.org/en/country/trinidadandtobago/publication/economic-update"
+  },
+  {
+    "id": "imf-weo-regional-2024-oct",
+    "title": "World Economic Outlook — October 2024: Western Hemisphere",
+    "body": "International Monetary Fund",
+    "type": "World Economic Outlook",
+    "date": "2024-10-22",
+    "country": "REGION",
+    "summary": "The October 2024 WEO projects Caribbean growth at a solid 4.2% in 2024, driven by Guyana's oil expansion and recovery in tourism-dependent islands. Risks include tighter global financial conditions, climate-related disruptions to tourism, and elevated public debt ratios across smaller island states.",
+    "url": "https://www.imf.org/en/Publications/WEO/Issues/2024/10/22/world-economic-outlook-october-2024"
+  },
+  {
+    "id": "eclac-caribbean-2024",
+    "title": "Economic Survey of Latin America and the Caribbean 2024 — Caribbean Chapter",
+    "body": "ECLAC / CEPAL",
+    "type": "Regional Economic Outlook",
+    "date": "2024-08-08",
+    "country": "REGION",
+    "summary": "ECLAC's regional survey highlights a bifurcation in Caribbean economic trajectories: resource-rich economies (Guyana) expanding rapidly, while tourism-dependent and commodity-importing states face slower growth and elevated debt. The chapter calls for regional coordination on debt restructuring mechanisms and climate adaptation financing.",
+    "url": "https://www.cepal.org/en/publications/economic-survey-latin-america-and-caribbean-2024"
+  },
+  {
+    "id": "cdb-annual-report-2023",
+    "title": "Caribbean Development Bank Annual Report 2023",
+    "body": "Caribbean Development Bank",
+    "type": "Other",
+    "date": "2024-04-30",
+    "country": "REGION",
+    "summary": "The CDB disbursed USD 428 million in 2023 across BMCs, with the largest allocations to infrastructure, climate resilience, and social development. The report highlights the Caribbean's growing engagement with green bonds and catalytic climate finance, and profiles the expanded Community Disaster Risk Insurance Facility (CDRIF).",
+    "url": "https://www.caribank.org/annual-report-2023"
+  },
+  {
+    "id": "imf-gy-staff-concluding-2024",
+    "title": "Guyana: 2024 Article IV — Concluding Statement",
+    "body": "International Monetary Fund",
+    "type": "Staff Report",
+    "date": "2024-05-28",
+    "country": "GY",
+    "summary": "IMF staff's preliminary findings ahead of the full Article IV: Guyana's growth remains the fastest in the world for the third consecutive year, but sustaining it requires strengthening the Natural Resource Fund framework, expanding non-oil tax administration, and managing the pace of public investment to avoid implementation bottlenecks.",
+    "url": "https://www.imf.org/en/News/Articles/2024/05/28/mcs052824-guyana-staff-concluding-statement-2024-article-iv-consultation"
+  }
+]

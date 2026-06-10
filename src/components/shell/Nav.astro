@@ -1,0 +1,103 @@
+---
+// Persistent horizontal nav — gold underline marks active page
+const currentPath = Astro.url.pathname;
+
+const navItems = [
+  { href: '/',             label: 'Home' },
+  { href: '/data',         label: 'Data' },
+  { href: '/news',         label: 'News' },
+  { href: '/publications', label: 'Publications' },
+  { href: '/deals',        label: 'Deals & Investment' },
+];
+
+function isActive(href: string): boolean {
+  if (href === '/') return currentPath === '/';
+  return currentPath.startsWith(href);
+}
+---
+
+<nav class="site-nav" aria-label="Main navigation">
+  <div class="page-wrapper nav-inner">
+    <ul class="nav-list" role="list">
+      {navItems.map(item => (
+        <li>
+          <a
+            href={item.href}
+            class={`nav-link mono ${isActive(item.href) ? 'active' : ''}`}
+            aria-current={isActive(item.href) ? 'page' : undefined}
+          >
+            {item.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <div class="nav-meta mono" aria-label="Data scope">
+      GY · TT
+    </div>
+  </div>
+</nav>
+
+<style>
+  .site-nav {
+    background-color: var(--paper);
+    border-bottom: 1px solid var(--line);
+    height: var(--nav-height);
+    position: sticky;
+    top: var(--topbar-height);
+    z-index: 99;
+  }
+
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+  }
+
+  .nav-list {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    list-style: none;
+    height: 100%;
+  }
+
+  .nav-link {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding: 0 16px;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    transition: color 0.12s ease, border-color 0.12s ease;
+    position: relative;
+    top: 1px; /* aligns border-bottom flush with nav border */
+  }
+
+  .nav-link:hover {
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  .nav-link.active {
+    color: var(--ink);
+    border-bottom-color: var(--gold);
+  }
+
+  .nav-meta {
+    color: var(--ink-faint);
+    font-size: 10px;
+    letter-spacing: 0.06em;
+  }
+
+  @media (max-width: 600px) {
+    .nav-link { padding: 0 10px; }
+    .nav-meta  { display: none; }
+  }
+</style>

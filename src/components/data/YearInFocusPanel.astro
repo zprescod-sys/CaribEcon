@@ -1,0 +1,99 @@
+---
+// Year-in-focus panel — appears when user clicks a year on the line chart.
+// This Astro component renders the empty panel shell; the chart script populates it.
+---
+
+<aside
+  class="yif-panel card"
+  id="year-in-focus"
+  aria-label="Year in focus"
+  aria-live="polite"
+  hidden
+>
+  <div class="yif-header">
+    <span class="eyebrow">Year in Focus</span>
+    <button class="yif-close mono" id="yif-close" aria-label="Close year-in-focus panel">✕</button>
+  </div>
+
+  <div class="yif-year" id="yif-year"></div>
+  <p class="yif-event" id="yif-event"></p>
+
+  <div class="yif-headlines" id="yif-headlines"></div>
+</aside>
+
+<script>
+  // Wire the close button
+  const panel   = document.getElementById('year-in-focus') as HTMLElement | null;
+  const closeBtn = document.getElementById('yif-close');
+
+  closeBtn?.addEventListener('click', () => {
+    if (panel) panel.hidden = true;
+  });
+</script>
+
+<style>
+  .yif-panel {
+    padding: 20px;
+    background-color: var(--card-tint);
+    border-left: var(--border-left-gold);
+    animation: fadeUp 0.2s ease forwards;
+  }
+
+  .yif-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+  }
+
+  .yif-close {
+    font-size: 11px;
+    padding: 2px 6px;
+    border-color: transparent;
+    color: var(--ink-faint);
+  }
+
+  .yif-close:hover {
+    background: none;
+    color: var(--ink);
+  }
+
+  .yif-year {
+    font-family: var(--font-display);
+    font-size: 36px;
+    font-weight: 800;
+    color: var(--ink);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .yif-event {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    max-width: 48ch;
+    margin-bottom: 16px;
+  }
+
+  .yif-headlines {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  :global(.yif-headline-item) {
+    font-size: 13px;
+    color: var(--ink);
+    border-top: 1px solid var(--line);
+    padding-top: 8px;
+    line-height: 1.4;
+  }
+
+  :global(.yif-headline-source) {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--ink-faint);
+    display: block;
+    margin-top: 2px;
+  }
+</style>

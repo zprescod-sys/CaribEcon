@@ -1,0 +1,147 @@
+---
+// Country multi-select + indicator selector.
+// Renders server-side; JS handles interactivity client-side.
+
+import { getCountries, getIndicatorMeta } from '../../lib/dataHub';
+
+const countries   = getCountries();
+const indicators  = getIndicatorMeta();
+const defaultCountries  = ['GY', 'TT'];
+const defaultIndicator  = 'gdp_growth';
+---
+
+<div class="chart-controls">
+  <!-- Country selector -->
+  <fieldset class="control-group" aria-label="Select countries">
+    <legend class="control-label mono">Countries</legend>
+    <div class="chip-row" id="country-chips">
+      {countries.map(c => (
+        <button
+          type="button"
+          class={`chip ${defaultCountries.includes(c.code) ? 'active' : ''}`}
+          data-country={c.code}
+          aria-pressed={defaultCountries.includes(c.code) ? 'true' : 'false'}
+        >
+          {c.flag && <span aria-hidden="true">{c.flag}</span>}
+          {c.name}
+        </button>
+      ))}
+    </div>
+  </fieldset>
+
+  <!-- Indicator selector -->
+  <div class="control-group">
+    <label for="indicator-select" class="control-label mono">Indicator</label>
+    <div class="select-wrapper">
+      <select id="indicator-select" class="indicator-select mono" aria-label="Choose indicator">
+        {indicators.map(ind => (
+          <option
+            value={ind.slug}
+            selected={ind.slug === defaultIndicator}
+          >
+            {ind.label} ({ind.unit})
+          </option>
+        ))}
+      </select>
+    </div>
+  </div>
+</div>
+
+<script>
+  const chips = document.querySelectorAll<HTMLButtonElement>('#country-chips .chip');
+
+  chips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      const activeChips = [...chips].filter(c => c.classList.contains('active'));
+
+      // Cannot deselect the last active country
+      if (chip.classList.contains('active') && activeChips.length <= 1) return;
+
+      chip.classList.toggle('active');
+      chip.setAttribute('aria-pressed', chip.classList.contains('active') ? 'true' : 'false');
+
+      // Dispatch event so the chart can react
+      document.dispatchEvent(new CustomEvent('countries-changed', {
+        detail: { countries: [...chips]
+          .filter(c => c.classList.contains('active'))
+          .map(c => c.dataset.country!) },
+      }));
+    });
+  });
+
+  const indicatorSelect = document.getElementById('indicator-select') as HTMLSelectElement | null;
+  indicatorSelect?.addEventListener('change', () => {
+    document.dispatchEvent(new CustomEvent('indicator-changed', {
+      detail: { indicator: indicatorSelect.value },
+    }));
+  });
+</script>
+
+<style>
+  .chart-controls {
+    display: flex;
+    gap: var(--gap-md);
+    flex-wrap: wrap;
+    align-items: flex-end;
+    padding: 16px;
+    background-color: var(--paper-warm);
+    border: var(--border);
+    border-bottom: none;
+  }
+
+  .control-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    border: none;
+    padding: 0;
+    min-width: 0;
+  }
+
+  .control-label {
+    font-size: 10px;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  .chip-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .select-wrapper {
+    position: relative;
+  }
+
+  .select-wrapper::after {
+    content: '▾';
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 10px;
+    color: var(--ink-faint);
+    pointer-events: none;
+  }
+
+  .indicator-select {
+    appearance: none;
+    -webkit-appearance: none;
+    background-color: var(--card);
+    border: var(--border);
+    border-radius: 0;
+    padding: 7px 28px 7px 10px;
+    font-size: 11px;
+    font-family: var(--font-mono);
+    color: var(--ink);
+    cursor: pointer;
+    min-width: 220px;
+  }
+
+  .indicator-select:focus {
+    outline: var(--focus-ring);
+    outline-offset: 2px;
+  }
+</style>

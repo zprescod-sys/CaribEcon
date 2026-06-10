@@ -1,0 +1,112 @@
+[
+  {
+    "id": "exxon-yellowtail-dev",
+    "headline": "ExxonMobil sanctions Yellowtail development — fifth FPSO offshore Guyana at cost of ~USD 12.7bn",
+    "parties": "ExxonMobil (45%), Hess (30%), CNOOC (25%) / SBM Offshore (FPSO)",
+    "value": "USD 12.7bn",
+    "date": "2022-04-01",
+    "country": "GY",
+    "type": "FDI",
+    "url": "https://corporate.exxonmobil.com",
+    "source": "ExxonMobil"
+  },
+  {
+    "id": "exxon-hammerhead-dev",
+    "headline": "ExxonMobil FID on Hammerhead — sixth Stabroek Block development, expected on-stream 2029",
+    "parties": "ExxonMobil, Hess, CNOOC",
+    "value": "Undisclosed (~USD 8–10bn est.)",
+    "date": "2024-09-26",
+    "country": "GY",
+    "type": "FDI",
+    "url": "https://corporate.exxonmobil.com",
+    "source": "ExxonMobil / Reuters"
+  },
+  {
+    "id": "chevron-hess-acquisition",
+    "headline": "Chevron acquires Hess Corp for USD 53bn, gaining a 30% stake in Guyana's Stabroek Block",
+    "parties": "Chevron (acquirer) / Hess Corp",
+    "value": "USD 53bn",
+    "date": "2023-10-23",
+    "country": "GY",
+    "type": "M&A",
+    "url": "https://www.chevron.com",
+    "source": "Chevron"
+  },
+  {
+    "id": "gy-gas-to-shore",
+    "headline": "Guyana Gas-to-Shore project (GPL) awarded — natural gas pipeline and NGL plant, USD 1.3bn",
+    "parties": "Government of Guyana / SBM Offshore / GPL",
+    "value": "USD 1.3bn",
+    "date": "2022-10-14",
+    "country": "GY",
+    "type": "Concession",
+    "url": "https://www.gov.gy",
+    "source": "Office of the President, Guyana"
+  },
+  {
+    "id": "gy-winrock-lcds-credit",
+    "headline": "Guyana sells first LCDS carbon credits to Norway for USD 750mn under first-of-kind REDD+ deal",
+    "parties": "Government of Guyana / Government of Norway",
+    "value": "USD 750mn (tranche 1 of multi-year framework)",
+    "date": "2022-12-05",
+    "country": "GY",
+    "type": "Other",
+    "url": "https://www.lcds.gov.gy",
+    "source": "Guyana LCDS Secretariat"
+  },
+  {
+    "id": "tt-shell-gas-contract",
+    "headline": "Shell signs new 15-year gas supply contract with Trinidad's National Gas Company through 2038",
+    "parties": "Shell / National Gas Company of T&T",
+    "value": "Undisclosed",
+    "date": "2024-03-18",
+    "country": "TT",
+    "type": "Other",
+    "url": "https://www.shell.com",
+    "source": "Shell / NGC"
+  },
+  {
+    "id": "tt-heritage-bgtt-deal",
+    "headline": "Heritage Petroleum completes farm-in with BG T&T (Shell) on Block 2(c), deepening domestic output partnership",
+    "parties": "Heritage Petroleum / BG Trinidad & Tobago (Shell)",
+    "value": "Undisclosed",
+    "date": "2023-11-07",
+    "country": "TT",
+    "type": "JV",
+    "url": "https://www.heritagepetrolleum.co.tt",
+    "source": "Heritage Petroleum"
+  },
+  {
+    "id": "tt-abigroup-port-expansion",
+    "headline": "Port Authority of T&T awards USD 350mn contract for Port of Port-of-Spain expansion",
+    "parties": "Port Authority of T&T / ABI Group (consortium)",
+    "value": "USD 350mn",
+    "date": "2023-06-14",
+    "country": "TT",
+    "type": "Concession",
+    "url": "https://www.patnt.com",
+    "source": "Port Authority of T&T"
+  },
+  {
+    "id": "tt-niquan-gtl-deal",
+    "headline": "NIQUAN Energy completes USD 200mn refinancing of gas-to-liquids plant at Point Lisas Industrial Estate",
+    "parties": "NIQUAN Energy / International Finance Corporation",
+    "value": "USD 200mn",
+    "date": "2024-02-09",
+    "country": "TT",
+    "type": "Bond",
+    "url": "https://www.niquanenergy.com",
+    "source": "IFC / NIQUAN"
+  },
+  {
+    "id": "caribbean-digicel-sale",
+    "headline": "Digicel sold to Marathon Asset Management in USD 1.7bn debt restructuring agreement",
+    "parties": "Digicel Group / Marathon Asset Management",
+    "value": "USD 1.7bn",
+    "date": "2023-09-01",
+    "country": ["GY", "TT"],
+    "type": "M&A",
+    "url": "https://www.digicelgroup.com",
+    "source": "Digicel / FT"
+  }
+]

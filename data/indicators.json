@@ -1,0 +1,278 @@
+[
+  {
+    "country": "GY",
+    "indicator": "gdp_growth",
+    "indicatorLabel": "Real GDP Growth",
+    "unit": "%",
+    "unitNote": "Annual percent change, constant prices",
+    "source": "IMF World Economic Outlook (October 2024)",
+    "sourceOrg": "IMF",
+    "sourceUrl": "https://www.imf.org/en/Publications/WEO",
+    "series": [
+      { "year": 2018, "value": 4.1,  "type": "actual",     "vintage": "2024-10" },
+      { "year": 2019, "value": 5.4,  "type": "actual",     "vintage": "2024-10" },
+      { "year": 2020, "value": 26.2, "type": "actual",     "vintage": "2024-10", "sourceNote": "First full year of Stabroek oil production" },
+      { "year": 2021, "value": 20.4, "type": "actual",     "vintage": "2024-10" },
+      { "year": 2022, "value": 57.8, "type": "actual",     "vintage": "2024-10" },
+      { "year": 2023, "value": 33.2, "type": "actual",     "vintage": "2024-10" },
+      { "year": 2024, "value": 34.3, "type": "estimate",   "vintage": "2024-10" },
+      { "year": 2025, "value": 14.1, "type": "projection", "vintage": "2024-10" }
+    ]
+  },
+  {
+    "country": "GY",
+    "indicator": "gdp_per_capita",
+    "indicatorLabel": "GDP per Capita",
+    "unit": "USD",
+    "unitNote": "Current prices",
+    "source": "IMF World Economic Outlook (October 2024)",
+    "sourceOrg": "IMF",
+    "sourceUrl": "https://www.imf.org/en/Publications/WEO",
+    "series": [
+      { "year": 2018, "value": 4631,  "type": "actual",     "vintage": "2024-10" },
+      { "year": 2019, "value": 5001,  "type": "actual",     "vintage": "2024-10" },
+      { "year": 2020, "value": 6929,  "type": "actual",     "vintage": "2024-10" },
+      { "year": 2021, "value": 9267,  "type": "actual",     "vintage": "2024-10" },
+      { "year": 2022, "value": 17862, "type": "actual",     "vintage": "2024-10" },
+      { "year": 2023, "value": 25910, "type": "actual",     "vintage": "2024-10" },
+      { "year": 2024, "value": 33014, "type": "estimate",   "vintage": "2024-10" },
+      { "year": 2025, "value": 35400, "type": "projection", "vintage": "2024-10" }
+    ]
+  },
+  {
+    "country": "GY",
+    "indicator": "inflation",
+    "indicatorLabel": "Inflation (CPI)",
+    "unit": "%",
+    "unitNote": "Annual average change in consumer price index",
+    "source": "IMF World Economic Outlook (October 2024)",
+    "sourceOrg": "IMF",
+    "sourceUrl": "https://www.imf.org/en/Publications/WEO",
+    "series": [
+      { "year": 2018, "value": 1.5, "type": "actual",     "vintage": "2024-10" },
+      { "year": 2019, "value": 2.1, "type": "actual",     "vintage": "2024-10" },
+      { "year": 2020, "value": 0.9, "type": "actual",     "vintage": "2024-10" },
+      { "year": 2021, "value": 5.7, "type": "actual",     "vintage": "2024-10" },
+      { "year": 2022, "value": 6.1, "type": "actual",     "vintage": "2024-10" },
+      { "year": 2023, "value": 2.8, "type": "actual",     "vintage": "2024-10" },
+      { "year": 2024, "value": 2.2, "type": "estimate",   "vintage": "2024-10" },
+      { "year": 2025, "value": 3.0, "type": "projection", "vintage": "2024-10" }
+    ]
+  },
+  {
+    "country": "GY",
+    "indicator": "unemployment",
+    "indicatorLabel": "Unemployment Rate",
+    "unit": "%",
+    "unitNote": "% of total labor force; ILO modelled estimates",
+    "source": "ILO ILOSTAT / World Bank World Development Indicators",
+    "sourceOrg": "ILO / World Bank",
+    "sourceUrl": "https://ilostat.ilo.org",
+    "series": [
+      { "year": 2018, "value": 12.5, "type": "actual",     "vintage": "2024-01" },
+      { "year": 2019, "value": 11.4, "type": "actual",     "vintage": "2024-01" },
+      { "year": 2020, "value": 14.0, "type": "actual",     "vintage": "2024-01" },
+      { "year": 2021, "value": 13.2, "type": "actual",     "vintage": "2024-01" },
+      { "year": 2022, "value": 12.4, "type": "actual",     "vintage": "2024-01" },
+      { "year": 2023, "value": 11.8, "type": "estimate",   "vintage": "2024-01" },
+      { "year": 2024, "value": null, "type": "estimate",   "vintage": "2024-01", "sourceNote": "Unavailable — not yet published" }
+    ]
+  },
+  {
+    "country": "GY",
+    "indicator": "fdi_inflows",
+    "indicatorLabel": "FDI Inflows",
+    "unit": "USD mn",
+    "unitNote": "Net inflows of foreign direct investment, USD millions",
+    "source": "UNCTAD World Investment Report 2024",
+    "sourceOrg": "UNCTAD",
+    "sourceUrl": "https://unctad.org/publication/world-investment-report-2024",
+    "series": [
+      { "year": 2018, "value": 433,  "type": "actual", "vintage": "2024-06" },
+      { "year": 2019, "value": 1623, "type": "actual", "vintage": "2024-06" },
+      { "year": 2020, "value": 1868, "type": "actual", "vintage": "2024-06" },
+      { "year": 2021, "value": 3208, "type": "actual", "vintage": "2024-06" },
+      { "year": 2022, "value": 5683, "type": "actual", "vintage": "2024-06" },
+      { "year": 2023, "value": 4815, "type": "actual", "vintage": "2024-06" },
+      { "year": 2024, "value": null, "type": "estimate", "vintage": "2024-06", "sourceNote": "2024 data not yet available" }
+    ]
+  },
+  {
+    "country": "GY",
+    "indicator": "govt_debt",
+    "indicatorLabel": "Government Debt",
+    "unit": "% of GDP",
+    "unitNote": "General government gross debt as % of GDP",
+    "source": "IMF World Economic Outlook (October 2024)",
+    "sourceOrg": "IMF",
+    "sourceUrl": "https://www.imf.org/en/Publications/WEO",
+    "series": [
+      { "year": 2018, "value": 48.3, "type": "actual",     "vintage": "2024-10" },
+      { "year": 2019, "value": 40.1, "type": "actual",     "vintage": "2024-10" },
+      { "year": 2020, "value": 26.5, "type": "actual",     "vintage": "2024-10" },
+      { "year": 2021, "value": 21.8, "type": "actual",     "vintage": "2024-10" },
+      { "year": 2022, "value": 17.5, "type": "actual",     "vintage": "2024-10" },
+      { "year": 2023, "value": 14.9, "type": "actual",     "vintage": "2024-10" },
+      { "year": 2024, "value": 13.8, "type": "estimate",   "vintage": "2024-10" },
+      { "year": 2025, "value": 12.6, "type": "projection", "vintage": "2024-10" }
+    ]
+  },
+  {
+    "country": "GY",
+    "indicator": "govt_revenue",
+    "indicatorLabel": "Government Revenue",
+    "unit": "% of GDP",
+    "unitNote": "General government revenue as % of GDP",
+    "source": "IMF World Economic Outlook (October 2024)",
+    "sourceOrg": "IMF",
+    "sourceUrl": "https://www.imf.org/en/Publications/WEO",
+    "series": [
+      { "year": 2018, "value": 23.4, "type": "actual",     "vintage": "2024-10" },
+      { "year": 2019, "value": 24.1, "type": "actual",     "vintage": "2024-10" },
+      { "year": 2020, "value": 28.8, "type": "actual",     "vintage": "2024-10" },
+      { "year": 2021, "value": 25.2, "type": "actual",     "vintage": "2024-10" },
+      { "year": 2022, "value": 24.7, "type": "actual",     "vintage": "2024-10" },
+      { "year": 2023, "value": 27.4, "type": "actual",     "vintage": "2024-10" },
+      { "year": 2024, "value": 28.1, "type": "estimate",   "vintage": "2024-10" },
+      { "year": 2025, "value": 27.8, "type": "projection", "vintage": "2024-10" }
+    ]
+  },
+  {
+    "country": "TT",
+    "indicator": "gdp_growth",
+    "indicatorLabel": "Real GDP Growth",
+    "unit": "%",
+    "unitNote": "Annual percent change, constant prices",
+    "source": "IMF World Economic Outlook (October 2024)",
+    "sourceOrg": "IMF",
+    "sourceUrl": "https://www.imf.org/en/Publications/WEO",
+    "series": [
+      { "year": 2018, "value": 1.1,  "type": "actual",     "vintage": "2024-10" },
+      { "year": 2019, "value": 0.1,  "type": "actual",     "vintage": "2024-10" },
+      { "year": 2020, "value": -7.3, "type": "actual",     "vintage": "2024-10" },
+      { "year": 2021, "value": -1.0, "type": "actual",     "vintage": "2024-10" },
+      { "year": 2022, "value": 2.4,  "type": "actual",     "vintage": "2024-10" },
+      { "year": 2023, "value": 2.0,  "type": "actual",     "vintage": "2024-10" },
+      { "year": 2024, "value": 2.1,  "type": "estimate",   "vintage": "2024-10" },
+      { "year": 2025, "value": 2.4,  "type": "projection", "vintage": "2024-10" }
+    ]
+  },
+  {
+    "country": "TT",
+    "indicator": "gdp_per_capita",
+    "indicatorLabel": "GDP per Capita",
+    "unit": "USD",
+    "unitNote": "Current prices",
+    "source": "IMF World Economic Outlook (October 2024)",
+    "sourceOrg": "IMF",
+    "sourceUrl": "https://www.imf.org/en/Publications/WEO",
+    "series": [
+      { "year": 2018, "value": 16818, "type": "actual",     "vintage": "2024-10" },
+      { "year": 2019, "value": 17097, "type": "actual",     "vintage": "2024-10" },
+      { "year": 2020, "value": 15226, "type": "actual",     "vintage": "2024-10" },
+      { "year": 2021, "value": 15882, "type": "actual",     "vintage": "2024-10" },
+      { "year": 2022, "value": 19348, "type": "actual",     "vintage": "2024-10" },
+      { "year": 2023, "value": 20012, "type": "actual",     "vintage": "2024-10" },
+      { "year": 2024, "value": 20543, "type": "estimate",   "vintage": "2024-10" },
+      { "year": 2025, "value": 21100, "type": "projection", "vintage": "2024-10" }
+    ]
+  },
+  {
+    "country": "TT",
+    "indicator": "inflation",
+    "indicatorLabel": "Inflation (CPI)",
+    "unit": "%",
+    "unitNote": "Annual average change in consumer price index",
+    "source": "IMF World Economic Outlook (October 2024)",
+    "sourceOrg": "IMF",
+    "sourceUrl": "https://www.imf.org/en/Publications/WEO",
+    "series": [
+      { "year": 2018, "value": 1.1, "type": "actual",     "vintage": "2024-10" },
+      { "year": 2019, "value": 1.0, "type": "actual",     "vintage": "2024-10" },
+      { "year": 2020, "value": 0.6, "type": "actual",     "vintage": "2024-10" },
+      { "year": 2021, "value": 3.0, "type": "actual",     "vintage": "2024-10" },
+      { "year": 2022, "value": 5.8, "type": "actual",     "vintage": "2024-10" },
+      { "year": 2023, "value": 5.2, "type": "actual",     "vintage": "2024-10" },
+      { "year": 2024, "value": 3.5, "type": "estimate",   "vintage": "2024-10" },
+      { "year": 2025, "value": 2.8, "type": "projection", "vintage": "2024-10" }
+    ]
+  },
+  {
+    "country": "TT",
+    "indicator": "unemployment",
+    "indicatorLabel": "Unemployment Rate",
+    "unit": "%",
+    "unitNote": "% of total labor force; ILO modelled estimates",
+    "source": "ILO ILOSTAT / World Bank World Development Indicators",
+    "sourceOrg": "ILO / World Bank",
+    "sourceUrl": "https://ilostat.ilo.org",
+    "series": [
+      { "year": 2018, "value": 4.8, "type": "actual",   "vintage": "2024-01" },
+      { "year": 2019, "value": 4.5, "type": "actual",   "vintage": "2024-01" },
+      { "year": 2020, "value": 5.6, "type": "actual",   "vintage": "2024-01" },
+      { "year": 2021, "value": 5.4, "type": "actual",   "vintage": "2024-01" },
+      { "year": 2022, "value": 4.9, "type": "actual",   "vintage": "2024-01" },
+      { "year": 2023, "value": 4.6, "type": "estimate", "vintage": "2024-01" },
+      { "year": 2024, "value": null,"type": "estimate", "vintage": "2024-01", "sourceNote": "Unavailable — not yet published" }
+    ]
+  },
+  {
+    "country": "TT",
+    "indicator": "fdi_inflows",
+    "indicatorLabel": "FDI Inflows",
+    "unit": "USD mn",
+    "unitNote": "Net inflows of foreign direct investment, USD millions",
+    "source": "UNCTAD World Investment Report 2024",
+    "sourceOrg": "UNCTAD",
+    "sourceUrl": "https://unctad.org/publication/world-investment-report-2024",
+    "series": [
+      { "year": 2018, "value": 619,  "type": "actual", "vintage": "2024-06" },
+      { "year": 2019, "value": 808,  "type": "actual", "vintage": "2024-06" },
+      { "year": 2020, "value": 448,  "type": "actual", "vintage": "2024-06" },
+      { "year": 2021, "value": 546,  "type": "actual", "vintage": "2024-06" },
+      { "year": 2022, "value": 723,  "type": "actual", "vintage": "2024-06" },
+      { "year": 2023, "value": 681,  "type": "actual", "vintage": "2024-06" },
+      { "year": 2024, "value": null, "type": "estimate", "vintage": "2024-06", "sourceNote": "2024 data not yet available" }
+    ]
+  },
+  {
+    "country": "TT",
+    "indicator": "govt_debt",
+    "indicatorLabel": "Government Debt",
+    "unit": "% of GDP",
+    "unitNote": "General government gross debt as % of GDP",
+    "source": "IMF World Economic Outlook (October 2024)",
+    "sourceOrg": "IMF",
+    "sourceUrl": "https://www.imf.org/en/Publications/WEO",
+    "series": [
+      { "year": 2018, "value": 66.8, "type": "actual",     "vintage": "2024-10" },
+      { "year": 2019, "value": 68.1, "type": "actual",     "vintage": "2024-10" },
+      { "year": 2020, "value": 78.5, "type": "actual",     "vintage": "2024-10" },
+      { "year": 2021, "value": 76.2, "type": "actual",     "vintage": "2024-10" },
+      { "year": 2022, "value": 69.4, "type": "actual",     "vintage": "2024-10" },
+      { "year": 2023, "value": 66.8, "type": "actual",     "vintage": "2024-10" },
+      { "year": 2024, "value": 65.1, "type": "estimate",   "vintage": "2024-10" },
+      { "year": 2025, "value": 63.2, "type": "projection", "vintage": "2024-10" }
+    ]
+  },
+  {
+    "country": "TT",
+    "indicator": "govt_revenue",
+    "indicatorLabel": "Government Revenue",
+    "unit": "% of GDP",
+    "unitNote": "General government revenue as % of GDP",
+    "source": "IMF World Economic Outlook (October 2024)",
+    "sourceOrg": "IMF",
+    "sourceUrl": "https://www.imf.org/en/Publications/WEO",
+    "series": [
+      { "year": 2018, "value": 28.4, "type": "actual",     "vintage": "2024-10" },
+      { "year": 2019, "value": 25.7, "type": "actual",     "vintage": "2024-10" },
+      { "year": 2020, "value": 22.3, "type": "actual",     "vintage": "2024-10" },
+      { "year": 2021, "value": 24.4, "type": "actual",     "vintage": "2024-10" },
+      { "year": 2022, "value": 30.1, "type": "actual",     "vintage": "2024-10" },
+      { "year": 2023, "value": 29.6, "type": "actual",     "vintage": "2024-10" },
+      { "year": 2024, "value": 28.4, "type": "estimate",   "vintage": "2024-10" },
+      { "year": 2025, "value": 27.9, "type": "projection", "vintage": "2024-10" }
+    ]
+  }
+]

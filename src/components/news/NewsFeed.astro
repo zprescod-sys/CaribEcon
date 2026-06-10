@@ -1,0 +1,133 @@
+---
+// News feed — country filter chips + article list.
+import type { NewsData } from '../../lib/types';
+import { getCountries } from '../../lib/dataHub';
+
+interface Props {
+  news: NewsData;
+}
+
+const { news } = Astro.props;
+const countries = getCountries();
+const newsJSON  = JSON.stringify(news);
+
+function formatDate(d: string) {
+  return new Date(d).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+}
+---
+
+<div class="news-section">
+  <!-- Filter chips -->
+  <div class="filter-bar" role="group" aria-label="Filter news by country">
+    <button type="button" class="chip active" data-filter="ALL">All Caribbean</button>
+    {countries.map(c => (
+      <button type="button" class="chip" data-filter={c.code}>
+        {c.flag} {c.name}
+      </button>
+    ))}
+  </div>
+
+  <!-- Feed -->
+  <div id="news-feed" class="news-list" aria-live="polite" aria-label="News articles">
+    {news.map(item => {
+      const country = Array.isArray(item.country) ? item.country.join(',') : item.country;
+      return (
+        <article class="news-item" data-country={country}>
+          <a class="news-title" href={item.url} target="_blank" rel="noopener noreferrer">
+            {item.title}
+          </a>
+          <div class="news-meta">
+            <span class="mono news-source">{item.source}</span>
+            <time class="mono" datetime={item.date}>{formatDate(item.date)}</time>
+            {(Array.isArray(item.country) ? item.country : [item.country])
+              .filter(c => c !== 'ALL')
+              .map(c => <span class="badge">{c}</span>)
+            }
+          </div>
+        </article>
+      );
+    })}
+  </div>
+
+  <div id="news-empty" class="news-empty mono" hidden>
+    No news for this country in the current dataset.
+  </div>
+</div>
+
+<!-- Pass data for client-side filtering -->
+<div id="news-data" data-news={newsJSON} hidden></div>
+
+<script>
+  const chips    = document.querySelectorAll<HTMLButtonElement>('[data-filter]');
+  const items    = document.querySelectorAll<HTMLElement>('.news-item');
+  const emptyEl  = document.getElementById('news-empty') as HTMLElement | null;
+
+  function filterNews(filter: string) {
+    let visibleCount = 0;
+    items.forEach(item => {
+      const countries = (item.dataset.country ?? '').split(',');
+      const match = filter === 'ALL' || countries.includes(filter) || countries.includes('ALL');
+      item.hidden = !match;
+      if (match) visibleCount++;
+    });
+    if (emptyEl) emptyEl.hidden = visibleCount > 0;
+  }
+
+  chips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      chips.forEach(c => { c.classList.remove('active'); c.setAttribute('aria-pressed', 'false'); });
+      chip.classList.add('active');
+      chip.setAttribute('aria-pressed', 'true');
+      filterNews(chip.dataset.filter ?? 'ALL');
+    });
+  });
+</script>
+
+<style>
+  .news-section { margin-top: var(--gap-md); }
+
+  .filter-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding-bottom: 20px;
+    border-bottom: var(--border);
+    margin-bottom: 20px;
+  }
+
+  .news-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .news-item {
+    padding: 16px 0;
+    border-bottom: 1px solid var(--line);
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .news-title {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--ink);
+    line-height: 1.4;
+    max-width: 72ch;
+    text-decoration: none;
+  }
+
+  .news-title:hover { text-decoration: underline; color: var(--teal); }
+
+  .news-meta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .news-source { color: var(--ink-soft); }
+
+  .news-empty { padding: 40px 0; color: var(--ink-faint); font-size: 12px; }
+</style>

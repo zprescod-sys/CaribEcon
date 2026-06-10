@@ -1,0 +1,204 @@
+---
+// Budget donut chart — D3.
+// Centre shows total budget in USD. Segment click → key projects list.
+
+import type { BudgetEntry } from '../../lib/types';
+
+interface Props {
+  budget: BudgetEntry;
+}
+
+const { budget } = Astro.props;
+const budgetJSON = JSON.stringify(budget);
+---
+
+<div class="budget-pie-wrapper">
+  <div class="budget-pie-header">
+    <div>
+      <span class="eyebrow">Budget {budget.fiscalYear ?? budget.year}</span>
+      <h3 class="budget-title">{budget.country === 'GY' ? 'Guyana' : 'Trinidad & Tobago'} — Budget Allocation</h3>
+    </div>
+    <div class="source-line">
+      <span>Source:</span>
+      <a href={budget.sourceUrl} target="_blank" rel="noopener noreferrer">{budget.source}</a>
+    </div>
+  </div>
+
+  <div class="budget-layout">
+    <!-- Donut chart -->
+    <div id={`pie-chart-${budget.country}`} class="pie-container" role="img" aria-label={`Budget allocation donut chart for ${budget.country}`}></div>
+
+    <!-- Projects panel -->
+    <div class="projects-panel" id={`projects-${budget.country}`}>
+      <p class="projects-prompt mono">Click a segment to see key projects</p>
+    </div>
+  </div>
+</div>
+
+<!-- Unique class used by the script to find all budget pie instances on the page -->
+<div class="budget-pie-data" data-country={budget.country} data-budget={budgetJSON} hidden></div>
+
+<script>
+  import * as d3 from 'd3';
+  import type { BudgetEntry, BudgetCategory } from '../../lib/types';
+
+  // Initialize every budget pie on this page
+  document.querySelectorAll<HTMLElement>('.budget-pie-data').forEach(dataEl => {
+    const country = dataEl.dataset.country!;
+    const budget: BudgetEntry = JSON.parse(dataEl.dataset.budget ?? '{}');
+
+    const container = document.getElementById(`pie-chart-${country}`);
+    const panel     = document.getElementById(`projects-${country}`);
+    if (!container || !panel) return;
+
+    const COLORS = ['#0E5E4E','#BC8A2E','#1E3A5F','#A8542E','#6A4A6E','#5A6B6E','#5C6B3A','#9A5B2E'];
+    const size   = Math.min(container.clientWidth || 280, 280);
+    const radius = size / 2;
+    const inner  = radius * 0.56;
+
+    const svg = d3.select(container)
+      .append('svg')
+      .attr('width', size).attr('height', size)
+      .append('g')
+      .attr('transform', `translate(${radius},${radius})`);
+
+    const pie = d3.pie<BudgetCategory>()
+      .value(d => d.value)
+      .sort(null)
+      .padAngle(0.018);
+
+    const arc      = d3.arc<d3.PieArcDatum<BudgetCategory>>().innerRadius(inner).outerRadius(radius - 4);
+    const arcHover = d3.arc<d3.PieArcDatum<BudgetCategory>>().innerRadius(inner).outerRadius(radius);
+
+    const arcs = svg.selectAll('.arc')
+      .data(pie(budget.categories))
+      .join('g')
+      .attr('class', 'arc');
+
+    arcs.append('path')
+      .attr('d', d => arc(d) as string)
+      .attr('fill', (_, i) => COLORS[i % COLORS.length])
+      .attr('stroke', 'var(--paper)')
+      .attr('stroke-width', 1.5)
+      .style('cursor', 'pointer')
+      .on('mouseenter', function(_, d) {
+        d3.select(this).attr('d', arcHover(d) as string);
+      })
+      .on('mouseleave', function(_, d) {
+        d3.select(this).attr('d', arc(d) as string);
+      })
+      .on('click', (_, d) => showProjects(d.data, COLORS[pie(budget.categories).indexOf(d) % COLORS.length], panel));
+
+    const totalM = (budget.totalUSD / 1000).toFixed(1);
+    svg.append('text')
+      .attr('text-anchor', 'middle').attr('dy', '-4')
+      .attr('font-family', 'Bricolage Grotesque, sans-serif')
+      .attr('font-size', '20').attr('font-weight', '800').attr('fill', '#0F231E')
+      .text(`USD ${totalM}bn`);
+
+    svg.append('text')
+      .attr('text-anchor', 'middle').attr('dy', '16')
+      .attr('font-family', 'JetBrains Mono, monospace')
+      .attr('font-size', '9').attr('fill', '#8A958F')
+      .text('total budget');
+  });
+
+  function showProjects(cat: BudgetCategory, color: string, panel: HTMLElement) {
+    const projectItems = cat.projects.map(p => `
+      <div class="project-item">
+        <span class="project-name">${p.name}</span>
+        ${p.description ? `<span class="project-desc mono">${p.description}</span>` : ''}
+      </div>
+    `).join('');
+
+    panel.innerHTML = `
+      <div class="projects-category" style="border-left: 3px solid ${color}; padding-left: 12px;">
+        <div class="projects-cat-header">
+          <span class="eyebrow">${cat.name}</span>
+          <span class="mono cat-pct">${cat.pct.toFixed(1)}% · USD ${(cat.value / 1000).toFixed(1)}bn</span>
+        </div>
+        <div class="project-list">${projectItems}</div>
+      </div>
+    `;
+  }
+</script>
+
+<style>
+  .budget-pie-wrapper {
+    border: var(--border);
+    background-color: var(--card);
+    padding: 20px;
+  }
+
+  .budget-pie-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: var(--gap-sm);
+    margin-bottom: 20px;
+  }
+
+  .budget-title {
+    font-size: 16px;
+    font-weight: 700;
+    margin-top: 4px;
+  }
+
+  .budget-layout {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 24px;
+    align-items: start;
+  }
+
+  .pie-container svg { display: block; }
+
+  .projects-panel {
+    min-height: 160px;
+    padding: 12px 0;
+  }
+
+  .projects-prompt {
+    color: var(--ink-faint);
+    font-size: 11px;
+  }
+
+  :global(.projects-cat-header) {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+  }
+
+  :global(.cat-pct) {
+    color: var(--ink-faint);
+    font-size: 10px;
+  }
+
+  :global(.project-item) {
+    padding: 8px 0;
+    border-top: 1px solid var(--line);
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  :global(.project-name) {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink);
+  }
+
+  :global(.project-desc) {
+    font-size: 11px;
+    color: var(--ink-faint);
+    line-height: 1.5;
+  }
+
+  @media (max-width: 640px) {
+    .budget-layout { grid-template-columns: 1fr; }
+    .pie-container { margin: 0 auto; }
+  }
+</style>

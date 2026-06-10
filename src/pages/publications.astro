@@ -1,0 +1,54 @@
+---
+import Shell              from '../layouts/Shell.astro';
+import PublicationsIndex  from '../components/publications/PublicationsIndex.astro';
+import { getPublications } from '../lib/dataHub';
+
+const publications = getPublications();
+---
+
+<Shell
+  title="Publications"
+  description="Browse IMF, World Bank, CDB, and ECLAC research publications on Caribbean economies."
+>
+  <div class="page-wrapper pubs-page">
+
+    <header class="page-header fade-up fade-up-1">
+      <span class="eyebrow">Publications</span>
+      <h1 class="page-title">Research Index</h1>
+      <p class="page-sub">
+        Reports from the IMF, World Bank, Caribbean Development Bank, ECLAC, and regional institutions.
+        All reports link to their original sources.
+        We host nothing — summaries are our own.
+      </p>
+    </header>
+
+    <div class="pub-meta-note mono fade-up">
+      {publications.length} publications indexed · Sources: IMF eLibrary, World Bank Open Knowledge, CDB, ECLAC
+    </div>
+
+    <section class="fade-up fade-up-2">
+      <PublicationsIndex publications={publications} />
+    </section>
+
+  </div>
+</Shell>
+
+<style>
+  .pubs-page {
+    padding-top: 36px;
+    padding-bottom: 60px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--section-gap);
+  }
+
+  .page-title { font-size: var(--text-page); margin: 6px 0 10px; }
+  .page-sub   { font-size: 15px; color: var(--ink-soft); max-width: 68ch; }
+
+  .pub-meta-note {
+    font-size: 11px;
+    color: var(--ink-faint);
+    letter-spacing: 0.04em;
+    margin-top: calc(-1 * var(--section-gap) + var(--gap-md));
+  }
+</style>

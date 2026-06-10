@@ -1,0 +1,84 @@
+---
+// Story of the day — generalist, not country-specific.
+// Content is hand-curated in the page; this component handles the layout.
+
+interface Props {
+  date: string;
+  eyebrow: string;
+  headline: string;
+  standfirst: string;
+  source?: string;
+  sourceUrl?: string;
+}
+
+const { date, eyebrow, headline, standfirst, source, sourceUrl } = Astro.props;
+
+const formattedDate = new Date(date).toLocaleDateString('en-US', {
+  year: 'numeric', month: 'long', day: 'numeric',
+});
+---
+
+<article class="daily-briefing emphasis-teal fade-up fade-up-1">
+  <div class="briefing-meta">
+    <span class="eyebrow">{eyebrow}</span>
+    <time class="mono" datetime={date}>{formattedDate}</time>
+  </div>
+
+  <h2 class="briefing-headline">{headline}</h2>
+  <p class="briefing-standfirst">{standfirst}</p>
+
+  {source && (
+    <div class="source-line">
+      <span>Source:</span>
+      {sourceUrl
+        ? <a href={sourceUrl} target="_blank" rel="noopener noreferrer">{source}</a>
+        : <span>{source}</span>
+      }
+    </div>
+  )}
+</article>
+
+<style>
+  .daily-briefing {
+    padding: 24px 24px 24px 20px;
+    background-color: var(--card-tint);
+  }
+
+  .briefing-meta {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 12px;
+  }
+
+  .briefing-headline {
+    font-size: clamp(22px, 3vw, 30px);
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 12px;
+    max-width: 52ch;
+  }
+
+  .briefing-standfirst {
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    max-width: 60ch;
+    font-weight: 500;
+  }
+
+  .source-line {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--ink-faint);
+    margin-top: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .source-line a {
+    color: var(--ink-faint);
+    text-decoration: underline;
+  }
+</style>

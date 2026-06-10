@@ -1,0 +1,93 @@
+---
+// Stat cards — key metric summary for selected country + indicator.
+// Receives pre-computed stats; rendering is pure HTML.
+
+interface StatCard {
+  label: string;
+  value: string;
+  delta?: string;          // e.g. "+2.1pp"
+  deltaDir?: 'pos' | 'neg' | 'neutral';
+  sub?: string;
+  type?: 'actual' | 'estimate' | 'projection';
+  source?: string;
+}
+
+interface Props {
+  cards: StatCard[];
+}
+
+const { cards } = Astro.props;
+---
+
+<div class="stat-grid">
+  {cards.map(card => (
+    <div class="stat-card card">
+      <span class="stat-label mono">{card.label}</span>
+      <div class="stat-row">
+        <span class="stat-value">{card.value}</span>
+        {card.delta && (
+          <span class={`stat-delta mono delta-${card.deltaDir ?? 'neutral'}`}>
+            {card.delta}
+          </span>
+        )}
+      </div>
+      {card.sub && <span class="stat-sub mono">{card.sub}</span>}
+      {card.type && card.type !== 'actual' && (
+        <span class={`badge badge-${card.type}`}>{card.type}</span>
+      )}
+    </div>
+  ))}
+</div>
+
+<style>
+  .stat-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: var(--gap-sm);
+  }
+
+  .stat-card {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .stat-label {
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  .stat-row {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+  }
+
+  .stat-value {
+    font-family: var(--font-display);
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1;
+    color: var(--ink);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .stat-delta {
+    font-size: 12px;
+    font-weight: 500;
+  }
+
+  .stat-sub {
+    font-size: 10px;
+    color: var(--ink-faint);
+    margin-top: 2px;
+  }
+
+  .badge {
+    margin-top: 6px;
+    align-self: flex-start;
+  }
+</style>

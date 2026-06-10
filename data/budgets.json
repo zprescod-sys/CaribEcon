@@ -1,0 +1,191 @@
+[
+  {
+    "country": "GY",
+    "year": 2024,
+    "totalUSD": 5242,
+    "currency": "GYD",
+    "originalTotal": 1147000,
+    "exchangeRate": 0.00476,
+    "source": "Guyana Ministry of Finance — Budget 2024",
+    "sourceUrl": "https://www.finance.gov.gy/budget-2024/",
+    "vintage": "2024-01",
+    "categories": [
+      {
+        "name": "Infrastructure & Transportation",
+        "slug": "infrastructure",
+        "value": 1834,
+        "pct": 35.0,
+        "projects": [
+          { "name": "East Bank Demerara Expressway (Phase 2)", "description": "Four-lane highway expansion connecting Georgetown to Timehri" },
+          { "name": "Demerara Harbour Bridge Replacement", "description": "Construction of permanent fixed-span bridge across the Demerara River" },
+          { "name": "Linden–Lethem Road Improvement", "description": "Upgrading the 300km road linking the coast to the Brazilian border" }
+        ]
+      },
+      {
+        "name": "Education",
+        "slug": "education",
+        "value": 786,
+        "pct": 15.0,
+        "projects": [
+          { "name": "Silica City University", "description": "New university campus in New Amsterdam to expand tertiary access" },
+          { "name": "Primary & Secondary School Rehabilitation", "description": "Nationwide renovation of 150+ schools" },
+          { "name": "Technical & Vocational Training Expansion", "description": "New TVET centres in Regions 4, 6 and 10" }
+        ]
+      },
+      {
+        "name": "Health",
+        "slug": "health",
+        "value": 629,
+        "pct": 12.0,
+        "projects": [
+          { "name": "New Paediatric Hospital", "description": "Construction of dedicated children's hospital in Georgetown" },
+          { "name": "Regional Hospital Upgrades", "description": "Cardiac and oncology units added at GPHC and New Amsterdam hospitals" }
+        ]
+      },
+      {
+        "name": "Housing & Water",
+        "slug": "housing",
+        "value": 524,
+        "pct": 10.0,
+        "projects": [
+          { "name": "Low-Income Housing Programme", "description": "6,000 house lots allocated across hinterland and coastal regions" },
+          { "name": "National Water & Sewerage Authority Expansion", "description": "Extending piped water to hinterland communities in Regions 8 and 9" }
+        ]
+      },
+      {
+        "name": "Social Protection",
+        "slug": "social",
+        "value": 419,
+        "pct": 8.0,
+        "projects": [
+          { "name": "Because We Care Cash Grant", "description": "Annual cash transfer of GYD 25,000 per child to school families" },
+          { "name": "Senior Citizens' Pension Increase", "description": "Monthly pension raised to GYD 12,000" }
+        ]
+      },
+      {
+        "name": "Public Safety & Justice",
+        "slug": "public-safety",
+        "value": 367,
+        "pct": 7.0,
+        "projects": [
+          { "name": "Cybercrime & Digital Forensics Unit", "description": "New dedicated unit within Guyana Police Force" },
+          { "name": "Prison Modernisation", "description": "Upgrade of Mazaruni and Lusignan facilities" }
+        ]
+      },
+      {
+        "name": "Agriculture",
+        "slug": "agriculture",
+        "value": 262,
+        "pct": 5.0,
+        "projects": [
+          { "name": "Black Bush Polders Rehabilitation", "description": "Drainage and irrigation for 28,000 acres of rice farmland in Berbice" },
+          { "name": "National Drainage & Irrigation Authority", "description": "Sea defence upgrades along the Essequibo and Demerara coastlines" }
+        ]
+      },
+      {
+        "name": "Other / Cross-Cutting",
+        "slug": "other",
+        "value": 421,
+        "pct": 8.0,
+        "projects": [
+          { "name": "Digital Transformation Agenda", "description": "E-government services rollout and fibre connectivity to all regions" },
+          { "name": "Natural Resources & Environment", "description": "LCDS 2030 carbon credit programme and protected areas management" }
+        ]
+      }
+    ]
+  },
+  {
+    "country": "TT",
+    "year": 2024,
+    "fiscalYear": "2024/25",
+    "totalUSD": 9412,
+    "currency": "TTD",
+    "originalTotal": 63860,
+    "exchangeRate": 0.1474,
+    "source": "Trinidad & Tobago Ministry of Finance — Budget 2024/25",
+    "sourceUrl": "https://www.finance.gov.tt/2024/10/budget-2024-2025/",
+    "vintage": "2024-10",
+    "categories": [
+      {
+        "name": "Social Services & Community Development",
+        "slug": "social",
+        "value": 1882,
+        "pct": 20.0,
+        "projects": [
+          { "name": "Targeted Conditional Cash Transfer", "description": "Monthly grants to vulnerable households under GATE and TARA programmes" },
+          { "name": "Senior Citizens' Pension Enhancement", "description": "Increase to TTD 3,500/month for all citizens over 65" }
+        ]
+      },
+      {
+        "name": "Education",
+        "slug": "education",
+        "value": 1412,
+        "pct": 15.0,
+        "projects": [
+          { "name": "GATE Higher Education Programme", "description": "Continued free tertiary education funding at UTT and UWI" },
+          { "name": "Secondary School Digitalisation", "description": "Devices and connectivity for all Form 1–5 students" }
+        ]
+      },
+      {
+        "name": "Health",
+        "slug": "health",
+        "value": 1129,
+        "pct": 12.0,
+        "projects": [
+          { "name": "San Fernando General Hospital Expansion", "description": "New oncology and cardiothoracic wards" },
+          { "name": "National Chronic Disease Prevention Programme", "description": "Community health screening and diabetes/hypertension management" }
+        ]
+      },
+      {
+        "name": "National Security",
+        "slug": "national-security",
+        "value": 1129,
+        "pct": 12.0,
+        "projects": [
+          { "name": "Police Service Modernisation", "description": "New patrol vehicles, body cameras, and digital dispatch system" },
+          { "name": "Coast Guard Vessel Acquisition", "description": "Two new offshore patrol vessels for maritime security" }
+        ]
+      },
+      {
+        "name": "Works & Transport",
+        "slug": "works",
+        "value": 941,
+        "pct": 10.0,
+        "projects": [
+          { "name": "Solomon Hochoy Highway Extension (Phase 2)", "description": "Highway extension to Point Fortin; final phase" },
+          { "name": "Sea Bridge Rationalisation", "description": "Upgrade of Tobago Express and additional ferry capacity" }
+        ]
+      },
+      {
+        "name": "Finance & Economy",
+        "slug": "finance",
+        "value": 753,
+        "pct": 8.0,
+        "projects": [
+          { "name": "Energy Transition Fund", "description": "Seed capital for renewable energy and gas-to-power projects" },
+          { "name": "SME Development Fund", "description": "Low-interest loans for micro and small enterprises" }
+        ]
+      },
+      {
+        "name": "Agriculture & Land",
+        "slug": "agriculture",
+        "value": 471,
+        "pct": 5.0,
+        "projects": [
+          { "name": "Caroni Lands Agricultural Development", "description": "Irrigation and drainage on former Caroni sugarcane lands" },
+          { "name": "Fisheries Modernisation Programme", "description": "New ice plants and cold chain at Carenage, Cedros, and Galeota" }
+        ]
+      },
+      {
+        "name": "Other / Debt Service",
+        "slug": "other",
+        "value": 1695,
+        "pct": 18.0,
+        "projects": [
+          { "name": "Public Debt Service", "description": "Servicing of domestic and external government debt obligations" },
+          { "name": "Digital Government Initiative", "description": "TTConnect expansion and e-services portal modernisation" }
+        ]
+      }
+    ]
+  }
+]

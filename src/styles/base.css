@@ -1,0 +1,234 @@
+/* Base styles — Caribbean Macro Almanac
+   Reset + font declarations + global defaults derived from design tokens.
+   Import tokens.css first. */
+
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+/* TODO Phase 2: replace with self-hosted WOFF2 files in /public/fonts/ */
+
+/* ── Reset ─────────────────────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  line-height: var(--lh-body);
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Typography defaults ────────────────────────────────────────────────── */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: var(--lh-tight);
+  color: var(--ink);
+}
+
+h1 { font-size: var(--text-page); }
+h2 { font-size: var(--text-section); }
+h3 { font-size: var(--text-card); }
+
+p { max-width: 68ch; }
+
+a {
+  color: var(--teal);
+  text-decoration: none;
+}
+
+a:hover { text-decoration: underline; }
+
+/* Tabular numerals for all data contexts */
+.tabular, table, .stat, .chart-label, .axis-tick {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Mono text */
+.mono, .eyebrow, .caption, .source, .timestamp, time {
+  font-family: var(--font-mono);
+  font-size: var(--text-caption);
+  color: var(--ink-faint);
+  letter-spacing: 0.02em;
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 500;
+  color: var(--teal);
+}
+
+/* ── Focus ──────────────────────────────────────────────────────────────── */
+:focus-visible {
+  outline: var(--focus-ring);
+  outline-offset: 2px;
+}
+
+/* ── Layout utilities ───────────────────────────────────────────────────── */
+.page-wrapper {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--side-padding);
+}
+
+.section-band {
+  background-color: var(--paper-warm);
+}
+
+.section-divider {
+  border: none;
+  border-top: 1px solid var(--line);
+  margin: var(--section-gap) 0;
+}
+
+/* ── Cards ──────────────────────────────────────────────────────────────── */
+.card {
+  background-color: var(--card);
+  border: var(--border);
+  border-radius: var(--radius);
+  padding: var(--gap-md);
+}
+
+.card-tint {
+  background-color: var(--card-tint);
+  border: var(--border);
+  border-radius: var(--radius);
+  padding: var(--gap-md);
+}
+
+/* Emphasis: 3px left border */
+.emphasis-teal { border-left: var(--border-left-teal); padding-left: calc(var(--gap-md) - 3px); }
+.emphasis-gold  { border-left: var(--border-left-gold);  padding-left: calc(var(--gap-md) - 3px); }
+
+/* ── Data labels ────────────────────────────────────────────────────────── */
+.badge {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 2px 6px;
+  border: 1px solid var(--line);
+  border-radius: 0;
+}
+
+.badge-estimate { color: var(--gold); border-color: var(--gold); }
+.badge-projection { color: var(--ink-soft); }
+
+.delta-pos { color: var(--pos); }
+.delta-neg { color: var(--neg); }
+
+/* ── Buttons ────────────────────────────────────────────────────────────── */
+button, .btn {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border-radius: 0;
+  cursor: pointer;
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--ink);
+  padding: 8px 14px;
+  transition: background-color 0.12s ease, color 0.12s ease;
+}
+
+button:hover, .btn:hover {
+  background-color: var(--ink);
+  color: var(--paper);
+}
+
+.btn-primary {
+  background-color: var(--teal);
+  color: var(--paper);
+  border-color: var(--teal);
+}
+
+.btn-primary:hover {
+  background-color: var(--teal-deep);
+  border-color: var(--teal-deep);
+}
+
+/* ── Filter chips ───────────────────────────────────────────────────────── */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  padding: 5px 10px;
+  border: 1px solid var(--line);
+  border-radius: 0;
+  cursor: pointer;
+  background: transparent;
+  color: var(--ink-soft);
+  transition: all 0.1s ease;
+}
+
+.chip:hover { border-color: var(--teal); color: var(--teal); }
+
+.chip.active {
+  background-color: var(--teal);
+  border-color: var(--teal);
+  color: var(--paper);
+}
+
+/* ── Motion — restrained ────────────────────────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.fade-up {
+  animation: fadeUp 0.35s ease forwards;
+}
+
+.fade-up-1 { animation-delay: 0ms; }
+.fade-up-2 { animation-delay: 60ms; }
+.fade-up-3 { animation-delay: 120ms; }
+
+@media (prefers-reduced-motion: reduce) {
+  .fade-up, .fade-up-1, .fade-up-2, .fade-up-3 {
+    animation: none;
+  }
+}
+
+/* ── Responsive ─────────────────────────────────────────────────────────── */
+@media (max-width: 820px) {
+  :root {
+    --side-padding: 16px;
+  }
+
+  .two-col {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* ── Source citation ────────────────────────────────────────────────────── */
+.source-line {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--ink-faint);
+  margin-top: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.source-line a { color: var(--ink-faint); text-decoration: underline; }

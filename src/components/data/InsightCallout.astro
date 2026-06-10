@@ -1,0 +1,31 @@
+---
+// Insight callout — 3px left-border emphasis block with a key analytical observation.
+
+interface Props {
+  text: string;
+  accentColor?: 'teal' | 'gold';
+}
+
+const { text, accentColor = 'teal' } = Astro.props;
+---
+
+<div class={`insight-callout emphasis-${accentColor} card`}>
+  <span class="eyebrow">Key Insight</span>
+  <p class="insight-text">{text}</p>
+</div>
+
+<style>
+  .insight-callout {
+    padding: 16px 20px;
+    margin-top: var(--gap-md);
+  }
+
+  .insight-text {
+    margin-top: 6px;
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    font-weight: 500;
+    max-width: 72ch;
+  }
+</style>

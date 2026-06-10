@@ -1,0 +1,148 @@
+---
+import Shell             from '../layouts/Shell.astro';
+import ChartControls     from '../components/charts/ChartControls.astro';
+import LineChart         from '../components/charts/LineChart.astro';
+import BudgetPie         from '../components/charts/BudgetPie.astro';
+import StatCards         from '../components/data/StatCards.astro';
+import InsightCallout    from '../components/data/InsightCallout.astro';
+import YearInFocusPanel  from '../components/data/YearInFocusPanel.astro';
+import type { DataPointType } from '../lib/types';
+import {
+  getIndicatorAllCountries,
+  getBudget,
+} from '../lib/dataHub';
+
+interface StatCardDef {
+  label: string;
+  value: string;
+  delta?: string;
+  deltaDir?: 'pos' | 'neg' | 'neutral';
+  sub?: string;
+  type?: DataPointType;
+  source?: string;
+}
+
+// Initial data: all series for the default indicator across all countries
+const allSeries = getIndicatorAllCountries('gdp_growth');
+const gyBudget  = getBudget('GY', 2024);
+const ttBudget  = getBudget('TT', 2024);
+
+// Build initial stat cards for GDP growth (most recent available point)
+function latestPoint(country: string, indicator: string) {
+  const series = getIndicatorAllCountries(indicator).find(s => s.country === country);
+  if (!series) return null;
+  const pts = [...series.series].filter(d => d.value !== null).reverse();
+  const latest = pts[0];
+  const prev   = pts[1];
+  if (!latest) return null;
+  const delta = latest.value !== null && prev?.value !== null
+    ? ((latest.value as number) - (prev.value as number)).toFixed(1)
+    : null;
+  return { value: latest.value, year: latest.year, type: latest.type, delta, unit: series.unit };
+}
+
+const gyGdp = latestPoint('GY', 'gdp_growth');
+const ttGdp = latestPoint('TT', 'gdp_growth');
+
+const statCardsRaw = [
+  gyGdp ? {
+    label:    `GY Real GDP Growth (${gyGdp.year})`,
+    value:    `${(gyGdp.value as number).toFixed(1)}%`,
+    delta:    gyGdp.delta ? `${Number(gyGdp.delta) >= 0 ? '+' : ''}${gyGdp.delta}pp` : undefined,
+    deltaDir: (gyGdp.delta ? (Number(gyGdp.delta) >= 0 ? 'pos' : 'neg') : undefined) as 'pos' | 'neg' | undefined,
+    type:     gyGdp.type as DataPointType,
+  } : null,
+  ttGdp ? {
+    label:    `TT Real GDP Growth (${ttGdp.year})`,
+    value:    `${(ttGdp.value as number).toFixed(1)}%`,
+    delta:    ttGdp.delta ? `${Number(ttGdp.delta) >= 0 ? '+' : ''}${ttGdp.delta}pp` : undefined,
+    deltaDir: (ttGdp.delta ? (Number(ttGdp.delta) >= 0 ? 'pos' : 'neg') : undefined) as 'pos' | 'neg' | undefined,
+    type:     ttGdp.type as DataPointType,
+  } : null,
+];
+const statCards: StatCardDef[] = statCardsRaw.filter((c): c is NonNullable<typeof statCardsRaw[0]> => c !== null);
+---
+
+<Shell
+  title="Data"
+  description="Explore Caribbean economic indicators — GDP, inflation, unemployment, FDI, government debt, and budgets."
+>
+  <div class="page-wrapper data-page">
+
+    <!-- ── Page header ──────────────────────────────────────── -->
+    <header class="page-header fade-up fade-up-1">
+      <span class="eyebrow">Economic Data</span>
+      <h1 class="page-title">Chart Explorer</h1>
+      <p class="page-sub">
+        Select countries and indicators. Click any year for a key-event snapshot.
+        Data sourced from IMF, World Bank, UNCTAD, and national sources.
+        Estimates and projections are indicated.
+      </p>
+    </header>
+
+    <!-- ── Stat cards ───────────────────────────────────────── -->
+    <section class="fade-up fade-up-2">
+      <StatCards cards={statCards} />
+    </section>
+
+    <!-- ── Chart controls + line chart ─────────────────────── -->
+    <section class="chart-section fade-up fade-up-3">
+      <ChartControls />
+      <LineChart initialSeries={allSeries} initialIndicator="gdp_growth" />
+      <YearInFocusPanel />
+    </section>
+
+    <!-- ── Insight ──────────────────────────────────────────── -->
+    <InsightCallout
+      text="Guyana's 57.8% real GDP growth in 2022 — the world's fastest that year — reflects the rapid ramp-up of the Stabroek Block. The structural divergence between Guyana's oil-led expansion and Trinidad & Tobago's gradual post-COVID recovery is the defining macroeconomic dynamic in the Caribbean this decade."
+      accentColor="gold"
+    />
+
+    <hr class="section-divider" />
+
+    <!-- ── Budget section ───────────────────────────────────── -->
+    <section class="budget-section">
+      <span class="eyebrow">Budget Breakdown</span>
+      <h2 class="section-heading">2024 Budget Allocation</h2>
+      <p class="section-sub">Click any segment to see key projects and initiatives.</p>
+
+      <div class="two-col budget-grid">
+        {gyBudget  && <BudgetPie budget={gyBudget}  />}
+        {ttBudget  && <BudgetPie budget={ttBudget}  />}
+      </div>
+    </section>
+
+  </div>
+</Shell>
+
+<style>
+  .data-page {
+    padding-top: 36px;
+    padding-bottom: 60px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--section-gap);
+  }
+
+  .page-title { font-size: var(--text-page); margin: 6px 0 10px; }
+  .page-sub   { font-size: 15px; color: var(--ink-soft); max-width: 68ch; }
+
+  .section-heading { font-size: var(--text-section); margin: 8px 0 6px; }
+  .section-sub     { font-size: 14px; color: var(--ink-soft); margin-bottom: 20px; }
+
+  .chart-section {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .budget-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--gap-md);
+  }
+
+  @media (max-width: 820px) {
+    .budget-grid { grid-template-columns: 1fr; }
+  }
+</style>
