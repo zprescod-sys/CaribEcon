@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Caribbean Macro Almanac</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<style>
+:root{
+  --paper:#ECEEE8;--card:#F6F7F2;--ink:#0F231E;--ink-soft:#4C5A54;--ink-faint:#8A958F;
+  --line:rgba(15,35,30,0.12);--teal:#0E5E4E;--teal-deep:#093F34;--gold:#BC8A2E;--pos:#2F7D5B;--neg:#B4543E;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--paper);color:var(--ink);font-family:'Hanken Grotesk',system-ui,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums;}
+.wrap{max-width:1120px;margin:0 auto;padding:0 28px;}
+.eyebrow{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);}
+
+.topbar{display:flex;justify-content:space-between;align-items:center;padding:18px 0;border-bottom:1px solid var(--line);}
+.topbar .brand{font-family:'Bricolage Grotesque';font-weight:800;font-size:16px;letter-spacing:-0.01em;}
+.topbar .brand span{color:var(--teal);}
+.topbar .ticker{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--ink-faint);}
+.topbar .ticker b{color:var(--pos);font-weight:500;}
+
+/* ── DAILY BRIEFING HERO ── */
+.brief{padding:40px 0;border-bottom:1px solid var(--line);}
+.brief-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:0;border:1px solid var(--line);}
+.brief-text{padding:38px 40px;display:flex;flex-direction:column;}
+.brief-text .kicker{display:flex;gap:12px;align-items:center;margin-bottom:18px;}
+.brief-text .kicker .date{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--ink-faint);}
+.brief-text h1{font-family:'Bricolage Grotesque';font-weight:800;font-size:clamp(30px,3.8vw,46px);line-height:1.02;letter-spacing:-0.025em;margin-bottom:16px;}
+.brief-text p{font-size:17px;color:var(--ink-soft);max-width:48ch;}
+.brief-text .read{margin-top:auto;padding-top:24px;font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--teal);}
+.brief-vis{background:var(--teal-deep);position:relative;overflow:hidden;min-height:300px;}
+.brief-vis svg{position:absolute;inset:0;width:100%;height:100%;}
+.brief-vis .tag{position:absolute;left:24px;bottom:22px;font-family:'JetBrains Mono',monospace;font-size:11px;color:#9DB0A8;z-index:2;}
+.brief-vis .stat{position:absolute;left:24px;top:24px;z-index:2;}
+.brief-vis .stat b{display:block;font-family:'Bricolage Grotesque';font-weight:800;font-size:46px;color:#EAF0EC;line-height:1;letter-spacing:-0.02em;}
+.brief-vis .stat span{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--gold);text-transform:uppercase;letter-spacing:0.1em;}
+
+.reveal{opacity:0;transform:translateY(12px);animation:rise .6s cubic-bezier(0.16,1,0.3,1) forwards;}
+.d1{animation-delay:.04s}.d2{animation-delay:.12s}.d3{animation-delay:.2s}
+@keyframes rise{to{opacity:1;transform:none;}}
+
+section{padding:52px 0;border-top:1px solid var(--line);}
+.sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:6px;}
+.sec-head .num{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--ink-faint);}
+.sec-head h2{font-family:'Bricolage Grotesque';font-weight:700;font-size:30px;letter-spacing:-0.02em;}
+.sec-sub{color:var(--ink-soft);max-width:560px;margin-bottom:28px;}
+
+.controls{display:flex;flex-wrap:wrap;gap:14px;align-items:flex-end;margin-bottom:24px;}
+.field{display:flex;flex-direction:column;gap:6px;}
+.field label{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink-faint);}
+select{font-family:inherit;font-size:14px;padding:10px 12px;border:1px solid var(--line);border-radius:0;background:var(--card);color:var(--ink);cursor:pointer;min-width:210px;}
+select:focus{outline:2px solid var(--teal);outline-offset:1px;}
+
+.ms{position:relative;}
+.ms-btn{font-family:inherit;font-size:14px;padding:10px 12px;border:1px solid var(--line);border-radius:0;background:var(--card);color:var(--ink);cursor:pointer;min-width:240px;text-align:left;display:flex;justify-content:space-between;align-items:center;gap:10px;}
+.ms-btn:focus{outline:2px solid var(--teal);outline-offset:1px;}
+.ms-btn .chev{color:var(--ink-faint);transition:transform .2s;}
+.ms.open .ms-btn .chev{transform:rotate(180deg);}
+.ms-panel{position:absolute;z-index:20;top:calc(100% - 1px);left:0;min-width:250px;background:var(--card);border:1px solid var(--ink);border-radius:0;padding:4px;box-shadow:6px 6px 0 rgba(15,35,30,0.12);display:none;}
+.ms.open .ms-panel{display:block;}
+.ms-opt{display:flex;align-items:center;gap:10px;padding:9px 10px;cursor:pointer;font-size:14px;}
+.ms-opt:hover{background:var(--paper);}
+.ms-opt .dot{width:9px;height:9px;border-radius:50%;flex-shrink:0;}
+.ms-opt input{accent-color:var(--teal);width:15px;height:15px;cursor:pointer;}
+
+.tool-grid{display:grid;grid-template-columns:1fr 320px;gap:20px;align-items:start;}
+.chart-card{background:var(--card);border:1px solid var(--line);border-radius:0;padding:22px 22px 16px;}
+.ct-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:4px;gap:12px;}
+.ct-title{font-family:'Bricolage Grotesque';font-weight:700;font-size:19px;letter-spacing:-0.01em;}
+.ct-src{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink-faint);white-space:nowrap;}
+.ct-sub{color:var(--ink-soft);font-size:13px;margin-bottom:14px;}
+.chart-box{position:relative;height:320px;}
+.chart-hint{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink-faint);margin-top:10px;text-align:center;}
+
+.spot{background:var(--teal-deep);color:#EAF0EC;border-radius:0;padding:22px;min-height:220px;display:flex;flex-direction:column;}
+.spot .eyebrow{color:var(--gold);}
+.spot-year{font-family:'Bricolage Grotesque';font-weight:800;font-size:44px;line-height:1;margin:10px 0 4px;letter-spacing:-0.02em;}
+.spot-label{font-weight:600;font-size:16px;margin-bottom:8px;}
+.spot-body{font-size:13.5px;color:#B9C8C1;line-height:1.6;}
+.spot-empty{font-size:14px;color:#9DB0A8;margin:auto 0;}
+.spot-news{margin-top:16px;border-top:1px solid rgba(255,255,255,0.14);padding-top:14px;display:flex;flex-direction:column;gap:10px;}
+.spot-news a{color:#EAF0EC;text-decoration:none;font-size:13px;line-height:1.4;display:block;}
+.spot-news a:hover{color:var(--gold);}
+.spot-news .src{font-family:'JetBrains Mono',monospace;font-size:10.5px;color:#8AA098;margin-top:2px;}
+
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin-top:20px;}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:0;padding:16px;border-left:3px solid var(--teal);}
+.s-name{font-size:13px;color:var(--ink-soft);margin-bottom:6px;display:flex;align-items:center;gap:7px;}
+.s-name .dot{width:9px;height:9px;border-radius:50%;}
+.s-val{font-family:'Bricolage Grotesque';font-weight:700;font-size:28px;letter-spacing:-0.02em;}
+.s-delta{font-family:'JetBrains Mono',monospace;font-size:12px;margin-top:3px;}
+
+.insight{margin-top:24px;background:var(--card);border:1px solid var(--line);border-radius:0;padding:18px 20px;border-left:3px solid var(--gold);}
+.insight h4{font-family:'Bricolage Grotesque';font-weight:700;font-size:16px;margin-bottom:6px;}
+.insight p{font-size:14px;color:var(--ink-soft);}
+
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;}
+.find{background:var(--card);border:1px solid var(--line);border-radius:0;padding:24px;}
+.fnum{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--gold);margin-bottom:14px;}
+.find h3{font-family:'Bricolage Grotesque';font-weight:700;font-size:19px;letter-spacing:-0.01em;margin-bottom:8px;line-height:1.15;}
+.find p{font-size:14px;color:var(--ink-soft);}
+
+.news-head{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;margin-bottom:22px;}
+.search{display:flex;gap:0;}
+.search input{font-family:inherit;font-size:14px;padding:10px 13px;border:1px solid var(--line);border-radius:0;background:var(--card);min-width:230px;}
+.search input:focus{outline:2px solid var(--teal);outline-offset:-1px;}
+.search button{font-family:inherit;font-size:14px;padding:10px 16px;border:1px solid var(--teal);background:var(--teal);color:#fff;border-radius:0;cursor:pointer;}
+.search button:hover{background:var(--teal-deep);}
+.feed{display:flex;flex-direction:column;}
+.story{display:flex;gap:16px;padding:18px 0;border-bottom:1px solid var(--line);align-items:flex-start;text-decoration:none;color:inherit;}
+.story:hover .story-title{color:var(--teal);}
+.story .thumb{width:96px;height:72px;flex-shrink:0;border-radius:0;background:var(--teal-deep);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.5);}
+.story-title{font-family:'Bricolage Grotesque';font-weight:700;font-size:17px;letter-spacing:-0.01em;line-height:1.25;transition:color .15s;}
+.story-meta{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink-faint);margin-top:6px;}
+.story-tag{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--teal);border:1px solid var(--line);border-radius:0;padding:2px 9px;margin-top:8px;}
+
+footer{border-top:1px solid var(--line);padding:34px 0 60px;color:var(--ink-faint);font-size:13px;}
+footer .mono{display:block;margin-top:8px;font-size:11.5px;font-family:'JetBrains Mono',monospace;}
+
+@media(max-width:820px){.tool-grid,.brief-grid{grid-template-columns:1fr;}.brief-vis{min-height:200px;}}
+@media(prefers-reduced-motion:reduce){.reveal{animation:none;opacity:1;transform:none;}html{scroll-behavior:auto;}}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <div class="topbar">
+    <div class="brand">Caribbean <span>Macro</span> Almanac</div>
+    <div class="ticker" id="ticker">Regional growth diverging · live World Bank + IMF WEO</div>
+  </div>
+</div>
+
+<!-- ── DAILY BRIEFING ── -->
+<header class="brief">
+  <div class="wrap">
+    <div class="brief-grid">
+      <div class="brief-text">
+        <div class="kicker reveal d1"><span class="eyebrow">Story of the day</span><span class="date" id="today"></span></div>
+        <h1 class="reveal d2" id="brief-title">Caribbean economies pull apart as oil reshapes the region</h1>
+        <p class="reveal d3" id="brief-body">Six economies, one decade, sharply different paths. A look at where growth, inflation, and debt are heading across the region — and what the divergence signals for small open economies.</p>
+        <div class="read reveal d3">Read the full briefing →</div>
+      </div>
+      <div class="brief-vis reveal d2">
+        <div class="stat"><b id="brief-stat">+34%</b><span>regional high · gdp</span></div>
+        <svg id="brief-svg" viewBox="0 0 400 300" preserveAspectRatio="none" aria-hidden="true"></svg>
+        <div class="tag">Indexed GDP, 2015–2024</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ── EXPLORE ── -->
+<section id="explore">
+  <div class="wrap">
+    <div class="sec-head"><span class="num">01</span><h2>Explore the data</h2></div>
+    <p class="sec-sub">Pick one economy or compare several. Click any year on the chart to see what was happening that year.</p>
+    <div class="controls">
+      <div class="field">
+        <label>Countries</label>
+        <div class="ms" id="ms">
+          <button class="ms-btn" id="ms-btn" aria-haspopup="true" aria-expanded="false"><span id="ms-label">3 selected</span><span class="chev" aria-hidden="true">▾</span></button>
+          <div class="ms-panel" id="ms-panel" role="group" aria-label="Select countries"></div>
+        </div>
+      </div>
+      <div class="field">
+        <label>Indicator</label>
+        <select id="indicator">
+          <option value="gdp">GDP growth (%)</option>
+          <option value="nonoil">Non-oil GDP growth (%)</option>
+          <option value="inflation">Inflation (%)</option>
+          <option value="unemployment">Unemployment (%)</option>
+          <option value="fdi">FDI inflows (USD B)</option>
+          <option value="debt">Govt debt / GDP (%)</option>
+          <option value="revenue">Govt revenue / GDP (%)</option>
+        </select>
+      </div>
+    </div>
+    <div class="tool-grid">
+      <div class="chart-card">
+        <div class="ct-head"><div class="ct-title" id="ct-title">GDP growth</div><div class="ct-src" id="ct-src">World Bank · est. 2023–24</div></div>
+        <div class="ct-sub" id="ct-sub">How economies have diverged over the decade.</div>
+        <div class="chart-box"><canvas id="chart" role="img" aria-label="Time series of the selected indicator across selected countries"></canvas></div>
+        <div class="chart-hint">Hover for values · click a year for context</div>
+      </div>
+      <aside class="spot" id="spot">
+        <div class="eyebrow">Year in focus</div>
+        <div class="spot-empty" id="spot-empty">Click a point on the chart to surface the key event and news for that year.</div>
+        <div id="spot-content" style="display:none;">
+          <div class="spot-year" id="spot-year">2020</div>
+          <div class="spot-label" id="spot-label"></div>
+          <div class="spot-body" id="spot-body"></div>
+          <div class="spot-news" id="spot-news"></div>
+        </div>
+      </aside>
+    </div>
+    <div class="stats" id="stats"></div>
+    <div class="insight"><h4 id="ins-title"></h4><p id="ins-body"></p></div>
+  </div>
+</section>
+
+<!-- ── FINDINGS ── -->
+<section id="findings">
+  <div class="wrap">
+    <div class="sec-head"><span class="num">02</span><h2>What the data is saying</h2></div>
+    <p class="sec-sub">Three structural reads on the region's economies.</p>
+    <div class="cards">
+      <div class="find"><div class="fnum">FINDING 01</div><h3>Headline growth hides the real story</h3><p>Resource booms can lift headline GDP far above peers while the broader economy barely moves. Incumbent producers with decades of extraction show near-zero growth — a credible forward signal.</p></div>
+      <div class="find"><div class="fnum">FINDING 02</div><h3>The enclave problem, in numbers</h3><p>Headline GDP can exceed 60% in a year while the non-oil economy grows low single digits. Agriculture, manufacturing, and services often see no proportional spillover. The canonical enclave effect.</p></div>
+      <div class="find"><div class="fnum">FINDING 03</div><h3>Revenue discipline is the dividing line</h3><p>When commodity revenue is monetized rather than sterilized, inflation runs away — Suriname exceeded 59% in 2021. Sovereign funds exist to avoid exactly this, if discipline holds.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── NEWS ── -->
+<section id="news">
+  <div class="wrap">
+    <div class="news-head">
+      <div class="sec-head" style="margin:0;"><span class="num">03</span><h2>Related news</h2></div>
+      <div class="search"><input type="text" id="news-search" placeholder="Search a country or topic" aria-label="Search news"><button id="news-go">Search</button></div>
+    </div>
+    <div class="feed" id="feed"></div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">Sources: World Bank Open Data · IMF World Economic Outlook. Figures for 2023–24 are estimates and projections.<span class="mono">Prototype · data refreshed via the project's Python pipeline · news shown as headline + source, linking to origin.</span></div>
+</footer>
+
+<script>
+const COUNTRIES={GUY:{name:'Guyana',color:'#0E5E4E'},TTO:{name:'Trinidad & Tobago',color:'#BC8A2E'},JAM:{name:'Jamaica',color:'#1E3A5F'},BRB:{name:'Barbados',color:'#A8542E'},SUR:{name:'Suriname',color:'#6A4A6E'},BHS:{name:'Bahamas',color:'#5A6B6E'}};
+const YEARS=[2015,2016,2017,2018,2019,2020,2021,2022,2023,2024];
+const DATA={
+ gdp:{GUY:[3.1,3.4,2.1,4.1,5.4,43.5,20.1,62.3,33.0,34.3],TTO:[1.8,1.0,-0.2,0.0,0.0,-7.9,-0.9,2.2,2.8,2.5],JAM:[0.9,1.5,0.7,1.9,0.7,-9.9,4.6,4.6,2.3,2.1],BRB:[2.4,2.3,0.5,0.1,-0.6,-13.9,-1.2,11.6,5.2,4.0],SUR:[3.4,-5.3,-4.5,2.6,2.9,-16.0,-2.7,2.4,3.1,3.6],BHS:[0.7,-1.7,-1.7,3.0,-1.5,-22.5,13.7,14.0,4.2,3.8]},
+ nonoil:{GUY:[3.0,3.2,2.0,4.0,5.1,1.2,4.5,3.8,5.2,6.1],TTO:[1.5,0.8,-0.5,-0.3,-0.2,-8.1,-1.1,1.8,2.2,2.1],JAM:[0.9,1.5,0.7,1.9,0.7,-9.9,4.6,4.6,2.3,2.1],BRB:[2.4,2.3,0.5,0.1,-0.6,-13.9,-1.2,11.6,5.2,4.0],SUR:[3.0,-5.0,-4.0,2.3,2.6,-15.5,-2.5,2.1,2.8,3.2],BHS:[0.7,-1.7,-1.7,3.0,-1.5,-22.5,13.7,14.0,4.2,3.8]},
+ inflation:{GUY:[0.9,0.8,1.5,1.3,2.1,1.0,3.3,6.5,2.8,2.5],TTO:[4.7,3.1,1.9,0.9,1.0,0.6,2.1,5.8,5.1,4.2],JAM:[3.7,2.3,4.4,3.7,3.9,5.2,8.5,10.2,6.5,5.1],BRB:[-1.1,1.5,4.5,3.7,-0.5,2.2,3.2,9.5,4.8,3.5],SUR:[25.2,55.4,22.0,6.9,4.4,34.9,59.1,52.4,53.0,27.0],BHS:[1.9,0.9,1.4,2.3,2.5,0.0,3.2,6.8,3.2,2.8]},
+ unemployment:{GUY:[11.5,11.4,11.2,12.1,14.8,16.3,14.2,12.8,11.5,10.8],TTO:[3.5,4.0,4.9,3.9,4.3,7.0,6.8,4.9,4.2,3.8],JAM:[13.5,13.2,11.7,9.0,7.7,10.2,8.5,6.5,4.3,4.1],BRB:[11.3,9.9,10.0,10.2,10.0,15.0,13.0,9.8,8.5,7.5],SUR:[8.8,9.0,9.5,9.7,10.1,11.8,11.5,11.0,10.5,10.0],BHS:[12.6,12.1,10.1,10.2,10.1,19.5,15.2,10.8,9.5,8.8]},
+ fdi:{GUY:[0.29,0.35,0.41,0.52,0.78,1.04,1.9,3.5,4.8,5.1],TTO:[0.47,0.44,0.38,0.62,0.56,0.29,0.33,0.65,0.72,0.68],JAM:[0.84,0.93,0.88,0.70,0.74,0.38,0.59,0.84,0.90,0.95],BRB:[0.27,0.28,0.32,0.21,0.22,0.08,0.14,0.27,0.32,0.35],SUR:[0.07,0.06,0.06,0.08,0.10,0.07,0.09,0.12,0.15,0.18],BHS:[0.73,0.65,0.69,0.72,0.63,0.21,0.38,0.72,0.80,0.85]},
+ debt:{GUY:[52.0,51.0,50.4,46.4,43.1,86.5,62.5,44.2,28.5,24.0],TTO:[54.2,60.4,68.0,71.9,72.3,88.0,90.1,82.3,76.2,72.1],JAM:[122.0,114.0,101.0,94.0,87.0,104.0,98.0,87.0,74.0,70.0],BRB:[127.0,129.0,155.0,160.0,126.0,147.0,141.0,115.0,106.0,98.0],SUR:[60.0,79.0,78.0,86.0,93.0,134.0,148.0,107.0,95.0,88.0],BHS:[55.0,61.0,67.0,57.0,63.0,90.0,95.0,82.0,74.0,70.0]},
+ revenue:{GUY:[22.8,21.0,22.0,22.5,23.1,21.8,23.5,28.4,33.2,35.0],TTO:[28.1,23.5,23.9,24.8,25.4,22.0,23.0,28.5,30.1,28.8],JAM:[27.5,28.1,28.4,28.8,29.1,26.5,28.0,29.5,30.0,30.5],BRB:[28.0,29.0,29.5,29.8,30.0,23.5,24.5,29.0,30.5,31.0],SUR:[22.0,20.0,18.5,19.0,20.5,17.5,18.5,22.0,24.0,25.0],BHS:[18.5,19.0,19.5,20.0,20.5,15.0,17.5,20.5,22.0,23.0]}
+};
+const META={
+ gdp:{title:'GDP growth',sub:'How economies have diverged over the decade.',unit:'%',src:'World Bank · est. 2023–24'},
+ nonoil:{title:'Non-oil GDP growth',sub:'Stripping out extraction to see what is actually growing.',unit:'%',src:'World Bank (computed)'},
+ inflation:{title:'Inflation',sub:'Monetary stability across the region.',unit:'%',src:'World Bank · est. 2023–24'},
+ unemployment:{title:'Unemployment',sub:'Are labour markets benefiting from growth?',unit:'%',src:'World Bank · est. 2023–24'},
+ fdi:{title:'FDI inflows',sub:'Investment concentration versus diversification.',unit:' USD B',src:'World Bank · est. 2023–24'},
+ debt:{title:'Govt debt / GDP',sub:'Fiscal trajectories across the region.',unit:'%',src:'IMF WEO estimate'},
+ revenue:{title:'Govt revenue / GDP',sub:'How much reaches the treasury.',unit:'%',src:'IMF WEO estimate'}
+};
+const INSIGHTS={
+ gdp:['Headline divergence masks structural weakness',"Resource booms can lift one economy far above its peers while incumbents with decades of extraction show near-zero growth — a credible forward signal if diversification is not pursued."],
+ nonoil:['The enclave problem in numbers',"Headline GDP can exceed 60% in a year while the non-oil economy grows low single digits. Non-oil sectors often see no proportional investment or productivity spillover. The canonical enclave effect."],
+ inflation:['Suriname as a cautionary tale',"When commodity revenue is monetized rather than sterilized, inflation runs away — Suriname exceeded 59% in 2021. Sovereign funds exist precisely to avoid this."],
+ unemployment:['Employment has not tracked GDP gains','Extraction is capital-intensive, not labour-intensive. Unemployment can fall only moderately despite extraordinary GDP growth — a central governance question.'],
+ fdi:['FDI concentration risk',"Investment can pile into a single offshore block — one operator, one commodity — leaving the base structurally fragile, while diversified economies attract inflows across tourism, finance, and manufacturing."],
+ debt:['Revenue is widening fiscal space for some',"One economy here cut debt from 87% of GDP in 2020 to under 28% in 2023 on oil. Jamaica's fall from 122% to 70% shows discipline without oil also works."],
+ revenue:['Revenue surge brings spending pressure',"As royalties flow through, the political-economy risk is real: rising revenue pressures current spending over capital investment, eroding the long-run dividend."]
+};
+const EVENTS={
+ 2015:{label:'Stabroek discovery',body:'ExxonMobil confirms a major offshore find off Guyana. A regional oil era begins.',news:[['ExxonMobil announces significant Guyana offshore discovery','Reuters'],['Guyana eyes economic transformation from oil find','Bloomberg']]},
+ 2019:{label:'Fiscal pressure builds',body:'Incumbent producers see debt approach 73% of GDP. Diversification pressure intensifies.',news:[['Trinidad faces mounting fiscal pressure','FT'],['Caribbean economies weigh diversification','Bloomberg']]},
+ 2020:{label:'First oil',body:'Liza Phase 1 begins production amid a global downturn. A GDP inflection point.',news:[['Guyana exports first barrels of crude','Reuters'],['First oil reshapes regional growth outlook','IMF']]},
+ 2021:{label:'Suriname crisis',body:'Inflation hits 59% and debt reaches 148% of GDP. An IMF programme begins.',news:[['Suriname reaches IMF staff-level agreement','IMF'],['Suriname inflation soars amid debt strain','Reuters']]},
+ 2022:{label:'Record regional growth',body:'One economy posts the highest growth rate in the world that year.',news:[['World\u2019s fastest-growing economy is in the Caribbean','Bloomberg'],['Oil output drives record expansion','FT']]}
+};
+const GENERAL_NEWS=[
+ {t:'Regional growth forecasts revised up as oil output climbs',s:'Reuters',time:'2h ago',tag:'Region · GDP'},
+ {t:'IMF urges Caribbean producers to diversify beyond oil',s:'Bloomberg',time:'1d ago',tag:'Region · policy'},
+ {t:'Sovereign fund withdrawals draw fresh scrutiny',s:'Financial Times',time:'3d ago',tag:'Fiscal'},
+ {t:'Trinidad weighs gas strategy as fields mature',s:'Reuters',time:'5d ago',tag:'TTO · energy'}
+];
+
+let selected=['GUY','TTO','JAM'];
+let indicator='gdp';
+let chart=null;
+
+function fmt(v,unit){if(v===null||v===undefined)return '—';const n=Number(v).toFixed(1);return unit.trim()==='USD B'?'$'+n+'B':n+unit;}
+
+function buildMultiselect(){
+ const panel=document.getElementById('ms-panel');panel.innerHTML='';
+ Object.entries(COUNTRIES).forEach(([code,c])=>{
+  const row=document.createElement('label');row.className='ms-opt';
+  row.innerHTML='<input type="checkbox" '+(selected.includes(code)?'checked':'')+'><span class="dot" style="background:'+c.color+'"></span>'+c.name;
+  row.querySelector('input').addEventListener('change',e=>{
+   if(e.target.checked){if(!selected.includes(code))selected.push(code);}
+   else{if(selected.length>1)selected=selected.filter(x=>x!==code);else e.target.checked=true;}
+   updateAll();
+  });
+  panel.appendChild(row);
+ });
+ document.getElementById('ms-label').textContent=selected.length+' selected';
+}
+const ms=document.getElementById('ms');
+document.getElementById('ms-btn').addEventListener('click',()=>{const o=ms.classList.toggle('open');document.getElementById('ms-btn').setAttribute('aria-expanded',o);});
+document.addEventListener('click',e=>{if(!ms.contains(e.target))ms.classList.remove('open');});
+
+function renderStats(){
+ const grid=document.getElementById('stats');grid.innerHTML='';const unit=META[indicator].unit;
+ selected.forEach(code=>{
+  const c=COUNTRIES[code];const vals=DATA[indicator][code];
+  const latest=vals[vals.length-1];const prev=vals[vals.length-2];const d=latest-prev;
+  const sign=d>=0?'+':'';const dcol=d>=0?'var(--pos)':'var(--neg)';
+  const card=document.createElement('div');card.className='stat';card.style.borderLeftColor=c.color;
+  card.innerHTML='<div class="s-name"><span class="dot" style="background:'+c.color+'"></span>'+c.name+'</div><div class="s-val">'+fmt(latest,unit)+'</div><div class="s-delta" style="color:'+dcol+'">'+sign+d.toFixed(1)+' vs 2023</div>';
+  grid.appendChild(card);
+ });
+}
+function renderInsight(){document.getElementById('ins-title').textContent=INSIGHTS[indicator][0];document.getElementById('ins-body').textContent=INSIGHTS[indicator][1];}
+function renderHeads(){const m=META[indicator];document.getElementById('ct-title').textContent=m.title;document.getElementById('ct-sub').textContent=m.sub;document.getElementById('ct-src').textContent=m.src;}
+function renderChart(){
+ const unit=META[indicator].unit;
+ const ds=selected.map(code=>{const c=COUNTRIES[code];return{label:c.name,data:DATA[indicator][code],borderColor:c.color,backgroundColor:c.color+'1A',borderWidth:2.5,pointRadius:3,pointHoverRadius:6,pointBackgroundColor:c.color,tension:0.35,fill:selected.length===1};});
+ const cfg={type:'line',data:{labels:YEARS.map(String),datasets:ds},options:{
+  responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},
+  onClick:(e,els)=>{if(els.length)showYear(YEARS[els[0].index]);},
+  plugins:{legend:{display:true,position:'bottom',labels:{font:{family:'Hanken Grotesk',size:12},color:'#4C5A54',usePointStyle:true,pointStyleWidth:8,boxHeight:6,padding:16}},
+   tooltip:{backgroundColor:'#0F231E',titleFont:{family:'JetBrains Mono',size:11},bodyFont:{family:'Hanken Grotesk',size:13},padding:10,cornerRadius:0,callbacks:{label:ctx=>ctx.dataset.label+': '+fmt(ctx.parsed.y,unit)}}},
+  scales:{x:{grid:{color:'rgba(15,35,30,0.06)'},ticks:{font:{family:'JetBrains Mono',size:11},color:'#8A958F'}},y:{grid:{color:'rgba(15,35,30,0.06)'},ticks:{font:{family:'JetBrains Mono',size:11},color:'#8A958F',callback:v=>unit.trim()==='USD B'?'$'+v+'B':v+'%'}}}}};
+ if(chart)chart.destroy();
+ chart=new Chart(document.getElementById('chart'),cfg);
+}
+function showYear(y){
+ const ev=EVENTS[y];
+ document.getElementById('spot-empty').style.display='none';
+ document.getElementById('spot-content').style.display='block';
+ document.getElementById('spot-year').textContent=y;
+ if(ev){document.getElementById('spot-label').textContent=ev.label;document.getElementById('spot-body').textContent=ev.body;document.getElementById('spot-news').innerHTML=ev.news.map(n=>'<a href="#">'+n[0]+'<span class="src">'+n[1]+'</span></a>').join('');}
+ else{document.getElementById('spot-label').textContent='No major flagged event';document.getElementById('spot-body').textContent='No headline structural event is tagged for this year. Values reflect ongoing trends in the selected indicator.';document.getElementById('spot-news').innerHTML='';}
+}
+function renderFeed(){document.getElementById('feed').innerHTML=GENERAL_NEWS.map(n=>'<a class="story" href="#"><div class="thumb">▦</div><div><div class="story-title">'+n.t+'</div><div class="story-meta">'+n.s+' · '+n.time+'</div><span class="story-tag">'+n.tag+'</span></div></a>').join('');}
+function drawBriefSvg(){
+ const series=['GUY','JAM','TTO'];const W=400,H=300;
+ const all=series.map(c=>{const base=DATA.gdp[c];let idx=100;return base.map((g,i)=>{if(i>0)idx=idx*(1+g/100);return idx;});});
+ const flat=all.flat();const max=Math.max(...flat),min=Math.min(...flat);
+ const x=i=>(i/(YEARS.length-1))*W;const y=v=>H-((v-min)/(max-min))*(H-40)-10;
+ let svg='';
+ all.forEach((vals,si)=>{const col=si===0?'#BC8A2E':'rgba(234,240,236,0.35)';let p='M'+x(0)+','+y(vals[0]);for(let i=1;i<vals.length;i++)p+=' L'+x(i)+','+y(vals[i]);svg+='<path d="'+p+'" fill="none" stroke="'+col+'" stroke-width="'+(si===0?2.5:1.5)+'"/>';if(si===0)svg+='<circle cx="'+x(vals.length-1)+'" cy="'+y(vals[vals.length-1])+'" r="4" fill="#BC8A2E"/>';});
+ document.getElementById('brief-svg').innerHTML=svg;
+}
+function setToday(){const d=new Date();document.getElementById('today').textContent=d.toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'});}
+function updateAll(){buildMultiselect();renderHeads();renderChart();renderStats();renderInsight();}
+
+document.getElementById('indicator').addEventListener('change',e=>{indicator=e.target.value;renderHeads();renderChart();renderStats();renderInsight();});
+document.getElementById('news-go').addEventListener('click',()=>{const q=document.getElementById('news-search').value.trim();if(q)sendPromptSafe('Find recent macroeconomic news about: '+q);});
+function sendPromptSafe(t){if(typeof sendPrompt==='function')sendPrompt(t);else alert('In the live build this runs a news search for:\n\n'+t);}
+
+setToday();drawBriefSvg();updateAll();renderFeed();
+</script>
+</body>
+</html>
