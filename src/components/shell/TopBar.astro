@@ -1,11 +1,45 @@
 ---
-// Top bar: brand left, data ticker right
-const indicators = [
-  { label: 'GY GDP Growth', value: '+34.3%', type: 'estimate' },
-  { label: 'TT GDP Growth', value: '+2.1%',  type: 'estimate' },
-  { label: 'GY Inflation',  value: '2.2%',   type: 'estimate' },
-  { label: 'TT Inflation',  value: '3.5%',   type: 'estimate' },
-];
+// Top bar: brand left, scrolling macro ticker right.
+// Ticker items are derived from the data hub at build time — never hardcoded.
+import { getCountries, getSeries } from '../../lib/dataHub';
+
+interface TickerItem {
+  label: string;            // "GY · GDP"
+  value: string;            // "+34.3%"
+  tone: 'pos' | 'neg' | 'neutral';
+  est: boolean;             // estimate/projection flag
+}
+
+// Latest non-null point of a series
+function latest(country: string, indicator: string) {
+  const s = getSeries(country, indicator);
+  const pts = s?.series.filter(p => p.value !== null) ?? [];
+  const last = pts[pts.length - 1];
+  return last ? { value: last.value as number, type: last.type } : null;
+}
+
+// Every item follows the same pattern: "CC · Indicator value"
+const tickerItems: TickerItem[] = getCountries().flatMap(c => {
+  const items: TickerItem[] = [];
+  const gdp = latest(c.code, 'gdp_growth');
+  if (gdp) items.push({
+    label: `${c.code} · GDP`,
+    value: `${gdp.value >= 0 ? '+' : '−'}${Math.abs(gdp.value).toFixed(1)}%`,
+    tone:  gdp.value >= 0 ? 'pos' : 'neg',
+    est:   gdp.type !== 'actual',
+  });
+  const inf = latest(c.code, 'inflation');
+  if (inf) items.push({
+    label: `${c.code} · Inflation`,
+    value: `${inf.value.toFixed(1)}%`,
+    tone:  'neutral',
+    est:   inf.type !== 'actual',
+  });
+  return items;
+});
+
+// Scroll speed scales with content so pacing stays steady as countries are added
+const tickerDuration = `${tickerItems.length * 6}s`;
 ---
 
 <header class="topbar">
@@ -15,18 +49,22 @@ const indicators = [
       <span class="brand-region mono">Caribbean · Economic Research</span>
     </a>
 
-    <div class="ticker" aria-label="Key economic indicators" role="marquee">
-      <ul class="ticker-list">
-        {indicators.map(item => (
-          <li class="ticker-item">
-            <span class="ticker-label mono">{item.label}</span>
-            <span class={`ticker-value mono ${item.type === 'estimate' ? 'estimate' : ''}`}>
-              {item.value}
-              {item.type === 'estimate' && <abbr title="Estimate">e</abbr>}
-            </span>
-          </li>
+    <div class="ticker" aria-label="Key economic indicators" style={`--ticker-duration: ${tickerDuration}`}>
+      <div class="ticker-track">
+        {[0, 1].map(copy => (
+          <ul class="ticker-list" aria-hidden={copy === 1 ? 'true' : undefined}>
+            {tickerItems.map(item => (
+              <li class="ticker-item mono">
+                <span class="ticker-label">{item.label}</span>
+                <span class={`ticker-value tone-${item.tone}`}>
+                  {item.value}{item.est && <sup class="ticker-est" title="Estimate / projection">est</sup>}
+                </span>
+                <span class="ticker-sep" aria-hidden="true">•</span>
+              </li>
+            ))}
+          </ul>
         ))}
-      </ul>
+      </div>
     </div>
   </div>
 </header>
@@ -75,27 +113,41 @@ const indicators = [
     overflow: hidden;
     flex: 1;
     max-width: 560px;
-    mask-image: linear-gradient(to right, transparent, black 60px, black calc(100% - 60px), transparent);
+    mask-image: linear-gradient(to right, transparent, black 48px, black calc(100% - 48px), transparent);
+  }
+
+  .ticker-track {
+    display: flex;
+    width: max-content;
+    animation: ticker-scroll var(--ticker-duration, 24s) linear infinite;
+  }
+
+  /* Pause so a value can actually be read */
+  .ticker:hover .ticker-track {
+    animation-play-state: paused;
+  }
+
+  @keyframes ticker-scroll {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
   }
 
   .ticker-list {
     display: flex;
-    gap: 32px;
     list-style: none;
     align-items: center;
     height: var(--topbar-height);
-    justify-content: flex-end;
   }
 
   .ticker-item {
     display: flex;
-    align-items: center;
+    align-items: baseline;
     gap: 8px;
     white-space: nowrap;
   }
 
   .ticker-label {
-    color: rgba(236, 238, 232, 0.5);
+    color: rgba(236, 238, 232, 0.55);
     font-size: 10px;
     letter-spacing: 0.05em;
   }
@@ -104,17 +156,32 @@ const indicators = [
     color: var(--paper);
     font-size: 11px;
     font-weight: 500;
+    font-variant-numeric: tabular-nums;
   }
 
-  .ticker-value.estimate {
-    color: rgba(188, 138, 46, 0.9);
+  /* Brightened semantic tones — checked against the dark band */
+  .ticker-value.tone-pos { color: #5FB88A; }
+  .ticker-value.tone-neg { color: #E0917B; }
+
+  .ticker-est {
+    color: #D9B36A;
+    font-size: 8px;
+    letter-spacing: 0.04em;
+    margin-left: 2px;
   }
 
-  .ticker-value abbr {
-    text-decoration: none;
-    font-size: 9px;
-    opacity: 0.7;
-    margin-left: 1px;
+  .ticker-sep {
+    color: rgba(236, 238, 232, 0.25);
+    font-size: 10px;
+    margin: 0 16px;
+  }
+
+  /* Reduced motion: static row, no scroll, no duplicate copy */
+  @media (prefers-reduced-motion: reduce) {
+    .ticker-track { animation: none; width: 100%; justify-content: flex-end; }
+    .ticker-list[aria-hidden] { display: none; }
+    .ticker { mask-image: none; }
+    .ticker-item:last-child .ticker-sep { display: none; }
   }
 
   @media (max-width: 640px) {
