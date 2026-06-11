@@ -112,17 +112,24 @@ Phase 2 (later): scheduled scraper/fetcher replaces static hub.
 
 ## Current State
 
-- 2026-06-10: Project initialized. Astro + D3 scaffolded. Design tokens, base styles, shell, data hub (types + Phase 1 JSON), and all page stubs built. Ready for page-level work.
+- 2026-06-11: Data page visually refined and committed on main. Header is a CountrySnapshot carousel (one reusable component + carousel, N-country ready — new countries in indicators.json just work). Line chart: area gradients, dot-grid backdrop, crosshair tooltip, stats strip with country cells + range. BudgetPie: synced legend, hover lift/dim, pinned-centre drill-down. TopBar ticker: data-driven from the hub, scrolls with hover-pause. prefers-reduced-motion respected throughout.
 
 ## Next Steps
 
-- Verify `astro dev` runs cleanly with all stubs
-- Build Home page (DailyBriefing + RegionalChart)
-- Build Data page (LineChart + BudgetPie + ChartControls + StatCards + CSV export)
+- Build Home page (DailyBriefing; bring RegionalChart up to the Data-page chart standard)
 - Build News, Publications, Deals pages
+- FDI and spending-vs-revenue views on Data page (mirror the budget treatment)
 - Commit each page as working increment
 
 ## Session Log
+
+### 2026-06-11 — Data page visual refinement
+- TopBar ticker rebuilt: derived from dataHub (was hardcoded), "CC · Indicator value" pattern, superscript est flag, continuous scroll + hover-pause, reduced-motion static row
+- New CountrySnapshot.astro (reusable per-country card: lead GDP, supporting indicators, "vs year" deltas, quiet projection flags) + CountryCarousel.astro (pills, 5s ambient auto-advance, any interaction stops it for the session, 250ms crossfade)
+- LineChart: stats strip redesigned into country cells + labeled Range block; chart upgraded earlier same cycle with area gradients, crosshair unified tooltip, draw-in animations
+- BudgetPie: padAngle 0.015 + cornerRadius 3, synced legend (swatch/name/value/pct), hover lift +6px with 0.4 dim, centre swap, click pins centre + projects panel, two-way legend↔segment hover
+- Data page de-boxed: snapshot strip on hairline rules, budget section on --paper-warm band
+- StatCards.astro retired from data.astro (file kept)
 
 ### 2026-06-10 — Project initialized
 - Git init; Astro + D3 scaffolded
