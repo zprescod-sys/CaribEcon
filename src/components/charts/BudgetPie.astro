@@ -1,6 +1,7 @@
 ---
 // Budget donut chart — D3.
-// Centre shows total budget in USD. Segment click → key projects list.
+// Centre shows total budget by default; hover shows a category; click pins it
+// and fills the drill-down projects panel. A synced legend sits beside the donut.
 
 import type { BudgetEntry } from '../../lib/types';
 
@@ -28,10 +29,13 @@ const budgetJSON = JSON.stringify(budget);
     <!-- Donut chart -->
     <div id={`pie-chart-${budget.country}`} class="pie-container" role="img" aria-label={`Budget allocation donut chart for ${budget.country}`}></div>
 
-    <!-- Projects panel -->
-    <div class="projects-panel" id={`projects-${budget.country}`}>
-      <p class="projects-prompt mono">Click a segment to see key projects</p>
-    </div>
+    <!-- Synced legend -->
+    <div id={`pie-legend-${budget.country}`} class="pie-legend" role="list" aria-label="Budget categories"></div>
+  </div>
+
+  <!-- Drill-down projects panel -->
+  <div class="projects-panel" id={`projects-${budget.country}`}>
+    <p class="projects-prompt mono">Click a segment or legend row to pin its key projects</p>
   </div>
 </div>
 
@@ -42,19 +46,29 @@ const budgetJSON = JSON.stringify(budget);
   import * as d3 from 'd3';
   import type { BudgetEntry, BudgetCategory } from '../../lib/types';
 
+  type Slice = d3.PieArcDatum<BudgetCategory>;
+
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const DUR   = reduceMotion ? 0 : 200;  // interaction transitions
+  const ENTER = reduceMotion ? 0 : 550;  // entrance sweep
+
+  // "1.8bn" / "412mn" — compact USD for legend and centre
+  const fmtUSD = (v: number) => v >= 1000 ? `${(v / 1000).toFixed(1)}bn` : `${Math.round(v)}mn`;
+
   // Initialize every budget pie on this page
   document.querySelectorAll<HTMLElement>('.budget-pie-data').forEach(dataEl => {
     const country = dataEl.dataset.country!;
     const budget: BudgetEntry = JSON.parse(dataEl.dataset.budget ?? '{}');
 
     const container = document.getElementById(`pie-chart-${country}`);
+    const legendEl  = document.getElementById(`pie-legend-${country}`);
     const panel     = document.getElementById(`projects-${country}`);
-    if (!container || !panel) return;
+    if (!container || !legendEl || !panel) return;
 
     const COLORS = ['#0E5E4E','#BC8A2E','#1E3A5F','#A8542E','#6A4A6E','#5A6B6E','#5C6B3A','#9A5B2E'];
-    const size   = Math.min(container.clientWidth || 280, 280);
+    const size   = Math.min(container.clientWidth || 260, 260);
     const radius = size / 2;
-    const inner  = radius * 0.56;
+    const inner  = radius * 0.58;
 
     const svg = d3.select(container)
       .append('svg')
@@ -65,42 +79,136 @@ const budgetJSON = JSON.stringify(budget);
     const pie = d3.pie<BudgetCategory>()
       .value(d => d.value)
       .sort(null)
-      .padAngle(0.018);
+      .padAngle(0.015);
 
-    const arc      = d3.arc<d3.PieArcDatum<BudgetCategory>>().innerRadius(inner).outerRadius(radius - 4);
-    const arcHover = d3.arc<d3.PieArcDatum<BudgetCategory>>().innerRadius(inner).outerRadius(radius);
+    // Hover/pinned segments lift outward ~6px
+    const arc      = d3.arc<Slice>().innerRadius(inner).outerRadius(radius - 6).cornerRadius(3);
+    const arcLift  = d3.arc<Slice>().innerRadius(inner).outerRadius(radius).cornerRadius(3);
 
-    const arcs = svg.selectAll('.arc')
-      .data(pie(budget.categories))
-      .join('g')
-      .attr('class', 'arc');
+    const arcData = pie(budget.categories);
+    const totalM  = (budget.totalUSD / 1000).toFixed(1);
+    let pinnedIndex: number | null = null;
 
-    arcs.append('path')
-      .attr('d', d => arc(d) as string)
-      .attr('fill', (_, i) => COLORS[i % COLORS.length])
-      .attr('stroke', 'var(--paper)')
-      .attr('stroke-width', 1.5)
-      .style('cursor', 'pointer')
-      .on('mouseenter', function(_, d) {
-        d3.select(this).attr('d', arcHover(d) as string);
-      })
-      .on('mouseleave', function(_, d) {
-        d3.select(this).attr('d', arc(d) as string);
-      })
-      .on('click', (_, d) => showProjects(d.data, COLORS[pie(budget.categories).indexOf(d) % COLORS.length], panel));
-
-    const totalM = (budget.totalUSD / 1000).toFixed(1);
-    svg.append('text')
-      .attr('text-anchor', 'middle').attr('dy', '-4')
-      .attr('font-family', 'Bricolage Grotesque, sans-serif')
-      .attr('font-size', '20').attr('font-weight', '800').attr('fill', '#0F231E')
-      .text(`USD ${totalM}bn`);
-
-    svg.append('text')
-      .attr('text-anchor', 'middle').attr('dy', '16')
+    // ── Centre: category name / value / pct, defaulting to the total ──────
+    const centreName = svg.append('text')
+      .attr('text-anchor', 'middle').attr('dy', '-22')
       .attr('font-family', 'JetBrains Mono, monospace')
-      .attr('font-size', '9').attr('fill', '#8A958F')
-      .text('total budget');
+      .attr('font-size', '9').attr('letter-spacing', '0.5').attr('fill', '#8A958F');
+
+    const centreValue = svg.append('text')
+      .attr('text-anchor', 'middle').attr('dy', '2')
+      .attr('font-family', 'Bricolage Grotesque, sans-serif')
+      .attr('font-size', '20').attr('font-weight', '800').attr('fill', '#0F231E');
+
+    const centreSub = svg.append('text')
+      .attr('text-anchor', 'middle').attr('dy', '20')
+      .attr('font-family', 'JetBrains Mono, monospace')
+      .attr('font-size', '9').attr('fill', '#8A958F');
+
+    function setCentre(d: Slice | null) {
+      if (!d) {
+        centreName.text('');
+        centreValue.text(`USD ${totalM}bn`);
+        centreSub.text('total budget');
+      } else {
+        const name = d.data.name;
+        centreName.text(name.length > 20 ? `${name.slice(0, 19)}…` : name);
+        centreValue.text(`USD ${fmtUSD(d.data.value)}`);
+        centreSub.text(`${d.data.pct.toFixed(1)}% of budget`);
+      }
+    }
+    setCentre(null);
+
+    // ── Segments ───────────────────────────────────────────────────────────
+    const paths = svg.selectAll('.arc-path')
+      .data(arcData)
+      .join('path')
+      .attr('class', 'arc-path')
+      .attr('fill', (_, i) => COLORS[i % COLORS.length])
+      .attr('stroke', 'var(--card)')
+      .attr('stroke-width', 1.5)
+      .style('cursor', 'pointer');
+
+    // Entrance: segments sweep open clockwise, staggered
+    paths
+      .transition()
+      .duration(ENTER)
+      .delay((_, i) => reduceMotion ? 0 : i * 55)
+      .ease(d3.easeCubicOut)
+      .attrTween('d', function(d) {
+        const grow = d3.interpolate({ ...d, endAngle: d.startAngle }, d);
+        return (t: number) => arc(grow(t)) as string;
+      });
+
+    // Percentage labels — only on slices large enough to hold them
+    svg.selectAll('.arc-label')
+      .data(arcData.filter(d => d.data.pct >= 10))
+      .join('text')
+      .attr('class', 'arc-label')
+      .attr('transform', d => `translate(${arc.centroid(d)})`)
+      .attr('text-anchor', 'middle').attr('dy', '0.35em')
+      .attr('font-family', 'JetBrains Mono, monospace')
+      .attr('font-size', '9')
+      .attr('fill', 'rgba(246,247,242,0.95)')
+      .style('pointer-events', 'none')
+      .attr('opacity', 0)
+      .text(d => `${Math.round(d.data.pct)}%`)
+      .transition().duration(reduceMotion ? 0 : 300).delay(reduceMotion ? 0 : 500)
+      .attr('opacity', 1);
+
+    // ── Legend (synced with segments) ──────────────────────────────────────
+    legendEl.innerHTML = arcData.map((d, i) => `
+      <button class="legend-row" data-index="${d.index}" role="listitem" type="button">
+        <span class="legend-swatch" style="background:${COLORS[i % COLORS.length]}"></span>
+        <span class="legend-name">${d.data.name}</span>
+        <span class="legend-val mono">${fmtUSD(d.data.value)}</span>
+        <span class="legend-pct mono">${d.data.pct.toFixed(1)}%</span>
+      </button>
+    `).join('');
+    const legendRows = [...legendEl.querySelectorAll<HTMLElement>('.legend-row')];
+
+    // ── Shared hover/pin state machine ─────────────────────────────────────
+    function highlight(i: number) {
+      paths.interrupt('hover').transition('hover').duration(DUR).ease(d3.easeCubicOut)
+        .attr('d', p => ((p.index === i || p.index === pinnedIndex) ? arcLift(p) : arc(p)) as string)
+        .attr('opacity', p => p.index === i ? 1 : 0.4);
+      legendRows.forEach((r, j) => r.classList.toggle('hover', j === i));
+      setCentre(arcData[i]);
+    }
+
+    // Default state: pinned segment stays lifted, centre shows pin or total
+    function restore() {
+      paths.interrupt('hover').transition('hover').duration(DUR).ease(d3.easeCubicOut)
+        .attr('d', p => (p.index === pinnedIndex ? arcLift(p) : arc(p)) as string)
+        .attr('opacity', 1);
+      legendRows.forEach(r => r.classList.remove('hover'));
+      setCentre(pinnedIndex !== null ? arcData[pinnedIndex] : null);
+    }
+
+    function pin(i: number) {
+      pinnedIndex = i;
+      legendRows.forEach((r, j) => r.classList.toggle('pinned', j === i));
+      showProjects(arcData[i].data, COLORS[i % COLORS.length], panel!);
+      restore();
+    }
+
+    paths
+      .on('mouseenter', (_, d) => highlight(d.index))
+      .on('mouseleave', restore)
+      .on('click', (_, d) => pin(d.index));
+
+    legendRows.forEach((row, i) => {
+      row.addEventListener('mouseenter', () => highlight(i));
+      row.addEventListener('mouseleave', restore);
+      row.addEventListener('focus', () => highlight(i));
+      row.addEventListener('blur', restore);
+      row.addEventListener('click', () => pin(i));
+    });
+
+    // Pre-fill the drill-down with the largest category (without pinning the
+    // centre, which keeps showing the total until the user clicks)
+    const largest = arcData.reduce((a, b) => (b.data.value > a.data.value ? b : a), arcData[0]);
+    showProjects(largest.data, COLORS[largest.index % COLORS.length], panel);
   });
 
   function showProjects(cat: BudgetCategory, color: string, panel: HTMLElement) {
@@ -120,6 +228,14 @@ const budgetJSON = JSON.stringify(budget);
         <div class="project-list">${projectItems}</div>
       </div>
     `;
+
+    // Gentle fade-in when content swaps
+    if (!reduceMotion) {
+      (panel.firstElementChild as HTMLElement | null)?.animate?.(
+        [{ opacity: 0, transform: 'translateY(4px)' }, { opacity: 1, transform: 'none' }],
+        { duration: 240, easing: 'ease-out' }
+      );
+    }
   }
 </script>
 
@@ -149,14 +265,81 @@ const budgetJSON = JSON.stringify(budget);
     display: grid;
     grid-template-columns: auto 1fr;
     gap: 24px;
-    align-items: start;
+    align-items: center;
   }
 
   .pie-container svg { display: block; }
 
+  /* ── Legend: swatch · name · value · pct, tabular-aligned ─────────────── */
+  .pie-legend {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .pie-legend :global(.legend-row) {
+    display: grid;
+    grid-template-columns: 10px 1fr auto 52px;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    padding: 6px 8px;
+    border: none;
+    border-top: 1px solid var(--line);
+    background: transparent;
+    text-align: left;
+    cursor: pointer;
+    transition: background-color 150ms ease;
+  }
+
+  .pie-legend :global(.legend-row:first-child) { border-top: none; }
+
+  .pie-legend :global(.legend-row.hover),
+  .pie-legend :global(.legend-row:hover) { background-color: var(--card-tint); }
+
+  .pie-legend :global(.legend-row.pinned .legend-name) { font-weight: 600; }
+
+  .pie-legend :global(.legend-row:focus-visible) {
+    outline: var(--focus-ring);
+    outline-offset: -2px;
+  }
+
+  .pie-legend :global(.legend-swatch) {
+    width: 10px;
+    height: 10px;
+    flex-shrink: 0;
+  }
+
+  .pie-legend :global(.legend-name) {
+    font-family: var(--font-body);
+    font-size: 12.5px;
+    color: var(--ink);
+    line-height: 1.3;
+  }
+
+  .pie-legend :global(.legend-val) {
+    font-size: 11px;
+    color: var(--ink-soft);
+    font-variant-numeric: tabular-nums;
+    text-align: right;
+  }
+
+  .pie-legend :global(.legend-pct) {
+    font-size: 11px;
+    color: var(--ink-faint);
+    font-variant-numeric: tabular-nums;
+    text-align: right;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .pie-legend :global(.legend-row) { transition: none; }
+  }
+
+  /* ── Drill-down panel below the donut + legend ────────────────────────── */
   .projects-panel {
-    min-height: 160px;
-    padding: 12px 0;
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px solid var(--line);
+    min-height: 120px;
   }
 
   .projects-prompt {
