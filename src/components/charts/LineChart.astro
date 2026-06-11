@@ -4,6 +4,7 @@
 // Supports: multi-country series, hover tooltips, click-year → year-in-focus panel.
 
 import type { IndicatorSeries } from '../../lib/types';
+import { getCountries } from '../../lib/dataHub';
 
 interface Props {
   initialSeries: IndicatorSeries[];
@@ -12,6 +13,8 @@ interface Props {
 
 const { initialSeries, initialIndicator } = Astro.props;
 const seriesJSON = JSON.stringify(initialSeries);
+// Country display names for the stats strip (code → name)
+const namesJSON = JSON.stringify(Object.fromEntries(getCountries().map(c => [c.code, c.name])));
 ---
 
 <div class="line-chart-wrapper">
@@ -24,6 +27,8 @@ const seriesJSON = JSON.stringify(initialSeries);
       Export CSV
     </button>
   </div>
+
+  <div class="chart-stats-row mono" id="chart-stats" hidden></div>
 
   <div
     id="line-chart"
@@ -38,7 +43,7 @@ const seriesJSON = JSON.stringify(initialSeries);
 </div>
 
 <!-- Pass server-side data to client script via data attribute -->
-<div id="chart-data" data-series={seriesJSON} data-indicator={initialIndicator} hidden></div>
+<div id="chart-data" data-series={seriesJSON} data-indicator={initialIndicator} data-names={namesJSON} hidden></div>
 
 <script>
   import * as d3 from 'd3';
@@ -59,6 +64,54 @@ const seriesJSON = JSON.stringify(initialSeries);
   let allSeries: IndicatorSeries[] = JSON.parse(dataEl.dataset.series ?? '[]');
   let currentIndicator = dataEl.dataset.indicator ?? 'gdp_growth';
   let activeCountries  = allSeries.map(s => s.country);
+  const COUNTRY_NAMES: Record<string, string> = JSON.parse(dataEl.dataset.names ?? '{}');
+
+  // Zero out animation durations for users who prefer reduced motion
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const D = (ms: number) => reduceMotion ? 0 : ms;
+
+  // ── Formatting helpers ──────────────────────────────────────────────────
+  // Large values (e.g. FDI in USD mn) get separators; small ones one decimal
+  const fmtVal  = (v: number) => Math.abs(v) >= 1000 ? d3.format(',.0f')(v) : v.toFixed(1);
+  const fmtTick = (v: number) => Math.abs(v) >= 1000 ? d3.format('~s')(v)   : String(v);
+
+  // ── Stats strip: per-country cells + labeled range block on the right ────
+  function updateStatsRow(filtered: IndicatorSeries[]) {
+    const statsEl = document.getElementById('chart-stats');
+    if (!statsEl) return;
+
+    const cells = filtered.map((s, i) => {
+      const pts  = s.series.filter(p => p.value !== null);
+      const last = pts[pts.length - 1];
+      const prev = pts[pts.length - 2];
+      if (!last) return '';
+      const color = SERIES_COLORS[s.country] ?? FALLBACK_COLORS[i % FALLBACK_COLORS.length];
+      let deltaHtml = '';
+      if (prev) {
+        const delta = (last.value as number) - (prev.value as number);
+        const dir   = delta >= 0 ? 'pos' : 'neg';
+        deltaHtml = `<span class="stat-delta mono ${dir}">${delta >= 0 ? '▲' : '▼'} ${delta >= 0 ? '+' : '−'}${fmtVal(Math.abs(delta))}</span>`;
+      }
+      return `<div class="stat-cell">
+        <span class="stat-dot" style="background:${color}"></span>
+        <div class="stat-cell-body">
+          <span class="stat-cell-name mono">${COUNTRY_NAMES[s.country] ?? s.country}</span>
+          <span class="stat-cell-data"><span class="stat-cell-value">${fmtVal(last.value as number)}</span>${deltaHtml}</span>
+        </div>
+      </div>`;
+    }).join('');
+
+    const vals = filtered.flatMap(s => s.series.filter(p => p.value !== null).map(p => p.value as number));
+    const range = vals.length
+      ? `<span class="range-label">Range</span><span class="range-dash">—</span>
+         <span class="range-stat">High <strong>${fmtVal(Math.max(...vals))}</strong></span>
+         <span class="range-div">/</span>
+         <span class="range-stat">Low <strong>${fmtVal(Math.min(...vals))}</strong></span>`
+      : '';
+
+    statsEl.innerHTML = `<div class="stats-left">${cells}</div><div class="stats-right mono">${range}</div>`;
+    statsEl.hidden = false;
+  }
 
   // ── Chart draw ──────────────────────────────────────────────────────────
   function drawChart() {
@@ -84,18 +137,36 @@ const seriesJSON = JSON.stringify(initialSeries);
       sourceEl.innerHTML = `<span>Source:</span> <a href="${first.sourceUrl}" target="_blank" rel="noopener noreferrer">${first.source}</a>`;
     }
 
-    const margin = { top: 16, right: 32, bottom: 40, left: 56 };
+    updateStatsRow(filtered);
+
+    const margin = { top: 18, right: 40, bottom: 40, left: 52 };
     const w = container.clientWidth  - margin.left - margin.right;
     const h = Math.min(340, Math.max(220, container.clientWidth * 0.38)) - margin.top - margin.bottom;
 
     container.innerHTML = '';
 
-    const svg = d3.select(container)
+    const svgRoot = d3.select(container)
       .append('svg')
       .attr('width',  w + margin.left + margin.right)
-      .attr('height', h + margin.top  + margin.bottom)
-      .append('g')
+      .attr('height', h + margin.top  + margin.bottom);
+
+    // Defs: dot-grid backdrop + per-series area gradients
+    const defs = svgRoot.append('defs');
+    defs.append('pattern')
+      .attr('id', 'plot-dot-grid')
+      .attr('width', 18).attr('height', 18)
+      .attr('patternUnits', 'userSpaceOnUse')
+      .append('circle')
+      .attr('cx', 9).attr('cy', 9).attr('r', 1)
+      .attr('fill', 'rgba(15,35,30,0.10)');
+
+    const svg = svgRoot.append('g')
       .attr('transform', `translate(${margin.left},${margin.top})`);
+
+    // Subtle dotted texture behind the plot area
+    svg.append('rect')
+      .attr('width', w).attr('height', h)
+      .attr('fill', 'url(#plot-dot-grid)');
 
     const allYears = [...new Set(filtered.flatMap(s => s.series.map(d => d.year)))].sort();
     const allVals  = filtered.flatMap(s => s.series.filter(d => d.value !== null).map(d => d.value as number));
@@ -105,12 +176,15 @@ const seriesJSON = JSON.stringify(initialSeries);
       .range([0, w])
       .padding(0.1);
 
+    // Small headroom so lines never touch the frame
+    const [vMin, vMax] = d3.extent(allVals) as [number, number];
+    const vPad = (vMax - vMin) * 0.08 || 1;
     const yScale = d3.scaleLinear()
-      .domain(d3.extent(allVals) as [number, number])
+      .domain([vMin - vPad, vMax + vPad])
       .range([h, 0])
       .nice();
 
-    // Grid
+    // Grid — dashed, horizontal only
     svg.append('g')
       .call(d3.axisLeft(yScale).tickSize(-w).tickFormat('' as any).ticks(5))
       .call(g => {
@@ -120,25 +194,34 @@ const seriesJSON = JSON.stringify(initialSeries);
           .attr('stroke-dasharray', '3,3');
       });
 
-    // Axes
+    // Zero baseline when the domain crosses it (e.g. contraction years)
+    const [d0, d1] = yScale.domain();
+    if (d0 < 0 && d1 > 0) {
+      svg.append('line')
+        .attr('x1', 0).attr('x2', w)
+        .attr('y1', yScale(0)).attr('y2', yScale(0))
+        .attr('stroke', 'rgba(15,35,30,0.28)');
+    }
+
+    // Axes — no axis lines, generous tick padding
     svg.append('g')
       .attr('transform', `translate(0,${h})`)
-      .call(d3.axisBottom(xScale).tickFormat(d => String(d)))
-      .call(g => {
-        g.select('.domain').attr('stroke', 'rgba(15,35,30,0.15)');
-        g.selectAll('text').attr('font-family', 'JetBrains Mono, monospace').attr('font-size', '10').attr('fill', '#8A958F');
-        g.selectAll('.tick line').remove();
-      });
-
-    svg.append('g')
-      .call(d3.axisLeft(yScale).ticks(5))
+      .call(d3.axisBottom(xScale).tickFormat(d => String(d)).tickPadding(12))
       .call(g => {
         g.select('.domain').remove();
         g.selectAll('text').attr('font-family', 'JetBrains Mono, monospace').attr('font-size', '10').attr('fill', '#8A958F');
         g.selectAll('.tick line').remove();
       });
 
-    // Tooltip
+    svg.append('g')
+      .call(d3.axisLeft(yScale).ticks(5).tickFormat(d => fmtTick(Number(d))).tickPadding(8))
+      .call(g => {
+        g.select('.domain').remove();
+        g.selectAll('text').attr('font-family', 'JetBrains Mono, monospace').attr('font-size', '10').attr('fill', '#8A958F');
+        g.selectAll('.tick line').remove();
+      });
+
+    // Tooltip (shared by the hover crosshair)
     const tooltip = d3.select(container)
       .append('div')
       .attr('class', 'chart-tooltip')
@@ -150,6 +233,15 @@ const seriesJSON = JSON.stringify(initialSeries);
       .y(d => yScale(d.value as number))
       .curve(d3.curveMonotoneX);
 
+    // Area baseline sits on zero when visible, otherwise the chart floor
+    const baseY = d0 < 0 && d1 > 0 ? yScale(0) : h;
+    const area = d3.area<IndicatorPoint>()
+      .defined(d => d.value !== null)
+      .x(d => xScale(d.year)!)
+      .y0(baseY)
+      .y1(d => yScale(d.value as number))
+      .curve(d3.curveMonotoneX);
+
     // Draw series
     filtered.forEach((series, i) => {
       const color = SERIES_COLORS[series.country] ?? FALLBACK_COLORS[i % FALLBACK_COLORS.length];
@@ -159,10 +251,34 @@ const seriesJSON = JSON.stringify(initialSeries);
       const actualPoints = validPoints.filter(d => d.type === 'actual');
       const nonActualPoints = validPoints.filter(d => d.type !== 'actual');
 
+      // Soft gradient fill under the line
+      const gradId = `area-grad-${series.country}`;
+      const grad = defs.append('linearGradient')
+        .attr('id', gradId)
+        .attr('x1', 0).attr('y1', 0).attr('x2', 0).attr('y2', 1);
+      grad.append('stop').attr('offset', '0%').attr('stop-color', color).attr('stop-opacity', 0.13);
+      grad.append('stop').attr('offset', '100%').attr('stop-color', color).attr('stop-opacity', 0);
+
+      svg.append('path')
+        .datum(validPoints)
+        .attr('fill', `url(#${gradId})`)
+        .attr('d', area as any)
+        .attr('opacity', 0)
+        .transition().duration(D(700)).delay(D(150))
+        .attr('opacity', 1);
+
       if (actualPoints.length > 0) {
-        svg.append('path').datum(actualPoints)
+        const path = svg.append('path').datum(actualPoints)
           .attr('fill', 'none').attr('stroke', color).attr('stroke-width', 2)
           .attr('d', line as any);
+
+        // Draw-in animation, left to right
+        const len = (path.node() as SVGPathElement).getTotalLength();
+        path.attr('stroke-dasharray', `${len} ${len}`)
+          .attr('stroke-dashoffset', len)
+          .transition().duration(D(650)).ease(d3.easeCubicOut)
+          .attr('stroke-dashoffset', 0)
+          .on('end', function () { d3.select(this).attr('stroke-dasharray', null); });
       }
 
       if (nonActualPoints.length > 0) {
@@ -170,41 +286,115 @@ const seriesJSON = JSON.stringify(initialSeries);
         const bridge = actualPoints.slice(-1).concat(nonActualPoints);
         svg.append('path').datum(bridge)
           .attr('fill', 'none').attr('stroke', color).attr('stroke-width', 2)
-          .attr('stroke-dasharray', '4,3').attr('opacity', 0.7)
-          .attr('d', line as any);
+          .attr('stroke-dasharray', '4,3')
+          .attr('d', line as any)
+          .attr('opacity', 0)
+          .transition().duration(D(300)).delay(D(550))
+          .attr('opacity', 0.7);
       }
 
-      // Dots — gold for non-actuals
+      // Dots — gold for non-actuals; hover/click is handled by the overlay
       svg.selectAll(`.dot-${series.country}`)
         .data(validPoints)
         .join('circle')
         .attr('cx', d => xScale(d.year)!)
         .attr('cy', d => yScale(d.value as number))
-        .attr('r', 4)
+        .attr('r', 0)
         .attr('fill', d => d.type !== 'actual' ? '#BC8A2E' : color)
-        .attr('stroke', 'var(--paper)').attr('stroke-width', 1.5)
-        .style('cursor', 'pointer')
-        .on('mouseenter', (event, d) => {
-          tooltip.style('display', 'block')
-            .html(`<span class="tt-country">${series.country}</span> <span class="tt-year">${d.year}</span><br/><span class="tt-value">${d.value?.toFixed(1)} ${series.unit}</span>${d.type !== 'actual' ? `<br/><span class="tt-type">${d.type}</span>` : ''}`)
-            .style('left', `${(event as MouseEvent).offsetX + 12}px`)
-            .style('top',  `${(event as MouseEvent).offsetY - 10}px`);
-        })
-        .on('mouseleave', () => tooltip.style('display', 'none'))
-        .on('click', (_, d) => openYearInFocus(d.year, allSeries));
+        .attr('stroke', 'var(--card)').attr('stroke-width', 1.5)
+        .transition().duration(D(250)).delay((_, j) => D(250 + j * 40))
+        .attr('r', 3);
 
-      // Country label on last point
+      // Emphasised end point + country label
       const last = validPoints[validPoints.length - 1];
       if (last) {
+        svg.append('circle')
+          .attr('cx', xScale(last.year)!)
+          .attr('cy', yScale(last.value as number))
+          .attr('r', 0)
+          .attr('fill', last.type !== 'actual' ? '#BC8A2E' : color)
+          .attr('stroke', 'var(--card)').attr('stroke-width', 2)
+          .transition().duration(D(250)).delay(D(600))
+          .attr('r', 4.5);
+
         svg.append('text')
-          .attr('x', xScale(last.year)! + 6)
+          .attr('x', xScale(last.year)! + 8)
           .attr('y', yScale(last.value as number) + 4)
           .attr('font-family', 'JetBrains Mono, monospace')
           .attr('font-size', '10')
+          .attr('font-weight', '600')
           .attr('fill', color)
-          .text(series.country);
+          .attr('opacity', 0)
+          .text(series.country)
+          .transition().duration(D(300)).delay(D(650))
+          .attr('opacity', 1);
       }
     });
+
+    // ── Hover crosshair: vertical guide, active dots, unified tooltip ─────
+    const focus = svg.append('g').style('display', 'none');
+    focus.append('line')
+      .attr('class', 'crosshair')
+      .attr('y1', 0).attr('y2', h)
+      .attr('stroke', 'rgba(15,35,30,0.35)')
+      .attr('stroke-dasharray', '4,4');
+
+    const activeDots = filtered.map((s, i) => focus.append('circle')
+      .attr('r', 5)
+      .attr('fill', SERIES_COLORS[s.country] ?? FALLBACK_COLORS[i % FALLBACK_COLORS.length])
+      .attr('stroke', 'var(--card)')
+      .attr('stroke-width', 2));
+
+    function nearestYear(mx: number): number {
+      let best = allYears[0], bestDist = Infinity;
+      for (const y of allYears) {
+        const dist = Math.abs((xScale(y) ?? 0) - mx);
+        if (dist < bestDist) { bestDist = dist; best = y; }
+      }
+      return best;
+    }
+
+    // Transparent capture layer on top of everything in the plot area
+    svg.append('rect')
+      .attr('width', w).attr('height', h)
+      .attr('fill', 'transparent')
+      .style('cursor', 'pointer')
+      .on('mouseenter', () => focus.style('display', null))
+      .on('mouseleave', () => {
+        focus.style('display', 'none');
+        tooltip.style('display', 'none');
+      })
+      .on('mousemove', (event) => {
+        const [mx] = d3.pointer(event);
+        const year = nearestYear(mx);
+        const x = xScale(year)!;
+        focus.select('line').attr('x1', x).attr('x2', x);
+
+        const rows = filtered.map((s, i) => {
+          const pt  = s.series.find(p => p.year === year);
+          const dot = activeDots[i];
+          if (!pt || pt.value === null) { dot.style('display', 'none'); return ''; }
+          dot.style('display', null).attr('cx', x).attr('cy', yScale(pt.value));
+          const color = SERIES_COLORS[s.country] ?? FALLBACK_COLORS[i % FALLBACK_COLORS.length];
+          return `<div class="tt-row">
+            <span class="tt-dot" style="background:${color}"></span>
+            <span class="tt-name">${s.country}</span>
+            <span class="tt-val">${fmtVal(pt.value)}${pt.type !== 'actual' ? ` <span class="tt-type">${pt.type}</span>` : ''}</span>
+          </div>`;
+        }).join('');
+
+        tooltip.style('display', 'block')
+          .html(`<div class="tt-year">${year} · ${first.unit}</div>${rows}<div class="tt-hint">click for year in focus</div>`);
+
+        // Flip to the left of the crosshair near the right edge
+        const ttw  = (tooltip.node() as HTMLElement).offsetWidth;
+        const left = x > w * 0.62 ? margin.left + x - ttw - 14 : margin.left + x + 14;
+        tooltip.style('left', `${left}px`).style('top', `${margin.top + 8}px`);
+      })
+      .on('click', (event) => {
+        const [mx] = d3.pointer(event);
+        openYearInFocus(nearestYear(mx), allSeries);
+      });
   }
 
   // ── Year-in-focus panel ────────────────────────────────────────────────
@@ -280,6 +470,13 @@ const seriesJSON = JSON.stringify(initialSeries);
     downloadCSV(rows, `caribbean-macro-${currentIndicator}`);
   });
 
+  // Redraw on resize so the chart stays crisp at any width
+  let resizeTimer: ReturnType<typeof setTimeout> | undefined;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(drawChart, 150);
+  });
+
   // Initial render
   drawChart();
 </script>
@@ -316,7 +513,98 @@ const seriesJSON = JSON.stringify(initialSeries);
     font-size: 10px;
   }
 
+  .chart-stats-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px 28px;
+    padding: 14px 16px 2px;
+  }
+
+  .chart-stats-row :global(.stats-left) {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+
+  .chart-stats-row :global(.stat-cell) {
+    display: flex;
+    align-items: flex-start;
+    gap: 9px;
+  }
+
+  .chart-stats-row :global(.stat-dot) {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-top: 3px;
+    flex-shrink: 0;
+  }
+
+  .chart-stats-row :global(.stat-cell-body) {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+  }
+
+  .chart-stats-row :global(.stat-cell-name) {
+    font-size: 10px;
+    letter-spacing: 0.05em;
+    color: var(--ink-faint);
+  }
+
+  .chart-stats-row :global(.stat-cell-data) {
+    display: flex;
+    align-items: baseline;
+    gap: 9px;
+  }
+
+  .chart-stats-row :global(.stat-cell-value) {
+    font-family: var(--font-display);
+    font-size: 17px;
+    font-weight: 700;
+    line-height: 1.1;
+    color: var(--ink);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .chart-stats-row :global(.stat-delta) {
+    font-size: 11px;
+    font-weight: 500;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .chart-stats-row :global(.stat-delta.pos) { color: var(--pos); }
+  .chart-stats-row :global(.stat-delta.neg) { color: var(--neg); }
+
+  .chart-stats-row :global(.stats-right) {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    font-size: 11px;
+    color: var(--ink-faint);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .chart-stats-row :global(.range-label) {
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-size: 10px;
+  }
+
+  .chart-stats-row :global(.range-dash),
+  .chart-stats-row :global(.range-div) { color: var(--line); }
+
+  .chart-stats-row :global(.range-stat strong) {
+    color: var(--ink-soft);
+    font-weight: 600;
+  }
+
   .chart-canvas {
+    position: relative;
     padding: 8px;
     min-height: 220px;
   }
@@ -336,18 +624,54 @@ const seriesJSON = JSON.stringify(initialSeries);
     position: absolute;
     background: var(--teal-deep);
     color: var(--paper);
-    padding: 8px 10px;
+    padding: 10px 12px;
     font-family: var(--font-mono);
     font-size: 11px;
-    line-height: 1.5;
+    line-height: 1.7;
     pointer-events: none;
     z-index: 10;
-    border: 1px solid rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.12);
+    box-shadow: 0 6px 18px rgba(9,63,52,0.25);
+    min-width: 140px;
   }
 
-  :global(.tt-country) { font-weight: 600; }
-  :global(.tt-year)    { color: rgba(236,238,232,0.6); }
-  :global(.tt-type)    { color: #BC8A2E; font-size: 10px; }
+  :global(.tt-year) {
+    font-weight: 600;
+    border-bottom: 1px solid rgba(255,255,255,0.15);
+    padding-bottom: 4px;
+    margin-bottom: 6px;
+  }
+
+  :global(.tt-row) {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+  }
+
+  :global(.tt-dot) {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  :global(.tt-name) { color: rgba(236,238,232,0.65); }
+
+  :global(.tt-val) {
+    margin-left: auto;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+  }
+
+  :global(.tt-type) { color: #D9B36A; font-size: 9px; }
+
+  :global(.tt-hint) {
+    margin-top: 6px;
+    padding-top: 4px;
+    border-top: 1px solid rgba(255,255,255,0.15);
+    color: rgba(236,238,232,0.5);
+    font-size: 9px;
+  }
 
   #chart-source { padding: 0 16px 14px; }
 </style>
