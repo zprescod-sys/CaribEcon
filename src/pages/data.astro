@@ -3,64 +3,66 @@ import Shell             from '../layouts/Shell.astro';
 import ChartControls     from '../components/charts/ChartControls.astro';
 import LineChart         from '../components/charts/LineChart.astro';
 import BudgetPie         from '../components/charts/BudgetPie.astro';
-import StatCards         from '../components/data/StatCards.astro';
+import CountryCarousel   from '../components/data/CountryCarousel.astro';
+import type { CountrySnapshotData, SnapshotRow } from '../components/data/CountrySnapshot.astro';
 import InsightCallout    from '../components/data/InsightCallout.astro';
 import YearInFocusPanel  from '../components/data/YearInFocusPanel.astro';
-import type { DataPointType } from '../lib/types';
 import {
+  getCountries,
+  getSeries,
   getIndicatorAllCountries,
   getBudget,
 } from '../lib/dataHub';
-
-interface StatCardDef {
-  label: string;
-  value: string;
-  delta?: string;
-  deltaDir?: 'pos' | 'neg' | 'neutral';
-  sub?: string;
-  type?: DataPointType;
-  source?: string;
-}
 
 // Initial data: all series for the default indicator across all countries
 const allSeries = getIndicatorAllCountries('gdp_growth');
 const gyBudget  = getBudget('GY', 2024);
 const ttBudget  = getBudget('TT', 2024);
 
-// Build initial stat cards for GDP growth (most recent available point)
-function latestPoint(country: string, indicator: string) {
-  const series = getIndicatorAllCountries(indicator).find(s => s.country === country);
-  if (!series) return null;
-  const pts = [...series.series].filter(d => d.value !== null).reverse();
-  const latest = pts[0];
-  const prev   = pts[1];
-  if (!latest) return null;
-  const delta = latest.value !== null && prev?.value !== null
-    ? ((latest.value as number) - (prev.value as number)).toFixed(1)
-    : null;
-  return { value: latest.value, year: latest.year, type: latest.type, delta, unit: series.unit };
+// ── Country snapshots for the header carousel ──────────────────────────────
+// Lead indicator first; the rest render as supporting rows.
+const SNAPSHOT_INDICATORS = ['gdp_growth', 'inflation', 'govt_debt', 'fdi_inflows'];
+
+// Compact number: thousands get separators, small values one decimal
+const fmtNum = (v: number) =>
+  Math.abs(v) >= 1000 ? Math.round(v).toLocaleString('en-US') : v.toFixed(1);
+
+// Latest point + delta vs the prior year for one country/indicator
+function snapshotRow(country: string, indicator: string): SnapshotRow | null {
+  const s = getSeries(country, indicator);
+  if (!s) return null;
+  const pts  = s.series.filter(p => p.value !== null);
+  const last = pts[pts.length - 1];
+  const prev = pts[pts.length - 2];
+  if (!last) return null;
+
+  const isPct  = s.unit.startsWith('%');
+  const delta  = prev ? (last.value as number) - (prev.value as number) : null;
+
+  return {
+    label:      s.indicatorLabel,
+    value:      `${fmtNum(last.value as number)}${isPct ? '%' : ''}`,
+    unitSuffix: isPct ? '' : s.unit,
+    year:       last.year,
+    delta:      delta === null ? null
+                : `${delta >= 0 ? '+' : '−'}${fmtNum(Math.abs(delta))}${isPct ? 'pp' : ''}`,
+    deltaDir:   delta === null ? null : delta >= 0 ? 'pos' : 'neg',
+    vsYear:     prev?.year ?? null,
+    flag:       last.type !== 'actual' ? (last.type as 'estimate' | 'projection') : null,
+  };
 }
 
-const gyGdp = latestPoint('GY', 'gdp_growth');
-const ttGdp = latestPoint('TT', 'gdp_growth');
-
-const statCardsRaw = [
-  gyGdp ? {
-    label:    `GY Real GDP Growth (${gyGdp.year})`,
-    value:    `${(gyGdp.value as number).toFixed(1)}%`,
-    delta:    gyGdp.delta ? `${Number(gyGdp.delta) >= 0 ? '+' : ''}${gyGdp.delta}pp` : undefined,
-    deltaDir: (gyGdp.delta ? (Number(gyGdp.delta) >= 0 ? 'pos' : 'neg') : undefined) as 'pos' | 'neg' | undefined,
-    type:     gyGdp.type as DataPointType,
-  } : null,
-  ttGdp ? {
-    label:    `TT Real GDP Growth (${ttGdp.year})`,
-    value:    `${(ttGdp.value as number).toFixed(1)}%`,
-    delta:    ttGdp.delta ? `${Number(ttGdp.delta) >= 0 ? '+' : ''}${ttGdp.delta}pp` : undefined,
-    deltaDir: (ttGdp.delta ? (Number(ttGdp.delta) >= 0 ? 'pos' : 'neg') : undefined) as 'pos' | 'neg' | undefined,
-    type:     ttGdp.type as DataPointType,
-  } : null,
-];
-const statCards: StatCardDef[] = statCardsRaw.filter((c): c is NonNullable<typeof statCardsRaw[0]> => c !== null);
+// One snapshot per country in the hub — adding a country's data just works
+const snapshots: CountrySnapshotData[] = getCountries().flatMap(c => {
+  const [lead, ...rows] = SNAPSHOT_INDICATORS
+    .map(slug => snapshotRow(c.code, slug))
+    .filter((r): r is SnapshotRow => r !== null);
+  if (!lead) return [];
+  const sources = [...new Set(
+    SNAPSHOT_INDICATORS.map(slug => getSeries(c.code, slug)?.sourceOrg).filter(Boolean)
+  )].join(' · ');
+  return [{ code: c.code, name: c.name, flag: c.flag, lead, rows, sources }];
+});
 ---
 
 <Shell
@@ -80,9 +82,9 @@ const statCards: StatCardDef[] = statCardsRaw.filter((c): c is NonNullable<typeo
       </p>
     </header>
 
-    <!-- ── Stat cards ───────────────────────────────────────── -->
+    <!-- ── Country snapshot carousel ────────────────────────── -->
     <section class="fade-up fade-up-2">
-      <StatCards cards={statCards} />
+      <CountryCarousel snapshots={snapshots} />
     </section>
 
     <!-- ── Chart controls + line chart ─────────────────────── -->
@@ -98,9 +100,7 @@ const statCards: StatCardDef[] = statCardsRaw.filter((c): c is NonNullable<typeo
       accentColor="gold"
     />
 
-    <hr class="section-divider" />
-
-    <!-- ── Budget section ───────────────────────────────────── -->
+    <!-- ── Budget section (tinted band) ─────────────────────── -->
     <section class="budget-section">
       <span class="eyebrow">Budget Breakdown</span>
       <h2 class="section-heading">2024 Budget Allocation</h2>
@@ -134,6 +134,14 @@ const statCards: StatCardDef[] = statCardsRaw.filter((c): c is NonNullable<typeo
     display: flex;
     flex-direction: column;
     gap: 0;
+  }
+
+  /* Tinted full-bleed band so the page isn't flat white */
+  .budget-section {
+    background-color: var(--paper-warm);
+    margin-inline: calc(-1 * var(--side-padding));
+    padding: 36px var(--side-padding) 44px;
+    border-top: 1px solid var(--line);
   }
 
   .budget-grid {

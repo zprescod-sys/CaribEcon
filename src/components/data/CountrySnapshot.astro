@@ -1,0 +1,208 @@
+---
+// Reusable per-country snapshot card: country header, lead GDP figure,
+// supporting indicators, source line. Rendered once per country by the
+// carousel — data is pre-computed in data.astro from the data hub.
+
+export interface SnapshotRow {
+  label: string;            // "Real GDP Growth"
+  value: string;            // "43.8%" or "1,834"
+  unitSuffix: string;       // "" for %, "USD mn" for FDI
+  year: number;
+  delta: string | null;     // "+0.3pp" / "−112"
+  deltaDir: 'pos' | 'neg' | null;
+  vsYear: number | null;
+  flag: 'estimate' | 'projection' | null;
+}
+
+export interface CountrySnapshotData {
+  code: string;
+  name: string;
+  flag?: string;
+  lead: SnapshotRow;
+  rows: SnapshotRow[];
+  sources: string;          // "IMF · UNCTAD"
+}
+
+interface Props {
+  snapshot: CountrySnapshotData;
+}
+
+const { snapshot } = Astro.props;
+const { lead } = snapshot;
+
+// Arrow glyph for a delta direction
+const arrow = (dir: 'pos' | 'neg' | null) => dir === 'pos' ? '▲' : dir === 'neg' ? '▼' : '';
+---
+
+<article class="country-snapshot" aria-label={`${snapshot.name} key statistics`}>
+  <div class="snap-lead-col">
+    <header class="snap-head">
+      <span class="snap-flag" aria-hidden="true">{snapshot.flag}</span>
+      <h2 class="snap-name">{snapshot.name}</h2>
+    </header>
+
+    <div class="snap-lead">
+      <span class="snap-label mono">{lead.label} ({lead.year})</span>
+      <div class="snap-lead-row">
+        <span class="snap-lead-value">{lead.value}</span>
+        {lead.delta && (
+          <span class={`snap-delta mono ${lead.deltaDir}`}>
+            {arrow(lead.deltaDir)} {lead.delta}
+            {lead.vsYear && <span class="snap-vs">vs {lead.vsYear}</span>}
+          </span>
+        )}
+      </div>
+      {lead.flag && <span class="snap-type-flag mono">{lead.flag}</span>}
+    </div>
+
+    <footer class="snap-source mono">Source: {snapshot.sources}</footer>
+  </div>
+
+  <div class="snap-rows">
+    {snapshot.rows.map(row => (
+      <div class="snap-row">
+        <span class="snap-label mono">{row.label} ({row.year})</span>
+        <div class="snap-row-data">
+          <span class="snap-row-value">
+            {row.value}{row.unitSuffix && <span class="snap-unit mono"> {row.unitSuffix}</span>}
+          </span>
+          {row.delta && (
+            <span class={`snap-delta mono sm ${row.deltaDir}`}>
+              {arrow(row.deltaDir)} {row.delta}
+              {row.vsYear && <span class="snap-vs">vs {row.vsYear}</span>}
+            </span>
+          )}
+          {row.flag && <span class="snap-type-flag mono">{row.flag}</span>}
+        </div>
+      </div>
+    ))}
+  </div>
+</article>
+
+<style>
+  .country-snapshot {
+    display: grid;
+    grid-template-columns: minmax(220px, 1fr) minmax(280px, 1.4fr);
+    gap: 12px 48px;
+    padding: 20px 4px;
+    align-items: start;
+  }
+
+  .snap-head {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+
+  .snap-flag { font-size: 18px; line-height: 1; }
+
+  .snap-name {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+  }
+
+  .snap-label {
+    display: block;
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 4px;
+  }
+
+  .snap-lead-row {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .snap-lead-value {
+    font-family: var(--font-display);
+    font-size: 44px;
+    font-weight: 800;
+    line-height: 1;
+    color: var(--ink);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .snap-delta {
+    font-size: 12px;
+    font-weight: 500;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+
+  .snap-delta.sm { font-size: 11px; }
+  .snap-delta.pos { color: var(--pos); }
+  .snap-delta.neg { color: var(--neg); }
+
+  .snap-vs {
+    color: var(--ink-faint);
+    font-weight: 400;
+    margin-left: 4px;
+  }
+
+  /* Quiet data flag — reads as metadata, not a control */
+  .snap-type-flag {
+    display: inline-block;
+    margin-top: 6px;
+    font-size: 9px;
+    letter-spacing: 0.08em;
+    text-transform: lowercase;
+    color: var(--ink-faint);
+  }
+
+  .snap-source {
+    margin-top: 16px;
+    font-size: 10px;
+    color: var(--ink-faint);
+  }
+
+  .snap-rows {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .snap-row {
+    padding: 9px 0;
+    border-top: 1px solid var(--line);
+  }
+
+  .snap-row:first-child { border-top: none; padding-top: 2px; }
+
+  .snap-row-data {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .snap-row .snap-label { margin-bottom: 2px; }
+
+  .snap-row .snap-type-flag { margin-top: 0; }
+
+  .snap-row-value {
+    font-family: var(--font-display);
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.1;
+    color: var(--ink);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .snap-unit {
+    font-size: 10px;
+    color: var(--ink-faint);
+    font-weight: 400;
+  }
+
+  @media (max-width: 700px) {
+    .country-snapshot { grid-template-columns: 1fr; }
+    .snap-lead-value { font-size: 36px; }
+    .snap-source { margin-top: 8px; }
+  }
+</style>

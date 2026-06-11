@@ -1,0 +1,143 @@
+---
+// Header carousel: cycles one CountrySnapshot at a time.
+// Selection-driven (country pills) with ambient auto-advance every ~5s.
+// Any user interaction pauses auto-advance for the rest of the session.
+// Handles N countries — driven entirely by the snapshots array.
+
+import CountrySnapshot, { type CountrySnapshotData } from './CountrySnapshot.astro';
+
+interface Props {
+  snapshots: CountrySnapshotData[];
+}
+
+const { snapshots } = Astro.props;
+---
+
+<section class="country-carousel" id="country-carousel" aria-roledescription="carousel" aria-label="Country snapshots">
+  <div class="carousel-top">
+    <span class="eyebrow">Country Snapshot</span>
+    <div class="carousel-pills" role="tablist" aria-label="Select country">
+      {snapshots.map((s, i) => (
+        <button
+          class={`carousel-pill mono ${i === 0 ? 'active' : ''}`}
+          role="tab"
+          aria-selected={i === 0 ? 'true' : 'false'}
+          data-index={i}
+        >
+          {s.flag} {s.code}
+        </button>
+      ))}
+    </div>
+  </div>
+
+  <div class="carousel-panels">
+    {snapshots.map((s, i) => (
+      <div class={`carousel-panel ${i === 0 ? 'active' : ''}`} role="tabpanel" aria-label={s.name}>
+        <CountrySnapshot snapshot={s} />
+      </div>
+    ))}
+  </div>
+</section>
+
+<script>
+  const root   = document.getElementById('country-carousel');
+  const pills  = root ? [...root.querySelectorAll<HTMLButtonElement>('.carousel-pill')] : [];
+  const panels = root ? [...root.querySelectorAll<HTMLElement>('.carousel-panel')] : [];
+
+  let index = 0;
+  let timer: ReturnType<typeof setInterval> | null = null;
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function show(i: number) {
+    index = (i + panels.length) % panels.length;
+    panels.forEach((p, j) => p.classList.toggle('active', j === index));
+    pills.forEach((p, j) => {
+      p.classList.toggle('active', j === index);
+      p.setAttribute('aria-selected', String(j === index));
+    });
+  }
+
+  // Once stopped, auto-advance never restarts this session
+  function stopAuto() {
+    if (timer !== null) { clearInterval(timer); timer = null; }
+  }
+
+  if (root && panels.length > 1) {
+    if (!reduceMotion) {
+      timer = setInterval(() => show(index + 1), 5000);
+    }
+
+    // Any interaction with the carousel pauses ambient motion permanently
+    root.addEventListener('pointerenter', stopAuto);
+    root.addEventListener('pointerdown', stopAuto);
+    root.addEventListener('keydown', stopAuto);
+
+    pills.forEach(p => p.addEventListener('click', () => {
+      stopAuto();
+      show(Number(p.dataset.index));
+    }));
+  }
+</script>
+
+<style>
+  /* De-boxed: hairline rules, no card border */
+  .country-carousel {
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    padding: 16px 0 4px;
+  }
+
+  .carousel-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--gap-md);
+    flex-wrap: wrap;
+  }
+
+  .carousel-pills {
+    display: flex;
+    gap: 6px;
+  }
+
+  .carousel-pill {
+    font-size: 10px;
+    letter-spacing: 0.05em;
+    padding: 5px 10px;
+    border: 1px solid var(--line);
+    background: transparent;
+    color: var(--ink-soft);
+    cursor: pointer;
+    transition: background-color 150ms ease, color 150ms ease;
+  }
+
+  .carousel-pill:hover { background-color: var(--card-tint); }
+
+  .carousel-pill.active {
+    background-color: var(--teal);
+    border-color: var(--teal);
+    color: var(--paper);
+  }
+
+  .carousel-pill:focus-visible { outline: var(--focus-ring); outline-offset: 1px; }
+
+  /* Panels stack in one grid cell; crossfade between them */
+  .carousel-panels { display: grid; }
+
+  .carousel-panel {
+    grid-area: 1 / 1;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 250ms ease, visibility 0s linear 250ms;
+  }
+
+  .carousel-panel.active {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 250ms ease;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .carousel-panel, .carousel-pill { transition: none; }
+  }
+</style>
