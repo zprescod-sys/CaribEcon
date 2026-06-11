@@ -23,6 +23,8 @@ Initial data scope: Guyana and Trinidad & Tobago, with full structure for adding
 
 Fable 5 does the majority of coding in VS Code. These MD files brief Fable — keep them tight and unambiguous.
 
+Visual verification: screenshot any changed page with `node screenshot.mjs <localhost url> [label]` and read the PNG. Full workflow + design checklist in `files/SCREENSHOT_WORKFLOW.md`.
+
 ## Data Hub (build first, freeze before pages)
 
 All pages read from one shared data hub, never per-page hardcoded values.
