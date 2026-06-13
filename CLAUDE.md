@@ -17,7 +17,7 @@ Initial data scope: Guyana and Trinidad & Tobago, with full structure for adding
 - **Hosting**: Cloudflare Pages (Phase 2: Pages Functions for server-side API keys)
 - **Fonts**: Bricolage Grotesque / Hanken Grotesk / JetBrains Mono (self-host for production)
 - **No dark mode in v1.** Do not add dark mode logic, media queries, or color-scheme toggles unless explicitly requested.
-- **Do NOT use**: rounded corners anywhere except pure circles (legend dots, pie segments, live chart point)
+- **Do NOT use**: rounded corners anywhere except pure circles (legend dots, pie segments, live chart point) and the CountrySnapshot metric cards (`border-radius: 8px` — explicit user exception)
 
 ## Build Setup
 
@@ -114,16 +114,24 @@ Phase 2 (later): scheduled scraper/fetcher replaces static hub.
 
 ## Current State
 
-- 2026-06-11: Data page visually refined and committed on main. Header is a CountrySnapshot carousel (one reusable component + carousel, N-country ready — new countries in indicators.json just work). Line chart: area gradients, dot-grid backdrop, crosshair tooltip, stats strip with country cells + range. BudgetPie: synced legend, hover lift/dim, pinned-centre drill-down. TopBar ticker: data-driven from the hub, scrolls with hover-pause. prefers-reduced-motion respected throughout.
+- 2026-06-13: feature/data-extraction merged to main. `data/almanac-data.json` now holds 254 records across 16 countries (TT, GY, BB, JM, BS, BZ, SR, GD, LC, AG, KN, DM, VC, TC, KY, VG). Full 25 indicators for TT/GY/BB/JM/BS; 12–14 indicators for the smaller ECCU/OFC countries (fiscal/monetary detail unavailable at primary tier). MS and AI not collected. Schema frozen in `data/SCHEMA.md`. Data page V2 live: budget country dropdown (data-driven), per-country XLSX export (4-sheet SheetJS workbook), CountrySnapshot redesigned as metric-card grid. `src/lib/almanacExport.ts` handles the export logic. SheetJS 0.18.5 added to package.json.
 
 ## Next Steps
 
 - Build Home page (DailyBriefing; bring RegionalChart up to the Data-page chart standard)
 - Build News, Publications, Deals pages
 - FDI and spending-vs-revenue views on Data page (mirror the budget treatment)
+- Non-AI deterministic D3 chart builder on /analysis (user confirmed this approach)
 - Commit each page as working increment
 
 ## Session Log
+
+### 2026-06-13 — Data page V2 + 18-country almanac merge
+- Sub-agent collected `almanac-data.json`: 254 records, 16 countries, hybrid sourcing (IMF/WB macro spine + primary fiscal for TT/GY/BB/JM/BS/KY). MS and AI absent (no accessible primary tier). Schema frozen in `data/SCHEMA.md`.
+- Budget section: data-driven country `<select>` (auto-discovers from budgets.json, defaults T&T). Single BudgetPie shown at a time.
+- Per-country XLSX export: `src/lib/almanacExport.ts` (4 sheets: Data + 3 chart-ready tables). SheetJS 0.18.5 (community build, no embedded charts — chart-ready tables instruct user to Insert→Chart). Dynamic import on click.
+- CountrySnapshot redesigned: responsive metric-card grid (auto-fit 190px), Lucide icons, `--gold` lead accent, `border-radius: 8px` (explicit exception). Flag guard prevents stray space in header.
+- Merge review: BB gross_govt_debt 2019–2023 and BS gross_govt_debt_pct_gdp 2024 annotated with sourceNote explaining GDP-base divergence (CBB/CBOB vs World Bank WDI). Flagged, not forced.
 
 ### 2026-06-11 — Data page visual refinement
 - TopBar ticker rebuilt: derived from dataHub (was hardcoded), "CC · Indicator value" pattern, superscript est flag, continuous scroll + hover-pause, reduced-motion static row
