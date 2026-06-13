@@ -33,6 +33,22 @@ const budgetEntries = getCountries()
 const defaultBudgetCode =
   budgetEntries.find(b => b.code === 'TT')?.code ?? budgetEntries[0]?.code ?? '';
 
+// ── Full 25-indicator dataset (read-only) for the per-country XLSX export ──
+// Owned by the data agent; we only read it to populate the export dropdown.
+import almanacData from '../../data/almanac-data.json';
+
+const COUNTRY_NAMES: Record<string, string> = {
+  TT: 'Trinidad & Tobago', GY: 'Guyana', BB: 'Barbados', JM: 'Jamaica',
+  BS: 'Bahamas', BZ: 'Belize', SR: 'Suriname', GD: 'Grenada', LC: 'Saint Lucia',
+  AG: 'Antigua & Barbuda', KN: 'Saint Kitts & Nevis', DM: 'Dominica',
+  VC: 'Saint Vincent & the Grenadines', MS: 'Montserrat', AI: 'Anguilla',
+  TC: 'Turks & Caicos', KY: 'Cayman Islands', VG: 'British Virgin Islands',
+};
+
+// Countries that currently have extended data, in canonical order
+const exportCountries = [...new Set(almanacData.map(r => r.country))]
+  .map(code => ({ code, name: COUNTRY_NAMES[code] ?? code }));
+
 // ── Country snapshots for the header carousel ──────────────────────────────
 // Lead indicator first; the rest render as supporting rows.
 const SNAPSHOT_INDICATORS = ['gdp_growth', 'inflation', 'govt_debt', 'fdi_inflows'];
@@ -145,6 +161,33 @@ const snapshots: CountrySnapshotData[] = getCountries().flatMap(c => {
       </div>
     </section>
 
+    <!-- ── Per-country dataset export ────────────────────────── -->
+    <section class="export-section">
+      <span class="eyebrow">Download</span>
+      <h2 class="section-heading">Export country dataset</h2>
+      <p class="section-sub">
+        Full 25-indicator time series (FY2015 onward) as an Excel workbook —
+        a Data sheet plus Nominal GDP, Real GDP, and Government Revenue chart sheets.
+      </p>
+
+      {exportCountries.length === 0 ? (
+        <p class="export-empty mono">No extended datasets available yet.</p>
+      ) : (
+        <div class="export-controls">
+          <label class="export-select-label">
+            <span class="mono">Country</span>
+            <select id="export-country-select" class="export-select" aria-label="Select a country to export">
+              {exportCountries.map(c => <option value={c.code}>{c.name}</option>)}
+            </select>
+          </label>
+          <button id="export-xlsx-btn" class="export-xlsx-btn mono" type="button">
+            Download .xlsx
+          </button>
+          <span id="export-status" class="export-status mono" role="status" aria-live="polite"></span>
+        </div>
+      )}
+    </section>
+
   </div>
 </Shell>
 
@@ -232,6 +275,67 @@ const snapshots: CountrySnapshotData[] = getCountries().flatMap(c => {
   @media (max-width: 820px) {
     .budget-select { width: 100%; }
   }
+
+  /* ── Export section ─────────────────────────────────────── */
+  .export-controls {
+    display: flex;
+    align-items: flex-end;
+    gap: var(--gap-md);
+    flex-wrap: wrap;
+    margin-top: 4px;
+  }
+  .export-select-label { display: flex; flex-direction: column; gap: 6px; }
+  .export-select-label .mono {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+  .export-select {
+    appearance: none;
+    -webkit-appearance: none;
+    border: 1px solid var(--line);
+    border-radius: 0;
+    background-color: var(--card);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 15px;
+    font-weight: 500;
+    padding: 9px 38px 9px 13px;
+    min-width: 220px;
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%230F231E'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+  }
+  .export-select:hover { border-color: var(--ink-faint); }
+  .export-select:focus-visible,
+  .export-xlsx-btn:focus-visible {
+    outline: 2px solid var(--teal);
+    outline-offset: 1px;
+    border-color: var(--teal);
+  }
+  .export-xlsx-btn {
+    border: 1px solid var(--teal);
+    border-radius: 0;
+    background-color: var(--teal);
+    color: var(--paper);
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 11px 20px;
+    cursor: pointer;
+    transition: background-color 120ms ease;
+  }
+  .export-xlsx-btn:hover { background-color: var(--teal-deep); }
+  .export-xlsx-btn[disabled] { opacity: 0.5; cursor: default; }
+  .export-status { font-size: 12px; color: var(--ink-soft); }
+  .export-empty  { font-size: 13px; color: var(--ink-faint); }
+
+  @media (max-width: 820px) {
+    .export-select, .export-xlsx-btn { width: 100%; }
+  }
 </style>
 
 <script>
@@ -245,5 +349,32 @@ const snapshots: CountrySnapshotData[] = getCountries().flatMap(c => {
     panels.forEach(panel => {
       panel.hidden = panel.dataset.budgetCountry !== select.value;
     });
+  });
+
+  // Per-country XLSX export. SheetJS + the dataset are dynamically imported
+  // on click so they don't weigh down the initial page load.
+  const exportSelect = document.getElementById('export-country-select') as HTMLSelectElement | null;
+  const exportBtn    = document.getElementById('export-xlsx-btn') as HTMLButtonElement | null;
+  const exportStatus = document.getElementById('export-status');
+
+  exportBtn?.addEventListener('click', async () => {
+    if (!exportSelect) return;
+    const code = exportSelect.value;
+    const name = exportSelect.selectedOptions[0]?.textContent?.trim() ?? code;
+    exportBtn.disabled = true;
+    if (exportStatus) exportStatus.textContent = 'Building workbook…';
+    try {
+      const [{ exportCountryXLSX }, data] = await Promise.all([
+        import('../lib/almanacExport'),
+        import('../../data/almanac-data.json'),
+      ]);
+      const ok = exportCountryXLSX(data.default as any, code, name);
+      if (exportStatus) exportStatus.textContent = ok ? `Downloaded ${name}.` : 'No data for that country.';
+    } catch (err) {
+      console.error('XLSX export failed', err);
+      if (exportStatus) exportStatus.textContent = 'Export failed — see console.';
+    } finally {
+      exportBtn.disabled = false;
+    }
   });
 </script>
