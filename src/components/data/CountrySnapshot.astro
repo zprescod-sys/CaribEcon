@@ -1,7 +1,7 @@
 ---
-// Reusable per-country snapshot card: country header, lead GDP figure,
-// supporting indicators, source line. Rendered once per country by the
-// carousel — data is pre-computed in data.astro from the data hub.
+// Reusable per-country snapshot: country header + a grid of hard-edged metric
+// cards (title, topic icon, value, colored trend). Rendered once per country by
+// the carousel — data is pre-computed in data.astro from the data hub.
 
 export interface SnapshotRow {
   label: string;            // "Real GDP Growth"
@@ -28,75 +28,80 @@ interface Props {
 }
 
 const { snapshot } = Astro.props;
-const { lead } = snapshot;
+
+// One flat list of metrics; the first (lead) gets the emphasis treatment.
+const metrics = [snapshot.lead, ...snapshot.rows];
 
 // Arrow glyph for a delta direction
-const arrow = (dir: 'pos' | 'neg' | null) => dir === 'pos' ? '▲' : dir === 'neg' ? '▼' : '';
+const arrow = (dir: 'pos' | 'neg' | null) => dir === 'pos' ? '▲' : dir === 'neg' ? '▼' : '–';
+
+// Lucide-style topic icon picked from the indicator label. Returns the inner
+// SVG markup (stroked, 24-viewBox) so it inherits currentColor.
+function iconFor(label: string): string {
+  const l = label.toLowerCase();
+  if (l.includes('gdp') || l.includes('growth'))
+    return '<polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/>';
+  if (l.includes('inflation') || l.includes('cpi') || l.includes('price'))
+    return '<line x1="19" y1="5" x2="5" y2="19"/><circle cx="6.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/>';
+  if (l.includes('debt') || l.includes('fiscal') || l.includes('revenue'))
+    return '<line x1="3" y1="22" x2="21" y2="22"/><line x1="6" y1="18" x2="6" y2="11"/><line x1="10" y1="18" x2="10" y2="11"/><line x1="14" y1="18" x2="14" y2="11"/><line x1="18" y1="18" x2="18" y2="11"/><polygon points="12 2 20 7 4 7"/>';
+  if (l.includes('fdi') || l.includes('investment') || l.includes('trade'))
+    return '<circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>';
+  if (l.includes('unemploy') || l.includes('labour') || l.includes('labor') || l.includes('population'))
+    return '<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>';
+  return '<line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/>';
+}
 ---
 
 <article class="country-snapshot" aria-label={`${snapshot.name} key statistics`}>
-  <div class="snap-lead-col">
-    <header class="snap-head">
-      <span class="snap-flag" aria-hidden="true">{snapshot.flag}</span>
-      <h2 class="snap-name">{snapshot.name}</h2>
-    </header>
+  <header class="snap-head">
+    {snapshot.flag && <span class="snap-flag" aria-hidden="true">{snapshot.flag}</span>}
+    <h2 class="snap-name">{snapshot.name}</h2>
+  </header>
 
-    <div class="snap-lead">
-      <span class="snap-label mono">{lead.label} ({lead.year})</span>
-      <div class="snap-lead-row">
-        <span class="snap-lead-value">{lead.value}</span>
-        {lead.delta && (
-          <span class={`snap-delta mono ${lead.deltaDir}`}>
-            {arrow(lead.deltaDir)} {lead.delta}
-            {lead.vsYear && <span class="snap-vs">vs {lead.vsYear}</span>}
-          </span>
-        )}
-      </div>
-      {lead.flag && <span class="snap-type-flag mono">{lead.flag}</span>}
-    </div>
+  <div class="metric-grid">
+    {metrics.map((m, i) => (
+      <div class={`metric-card ${i === 0 ? 'lead' : ''}`}>
+        <div class="metric-head">
+          <span class="metric-title mono">{m.label}</span>
+          <svg class="metric-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"
+               aria-hidden="true" set:html={iconFor(m.label)} />
+        </div>
 
-    <footer class="snap-source mono">Source: {snapshot.sources}</footer>
-  </div>
+        <div class="metric-value">
+          {m.value}{m.unitSuffix && <span class="metric-unit mono"> {m.unitSuffix}</span>}
+        </div>
 
-  <div class="snap-rows">
-    {snapshot.rows.map(row => (
-      <div class="snap-row">
-        <span class="snap-label mono">{row.label} ({row.year})</span>
-        <div class="snap-row-data">
-          <span class="snap-row-value">
-            {row.value}{row.unitSuffix && <span class="snap-unit mono"> {row.unitSuffix}</span>}
-          </span>
-          {row.delta && (
-            <span class={`snap-delta mono sm ${row.deltaDir}`}>
-              {arrow(row.deltaDir)} {row.delta}
-              {row.vsYear && <span class="snap-vs">vs {row.vsYear}</span>}
+        <div class="metric-foot">
+          {m.delta ? (
+            <span class={`metric-trend mono ${m.deltaDir}`}>
+              <span class="metric-arrow">{arrow(m.deltaDir)}</span> {m.delta}
+              {m.vsYear && <span class="metric-vs">vs {m.vsYear}</span>}
             </span>
+          ) : (
+            <span class="metric-trend mono none">{m.year}</span>
           )}
-          {row.flag && <span class="snap-type-flag mono">{row.flag}</span>}
+          {m.flag && <span class="metric-type-flag mono">{m.flag}</span>}
         </div>
       </div>
     ))}
   </div>
+
+  <footer class="snap-source mono">Source: {snapshot.sources}</footer>
 </article>
 
 <style>
-  .country-snapshot {
-    display: grid;
-    grid-template-columns: minmax(220px, 1fr) minmax(280px, 1.4fr);
-    gap: 12px 48px;
-    padding: 20px 4px;
-    align-items: start;
-  }
+  .country-snapshot { padding: 20px 0 8px; }
 
+  /* ── Country header ──────────────────────────────────────── */
   .snap-head {
     display: flex;
     align-items: center;
     gap: 10px;
-    margin-bottom: 14px;
+    margin-bottom: 16px;
   }
-
-  .snap-flag { font-size: 18px; line-height: 1; }
-
+  .snap-flag { font-size: 20px; line-height: 1; }
   .snap-name {
     font-family: var(--font-display);
     font-size: 22px;
@@ -104,52 +109,86 @@ const arrow = (dir: 'pos' | 'neg' | null) => dir === 'pos' ? '▲' : dir === 'ne
     letter-spacing: -0.01em;
   }
 
-  .snap-label {
-    display: block;
+  /* ── Metric card grid ────────────────────────────────────── */
+  .metric-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    gap: 12px;
+  }
+
+  .metric-card {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 16px;
+    background-color: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    /* lift on hover — translate + border shift only; no soft shadow (per system) */
+    transition: transform 150ms ease, border-color 150ms ease;
+  }
+  .metric-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--ink-faint);
+  }
+  /* Lead metric carries the gold signal accent */
+  .metric-card.lead { border-top: 3px solid var(--gold); }
+
+  .metric-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+  }
+  .metric-title {
     font-size: 10px;
     letter-spacing: 0.06em;
     text-transform: uppercase;
     color: var(--ink-faint);
-    margin-bottom: 4px;
+    line-height: 1.3;
   }
+  .metric-icon { width: 16px; height: 16px; color: var(--ink-faint); flex-shrink: 0; }
 
-  .snap-lead-row {
-    display: flex;
-    align-items: baseline;
-    gap: 12px;
-    flex-wrap: wrap;
-  }
-
-  .snap-lead-value {
+  .metric-value {
     font-family: var(--font-display);
-    font-size: 44px;
+    font-size: 26px;
     font-weight: 800;
     line-height: 1;
     color: var(--ink);
     font-variant-numeric: tabular-nums;
   }
+  .metric-card.lead .metric-value { font-size: 38px; }
 
-  .snap-delta {
-    font-size: 12px;
+  .metric-unit {
+    font-size: 10px;
+    color: var(--ink-faint);
+    font-weight: 400;
+  }
+
+  .metric-foot {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: auto;
+  }
+  .metric-trend {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 11px;
     font-weight: 500;
     font-variant-numeric: tabular-nums;
     white-space: nowrap;
   }
-
-  .snap-delta.sm { font-size: 11px; }
-  .snap-delta.pos { color: var(--pos); }
-  .snap-delta.neg { color: var(--neg); }
-
-  .snap-vs {
-    color: var(--ink-faint);
-    font-weight: 400;
-    margin-left: 4px;
-  }
+  .metric-arrow { font-size: 9px; }
+  .metric-trend.pos { color: var(--pos); }
+  .metric-trend.neg { color: var(--neg); }
+  .metric-trend.none { color: var(--ink-faint); font-weight: 400; }
+  .metric-vs { color: var(--ink-faint); font-weight: 400; margin-left: 2px; }
 
   /* Quiet data flag — reads as metadata, not a control */
-  .snap-type-flag {
-    display: inline-block;
-    margin-top: 6px;
+  .metric-type-flag {
     font-size: 9px;
     letter-spacing: 0.08em;
     text-transform: lowercase;
@@ -162,47 +201,12 @@ const arrow = (dir: 'pos' | 'neg' | null) => dir === 'pos' ? '▲' : dir === 'ne
     color: var(--ink-faint);
   }
 
-  .snap-rows {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .snap-row {
-    padding: 9px 0;
-    border-top: 1px solid var(--line);
-  }
-
-  .snap-row:first-child { border-top: none; padding-top: 2px; }
-
-  .snap-row-data {
-    display: flex;
-    align-items: baseline;
-    gap: 12px;
-    flex-wrap: wrap;
-  }
-
-  .snap-row .snap-label { margin-bottom: 2px; }
-
-  .snap-row .snap-type-flag { margin-top: 0; }
-
-  .snap-row-value {
-    font-family: var(--font-display);
-    font-size: 18px;
-    font-weight: 700;
-    line-height: 1.1;
-    color: var(--ink);
-    font-variant-numeric: tabular-nums;
-  }
-
-  .snap-unit {
-    font-size: 10px;
-    color: var(--ink-faint);
-    font-weight: 400;
+  @media (prefers-reduced-motion: reduce) {
+    .metric-card { transition: none; }
+    .metric-card:hover { transform: none; }
   }
 
   @media (max-width: 700px) {
-    .country-snapshot { grid-template-columns: 1fr; }
-    .snap-lead-value { font-size: 36px; }
-    .snap-source { margin-top: 8px; }
+    .metric-card.lead .metric-value { font-size: 32px; }
   }
 </style>
