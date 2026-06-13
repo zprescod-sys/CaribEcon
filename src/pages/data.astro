@@ -12,12 +12,26 @@ import {
   getSeries,
   getIndicatorAllCountries,
   getBudget,
+  getBudgetYears,
 } from '../lib/dataHub';
 
 // Initial data: all series for the default indicator across all countries
 const allSeries = getIndicatorAllCountries('gdp_growth');
-const gyBudget  = getBudget('GY', 2024);
-const ttBudget  = getBudget('TT', 2024);
+
+// ── Budgets available in the hub ───────────────────────────────────────────
+// One entry per country that has budget data, using its latest year. Adding a
+// country's budget to budgets.json automatically adds it to the dropdown.
+const budgetEntries = getCountries()
+  .map(c => {
+    const years = getBudgetYears(c.code);     // descending; [0] is latest
+    const budget = years.length ? getBudget(c.code, years[0]) : null;
+    return budget ? { code: c.code, name: c.name, budget } : null;
+  })
+  .filter((b): b is NonNullable<typeof b> => b !== null);
+
+// Default to Trinidad & Tobago when present, else the first available country
+const defaultBudgetCode =
+  budgetEntries.find(b => b.code === 'TT')?.code ?? budgetEntries[0]?.code ?? '';
 
 // ── Country snapshots for the header carousel ──────────────────────────────
 // Lead indicator first; the rest render as supporting rows.
@@ -104,13 +118,30 @@ const snapshots: CountrySnapshotData[] = getCountries().flatMap(c => {
 
     <!-- ── Budget section (tinted band) ─────────────────────── -->
     <section class="budget-section">
-      <span class="eyebrow">Budget Breakdown</span>
-      <h2 class="section-heading">2024 Budget Allocation</h2>
-      <p class="section-sub">Click any segment to see key projects and initiatives.</p>
+      <div class="budget-section-head">
+        <div>
+          <span class="eyebrow">Budget Breakdown</span>
+          <h2 class="section-heading">Budget Allocation</h2>
+          <p class="section-sub">Select a country, then click any segment to see key projects and initiatives.</p>
+        </div>
 
-      <div class="two-col budget-grid">
-        {gyBudget  && <BudgetPie budget={gyBudget}  />}
-        {ttBudget  && <BudgetPie budget={ttBudget}  />}
+        <label class="budget-select-label">
+          <span class="mono">Country</span>
+          <select id="budget-country-select" class="budget-select" aria-label="Select a country's budget">
+            {budgetEntries.map(b => (
+              <option value={b.code} selected={b.code === defaultBudgetCode}>{b.name}</option>
+            ))}
+          </select>
+        </label>
+      </div>
+
+      <!-- One pie per country; only the selected one is shown. -->
+      <div class="budget-stack">
+        {budgetEntries.map(b => (
+          <div class="budget-panel" data-budget-country={b.code} hidden={b.code !== defaultBudgetCode}>
+            <BudgetPie budget={b.budget} countryName={b.name} />
+          </div>
+        ))}
       </div>
     </section>
 
@@ -146,13 +177,73 @@ const snapshots: CountrySnapshotData[] = getCountries().flatMap(c => {
     border-top: 1px solid var(--line);
   }
 
-  .budget-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+  /* Section head: heading on the left, country dropdown on the right */
+  .budget-section-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
     gap: var(--gap-md);
+    flex-wrap: wrap;
+    margin-bottom: 24px;
+  }
+  .budget-section-head .section-sub { margin-bottom: 0; }
+
+  .budget-select-label {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .budget-select-label .mono {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
   }
 
+  /* Hard-edged select matching the design system (no rounded corners) */
+  .budget-select {
+    appearance: none;
+    -webkit-appearance: none;
+    border: 1px solid var(--line);
+    border-radius: 0;
+    background-color: var(--paper-warm);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 15px;
+    font-weight: 500;
+    padding: 9px 38px 9px 13px;
+    min-width: 220px;
+    cursor: pointer;
+    /* caret drawn with a background SVG so we control its shape/color */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%230F231E'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+  }
+  .budget-select:hover { border-color: var(--ink-faint); }
+  .budget-select:focus-visible {
+    outline: 2px solid var(--teal);
+    outline-offset: 1px;
+    border-color: var(--teal);
+  }
+
+  .budget-panel[hidden] { display: none; }
+
   @media (max-width: 820px) {
-    .budget-grid { grid-template-columns: 1fr; }
+    .budget-select { width: 100%; }
   }
 </style>
+
+<script>
+  // Budget country dropdown: show only the selected country's pie panel.
+  // Each BudgetPie already initialised its own D3 on load, so toggling
+  // visibility is all that's needed.
+  const select = document.getElementById('budget-country-select') as HTMLSelectElement | null;
+  const panels = Array.from(document.querySelectorAll<HTMLElement>('.budget-panel'));
+
+  select?.addEventListener('change', () => {
+    panels.forEach(panel => {
+      panel.hidden = panel.dataset.budgetCountry !== select.value;
+    });
+  });
+</script>

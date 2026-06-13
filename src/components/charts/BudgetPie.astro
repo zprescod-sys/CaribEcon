@@ -7,9 +7,12 @@ import type { BudgetEntry } from '../../lib/types';
 
 interface Props {
   budget: BudgetEntry;
+  /** Display name for the country; falls back to the country code if omitted. */
+  countryName?: string;
 }
 
-const { budget } = Astro.props;
+const { budget, countryName } = Astro.props;
+const displayName = countryName ?? budget.country;
 const budgetJSON = JSON.stringify(budget);
 ---
 
@@ -17,7 +20,7 @@ const budgetJSON = JSON.stringify(budget);
   <div class="budget-pie-header">
     <div>
       <span class="eyebrow">Budget {budget.fiscalYear ?? budget.year}</span>
-      <h3 class="budget-title">{budget.country === 'GY' ? 'Guyana' : 'Trinidad & Tobago'} — Budget Allocation</h3>
+      <h3 class="budget-title">{displayName} — Budget Allocation</h3>
     </div>
     <div class="source-line">
       <span>Source:</span>
