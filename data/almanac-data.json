@@ -16626,5 +16626,351 @@
       }
     ],
     "seriesNote": "[FALLBACK — IMF] Level derived from WEO overall-balance ratio × nominal GDP."
+  },
+  {
+    "country": "KY",
+    "indicator": "govt_revenue_total",
+    "indicatorLabel": "Government Total Revenue",
+    "unit": "CI$ mn",
+    "unitNote": "Core government revenue, calendar year",
+    "source": "Cayman Islands Treasury Dept — via ESO Annual Economic Report 2023, Table A27",
+    "sourceOrg": "Cayman Islands ESO / Treasury",
+    "sourceTier": "primary",
+    "sourceUrl": "https://www.eso.ky/storage/page_docums/uploadFilePdf/805/The%20Cayman%20Islands%20Annual%20Economic%20Report%202023_Final.pdf",
+    "sourceRef": "Table A27, Revenue",
+    "confidence": "high",
+    "series": [
+      {
+        "year": 2015,
+        "value": 672.7,
+        "type": "actual",
+        "vintage": "2024"
+      },
+      {
+        "year": 2016,
+        "value": 705.9,
+        "type": "actual",
+        "vintage": "2024"
+      },
+      {
+        "year": 2017,
+        "value": 753.2,
+        "type": "actual",
+        "vintage": "2024"
+      },
+      {
+        "year": 2018,
+        "value": 830.2,
+        "type": "actual",
+        "vintage": "2024"
+      },
+      {
+        "year": 2019,
+        "value": 860.0,
+        "type": "actual",
+        "vintage": "2024"
+      },
+      {
+        "year": 2020,
+        "value": 797.4,
+        "type": "actual",
+        "vintage": "2024"
+      },
+      {
+        "year": 2021,
+        "value": 961.1,
+        "type": "actual",
+        "vintage": "2024"
+      },
+      {
+        "year": 2022,
+        "value": 1021.3,
+        "type": "actual",
+        "vintage": "2024"
+      },
+      {
+        "year": 2023,
+        "value": 1060.1,
+        "type": "actual",
+        "vintage": "2024"
+      }
+    ]
+  },
+  {
+    "country": "KY",
+    "indicator": "govt_current_expenditure",
+    "indicatorLabel": "Government Current Expenditure",
+    "unit": "CI$ mn",
+    "unitNote": "Operating expense, calendar year",
+    "source": "Cayman Islands Treasury Dept — via ESO Annual Economic Report 2023, Table A27",
+    "sourceOrg": "Cayman Islands ESO / Treasury",
+    "sourceTier": "primary",
+    "sourceUrl": "https://www.eso.ky/storage/page_docums/uploadFilePdf/805/The%20Cayman%20Islands%20Annual%20Economic%20Report%202023_Final.pdf",
+    "sourceRef": "Table A27, Expense",
+    "confidence": "high",
+    "series": [
+      {
+        "year": 2015,
+        "value": 545.0,
+        "type": "actual",
+        "vintage": "2024"
+      },
+      {
+        "year": 2016,
+        "value": 585.8,
+        "type": "actual",
+        "vintage": "2024"
+      },
+      {
+        "year": 2017,
+        "value": 586.4,
+        "type": "actual",
+        "vintage": "2024"
+      },
+      {
+        "year": 2018,
+        "value": 652.6,
+        "type": "actual",
+        "vintage": "2024"
+      },
+      {
+        "year": 2019,
+        "value": 731.4,
+        "type": "actual",
+        "vintage": "2024"
+      },
+      {
+        "year": 2020,
+        "value": 858.4,
+        "type": "actual",
+        "vintage": "2024"
+      },
+      {
+        "year": 2021,
+        "value": 979.2,
+        "type": "actual",
+        "vintage": "2024"
+      },
+      {
+        "year": 2022,
+        "value": 966.6,
+        "type": "actual",
+        "vintage": "2024"
+      },
+      {
+        "year": 2023,
+        "value": 1024.3,
+        "type": "actual",
+        "vintage": "2024"
+      }
+    ]
+  },
+  {
+    "country": "KY",
+    "indicator": "govt_capital_expenditure",
+    "indicatorLabel": "Government Capital Expenditure",
+    "unit": "CI$ mn",
+    "unitNote": "Net investment in non-financial assets",
+    "source": "Cayman Islands Treasury Dept — via ESO Annual Economic Report 2023, Table A27",
+    "sourceOrg": "Cayman Islands ESO / Treasury",
+    "sourceTier": "primary",
+    "sourceUrl": "https://www.eso.ky/storage/page_docums/uploadFilePdf/805/The%20Cayman%20Islands%20Annual%20Economic%20Report%202023_Final.pdf",
+    "sourceRef": "Table A27, Net Investment in Non-Financial Assets",
+    "confidence": "high",
+    "series": [
+      {
+        "year": 2015,
+        "value": 11.2,
+        "type": "actual",
+        "vintage": "2024"
+      },
+      {
+        "year": 2016,
+        "value": 19.2,
+        "type": "actual",
+        "vintage": "2024"
+      },
+      {
+        "year": 2017,
+        "value": 36.1,
+        "type": "actual",
+        "vintage": "2024"
+      },
+      {
+        "year": 2018,
+        "value": 43.9,
+        "type": "actual",
+        "vintage": "2024"
+      },
+      {
+        "year": 2019,
+        "value": 26.6,
+        "type": "actual",
+        "vintage": "2024"
+      },
+      {
+        "year": 2020,
+        "value": 35.8,
+        "type": "actual",
+        "vintage": "2024"
+      },
+      {
+        "year": 2021,
+        "value": 99.1,
+        "type": "actual",
+        "vintage": "2024"
+      },
+      {
+        "year": 2022,
+        "value": 50.7,
+        "type": "actual",
+        "vintage": "2024"
+      },
+      {
+        "year": 2023,
+        "value": 98.6,
+        "type": "actual",
+        "vintage": "2024"
+      }
+    ]
+  },
+  {
+    "country": "KY",
+    "indicator": "govt_total_expenditure",
+    "indicatorLabel": "Government Total Expenditure",
+    "unit": "CI$ mn",
+    "unitNote": "Total expenditure (operating + capital)",
+    "source": "Cayman Islands Treasury Dept — via ESO Annual Economic Report 2023, Table A27",
+    "sourceOrg": "Cayman Islands ESO / Treasury",
+    "sourceTier": "primary",
+    "sourceUrl": "https://www.eso.ky/storage/page_docums/uploadFilePdf/805/The%20Cayman%20Islands%20Annual%20Economic%20Report%202023_Final.pdf",
+    "sourceRef": "Table A27, Expenditure",
+    "confidence": "high",
+    "series": [
+      {
+        "year": 2015,
+        "value": 556.2,
+        "type": "actual",
+        "vintage": "2024"
+      },
+      {
+        "year": 2016,
+        "value": 605.0,
+        "type": "actual",
+        "vintage": "2024"
+      },
+      {
+        "year": 2017,
+        "value": 622.5,
+        "type": "actual",
+        "vintage": "2024"
+      },
+      {
+        "year": 2018,
+        "value": 696.6,
+        "type": "actual",
+        "vintage": "2024"
+      },
+      {
+        "year": 2019,
+        "value": 758.1,
+        "type": "actual",
+        "vintage": "2024"
+      },
+      {
+        "year": 2020,
+        "value": 894.2,
+        "type": "actual",
+        "vintage": "2024"
+      },
+      {
+        "year": 2021,
+        "value": 1078.3,
+        "type": "actual",
+        "vintage": "2024"
+      },
+      {
+        "year": 2022,
+        "value": 1017.4,
+        "type": "actual",
+        "vintage": "2024"
+      },
+      {
+        "year": 2023,
+        "value": 1122.9,
+        "type": "actual",
+        "vintage": "2024"
+      }
+    ],
+    "seriesNote": "Cross-check: Revenue − Total Expenditure = Net Lending/Borrowing (holds every year)."
+  },
+  {
+    "country": "KY",
+    "indicator": "fiscal_balance",
+    "indicatorLabel": "Fiscal Balance (overall)",
+    "unit": "CI$ mn",
+    "unitNote": "Net lending(+)/borrowing(-)",
+    "source": "Cayman Islands Treasury Dept — via ESO Annual Economic Report 2023, Table A27",
+    "sourceOrg": "Cayman Islands ESO / Treasury",
+    "sourceTier": "primary",
+    "sourceUrl": "https://www.eso.ky/storage/page_docums/uploadFilePdf/805/The%20Cayman%20Islands%20Annual%20Economic%20Report%202023_Final.pdf",
+    "sourceRef": "Table A27, Net Lending/Net Borrowing",
+    "confidence": "high",
+    "series": [
+      {
+        "year": 2015,
+        "value": 116.5,
+        "type": "actual",
+        "vintage": "2024"
+      },
+      {
+        "year": 2016,
+        "value": 101.0,
+        "type": "actual",
+        "vintage": "2024"
+      },
+      {
+        "year": 2017,
+        "value": 130.7,
+        "type": "actual",
+        "vintage": "2024"
+      },
+      {
+        "year": 2018,
+        "value": 133.6,
+        "type": "actual",
+        "vintage": "2024"
+      },
+      {
+        "year": 2019,
+        "value": 101.9,
+        "type": "actual",
+        "vintage": "2024"
+      },
+      {
+        "year": 2020,
+        "value": -96.9,
+        "type": "actual",
+        "vintage": "2024"
+      },
+      {
+        "year": 2021,
+        "value": -117.2,
+        "type": "actual",
+        "vintage": "2024"
+      },
+      {
+        "year": 2022,
+        "value": 3.9,
+        "type": "actual",
+        "vintage": "2024"
+      },
+      {
+        "year": 2023,
+        "value": -62.8,
+        "type": "actual",
+        "vintage": "2024"
+      }
+    ]
   }
 ]
