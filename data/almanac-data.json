@@ -14296,5 +14296,500 @@
         "sourceNote": "[PENDING] CBB publishes gross public sector debt; a net figure would come from IMF Article IV."
       }
     ]
+  },
+  {
+    "country": "JM",
+    "indicator": "govt_revenue_total",
+    "indicatorLabel": "Government Total Revenue",
+    "unit": "J$ mn",
+    "unitNote": "Revenue & grants. Fiscal year Apr-Mar, labelled by starting calendar year.",
+    "source": "Government of Jamaica — Fiscal Policy Paper 2024, Table 3G (Central Government Summary Accounts)",
+    "sourceOrg": "Ministry of Finance (Jamaica)",
+    "sourceTier": "primary",
+    "sourceUrl": "https://www.mof.gov.jm/wp-content/uploads/FPP-2024-Final.pdf",
+    "sourceRef": "FPP2024 Table 3G, Revenue & Grants",
+    "confidence": "high",
+    "series": [
+      {
+        "year": 2020,
+        "value": 575401.1,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2021,
+        "value": 720224.5,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2022,
+        "value": 827775.1,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2023,
+        "value": 947666.3,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2024,
+        "value": 1033594.6,
+        "type": "estimate",
+        "vintage": "2025",
+        "sourceNote": "FY2024/25 budget (Proj.)."
+      }
+    ]
+  },
+  {
+    "country": "JM",
+    "indicator": "govt_current_expenditure",
+    "indicatorLabel": "Government Current Expenditure",
+    "unit": "J$ mn",
+    "unitNote": "Recurrent expenditure (incl. interest). Fiscal year Apr-Mar, labelled by starting calendar year.",
+    "source": "Government of Jamaica — Fiscal Policy Paper 2024, Table 3G (Central Government Summary Accounts)",
+    "sourceOrg": "Ministry of Finance (Jamaica)",
+    "sourceTier": "primary",
+    "sourceUrl": "https://www.mof.gov.jm/wp-content/uploads/FPP-2024-Final.pdf",
+    "sourceRef": "FPP2024 Table 3G, Recurrent Expenditure",
+    "confidence": "high",
+    "series": [
+      {
+        "year": 2020,
+        "value": 586727.2,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2021,
+        "value": 648385.4,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2022,
+        "value": 766804.5,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2023,
+        "value": 879496.7,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2024,
+        "value": 943725.2,
+        "type": "estimate",
+        "vintage": "2025",
+        "sourceNote": "FY2024/25 budget (Proj.)."
+      }
+    ]
+  },
+  {
+    "country": "JM",
+    "indicator": "govt_capital_expenditure",
+    "indicatorLabel": "Government Capital Expenditure",
+    "unit": "J$ mn",
+    "unitNote": "Capital expenditure (= Expenditure − Recurrent). Fiscal year Apr-Mar, labelled by starting calendar year.",
+    "source": "Government of Jamaica — Fiscal Policy Paper 2024, Table 3G (Central Government Summary Accounts)",
+    "sourceOrg": "Ministry of Finance (Jamaica)",
+    "sourceTier": "primary",
+    "sourceUrl": "https://www.mof.gov.jm/wp-content/uploads/FPP-2024-Final.pdf",
+    "sourceRef": "Derived: FPP2024 Table 3G Expenditure − Recurrent Expenditure",
+    "confidence": "high",
+    "series": [
+      {
+        "year": 2020,
+        "value": 49184.1,
+        "type": "derived",
+        "vintage": "2025"
+      },
+      {
+        "year": 2021,
+        "value": 50510.2,
+        "type": "derived",
+        "vintage": "2025"
+      },
+      {
+        "year": 2022,
+        "value": 53184.5,
+        "type": "derived",
+        "vintage": "2025"
+      },
+      {
+        "year": 2023,
+        "value": 59027.3,
+        "type": "derived",
+        "vintage": "2025"
+      },
+      {
+        "year": 2024,
+        "value": 80000.0,
+        "type": "derived",
+        "vintage": "2025"
+      }
+    ]
+  },
+  {
+    "country": "JM",
+    "indicator": "govt_total_expenditure",
+    "indicatorLabel": "Government Total Expenditure",
+    "unit": "J$ mn",
+    "unitNote": "Above-the-line expenditure (recurrent + capital). Fiscal year Apr-Mar, labelled by starting calendar year.",
+    "source": "Government of Jamaica — Fiscal Policy Paper 2024, Table 3G (Central Government Summary Accounts)",
+    "sourceOrg": "Ministry of Finance (Jamaica)",
+    "sourceTier": "primary",
+    "sourceUrl": "https://www.mof.gov.jm/wp-content/uploads/FPP-2024-Final.pdf",
+    "sourceRef": "FPP2024 Table 3G, Expenditure",
+    "confidence": "high",
+    "series": [
+      {
+        "year": 2020,
+        "value": 635911.3,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2021,
+        "value": 698895.6,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2022,
+        "value": 819989.0,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2023,
+        "value": 938524.0,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2024,
+        "value": 1023725.2,
+        "type": "estimate",
+        "vintage": "2025",
+        "sourceNote": "FY2024/25 budget (Proj.)."
+      }
+    ],
+    "seriesNote": "Cross-check: Revenue & Grants − Expenditure = Fiscal Balance (holds; e.g. FY2024/25 9,869.4 = 0.3% GDP)."
+  },
+  {
+    "country": "JM",
+    "indicator": "fiscal_balance",
+    "indicatorLabel": "Fiscal Balance (overall)",
+    "unit": "J$ mn",
+    "unitNote": "Above-the-line fiscal balance (Revenue − Expenditure). Fiscal year Apr-Mar, labelled by starting calendar year.",
+    "source": "Government of Jamaica — Fiscal Policy Paper 2024, Table 3G (Central Government Summary Accounts)",
+    "sourceOrg": "Ministry of Finance (Jamaica)",
+    "sourceTier": "primary",
+    "sourceUrl": "https://www.mof.gov.jm/wp-content/uploads/FPP-2024-Final.pdf",
+    "sourceRef": "Derived: FPP2024 Table 3G Revenue & Grants − Expenditure",
+    "confidence": "high",
+    "series": [
+      {
+        "year": 2020,
+        "value": -60510.2,
+        "type": "derived",
+        "vintage": "2025"
+      },
+      {
+        "year": 2021,
+        "value": 21328.9,
+        "type": "derived",
+        "vintage": "2025"
+      },
+      {
+        "year": 2022,
+        "value": 7786.1,
+        "type": "derived",
+        "vintage": "2025"
+      },
+      {
+        "year": 2023,
+        "value": 9142.3,
+        "type": "derived",
+        "vintage": "2025"
+      },
+      {
+        "year": 2024,
+        "value": 9869.4,
+        "type": "derived",
+        "vintage": "2025"
+      }
+    ]
+  },
+  {
+    "country": "JM",
+    "indicator": "primary_balance",
+    "indicatorLabel": "Primary Balance",
+    "unit": "J$ mn",
+    "unitNote": "Fiscal balance plus interest. Fiscal year Apr-Mar, labelled by starting calendar year.",
+    "source": "Government of Jamaica — Fiscal Policy Paper 2024, Table 3G (Central Government Summary Accounts)",
+    "sourceOrg": "Ministry of Finance (Jamaica)",
+    "sourceTier": "primary",
+    "sourceUrl": "https://www.mof.gov.jm/wp-content/uploads/FPP-2024-Final.pdf",
+    "sourceRef": "Derived: FPP2024 Table 3G Fiscal Balance + Interest",
+    "confidence": "high",
+    "series": [
+      {
+        "year": 2020,
+        "value": 68527.7,
+        "type": "derived",
+        "vintage": "2025"
+      },
+      {
+        "year": 2021,
+        "value": 158376.7,
+        "type": "derived",
+        "vintage": "2025"
+      },
+      {
+        "year": 2022,
+        "value": 159161.1,
+        "type": "derived",
+        "vintage": "2025"
+      },
+      {
+        "year": 2023,
+        "value": 181870.0,
+        "type": "derived",
+        "vintage": "2025"
+      },
+      {
+        "year": 2024,
+        "value": 183698.1,
+        "type": "derived",
+        "vintage": "2025",
+        "sourceNote": "FY2024/25 primary surplus 183,698 ≈ FPP narrative J$183.7bn / 5.6% GDP (cross-check)."
+      }
+    ]
+  },
+  {
+    "country": "JM",
+    "indicator": "current_account",
+    "indicatorLabel": "Current Account Balance (BoP)",
+    "unit": "US$ mn",
+    "unitNote": "Balance of payments current account",
+    "source": "IMF World Economic Outlook (DataMapper)",
+    "sourceOrg": "IMF WEO",
+    "sourceTier": "fallback",
+    "sourceUrl": "https://www.imf.org/external/datamapper/BCA/JAM",
+    "sourceRef": "WEO series BCA (US$ bn × 1000)",
+    "confidence": "flagged",
+    "series": [
+      {
+        "year": 2015,
+        "value": -430,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2016,
+        "value": -43,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2017,
+        "value": -397,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2018,
+        "value": -235,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2019,
+        "value": -303,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2020,
+        "value": -157,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2021,
+        "value": 149,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2022,
+        "value": -136,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2023,
+        "value": 569,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2024,
+        "value": 645,
+        "type": "estimate",
+        "vintage": "2025"
+      }
+    ],
+    "seriesNote": "[FALLBACK — IMF] Jamaica swung to current-account surplus 2023-24 (remittances + tourism)."
+  },
+  {
+    "country": "JM",
+    "indicator": "import_cover",
+    "indicatorLabel": "Import Cover",
+    "unit": "months",
+    "unitNote": "Gross reserves in months of projected goods & services imports (weeks ÷ 4.33)",
+    "source": "Bank of Jamaica — Annual Report 2024",
+    "sourceOrg": "Bank of Jamaica",
+    "sourceTier": "primary",
+    "sourceUrl": "https://boj.org.jm/wp-content/uploads/2025/04/2024-BOJ-Annual-Report-final.pdf",
+    "sourceRef": "BOJ AR2024 International Reserves narrative (p.64)",
+    "confidence": "high",
+    "series": [
+      {
+        "year": 2023,
+        "value": 5.5,
+        "type": "actual",
+        "vintage": "2025",
+        "sourceNote": "23.9 weeks of imports end-2023 (BOJ AR2024)."
+      },
+      {
+        "year": 2024,
+        "value": 6.8,
+        "type": "estimate",
+        "vintage": "2025",
+        "sourceNote": "29.4 weeks of projected goods & services imports end-2024; gross reserves US$5,632.9mn, NIR US$5,583.7mn (BOJ AR2024)."
+      }
+    ]
+  },
+  {
+    "country": "JM",
+    "indicator": "gross_govt_debt_pct_gdp",
+    "indicatorLabel": "Gross Government Debt as % of GDP",
+    "unit": "%",
+    "unitNote": "Public debt as % of GDP",
+    "source": "PENDING — see spine debt_to_gdp (IMF)",
+    "sourceOrg": "Ministry of Finance (Jamaica)",
+    "sourceTier": "primary",
+    "sourceUrl": "https://www.mof.gov.jm/wp-content/uploads/FPP-2024-Final.pdf",
+    "sourceRef": "PENDING — FPP debt table; spine indicator debt_to_gdp carries IMF WEO ratio",
+    "confidence": "flagged",
+    "series": [
+      {
+        "year": 2024,
+        "value": null,
+        "type": "estimate",
+        "vintage": "2025",
+        "flag": "DATA_UNAVAILABLE",
+        "sourceNote": "[PENDING] FPP2024 targets public debt ≤60% of GDP by end-March 2028; the spine debt_to_gdp (IMF WEO) carries the comparable annual ratio."
+      }
+    ]
+  },
+  {
+    "country": "JM",
+    "indicator": "gross_govt_debt",
+    "indicatorLabel": "Gross Government Debt",
+    "unit": "J$ mn",
+    "unitNote": "Total public debt level",
+    "source": "PENDING — MoF debt bulletin",
+    "sourceOrg": "Ministry of Finance (Jamaica)",
+    "sourceTier": "primary",
+    "sourceUrl": "https://www.mof.gov.jm/wp-content/uploads/FPP-2024-Final.pdf",
+    "sourceRef": "PENDING — to be sourced from MoF Public Debt Bulletin",
+    "confidence": "flagged",
+    "series": [
+      {
+        "year": 2024,
+        "value": null,
+        "type": "estimate",
+        "vintage": "2025",
+        "flag": "DATA_UNAVAILABLE",
+        "sourceNote": "[PENDING] Debt stock from MoF Public Debt Bulletin / FPP debt annex."
+      }
+    ]
+  },
+  {
+    "country": "JM",
+    "indicator": "net_govt_debt",
+    "indicatorLabel": "Net Government Debt",
+    "unit": "J$ mn",
+    "unitNote": "Gross debt net of financial assets",
+    "source": "PENDING — not standard",
+    "sourceOrg": "Ministry of Finance (Jamaica)",
+    "sourceTier": "primary",
+    "sourceUrl": "https://www.mof.gov.jm/wp-content/uploads/FPP-2024-Final.pdf",
+    "sourceRef": "PENDING",
+    "confidence": "flagged",
+    "series": [
+      {
+        "year": 2024,
+        "value": null,
+        "type": "estimate",
+        "vintage": "2025",
+        "flag": "DATA_UNAVAILABLE",
+        "sourceNote": "[PENDING] Net debt would come from IMF Article IV."
+      }
+    ]
+  },
+  {
+    "country": "JM",
+    "indicator": "capital_account",
+    "indicatorLabel": "Capital Account Balance (BoP)",
+    "unit": "US$ mn",
+    "unitNote": "BPM6 capital account",
+    "source": "PENDING — Bank of Jamaica BoP",
+    "sourceOrg": "Bank of Jamaica",
+    "sourceTier": "primary",
+    "sourceUrl": "https://boj.org.jm/wp-content/uploads/2025/04/2024-BOJ-Annual-Report-final.pdf",
+    "sourceRef": "PENDING — BOJ BoP tables",
+    "confidence": "flagged",
+    "series": [
+      {
+        "year": 2024,
+        "value": null,
+        "type": "estimate",
+        "vintage": "2025",
+        "flag": "DATA_UNAVAILABLE",
+        "sourceNote": "[PENDING] BPM6 capital account from BOJ balance of payments dataset."
+      }
+    ]
+  },
+  {
+    "country": "JM",
+    "indicator": "monetary_base",
+    "indicatorLabel": "Monetary Base",
+    "unit": "J$ mn",
+    "unitNote": "Base money",
+    "source": "PENDING — Bank of Jamaica monetary statistics",
+    "sourceOrg": "Bank of Jamaica",
+    "sourceTier": "primary",
+    "sourceUrl": "https://boj.org.jm/",
+    "sourceRef": "PENDING — BOJ monetary base series",
+    "confidence": "flagged",
+    "series": [
+      {
+        "year": 2024,
+        "value": null,
+        "type": "estimate",
+        "vintage": "2025",
+        "flag": "DATA_UNAVAILABLE",
+        "sourceNote": "[PENDING] Base money from BOJ monetary statistics dataset."
+      }
+    ]
   }
 ]
