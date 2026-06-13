@@ -14791,5 +14791,544 @@
         "sourceNote": "[PENDING] Base money from BOJ monetary statistics dataset."
       }
     ]
+  },
+  {
+    "country": "BS",
+    "indicator": "govt_revenue_total",
+    "indicatorLabel": "Government Total Revenue",
+    "unit": "B$ mn",
+    "unitNote": "Total revenue (tax+non-tax+grants+capital). Fiscal year Jul-Jun, labelled by starting calendar year; FY2024/25 is budget.",
+    "source": "Central Bank of The Bahamas — QSD Aug-2024, Table 5.1 (Central Government Statement of Operations)",
+    "sourceOrg": "Central Bank of The Bahamas / MoF",
+    "sourceTier": "primary",
+    "sourceUrl": "https://cdn.centralbankbahamas.com/documents/2024-08-22-16-35-27-CBOB-Quarterly-Statistical-DigestAugust-2024Final.pdf",
+    "sourceRef": "QSD Aug-2024 Table 5.1, A. Revenue",
+    "confidence": "high",
+    "series": [
+      {
+        "year": 2018,
+        "value": 2426.3,
+        "type": "actual",
+        "vintage": "2024"
+      },
+      {
+        "year": 2019,
+        "value": 2082.0,
+        "type": "actual",
+        "vintage": "2024"
+      },
+      {
+        "year": 2020,
+        "value": 1908.8,
+        "type": "actual",
+        "vintage": "2024"
+      },
+      {
+        "year": 2021,
+        "value": 2605.7,
+        "type": "actual",
+        "vintage": "2024"
+      },
+      {
+        "year": 2022,
+        "value": 2855.4,
+        "type": "actual",
+        "vintage": "2024"
+      },
+      {
+        "year": 2023,
+        "value": 3319.0,
+        "type": "actual",
+        "vintage": "2024"
+      },
+      {
+        "year": 2024,
+        "value": 3543.3,
+        "type": "estimate",
+        "vintage": "2024",
+        "sourceNote": "FY2024/25 budget figure."
+      }
+    ]
+  },
+  {
+    "country": "BS",
+    "indicator": "govt_current_expenditure",
+    "indicatorLabel": "Government Current Expenditure",
+    "unit": "B$ mn",
+    "unitNote": "Recurrent expenditure. Fiscal year Jul-Jun, labelled by starting calendar year; FY2024/25 is budget.",
+    "source": "Central Bank of The Bahamas — QSD Aug-2024, Table 5.1 (Central Government Statement of Operations)",
+    "sourceOrg": "Central Bank of The Bahamas / MoF",
+    "sourceTier": "primary",
+    "sourceUrl": "https://cdn.centralbankbahamas.com/documents/2024-08-22-16-35-27-CBOB-Quarterly-Statistical-DigestAugust-2024Final.pdf",
+    "sourceRef": "QSD Aug-2024 Table 5.1, e. Recurrent",
+    "confidence": "high",
+    "series": [
+      {
+        "year": 2018,
+        "value": 2422.2,
+        "type": "actual",
+        "vintage": "2024"
+      },
+      {
+        "year": 2019,
+        "value": 2533.3,
+        "type": "actual",
+        "vintage": "2024"
+      },
+      {
+        "year": 2020,
+        "value": 2872.5,
+        "type": "actual",
+        "vintage": "2024"
+      },
+      {
+        "year": 2021,
+        "value": 3043.6,
+        "type": "actual",
+        "vintage": "2024"
+      },
+      {
+        "year": 2022,
+        "value": 3061.8,
+        "type": "actual",
+        "vintage": "2024"
+      },
+      {
+        "year": 2023,
+        "value": 3085.5,
+        "type": "actual",
+        "vintage": "2024"
+      },
+      {
+        "year": 2024,
+        "value": 3268.6,
+        "type": "estimate",
+        "vintage": "2024",
+        "sourceNote": "FY2024/25 budget figure."
+      }
+    ]
+  },
+  {
+    "country": "BS",
+    "indicator": "govt_capital_expenditure",
+    "indicatorLabel": "Government Capital Expenditure",
+    "unit": "B$ mn",
+    "unitNote": "Capital expenditure. Fiscal year Jul-Jun, labelled by starting calendar year; FY2024/25 is budget.",
+    "source": "Central Bank of The Bahamas — QSD Aug-2024, Table 5.1 (Central Government Statement of Operations)",
+    "sourceOrg": "Central Bank of The Bahamas / MoF",
+    "sourceTier": "primary",
+    "sourceUrl": "https://cdn.centralbankbahamas.com/documents/2024-08-22-16-35-27-CBOB-Quarterly-Statistical-DigestAugust-2024Final.pdf",
+    "sourceRef": "QSD Aug-2024 Table 5.1, f. Capital",
+    "confidence": "high",
+    "series": [
+      {
+        "year": 2018,
+        "value": 223.4,
+        "type": "actual",
+        "vintage": "2024"
+      },
+      {
+        "year": 2019,
+        "value": 387.2,
+        "type": "actual",
+        "vintage": "2024"
+      },
+      {
+        "year": 2020,
+        "value": 371.1,
+        "type": "actual",
+        "vintage": "2024"
+      },
+      {
+        "year": 2021,
+        "value": 283.8,
+        "type": "actual",
+        "vintage": "2024"
+      },
+      {
+        "year": 2022,
+        "value": 327.4,
+        "type": "actual",
+        "vintage": "2024"
+      },
+      {
+        "year": 2023,
+        "value": 364.6,
+        "type": "actual",
+        "vintage": "2024"
+      },
+      {
+        "year": 2024,
+        "value": 344.5,
+        "type": "estimate",
+        "vintage": "2024",
+        "sourceNote": "FY2024/25 budget figure."
+      }
+    ]
+  },
+  {
+    "country": "BS",
+    "indicator": "govt_total_expenditure",
+    "indicatorLabel": "Government Total Expenditure",
+    "unit": "B$ mn",
+    "unitNote": "Total expenditure. Fiscal year Jul-Jun, labelled by starting calendar year; FY2024/25 is budget.",
+    "source": "Central Bank of The Bahamas — QSD Aug-2024, Table 5.1 (Central Government Statement of Operations)",
+    "sourceOrg": "Central Bank of The Bahamas / MoF",
+    "sourceTier": "primary",
+    "sourceUrl": "https://cdn.centralbankbahamas.com/documents/2024-08-22-16-35-27-CBOB-Quarterly-Statistical-DigestAugust-2024Final.pdf",
+    "sourceRef": "QSD Aug-2024 Table 5.1, B. Expenditure",
+    "confidence": "high",
+    "series": [
+      {
+        "year": 2018,
+        "value": 2645.6,
+        "type": "actual",
+        "vintage": "2024"
+      },
+      {
+        "year": 2019,
+        "value": 2920.5,
+        "type": "actual",
+        "vintage": "2024"
+      },
+      {
+        "year": 2020,
+        "value": 3243.6,
+        "type": "actual",
+        "vintage": "2024"
+      },
+      {
+        "year": 2021,
+        "value": 3327.4,
+        "type": "actual",
+        "vintage": "2024"
+      },
+      {
+        "year": 2022,
+        "value": 3389.2,
+        "type": "actual",
+        "vintage": "2024"
+      },
+      {
+        "year": 2023,
+        "value": 3450.1,
+        "type": "actual",
+        "vintage": "2024"
+      },
+      {
+        "year": 2024,
+        "value": 3613.1,
+        "type": "estimate",
+        "vintage": "2024",
+        "sourceNote": "FY2024/25 budget figure."
+      }
+    ],
+    "seriesNote": "Cross-check: Revenue − Expenditure = Surplus/(Deficit), holds every year."
+  },
+  {
+    "country": "BS",
+    "indicator": "fiscal_balance",
+    "indicatorLabel": "Fiscal Balance (overall)",
+    "unit": "B$ mn",
+    "unitNote": "Overall surplus/(deficit). Fiscal year Jul-Jun, labelled by starting calendar year; FY2024/25 is budget.",
+    "source": "Central Bank of The Bahamas — QSD Aug-2024, Table 5.1 (Central Government Statement of Operations)",
+    "sourceOrg": "Central Bank of The Bahamas / MoF",
+    "sourceTier": "primary",
+    "sourceUrl": "https://cdn.centralbankbahamas.com/documents/2024-08-22-16-35-27-CBOB-Quarterly-Statistical-DigestAugust-2024Final.pdf",
+    "sourceRef": "QSD Aug-2024 Table 5.1, Surplus/(Deficit)",
+    "confidence": "high",
+    "series": [
+      {
+        "year": 2018,
+        "value": -219.3,
+        "type": "actual",
+        "vintage": "2024"
+      },
+      {
+        "year": 2019,
+        "value": -838.5,
+        "type": "actual",
+        "vintage": "2024"
+      },
+      {
+        "year": 2020,
+        "value": -1334.8,
+        "type": "actual",
+        "vintage": "2024"
+      },
+      {
+        "year": 2021,
+        "value": -721.7,
+        "type": "actual",
+        "vintage": "2024"
+      },
+      {
+        "year": 2022,
+        "value": -533.8,
+        "type": "actual",
+        "vintage": "2024"
+      },
+      {
+        "year": 2023,
+        "value": -131.1,
+        "type": "actual",
+        "vintage": "2024"
+      },
+      {
+        "year": 2024,
+        "value": -69.8,
+        "type": "estimate",
+        "vintage": "2024",
+        "sourceNote": "FY2024/25 budget figure."
+      }
+    ]
+  },
+  {
+    "country": "BS",
+    "indicator": "current_account",
+    "indicatorLabel": "Current Account Balance (BoP)",
+    "unit": "US$ mn",
+    "unitNote": "Balance of payments current account",
+    "source": "IMF World Economic Outlook (DataMapper)",
+    "sourceOrg": "IMF WEO",
+    "sourceTier": "fallback",
+    "sourceUrl": "https://www.imf.org/external/datamapper/BCA/BHS",
+    "sourceRef": "WEO series BCA (US$ bn × 1000)",
+    "confidence": "flagged",
+    "series": [
+      {
+        "year": 2015,
+        "value": -1478,
+        "type": "actual",
+        "vintage": "2024"
+      },
+      {
+        "year": 2016,
+        "value": -1473,
+        "type": "actual",
+        "vintage": "2024"
+      },
+      {
+        "year": 2017,
+        "value": -1653,
+        "type": "actual",
+        "vintage": "2024"
+      },
+      {
+        "year": 2018,
+        "value": -1199,
+        "type": "actual",
+        "vintage": "2024"
+      },
+      {
+        "year": 2019,
+        "value": -281,
+        "type": "actual",
+        "vintage": "2024"
+      },
+      {
+        "year": 2020,
+        "value": -2280,
+        "type": "actual",
+        "vintage": "2024"
+      },
+      {
+        "year": 2021,
+        "value": -2434,
+        "type": "actual",
+        "vintage": "2024"
+      },
+      {
+        "year": 2022,
+        "value": -1233,
+        "type": "actual",
+        "vintage": "2024"
+      },
+      {
+        "year": 2023,
+        "value": -1069,
+        "type": "actual",
+        "vintage": "2024"
+      },
+      {
+        "year": 2024,
+        "value": -1206,
+        "type": "estimate",
+        "vintage": "2024"
+      }
+    ],
+    "seriesNote": "[FALLBACK — IMF] Large goods deficit offset by tourism; BSD pegged 1:1 to USD."
+  },
+  {
+    "country": "BS",
+    "indicator": "gross_govt_debt",
+    "indicatorLabel": "Gross Government Debt",
+    "unit": "B$ mn",
+    "unitNote": "National Debt (central gov + guaranteed contingent liabilities)",
+    "source": "Central Bank of The Bahamas — Annual Report 2024",
+    "sourceOrg": "Central Bank of The Bahamas",
+    "sourceTier": "primary",
+    "sourceUrl": "https://www.centralbankbahamas.com/viewPDF/documents/2025-05-22-12-05-26-2024-CBOB-Annual-Report--Statement-of-Accounts.pdf",
+    "sourceRef": "AR2024 National Debt narrative (p.43)",
+    "confidence": "high",
+    "series": [
+      {
+        "year": 2023,
+        "value": 11778.7,
+        "type": "actual",
+        "vintage": "2025",
+        "sourceNote": "Derived: end-2024 12,082.9 less the 304.2 (2.6%) YoY increase."
+      },
+      {
+        "year": 2024,
+        "value": 12082.9,
+        "type": "estimate",
+        "vintage": "2025",
+        "sourceNote": "National Debt $12,082.9mn end-Dec 2024 (AR2024)."
+      }
+    ]
+  },
+  {
+    "country": "BS",
+    "indicator": "gross_govt_debt_pct_gdp",
+    "indicatorLabel": "Gross Government Debt as % of GDP",
+    "unit": "%",
+    "unitNote": "National Debt as % of GDP",
+    "source": "Central Bank of The Bahamas — Annual Report 2024",
+    "sourceOrg": "Central Bank of The Bahamas",
+    "sourceTier": "primary",
+    "sourceUrl": "https://www.centralbankbahamas.com/viewPDF/documents/2025-05-22-12-05-26-2024-CBOB-Annual-Report--Statement-of-Accounts.pdf",
+    "sourceRef": "AR2024 National Debt-to-GDP narrative (p.43)",
+    "confidence": "high",
+    "series": [
+      {
+        "year": 2023,
+        "value": 82.1,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2024,
+        "value": 81.5,
+        "type": "estimate",
+        "vintage": "2025",
+        "sourceNote": "National Debt-to-GDP 81.5% end-2024 (AR2024)."
+      }
+    ]
+  },
+  {
+    "country": "BS",
+    "indicator": "primary_balance",
+    "indicatorLabel": "Primary Balance",
+    "unit": "B$ mn",
+    "unitNote": "Fiscal balance plus interest",
+    "source": "PENDING — interest not isolated in QSD 5.1",
+    "sourceOrg": "Central Bank of The Bahamas / MoF",
+    "sourceTier": "primary",
+    "sourceUrl": "https://cdn.centralbankbahamas.com/documents/2024-08-22-16-35-27-CBOB-Quarterly-Statistical-DigestAugust-2024Final.pdf",
+    "sourceRef": "PENDING — recurrent-expenditure interest line (QSD 5.x)",
+    "confidence": "flagged",
+    "series": [
+      {
+        "year": 2024,
+        "value": null,
+        "type": "estimate",
+        "vintage": "2024",
+        "flag": "DATA_UNAVAILABLE",
+        "sourceNote": "[PENDING] AR2024: interest on public debt ≈ $613.1mn (2024). Full FY interest series needed to derive primary balance for each year."
+      }
+    ]
+  },
+  {
+    "country": "BS",
+    "indicator": "capital_account",
+    "indicatorLabel": "Capital Account Balance (BoP)",
+    "unit": "US$ mn",
+    "unitNote": "BPM6 capital account",
+    "source": "PENDING — CBOB BoP",
+    "sourceOrg": "Central Bank of The Bahamas",
+    "sourceTier": "primary",
+    "sourceUrl": "https://cdn.centralbankbahamas.com/documents/2024-08-22-16-35-27-CBOB-Quarterly-Statistical-DigestAugust-2024Final.pdf",
+    "sourceRef": "PENDING — QSD external-sector tables",
+    "confidence": "flagged",
+    "series": [
+      {
+        "year": 2024,
+        "value": null,
+        "type": "estimate",
+        "vintage": "2024",
+        "flag": "DATA_UNAVAILABLE",
+        "sourceNote": "[PENDING] BPM6 capital account from CBOB external-sector statistics."
+      }
+    ]
+  },
+  {
+    "country": "BS",
+    "indicator": "monetary_base",
+    "indicatorLabel": "Monetary Base",
+    "unit": "B$ mn",
+    "unitNote": "Reserve money",
+    "source": "PENDING — CBOB monetary survey",
+    "sourceOrg": "Central Bank of The Bahamas",
+    "sourceTier": "primary",
+    "sourceUrl": "https://cdn.centralbankbahamas.com/documents/2024-08-22-16-35-27-CBOB-Quarterly-Statistical-DigestAugust-2024Final.pdf",
+    "sourceRef": "PENDING — QSD monetary tables",
+    "confidence": "flagged",
+    "series": [
+      {
+        "year": 2024,
+        "value": null,
+        "type": "estimate",
+        "vintage": "2024",
+        "flag": "DATA_UNAVAILABLE",
+        "sourceNote": "[PENDING] Reserve money from CBOB QSD monetary survey."
+      }
+    ]
+  },
+  {
+    "country": "BS",
+    "indicator": "net_govt_debt",
+    "indicatorLabel": "Net Government Debt",
+    "unit": "B$ mn",
+    "unitNote": "Gross debt net of financial assets",
+    "source": "PENDING — not standard",
+    "sourceOrg": "Central Bank of The Bahamas",
+    "sourceTier": "primary",
+    "sourceUrl": "https://www.centralbankbahamas.com/viewPDF/documents/2025-05-22-12-05-26-2024-CBOB-Annual-Report--Statement-of-Accounts.pdf",
+    "sourceRef": "PENDING",
+    "confidence": "flagged",
+    "series": [
+      {
+        "year": 2024,
+        "value": null,
+        "type": "estimate",
+        "vintage": "2024",
+        "flag": "DATA_UNAVAILABLE",
+        "sourceNote": "[PENDING] Net debt would come from IMF Article IV."
+      }
+    ]
+  },
+  {
+    "country": "BS",
+    "indicator": "import_cover",
+    "indicatorLabel": "Import Cover",
+    "unit": "months",
+    "unitNote": "External reserves in months of imports",
+    "source": "PENDING — CBOB external reserves",
+    "sourceOrg": "Central Bank of The Bahamas",
+    "sourceTier": "primary",
+    "sourceUrl": "https://www.centralbankbahamas.com/viewPDF/documents/2025-05-22-12-05-26-2024-CBOB-Annual-Report--Statement-of-Accounts.pdf",
+    "sourceRef": "PENDING — external reserves weeks-of-imports",
+    "confidence": "flagged",
+    "series": [
+      {
+        "year": 2024,
+        "value": null,
+        "type": "estimate",
+        "vintage": "2024",
+        "flag": "DATA_UNAVAILABLE",
+        "sourceNote": "[PENDING] Bahamas external reserves cover (weeks/months of imports) from CBOB statistics."
+      }
+    ]
   }
 ]
