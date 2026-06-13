@@ -12685,5 +12685,726 @@
         "vintage": "2026-04"
       }
     ]
+  },
+  {
+    "country": "GY",
+    "indicator": "govt_revenue_total",
+    "indicatorLabel": "Government Total Revenue",
+    "unit": "G$ mn",
+    "unitNote": "Total revenue and grants = current revenue (incl. NRF/GRIF/CCS inflows) + capital receipts",
+    "source": "Bank of Guyana — Annual Report 2024 (Statistical Annexe)",
+    "sourceOrg": "MoF / Bank of Guyana",
+    "sourceTier": "primary",
+    "sourceUrl": "https://bankofguyana.org.gy/bog/images/research/Reports/ANNREP2024.pdf",
+    "sourceRef": "Derived: Table 6-I Central Government: Finances (Summary); Sources: Ministry of Finance and Bank of Guyana — Current Revenue + Capital Receipts",
+    "confidence": "high",
+    "series": [
+      {
+        "year": 2015,
+        "value": 168983,
+        "type": "derived",
+        "vintage": "2025"
+      },
+      {
+        "year": 2016,
+        "value": 185199,
+        "type": "derived",
+        "vintage": "2025"
+      },
+      {
+        "year": 2017,
+        "value": 207259,
+        "type": "derived",
+        "vintage": "2025"
+      },
+      {
+        "year": 2018,
+        "value": 227789,
+        "type": "derived",
+        "vintage": "2025"
+      },
+      {
+        "year": 2019,
+        "value": 252530,
+        "type": "derived",
+        "vintage": "2025"
+      },
+      {
+        "year": 2020,
+        "value": 234984,
+        "type": "derived",
+        "vintage": "2025"
+      },
+      {
+        "year": 2021,
+        "value": 272425,
+        "type": "derived",
+        "vintage": "2025"
+      },
+      {
+        "year": 2022,
+        "value": 437573,
+        "type": "derived",
+        "vintage": "2025"
+      },
+      {
+        "year": 2023,
+        "value": 601206,
+        "type": "derived",
+        "vintage": "2025"
+      },
+      {
+        "year": 2024,
+        "value": 787359,
+        "type": "derived",
+        "vintage": "2025"
+      }
+    ],
+    "seriesNote": "Sum of Table 6-I Current Revenue and Capital Receipts. Current revenue includes NRF withdrawals (from 2022) and Carbon Credit inflows (from 2023)."
+  },
+  {
+    "country": "GY",
+    "indicator": "govt_current_expenditure",
+    "indicatorLabel": "Government Current Expenditure",
+    "unit": "G$ mn",
+    "unitNote": "Total current expenditure incl. interest = non-interest current expenditure + interest charges",
+    "source": "Bank of Guyana — Annual Report 2024 (Statistical Annexe)",
+    "sourceOrg": "MoF / Bank of Guyana",
+    "sourceTier": "primary",
+    "sourceUrl": "https://bankofguyana.org.gy/bog/images/research/Reports/ANNREP2024.pdf",
+    "sourceRef": "Derived: Table 6-I Central Government: Finances (Summary); Sources: Ministry of Finance and Bank of Guyana — Non-interest Expenditure + Interest",
+    "confidence": "high",
+    "series": [
+      {
+        "year": 2015,
+        "value": 147638,
+        "type": "derived",
+        "vintage": "2025"
+      },
+      {
+        "year": 2016,
+        "value": 170152,
+        "type": "derived",
+        "vintage": "2025"
+      },
+      {
+        "year": 2017,
+        "value": 181400,
+        "type": "derived",
+        "vintage": "2025"
+      },
+      {
+        "year": 2018,
+        "value": 199613,
+        "type": "derived",
+        "vintage": "2025"
+      },
+      {
+        "year": 2019,
+        "value": 216194,
+        "type": "derived",
+        "vintage": "2025"
+      },
+      {
+        "year": 2020,
+        "value": 249357,
+        "type": "derived",
+        "vintage": "2025"
+      },
+      {
+        "year": 2021,
+        "value": 282888,
+        "type": "derived",
+        "vintage": "2025"
+      },
+      {
+        "year": 2022,
+        "value": 335010,
+        "type": "derived",
+        "vintage": "2025"
+      },
+      {
+        "year": 2023,
+        "value": 382330,
+        "type": "derived",
+        "vintage": "2025"
+      },
+      {
+        "year": 2024,
+        "value": 517683,
+        "type": "derived",
+        "vintage": "2025"
+      }
+    ],
+    "seriesNote": "Non-interest current expenditure + interest (Table 6-I). 2024 check: 500,724 + 16,959 = 517,683, matches AR2024 narrative."
+  },
+  {
+    "country": "GY",
+    "indicator": "govt_capital_expenditure",
+    "indicatorLabel": "Government Capital Expenditure",
+    "unit": "G$ mn",
+    "unitNote": "Central government capital expenditure",
+    "source": "Bank of Guyana — Annual Report 2024 (Statistical Annexe)",
+    "sourceOrg": "MoF / Bank of Guyana",
+    "sourceTier": "primary",
+    "sourceUrl": "https://bankofguyana.org.gy/bog/images/research/Reports/ANNREP2024.pdf",
+    "sourceRef": "Table 6-I Central Government: Finances (Summary); Sources: Ministry of Finance and Bank of Guyana — Capital Account Expenditure",
+    "confidence": "high",
+    "series": [
+      {
+        "year": 2015,
+        "value": 30665,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2016,
+        "value": 46618,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2017,
+        "value": 58618,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2018,
+        "value": 55019,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2019,
+        "value": 66262,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2020,
+        "value": 76115,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2021,
+        "value": 104386,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2022,
+        "value": 258087,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2023,
+        "value": 421819,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2024,
+        "value": 646085,
+        "type": "estimate",
+        "vintage": "2025"
+      }
+    ]
+  },
+  {
+    "country": "GY",
+    "indicator": "govt_total_expenditure",
+    "indicatorLabel": "Government Total Expenditure",
+    "unit": "G$ mn",
+    "unitNote": "Aggregate expenditure = current (incl. interest) + capital",
+    "source": "Bank of Guyana — Annual Report 2024 (Statistical Annexe)",
+    "sourceOrg": "MoF / Bank of Guyana",
+    "sourceTier": "primary",
+    "sourceUrl": "https://bankofguyana.org.gy/bog/images/research/Reports/ANNREP2024.pdf",
+    "sourceRef": "Derived: Table 6-I Central Government: Finances (Summary); Sources: Ministry of Finance and Bank of Guyana — current expenditure + capital expenditure",
+    "confidence": "high",
+    "series": [
+      {
+        "year": 2015,
+        "value": 178303,
+        "type": "derived",
+        "vintage": "2025"
+      },
+      {
+        "year": 2016,
+        "value": 216770,
+        "type": "derived",
+        "vintage": "2025"
+      },
+      {
+        "year": 2017,
+        "value": 240018,
+        "type": "derived",
+        "vintage": "2025"
+      },
+      {
+        "year": 2018,
+        "value": 254632,
+        "type": "derived",
+        "vintage": "2025"
+      },
+      {
+        "year": 2019,
+        "value": 282456,
+        "type": "derived",
+        "vintage": "2025"
+      },
+      {
+        "year": 2020,
+        "value": 325472,
+        "type": "derived",
+        "vintage": "2025"
+      },
+      {
+        "year": 2021,
+        "value": 387274,
+        "type": "derived",
+        "vintage": "2025"
+      },
+      {
+        "year": 2022,
+        "value": 593097,
+        "type": "derived",
+        "vintage": "2025"
+      },
+      {
+        "year": 2023,
+        "value": 804149,
+        "type": "derived",
+        "vintage": "2025"
+      },
+      {
+        "year": 2024,
+        "value": 1163768,
+        "type": "derived",
+        "vintage": "2025"
+      }
+    ],
+    "seriesNote": "Cross-check vs overall balance holds within rounding (Total Revenue − Total Expenditure ≈ Overall Balance)."
+  },
+  {
+    "country": "GY",
+    "indicator": "fiscal_balance",
+    "indicatorLabel": "Fiscal Balance (overall)",
+    "unit": "G$ mn",
+    "unitNote": "Central government overall surplus(+)/deficit(-)",
+    "source": "Bank of Guyana — Annual Report 2024 (Statistical Annexe)",
+    "sourceOrg": "MoF / Bank of Guyana",
+    "sourceTier": "primary",
+    "sourceUrl": "https://bankofguyana.org.gy/bog/images/research/Reports/ANNREP2024.pdf",
+    "sourceRef": "Table 6-I Central Government: Finances (Summary); Sources: Ministry of Finance and Bank of Guyana — Overall Deficit/Surplus",
+    "confidence": "high",
+    "series": [
+      {
+        "year": 2015,
+        "value": -9319,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2016,
+        "value": -31571,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2017,
+        "value": -32759,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2018,
+        "value": -26842,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2019,
+        "value": -29926,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2020,
+        "value": -90488,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2021,
+        "value": -114849,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2022,
+        "value": -155523,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2023,
+        "value": -202943,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2024,
+        "value": -376408,
+        "type": "estimate",
+        "vintage": "2025"
+      }
+    ]
+  },
+  {
+    "country": "GY",
+    "indicator": "primary_balance",
+    "indicatorLabel": "Primary Balance",
+    "unit": "G$ mn",
+    "unitNote": "Overall balance plus interest charges",
+    "source": "Bank of Guyana — Annual Report 2024 (Statistical Annexe)",
+    "sourceOrg": "MoF / Bank of Guyana",
+    "sourceTier": "primary",
+    "sourceUrl": "https://bankofguyana.org.gy/bog/images/research/Reports/ANNREP2024.pdf",
+    "sourceRef": "Derived: Table 6-I Central Government: Finances (Summary); Sources: Ministry of Finance and Bank of Guyana — Overall Balance + Interest",
+    "confidence": "high",
+    "series": [
+      {
+        "year": 2015,
+        "value": -2833,
+        "type": "derived",
+        "vintage": "2025"
+      },
+      {
+        "year": 2016,
+        "value": -24844,
+        "type": "derived",
+        "vintage": "2025"
+      },
+      {
+        "year": 2017,
+        "value": -24732,
+        "type": "derived",
+        "vintage": "2025"
+      },
+      {
+        "year": 2018,
+        "value": -18331,
+        "type": "derived",
+        "vintage": "2025"
+      },
+      {
+        "year": 2019,
+        "value": -21415,
+        "type": "derived",
+        "vintage": "2025"
+      },
+      {
+        "year": 2020,
+        "value": -82726,
+        "type": "derived",
+        "vintage": "2025"
+      },
+      {
+        "year": 2021,
+        "value": -106933,
+        "type": "derived",
+        "vintage": "2025"
+      },
+      {
+        "year": 2022,
+        "value": -146565,
+        "type": "derived",
+        "vintage": "2025"
+      },
+      {
+        "year": 2023,
+        "value": -190603,
+        "type": "derived",
+        "vintage": "2025"
+      },
+      {
+        "year": 2024,
+        "value": -359449,
+        "type": "derived",
+        "vintage": "2025"
+      }
+    ],
+    "seriesNote": "Overall fiscal balance + total interest (domestic + external) per Table 6-I."
+  },
+  {
+    "country": "GY",
+    "indicator": "current_account",
+    "indicatorLabel": "Current Account Balance (BoP)",
+    "unit": "US$ mn",
+    "unitNote": "Balance of payments current account (BPM)",
+    "source": "Bank of Guyana — Annual Report 2024 (Statistical Annexe)",
+    "sourceOrg": "Bank of Guyana",
+    "sourceTier": "primary",
+    "sourceUrl": "https://bankofguyana.org.gy/bog/images/research/Reports/ANNREP2024.pdf",
+    "sourceRef": "Table 8-I Balance of Payments (US$ Million) — A. Current Account Balance",
+    "confidence": "high",
+    "series": [
+      {
+        "year": 2015,
+        "value": -177.4,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2016,
+        "value": 27.6,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2017,
+        "value": -290.5,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2018,
+        "value": -1438.8,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2019,
+        "value": -2823.7,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2020,
+        "value": -935.3,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2021,
+        "value": -1995.0,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2022,
+        "value": 3805.9,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2023,
+        "value": 1679.9,
+        "type": "actual",
+        "vintage": "2025",
+        "sourceNote": "AR2024 marks 2023 (**) as revised; 2024 provisional."
+      },
+      {
+        "year": 2024,
+        "value": 4066.8,
+        "type": "estimate",
+        "vintage": "2025",
+        "sourceNote": "Provisional. Surplus driven by oil exports (merchandise trade balance US$12,964.9mn)."
+      }
+    ]
+  },
+  {
+    "country": "GY",
+    "indicator": "capital_account",
+    "indicatorLabel": "Capital Account Balance (BoP)",
+    "unit": "US$ mn",
+    "unitNote": "Balance of payments capital & financial account (BPM)",
+    "source": "Bank of Guyana — Annual Report 2024 (Statistical Annexe)",
+    "sourceOrg": "Bank of Guyana",
+    "sourceTier": "primary",
+    "sourceUrl": "https://bankofguyana.org.gy/bog/images/research/Reports/ANNREP2024.pdf",
+    "sourceRef": "Table 8-I Balance of Payments (US$ Million) — B. Capital Account Balance",
+    "confidence": "high",
+    "series": [
+      {
+        "year": 2015,
+        "value": 71.4,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2016,
+        "value": -13.2,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2017,
+        "value": 228.0,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2018,
+        "value": 1298.6,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2019,
+        "value": 2744.6,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2020,
+        "value": 1032.0,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2021,
+        "value": 2107.4,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2022,
+        "value": -3658.4,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2023,
+        "value": -1732.0,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2024,
+        "value": -3938.7,
+        "type": "estimate",
+        "vintage": "2025",
+        "sourceNote": "Provisional; net outflow alongside large current-account surplus (oil-sector profile)."
+      }
+    ]
+  },
+  {
+    "country": "GY",
+    "indicator": "import_cover",
+    "indicatorLabel": "Import Cover",
+    "unit": "months",
+    "unitNote": "Gross BoG foreign reserves in months of imports",
+    "source": "Bank of Guyana — Annual Report 2024 (Statistical Annexe)",
+    "sourceOrg": "Bank of Guyana",
+    "sourceTier": "primary",
+    "sourceUrl": "https://bankofguyana.org.gy/bog/images/research/Reports/ANNREP2024.pdf",
+    "sourceRef": "AR2024 Foreign Reserves narrative (Bank reserves US$1,009.8mn end-2024)",
+    "confidence": "high",
+    "series": [
+      {
+        "year": 2024,
+        "value": 0.8,
+        "type": "estimate",
+        "vintage": "2025",
+        "sourceNote": "BoG reserves rose US$896.4mn → US$1,009.8mn; ≈0.8 month (~3.5 weeks) of import cover end-Dec 2024. Note: low because import cover is computed on BoG reserves only, excluding the Natural Resource Fund."
+      }
+    ]
+  },
+  {
+    "country": "GY",
+    "indicator": "monetary_base",
+    "indicatorLabel": "Monetary Base",
+    "unit": "G$ mn",
+    "unitNote": "Reserve money (currency in circulation + bank reserves at BoG)",
+    "source": "Bank of Guyana — Annual Report 2024 (Statistical Annexe)",
+    "sourceOrg": "Bank of Guyana",
+    "sourceTier": "primary",
+    "sourceUrl": "https://bankofguyana.org.gy/bog/images/research/Reports/ANNREP2024.pdf",
+    "sourceRef": "PENDING — Table 3-I Monetary Survey / BoG Liabilities (reserve money line)",
+    "confidence": "flagged",
+    "series": [
+      {
+        "year": 2024,
+        "value": null,
+        "type": "estimate",
+        "vintage": "2025",
+        "flag": "DATA_UNAVAILABLE",
+        "sourceNote": "[PENDING — Bank of Guyana monetary survey] Reserve money to be read from Table 3-I / BoG balance-sheet liabilities; not transcribed to avoid misattribution in the multi-column annex."
+      }
+    ]
+  },
+  {
+    "country": "GY",
+    "indicator": "gross_govt_debt",
+    "indicatorLabel": "Gross Government Debt",
+    "unit": "G$ mn",
+    "unitNote": "Total public debt = domestic bonded debt (G$) + external public debt (US$ → G$)",
+    "source": "Bank of Guyana — Annual Report 2024 (Statistical Annexe)",
+    "sourceOrg": "MoF / Bank of Guyana",
+    "sourceTier": "primary",
+    "sourceUrl": "https://bankofguyana.org.gy/bog/images/research/Reports/ANNREP2024.pdf",
+    "sourceRef": "PENDING — Table 7-I Domestic Public Bonded Debt + Table 7-III External Public Debt",
+    "confidence": "flagged",
+    "series": [
+      {
+        "year": 2024,
+        "value": null,
+        "type": "estimate",
+        "vintage": "2025",
+        "flag": "DATA_UNAVAILABLE",
+        "sourceNote": "[PENDING] Components in AR2024: external debt US$2,239.0mn end-2024 (Table 7-III, US$ thousand); domestic bonded debt (Table 7-I, G$ mn). A combined G$ total requires year-end FX conversion of the external leg — to be finalised before recording."
+      }
+    ]
+  },
+  {
+    "country": "GY",
+    "indicator": "net_govt_debt",
+    "indicatorLabel": "Net Government Debt",
+    "unit": "G$ mn",
+    "unitNote": "Gross debt net of government financial assets",
+    "source": "Bank of Guyana — Annual Report 2024 (Statistical Annexe)",
+    "sourceOrg": "MoF / Bank of Guyana",
+    "sourceTier": "primary",
+    "sourceUrl": "https://bankofguyana.org.gy/bog/images/research/Reports/ANNREP2024.pdf",
+    "sourceRef": "PENDING — not separately published by BoG/MoF in AR2024",
+    "confidence": "flagged",
+    "series": [
+      {
+        "year": 2024,
+        "value": null,
+        "type": "estimate",
+        "vintage": "2025",
+        "flag": "DATA_UNAVAILABLE",
+        "sourceNote": "[PENDING] A net-of-financial-assets debt figure (e.g. net of the Natural Resource Fund) is not published in AR2024; IMF Article IV may report it."
+      }
+    ]
+  },
+  {
+    "country": "GY",
+    "indicator": "gross_govt_debt_pct_gdp",
+    "indicatorLabel": "Gross Government Debt as % of GDP",
+    "unit": "%",
+    "unitNote": "Total public debt as % of GDP",
+    "source": "Bank of Guyana — Annual Report 2024 (Statistical Annexe)",
+    "sourceOrg": "MoF / Bank of Guyana",
+    "sourceTier": "primary",
+    "sourceUrl": "https://bankofguyana.org.gy/bog/images/research/Reports/ANNREP2024.pdf",
+    "sourceRef": "PENDING — derive from gross_govt_debt ÷ nominal GDP once gross debt finalised",
+    "confidence": "flagged",
+    "series": [
+      {
+        "year": 2024,
+        "value": null,
+        "type": "estimate",
+        "vintage": "2025",
+        "flag": "DATA_UNAVAILABLE",
+        "sourceNote": "[PENDING] See spine indicator debt_to_gdp (IMF WEO) for a comparable ratio; this MoF-based version pends the gross_govt_debt total."
+      }
+    ]
   }
 ]
