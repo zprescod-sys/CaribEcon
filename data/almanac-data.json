@@ -13320,21 +13320,27 @@
     "indicator": "monetary_base",
     "indicatorLabel": "Monetary Base",
     "unit": "G$ mn",
-    "unitNote": "Reserve money (currency in circulation + bank reserves at BoG)",
-    "source": "Bank of Guyana — Annual Report 2024 (Statistical Annexe)",
+    "unitNote": "Reserve money (BoG monetary base)",
+    "source": "Bank of Guyana — Annual Report 2024 (Monetary Policy narrative)",
     "sourceOrg": "Bank of Guyana",
     "sourceTier": "primary",
     "sourceUrl": "https://bankofguyana.org.gy/bog/images/research/Reports/ANNREP2024.pdf",
-    "sourceRef": "PENDING — Table 3-I Monetary Survey / BoG Liabilities (reserve money line)",
-    "confidence": "flagged",
+    "sourceRef": "AR2024 Monetary Policy section, p.82 (Reserve Money)",
+    "confidence": "high",
     "series": [
       {
+        "year": 2023,
+        "value": 417200,
+        "type": "actual",
+        "vintage": "2025",
+        "sourceNote": "Derived from stated end-2024 G$550.5bn less the G$133.3bn YoY increase."
+      },
+      {
         "year": 2024,
-        "value": null,
+        "value": 550500,
         "type": "estimate",
         "vintage": "2025",
-        "flag": "DATA_UNAVAILABLE",
-        "sourceNote": "[PENDING — Bank of Guyana monetary survey] Reserve money to be read from Table 3-I / BoG balance-sheet liabilities; not transcribed to avoid misattribution in the multi-column annex."
+        "sourceNote": "AR2024 p.82: 'Reserve money was G$550.5 billion, G$133.3 billion more than end-December 2023'. Earlier years available in Table 1-II (BoG Liabilities)."
       }
     ]
   },
@@ -13343,23 +13349,86 @@
     "indicator": "gross_govt_debt",
     "indicatorLabel": "Gross Government Debt",
     "unit": "G$ mn",
-    "unitNote": "Total public debt = domestic bonded debt (G$) + external public debt (US$ → G$)",
+    "unitNote": "Total public & publicly guaranteed debt = domestic (G$) + external (US$ × year-end G$/US$)",
     "source": "Bank of Guyana — Annual Report 2024 (Statistical Annexe)",
     "sourceOrg": "MoF / Bank of Guyana",
     "sourceTier": "primary",
     "sourceUrl": "https://bankofguyana.org.gy/bog/images/research/Reports/ANNREP2024.pdf",
-    "sourceRef": "PENDING — Table 7-I Domestic Public Bonded Debt + Table 7-III External Public Debt",
-    "confidence": "flagged",
+    "sourceRef": "Derived: Table 7-I (domestic, G$) + Table 7-III (external, US$) × Table 9-II year-end FX",
+    "confidence": "high",
     "series": [
       {
-        "year": 2024,
-        "value": null,
-        "type": "estimate",
+        "year": 2015,
+        "value": 317740.6,
+        "type": "derived",
         "vintage": "2025",
-        "flag": "DATA_UNAVAILABLE",
-        "sourceNote": "[PENDING] Components in AR2024: external debt US$2,239.0mn end-2024 (Table 7-III, US$ thousand); domestic bonded debt (Table 7-I, G$ mn). A combined G$ total requires year-end FX conversion of the external leg — to be finalised before recording."
+        "sourceNote": "81,693.3 domestic + 1,143.086mn US$ × 206.5 = 236,047.3 external"
+      },
+      {
+        "year": 2016,
+        "value": 330625.4,
+        "type": "derived",
+        "vintage": "2025",
+        "sourceNote": "90,571.6 domestic + 1,162.488mn US$ × 206.5 = 240,053.8 external"
+      },
+      {
+        "year": 2017,
+        "value": 344997.4,
+        "type": "derived",
+        "vintage": "2025",
+        "sourceNote": "88,816.2 domestic + 1,240.587mn US$ × 206.5 = 256,181.2 external"
+      },
+      {
+        "year": 2018,
+        "value": 368543.7,
+        "type": "derived",
+        "vintage": "2025",
+        "sourceNote": "98,151.2 domestic + 1,309.407mn US$ × 206.5 = 270,392.5 external"
+      },
+      {
+        "year": 2019,
+        "value": 365901.5,
+        "type": "derived",
+        "vintage": "2025",
+        "sourceNote": "96,321.5 domestic + 1,305.472mn US$ × 206.5 = 269,580.0 external"
+      },
+      {
+        "year": 2020,
+        "value": 540472.6,
+        "type": "derived",
+        "vintage": "2025",
+        "sourceNote": "265,089.6 domestic + 1,320.782mn US$ × 208.5 = 275,383.0 external"
+      },
+      {
+        "year": 2021,
+        "value": 651913.5,
+        "type": "derived",
+        "vintage": "2025",
+        "sourceNote": "361,513.4 domestic + 1,392.806mn US$ × 208.5 = 290,400.1 external"
+      },
+      {
+        "year": 2022,
+        "value": 762038.4,
+        "type": "derived",
+        "vintage": "2025",
+        "sourceNote": "434,302.9 domestic + 1,571.873mn US$ × 208.5 = 327,735.5 external"
+      },
+      {
+        "year": 2023,
+        "value": 940089.8,
+        "type": "derived",
+        "vintage": "2025",
+        "sourceNote": "569,906.2 domestic + 1,775.461mn US$ × 208.5 = 370,183.6 external"
+      },
+      {
+        "year": 2024,
+        "value": 1249706.6,
+        "type": "derived",
+        "vintage": "2025",
+        "sourceNote": "782,874.1 domestic + 2,239.005mn US$ × 208.5 = 466,832.5 external"
       }
-    ]
+    ],
+    "seriesNote": "External leg converted at the BoG year-end rate (pegged 206.50 to 2019, 208.50 from 2020)."
   },
   {
     "country": "GY",
@@ -13371,7 +13440,7 @@
     "sourceOrg": "MoF / Bank of Guyana",
     "sourceTier": "primary",
     "sourceUrl": "https://bankofguyana.org.gy/bog/images/research/Reports/ANNREP2024.pdf",
-    "sourceRef": "PENDING — not separately published by BoG/MoF in AR2024",
+    "sourceRef": "Confirmed not published in AR2024 (no net-of-financial-assets series)",
     "confidence": "flagged",
     "series": [
       {
@@ -13380,7 +13449,7 @@
         "type": "estimate",
         "vintage": "2025",
         "flag": "DATA_UNAVAILABLE",
-        "sourceNote": "[PENDING] A net-of-financial-assets debt figure (e.g. net of the Natural Resource Fund) is not published in AR2024; IMF Article IV may report it."
+        "sourceNote": "[DATA UNAVAILABLE — checked] BoG AR2024 publishes gross public & publicly guaranteed debt only; a net figure (e.g. net of the Natural Resource Fund) is not reported. Would require IMF Article IV."
       }
     ]
   },
@@ -13389,22 +13458,75 @@
     "indicator": "gross_govt_debt_pct_gdp",
     "indicatorLabel": "Gross Government Debt as % of GDP",
     "unit": "%",
-    "unitNote": "Total public debt as % of GDP",
-    "source": "Bank of Guyana — Annual Report 2024 (Statistical Annexe)",
-    "sourceOrg": "MoF / Bank of Guyana",
+    "unitNote": "Total public & publicly guaranteed debt as % of nominal GDP",
+    "source": "Derived — BoG AR2024 debt ÷ World Bank nominal GDP",
+    "sourceOrg": "MoF / Bank of Guyana / World Bank",
     "sourceTier": "primary",
     "sourceUrl": "https://bankofguyana.org.gy/bog/images/research/Reports/ANNREP2024.pdf",
-    "sourceRef": "PENDING — derive from gross_govt_debt ÷ nominal GDP once gross debt finalised",
-    "confidence": "flagged",
+    "sourceRef": "Derived: gross_govt_debt ÷ nominal_gdp (WB NY.GDP.MKTP.CN) × 100",
+    "confidence": "medium",
     "series": [
       {
+        "year": 2015,
+        "value": 36.0,
+        "type": "derived",
+        "vintage": "2025"
+      },
+      {
+        "year": 2016,
+        "value": 35.7,
+        "type": "derived",
+        "vintage": "2025"
+      },
+      {
+        "year": 2017,
+        "value": 35.2,
+        "type": "derived",
+        "vintage": "2025"
+      },
+      {
+        "year": 2018,
+        "value": 37.1,
+        "type": "derived",
+        "vintage": "2025"
+      },
+      {
+        "year": 2019,
+        "value": 33.9,
+        "type": "derived",
+        "vintage": "2025"
+      },
+      {
+        "year": 2020,
+        "value": 47.4,
+        "type": "derived",
+        "vintage": "2025"
+      },
+      {
+        "year": 2021,
+        "value": 38.9,
+        "type": "derived",
+        "vintage": "2025"
+      },
+      {
+        "year": 2022,
+        "value": 24.8,
+        "type": "derived",
+        "vintage": "2025"
+      },
+      {
+        "year": 2023,
+        "value": 26.7,
+        "type": "derived",
+        "vintage": "2025"
+      },
+      {
         "year": 2024,
-        "value": null,
-        "type": "estimate",
-        "vintage": "2025",
-        "flag": "DATA_UNAVAILABLE",
-        "sourceNote": "[PENDING] See spine indicator debt_to_gdp (IMF WEO) for a comparable ratio; this MoF-based version pends the gross_govt_debt total."
+        "value": 24.3,
+        "type": "derived",
+        "vintage": "2025"
       }
-    ]
+    ],
+    "seriesNote": "Diverges from spine indicator debt_to_gdp (IMF WEO general-gov gross debt): different debt definition (public & publicly guaranteed) and GDP vintage. 2024 here = 24.3% vs IMF ~24%."
   }
 ]
