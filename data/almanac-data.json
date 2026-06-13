@@ -15330,5 +15330,1301 @@
         "sourceNote": "[PENDING] Bahamas external reserves cover (weeks/months of imports) from CBOB statistics."
       }
     ]
+  },
+  {
+    "country": "BZ",
+    "indicator": "fiscal_balance",
+    "indicatorLabel": "Fiscal Balance (overall)",
+    "unit": "BZ$ mn",
+    "unitNote": "Overall fiscal balance, derived from IMF WEO balance %GDP × nominal GDP",
+    "source": "IMF World Economic Outlook (DataMapper)",
+    "sourceOrg": "IMF WEO",
+    "sourceTier": "fallback",
+    "sourceUrl": "https://www.imf.org/external/datamapper/GGXCNL_NGDP/BLZ",
+    "sourceRef": "WEO series GGXCNL_NGDP (general gov net lending/borrowing, %GDP) × spine nominal_gdp",
+    "confidence": "flagged",
+    "series": [
+      {
+        "year": 2015,
+        "value": -223.7,
+        "type": "derived",
+        "vintage": "2025",
+        "sourceNote": "-5.1% of GDP × 4,386mn nominal GDP"
+      },
+      {
+        "year": 2016,
+        "value": -201.6,
+        "type": "derived",
+        "vintage": "2025",
+        "sourceNote": "-4.5% of GDP × 4,479mn nominal GDP"
+      },
+      {
+        "year": 2017,
+        "value": -158.6,
+        "type": "derived",
+        "vintage": "2025",
+        "sourceNote": "-3.5% of GDP × 4,532mn nominal GDP"
+      },
+      {
+        "year": 2018,
+        "value": -64.0,
+        "type": "derived",
+        "vintage": "2025",
+        "sourceNote": "-1.4% of GDP × 4,572mn nominal GDP"
+      },
+      {
+        "year": 2019,
+        "value": -138.1,
+        "type": "derived",
+        "vintage": "2025",
+        "sourceNote": "-2.9% of GDP × 4,762mn nominal GDP"
+      },
+      {
+        "year": 2020,
+        "value": -352.1,
+        "type": "derived",
+        "vintage": "2025",
+        "sourceNote": "-8.6% of GDP × 4,095mn nominal GDP"
+      },
+      {
+        "year": 2021,
+        "value": -160.3,
+        "type": "derived",
+        "vintage": "2025",
+        "sourceNote": "-3.3% of GDP × 4,857mn nominal GDP"
+      },
+      {
+        "year": 2022,
+        "value": -56.9,
+        "type": "derived",
+        "vintage": "2025",
+        "sourceNote": "-1% of GDP × 5,693mn nominal GDP"
+      },
+      {
+        "year": 2023,
+        "value": -146.5,
+        "type": "derived",
+        "vintage": "2025",
+        "sourceNote": "-2.4% of GDP × 6,105mn nominal GDP"
+      },
+      {
+        "year": 2024,
+        "value": -96.1,
+        "type": "derived",
+        "vintage": "2025",
+        "sourceNote": "-1.5% of GDP × 6,407mn nominal GDP"
+      }
+    ],
+    "seriesNote": "[FALLBACK — IMF] Level derived from WEO overall-balance ratio applied to nominal GDP; national-source detail (revenue/expenditure) not yet collected."
+  },
+  {
+    "country": "GD",
+    "indicator": "current_account",
+    "indicatorLabel": "Current Account Balance (BoP)",
+    "unit": "US$ mn",
+    "unitNote": "Balance of payments current account",
+    "source": "IMF World Economic Outlook (DataMapper)",
+    "sourceOrg": "IMF WEO",
+    "sourceTier": "fallback",
+    "sourceUrl": "https://www.imf.org/external/datamapper/BCA/GRD",
+    "sourceRef": "WEO series BCA (US$ bn × 1000)",
+    "confidence": "flagged",
+    "series": [
+      {
+        "year": 2015,
+        "value": -106.0,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2016,
+        "value": -94.0,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2017,
+        "value": -129.0,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2018,
+        "value": -149.0,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2019,
+        "value": -125.0,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2020,
+        "value": -168.0,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2021,
+        "value": -161.0,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2022,
+        "value": -148.0,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2023,
+        "value": -271.0,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2024,
+        "value": -296.0,
+        "type": "estimate",
+        "vintage": "2025"
+      }
+    ],
+    "seriesNote": "[FALLBACK — IMF] WEO balance of payments current account."
+  },
+  {
+    "country": "AG",
+    "indicator": "current_account",
+    "indicatorLabel": "Current Account Balance (BoP)",
+    "unit": "US$ mn",
+    "unitNote": "Balance of payments current account",
+    "source": "IMF World Economic Outlook (DataMapper)",
+    "sourceOrg": "IMF WEO",
+    "sourceTier": "fallback",
+    "sourceUrl": "https://www.imf.org/external/datamapper/BCA/ATG",
+    "sourceRef": "WEO series BCA (US$ bn × 1000)",
+    "confidence": "flagged",
+    "series": [
+      {
+        "year": 2015,
+        "value": 29.0,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2016,
+        "value": -36.0,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2017,
+        "value": -118.0,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2018,
+        "value": -233.0,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2019,
+        "value": -112.0,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2020,
+        "value": -220.0,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2021,
+        "value": -282.0,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2022,
+        "value": -280.0,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2023,
+        "value": -265.0,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2024,
+        "value": -161.0,
+        "type": "estimate",
+        "vintage": "2025"
+      }
+    ],
+    "seriesNote": "[FALLBACK — IMF] WEO balance of payments current account."
+  },
+  {
+    "country": "KN",
+    "indicator": "fiscal_balance",
+    "indicatorLabel": "Fiscal Balance (overall)",
+    "unit": "EC$ mn",
+    "unitNote": "Overall fiscal balance, derived from IMF WEO balance %GDP × nominal GDP",
+    "source": "IMF World Economic Outlook (DataMapper)",
+    "sourceOrg": "IMF WEO",
+    "sourceTier": "fallback",
+    "sourceUrl": "https://www.imf.org/external/datamapper/GGXCNL_NGDP/KNA",
+    "sourceRef": "WEO series GGXCNL_NGDP (general gov net lending/borrowing, %GDP) × spine nominal_gdp",
+    "confidence": "flagged",
+    "series": [
+      {
+        "year": 2015,
+        "value": 147.3,
+        "type": "derived",
+        "vintage": "2025",
+        "sourceNote": "5.7% of GDP × 2,584mn nominal GDP"
+      },
+      {
+        "year": 2016,
+        "value": 103.3,
+        "type": "derived",
+        "vintage": "2025",
+        "sourceNote": "3.8% of GDP × 2,718mn nominal GDP"
+      },
+      {
+        "year": 2017,
+        "value": 48.5,
+        "type": "derived",
+        "vintage": "2025",
+        "sourceNote": "1.7% of GDP × 2,854mn nominal GDP"
+      },
+      {
+        "year": 2018,
+        "value": 52.3,
+        "type": "derived",
+        "vintage": "2025",
+        "sourceNote": "1.8% of GDP × 2,907mn nominal GDP"
+      },
+      {
+        "year": 2019,
+        "value": -20.9,
+        "type": "derived",
+        "vintage": "2025",
+        "sourceNote": "-0.7% of GDP × 2,991mn nominal GDP"
+      },
+      {
+        "year": 2020,
+        "value": -74.0,
+        "type": "derived",
+        "vintage": "2025",
+        "sourceNote": "-3.1% of GDP × 2,387mn nominal GDP"
+      },
+      {
+        "year": 2021,
+        "value": 127.5,
+        "type": "derived",
+        "vintage": "2025",
+        "sourceNote": "5.5% of GDP × 2,318mn nominal GDP"
+      },
+      {
+        "year": 2022,
+        "value": -111.3,
+        "type": "derived",
+        "vintage": "2025",
+        "sourceNote": "-4.2% of GDP × 2,650mn nominal GDP"
+      },
+      {
+        "year": 2023,
+        "value": 5.7,
+        "type": "derived",
+        "vintage": "2025",
+        "sourceNote": "0.2% of GDP × 2,850mn nominal GDP"
+      },
+      {
+        "year": 2024,
+        "value": -342.4,
+        "type": "derived",
+        "vintage": "2025",
+        "sourceNote": "-11.3% of GDP × 3,030mn nominal GDP"
+      }
+    ],
+    "seriesNote": "[FALLBACK — IMF] Level derived from WEO overall-balance ratio applied to nominal GDP; national-source detail (revenue/expenditure) not yet collected."
+  },
+  {
+    "country": "DM",
+    "indicator": "fiscal_balance",
+    "indicatorLabel": "Fiscal Balance (overall)",
+    "unit": "EC$ mn",
+    "unitNote": "Overall fiscal balance, derived from IMF WEO balance %GDP × nominal GDP",
+    "source": "IMF World Economic Outlook (DataMapper)",
+    "sourceOrg": "IMF WEO",
+    "sourceTier": "fallback",
+    "sourceUrl": "https://www.imf.org/external/datamapper/GGXCNL_NGDP/DMA",
+    "sourceRef": "WEO series GGXCNL_NGDP (general gov net lending/borrowing, %GDP) × spine nominal_gdp",
+    "confidence": "flagged",
+    "series": [
+      {
+        "year": 2015,
+        "value": 179.5,
+        "type": "derived",
+        "vintage": "2025",
+        "sourceNote": "11.4% of GDP × 1,575mn nominal GDP"
+      },
+      {
+        "year": 2016,
+        "value": 191.9,
+        "type": "derived",
+        "vintage": "2025",
+        "sourceNote": "11.6% of GDP × 1,654mn nominal GDP"
+      },
+      {
+        "year": 2017,
+        "value": -50.2,
+        "type": "derived",
+        "vintage": "2025",
+        "sourceNote": "-3.3% of GDP × 1,521mn nominal GDP"
+      },
+      {
+        "year": 2018,
+        "value": -291.8,
+        "type": "derived",
+        "vintage": "2025",
+        "sourceNote": "-17.2% of GDP × 1,696mn nominal GDP"
+      },
+      {
+        "year": 2019,
+        "value": -151.3,
+        "type": "derived",
+        "vintage": "2025",
+        "sourceNote": "-8.7% of GDP × 1,740mn nominal GDP"
+      },
+      {
+        "year": 2020,
+        "value": -107.1,
+        "type": "derived",
+        "vintage": "2025",
+        "sourceNote": "-7.5% of GDP × 1,428mn nominal GDP"
+      },
+      {
+        "year": 2021,
+        "value": -124.6,
+        "type": "derived",
+        "vintage": "2025",
+        "sourceNote": "-8.2% of GDP × 1,520mn nominal GDP"
+      },
+      {
+        "year": 2022,
+        "value": -121.1,
+        "type": "derived",
+        "vintage": "2025",
+        "sourceNote": "-7.2% of GDP × 1,682mn nominal GDP"
+      },
+      {
+        "year": 2023,
+        "value": -80.1,
+        "type": "derived",
+        "vintage": "2025",
+        "sourceNote": "-4.5% of GDP × 1,780mn nominal GDP"
+      },
+      {
+        "year": 2024,
+        "value": -126.5,
+        "type": "derived",
+        "vintage": "2025",
+        "sourceNote": "-6.8% of GDP × 1,860mn nominal GDP"
+      }
+    ],
+    "seriesNote": "[FALLBACK — IMF] Level derived from WEO overall-balance ratio applied to nominal GDP; national-source detail (revenue/expenditure) not yet collected."
+  },
+  {
+    "country": "DM",
+    "indicator": "current_account",
+    "indicatorLabel": "Current Account Balance (BoP)",
+    "unit": "US$ mn",
+    "unitNote": "Balance of payments current account",
+    "source": "IMF World Economic Outlook (DataMapper)",
+    "sourceOrg": "IMF WEO",
+    "sourceTier": "fallback",
+    "sourceUrl": "https://www.imf.org/external/datamapper/BCA/DMA",
+    "sourceRef": "WEO series BCA (US$ bn × 1000)",
+    "confidence": "flagged",
+    "series": [
+      {
+        "year": 2015,
+        "value": -38.0,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2016,
+        "value": -52.0,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2017,
+        "value": -58.0,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2018,
+        "value": -259.0,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2019,
+        "value": -233.0,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2020,
+        "value": -186.0,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2021,
+        "value": -186.0,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2022,
+        "value": -165.0,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2023,
+        "value": -266.0,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2024,
+        "value": -260.0,
+        "type": "estimate",
+        "vintage": "2025"
+      }
+    ],
+    "seriesNote": "[FALLBACK — IMF] WEO balance of payments current account."
+  },
+  {
+    "country": "VC",
+    "indicator": "current_account",
+    "indicatorLabel": "Current Account Balance (BoP)",
+    "unit": "US$ mn",
+    "unitNote": "Balance of payments current account",
+    "source": "IMF World Economic Outlook (DataMapper)",
+    "sourceOrg": "IMF WEO",
+    "sourceTier": "fallback",
+    "sourceUrl": "https://www.imf.org/external/datamapper/BCA/VCT",
+    "sourceRef": "WEO series BCA (US$ bn × 1000)",
+    "confidence": "flagged",
+    "series": [
+      {
+        "year": 2015,
+        "value": -123.0,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2016,
+        "value": -107.0,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2017,
+        "value": -100.0,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2018,
+        "value": -91.0,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2019,
+        "value": -22.0,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2020,
+        "value": -137.0,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2021,
+        "value": -206.0,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2022,
+        "value": -199.0,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2023,
+        "value": -191.0,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2024,
+        "value": -193.0,
+        "type": "estimate",
+        "vintage": "2025"
+      }
+    ],
+    "seriesNote": "[FALLBACK — IMF] WEO balance of payments current account."
+  },
+  {
+    "country": "BZ",
+    "indicator": "current_account",
+    "indicatorLabel": "Current Account Balance (BoP)",
+    "unit": "US$ mn",
+    "unitNote": "Balance of payments current account",
+    "source": "IMF World Economic Outlook (DataMapper)",
+    "sourceOrg": "IMF WEO",
+    "sourceTier": "fallback",
+    "sourceUrl": "https://www.imf.org/external/datamapper/BCA/BLZ",
+    "sourceRef": "WEO series BCA (US$ bn × 1000)",
+    "confidence": "flagged",
+    "series": [
+      {
+        "year": 2015,
+        "value": -175.0,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2016,
+        "value": -163.0,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2017,
+        "value": -158.0,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2018,
+        "value": -151.0,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2019,
+        "value": -185.0,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2020,
+        "value": -128.0,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2021,
+        "value": -158.0,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2022,
+        "value": -236.0,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2023,
+        "value": -31.0,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2024,
+        "value": -61.0,
+        "type": "estimate",
+        "vintage": "2025"
+      }
+    ],
+    "seriesNote": "[FALLBACK — IMF] WEO balance of payments current account."
+  },
+  {
+    "country": "SR",
+    "indicator": "fiscal_balance",
+    "indicatorLabel": "Fiscal Balance (overall)",
+    "unit": "SR$ mn",
+    "unitNote": "Overall fiscal balance, derived from IMF WEO balance %GDP × nominal GDP",
+    "source": "IMF World Economic Outlook (DataMapper)",
+    "sourceOrg": "IMF WEO",
+    "sourceTier": "fallback",
+    "sourceUrl": "https://www.imf.org/external/datamapper/GGXCNL_NGDP/SUR",
+    "sourceRef": "WEO series GGXCNL_NGDP (general gov net lending/borrowing, %GDP) × spine nominal_gdp",
+    "confidence": "flagged",
+    "series": [
+      {
+        "year": 2015,
+        "value": -1453.7,
+        "type": "derived",
+        "vintage": "2025",
+        "sourceNote": "-8.3% of GDP × 17,515mn nominal GDP"
+      },
+      {
+        "year": 2016,
+        "value": -2107.6,
+        "type": "derived",
+        "vintage": "2025",
+        "sourceNote": "-10.2% of GDP × 20,663mn nominal GDP"
+      },
+      {
+        "year": 2017,
+        "value": -2312.8,
+        "type": "derived",
+        "vintage": "2025",
+        "sourceNote": "-8.6% of GDP × 26,893mn nominal GDP"
+      },
+      {
+        "year": 2018,
+        "value": -2564.7,
+        "type": "derived",
+        "vintage": "2025",
+        "sourceNote": "-8.6% of GDP × 29,822mn nominal GDP"
+      },
+      {
+        "year": 2019,
+        "value": -6409.9,
+        "type": "derived",
+        "vintage": "2025",
+        "sourceNote": "-20.2% of GDP × 31,732mn nominal GDP"
+      },
+      {
+        "year": 2020,
+        "value": -4646.3,
+        "type": "derived",
+        "vintage": "2025",
+        "sourceNote": "-12% of GDP × 38,720mn nominal GDP"
+      },
+      {
+        "year": 2021,
+        "value": -3489.9,
+        "type": "derived",
+        "vintage": "2025",
+        "sourceNote": "-5.7% of GDP × 61,226mn nominal GDP"
+      },
+      {
+        "year": 2022,
+        "value": -2435.9,
+        "type": "derived",
+        "vintage": "2025",
+        "sourceNote": "-2.6% of GDP × 93,687mn nominal GDP"
+      },
+      {
+        "year": 2023,
+        "value": -2171.1,
+        "type": "derived",
+        "vintage": "2025",
+        "sourceNote": "-1.7% of GDP × 127,711mn nominal GDP"
+      },
+      {
+        "year": 2024,
+        "value": -4982.7,
+        "type": "derived",
+        "vintage": "2025",
+        "sourceNote": "-3.4% of GDP × 146,551mn nominal GDP"
+      }
+    ],
+    "seriesNote": "[FALLBACK — IMF] Level derived from WEO overall-balance ratio applied to nominal GDP; national-source detail (revenue/expenditure) not yet collected."
+  },
+  {
+    "country": "SR",
+    "indicator": "current_account",
+    "indicatorLabel": "Current Account Balance (BoP)",
+    "unit": "US$ mn",
+    "unitNote": "Balance of payments current account",
+    "source": "IMF World Economic Outlook (DataMapper)",
+    "sourceOrg": "IMF WEO",
+    "sourceTier": "fallback",
+    "sourceUrl": "https://www.imf.org/external/datamapper/BCA/SUR",
+    "sourceRef": "WEO series BCA (US$ bn × 1000)",
+    "confidence": "flagged",
+    "series": [
+      {
+        "year": 2015,
+        "value": -786.0,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2016,
+        "value": -161.0,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2017,
+        "value": 69.0,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2018,
+        "value": -119.0,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2019,
+        "value": -448.0,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2020,
+        "value": 260.0,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2021,
+        "value": -79.0,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2022,
+        "value": 51.0,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2023,
+        "value": -128.0,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2024,
+        "value": -570.0,
+        "type": "estimate",
+        "vintage": "2025"
+      }
+    ],
+    "seriesNote": "[FALLBACK — IMF] WEO balance of payments current account."
+  },
+  {
+    "country": "GD",
+    "indicator": "fiscal_balance",
+    "indicatorLabel": "Fiscal Balance (overall)",
+    "unit": "EC$ mn",
+    "unitNote": "Overall fiscal balance, derived from IMF WEO balance %GDP × nominal GDP",
+    "source": "IMF World Economic Outlook (DataMapper)",
+    "sourceOrg": "IMF WEO",
+    "sourceTier": "fallback",
+    "sourceUrl": "https://www.imf.org/external/datamapper/GGXCNL_NGDP/GRD",
+    "sourceRef": "WEO series GGXCNL_NGDP (general gov net lending/borrowing, %GDP) × spine nominal_gdp",
+    "confidence": "flagged",
+    "series": [
+      {
+        "year": 2015,
+        "value": -21.5,
+        "type": "derived",
+        "vintage": "2025",
+        "sourceNote": "-0.8% of GDP × 2,692mn nominal GDP"
+      },
+      {
+        "year": 2016,
+        "value": 77.4,
+        "type": "derived",
+        "vintage": "2025",
+        "sourceNote": "2.7% of GDP × 2,866mn nominal GDP"
+      },
+      {
+        "year": 2017,
+        "value": 91.2,
+        "type": "derived",
+        "vintage": "2025",
+        "sourceNote": "3% of GDP × 3,039mn nominal GDP"
+      },
+      {
+        "year": 2018,
+        "value": 154.3,
+        "type": "derived",
+        "vintage": "2025",
+        "sourceNote": "4.9% of GDP × 3,150mn nominal GDP"
+      },
+      {
+        "year": 2019,
+        "value": 163.8,
+        "type": "derived",
+        "vintage": "2025",
+        "sourceNote": "5% of GDP × 3,276mn nominal GDP"
+      },
+      {
+        "year": 2020,
+        "value": -126.8,
+        "type": "derived",
+        "vintage": "2025",
+        "sourceNote": "-4.5% of GDP × 2,817mn nominal GDP"
+      },
+      {
+        "year": 2021,
+        "value": 9.1,
+        "type": "derived",
+        "vintage": "2025",
+        "sourceNote": "0.3% of GDP × 3,030mn nominal GDP"
+      },
+      {
+        "year": 2022,
+        "value": 29.7,
+        "type": "derived",
+        "vintage": "2025",
+        "sourceNote": "0.9% of GDP × 3,305mn nominal GDP"
+      },
+      {
+        "year": 2023,
+        "value": 285.1,
+        "type": "derived",
+        "vintage": "2025",
+        "sourceNote": "7.9% of GDP × 3,608mn nominal GDP"
+      },
+      {
+        "year": 2024,
+        "value": 255.6,
+        "type": "derived",
+        "vintage": "2025",
+        "sourceNote": "6.9% of GDP × 3,704mn nominal GDP"
+      }
+    ],
+    "seriesNote": "[FALLBACK — IMF] Level derived from WEO overall-balance ratio applied to nominal GDP; national-source detail (revenue/expenditure) not yet collected."
+  },
+  {
+    "country": "LC",
+    "indicator": "fiscal_balance",
+    "indicatorLabel": "Fiscal Balance (overall)",
+    "unit": "EC$ mn",
+    "unitNote": "Overall fiscal balance, derived from IMF WEO balance %GDP × nominal GDP",
+    "source": "IMF World Economic Outlook (DataMapper)",
+    "sourceOrg": "IMF WEO",
+    "sourceTier": "fallback",
+    "sourceUrl": "https://www.imf.org/external/datamapper/GGXCNL_NGDP/LCA",
+    "sourceRef": "WEO series GGXCNL_NGDP (general gov net lending/borrowing, %GDP) × spine nominal_gdp",
+    "confidence": "flagged",
+    "series": [
+      {
+        "year": 2015,
+        "value": -58.6,
+        "type": "derived",
+        "vintage": "2025",
+        "sourceNote": "-1.2% of GDP × 4,881mn nominal GDP"
+      },
+      {
+        "year": 2016,
+        "value": -75.7,
+        "type": "derived",
+        "vintage": "2025",
+        "sourceNote": "-1.5% of GDP × 5,045mn nominal GDP"
+      },
+      {
+        "year": 2017,
+        "value": -113.3,
+        "type": "derived",
+        "vintage": "2025",
+        "sourceNote": "-2.1% of GDP × 5,396mn nominal GDP"
+      },
+      {
+        "year": 2018,
+        "value": -66.8,
+        "type": "derived",
+        "vintage": "2025",
+        "sourceNote": "-1.2% of GDP × 5,565mn nominal GDP"
+      },
+      {
+        "year": 2019,
+        "value": -164.1,
+        "type": "derived",
+        "vintage": "2025",
+        "sourceNote": "-2.9% of GDP × 5,657mn nominal GDP"
+      },
+      {
+        "year": 2020,
+        "value": -465.5,
+        "type": "derived",
+        "vintage": "2025",
+        "sourceNote": "-11.5% of GDP × 4,048mn nominal GDP"
+      },
+      {
+        "year": 2021,
+        "value": -272.2,
+        "type": "derived",
+        "vintage": "2025",
+        "sourceNote": "-5.4% of GDP × 5,041mn nominal GDP"
+      },
+      {
+        "year": 2022,
+        "value": -158.1,
+        "type": "derived",
+        "vintage": "2025",
+        "sourceNote": "-2.5% of GDP × 6,325mn nominal GDP"
+      },
+      {
+        "year": 2023,
+        "value": -210.0,
+        "type": "derived",
+        "vintage": "2025",
+        "sourceNote": "-3.2% of GDP × 6,561mn nominal GDP"
+      },
+      {
+        "year": 2024,
+        "value": -123.9,
+        "type": "derived",
+        "vintage": "2025",
+        "sourceNote": "-1.8% of GDP × 6,882mn nominal GDP"
+      }
+    ],
+    "seriesNote": "[FALLBACK — IMF] Level derived from WEO overall-balance ratio applied to nominal GDP; national-source detail (revenue/expenditure) not yet collected."
+  },
+  {
+    "country": "LC",
+    "indicator": "current_account",
+    "indicatorLabel": "Current Account Balance (BoP)",
+    "unit": "US$ mn",
+    "unitNote": "Balance of payments current account",
+    "source": "IMF World Economic Outlook (DataMapper)",
+    "sourceOrg": "IMF WEO",
+    "sourceTier": "fallback",
+    "sourceUrl": "https://www.imf.org/external/datamapper/BCA/LCA",
+    "sourceRef": "WEO series BCA (US$ bn × 1000)",
+    "confidence": "flagged",
+    "series": [
+      {
+        "year": 2015,
+        "value": -9.0,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2016,
+        "value": -118.0,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2017,
+        "value": -38.0,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2018,
+        "value": 30.0,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2019,
+        "value": 70.0,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2020,
+        "value": -284.0,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2021,
+        "value": -194.0,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2022,
+        "value": -77.0,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2023,
+        "value": -52.0,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2024,
+        "value": -40.0,
+        "type": "estimate",
+        "vintage": "2025"
+      }
+    ],
+    "seriesNote": "[FALLBACK — IMF] WEO balance of payments current account."
+  },
+  {
+    "country": "AG",
+    "indicator": "fiscal_balance",
+    "indicatorLabel": "Fiscal Balance (overall)",
+    "unit": "EC$ mn",
+    "unitNote": "Overall fiscal balance, derived from IMF WEO balance %GDP × nominal GDP",
+    "source": "IMF World Economic Outlook (DataMapper)",
+    "sourceOrg": "IMF WEO",
+    "sourceTier": "fallback",
+    "sourceUrl": "https://www.imf.org/external/datamapper/GGXCNL_NGDP/ATG",
+    "sourceRef": "WEO series GGXCNL_NGDP (general gov net lending/borrowing, %GDP) × spine nominal_gdp",
+    "confidence": "flagged",
+    "series": [
+      {
+        "year": 2015,
+        "value": -93.1,
+        "type": "derived",
+        "vintage": "2025",
+        "sourceNote": "-2.4% of GDP × 3,881mn nominal GDP"
+      },
+      {
+        "year": 2016,
+        "value": -4.0,
+        "type": "derived",
+        "vintage": "2025",
+        "sourceNote": "-0.1% of GDP × 4,022mn nominal GDP"
+      },
+      {
+        "year": 2017,
+        "value": -111.9,
+        "type": "derived",
+        "vintage": "2025",
+        "sourceNote": "-2.7% of GDP × 4,144mn nominal GDP"
+      },
+      {
+        "year": 2018,
+        "value": -107.7,
+        "type": "derived",
+        "vintage": "2025",
+        "sourceNote": "-2.4% of GDP × 4,486mn nominal GDP"
+      },
+      {
+        "year": 2019,
+        "value": -167.8,
+        "type": "derived",
+        "vintage": "2025",
+        "sourceNote": "-3.6% of GDP × 4,661mn nominal GDP"
+      },
+      {
+        "year": 2020,
+        "value": -236.3,
+        "type": "derived",
+        "vintage": "2025",
+        "sourceNote": "-6.2% of GDP × 3,811mn nominal GDP"
+      },
+      {
+        "year": 2021,
+        "value": -194.7,
+        "type": "derived",
+        "vintage": "2025",
+        "sourceNote": "-4.5% of GDP × 4,326mn nominal GDP"
+      },
+      {
+        "year": 2022,
+        "value": -146.2,
+        "type": "derived",
+        "vintage": "2025",
+        "sourceNote": "-2.9% of GDP × 5,040mn nominal GDP"
+      },
+      {
+        "year": 2023,
+        "value": -92.1,
+        "type": "derived",
+        "vintage": "2025",
+        "sourceNote": "-1.7% of GDP × 5,416mn nominal GDP"
+      },
+      {
+        "year": 2024,
+        "value": 95.4,
+        "type": "derived",
+        "vintage": "2025",
+        "sourceNote": "1.6% of GDP × 5,961mn nominal GDP"
+      }
+    ],
+    "seriesNote": "[FALLBACK — IMF] Level derived from WEO overall-balance ratio applied to nominal GDP; national-source detail (revenue/expenditure) not yet collected."
+  },
+  {
+    "country": "KN",
+    "indicator": "current_account",
+    "indicatorLabel": "Current Account Balance (BoP)",
+    "unit": "US$ mn",
+    "unitNote": "Balance of payments current account",
+    "source": "IMF World Economic Outlook (DataMapper)",
+    "sourceOrg": "IMF WEO",
+    "sourceTier": "fallback",
+    "sourceUrl": "https://www.imf.org/external/datamapper/BCA/KNA",
+    "sourceRef": "WEO series BCA (US$ bn × 1000)",
+    "confidence": "flagged",
+    "series": [
+      {
+        "year": 2015,
+        "value": -78.0,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2016,
+        "value": -122.0,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2017,
+        "value": -108.0,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2018,
+        "value": -63.0,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2019,
+        "value": -53.0,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2020,
+        "value": -96.0,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2021,
+        "value": -29.0,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2022,
+        "value": -104.0,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2023,
+        "value": -142.0,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2024,
+        "value": -137.0,
+        "type": "estimate",
+        "vintage": "2025"
+      }
+    ],
+    "seriesNote": "[FALLBACK — IMF] WEO current account."
+  },
+  {
+    "country": "VC",
+    "indicator": "fiscal_balance",
+    "indicatorLabel": "Fiscal Balance (overall)",
+    "unit": "EC$ mn",
+    "unitNote": "Overall fiscal balance, derived from IMF WEO balance %GDP × nominal GDP",
+    "source": "IMF World Economic Outlook (DataMapper)",
+    "sourceOrg": "IMF WEO",
+    "sourceTier": "fallback",
+    "sourceUrl": "https://www.imf.org/external/datamapper/GGXCNL_NGDP/VCT",
+    "sourceRef": "WEO series GGXCNL_NGDP × spine nominal_gdp",
+    "confidence": "flagged",
+    "series": [
+      {
+        "year": 2015,
+        "value": -42.5,
+        "type": "derived",
+        "vintage": "2025",
+        "sourceNote": "-2% of GDP × 2,124mn nominal GDP"
+      },
+      {
+        "year": 2016,
+        "value": 0.0,
+        "type": "derived",
+        "vintage": "2025",
+        "sourceNote": "0% of GDP × 2,199mn nominal GDP"
+      },
+      {
+        "year": 2017,
+        "value": -36.5,
+        "type": "derived",
+        "vintage": "2025",
+        "sourceNote": "-1.6% of GDP × 2,279mn nominal GDP"
+      },
+      {
+        "year": 2018,
+        "value": -38.2,
+        "type": "derived",
+        "vintage": "2025",
+        "sourceNote": "-1.6% of GDP × 2,388mn nominal GDP"
+      },
+      {
+        "year": 2019,
+        "value": -83.6,
+        "type": "derived",
+        "vintage": "2025",
+        "sourceNote": "-3.4% of GDP × 2,458mn nominal GDP"
+      },
+      {
+        "year": 2020,
+        "value": -137.7,
+        "type": "derived",
+        "vintage": "2025",
+        "sourceNote": "-5.9% of GDP × 2,334mn nominal GDP"
+      },
+      {
+        "year": 2021,
+        "value": -172.8,
+        "type": "derived",
+        "vintage": "2025",
+        "sourceNote": "-7.2% of GDP × 2,399mn nominal GDP"
+      },
+      {
+        "year": 2022,
+        "value": -251.1,
+        "type": "derived",
+        "vintage": "2025",
+        "sourceNote": "-9.4% of GDP × 2,671mn nominal GDP"
+      },
+      {
+        "year": 2023,
+        "value": -361.9,
+        "type": "derived",
+        "vintage": "2025",
+        "sourceNote": "-12.5% of GDP × 2,895mn nominal GDP"
+      },
+      {
+        "year": 2024,
+        "value": -499.9,
+        "type": "derived",
+        "vintage": "2025",
+        "sourceNote": "-16% of GDP × 3,124mn nominal GDP"
+      }
+    ],
+    "seriesNote": "[FALLBACK — IMF] Level derived from WEO overall-balance ratio × nominal GDP."
   }
 ]
