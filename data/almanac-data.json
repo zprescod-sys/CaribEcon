@@ -13528,5 +13528,773 @@
       }
     ],
     "seriesNote": "Diverges from spine indicator debt_to_gdp (IMF WEO general-gov gross debt): different debt definition (public & publicly guaranteed) and GDP vintage. 2024 here = 24.3% vs IMF ~24%."
+  },
+  {
+    "country": "BB",
+    "indicator": "govt_revenue_total",
+    "indicatorLabel": "Government Total Revenue",
+    "unit": "Bds$ mn",
+    "unitNote": "Total revenues & grants, Fiscal year Apr-Mar, labelled by starting calendar year; quarters aggregated from CBB Table F1.",
+    "source": "Central Bank of Barbados — Table F1, Summary of Government Operations (Dec 2024)",
+    "sourceOrg": "Central Bank of Barbados",
+    "sourceTier": "primary",
+    "sourceUrl": "https://www.centralbank.org.bb/news/summary-of-government-operations",
+    "sourceRef": "Table F1, Total Revenues & Grants",
+    "confidence": "high",
+    "series": [
+      {
+        "year": 2015,
+        "value": 2458.4,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2016,
+        "value": 2754.0,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2017,
+        "value": 2845.4,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2018,
+        "value": 2993.6,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2019,
+        "value": 2984.2,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2020,
+        "value": 2563.3,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2021,
+        "value": 2823.8,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2022,
+        "value": 3320.0,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2023,
+        "value": 3378.0,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2024,
+        "value": 2910.2,
+        "type": "estimate",
+        "vintage": "2025",
+        "sourceNote": "Partial: FY2024/25 Apr-Dec 2024 (3 quarters) per CBB data through Dec-2024."
+      }
+    ]
+  },
+  {
+    "country": "BB",
+    "indicator": "govt_current_expenditure",
+    "indicatorLabel": "Government Current Expenditure",
+    "unit": "Bds$ mn",
+    "unitNote": "Current expenditure (incl. interest), Fiscal year Apr-Mar, labelled by starting calendar year; quarters aggregated from CBB Table F1.",
+    "source": "Central Bank of Barbados — Table F1, Summary of Government Operations (Dec 2024)",
+    "sourceOrg": "Central Bank of Barbados",
+    "sourceTier": "primary",
+    "sourceUrl": "https://www.centralbank.org.bb/news/summary-of-government-operations",
+    "sourceRef": "Table F1, Current Expenditure",
+    "confidence": "high",
+    "series": [
+      {
+        "year": 2015,
+        "value": 3085.5,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2016,
+        "value": 3052.9,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2017,
+        "value": 3123.8,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2018,
+        "value": 2826.4,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2019,
+        "value": 2407.9,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2020,
+        "value": 2716.8,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2021,
+        "value": 2889.2,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2022,
+        "value": 3088.7,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2023,
+        "value": 3238.9,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2024,
+        "value": 2400.9,
+        "type": "estimate",
+        "vintage": "2025",
+        "sourceNote": "Partial: FY2024/25 Apr-Dec 2024 (3 quarters) per CBB data through Dec-2024."
+      }
+    ]
+  },
+  {
+    "country": "BB",
+    "indicator": "govt_capital_expenditure",
+    "indicatorLabel": "Government Capital Expenditure",
+    "unit": "Bds$ mn",
+    "unitNote": "Capital expenditure, Fiscal year Apr-Mar, labelled by starting calendar year; quarters aggregated from CBB Table F1.",
+    "source": "Central Bank of Barbados — Table F1, Summary of Government Operations (Dec 2024)",
+    "sourceOrg": "Central Bank of Barbados",
+    "sourceTier": "primary",
+    "sourceUrl": "https://www.centralbank.org.bb/news/summary-of-government-operations",
+    "sourceRef": "Table F1, Capital Expenditure",
+    "confidence": "high",
+    "series": [
+      {
+        "year": 2015,
+        "value": 216.6,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2016,
+        "value": 205.4,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2017,
+        "value": 149.1,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2018,
+        "value": 184.9,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2019,
+        "value": 185.1,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2020,
+        "value": 278.3,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2021,
+        "value": 421.6,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2022,
+        "value": 449.5,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2023,
+        "value": 357.6,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2024,
+        "value": 264.7,
+        "type": "estimate",
+        "vintage": "2025",
+        "sourceNote": "Partial: FY2024/25 Apr-Dec 2024 (3 quarters) per CBB data through Dec-2024."
+      }
+    ]
+  },
+  {
+    "country": "BB",
+    "indicator": "govt_total_expenditure",
+    "indicatorLabel": "Government Total Expenditure",
+    "unit": "Bds$ mn",
+    "unitNote": "Total expenditure & net lending, Fiscal year Apr-Mar, labelled by starting calendar year; quarters aggregated from CBB Table F1.",
+    "source": "Central Bank of Barbados — Table F1, Summary of Government Operations (Dec 2024)",
+    "sourceOrg": "Central Bank of Barbados",
+    "sourceTier": "primary",
+    "sourceUrl": "https://www.centralbank.org.bb/news/summary-of-government-operations",
+    "sourceRef": "Table F1, Total Expenditure & Net Lending",
+    "confidence": "high",
+    "series": [
+      {
+        "year": 2015,
+        "value": 3321.8,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2016,
+        "value": 3278.1,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2017,
+        "value": 3295.6,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2018,
+        "value": 3024.1,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2019,
+        "value": 2599.7,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2020,
+        "value": 2992.9,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2021,
+        "value": 3314.4,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2022,
+        "value": 3564.9,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2023,
+        "value": 3608.5,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2024,
+        "value": 2683.7,
+        "type": "estimate",
+        "vintage": "2025",
+        "sourceNote": "Partial: FY2024/25 Apr-Dec 2024 (3 quarters) per CBB data through Dec-2024."
+      }
+    ],
+    "seriesNote": "Cross-check: Total Revenues − Total Expenditure = Fiscal Balance (holds every year)."
+  },
+  {
+    "country": "BB",
+    "indicator": "fiscal_balance",
+    "indicatorLabel": "Fiscal Balance (overall)",
+    "unit": "Bds$ mn",
+    "unitNote": "Overall fiscal balance, Fiscal year Apr-Mar, labelled by starting calendar year; quarters aggregated from CBB Table F1.",
+    "source": "Central Bank of Barbados — Table F1, Summary of Government Operations (Dec 2024)",
+    "sourceOrg": "Central Bank of Barbados",
+    "sourceTier": "primary",
+    "sourceUrl": "https://www.centralbank.org.bb/news/summary-of-government-operations",
+    "sourceRef": "Table F1, Fiscal Balance",
+    "confidence": "high",
+    "series": [
+      {
+        "year": 2015,
+        "value": -863.4,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2016,
+        "value": -524.1,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2017,
+        "value": -450.2,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2018,
+        "value": -30.5,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2019,
+        "value": 384.5,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2020,
+        "value": -429.6,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2021,
+        "value": -490.6,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2022,
+        "value": -244.9,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2023,
+        "value": -230.5,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2024,
+        "value": 226.5,
+        "type": "estimate",
+        "vintage": "2025",
+        "sourceNote": "Partial: FY2024/25 Apr-Dec 2024 (3 quarters) per CBB data through Dec-2024."
+      }
+    ]
+  },
+  {
+    "country": "BB",
+    "indicator": "primary_balance",
+    "indicatorLabel": "Primary Balance",
+    "unit": "Bds$ mn",
+    "unitNote": "Fiscal balance excl. interest, Fiscal year Apr-Mar, labelled by starting calendar year; quarters aggregated from CBB Table F1.",
+    "source": "Central Bank of Barbados — Table F1, Summary of Government Operations (Dec 2024)",
+    "sourceOrg": "Central Bank of Barbados",
+    "sourceTier": "primary",
+    "sourceUrl": "https://www.centralbank.org.bb/news/summary-of-government-operations",
+    "sourceRef": "Table F1, Primary Balance",
+    "confidence": "high",
+    "series": [
+      {
+        "year": 2015,
+        "value": -190.8,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2016,
+        "value": 217.6,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2017,
+        "value": 314.5,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2018,
+        "value": 354.3,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2019,
+        "value": 634.2,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2020,
+        "value": -87.0,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2021,
+        "value": -91.6,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2022,
+        "value": 304.3,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2023,
+        "value": 476.8,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2024,
+        "value": 775.8,
+        "type": "estimate",
+        "vintage": "2025",
+        "sourceNote": "FY2024/25 Apr-Dec primary surplus 775.8 ≈ CBB press release 774.1 (cross-check)."
+      }
+    ]
+  },
+  {
+    "country": "BB",
+    "indicator": "current_account",
+    "indicatorLabel": "Current Account Balance (BoP)",
+    "unit": "US$ mn",
+    "unitNote": "Balance of payments current account",
+    "source": "IMF World Economic Outlook (DataMapper)",
+    "sourceOrg": "IMF WEO",
+    "sourceTier": "fallback",
+    "sourceUrl": "https://www.imf.org/external/datamapper/BCA/BRB",
+    "sourceRef": "WEO series BCA (US$ bn × 1000)",
+    "confidence": "flagged",
+    "series": [
+      {
+        "year": 2015,
+        "value": -289,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2016,
+        "value": -206,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2017,
+        "value": -189,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2018,
+        "value": -201,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2019,
+        "value": -60,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2020,
+        "value": -277,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2021,
+        "value": -470,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2022,
+        "value": -543,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2023,
+        "value": -563,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2024,
+        "value": -296,
+        "type": "estimate",
+        "vintage": "2025"
+      }
+    ],
+    "seriesNote": "[FALLBACK — IMF] CBB reports BoP current account at -4.5% of GDP for 2024 (AR2024 Table 1), consistent."
+  },
+  {
+    "country": "BB",
+    "indicator": "import_cover",
+    "indicatorLabel": "Import Cover",
+    "unit": "months",
+    "unitNote": "Gross international reserves cover in months (weeks ÷ 4.33)",
+    "source": "Central Bank of Barbados — Annual Report 2024",
+    "sourceOrg": "Central Bank of Barbados",
+    "sourceTier": "primary",
+    "sourceUrl": "https://www.barbadosparliament.com/uploads/sittings/attachments/7c307e0ea1e38ae82476440efbf0c886.pdf",
+    "sourceRef": "AR2024 Table 1, Gross International Reserves Cover (Weeks)",
+    "confidence": "high",
+    "series": [
+      {
+        "year": 2019,
+        "value": 4.3,
+        "type": "actual",
+        "vintage": "2025",
+        "sourceNote": "18.6 weeks of reserve cover (CBB AR2024 Table 1)."
+      },
+      {
+        "year": 2020,
+        "value": 9.4,
+        "type": "actual",
+        "vintage": "2025",
+        "sourceNote": "40.7 weeks of reserve cover (CBB AR2024 Table 1)."
+      },
+      {
+        "year": 2021,
+        "value": 9.4,
+        "type": "actual",
+        "vintage": "2025",
+        "sourceNote": "40.6 weeks of reserve cover (CBB AR2024 Table 1)."
+      },
+      {
+        "year": 2022,
+        "value": 6.7,
+        "type": "actual",
+        "vintage": "2025",
+        "sourceNote": "29.2 weeks of reserve cover (CBB AR2024 Table 1)."
+      },
+      {
+        "year": 2023,
+        "value": 7.2,
+        "type": "actual",
+        "vintage": "2025",
+        "sourceNote": "31.0 weeks of reserve cover (CBB AR2024 Table 1)."
+      },
+      {
+        "year": 2024,
+        "value": 7.2,
+        "type": "estimate",
+        "vintage": "2025",
+        "sourceNote": "31.2 weeks of reserve cover (CBB AR2024 Table 1)."
+      }
+    ]
+  },
+  {
+    "country": "BB",
+    "indicator": "gross_govt_debt_pct_gdp",
+    "indicatorLabel": "Gross Government Debt as % of GDP",
+    "unit": "%",
+    "unitNote": "Gross public sector debt (incl. guaranteed) as % of GDP",
+    "source": "Central Bank of Barbados — Annual Report 2024",
+    "sourceOrg": "Central Bank of Barbados",
+    "sourceTier": "primary",
+    "sourceUrl": "https://www.barbadosparliament.com/uploads/sittings/attachments/7c307e0ea1e38ae82476440efbf0c886.pdf",
+    "sourceRef": "AR2024 Table 1, Gross Public Sector Debt (% of GDP)",
+    "confidence": "high",
+    "series": [
+      {
+        "year": 2019,
+        "value": 108.0,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2020,
+        "value": 124.0,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2021,
+        "value": 126.6,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2022,
+        "value": 112.3,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2023,
+        "value": 109.8,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2024,
+        "value": 103.0,
+        "type": "estimate",
+        "vintage": "2025"
+      }
+    ],
+    "seriesNote": "Gross Public Sector Debt = Gross Central Government Debt + guaranteed contingent liabilities (CBB definition)."
+  },
+  {
+    "country": "BB",
+    "indicator": "gross_govt_debt",
+    "indicatorLabel": "Gross Government Debt",
+    "unit": "Bds$ mn",
+    "unitNote": "Gross public sector debt level (derived: %GDP × nominal GDP)",
+    "source": "Derived — CBB AR2024 Table 1 (debt %GDP × nominal GDP)",
+    "sourceOrg": "Central Bank of Barbados",
+    "sourceTier": "primary",
+    "sourceUrl": "https://www.barbadosparliament.com/uploads/sittings/attachments/7c307e0ea1e38ae82476440efbf0c886.pdf",
+    "sourceRef": "Derived: AR2024 Table 1 Gross Public Sector Debt %GDP × Nominal GDP",
+    "confidence": "medium",
+    "series": [
+      {
+        "year": 2019,
+        "value": 12502.7,
+        "type": "derived",
+        "vintage": "2025",
+        "sourceNote": "108.0% × Bds$11576.6mn GDP"
+      },
+      {
+        "year": 2020,
+        "value": 12817.5,
+        "type": "derived",
+        "vintage": "2025",
+        "sourceNote": "124.0% × Bds$10336.7mn GDP"
+      },
+      {
+        "year": 2021,
+        "value": 13356.9,
+        "type": "derived",
+        "vintage": "2025",
+        "sourceNote": "126.6% × Bds$10550.5mn GDP"
+      },
+      {
+        "year": 2022,
+        "value": 14053.9,
+        "type": "derived",
+        "vintage": "2025",
+        "sourceNote": "112.3% × Bds$12514.6mn GDP"
+      },
+      {
+        "year": 2023,
+        "value": 14758.8,
+        "type": "derived",
+        "vintage": "2025",
+        "sourceNote": "109.8% × Bds$13441.5mn GDP"
+      },
+      {
+        "year": 2024,
+        "value": 14764.5,
+        "type": "derived",
+        "vintage": "2025",
+        "sourceNote": "103.0% × Bds$14334.5mn GDP"
+      }
+    ]
+  },
+  {
+    "country": "BB",
+    "indicator": "capital_account",
+    "indicatorLabel": "Capital Account Balance (BoP)",
+    "unit": "US$ mn",
+    "unitNote": "BPM6 capital account",
+    "source": "PENDING — Central Bank of Barbados BoP",
+    "sourceOrg": "Central Bank of Barbados",
+    "sourceTier": "primary",
+    "sourceUrl": "https://www.barbadosparliament.com/uploads/sittings/attachments/7c307e0ea1e38ae82476440efbf0c886.pdf",
+    "sourceRef": "PENDING — AR2024 Table 1 reports a combined Financial Account, not the BPM6 capital account",
+    "confidence": "flagged",
+    "series": [
+      {
+        "year": 2024,
+        "value": null,
+        "type": "estimate",
+        "vintage": "2025",
+        "flag": "DATA_UNAVAILABLE",
+        "sourceNote": "[PENDING] CBB AR2024 Table 1 gives Financial Account ($mn): 2019-2024 = 776.4/1621.6/1207.6/984.4/1266.8/833.3. The distinct BPM6 capital account is not separately published."
+      }
+    ]
+  },
+  {
+    "country": "BB",
+    "indicator": "monetary_base",
+    "indicatorLabel": "Monetary Base",
+    "unit": "Bds$ mn",
+    "unitNote": "Reserve money",
+    "source": "PENDING — Central Bank of Barbados monetary statistics",
+    "sourceOrg": "Central Bank of Barbados",
+    "sourceTier": "primary",
+    "sourceUrl": "https://www.centralbank.org.bb/",
+    "sourceRef": "PENDING — CBB monetary survey (not yet extracted)",
+    "confidence": "flagged",
+    "series": [
+      {
+        "year": 2024,
+        "value": null,
+        "type": "estimate",
+        "vintage": "2025",
+        "flag": "DATA_UNAVAILABLE",
+        "sourceNote": "[PENDING] Reserve money to be read from CBB monetary statistics (separate dataset)."
+      }
+    ]
+  },
+  {
+    "country": "BB",
+    "indicator": "net_govt_debt",
+    "indicatorLabel": "Net Government Debt",
+    "unit": "Bds$ mn",
+    "unitNote": "Gross debt net of financial assets",
+    "source": "PENDING — not in CBB AR2024 Table 1",
+    "sourceOrg": "Central Bank of Barbados",
+    "sourceTier": "primary",
+    "sourceUrl": "https://www.barbadosparliament.com/uploads/sittings/attachments/7c307e0ea1e38ae82476440efbf0c886.pdf",
+    "sourceRef": "PENDING — only gross public sector debt published",
+    "confidence": "flagged",
+    "series": [
+      {
+        "year": 2024,
+        "value": null,
+        "type": "estimate",
+        "vintage": "2025",
+        "flag": "DATA_UNAVAILABLE",
+        "sourceNote": "[PENDING] CBB publishes gross public sector debt; a net figure would come from IMF Article IV."
+      }
+    ]
   }
 ]
