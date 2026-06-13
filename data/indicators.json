@@ -9,14 +9,55 @@
     "sourceOrg": "IMF",
     "sourceUrl": "https://www.imf.org/en/Publications/WEO",
     "series": [
-      { "year": 2018, "value": 4.1,  "type": "actual",     "vintage": "2024-10" },
-      { "year": 2019, "value": 5.4,  "type": "actual",     "vintage": "2024-10" },
-      { "year": 2020, "value": 26.2, "type": "actual",     "vintage": "2024-10", "sourceNote": "First full year of Stabroek oil production" },
-      { "year": 2021, "value": 20.4, "type": "actual",     "vintage": "2024-10" },
-      { "year": 2022, "value": 57.8, "type": "actual",     "vintage": "2024-10" },
-      { "year": 2023, "value": 33.2, "type": "actual",     "vintage": "2024-10" },
-      { "year": 2024, "value": 34.3, "type": "estimate",   "vintage": "2024-10" },
-      { "year": 2025, "value": 14.1, "type": "projection", "vintage": "2024-10" }
+      {
+        "year": 2018,
+        "value": 4.1,
+        "type": "actual",
+        "vintage": "2024-10"
+      },
+      {
+        "year": 2019,
+        "value": 5.4,
+        "type": "actual",
+        "vintage": "2024-10"
+      },
+      {
+        "year": 2020,
+        "value": 26.2,
+        "type": "actual",
+        "vintage": "2024-10",
+        "sourceNote": "First full year of Stabroek oil production"
+      },
+      {
+        "year": 2021,
+        "value": 20.4,
+        "type": "actual",
+        "vintage": "2024-10"
+      },
+      {
+        "year": 2022,
+        "value": 57.8,
+        "type": "actual",
+        "vintage": "2024-10"
+      },
+      {
+        "year": 2023,
+        "value": 33.2,
+        "type": "actual",
+        "vintage": "2024-10"
+      },
+      {
+        "year": 2024,
+        "value": 34.3,
+        "type": "estimate",
+        "vintage": "2024-10"
+      },
+      {
+        "year": 2025,
+        "value": 14.1,
+        "type": "projection",
+        "vintage": "2024-10"
+      }
     ]
   },
   {
@@ -29,14 +70,54 @@
     "sourceOrg": "IMF",
     "sourceUrl": "https://www.imf.org/en/Publications/WEO",
     "series": [
-      { "year": 2018, "value": 4631,  "type": "actual",     "vintage": "2024-10" },
-      { "year": 2019, "value": 5001,  "type": "actual",     "vintage": "2024-10" },
-      { "year": 2020, "value": 6929,  "type": "actual",     "vintage": "2024-10" },
-      { "year": 2021, "value": 9267,  "type": "actual",     "vintage": "2024-10" },
-      { "year": 2022, "value": 17862, "type": "actual",     "vintage": "2024-10" },
-      { "year": 2023, "value": 25910, "type": "actual",     "vintage": "2024-10" },
-      { "year": 2024, "value": 33014, "type": "estimate",   "vintage": "2024-10" },
-      { "year": 2025, "value": 35400, "type": "projection", "vintage": "2024-10" }
+      {
+        "year": 2018,
+        "value": 4631,
+        "type": "actual",
+        "vintage": "2024-10"
+      },
+      {
+        "year": 2019,
+        "value": 5001,
+        "type": "actual",
+        "vintage": "2024-10"
+      },
+      {
+        "year": 2020,
+        "value": 6929,
+        "type": "actual",
+        "vintage": "2024-10"
+      },
+      {
+        "year": 2021,
+        "value": 9267,
+        "type": "actual",
+        "vintage": "2024-10"
+      },
+      {
+        "year": 2022,
+        "value": 17862,
+        "type": "actual",
+        "vintage": "2024-10"
+      },
+      {
+        "year": 2023,
+        "value": 25910,
+        "type": "actual",
+        "vintage": "2024-10"
+      },
+      {
+        "year": 2024,
+        "value": 33014,
+        "type": "estimate",
+        "vintage": "2024-10"
+      },
+      {
+        "year": 2025,
+        "value": 35400,
+        "type": "projection",
+        "vintage": "2024-10"
+      }
     ]
   },
   {
@@ -49,14 +130,54 @@
     "sourceOrg": "IMF",
     "sourceUrl": "https://www.imf.org/en/Publications/WEO",
     "series": [
-      { "year": 2018, "value": 1.5, "type": "actual",     "vintage": "2024-10" },
-      { "year": 2019, "value": 2.1, "type": "actual",     "vintage": "2024-10" },
-      { "year": 2020, "value": 0.9, "type": "actual",     "vintage": "2024-10" },
-      { "year": 2021, "value": 5.7, "type": "actual",     "vintage": "2024-10" },
-      { "year": 2022, "value": 6.1, "type": "actual",     "vintage": "2024-10" },
-      { "year": 2023, "value": 2.8, "type": "actual",     "vintage": "2024-10" },
-      { "year": 2024, "value": 2.2, "type": "estimate",   "vintage": "2024-10" },
-      { "year": 2025, "value": 3.0, "type": "projection", "vintage": "2024-10" }
+      {
+        "year": 2018,
+        "value": 1.5,
+        "type": "actual",
+        "vintage": "2024-10"
+      },
+      {
+        "year": 2019,
+        "value": 2.1,
+        "type": "actual",
+        "vintage": "2024-10"
+      },
+      {
+        "year": 2020,
+        "value": 0.9,
+        "type": "actual",
+        "vintage": "2024-10"
+      },
+      {
+        "year": 2021,
+        "value": 5.7,
+        "type": "actual",
+        "vintage": "2024-10"
+      },
+      {
+        "year": 2022,
+        "value": 6.1,
+        "type": "actual",
+        "vintage": "2024-10"
+      },
+      {
+        "year": 2023,
+        "value": 2.8,
+        "type": "actual",
+        "vintage": "2024-10"
+      },
+      {
+        "year": 2024,
+        "value": 2.2,
+        "type": "estimate",
+        "vintage": "2024-10"
+      },
+      {
+        "year": 2025,
+        "value": 3,
+        "type": "projection",
+        "vintage": "2024-10"
+      }
     ]
   },
   {
@@ -69,13 +190,49 @@
     "sourceOrg": "ILO / World Bank",
     "sourceUrl": "https://ilostat.ilo.org",
     "series": [
-      { "year": 2018, "value": 12.5, "type": "actual",     "vintage": "2024-01" },
-      { "year": 2019, "value": 11.4, "type": "actual",     "vintage": "2024-01" },
-      { "year": 2020, "value": 14.0, "type": "actual",     "vintage": "2024-01" },
-      { "year": 2021, "value": 13.2, "type": "actual",     "vintage": "2024-01" },
-      { "year": 2022, "value": 12.4, "type": "actual",     "vintage": "2024-01" },
-      { "year": 2023, "value": 11.8, "type": "estimate",   "vintage": "2024-01" },
-      { "year": 2024, "value": null, "type": "estimate",   "vintage": "2024-01", "sourceNote": "Unavailable — not yet published" }
+      {
+        "year": 2018,
+        "value": 12.5,
+        "type": "actual",
+        "vintage": "2024-01"
+      },
+      {
+        "year": 2019,
+        "value": 11.4,
+        "type": "actual",
+        "vintage": "2024-01"
+      },
+      {
+        "year": 2020,
+        "value": 14,
+        "type": "actual",
+        "vintage": "2024-01"
+      },
+      {
+        "year": 2021,
+        "value": 13.2,
+        "type": "actual",
+        "vintage": "2024-01"
+      },
+      {
+        "year": 2022,
+        "value": 12.4,
+        "type": "actual",
+        "vintage": "2024-01"
+      },
+      {
+        "year": 2023,
+        "value": 11.8,
+        "type": "estimate",
+        "vintage": "2024-01"
+      },
+      {
+        "year": 2024,
+        "value": null,
+        "type": "estimate",
+        "vintage": "2024-01",
+        "sourceNote": "Unavailable — not yet published"
+      }
     ]
   },
   {
@@ -88,13 +245,49 @@
     "sourceOrg": "UNCTAD",
     "sourceUrl": "https://unctad.org/publication/world-investment-report-2024",
     "series": [
-      { "year": 2018, "value": 433,  "type": "actual", "vintage": "2024-06" },
-      { "year": 2019, "value": 1623, "type": "actual", "vintage": "2024-06" },
-      { "year": 2020, "value": 1868, "type": "actual", "vintage": "2024-06" },
-      { "year": 2021, "value": 3208, "type": "actual", "vintage": "2024-06" },
-      { "year": 2022, "value": 5683, "type": "actual", "vintage": "2024-06" },
-      { "year": 2023, "value": 4815, "type": "actual", "vintage": "2024-06" },
-      { "year": 2024, "value": null, "type": "estimate", "vintage": "2024-06", "sourceNote": "2024 data not yet available" }
+      {
+        "year": 2018,
+        "value": 433,
+        "type": "actual",
+        "vintage": "2024-06"
+      },
+      {
+        "year": 2019,
+        "value": 1623,
+        "type": "actual",
+        "vintage": "2024-06"
+      },
+      {
+        "year": 2020,
+        "value": 1868,
+        "type": "actual",
+        "vintage": "2024-06"
+      },
+      {
+        "year": 2021,
+        "value": 3208,
+        "type": "actual",
+        "vintage": "2024-06"
+      },
+      {
+        "year": 2022,
+        "value": 5683,
+        "type": "actual",
+        "vintage": "2024-06"
+      },
+      {
+        "year": 2023,
+        "value": 4815,
+        "type": "actual",
+        "vintage": "2024-06"
+      },
+      {
+        "year": 2024,
+        "value": null,
+        "type": "estimate",
+        "vintage": "2024-06",
+        "sourceNote": "2024 data not yet available"
+      }
     ]
   },
   {
@@ -107,14 +300,54 @@
     "sourceOrg": "IMF",
     "sourceUrl": "https://www.imf.org/en/Publications/WEO",
     "series": [
-      { "year": 2018, "value": 48.3, "type": "actual",     "vintage": "2024-10" },
-      { "year": 2019, "value": 40.1, "type": "actual",     "vintage": "2024-10" },
-      { "year": 2020, "value": 26.5, "type": "actual",     "vintage": "2024-10" },
-      { "year": 2021, "value": 21.8, "type": "actual",     "vintage": "2024-10" },
-      { "year": 2022, "value": 17.5, "type": "actual",     "vintage": "2024-10" },
-      { "year": 2023, "value": 14.9, "type": "actual",     "vintage": "2024-10" },
-      { "year": 2024, "value": 13.8, "type": "estimate",   "vintage": "2024-10" },
-      { "year": 2025, "value": 12.6, "type": "projection", "vintage": "2024-10" }
+      {
+        "year": 2018,
+        "value": 48.3,
+        "type": "actual",
+        "vintage": "2024-10"
+      },
+      {
+        "year": 2019,
+        "value": 40.1,
+        "type": "actual",
+        "vintage": "2024-10"
+      },
+      {
+        "year": 2020,
+        "value": 26.5,
+        "type": "actual",
+        "vintage": "2024-10"
+      },
+      {
+        "year": 2021,
+        "value": 21.8,
+        "type": "actual",
+        "vintage": "2024-10"
+      },
+      {
+        "year": 2022,
+        "value": 17.5,
+        "type": "actual",
+        "vintage": "2024-10"
+      },
+      {
+        "year": 2023,
+        "value": 14.9,
+        "type": "actual",
+        "vintage": "2024-10"
+      },
+      {
+        "year": 2024,
+        "value": 13.8,
+        "type": "estimate",
+        "vintage": "2024-10"
+      },
+      {
+        "year": 2025,
+        "value": 12.6,
+        "type": "projection",
+        "vintage": "2024-10"
+      }
     ]
   },
   {
@@ -127,14 +360,54 @@
     "sourceOrg": "IMF",
     "sourceUrl": "https://www.imf.org/en/Publications/WEO",
     "series": [
-      { "year": 2018, "value": 23.4, "type": "actual",     "vintage": "2024-10" },
-      { "year": 2019, "value": 24.1, "type": "actual",     "vintage": "2024-10" },
-      { "year": 2020, "value": 28.8, "type": "actual",     "vintage": "2024-10" },
-      { "year": 2021, "value": 25.2, "type": "actual",     "vintage": "2024-10" },
-      { "year": 2022, "value": 24.7, "type": "actual",     "vintage": "2024-10" },
-      { "year": 2023, "value": 27.4, "type": "actual",     "vintage": "2024-10" },
-      { "year": 2024, "value": 28.1, "type": "estimate",   "vintage": "2024-10" },
-      { "year": 2025, "value": 27.8, "type": "projection", "vintage": "2024-10" }
+      {
+        "year": 2018,
+        "value": 23.4,
+        "type": "actual",
+        "vintage": "2024-10"
+      },
+      {
+        "year": 2019,
+        "value": 24.1,
+        "type": "actual",
+        "vintage": "2024-10"
+      },
+      {
+        "year": 2020,
+        "value": 28.8,
+        "type": "actual",
+        "vintage": "2024-10"
+      },
+      {
+        "year": 2021,
+        "value": 25.2,
+        "type": "actual",
+        "vintage": "2024-10"
+      },
+      {
+        "year": 2022,
+        "value": 24.7,
+        "type": "actual",
+        "vintage": "2024-10"
+      },
+      {
+        "year": 2023,
+        "value": 27.4,
+        "type": "actual",
+        "vintage": "2024-10"
+      },
+      {
+        "year": 2024,
+        "value": 28.1,
+        "type": "estimate",
+        "vintage": "2024-10"
+      },
+      {
+        "year": 2025,
+        "value": 27.8,
+        "type": "projection",
+        "vintage": "2024-10"
+      }
     ]
   },
   {
@@ -147,14 +420,54 @@
     "sourceOrg": "IMF",
     "sourceUrl": "https://www.imf.org/en/Publications/WEO",
     "series": [
-      { "year": 2018, "value": 1.1,  "type": "actual",     "vintage": "2024-10" },
-      { "year": 2019, "value": 0.1,  "type": "actual",     "vintage": "2024-10" },
-      { "year": 2020, "value": -7.3, "type": "actual",     "vintage": "2024-10" },
-      { "year": 2021, "value": -1.0, "type": "actual",     "vintage": "2024-10" },
-      { "year": 2022, "value": 2.4,  "type": "actual",     "vintage": "2024-10" },
-      { "year": 2023, "value": 2.0,  "type": "actual",     "vintage": "2024-10" },
-      { "year": 2024, "value": 2.1,  "type": "estimate",   "vintage": "2024-10" },
-      { "year": 2025, "value": 2.4,  "type": "projection", "vintage": "2024-10" }
+      {
+        "year": 2018,
+        "value": 1.1,
+        "type": "actual",
+        "vintage": "2024-10"
+      },
+      {
+        "year": 2019,
+        "value": 0.1,
+        "type": "actual",
+        "vintage": "2024-10"
+      },
+      {
+        "year": 2020,
+        "value": -7.3,
+        "type": "actual",
+        "vintage": "2024-10"
+      },
+      {
+        "year": 2021,
+        "value": -1,
+        "type": "actual",
+        "vintage": "2024-10"
+      },
+      {
+        "year": 2022,
+        "value": 2.4,
+        "type": "actual",
+        "vintage": "2024-10"
+      },
+      {
+        "year": 2023,
+        "value": 2,
+        "type": "actual",
+        "vintage": "2024-10"
+      },
+      {
+        "year": 2024,
+        "value": 2.1,
+        "type": "estimate",
+        "vintage": "2024-10"
+      },
+      {
+        "year": 2025,
+        "value": 2.4,
+        "type": "projection",
+        "vintage": "2024-10"
+      }
     ]
   },
   {
@@ -167,14 +480,54 @@
     "sourceOrg": "IMF",
     "sourceUrl": "https://www.imf.org/en/Publications/WEO",
     "series": [
-      { "year": 2018, "value": 16818, "type": "actual",     "vintage": "2024-10" },
-      { "year": 2019, "value": 17097, "type": "actual",     "vintage": "2024-10" },
-      { "year": 2020, "value": 15226, "type": "actual",     "vintage": "2024-10" },
-      { "year": 2021, "value": 15882, "type": "actual",     "vintage": "2024-10" },
-      { "year": 2022, "value": 19348, "type": "actual",     "vintage": "2024-10" },
-      { "year": 2023, "value": 20012, "type": "actual",     "vintage": "2024-10" },
-      { "year": 2024, "value": 20543, "type": "estimate",   "vintage": "2024-10" },
-      { "year": 2025, "value": 21100, "type": "projection", "vintage": "2024-10" }
+      {
+        "year": 2018,
+        "value": 16818,
+        "type": "actual",
+        "vintage": "2024-10"
+      },
+      {
+        "year": 2019,
+        "value": 17097,
+        "type": "actual",
+        "vintage": "2024-10"
+      },
+      {
+        "year": 2020,
+        "value": 15226,
+        "type": "actual",
+        "vintage": "2024-10"
+      },
+      {
+        "year": 2021,
+        "value": 15882,
+        "type": "actual",
+        "vintage": "2024-10"
+      },
+      {
+        "year": 2022,
+        "value": 19348,
+        "type": "actual",
+        "vintage": "2024-10"
+      },
+      {
+        "year": 2023,
+        "value": 20012,
+        "type": "actual",
+        "vintage": "2024-10"
+      },
+      {
+        "year": 2024,
+        "value": 20543,
+        "type": "estimate",
+        "vintage": "2024-10"
+      },
+      {
+        "year": 2025,
+        "value": 21100,
+        "type": "projection",
+        "vintage": "2024-10"
+      }
     ]
   },
   {
@@ -187,14 +540,54 @@
     "sourceOrg": "IMF",
     "sourceUrl": "https://www.imf.org/en/Publications/WEO",
     "series": [
-      { "year": 2018, "value": 1.1, "type": "actual",     "vintage": "2024-10" },
-      { "year": 2019, "value": 1.0, "type": "actual",     "vintage": "2024-10" },
-      { "year": 2020, "value": 0.6, "type": "actual",     "vintage": "2024-10" },
-      { "year": 2021, "value": 3.0, "type": "actual",     "vintage": "2024-10" },
-      { "year": 2022, "value": 5.8, "type": "actual",     "vintage": "2024-10" },
-      { "year": 2023, "value": 5.2, "type": "actual",     "vintage": "2024-10" },
-      { "year": 2024, "value": 3.5, "type": "estimate",   "vintage": "2024-10" },
-      { "year": 2025, "value": 2.8, "type": "projection", "vintage": "2024-10" }
+      {
+        "year": 2018,
+        "value": 1.1,
+        "type": "actual",
+        "vintage": "2024-10"
+      },
+      {
+        "year": 2019,
+        "value": 1,
+        "type": "actual",
+        "vintage": "2024-10"
+      },
+      {
+        "year": 2020,
+        "value": 0.6,
+        "type": "actual",
+        "vintage": "2024-10"
+      },
+      {
+        "year": 2021,
+        "value": 3,
+        "type": "actual",
+        "vintage": "2024-10"
+      },
+      {
+        "year": 2022,
+        "value": 5.8,
+        "type": "actual",
+        "vintage": "2024-10"
+      },
+      {
+        "year": 2023,
+        "value": 5.2,
+        "type": "actual",
+        "vintage": "2024-10"
+      },
+      {
+        "year": 2024,
+        "value": 3.5,
+        "type": "estimate",
+        "vintage": "2024-10"
+      },
+      {
+        "year": 2025,
+        "value": 2.8,
+        "type": "projection",
+        "vintage": "2024-10"
+      }
     ]
   },
   {
@@ -207,13 +600,49 @@
     "sourceOrg": "ILO / World Bank",
     "sourceUrl": "https://ilostat.ilo.org",
     "series": [
-      { "year": 2018, "value": 4.8, "type": "actual",   "vintage": "2024-01" },
-      { "year": 2019, "value": 4.5, "type": "actual",   "vintage": "2024-01" },
-      { "year": 2020, "value": 5.6, "type": "actual",   "vintage": "2024-01" },
-      { "year": 2021, "value": 5.4, "type": "actual",   "vintage": "2024-01" },
-      { "year": 2022, "value": 4.9, "type": "actual",   "vintage": "2024-01" },
-      { "year": 2023, "value": 4.6, "type": "estimate", "vintage": "2024-01" },
-      { "year": 2024, "value": null,"type": "estimate", "vintage": "2024-01", "sourceNote": "Unavailable — not yet published" }
+      {
+        "year": 2018,
+        "value": 4.8,
+        "type": "actual",
+        "vintage": "2024-01"
+      },
+      {
+        "year": 2019,
+        "value": 4.5,
+        "type": "actual",
+        "vintage": "2024-01"
+      },
+      {
+        "year": 2020,
+        "value": 5.6,
+        "type": "actual",
+        "vintage": "2024-01"
+      },
+      {
+        "year": 2021,
+        "value": 5.4,
+        "type": "actual",
+        "vintage": "2024-01"
+      },
+      {
+        "year": 2022,
+        "value": 4.9,
+        "type": "actual",
+        "vintage": "2024-01"
+      },
+      {
+        "year": 2023,
+        "value": 4.6,
+        "type": "estimate",
+        "vintage": "2024-01"
+      },
+      {
+        "year": 2024,
+        "value": null,
+        "type": "estimate",
+        "vintage": "2024-01",
+        "sourceNote": "Unavailable — not yet published"
+      }
     ]
   },
   {
@@ -226,13 +655,49 @@
     "sourceOrg": "UNCTAD",
     "sourceUrl": "https://unctad.org/publication/world-investment-report-2024",
     "series": [
-      { "year": 2018, "value": 619,  "type": "actual", "vintage": "2024-06" },
-      { "year": 2019, "value": 808,  "type": "actual", "vintage": "2024-06" },
-      { "year": 2020, "value": 448,  "type": "actual", "vintage": "2024-06" },
-      { "year": 2021, "value": 546,  "type": "actual", "vintage": "2024-06" },
-      { "year": 2022, "value": 723,  "type": "actual", "vintage": "2024-06" },
-      { "year": 2023, "value": 681,  "type": "actual", "vintage": "2024-06" },
-      { "year": 2024, "value": null, "type": "estimate", "vintage": "2024-06", "sourceNote": "2024 data not yet available" }
+      {
+        "year": 2018,
+        "value": 619,
+        "type": "actual",
+        "vintage": "2024-06"
+      },
+      {
+        "year": 2019,
+        "value": 808,
+        "type": "actual",
+        "vintage": "2024-06"
+      },
+      {
+        "year": 2020,
+        "value": 448,
+        "type": "actual",
+        "vintage": "2024-06"
+      },
+      {
+        "year": 2021,
+        "value": 546,
+        "type": "actual",
+        "vintage": "2024-06"
+      },
+      {
+        "year": 2022,
+        "value": 723,
+        "type": "actual",
+        "vintage": "2024-06"
+      },
+      {
+        "year": 2023,
+        "value": 681,
+        "type": "actual",
+        "vintage": "2024-06"
+      },
+      {
+        "year": 2024,
+        "value": null,
+        "type": "estimate",
+        "vintage": "2024-06",
+        "sourceNote": "2024 data not yet available"
+      }
     ]
   },
   {
@@ -245,14 +710,54 @@
     "sourceOrg": "IMF",
     "sourceUrl": "https://www.imf.org/en/Publications/WEO",
     "series": [
-      { "year": 2018, "value": 66.8, "type": "actual",     "vintage": "2024-10" },
-      { "year": 2019, "value": 68.1, "type": "actual",     "vintage": "2024-10" },
-      { "year": 2020, "value": 78.5, "type": "actual",     "vintage": "2024-10" },
-      { "year": 2021, "value": 76.2, "type": "actual",     "vintage": "2024-10" },
-      { "year": 2022, "value": 69.4, "type": "actual",     "vintage": "2024-10" },
-      { "year": 2023, "value": 66.8, "type": "actual",     "vintage": "2024-10" },
-      { "year": 2024, "value": 65.1, "type": "estimate",   "vintage": "2024-10" },
-      { "year": 2025, "value": 63.2, "type": "projection", "vintage": "2024-10" }
+      {
+        "year": 2018,
+        "value": 66.8,
+        "type": "actual",
+        "vintage": "2024-10"
+      },
+      {
+        "year": 2019,
+        "value": 68.1,
+        "type": "actual",
+        "vintage": "2024-10"
+      },
+      {
+        "year": 2020,
+        "value": 78.5,
+        "type": "actual",
+        "vintage": "2024-10"
+      },
+      {
+        "year": 2021,
+        "value": 76.2,
+        "type": "actual",
+        "vintage": "2024-10"
+      },
+      {
+        "year": 2022,
+        "value": 69.4,
+        "type": "actual",
+        "vintage": "2024-10"
+      },
+      {
+        "year": 2023,
+        "value": 66.8,
+        "type": "actual",
+        "vintage": "2024-10"
+      },
+      {
+        "year": 2024,
+        "value": 65.1,
+        "type": "estimate",
+        "vintage": "2024-10"
+      },
+      {
+        "year": 2025,
+        "value": 63.2,
+        "type": "projection",
+        "vintage": "2024-10"
+      }
     ]
   },
   {
@@ -265,14 +770,5271 @@
     "sourceOrg": "IMF",
     "sourceUrl": "https://www.imf.org/en/Publications/WEO",
     "series": [
-      { "year": 2018, "value": 28.4, "type": "actual",     "vintage": "2024-10" },
-      { "year": 2019, "value": 25.7, "type": "actual",     "vintage": "2024-10" },
-      { "year": 2020, "value": 22.3, "type": "actual",     "vintage": "2024-10" },
-      { "year": 2021, "value": 24.4, "type": "actual",     "vintage": "2024-10" },
-      { "year": 2022, "value": 30.1, "type": "actual",     "vintage": "2024-10" },
-      { "year": 2023, "value": 29.6, "type": "actual",     "vintage": "2024-10" },
-      { "year": 2024, "value": 28.4, "type": "estimate",   "vintage": "2024-10" },
-      { "year": 2025, "value": 27.9, "type": "projection", "vintage": "2024-10" }
+      {
+        "year": 2018,
+        "value": 28.4,
+        "type": "actual",
+        "vintage": "2024-10"
+      },
+      {
+        "year": 2019,
+        "value": 25.7,
+        "type": "actual",
+        "vintage": "2024-10"
+      },
+      {
+        "year": 2020,
+        "value": 22.3,
+        "type": "actual",
+        "vintage": "2024-10"
+      },
+      {
+        "year": 2021,
+        "value": 24.4,
+        "type": "actual",
+        "vintage": "2024-10"
+      },
+      {
+        "year": 2022,
+        "value": 30.1,
+        "type": "actual",
+        "vintage": "2024-10"
+      },
+      {
+        "year": 2023,
+        "value": 29.6,
+        "type": "actual",
+        "vintage": "2024-10"
+      },
+      {
+        "year": 2024,
+        "value": 28.4,
+        "type": "estimate",
+        "vintage": "2024-10"
+      },
+      {
+        "year": 2025,
+        "value": 27.9,
+        "type": "projection",
+        "vintage": "2024-10"
+      }
+    ]
+  },
+  {
+    "country": "BB",
+    "indicator": "gdp_growth",
+    "indicatorLabel": "GDP Growth Rate",
+    "unit": "%",
+    "unitNote": "Real GDP, annual % change (World Bank WDI)",
+    "source": "World Bank — World Development Indicators (NY.GDP.MKTP.KD.ZG)",
+    "sourceOrg": "World Bank WDI",
+    "sourceUrl": "https://api.worldbank.org/v2/country/BRB/indicator/NY.GDP.MKTP.KD.ZG?format=json",
+    "series": [
+      {
+        "year": 2015,
+        "value": -1.17,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2016,
+        "value": 1.5,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2017,
+        "value": 0.71,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2018,
+        "value": -1.28,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2019,
+        "value": 0.23,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2020,
+        "value": -14.36,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2021,
+        "value": -0.1,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2022,
+        "value": 17.23,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2023,
+        "value": 2.91,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2024,
+        "value": 2.48,
+        "type": "estimate",
+        "vintage": "2026-04"
+      }
+    ]
+  },
+  {
+    "country": "BB",
+    "indicator": "gdp_per_capita",
+    "indicatorLabel": "GDP per Capita",
+    "unit": "Bds$",
+    "unitNote": "GDP per capita, current LCU (World Bank WDI)",
+    "source": "World Bank — World Development Indicators (NY.GDP.PCAP.CN)",
+    "sourceOrg": "World Bank WDI",
+    "sourceUrl": "https://api.worldbank.org/v2/country/BRB/indicator/NY.GDP.PCAP.CN?format=json",
+    "series": [
+      {
+        "year": 2015,
+        "value": 40848,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2016,
+        "value": 40591,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2017,
+        "value": 40569,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2018,
+        "value": 42762,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2019,
+        "value": 43824,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2020,
+        "value": 38389,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2021,
+        "value": 42159,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2022,
+        "value": 48774,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2023,
+        "value": 51168,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2024,
+        "value": 53090,
+        "type": "estimate",
+        "vintage": "2026-04"
+      }
+    ]
+  },
+  {
+    "country": "BB",
+    "indicator": "govt_debt",
+    "indicatorLabel": "Government Debt (% of GDP)",
+    "unit": "%",
+    "unitNote": "General government gross debt, % of GDP (IMF WEO)",
+    "source": "IMF World Economic Outlook (DataMapper)",
+    "sourceOrg": "IMF WEO",
+    "sourceUrl": "https://www.imf.org/external/datamapper/GGXWDG_NGDP/BRB",
+    "series": [
+      {
+        "year": 2015,
+        "value": 122.5,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2016,
+        "value": 127.1,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2017,
+        "value": 134.6,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2018,
+        "value": 107.2,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2019,
+        "value": 101.6,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2020,
+        "value": 129.6,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2021,
+        "value": 108.6,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2022,
+        "value": 104,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2023,
+        "value": 104.1,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2024,
+        "value": 98.9,
+        "type": "estimate",
+        "vintage": "2025"
+      }
+    ]
+  },
+  {
+    "country": "BB",
+    "indicator": "inflation",
+    "indicatorLabel": "Inflation Rate",
+    "unit": "%",
+    "unitNote": "Consumer prices, annual average % change (World Bank WDI)",
+    "source": "World Bank — World Development Indicators (FP.CPI.TOTL.ZG)",
+    "sourceOrg": "World Bank WDI",
+    "sourceUrl": "https://api.worldbank.org/v2/country/BRB/indicator/FP.CPI.TOTL.ZG?format=json",
+    "series": [
+      {
+        "year": 2015,
+        "value": -1.11,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2016,
+        "value": 1.28,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2017,
+        "value": 4.66,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2018,
+        "value": 3.11,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2019,
+        "value": 1.68,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2020,
+        "value": 0.6,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2021,
+        "value": 1.5,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2022,
+        "value": 4.4,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2023,
+        "value": 3.19,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2024,
+        "value": 1.45,
+        "type": "estimate",
+        "vintage": "2026-04"
+      }
+    ]
+  },
+  {
+    "country": "BB",
+    "indicator": "unemployment",
+    "indicatorLabel": "Unemployment Rate",
+    "unit": "%",
+    "unitNote": "Unemployment, % of total labour force (modeled ILO estimate, World Bank WDI)",
+    "source": "World Bank — World Development Indicators (SL.UEM.TOTL.ZS)",
+    "sourceOrg": "World Bank WDI",
+    "sourceUrl": "https://api.worldbank.org/v2/country/BRB/indicator/SL.UEM.TOTL.ZS?format=json",
+    "series": [
+      {
+        "year": 2015,
+        "value": 9.8,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2016,
+        "value": 8.25,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2017,
+        "value": 8.62,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2018,
+        "value": 8.32,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2019,
+        "value": 8.41,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2020,
+        "value": 10.59,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2021,
+        "value": 11.02,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2022,
+        "value": 7.26,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2023,
+        "value": 6.54,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2024,
+        "value": 6.45,
+        "type": "estimate",
+        "vintage": "2026-04"
+      }
+    ]
+  },
+  {
+    "country": "BB",
+    "indicator": "fdi_inflows",
+    "indicatorLabel": "FDI Inflows",
+    "unit": "US$ mn",
+    "unitNote": "Foreign direct investment, net inflows, BoP (World Bank WDI, current US$)",
+    "source": "World Bank — World Development Indicators (BX.KLT.DINV.CD.WD)",
+    "sourceOrg": "World Bank WDI",
+    "sourceUrl": "https://api.worldbank.org/v2/country/BRB/indicator/BX.KLT.DINV.CD.WD?format=json",
+    "series": [
+      {
+        "year": 2015,
+        "value": 688.5,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2016,
+        "value": 557.5,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2017,
+        "value": 91.5,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2018,
+        "value": 241.6,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2019,
+        "value": 215.4,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2020,
+        "value": 262.1,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2021,
+        "value": 238.7,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2022,
+        "value": 200,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2023,
+        "value": 224.9,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2024,
+        "value": 303.1,
+        "type": "estimate",
+        "vintage": "2026-04"
+      }
+    ]
+  },
+  {
+    "country": "JM",
+    "indicator": "gdp_growth",
+    "indicatorLabel": "GDP Growth Rate",
+    "unit": "%",
+    "unitNote": "Real GDP, annual % change (World Bank WDI)",
+    "source": "World Bank — World Development Indicators (NY.GDP.MKTP.KD.ZG)",
+    "sourceOrg": "World Bank WDI",
+    "sourceUrl": "https://api.worldbank.org/v2/country/JAM/indicator/NY.GDP.MKTP.KD.ZG?format=json",
+    "series": [
+      {
+        "year": 2015,
+        "value": 0.92,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2016,
+        "value": 2.76,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2017,
+        "value": 2.29,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2018,
+        "value": 2.52,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2019,
+        "value": 1.81,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2020,
+        "value": -8.3,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2021,
+        "value": 5.7,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2022,
+        "value": 6.44,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2023,
+        "value": 2.75,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2024,
+        "value": -0.54,
+        "type": "estimate",
+        "vintage": "2026-04"
+      }
+    ]
+  },
+  {
+    "country": "JM",
+    "indicator": "gdp_per_capita",
+    "indicatorLabel": "GDP per Capita",
+    "unit": "J$",
+    "unitNote": "GDP per capita, current LCU (World Bank WDI)",
+    "source": "World Bank — World Development Indicators (NY.GDP.PCAP.CN)",
+    "sourceOrg": "World Bank WDI",
+    "sourceUrl": "https://api.worldbank.org/v2/country/JAM/indicator/NY.GDP.PCAP.CN?format=json",
+    "series": [
+      {
+        "year": 2015,
+        "value": 624538,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2016,
+        "value": 663291,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2017,
+        "value": 717297,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2018,
+        "value": 770253,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2019,
+        "value": 803964,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2020,
+        "value": 754599,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2021,
+        "value": 848297,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2022,
+        "value": 1016679,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2023,
+        "value": 1162727,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2024,
+        "value": 1213001,
+        "type": "estimate",
+        "vintage": "2026-04"
+      }
+    ]
+  },
+  {
+    "country": "JM",
+    "indicator": "govt_debt",
+    "indicatorLabel": "Government Debt (% of GDP)",
+    "unit": "%",
+    "unitNote": "General government gross debt, % of GDP (IMF WEO)",
+    "source": "IMF World Economic Outlook (DataMapper)",
+    "sourceOrg": "IMF WEO",
+    "sourceUrl": "https://www.imf.org/external/datamapper/GGXWDG_NGDP/JAM",
+    "series": [
+      {
+        "year": 2015,
+        "value": 115.9,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2016,
+        "value": 106.9,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2017,
+        "value": 95.1,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2018,
+        "value": 88.3,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2019,
+        "value": 87.7,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2020,
+        "value": 101.3,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2021,
+        "value": 86.3,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2022,
+        "value": 70.2,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2023,
+        "value": 66.5,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2024,
+        "value": 62.5,
+        "type": "estimate",
+        "vintage": "2025"
+      }
+    ]
+  },
+  {
+    "country": "JM",
+    "indicator": "inflation",
+    "indicatorLabel": "Inflation Rate",
+    "unit": "%",
+    "unitNote": "Consumer prices, annual average % change (World Bank WDI)",
+    "source": "World Bank — World Development Indicators (FP.CPI.TOTL.ZG)",
+    "sourceOrg": "World Bank WDI",
+    "sourceUrl": "https://api.worldbank.org/v2/country/JAM/indicator/FP.CPI.TOTL.ZG?format=json",
+    "series": [
+      {
+        "year": 2015,
+        "value": 3.69,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2016,
+        "value": 2.35,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2017,
+        "value": 4.38,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2018,
+        "value": 3.74,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2019,
+        "value": 3.91,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2020,
+        "value": 5.23,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2021,
+        "value": 5.86,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2022,
+        "value": 10.35,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2023,
+        "value": 6.47,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2024,
+        "value": 5.41,
+        "type": "estimate",
+        "vintage": "2026-04"
+      }
+    ]
+  },
+  {
+    "country": "JM",
+    "indicator": "unemployment",
+    "indicatorLabel": "Unemployment Rate",
+    "unit": "%",
+    "unitNote": "Unemployment, % of total labour force (modeled ILO estimate, World Bank WDI)",
+    "source": "World Bank — World Development Indicators (SL.UEM.TOTL.ZS)",
+    "sourceOrg": "World Bank WDI",
+    "sourceUrl": "https://api.worldbank.org/v2/country/JAM/indicator/SL.UEM.TOTL.ZS?format=json",
+    "series": [
+      {
+        "year": 2015,
+        "value": 8.82,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2016,
+        "value": 8.63,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2017,
+        "value": 7.4,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2018,
+        "value": 5.47,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2019,
+        "value": 4.99,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2020,
+        "value": 6.5,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2021,
+        "value": 5.19,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2022,
+        "value": 4.08,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2023,
+        "value": 3.02,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2024,
+        "value": 3.15,
+        "type": "estimate",
+        "vintage": "2026-04"
+      }
+    ]
+  },
+  {
+    "country": "JM",
+    "indicator": "fdi_inflows",
+    "indicatorLabel": "FDI Inflows",
+    "unit": "US$ mn",
+    "unitNote": "Foreign direct investment, net inflows, BoP (World Bank WDI, current US$)",
+    "source": "World Bank — World Development Indicators (BX.KLT.DINV.CD.WD)",
+    "sourceOrg": "World Bank WDI",
+    "sourceUrl": "https://api.worldbank.org/v2/country/JAM/indicator/BX.KLT.DINV.CD.WD?format=json",
+    "series": [
+      {
+        "year": 2015,
+        "value": 925,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2016,
+        "value": 928,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2017,
+        "value": 888.8,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2018,
+        "value": 774.6,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2019,
+        "value": 665.4,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2020,
+        "value": 265.1,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2021,
+        "value": 320.5,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2022,
+        "value": 318.7,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2023,
+        "value": 492.4,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2024,
+        "value": 305.1,
+        "type": "estimate",
+        "vintage": "2026-04"
+      }
+    ]
+  },
+  {
+    "country": "BS",
+    "indicator": "gdp_growth",
+    "indicatorLabel": "GDP Growth Rate",
+    "unit": "%",
+    "unitNote": "Real GDP, annual % change (World Bank WDI)",
+    "source": "World Bank — World Development Indicators (NY.GDP.MKTP.KD.ZG)",
+    "sourceOrg": "World Bank WDI",
+    "sourceUrl": "https://api.worldbank.org/v2/country/BHS/indicator/NY.GDP.MKTP.KD.ZG?format=json",
+    "series": [
+      {
+        "year": 2015,
+        "value": 1,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2016,
+        "value": -1.16,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2017,
+        "value": 3.37,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2018,
+        "value": 2.4,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2019,
+        "value": -0.84,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2020,
+        "value": -20.09,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2021,
+        "value": 17.59,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2022,
+        "value": 10.88,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2023,
+        "value": 3.05,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2024,
+        "value": 3.38,
+        "type": "estimate",
+        "vintage": "2026-04"
+      }
+    ]
+  },
+  {
+    "country": "BS",
+    "indicator": "gdp_per_capita",
+    "indicatorLabel": "GDP per Capita",
+    "unit": "B$",
+    "unitNote": "GDP per capita, current LCU (World Bank WDI)",
+    "source": "World Bank — World Development Indicators (NY.GDP.PCAP.CN)",
+    "sourceOrg": "World Bank WDI",
+    "sourceUrl": "https://api.worldbank.org/v2/country/BHS/indicator/NY.GDP.PCAP.CN?format=json",
+    "series": [
+      {
+        "year": 2015,
+        "value": 30719,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2016,
+        "value": 30617,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2017,
+        "value": 31875,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2018,
+        "value": 32642,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2019,
+        "value": 33640,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2020,
+        "value": 26179,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2021,
+        "value": 30368,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2022,
+        "value": 34957,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2023,
+        "value": 38232,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2024,
+        "value": 39455,
+        "type": "estimate",
+        "vintage": "2026-04"
+      }
+    ]
+  },
+  {
+    "country": "BS",
+    "indicator": "govt_debt",
+    "indicatorLabel": "Government Debt (% of GDP)",
+    "unit": "%",
+    "unitNote": "General government gross debt, % of GDP (IMF WEO)",
+    "source": "IMF World Economic Outlook (DataMapper)",
+    "sourceOrg": "IMF WEO",
+    "sourceUrl": "https://www.imf.org/external/datamapper/GGXWDG_NGDP/BHS",
+    "series": [
+      {
+        "year": 2015,
+        "value": 49.9,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2016,
+        "value": 51.1,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2017,
+        "value": 54.6,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2018,
+        "value": 61.5,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2019,
+        "value": 60.3,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2020,
+        "value": 71.9,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2021,
+        "value": 90.7,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2022,
+        "value": 84.7,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2023,
+        "value": 78.3,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2024,
+        "value": 73.8,
+        "type": "estimate",
+        "vintage": "2025"
+      }
+    ]
+  },
+  {
+    "country": "BS",
+    "indicator": "inflation",
+    "indicatorLabel": "Inflation Rate",
+    "unit": "%",
+    "unitNote": "Consumer prices, annual average % change (World Bank WDI)",
+    "source": "World Bank — World Development Indicators (FP.CPI.TOTL.ZG)",
+    "sourceOrg": "World Bank WDI",
+    "sourceUrl": "https://api.worldbank.org/v2/country/BHS/indicator/FP.CPI.TOTL.ZG?format=json",
+    "series": [
+      {
+        "year": 2015,
+        "value": 1.86,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2016,
+        "value": -0.35,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2017,
+        "value": 1.52,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2018,
+        "value": 2.27,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2019,
+        "value": 2.49,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2020,
+        "value": 0.04,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2021,
+        "value": 2.9,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2022,
+        "value": 5.61,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2023,
+        "value": 3.05,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2024,
+        "value": 0.41,
+        "type": "estimate",
+        "vintage": "2026-04"
+      }
+    ]
+  },
+  {
+    "country": "BS",
+    "indicator": "unemployment",
+    "indicatorLabel": "Unemployment Rate",
+    "unit": "%",
+    "unitNote": "Unemployment, % of total labour force (modeled ILO estimate, World Bank WDI)",
+    "source": "World Bank — World Development Indicators (SL.UEM.TOTL.ZS)",
+    "sourceOrg": "World Bank WDI",
+    "sourceUrl": "https://api.worldbank.org/v2/country/BHS/indicator/SL.UEM.TOTL.ZS?format=json",
+    "series": [
+      {
+        "year": 2015,
+        "value": 12,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2016,
+        "value": 12.7,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2017,
+        "value": 9.8,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2018,
+        "value": 10,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2019,
+        "value": 9.34,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2020,
+        "value": 12.02,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2021,
+        "value": 11.08,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2022,
+        "value": 9.25,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2023,
+        "value": 8.64,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2024,
+        "value": 9.05,
+        "type": "estimate",
+        "vintage": "2026-04"
+      }
+    ]
+  },
+  {
+    "country": "BS",
+    "indicator": "fdi_inflows",
+    "indicatorLabel": "FDI Inflows",
+    "unit": "US$ mn",
+    "unitNote": "Foreign direct investment, net inflows, BoP (World Bank WDI, current US$)",
+    "source": "World Bank — World Development Indicators (BX.KLT.DINV.CD.WD)",
+    "sourceOrg": "World Bank WDI",
+    "sourceUrl": "https://api.worldbank.org/v2/country/BHS/indicator/BX.KLT.DINV.CD.WD?format=json",
+    "series": [
+      {
+        "year": 2015,
+        "value": 76.1,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2016,
+        "value": 390.4,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2017,
+        "value": 304.6,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2018,
+        "value": 491.4,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2019,
+        "value": 482.2,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2020,
+        "value": 434.6,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2021,
+        "value": 383.1,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2022,
+        "value": 530.9,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2023,
+        "value": 322.5,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2024,
+        "value": 240.6,
+        "type": "estimate",
+        "vintage": "2026-04"
+      }
+    ]
+  },
+  {
+    "country": "BZ",
+    "indicator": "gdp_growth",
+    "indicatorLabel": "GDP Growth Rate",
+    "unit": "%",
+    "unitNote": "Real GDP, annual % change (World Bank WDI)",
+    "source": "World Bank — World Development Indicators (NY.GDP.MKTP.KD.ZG)",
+    "sourceOrg": "World Bank WDI",
+    "sourceUrl": "https://api.worldbank.org/v2/country/BLZ/indicator/NY.GDP.MKTP.KD.ZG?format=json",
+    "series": [
+      {
+        "year": 2015,
+        "value": 2.76,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2016,
+        "value": -0.02,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2017,
+        "value": -1.83,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2018,
+        "value": 0.82,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2019,
+        "value": 4.26,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2020,
+        "value": -13.52,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2021,
+        "value": 17.99,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2022,
+        "value": 9.25,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2023,
+        "value": 0.5,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2024,
+        "value": 3.5,
+        "type": "estimate",
+        "vintage": "2026-04"
+      }
+    ]
+  },
+  {
+    "country": "BZ",
+    "indicator": "gdp_per_capita",
+    "indicatorLabel": "GDP per Capita",
+    "unit": "BZ$",
+    "unitNote": "GDP per capita, current LCU (World Bank WDI)",
+    "source": "World Bank — World Development Indicators (NY.GDP.PCAP.CN)",
+    "sourceOrg": "World Bank WDI",
+    "sourceUrl": "https://api.worldbank.org/v2/country/BLZ/indicator/NY.GDP.PCAP.CN?format=json",
+    "series": [
+      {
+        "year": 2015,
+        "value": 12309,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2016,
+        "value": 12282,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2017,
+        "value": 12144,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2018,
+        "value": 12024,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2019,
+        "value": 12343,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2020,
+        "value": 10477,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2021,
+        "value": 12286,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2022,
+        "value": 14136,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2023,
+        "value": 14850,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2024,
+        "value": 15362,
+        "type": "estimate",
+        "vintage": "2026-04"
+      }
+    ]
+  },
+  {
+    "country": "BZ",
+    "indicator": "govt_debt",
+    "indicatorLabel": "Government Debt (% of GDP)",
+    "unit": "%",
+    "unitNote": "General government gross debt, % of GDP (IMF WEO)",
+    "source": "IMF World Economic Outlook (DataMapper)",
+    "sourceOrg": "IMF WEO",
+    "sourceUrl": "https://www.imf.org/external/datamapper/GGXWDG_NGDP/BLZ",
+    "series": [
+      {
+        "year": 2015,
+        "value": 65.1,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2016,
+        "value": 70.5,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2017,
+        "value": 78.1,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2018,
+        "value": 79,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2019,
+        "value": 78.6,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2020,
+        "value": 103,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2021,
+        "value": 82.2,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2022,
+        "value": 66.8,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2023,
+        "value": 67.5,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2024,
+        "value": 65.4,
+        "type": "estimate",
+        "vintage": "2025"
+      }
+    ]
+  },
+  {
+    "country": "BZ",
+    "indicator": "inflation",
+    "indicatorLabel": "Inflation Rate",
+    "unit": "%",
+    "unitNote": "Consumer prices, annual average % change (World Bank WDI)",
+    "source": "World Bank — World Development Indicators (FP.CPI.TOTL.ZG)",
+    "sourceOrg": "World Bank WDI",
+    "sourceUrl": "https://api.worldbank.org/v2/country/BLZ/indicator/FP.CPI.TOTL.ZG?format=json",
+    "series": [
+      {
+        "year": 2015,
+        "value": -0.86,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2016,
+        "value": 0.66,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2017,
+        "value": 1.15,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2018,
+        "value": 0.27,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2019,
+        "value": 0.19,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2020,
+        "value": 0.12,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2021,
+        "value": 3.24,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2022,
+        "value": 6.28,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2023,
+        "value": 4.39,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2024,
+        "value": 3.29,
+        "type": "estimate",
+        "vintage": "2026-04"
+      }
+    ]
+  },
+  {
+    "country": "BZ",
+    "indicator": "unemployment",
+    "indicatorLabel": "Unemployment Rate",
+    "unit": "%",
+    "unitNote": "Unemployment, % of total labour force (modeled ILO estimate, World Bank WDI)",
+    "source": "World Bank — World Development Indicators (SL.UEM.TOTL.ZS)",
+    "sourceOrg": "World Bank WDI",
+    "sourceUrl": "https://api.worldbank.org/v2/country/BLZ/indicator/SL.UEM.TOTL.ZS?format=json",
+    "series": [
+      {
+        "year": 2015,
+        "value": 7.58,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2016,
+        "value": 7,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2017,
+        "value": 6.6,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2018,
+        "value": 9.35,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2019,
+        "value": 9.05,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2020,
+        "value": 10.76,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2021,
+        "value": 10.3,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2022,
+        "value": 8.68,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2023,
+        "value": 8.28,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2024,
+        "value": 8.7,
+        "type": "estimate",
+        "vintage": "2026-04"
+      }
+    ]
+  },
+  {
+    "country": "BZ",
+    "indicator": "fdi_inflows",
+    "indicatorLabel": "FDI Inflows",
+    "unit": "US$ mn",
+    "unitNote": "Foreign direct investment, net inflows, BoP (World Bank WDI, current US$)",
+    "source": "World Bank — World Development Indicators (BX.KLT.DINV.CD.WD)",
+    "sourceOrg": "World Bank WDI",
+    "sourceUrl": "https://api.worldbank.org/v2/country/BLZ/indicator/BX.KLT.DINV.CD.WD?format=json",
+    "series": [
+      {
+        "year": 2015,
+        "value": 59.1,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2016,
+        "value": 32.7,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2017,
+        "value": 31.8,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2018,
+        "value": 122,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2019,
+        "value": 93.9,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2020,
+        "value": 76.2,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2021,
+        "value": 125.5,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2022,
+        "value": 140.9,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2023,
+        "value": 16,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2024,
+        "value": 128.5,
+        "type": "estimate",
+        "vintage": "2026-04"
+      }
+    ]
+  },
+  {
+    "country": "SR",
+    "indicator": "gdp_growth",
+    "indicatorLabel": "GDP Growth Rate",
+    "unit": "%",
+    "unitNote": "Real GDP, annual % change (World Bank WDI)",
+    "source": "World Bank — World Development Indicators (NY.GDP.MKTP.KD.ZG)",
+    "sourceOrg": "World Bank WDI",
+    "sourceUrl": "https://api.worldbank.org/v2/country/SUR/indicator/NY.GDP.MKTP.KD.ZG?format=json",
+    "series": [
+      {
+        "year": 2015,
+        "value": -3.41,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2016,
+        "value": -4.91,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2017,
+        "value": 1.57,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2018,
+        "value": 4.95,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2019,
+        "value": 1.17,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2020,
+        "value": -15.98,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2021,
+        "value": -2.44,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2022,
+        "value": 2.41,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2023,
+        "value": 2.42,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2024,
+        "value": 1.72,
+        "type": "estimate",
+        "vintage": "2026-04"
+      }
+    ]
+  },
+  {
+    "country": "SR",
+    "indicator": "gdp_per_capita",
+    "indicatorLabel": "GDP per Capita",
+    "unit": "SR$",
+    "unitNote": "GDP per capita, current LCU (World Bank WDI)",
+    "source": "World Bank — World Development Indicators (NY.GDP.PCAP.CN)",
+    "sourceOrg": "World Bank WDI",
+    "sourceUrl": "https://api.worldbank.org/v2/country/SUR/indicator/NY.GDP.PCAP.CN?format=json",
+    "series": [
+      {
+        "year": 2015,
+        "value": 30113,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2016,
+        "value": 35156,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2017,
+        "value": 45297,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2018,
+        "value": 49743,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2019,
+        "value": 52384,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2020,
+        "value": 63234,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2021,
+        "value": 99088,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2022,
+        "value": 150341,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2023,
+        "value": 203075,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2024,
+        "value": 230996,
+        "type": "estimate",
+        "vintage": "2026-04"
+      }
+    ]
+  },
+  {
+    "country": "SR",
+    "indicator": "govt_debt",
+    "indicatorLabel": "Government Debt (% of GDP)",
+    "unit": "%",
+    "unitNote": "General government gross debt, % of GDP (IMF WEO)",
+    "source": "IMF World Economic Outlook (DataMapper)",
+    "sourceOrg": "IMF WEO",
+    "sourceUrl": "https://www.imf.org/external/datamapper/GGXWDG_NGDP/SUR",
+    "series": [
+      {
+        "year": 2015,
+        "value": 41.2,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2016,
+        "value": 75.4,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2017,
+        "value": 73,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2018,
+        "value": 68.6,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2019,
+        "value": 84,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2020,
+        "value": 146.4,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2021,
+        "value": 115.8,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2022,
+        "value": 111.7,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2023,
+        "value": 97.7,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2024,
+        "value": 88,
+        "type": "estimate",
+        "vintage": "2025"
+      }
+    ]
+  },
+  {
+    "country": "SR",
+    "indicator": "inflation",
+    "indicatorLabel": "Inflation Rate",
+    "unit": "%",
+    "unitNote": "Consumer prices, annual average % change (World Bank WDI)",
+    "source": "World Bank — World Development Indicators (FP.CPI.TOTL.ZG)",
+    "sourceOrg": "World Bank WDI",
+    "sourceUrl": "https://api.worldbank.org/v2/country/SUR/indicator/FP.CPI.TOTL.ZG?format=json",
+    "series": [
+      {
+        "year": 2015,
+        "value": 6.89,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2016,
+        "value": 55.41,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2017,
+        "value": 22,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2018,
+        "value": 6.9,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2019,
+        "value": 4.4,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2020,
+        "value": 34.89,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2021,
+        "value": 59.12,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2022,
+        "value": 52.45,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2023,
+        "value": 51.59,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2024,
+        "value": 16.23,
+        "type": "estimate",
+        "vintage": "2026-04"
+      }
+    ]
+  },
+  {
+    "country": "SR",
+    "indicator": "unemployment",
+    "indicatorLabel": "Unemployment Rate",
+    "unit": "%",
+    "unitNote": "Unemployment, % of total labour force (modeled ILO estimate, World Bank WDI)",
+    "source": "World Bank — World Development Indicators (SL.UEM.TOTL.ZS)",
+    "sourceOrg": "World Bank WDI",
+    "sourceUrl": "https://api.worldbank.org/v2/country/SUR/indicator/SL.UEM.TOTL.ZS?format=json",
+    "series": [
+      {
+        "year": 2015,
+        "value": 7.22,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2016,
+        "value": 7.92,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2017,
+        "value": 7.91,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2018,
+        "value": 7.82,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2019,
+        "value": 7.75,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2020,
+        "value": 8.97,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2021,
+        "value": 8.71,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2022,
+        "value": 7.97,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2023,
+        "value": 7.7,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2024,
+        "value": 7.62,
+        "type": "estimate",
+        "vintage": "2026-04"
+      }
+    ]
+  },
+  {
+    "country": "SR",
+    "indicator": "fdi_inflows",
+    "indicatorLabel": "FDI Inflows",
+    "unit": "US$ mn",
+    "unitNote": "Foreign direct investment, net inflows, BoP (World Bank WDI, current US$)",
+    "source": "World Bank — World Development Indicators (BX.KLT.DINV.CD.WD)",
+    "sourceOrg": "World Bank WDI",
+    "sourceUrl": "https://api.worldbank.org/v2/country/SUR/indicator/BX.KLT.DINV.CD.WD?format=json",
+    "series": [
+      {
+        "year": 2015,
+        "value": 183.7,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2016,
+        "value": 231.7,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2017,
+        "value": 96.1,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2018,
+        "value": 131,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2019,
+        "value": 84.2,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2020,
+        "value": 1,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2021,
+        "value": -132.7,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2022,
+        "value": -9.3,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2023,
+        "value": -53.1,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2024,
+        "value": -37.6,
+        "type": "estimate",
+        "vintage": "2026-04"
+      }
+    ]
+  },
+  {
+    "country": "GD",
+    "indicator": "gdp_growth",
+    "indicatorLabel": "GDP Growth Rate",
+    "unit": "%",
+    "unitNote": "Real GDP, annual % change (World Bank WDI)",
+    "source": "World Bank — World Development Indicators (NY.GDP.MKTP.KD.ZG)",
+    "sourceOrg": "World Bank WDI",
+    "sourceUrl": "https://api.worldbank.org/v2/country/GRD/indicator/NY.GDP.MKTP.KD.ZG?format=json",
+    "series": [
+      {
+        "year": 2015,
+        "value": 6.45,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2016,
+        "value": 3.74,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2017,
+        "value": 4.44,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2018,
+        "value": 4.36,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2019,
+        "value": 0.68,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2020,
+        "value": -13.76,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2021,
+        "value": 4.7,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2022,
+        "value": 7.31,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2023,
+        "value": 4.53,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2024,
+        "value": 3.96,
+        "type": "estimate",
+        "vintage": "2026-04"
+      }
+    ]
+  },
+  {
+    "country": "GD",
+    "indicator": "gdp_per_capita",
+    "indicatorLabel": "GDP per Capita",
+    "unit": "EC$",
+    "unitNote": "GDP per capita, current LCU (World Bank WDI)",
+    "source": "World Bank — World Development Indicators (NY.GDP.PCAP.CN)",
+    "sourceOrg": "World Bank WDI",
+    "sourceUrl": "https://api.worldbank.org/v2/country/GRD/indicator/NY.GDP.PCAP.CN?format=json",
+    "series": [
+      {
+        "year": 2015,
+        "value": 23474,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2016,
+        "value": 24897,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2017,
+        "value": 26329,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2018,
+        "value": 27224,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2019,
+        "value": 28250,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2020,
+        "value": 24215,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2021,
+        "value": 25967,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2022,
+        "value": 28267,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2023,
+        "value": 30819,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2024,
+        "value": 31604,
+        "type": "estimate",
+        "vintage": "2026-04"
+      }
+    ]
+  },
+  {
+    "country": "GD",
+    "indicator": "govt_debt",
+    "indicatorLabel": "Government Debt (% of GDP)",
+    "unit": "%",
+    "unitNote": "General government gross debt, % of GDP (IMF WEO)",
+    "source": "IMF World Economic Outlook (DataMapper)",
+    "sourceOrg": "IMF WEO",
+    "sourceUrl": "https://www.imf.org/external/datamapper/GGXWDG_NGDP/GRD",
+    "series": [
+      {
+        "year": 2015,
+        "value": 90.1,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2016,
+        "value": 81.6,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2017,
+        "value": 70.3,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2018,
+        "value": 68.5,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2019,
+        "value": 62.7,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2020,
+        "value": 89.5,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2021,
+        "value": 86.6,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2022,
+        "value": 79.3,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2023,
+        "value": 74.5,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2024,
+        "value": 75.1,
+        "type": "estimate",
+        "vintage": "2025"
+      }
+    ]
+  },
+  {
+    "country": "GD",
+    "indicator": "inflation",
+    "indicatorLabel": "Inflation Rate",
+    "unit": "%",
+    "unitNote": "Consumer prices, annual average % change (World Bank WDI)",
+    "source": "World Bank — World Development Indicators (FP.CPI.TOTL.ZG)",
+    "sourceOrg": "World Bank WDI",
+    "sourceUrl": "https://api.worldbank.org/v2/country/GRD/indicator/FP.CPI.TOTL.ZG?format=json",
+    "series": [
+      {
+        "year": 2015,
+        "value": -0.52,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2016,
+        "value": 1.65,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2017,
+        "value": 0.91,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2018,
+        "value": 0.8,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2019,
+        "value": 0.6,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2020,
+        "value": -0.74,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2021,
+        "value": 1.22,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2022,
+        "value": 2.58,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2023,
+        "value": 2.7,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2024,
+        "value": 1.09,
+        "type": "estimate",
+        "vintage": "2026-04"
+      }
+    ]
+  },
+  {
+    "country": "GD",
+    "indicator": "fdi_inflows",
+    "indicatorLabel": "FDI Inflows",
+    "unit": "US$ mn",
+    "unitNote": "Foreign direct investment, net inflows, BoP (World Bank WDI, current US$)",
+    "source": "World Bank — World Development Indicators (BX.KLT.DINV.CD.WD)",
+    "sourceOrg": "World Bank WDI",
+    "sourceUrl": "https://api.worldbank.org/v2/country/GRD/indicator/BX.KLT.DINV.CD.WD?format=json",
+    "series": [
+      {
+        "year": 2015,
+        "value": 154.3,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2016,
+        "value": 109.4,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2017,
+        "value": 153.3,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2018,
+        "value": 186,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2019,
+        "value": 208.6,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2020,
+        "value": 141.3,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2021,
+        "value": 152.2,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2022,
+        "value": 163,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2023,
+        "value": 220.3,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2024,
+        "value": 163.9,
+        "type": "estimate",
+        "vintage": "2026-04"
+      }
+    ]
+  },
+  {
+    "country": "LC",
+    "indicator": "gdp_growth",
+    "indicatorLabel": "GDP Growth Rate",
+    "unit": "%",
+    "unitNote": "Real GDP, annual % change (World Bank WDI)",
+    "source": "World Bank — World Development Indicators (NY.GDP.MKTP.KD.ZG)",
+    "sourceOrg": "World Bank WDI",
+    "sourceUrl": "https://api.worldbank.org/v2/country/LCA/indicator/NY.GDP.MKTP.KD.ZG?format=json",
+    "series": [
+      {
+        "year": 2015,
+        "value": 0.1,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2016,
+        "value": 3.43,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2017,
+        "value": 3.38,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2018,
+        "value": 2.89,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2019,
+        "value": -0.7,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2020,
+        "value": -24.36,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2021,
+        "value": 11.6,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2022,
+        "value": 20.39,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2023,
+        "value": 2.21,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2024,
+        "value": 3.89,
+        "type": "estimate",
+        "vintage": "2026-04"
+      }
+    ]
+  },
+  {
+    "country": "LC",
+    "indicator": "gdp_per_capita",
+    "indicatorLabel": "GDP per Capita",
+    "unit": "EC$",
+    "unitNote": "GDP per capita, current LCU (World Bank WDI)",
+    "source": "World Bank — World Development Indicators (NY.GDP.PCAP.CN)",
+    "sourceOrg": "World Bank WDI",
+    "sourceUrl": "https://api.worldbank.org/v2/country/LCA/indicator/NY.GDP.PCAP.CN?format=json",
+    "series": [
+      {
+        "year": 2015,
+        "value": 27904,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2016,
+        "value": 28723,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2017,
+        "value": 30599,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2018,
+        "value": 31435,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2019,
+        "value": 31844,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2020,
+        "value": 22710,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2021,
+        "value": 28240,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2022,
+        "value": 35380,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2023,
+        "value": 36598,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2024,
+        "value": 38290,
+        "type": "estimate",
+        "vintage": "2026-04"
+      }
+    ]
+  },
+  {
+    "country": "LC",
+    "indicator": "govt_debt",
+    "indicatorLabel": "Government Debt (% of GDP)",
+    "unit": "%",
+    "unitNote": "General government gross debt, % of GDP (IMF WEO)",
+    "source": "IMF World Economic Outlook (DataMapper)",
+    "sourceOrg": "IMF WEO",
+    "sourceUrl": "https://www.imf.org/external/datamapper/GGXWDG_NGDP/LCA",
+    "series": [
+      {
+        "year": 2015,
+        "value": 60.6,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2016,
+        "value": 60.2,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2017,
+        "value": 59.9,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2018,
+        "value": 60.3,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2019,
+        "value": 62.1,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2020,
+        "value": 94.4,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2021,
+        "value": 81.9,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2022,
+        "value": 73.9,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2023,
+        "value": 75.2,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2024,
+        "value": 76.7,
+        "type": "estimate",
+        "vintage": "2025"
+      }
+    ]
+  },
+  {
+    "country": "LC",
+    "indicator": "inflation",
+    "indicatorLabel": "Inflation Rate",
+    "unit": "%",
+    "unitNote": "Consumer prices, annual average % change (World Bank WDI)",
+    "source": "World Bank — World Development Indicators (FP.CPI.TOTL.ZG)",
+    "sourceOrg": "World Bank WDI",
+    "sourceUrl": "https://api.worldbank.org/v2/country/LCA/indicator/FP.CPI.TOTL.ZG?format=json",
+    "series": [
+      {
+        "year": 2015,
+        "value": -0.98,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2016,
+        "value": -3.08,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2017,
+        "value": 0.1,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2018,
+        "value": 1.94,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2019,
+        "value": 0.54,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2020,
+        "value": -1.76,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2021,
+        "value": 2.41,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2022,
+        "value": 6.38,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2023,
+        "value": 4.07,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2024,
+        "value": -0.11,
+        "type": "estimate",
+        "vintage": "2026-04"
+      }
+    ]
+  },
+  {
+    "country": "LC",
+    "indicator": "unemployment",
+    "indicatorLabel": "Unemployment Rate",
+    "unit": "%",
+    "unitNote": "Unemployment, % of total labour force (modeled ILO estimate, World Bank WDI)",
+    "source": "World Bank — World Development Indicators (SL.UEM.TOTL.ZS)",
+    "sourceOrg": "World Bank WDI",
+    "sourceUrl": "https://api.worldbank.org/v2/country/LCA/indicator/SL.UEM.TOTL.ZS?format=json",
+    "series": [
+      {
+        "year": 2015,
+        "value": 20.84,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2016,
+        "value": 19.93,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2017,
+        "value": 19.14,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2018,
+        "value": 19.33,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2019,
+        "value": 15.61,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2020,
+        "value": 25.22,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2021,
+        "value": 20.51,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2022,
+        "value": 15.93,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2023,
+        "value": 12.09,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2024,
+        "value": 10.2,
+        "type": "estimate",
+        "vintage": "2026-04"
+      }
+    ]
+  },
+  {
+    "country": "LC",
+    "indicator": "fdi_inflows",
+    "indicatorLabel": "FDI Inflows",
+    "unit": "US$ mn",
+    "unitNote": "Foreign direct investment, net inflows, BoP (World Bank WDI, current US$)",
+    "source": "World Bank — World Development Indicators (BX.KLT.DINV.CD.WD)",
+    "sourceOrg": "World Bank WDI",
+    "sourceUrl": "https://api.worldbank.org/v2/country/LCA/indicator/BX.KLT.DINV.CD.WD?format=json",
+    "series": [
+      {
+        "year": 2015,
+        "value": 152.2,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2016,
+        "value": 161.6,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2017,
+        "value": 89.9,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2018,
+        "value": 45.5,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2019,
+        "value": 75.5,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2020,
+        "value": 99.1,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2021,
+        "value": 70.2,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2022,
+        "value": 58,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2023,
+        "value": 203.1,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2024,
+        "value": 186.6,
+        "type": "estimate",
+        "vintage": "2026-04"
+      }
+    ]
+  },
+  {
+    "country": "AG",
+    "indicator": "gdp_growth",
+    "indicatorLabel": "GDP Growth Rate",
+    "unit": "%",
+    "unitNote": "Real GDP, annual % change (World Bank WDI)",
+    "source": "World Bank — World Development Indicators (NY.GDP.MKTP.KD.ZG)",
+    "sourceOrg": "World Bank WDI",
+    "sourceUrl": "https://api.worldbank.org/v2/country/ATG/indicator/NY.GDP.MKTP.KD.ZG?format=json",
+    "series": [
+      {
+        "year": 2015,
+        "value": 1.42,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2016,
+        "value": 4.12,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2017,
+        "value": 2.71,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2018,
+        "value": 6.71,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2019,
+        "value": 3.17,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2020,
+        "value": -18.87,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2021,
+        "value": 8.17,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2022,
+        "value": 9.11,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2023,
+        "value": 2.43,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2024,
+        "value": 3.66,
+        "type": "estimate",
+        "vintage": "2026-04"
+      }
+    ]
+  },
+  {
+    "country": "AG",
+    "indicator": "gdp_per_capita",
+    "indicatorLabel": "GDP per Capita",
+    "unit": "EC$",
+    "unitNote": "GDP per capita, current LCU (World Bank WDI)",
+    "source": "World Bank — World Development Indicators (NY.GDP.PCAP.CN)",
+    "sourceOrg": "World Bank WDI",
+    "sourceUrl": "https://api.worldbank.org/v2/country/ATG/indicator/NY.GDP.PCAP.CN?format=json",
+    "series": [
+      {
+        "year": 2015,
+        "value": 43410,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2016,
+        "value": 44704,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2017,
+        "value": 45807,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2018,
+        "value": 49338,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2019,
+        "value": 51020,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2020,
+        "value": 41498,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2021,
+        "value": 46841,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2022,
+        "value": 54284,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2023,
+        "value": 58035,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2024,
+        "value": 63565,
+        "type": "estimate",
+        "vintage": "2026-04"
+      }
+    ]
+  },
+  {
+    "country": "AG",
+    "indicator": "govt_debt",
+    "indicatorLabel": "Government Debt (% of GDP)",
+    "unit": "%",
+    "unitNote": "General government gross debt, % of GDP (IMF WEO)",
+    "source": "IMF World Economic Outlook (DataMapper)",
+    "sourceOrg": "IMF WEO",
+    "sourceUrl": "https://www.imf.org/external/datamapper/GGXWDG_NGDP/ATG",
+    "series": [
+      {
+        "year": 2015,
+        "value": 92.1,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2016,
+        "value": 83.1,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2017,
+        "value": 88.2,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2018,
+        "value": 84.3,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2019,
+        "value": 81.6,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2020,
+        "value": 100.5,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2021,
+        "value": 93,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2022,
+        "value": 82.4,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2023,
+        "value": 74.5,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2024,
+        "value": 71.8,
+        "type": "estimate",
+        "vintage": "2025"
+      }
+    ]
+  },
+  {
+    "country": "AG",
+    "indicator": "inflation",
+    "indicatorLabel": "Inflation Rate",
+    "unit": "%",
+    "unitNote": "Consumer prices, annual average % change (World Bank WDI)",
+    "source": "World Bank — World Development Indicators (FP.CPI.TOTL.ZG)",
+    "sourceOrg": "World Bank WDI",
+    "sourceUrl": "https://api.worldbank.org/v2/country/ATG/indicator/FP.CPI.TOTL.ZG?format=json",
+    "series": [
+      {
+        "year": 2015,
+        "value": 0.97,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2016,
+        "value": -0.49,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2017,
+        "value": 2.43,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2018,
+        "value": 1.21,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2019,
+        "value": 1.43,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2020,
+        "value": 0.63,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2021,
+        "value": 2.06,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2022,
+        "value": 7.53,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2023,
+        "value": 5.07,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2024,
+        "value": 6.2,
+        "type": "estimate",
+        "vintage": "2026-04"
+      }
+    ]
+  },
+  {
+    "country": "AG",
+    "indicator": "fdi_inflows",
+    "indicatorLabel": "FDI Inflows",
+    "unit": "US$ mn",
+    "unitNote": "Foreign direct investment, net inflows, BoP (World Bank WDI, current US$)",
+    "source": "World Bank — World Development Indicators (BX.KLT.DINV.CD.WD)",
+    "sourceOrg": "World Bank WDI",
+    "sourceUrl": "https://api.worldbank.org/v2/country/ATG/indicator/BX.KLT.DINV.CD.WD?format=json",
+    "series": [
+      {
+        "year": 2015,
+        "value": 114,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2016,
+        "value": 97.4,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2017,
+        "value": 151.3,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2018,
+        "value": 202.3,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2019,
+        "value": 133.9,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2020,
+        "value": 96.4,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2021,
+        "value": 286.5,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2022,
+        "value": 305.8,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2023,
+        "value": 293,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2024,
+        "value": 245.7,
+        "type": "estimate",
+        "vintage": "2026-04"
+      }
+    ]
+  },
+  {
+    "country": "KN",
+    "indicator": "gdp_growth",
+    "indicatorLabel": "GDP Growth Rate",
+    "unit": "%",
+    "unitNote": "Real GDP, annual % change (World Bank WDI)",
+    "source": "World Bank — World Development Indicators (NY.GDP.MKTP.KD.ZG)",
+    "sourceOrg": "World Bank WDI",
+    "sourceUrl": "https://api.worldbank.org/v2/country/KNA/indicator/NY.GDP.MKTP.KD.ZG?format=json",
+    "series": [
+      {
+        "year": 2015,
+        "value": 0.69,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2016,
+        "value": 3.93,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2017,
+        "value": 0.22,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2018,
+        "value": 2,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2019,
+        "value": 2.94,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2020,
+        "value": -15.3,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2021,
+        "value": 0.37,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2022,
+        "value": 10.48,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2023,
+        "value": 3.02,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2024,
+        "value": 0.31,
+        "type": "estimate",
+        "vintage": "2026-04"
+      }
+    ]
+  },
+  {
+    "country": "KN",
+    "indicator": "gdp_per_capita",
+    "indicatorLabel": "GDP per Capita",
+    "unit": "EC$",
+    "unitNote": "GDP per capita, current LCU (World Bank WDI)",
+    "source": "World Bank — World Development Indicators (NY.GDP.PCAP.CN)",
+    "sourceOrg": "World Bank WDI",
+    "sourceUrl": "https://api.worldbank.org/v2/country/KNA/indicator/NY.GDP.PCAP.CN?format=json",
+    "series": [
+      {
+        "year": 2015,
+        "value": 54888,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2016,
+        "value": 57746,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2017,
+        "value": 60655,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2018,
+        "value": 61834,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2019,
+        "value": 63708,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2020,
+        "value": 50919,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2021,
+        "value": 49575,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2022,
+        "value": 56731,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2023,
+        "value": 60958,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2024,
+        "value": 64694,
+        "type": "estimate",
+        "vintage": "2026-04"
+      }
+    ]
+  },
+  {
+    "country": "KN",
+    "indicator": "govt_debt",
+    "indicatorLabel": "Government Debt (% of GDP)",
+    "unit": "%",
+    "unitNote": "General government gross debt, % of GDP (IMF WEO)",
+    "source": "IMF World Economic Outlook (DataMapper)",
+    "sourceOrg": "IMF WEO",
+    "sourceUrl": "https://www.imf.org/external/datamapper/GGXWDG_NGDP/KNA",
+    "series": [
+      {
+        "year": 2015,
+        "value": 62.2,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2016,
+        "value": 57.4,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2017,
+        "value": 56.2,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2018,
+        "value": 54.7,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2019,
+        "value": 57.2,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2020,
+        "value": 71.7,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2021,
+        "value": 73,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2022,
+        "value": 64.5,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2023,
+        "value": 60,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2024,
+        "value": 58.1,
+        "type": "estimate",
+        "vintage": "2025"
+      }
+    ]
+  },
+  {
+    "country": "KN",
+    "indicator": "inflation",
+    "indicatorLabel": "Inflation Rate",
+    "unit": "%",
+    "unitNote": "Consumer prices, annual average % change (World Bank WDI)",
+    "source": "World Bank — World Development Indicators (FP.CPI.TOTL.ZG)",
+    "sourceOrg": "World Bank WDI",
+    "sourceUrl": "https://api.worldbank.org/v2/country/KNA/indicator/FP.CPI.TOTL.ZG?format=json",
+    "series": [
+      {
+        "year": 2015,
+        "value": -2.3,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2016,
+        "value": -0.69,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2017,
+        "value": 0.69,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2018,
+        "value": -1.04,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2019,
+        "value": -0.33,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2020,
+        "value": -1.17,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2021,
+        "value": 1.2,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2022,
+        "value": 2.67,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2023,
+        "value": 3.56,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2024,
+        "value": 1.1,
+        "type": "estimate",
+        "vintage": "2025"
+      }
+    ]
+  },
+  {
+    "country": "KN",
+    "indicator": "fdi_inflows",
+    "indicatorLabel": "FDI Inflows",
+    "unit": "US$ mn",
+    "unitNote": "Foreign direct investment, net inflows, BoP (World Bank WDI, current US$)",
+    "source": "World Bank — World Development Indicators (BX.KLT.DINV.CD.WD)",
+    "sourceOrg": "World Bank WDI",
+    "sourceUrl": "https://api.worldbank.org/v2/country/KNA/indicator/BX.KLT.DINV.CD.WD?format=json",
+    "series": [
+      {
+        "year": 2015,
+        "value": 128.3,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2016,
+        "value": 121.4,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2017,
+        "value": 48,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2018,
+        "value": 40.1,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2019,
+        "value": 62.5,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2020,
+        "value": 2.8,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2021,
+        "value": 19.2,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2022,
+        "value": 41.1,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2023,
+        "value": 29.8,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2024,
+        "value": 42.1,
+        "type": "estimate",
+        "vintage": "2026-04"
+      }
+    ]
+  },
+  {
+    "country": "DM",
+    "indicator": "gdp_growth",
+    "indicatorLabel": "GDP Growth Rate",
+    "unit": "%",
+    "unitNote": "Real GDP, annual % change (World Bank WDI)",
+    "source": "World Bank — World Development Indicators (NY.GDP.MKTP.KD.ZG)",
+    "sourceOrg": "World Bank WDI",
+    "sourceUrl": "https://api.worldbank.org/v2/country/DMA/indicator/NY.GDP.MKTP.KD.ZG?format=json",
+    "series": [
+      {
+        "year": 2015,
+        "value": -3.37,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2016,
+        "value": 1.45,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2017,
+        "value": -7.54,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2018,
+        "value": 2.96,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2019,
+        "value": 3.95,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2020,
+        "value": -15.71,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2021,
+        "value": 5.38,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2022,
+        "value": 10.4,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2023,
+        "value": 3.65,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2024,
+        "value": 2.05,
+        "type": "estimate",
+        "vintage": "2026-04"
+      }
+    ]
+  },
+  {
+    "country": "DM",
+    "indicator": "gdp_per_capita",
+    "indicatorLabel": "GDP per Capita",
+    "unit": "EC$",
+    "unitNote": "GDP per capita, current LCU (World Bank WDI)",
+    "source": "World Bank — World Development Indicators (NY.GDP.PCAP.CN)",
+    "sourceOrg": "World Bank WDI",
+    "sourceUrl": "https://api.worldbank.org/v2/country/DMA/indicator/NY.GDP.PCAP.CN?format=json",
+    "series": [
+      {
+        "year": 2015,
+        "value": 22363,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2016,
+        "value": 23767,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2017,
+        "value": 22207,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2018,
+        "value": 24881,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2019,
+        "value": 25626,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2020,
+        "value": 21135,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2021,
+        "value": 22616,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2022,
+        "value": 25174,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2023,
+        "value": 26765,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2024,
+        "value": 28094,
+        "type": "estimate",
+        "vintage": "2026-04"
+      }
+    ]
+  },
+  {
+    "country": "DM",
+    "indicator": "govt_debt",
+    "indicatorLabel": "Government Debt (% of GDP)",
+    "unit": "%",
+    "unitNote": "General government gross debt, % of GDP (IMF WEO)",
+    "source": "IMF World Economic Outlook (DataMapper)",
+    "sourceOrg": "IMF WEO",
+    "sourceUrl": "https://www.imf.org/external/datamapper/GGXWDG_NGDP/DMA",
+    "series": [
+      {
+        "year": 2015,
+        "value": 68.2,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2016,
+        "value": 76.9,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2017,
+        "value": 84.2,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2018,
+        "value": 85.7,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2019,
+        "value": 97.8,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2020,
+        "value": 118.4,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2021,
+        "value": 116.3,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2022,
+        "value": 110,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2023,
+        "value": 101.3,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2024,
+        "value": 108.2,
+        "type": "estimate",
+        "vintage": "2025"
+      }
+    ]
+  },
+  {
+    "country": "DM",
+    "indicator": "inflation",
+    "indicatorLabel": "Inflation Rate",
+    "unit": "%",
+    "unitNote": "Consumer prices, annual average % change (World Bank WDI)",
+    "source": "World Bank — World Development Indicators (FP.CPI.TOTL.ZG)",
+    "sourceOrg": "World Bank WDI",
+    "sourceUrl": "https://api.worldbank.org/v2/country/DMA/indicator/FP.CPI.TOTL.ZG?format=json",
+    "series": [
+      {
+        "year": 2015,
+        "value": -0.84,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2016,
+        "value": 0.14,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2017,
+        "value": 0.3,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2018,
+        "value": 0.99,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2019,
+        "value": 1.5,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2020,
+        "value": 1.22,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2021,
+        "value": 2.23,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2022,
+        "value": 2.88,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2023,
+        "value": 5.09,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2024,
+        "value": 2.57,
+        "type": "estimate",
+        "vintage": "2026-04"
+      }
+    ]
+  },
+  {
+    "country": "DM",
+    "indicator": "fdi_inflows",
+    "indicatorLabel": "FDI Inflows",
+    "unit": "US$ mn",
+    "unitNote": "Foreign direct investment, net inflows, BoP (World Bank WDI, current US$)",
+    "source": "World Bank — World Development Indicators (BX.KLT.DINV.CD.WD)",
+    "sourceOrg": "World Bank WDI",
+    "sourceUrl": "https://api.worldbank.org/v2/country/DMA/indicator/BX.KLT.DINV.CD.WD?format=json",
+    "series": [
+      {
+        "year": 2015,
+        "value": 7.2,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2016,
+        "value": 42.3,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2017,
+        "value": 22.7,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2018,
+        "value": 78.3,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2019,
+        "value": 63,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2020,
+        "value": 22.8,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2021,
+        "value": 28.3,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2022,
+        "value": 16.9,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2023,
+        "value": 48,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2024,
+        "value": 60,
+        "type": "estimate",
+        "vintage": "2026-04"
+      }
+    ]
+  },
+  {
+    "country": "VC",
+    "indicator": "gdp_growth",
+    "indicatorLabel": "GDP Growth Rate",
+    "unit": "%",
+    "unitNote": "Real GDP, annual % change (World Bank WDI)",
+    "source": "World Bank — World Development Indicators (NY.GDP.MKTP.KD.ZG)",
+    "sourceOrg": "World Bank WDI",
+    "sourceUrl": "https://api.worldbank.org/v2/country/VCT/indicator/NY.GDP.MKTP.KD.ZG?format=json",
+    "series": [
+      {
+        "year": 2015,
+        "value": 2.79,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2016,
+        "value": 4.15,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2017,
+        "value": 1.55,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2018,
+        "value": 3.18,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2019,
+        "value": 0.67,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2020,
+        "value": -4.27,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2021,
+        "value": 2.09,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2022,
+        "value": 3.11,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2023,
+        "value": 5.33,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2024,
+        "value": 4.06,
+        "type": "estimate",
+        "vintage": "2026-04"
+      }
+    ]
+  },
+  {
+    "country": "VC",
+    "indicator": "gdp_per_capita",
+    "indicatorLabel": "GDP per Capita",
+    "unit": "EC$",
+    "unitNote": "GDP per capita, current LCU (World Bank WDI)",
+    "source": "World Bank — World Development Indicators (NY.GDP.PCAP.CN)",
+    "sourceOrg": "World Bank WDI",
+    "sourceUrl": "https://api.worldbank.org/v2/country/VCT/indicator/NY.GDP.PCAP.CN?format=json",
+    "series": [
+      {
+        "year": 2015,
+        "value": 19855,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2016,
+        "value": 20674,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2017,
+        "value": 21568,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2018,
+        "value": 22756,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2019,
+        "value": 23600,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2020,
+        "value": 22548,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2021,
+        "value": 23331,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2022,
+        "value": 26173,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2023,
+        "value": 28572,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2024,
+        "value": 31053,
+        "type": "estimate",
+        "vintage": "2026-04"
+      }
+    ]
+  },
+  {
+    "country": "VC",
+    "indicator": "govt_debt",
+    "indicatorLabel": "Government Debt (% of GDP)",
+    "unit": "%",
+    "unitNote": "General government gross debt, % of GDP (IMF WEO)",
+    "source": "IMF World Economic Outlook (DataMapper)",
+    "sourceOrg": "IMF WEO",
+    "sourceUrl": "https://www.imf.org/external/datamapper/GGXWDG_NGDP/VCT",
+    "series": [
+      {
+        "year": 2015,
+        "value": 76,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2016,
+        "value": 78.1,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2017,
+        "value": 69.5,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2018,
+        "value": 69.3,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2019,
+        "value": 68,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2020,
+        "value": 81.7,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2021,
+        "value": 88.3,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2022,
+        "value": 88.6,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2023,
+        "value": 91.3,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2024,
+        "value": 102.8,
+        "type": "estimate",
+        "vintage": "2025"
+      }
+    ]
+  },
+  {
+    "country": "VC",
+    "indicator": "inflation",
+    "indicatorLabel": "Inflation Rate",
+    "unit": "%",
+    "unitNote": "Consumer prices, annual average % change (World Bank WDI)",
+    "source": "World Bank — World Development Indicators (FP.CPI.TOTL.ZG)",
+    "sourceOrg": "World Bank WDI",
+    "sourceUrl": "https://api.worldbank.org/v2/country/VCT/indicator/FP.CPI.TOTL.ZG?format=json",
+    "series": [
+      {
+        "year": 2015,
+        "value": -1.73,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2016,
+        "value": -0.15,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2017,
+        "value": 2.15,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2018,
+        "value": 2.32,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2019,
+        "value": 0.91,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2020,
+        "value": -0.63,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2021,
+        "value": 1.57,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2022,
+        "value": 5.66,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2023,
+        "value": 4.56,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2024,
+        "value": 3.63,
+        "type": "estimate",
+        "vintage": "2026-04"
+      }
+    ]
+  },
+  {
+    "country": "VC",
+    "indicator": "unemployment",
+    "indicatorLabel": "Unemployment Rate",
+    "unit": "%",
+    "unitNote": "Unemployment, % of total labour force (modeled ILO estimate, World Bank WDI)",
+    "source": "World Bank — World Development Indicators (SL.UEM.TOTL.ZS)",
+    "sourceOrg": "World Bank WDI",
+    "sourceUrl": "https://api.worldbank.org/v2/country/VCT/indicator/SL.UEM.TOTL.ZS?format=json",
+    "series": [
+      {
+        "year": 2015,
+        "value": 19.14,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2016,
+        "value": 19.03,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2017,
+        "value": 19.02,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2018,
+        "value": 19,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2019,
+        "value": 19.25,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2020,
+        "value": 20.64,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2021,
+        "value": 20.36,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2022,
+        "value": 19.28,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2023,
+        "value": 18.35,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2024,
+        "value": 18.09,
+        "type": "estimate",
+        "vintage": "2026-04"
+      }
+    ]
+  },
+  {
+    "country": "VC",
+    "indicator": "fdi_inflows",
+    "indicatorLabel": "FDI Inflows",
+    "unit": "US$ mn",
+    "unitNote": "Foreign direct investment, net inflows, BoP (World Bank WDI, current US$)",
+    "source": "World Bank — World Development Indicators (BX.KLT.DINV.CD.WD)",
+    "sourceOrg": "World Bank WDI",
+    "sourceUrl": "https://api.worldbank.org/v2/country/VCT/indicator/BX.KLT.DINV.CD.WD?format=json",
+    "series": [
+      {
+        "year": 2015,
+        "value": 123.9,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2016,
+        "value": 70.5,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2017,
+        "value": 165.4,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2018,
+        "value": 40,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2019,
+        "value": 68.8,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2020,
+        "value": 65.2,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2021,
+        "value": 167.9,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2022,
+        "value": 65.2,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2023,
+        "value": 73.8,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2024,
+        "value": 138.9,
+        "type": "estimate",
+        "vintage": "2026-04"
+      }
+    ]
+  },
+  {
+    "country": "TC",
+    "indicator": "gdp_growth",
+    "indicatorLabel": "GDP Growth Rate",
+    "unit": "%",
+    "unitNote": "Real GDP, annual % change (World Bank WDI)",
+    "source": "World Bank — World Development Indicators (NY.GDP.MKTP.KD.ZG)",
+    "sourceOrg": "World Bank WDI",
+    "sourceUrl": "https://api.worldbank.org/v2/country/TCA/indicator/NY.GDP.MKTP.KD.ZG?format=json",
+    "series": [
+      {
+        "year": 2015,
+        "value": 11.31,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2016,
+        "value": 7.25,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2017,
+        "value": 74.59,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2018,
+        "value": 6.75,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2019,
+        "value": 4.98,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2020,
+        "value": -33.82,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2021,
+        "value": 29.63,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2022,
+        "value": 14.09,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2023,
+        "value": 13.73,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2024,
+        "value": 5.64,
+        "type": "estimate",
+        "vintage": "2026-04"
+      }
+    ]
+  },
+  {
+    "country": "TC",
+    "indicator": "gdp_per_capita",
+    "indicatorLabel": "GDP per Capita",
+    "unit": "US$",
+    "unitNote": "GDP per capita, current LCU (World Bank WDI)",
+    "source": "World Bank — World Development Indicators (NY.GDP.PCAP.CN)",
+    "sourceOrg": "World Bank WDI",
+    "sourceUrl": "https://api.worldbank.org/v2/country/TCA/indicator/NY.GDP.PCAP.CN?format=json",
+    "series": [
+      {
+        "year": 2015,
+        "value": 29457,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2016,
+        "value": 31374,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2017,
+        "value": 30014,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2018,
+        "value": 31626,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2019,
+        "value": 31781,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2020,
+        "value": 20691,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2021,
+        "value": 27329,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2022,
+        "value": 31281,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2023,
+        "value": 35470,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2024,
+        "value": 37507,
+        "type": "estimate",
+        "vintage": "2026-04"
+      }
+    ]
+  },
+  {
+    "country": "TC",
+    "indicator": "fdi_inflows",
+    "indicatorLabel": "FDI Inflows",
+    "unit": "US$ mn",
+    "unitNote": "Foreign direct investment, net inflows, BoP (World Bank WDI, current US$)",
+    "source": "World Bank — World Development Indicators (BX.KLT.DINV.CD.WD)",
+    "sourceOrg": "World Bank WDI",
+    "sourceUrl": "https://api.worldbank.org/v2/country/TCA/indicator/BX.KLT.DINV.CD.WD?format=json",
+    "series": [
+      {
+        "year": 2015,
+        "value": -69.9,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2016,
+        "value": 16.6,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2017,
+        "value": 22.1,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2018,
+        "value": 42.2,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2019,
+        "value": 27,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2020,
+        "value": 30.4,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2021,
+        "value": 28.7,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2022,
+        "value": 35,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2023,
+        "value": 32.7,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2024,
+        "value": 44,
+        "type": "estimate",
+        "vintage": "2026-04"
+      }
+    ]
+  },
+  {
+    "country": "KY",
+    "indicator": "gdp_growth",
+    "indicatorLabel": "GDP Growth Rate",
+    "unit": "%",
+    "unitNote": "Real GDP, annual % change (World Bank WDI)",
+    "source": "World Bank — World Development Indicators (NY.GDP.MKTP.KD.ZG)",
+    "sourceOrg": "World Bank WDI",
+    "sourceUrl": "https://api.worldbank.org/v2/country/CYM/indicator/NY.GDP.MKTP.KD.ZG?format=json",
+    "series": [
+      {
+        "year": 2015,
+        "value": 2.83,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2016,
+        "value": 3.24,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2017,
+        "value": 3.18,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2018,
+        "value": 4.27,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2019,
+        "value": 3.92,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2020,
+        "value": -4.95,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2021,
+        "value": 4.87,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2022,
+        "value": 5.78,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2023,
+        "value": 5.82,
+        "type": "actual",
+        "vintage": "2026-04"
+      }
+    ]
+  },
+  {
+    "country": "KY",
+    "indicator": "gdp_per_capita",
+    "indicatorLabel": "GDP per Capita",
+    "unit": "CI$",
+    "unitNote": "GDP per capita, current LCU (World Bank WDI)",
+    "source": "World Bank — World Development Indicators (NY.GDP.PCAP.CN)",
+    "sourceOrg": "World Bank WDI",
+    "sourceUrl": "https://api.worldbank.org/v2/country/CYM/indicator/NY.GDP.PCAP.CN?format=json",
+    "series": [
+      {
+        "year": 2015,
+        "value": 63649,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2016,
+        "value": 64835,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2017,
+        "value": 66711,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2018,
+        "value": 69888,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2019,
+        "value": 73545,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2020,
+        "value": 68615,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2021,
+        "value": 72041,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2022,
+        "value": 77525,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2023,
+        "value": 82619,
+        "type": "actual",
+        "vintage": "2026-04"
+      }
+    ]
+  },
+  {
+    "country": "KY",
+    "indicator": "inflation",
+    "indicatorLabel": "Inflation Rate",
+    "unit": "%",
+    "unitNote": "Consumer prices, annual average % change (World Bank WDI)",
+    "source": "World Bank — World Development Indicators (FP.CPI.TOTL.ZG)",
+    "sourceOrg": "World Bank WDI",
+    "sourceUrl": "https://api.worldbank.org/v2/country/CYM/indicator/FP.CPI.TOTL.ZG?format=json",
+    "series": [
+      {
+        "year": 2015,
+        "value": -2.35,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2016,
+        "value": -0.63,
+        "type": "actual",
+        "vintage": "2026-04"
+      }
+    ]
+  },
+  {
+    "country": "KY",
+    "indicator": "fdi_inflows",
+    "indicatorLabel": "FDI Inflows",
+    "unit": "US$ mn",
+    "unitNote": "Foreign direct investment, net inflows, BoP (World Bank WDI, current US$)",
+    "source": "World Bank — World Development Indicators (BX.KLT.DINV.CD.WD)",
+    "sourceOrg": "World Bank WDI",
+    "sourceUrl": "https://api.worldbank.org/v2/country/CYM/indicator/BX.KLT.DINV.CD.WD?format=json",
+    "series": [
+      {
+        "year": 2015,
+        "value": 80501.5,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2016,
+        "value": 2684.2,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2017,
+        "value": 2506.5,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2018,
+        "value": 173.6,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2019,
+        "value": 1080.4,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2020,
+        "value": 6973.8,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2021,
+        "value": -807.8,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2022,
+        "value": -3144.7,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2023,
+        "value": 12092.6,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2024,
+        "value": 3177.4,
+        "type": "estimate",
+        "vintage": "2026-04"
+      }
+    ]
+  },
+  {
+    "country": "VG",
+    "indicator": "fdi_inflows",
+    "indicatorLabel": "FDI Inflows",
+    "unit": "US$ mn",
+    "unitNote": "Foreign direct investment, net inflows, BoP (World Bank WDI, current US$)",
+    "source": "World Bank — World Development Indicators (BX.KLT.DINV.CD.WD)",
+    "sourceOrg": "World Bank WDI",
+    "sourceUrl": "https://api.worldbank.org/v2/country/VGB/indicator/BX.KLT.DINV.CD.WD?format=json",
+    "series": [
+      {
+        "year": 2015,
+        "value": 66712.7,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2016,
+        "value": 49022.9,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2017,
+        "value": 39610,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2018,
+        "value": 34389.7,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2019,
+        "value": 39103.4,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2020,
+        "value": 39619.6,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2021,
+        "value": 39361.5,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2022,
+        "value": 38118.6,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2023,
+        "value": 39889.4,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2024,
+        "value": 53598.7,
+        "type": "estimate",
+        "vintage": "2026-04"
+      }
+    ]
+  },
+  {
+    "country": "BB",
+    "indicator": "govt_revenue",
+    "indicatorLabel": "Government Revenue",
+    "unit": "Bds$ mn",
+    "unitNote": "Total revenues & grants, Fiscal year Apr-Mar, labelled by starting calendar year; quarters aggregated from CBB Table F1.",
+    "source": "Central Bank of Barbados — Table F1, Summary of Government Operations (Dec 2024)",
+    "sourceOrg": "Central Bank of Barbados",
+    "sourceUrl": "https://www.centralbank.org.bb/news/summary-of-government-operations",
+    "series": [
+      {
+        "year": 2015,
+        "value": 2458.4,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2016,
+        "value": 2754,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2017,
+        "value": 2845.4,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2018,
+        "value": 2993.6,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2019,
+        "value": 2984.2,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2020,
+        "value": 2563.3,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2021,
+        "value": 2823.8,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2022,
+        "value": 3320,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2023,
+        "value": 3378,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2024,
+        "value": 2910.2,
+        "type": "estimate",
+        "vintage": "2025",
+        "sourceNote": "Partial: FY2024/25 Apr-Dec 2024 (3 quarters) per CBB data through Dec-2024."
+      }
+    ]
+  },
+  {
+    "country": "JM",
+    "indicator": "govt_revenue",
+    "indicatorLabel": "Government Revenue",
+    "unit": "J$ mn",
+    "unitNote": "Revenue & grants. Fiscal year Apr-Mar, labelled by starting calendar year.",
+    "source": "Government of Jamaica — Fiscal Policy Paper 2024, Table 3G (Central Government Summary Accounts)",
+    "sourceOrg": "Ministry of Finance (Jamaica)",
+    "sourceUrl": "https://www.mof.gov.jm/wp-content/uploads/FPP-2024-Final.pdf",
+    "series": [
+      {
+        "year": 2020,
+        "value": 575401.1,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2021,
+        "value": 720224.5,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2022,
+        "value": 827775.1,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2023,
+        "value": 947666.3,
+        "type": "actual",
+        "vintage": "2025"
+      },
+      {
+        "year": 2024,
+        "value": 1033594.6,
+        "type": "estimate",
+        "vintage": "2025",
+        "sourceNote": "FY2024/25 budget (Proj.)."
+      }
+    ]
+  },
+  {
+    "country": "BS",
+    "indicator": "govt_revenue",
+    "indicatorLabel": "Government Revenue",
+    "unit": "B$ mn",
+    "unitNote": "Total revenue (tax+non-tax+grants+capital). Fiscal year Jul-Jun, labelled by starting calendar year; FY2024/25 is budget.",
+    "source": "Central Bank of The Bahamas — QSD Aug-2024, Table 5.1 (Central Government Statement of Operations)",
+    "sourceOrg": "Central Bank of The Bahamas / MoF",
+    "sourceUrl": "https://cdn.centralbankbahamas.com/documents/2024-08-22-16-35-27-CBOB-Quarterly-Statistical-DigestAugust-2024Final.pdf",
+    "series": [
+      {
+        "year": 2018,
+        "value": 2426.3,
+        "type": "actual",
+        "vintage": "2024"
+      },
+      {
+        "year": 2019,
+        "value": 2082,
+        "type": "actual",
+        "vintage": "2024"
+      },
+      {
+        "year": 2020,
+        "value": 1908.8,
+        "type": "actual",
+        "vintage": "2024"
+      },
+      {
+        "year": 2021,
+        "value": 2605.7,
+        "type": "actual",
+        "vintage": "2024"
+      },
+      {
+        "year": 2022,
+        "value": 2855.4,
+        "type": "actual",
+        "vintage": "2024"
+      },
+      {
+        "year": 2023,
+        "value": 3319,
+        "type": "actual",
+        "vintage": "2024"
+      },
+      {
+        "year": 2024,
+        "value": 3543.3,
+        "type": "estimate",
+        "vintage": "2024",
+        "sourceNote": "FY2024/25 budget figure."
+      }
+    ]
+  },
+  {
+    "country": "KY",
+    "indicator": "govt_revenue",
+    "indicatorLabel": "Government Revenue",
+    "unit": "CI$ mn",
+    "unitNote": "Core government revenue, calendar year",
+    "source": "Cayman Islands Treasury Dept — via ESO Annual Economic Report 2023, Table A27",
+    "sourceOrg": "Cayman Islands ESO / Treasury",
+    "sourceUrl": "https://www.eso.ky/storage/page_docums/uploadFilePdf/805/The%20Cayman%20Islands%20Annual%20Economic%20Report%202023_Final.pdf",
+    "series": [
+      {
+        "year": 2015,
+        "value": 672.7,
+        "type": "actual",
+        "vintage": "2024"
+      },
+      {
+        "year": 2016,
+        "value": 705.9,
+        "type": "actual",
+        "vintage": "2024"
+      },
+      {
+        "year": 2017,
+        "value": 753.2,
+        "type": "actual",
+        "vintage": "2024"
+      },
+      {
+        "year": 2018,
+        "value": 830.2,
+        "type": "actual",
+        "vintage": "2024"
+      },
+      {
+        "year": 2019,
+        "value": 860,
+        "type": "actual",
+        "vintage": "2024"
+      },
+      {
+        "year": 2020,
+        "value": 797.4,
+        "type": "actual",
+        "vintage": "2024"
+      },
+      {
+        "year": 2021,
+        "value": 961.1,
+        "type": "actual",
+        "vintage": "2024"
+      },
+      {
+        "year": 2022,
+        "value": 1021.3,
+        "type": "actual",
+        "vintage": "2024"
+      },
+      {
+        "year": 2023,
+        "value": 1060.1,
+        "type": "actual",
+        "vintage": "2024"
+      }
     ]
   }
 ]

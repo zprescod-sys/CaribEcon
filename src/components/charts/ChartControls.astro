@@ -50,6 +50,14 @@ const defaultIndicator  = 'gdp_growth';
 <script>
   const chips = document.querySelectorAll<HTMLButtonElement>('#country-chips .chip');
 
+  function broadcastCountries() {
+    document.dispatchEvent(new CustomEvent('countries-changed', {
+      detail: { countries: [...chips]
+        .filter(c => c.classList.contains('active'))
+        .map(c => c.dataset.country!) },
+    }));
+  }
+
   chips.forEach(chip => {
     chip.addEventListener('click', () => {
       const activeChips = [...chips].filter(c => c.classList.contains('active'));
@@ -59,13 +67,7 @@ const defaultIndicator  = 'gdp_growth';
 
       chip.classList.toggle('active');
       chip.setAttribute('aria-pressed', chip.classList.contains('active') ? 'true' : 'false');
-
-      // Dispatch event so the chart can react
-      document.dispatchEvent(new CustomEvent('countries-changed', {
-        detail: { countries: [...chips]
-          .filter(c => c.classList.contains('active'))
-          .map(c => c.dataset.country!) },
-      }));
+      broadcastCountries();
     });
   });
 
@@ -75,6 +77,9 @@ const defaultIndicator  = 'gdp_growth';
       detail: { indicator: indicatorSelect.value },
     }));
   });
+
+  // Fire initial state so the chart syncs to the default chip selection (GY + TT)
+  document.addEventListener('DOMContentLoaded', broadcastCountries);
 </script>
 
 <style>

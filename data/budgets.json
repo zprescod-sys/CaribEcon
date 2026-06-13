@@ -14,82 +14,136 @@
         "name": "Infrastructure & Transportation",
         "slug": "infrastructure",
         "value": 1834,
-        "pct": 35.0,
+        "pct": 35,
         "projects": [
-          { "name": "East Bank Demerara Expressway (Phase 2)", "description": "Four-lane highway expansion connecting Georgetown to Timehri" },
-          { "name": "Demerara Harbour Bridge Replacement", "description": "Construction of permanent fixed-span bridge across the Demerara River" },
-          { "name": "Linden–Lethem Road Improvement", "description": "Upgrading the 300km road linking the coast to the Brazilian border" }
+          {
+            "name": "East Bank Demerara Expressway (Phase 2)",
+            "description": "Four-lane highway expansion connecting Georgetown to Timehri"
+          },
+          {
+            "name": "Demerara Harbour Bridge Replacement",
+            "description": "Construction of permanent fixed-span bridge across the Demerara River"
+          },
+          {
+            "name": "Linden–Lethem Road Improvement",
+            "description": "Upgrading the 300km road linking the coast to the Brazilian border"
+          }
         ]
       },
       {
         "name": "Education",
         "slug": "education",
         "value": 786,
-        "pct": 15.0,
+        "pct": 15,
         "projects": [
-          { "name": "Silica City University", "description": "New university campus in New Amsterdam to expand tertiary access" },
-          { "name": "Primary & Secondary School Rehabilitation", "description": "Nationwide renovation of 150+ schools" },
-          { "name": "Technical & Vocational Training Expansion", "description": "New TVET centres in Regions 4, 6 and 10" }
+          {
+            "name": "Silica City University",
+            "description": "New university campus in New Amsterdam to expand tertiary access"
+          },
+          {
+            "name": "Primary & Secondary School Rehabilitation",
+            "description": "Nationwide renovation of 150+ schools"
+          },
+          {
+            "name": "Technical & Vocational Training Expansion",
+            "description": "New TVET centres in Regions 4, 6 and 10"
+          }
         ]
       },
       {
         "name": "Health",
         "slug": "health",
         "value": 629,
-        "pct": 12.0,
+        "pct": 12,
         "projects": [
-          { "name": "New Paediatric Hospital", "description": "Construction of dedicated children's hospital in Georgetown" },
-          { "name": "Regional Hospital Upgrades", "description": "Cardiac and oncology units added at GPHC and New Amsterdam hospitals" }
+          {
+            "name": "New Paediatric Hospital",
+            "description": "Construction of dedicated children's hospital in Georgetown"
+          },
+          {
+            "name": "Regional Hospital Upgrades",
+            "description": "Cardiac and oncology units added at GPHC and New Amsterdam hospitals"
+          }
         ]
       },
       {
         "name": "Housing & Water",
         "slug": "housing",
         "value": 524,
-        "pct": 10.0,
+        "pct": 10,
         "projects": [
-          { "name": "Low-Income Housing Programme", "description": "6,000 house lots allocated across hinterland and coastal regions" },
-          { "name": "National Water & Sewerage Authority Expansion", "description": "Extending piped water to hinterland communities in Regions 8 and 9" }
+          {
+            "name": "Low-Income Housing Programme",
+            "description": "6,000 house lots allocated across hinterland and coastal regions"
+          },
+          {
+            "name": "National Water & Sewerage Authority Expansion",
+            "description": "Extending piped water to hinterland communities in Regions 8 and 9"
+          }
         ]
       },
       {
         "name": "Social Protection",
         "slug": "social",
         "value": 419,
-        "pct": 8.0,
+        "pct": 8,
         "projects": [
-          { "name": "Because We Care Cash Grant", "description": "Annual cash transfer of GYD 25,000 per child to school families" },
-          { "name": "Senior Citizens' Pension Increase", "description": "Monthly pension raised to GYD 12,000" }
+          {
+            "name": "Because We Care Cash Grant",
+            "description": "Annual cash transfer of GYD 25,000 per child to school families"
+          },
+          {
+            "name": "Senior Citizens' Pension Increase",
+            "description": "Monthly pension raised to GYD 12,000"
+          }
         ]
       },
       {
         "name": "Public Safety & Justice",
         "slug": "public-safety",
         "value": 367,
-        "pct": 7.0,
+        "pct": 7,
         "projects": [
-          { "name": "Cybercrime & Digital Forensics Unit", "description": "New dedicated unit within Guyana Police Force" },
-          { "name": "Prison Modernisation", "description": "Upgrade of Mazaruni and Lusignan facilities" }
+          {
+            "name": "Cybercrime & Digital Forensics Unit",
+            "description": "New dedicated unit within Guyana Police Force"
+          },
+          {
+            "name": "Prison Modernisation",
+            "description": "Upgrade of Mazaruni and Lusignan facilities"
+          }
         ]
       },
       {
         "name": "Agriculture",
         "slug": "agriculture",
         "value": 262,
-        "pct": 5.0,
+        "pct": 5,
         "projects": [
-          { "name": "Black Bush Polders Rehabilitation", "description": "Drainage and irrigation for 28,000 acres of rice farmland in Berbice" },
-          { "name": "National Drainage & Irrigation Authority", "description": "Sea defence upgrades along the Essequibo and Demerara coastlines" }
+          {
+            "name": "Black Bush Polders Rehabilitation",
+            "description": "Drainage and irrigation for 28,000 acres of rice farmland in Berbice"
+          },
+          {
+            "name": "National Drainage & Irrigation Authority",
+            "description": "Sea defence upgrades along the Essequibo and Demerara coastlines"
+          }
         ]
       },
       {
         "name": "Other / Cross-Cutting",
         "slug": "other",
         "value": 421,
-        "pct": 8.0,
+        "pct": 8,
         "projects": [
-          { "name": "Digital Transformation Agenda", "description": "E-government services rollout and fibre connectivity to all regions" },
-          { "name": "Natural Resources & Environment", "description": "LCDS 2030 carbon credit programme and protected areas management" }
+          {
+            "name": "Digital Transformation Agenda",
+            "description": "E-government services rollout and fibre connectivity to all regions"
+          },
+          {
+            "name": "Natural Resources & Environment",
+            "description": "LCDS 2030 carbon credit programme and protected areas management"
+          }
         ]
       }
     ]
@@ -110,82 +164,326 @@
         "name": "Social Services & Community Development",
         "slug": "social",
         "value": 1882,
-        "pct": 20.0,
+        "pct": 20,
         "projects": [
-          { "name": "Targeted Conditional Cash Transfer", "description": "Monthly grants to vulnerable households under GATE and TARA programmes" },
-          { "name": "Senior Citizens' Pension Enhancement", "description": "Increase to TTD 3,500/month for all citizens over 65" }
+          {
+            "name": "Targeted Conditional Cash Transfer",
+            "description": "Monthly grants to vulnerable households under GATE and TARA programmes"
+          },
+          {
+            "name": "Senior Citizens' Pension Enhancement",
+            "description": "Increase to TTD 3,500/month for all citizens over 65"
+          }
         ]
       },
       {
         "name": "Education",
         "slug": "education",
         "value": 1412,
-        "pct": 15.0,
+        "pct": 15,
         "projects": [
-          { "name": "GATE Higher Education Programme", "description": "Continued free tertiary education funding at UTT and UWI" },
-          { "name": "Secondary School Digitalisation", "description": "Devices and connectivity for all Form 1–5 students" }
+          {
+            "name": "GATE Higher Education Programme",
+            "description": "Continued free tertiary education funding at UTT and UWI"
+          },
+          {
+            "name": "Secondary School Digitalisation",
+            "description": "Devices and connectivity for all Form 1–5 students"
+          }
         ]
       },
       {
         "name": "Health",
         "slug": "health",
         "value": 1129,
-        "pct": 12.0,
+        "pct": 12,
         "projects": [
-          { "name": "San Fernando General Hospital Expansion", "description": "New oncology and cardiothoracic wards" },
-          { "name": "National Chronic Disease Prevention Programme", "description": "Community health screening and diabetes/hypertension management" }
+          {
+            "name": "San Fernando General Hospital Expansion",
+            "description": "New oncology and cardiothoracic wards"
+          },
+          {
+            "name": "National Chronic Disease Prevention Programme",
+            "description": "Community health screening and diabetes/hypertension management"
+          }
         ]
       },
       {
         "name": "National Security",
         "slug": "national-security",
         "value": 1129,
-        "pct": 12.0,
+        "pct": 12,
         "projects": [
-          { "name": "Police Service Modernisation", "description": "New patrol vehicles, body cameras, and digital dispatch system" },
-          { "name": "Coast Guard Vessel Acquisition", "description": "Two new offshore patrol vessels for maritime security" }
+          {
+            "name": "Police Service Modernisation",
+            "description": "New patrol vehicles, body cameras, and digital dispatch system"
+          },
+          {
+            "name": "Coast Guard Vessel Acquisition",
+            "description": "Two new offshore patrol vessels for maritime security"
+          }
         ]
       },
       {
         "name": "Works & Transport",
         "slug": "works",
         "value": 941,
-        "pct": 10.0,
+        "pct": 10,
         "projects": [
-          { "name": "Solomon Hochoy Highway Extension (Phase 2)", "description": "Highway extension to Point Fortin; final phase" },
-          { "name": "Sea Bridge Rationalisation", "description": "Upgrade of Tobago Express and additional ferry capacity" }
+          {
+            "name": "Solomon Hochoy Highway Extension (Phase 2)",
+            "description": "Highway extension to Point Fortin; final phase"
+          },
+          {
+            "name": "Sea Bridge Rationalisation",
+            "description": "Upgrade of Tobago Express and additional ferry capacity"
+          }
         ]
       },
       {
         "name": "Finance & Economy",
         "slug": "finance",
         "value": 753,
-        "pct": 8.0,
+        "pct": 8,
         "projects": [
-          { "name": "Energy Transition Fund", "description": "Seed capital for renewable energy and gas-to-power projects" },
-          { "name": "SME Development Fund", "description": "Low-interest loans for micro and small enterprises" }
+          {
+            "name": "Energy Transition Fund",
+            "description": "Seed capital for renewable energy and gas-to-power projects"
+          },
+          {
+            "name": "SME Development Fund",
+            "description": "Low-interest loans for micro and small enterprises"
+          }
         ]
       },
       {
         "name": "Agriculture & Land",
         "slug": "agriculture",
         "value": 471,
-        "pct": 5.0,
+        "pct": 5,
         "projects": [
-          { "name": "Caroni Lands Agricultural Development", "description": "Irrigation and drainage on former Caroni sugarcane lands" },
-          { "name": "Fisheries Modernisation Programme", "description": "New ice plants and cold chain at Carenage, Cedros, and Galeota" }
+          {
+            "name": "Caroni Lands Agricultural Development",
+            "description": "Irrigation and drainage on former Caroni sugarcane lands"
+          },
+          {
+            "name": "Fisheries Modernisation Programme",
+            "description": "New ice plants and cold chain at Carenage, Cedros, and Galeota"
+          }
         ]
       },
       {
         "name": "Other / Debt Service",
         "slug": "other",
         "value": 1695,
-        "pct": 18.0,
+        "pct": 18,
         "projects": [
-          { "name": "Public Debt Service", "description": "Servicing of domestic and external government debt obligations" },
-          { "name": "Digital Government Initiative", "description": "TTConnect expansion and e-services portal modernisation" }
+          {
+            "name": "Public Debt Service",
+            "description": "Servicing of domestic and external government debt obligations"
+          },
+          {
+            "name": "Digital Government Initiative",
+            "description": "TTConnect expansion and e-services portal modernisation"
+          }
         ]
       }
     ]
+  },
+  {
+    "country": "BB",
+    "year": 2024,
+    "totalUSD": 1341.9,
+    "currency": "Bds$",
+    "originalTotal": 2683.7,
+    "exchangeRate": 0.5,
+    "categories": [
+      {
+        "name": "Current (Recurrent) Expenditure",
+        "slug": "current",
+        "value": 1200.5,
+        "pct": 89,
+        "projects": [
+          {
+            "name": "Wages & Salaries",
+            "description": "Public sector employment costs"
+          },
+          {
+            "name": "Goods & Services",
+            "description": "Operational and administrative spending"
+          },
+          {
+            "name": "Transfers & Subsidies",
+            "description": "Social transfers and statutory payments"
+          }
+        ]
+      },
+      {
+        "name": "Capital Expenditure",
+        "slug": "capital",
+        "value": 132.4,
+        "pct": 11,
+        "projects": [
+          {
+            "name": "Infrastructure Investment",
+            "description": "Roads, utilities, and public infrastructure"
+          },
+          {
+            "name": "Development Projects",
+            "description": "Capital investment in public assets"
+          }
+        ]
+      }
+    ],
+    "source": "Central Bank of Barbados — Table F1, Summary of Government Operations (Dec 2024)",
+    "sourceUrl": "https://www.centralbank.org.bb/news/summary-of-government-operations",
+    "vintage": "2025"
+  },
+  {
+    "country": "JM",
+    "year": 2024,
+    "totalUSD": 6543.9,
+    "currency": "J$",
+    "originalTotal": 1023725.2,
+    "exchangeRate": 0.006392247482253523,
+    "categories": [
+      {
+        "name": "Current (Recurrent) Expenditure",
+        "slug": "current",
+        "value": 6032.5,
+        "pct": 92,
+        "projects": [
+          {
+            "name": "Wages & Salaries",
+            "description": "Public sector employment costs"
+          },
+          {
+            "name": "Goods & Services",
+            "description": "Operational and administrative spending"
+          },
+          {
+            "name": "Transfers & Subsidies",
+            "description": "Social transfers and statutory payments"
+          }
+        ]
+      },
+      {
+        "name": "Capital Expenditure",
+        "slug": "capital",
+        "value": 511.4,
+        "pct": 8,
+        "projects": [
+          {
+            "name": "Infrastructure Investment",
+            "description": "Roads, utilities, and public infrastructure"
+          },
+          {
+            "name": "Development Projects",
+            "description": "Capital investment in public assets"
+          }
+        ]
+      }
+    ],
+    "source": "Government of Jamaica — Fiscal Policy Paper 2024, Table 3G (Central Government Summary Accounts)",
+    "sourceUrl": "https://www.mof.gov.jm/wp-content/uploads/FPP-2024-Final.pdf",
+    "vintage": "2025"
+  },
+  {
+    "country": "BS",
+    "year": 2024,
+    "totalUSD": 3613.1,
+    "currency": "B$",
+    "originalTotal": 3613.1,
+    "exchangeRate": 1,
+    "categories": [
+      {
+        "name": "Current (Recurrent) Expenditure",
+        "slug": "current",
+        "value": 3268.6,
+        "pct": 90,
+        "projects": [
+          {
+            "name": "Wages & Salaries",
+            "description": "Public sector employment costs"
+          },
+          {
+            "name": "Goods & Services",
+            "description": "Operational and administrative spending"
+          },
+          {
+            "name": "Transfers & Subsidies",
+            "description": "Social transfers and statutory payments"
+          }
+        ]
+      },
+      {
+        "name": "Capital Expenditure",
+        "slug": "capital",
+        "value": 344.5,
+        "pct": 10,
+        "projects": [
+          {
+            "name": "Infrastructure Investment",
+            "description": "Roads, utilities, and public infrastructure"
+          },
+          {
+            "name": "Development Projects",
+            "description": "Capital investment in public assets"
+          }
+        ]
+      }
+    ],
+    "source": "Central Bank of The Bahamas — QSD Aug-2024, Table 5.1 (Central Government Statement of Operations)",
+    "sourceUrl": "https://cdn.centralbankbahamas.com/documents/2024-08-22-16-35-27-CBOB-Quarterly-Statistical-DigestAugust-2024Final.pdf",
+    "vintage": "2024"
+  },
+  {
+    "country": "KY",
+    "year": 2023,
+    "totalUSD": 1347.5,
+    "currency": "CI$",
+    "originalTotal": 1122.9,
+    "exchangeRate": 1.2000480019200768,
+    "categories": [
+      {
+        "name": "Current (Recurrent) Expenditure",
+        "slug": "current",
+        "value": 1229.2,
+        "pct": 91,
+        "projects": [
+          {
+            "name": "Wages & Salaries",
+            "description": "Public sector employment costs"
+          },
+          {
+            "name": "Goods & Services",
+            "description": "Operational and administrative spending"
+          },
+          {
+            "name": "Transfers & Subsidies",
+            "description": "Social transfers and statutory payments"
+          }
+        ]
+      },
+      {
+        "name": "Capital Expenditure",
+        "slug": "capital",
+        "value": 118.3,
+        "pct": 9,
+        "projects": [
+          {
+            "name": "Infrastructure Investment",
+            "description": "Roads, utilities, and public infrastructure"
+          },
+          {
+            "name": "Development Projects",
+            "description": "Capital investment in public assets"
+          }
+        ]
+      }
+    ],
+    "source": "Cayman Islands Treasury Dept — via ESO Annual Economic Report 2023, Table A27",
+    "sourceUrl": "https://www.eso.ky/storage/page_docums/uploadFilePdf/805/The%20Cayman%20Islands%20Annual%20Economic%20Report%202023_Final.pdf",
+    "vintage": "2024"
   }
 ]

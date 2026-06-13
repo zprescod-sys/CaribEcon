@@ -13,10 +13,11 @@ import {
   getIndicatorAllCountries,
   getBudget,
   getBudgetYears,
+  getAllSeries,
 } from '../lib/dataHub';
 
-// Initial data: all series for the default indicator across all countries
-const allSeries = getIndicatorAllCountries('gdp_growth');
+// All series — passed to the chart so indicator switching works client-side
+const allSeries = getAllSeries();
 
 // ── Budgets available in the hub ───────────────────────────────────────────
 // One entry per country that has budget data, using its latest year. Adding a

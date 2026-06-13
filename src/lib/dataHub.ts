@@ -27,21 +27,24 @@ const COUNTRY_NAMES: Record<string, string> = {
   BB: 'Barbados',
   JM: 'Jamaica',
   BS: 'Bahamas',
-  GD: 'Grenada',
-  LC: 'Saint Lucia',
-  VC: 'Saint Vincent',
-  AG: 'Antigua & Barbuda',
-  DM: 'Dominica',
-  KN: 'Saint Kitts & Nevis',
   BZ: 'Belize',
   SR: 'Suriname',
-  HT: 'Haiti',
+  GD: 'Grenada',
+  LC: 'Saint Lucia',
+  AG: 'Antigua & Barbuda',
+  KN: 'Saint Kitts & Nevis',
+  DM: 'Dominica',
+  VC: 'Saint Vincent & the Grenadines',
+  TC: 'Turks & Caicos',
+  KY: 'Cayman Islands',
+  VG: 'British Virgin Islands',
 };
 
 const COUNTRY_FLAGS: Record<string, string> = {
   GY: '🇬🇾', TT: '🇹🇹', BB: '🇧🇧', JM: '🇯🇲', BS: '🇧🇸',
-  GD: '🇬🇩', LC: '🇱🇨', VC: '🇻🇨', AG: '🇦🇬', DM: '🇩🇲',
-  KN: '🇰🇳', BZ: '🇧🇿', SR: '🇸🇷', HT: '🇭🇹',
+  BZ: '🇧🇿', SR: '🇸🇷', GD: '🇬🇩', LC: '🇱🇨', AG: '🇦🇬',
+  KN: '🇰🇳', DM: '🇩🇲', VC: '🇻🇨', TC: '🇹🇨', KY: '🇰🇾',
+  VG: '🇻🇬',
 };
 
 export function getCountries(): Country[] {
@@ -72,6 +75,11 @@ export function getSeries(country: string, indicator: string) {
 // Returns all series for a country (all indicators)
 export function getCountryIndicators(country: string) {
   return indicators.filter(s => s.country === country);
+}
+
+// Returns the complete indicator series array for the chart
+export function getAllSeries() {
+  return indicators;
 }
 
 // Returns all series for an indicator across all countries

@@ -51,11 +51,22 @@ const namesJSON = JSON.stringify(Object.fromEntries(getCountries().map(c => [c.c
   import type { IndicatorSeries, IndicatorPoint } from '../../lib/types';
 
   const SERIES_COLORS: Record<string, string> = {
-    GY: '#0E5E4E',
-    TT: '#BC8A2E',
-    BB: '#1E3A5F',
-    JM: '#A8542E',
-    BS: '#6A4A6E',
+    GY: '#0E5E4E', // teal
+    TT: '#BC8A2E', // gold
+    BB: '#1E3A5F', // navy
+    JM: '#A8542E', // rust
+    BS: '#6A4A6E', // plum
+    BZ: '#3A6B4A', // forest
+    SR: '#8B5E3C', // sienna
+    GD: '#4A5A8B', // slate blue
+    LC: '#6B4A2E', // terra cotta
+    AG: '#5A7A3A', // olive
+    KN: '#7A4A5A', // mauve
+    DM: '#3A5A6B', // steel teal
+    VC: '#8B4A3A', // brick
+    TC: '#4A6B8B', // mid blue
+    KY: '#6B8B4A', // sage
+    VG: '#8B6B4A', // camel
   };
   const FALLBACK_COLORS = ['#5A6B6E', '#5C6B3A', '#9A5B2E'];
 
