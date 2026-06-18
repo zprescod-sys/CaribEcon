@@ -5,6 +5,14 @@ in scope but not yet collected — no accessible primary tier). One JSON array; 
 element is one (country, indicator) record holding a time series. This is the
 *rich* hub for all data on the page. This is the master dataset for macroeconomic indicators used by charts, exports, country profiles, and future analysis features. Other indicator files should not be manually maintained unless they are generated from this file.
 
+**Temporal coverage:** 2015–2025. The comparable spine (World Bank WDI) carries
+actuals to its publication frontier (typically 2024 — 2025 actuals do not yet
+exist); the IMF WEO series (`gross_govt_debt_pct_gdp`, `current_account`,
+`fiscal_balance`) carry IMF estimates/projections through 2025 (April 2026 WEO,
+vintage `2026-04`). 2025 points are tagged `projection`. Comparable growth/inflation
+top out at 2024 by source necessity — do not append IMF 2025 figures onto a
+World-Bank-sourced series (it would mix source families within one series).
+
 ## Record shape
 
 ```json

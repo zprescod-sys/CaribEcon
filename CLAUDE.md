@@ -1,158 +1,93 @@
 # CLAUDE.md — Caribbean Macro Almanac
 
-Read this at the start of every session to re-ground context. Update the Session Log and Current State at the end of every session.
+Read at the start of every session to re-ground; update **Current State** and the **Session Log** at the end. This file is the project's orientation map. Two companion docs are authoritative in their own domains — do not duplicate or contradict them here:
+
+- **Design / visual system → `EDDESIGN.md`** — the sole authority on look: color, type, geometry, motion, components, page layout.
+- **Data schema & sourcing → `data/SCHEMA.md`** — the canonical record shape, indicator slugs, source tiers, and integrity rules.
+- QA workflow → `docs/SCREENSHOT_WORKFLOW.md`.
 
 ## What This Is
 
-A multi-page Caribbean macroeconomic research tool. Multiple economies, seven-plus indicators, budgets, news, publications, deals, and a client-facing chart builder (Analysis page, deferred). Not a landing page — separate pages sharing one shell and one data hub.
+A multi-page Caribbean macroeconomic research tool with the register of a research institute, not a landing page. Separate pages share one shell and one data hub: 16 economies, 24 macro indicators, budgets, news, publications, deals, and a deferred client-facing chart builder (Analysis).
 
-Purpose and bar: a portfolio-grade piece for GitHub and LinkedIn — evidence of connecting a real economic problem to a structured workflow. Professional and near-perfect. Credibility and rigor over visual flash.
-
-Initial data scope: Guyana and Trinidad & Tobago, with full structure for adding more countries.
+Bar: a portfolio-grade piece for GitHub and LinkedIn — evidence of connecting a real economic problem to a structured workflow. Credibility and rigor over visual flash; professional and near-perfect.
 
 ## Tech Stack (locked)
 
-- **Framework**: Astro (static output, native MPA)
-- **Charts**: D3.js
-- **Hosting**: Cloudflare Pages (Phase 2: Pages Functions for server-side API keys)
-- **Fonts**: Bricolage Grotesque / Hanken Grotesk / JetBrains Mono (self-host for production)
-- **No dark mode in v1.** Do not add dark mode logic, media queries, or color-scheme toggles unless explicitly requested.
-- **Do NOT use**: rounded corners anywhere except pure circles (legend dots, pie segments, live chart point) and the CountrySnapshot metric cards (`border-radius: 8px` — explicit user exception)
+- **Framework:** Astro — static output, native multi-page.
+- **Charts:** D3.js, hand-built and hub-driven (never hardcoded data).
+- **Export:** SheetJS (`xlsx`) 0.18.5, dynamic-imported on demand.
+- **Hosting:** Cloudflare Pages (Phase 2: Pages Functions for server-side API keys).
+- **No dark mode** unless explicitly requested — no color-scheme logic.
+- All fonts and visual rules live in `EDDESIGN.md`.
 
-## Build Setup
+## Data Hub (single source of truth)
 
-Fable 5 does the majority of coding in VS Code. These MD files brief Fable — keep them tight and unambiguous.
+Every page reads from one hub; no per-page hardcoded numbers.
 
-Visual verification: screenshot any changed page with `node screenshot.mjs <localhost url> [label]` and read the PNG. Full workflow + design checklist in `docs/SCREENSHOT_WORKFLOW.md`.
+- **Canonical dataset:** `data/almanac-data.json` — 24 indicators × 16 countries, full provenance per record. Read through `src/lib/dataHub.ts` (typed by `src/lib/types.ts`); never import the JSON directly in a page.
+- **Presentation policy:** `data/indicator-meta.json` — slug-keyed `chartGroup` / `defaultChart` / `order`. `label` and `unit` derive from the records. `dataHub.ts` warns at build if a data slug has no meta entry.
+- **Other domain files:** `data/budgets.json`, `news.json`, `publications.json`, `deals.json`.
+- **Schema, slugs, source tiers, and the debt-ratio merge rule:** `data/SCHEMA.md` (authoritative).
+- **Integrity (summary; full rules in SCHEMA):** every number carries `source` / `vintage` / `type` (`actual | estimate | projection | derived`); prefer primary over comparable sources; show `null` + "Unavailable" rather than guess; flag source divergences in `seriesNote` / `sourceNote`; for news and publications store headline + source + date + link only — never republish bodies.
+- Phase 2 (later): a scheduled fetcher replaces the hand-collected static hub.
 
-## Data Hub (build first, freeze before pages)
+## Pages
 
-All pages read from one shared data hub, never per-page hardcoded values.
-
-1. Static JSON in `/data/`: `indicators.json`, `budgets.json`, `news.json`, `publications.json`, `deals.json`
-2. Loaded once by `src/lib/dataHub.ts`; every page imports from there
-3. Schema is frozen before any page sub-agent starts — do not alter schema mid-build
-
-Phase 1 (now): static, hand-collected. Guyana + Trinidad & Tobago, 2015–2024.
-Phase 2 (later): scheduled scraper/fetcher replaces static hub.
-
-### Data sources (Phase 1)
-
-| Indicator | Primary Source | Backup Source |
-|-----------|----------------|---------------|
-| GDP growth, inflation, debt | IMF World Economic Outlook | World Bank WDI |
-| Unemployment | ILO ILOSTAT | national statistics offices |
-| FDI inflows | UNCTAD World Investment Report | World Bank |
-| Budget / revenue | Ministry of Finance (GY, TT) | IMF Article IV |
-| News | Stabroek News, Guardian (TT), Caribbean national press | — |
-| Publications | IMF eLibrary, World Bank Open Knowledge | — |
-| Deals / FDI | Caribbean Business, Caribbean Journal | — |
-
-## Data Integrity (hard requirement)
-
-- Every number tagged with `source`, `vintage`, and `type: actual | estimate | projection`
-- Cross-reference two sources where possible; flag material disagreements in `sourceNote`
-- Never mix actuals and estimates/projections without visual labels
-- Prefer primary sources over aggregators
-- Show `null` + "Unavailable" rather than guessing
-- News/publications: headline + source + date + link. Never republish bodies
-
-## Pages (one sub-agent each)
-
-- **Home** — story of the day + regional indexed-GDP chart + quick links
-- **Data** — chart explorer (country multi-select, indicator selector) + CSV export + budget pie + FDI view + spending vs revenue
-- **News** — all Caribbean news, country filter chips
-- **Publications** — browsable index (title, summary, type, date, link out); host nothing
-- **Deals & Investment** — headline list (M&A, transactions, FDI); headlines only
-- **Analysis** — DEFERRED. Client-facing builder. Build hub + chart components to support it later; no sub-agent yet.
-
-## Agent Orchestration Model
-
-1. Main agent plans; divides by page with NON-OVERLAPPING file ownership
-2. Shell + data hub built first and frozen before page agents start
-3. Each sub-agent gets scoped instructions: its objective, exact files it owns, data keys it reads
-4. Sub-agents work in isolation, touching only their own files
-5. Main agent consolidates: fixes conflicts, verifies, records cause of any breakage
-6. Rule: scope each sub-agent narrowly — minimum context to do its job
+- **Home** — daily briefing (repoints per story) + per-country key-indicators rail + regional indexed-GDP chart + Explore links + recent news. **Built.**
+- **Data** — chart explorer (country multi-select, indicator selector, year-in-focus) + CSV/XLSX export + budget pie; FDI and spending-vs-revenue views planned. **Built (V2).**
+- **News** — all Caribbean news, country filter chips. *Scaffolded.*
+- **Publications** — browsable index (title, summary, type, date, link out); host nothing. *Scaffolded.*
+- **Deals & Investment** — headline M&A / FDI list, headlines only. *Scaffolded.*
+- **Analysis** — DEFERRED client-facing builder; the hub and chart components are built so they can feed it later.
 
 ## Architecture
 
-- Front end is pure presentation layer — reads data hub, never calls external APIs directly
-- API keys stay server-side (Cloudflare Pages Function) for any live calls
-- Regenerable output lives in `/data/` or `/.tmp/`
+- The front end is a pure presentation layer — it reads the hub and never calls external APIs directly.
+- Any live API keys stay server-side (Cloudflare Pages Function).
+- Regenerable / scratch output lives in `/data/` or `/.tmp/`.
 
 ## Coding Philosophy
 
-- Ship working code first, refine later
-- Readable by a non-expert: clear names, short comment on every non-trivial function
-- Clear over clever; no enterprise patterns
-- Minimize dependencies
-- Smallest effective change; avoid scope creep
+- Working code first; clear over clever; readable by a non-expert (a short comment on every non-trivial function).
+- Minimize dependencies; smallest effective change; avoid scope creep.
 
-## Git & Workflow
+## Build & Workflow
 
-- Main: shell + data hub
-- Each page: its own branch (`feature/home`, `feature/data`, etc.)
-- Consolidate via PR merge
-- Commit every working increment as a restore point
-- Use Plan Mode for complex tasks
-- Update this file end of every session
+- Fable 5 does most coding in VS Code; keep these MD files tight and unambiguous.
+- Verify any changed page: `node screenshot.mjs <localhost url> [label]` and read the PNG (see `docs/SCREENSHOT_WORKFLOW.md`).
+- Git: branch per feature (`feature/<page>`), commit each working increment, consolidate via PR; use Plan Mode for complex tasks.
+- Build order: shell + hub built and frozen first; each page scoped to its own files; the main agent consolidates and verifies.
 
-## File Ownership Map
+### File ownership
 
-| Domain | Owner | Key Files |
-|--------|-------|-----------|
-| Shell | main agent | `src/layouts/Shell.astro`, `src/components/shell/*` |
-| Design tokens | main agent | `src/styles/tokens.css`, `src/styles/base.css` |
-| Data hub | main agent | `src/lib/dataHub.ts`, `src/lib/types.ts`, `data/*.json` |
-| Charts | shared / main | `src/components/charts/*` |
-| Home page | home sub-agent | `src/pages/index.astro`, `src/components/home/*` |
-| Data page | data sub-agent | `src/pages/data.astro`, `src/components/data/*` |
-| News page | news sub-agent | `src/pages/news.astro`, `src/components/news/*` |
-| Publications page | pubs sub-agent | `src/pages/publications.astro`, `src/components/publications/*` |
-| Deals page | deals sub-agent | `src/pages/deals.astro`, `src/components/deals/*` |
+| Domain                      | Key files                                                     |
+| --------------------------- | ------------------------------------------------------------- |
+| Shell                       | `src/layouts/Shell.astro`, `src/components/shell/*`       |
+| Design tokens               | `src/styles/tokens.css`, `src/styles/base.css`            |
+| Data hub                    | `src/lib/dataHub.ts`, `src/lib/types.ts`, `data/*.json` |
+| Charts                      | `src/components/charts/*`                                   |
+| Home                        | `src/pages/index.astro`, `src/components/home/*`          |
+| Data                        | `src/pages/data.astro`, `src/components/data/*`           |
+| News / Publications / Deals | `src/pages/<page>.astro`, `src/components/<page>/*`       |
 
-## Current State
+## Current State (2026-06-18)
 
-- 2026-06-17: **Single source of truth.** `data/almanac-data.json` is now the canonical indicator hub for every page (the old 7-indicator `indicators.json` was deleted). 249 records, 16 countries, 24 indicators. `dataHub.ts` reads it; charts, ticker, snapshots, and the XLSX export all draw from the same file, so on-screen and exported numbers can no longer diverge. Presentation policy (`chartGroup`/`defaultChart`/`order`) lives in new `data/indicator-meta.json` (slug-keyed, not on records); `dataHub.ts` warns at build if a data slug lacks a meta entry. `getFeaturedIndicators()` gates the chart selector to the 5 cross-country-comparable indicators. `debt_to_gdp` merged into `gross_govt_debt_pct_gdp` (IMF WEO series canonical across all 13 countries; BB/BS primary divergence noted in `seriesNote`). `sourceTier` vocab is now `primary | comparable`. `types.ts` `IndicatorSeries` carries the full provenance fields. RegionalChart de-hardcoded (reads `real_gdp` from the hub, base year 2021).
-- 2026-06-13: feature/data-extraction merged to main. `data/almanac-data.json` collected (originally 254 records; see SCHEMA.md). Data page V2 live: budget country dropdown (data-driven), per-country XLSX export (4-sheet SheetJS workbook), CountrySnapshot redesigned as metric-card grid. `src/lib/almanacExport.ts` handles the export logic. SheetJS 0.18.5 added to package.json.
+- **Data consolidated to one source of truth.** `almanac-data.json` (249 records, 2167 points, 24 indicators, 16 countries) drives every page via `dataHub.ts`; the legacy `indicators.json` was deleted. `indicator-meta.json` gates which indicators appear in selectors. `debt_to_gdp` was merged into `gross_govt_debt_pct_gdp` (IMF series canonical across countries; BB/BS primary divergence noted in `seriesNote`). Full detail in `data/SCHEMA.md`.
+- **Dataset brought current to 2025 (additive).** IMF WEO April 2026 (vintage `2026-04`) added 2025 `projection` points to `gross_govt_debt_pct_gdp` + `current_account` across the IMF-covered countries (+ 2025 unemployment/labour for BZ/SR/LC/VC). TT untouched; GY/BB/JM/BS history preserved (append-only); primary records (e.g. KY ESO fiscal) never overwritten. Comparable growth/inflation/GDP remain at the World Bank frontier (2024) — 2025 actuals don't exist and mixing IMF into a WB-sourced series is barred. Collector + validator in `.tmp/`.
+- **Home page rebuilt** from the imported Claude Design "Caribbean Almanac v2" mock and aligned to `EDDESIGN.md` (cool petrol-and-gold tokens, hard edges): daily briefing + live key-indicators rail + "Guyana divergence" chart + Explore + recent news, click-to-repoint wired to the hub, content on a single `--paper` surface.
 
 ## Next Steps
 
-- Build Home page (DailyBriefing; bring RegionalChart up to the Data-page chart standard)
-- Build News, Publications, Deals pages
-- FDI and spending-vs-revenue views on Data page (mirror the budget treatment)
-- Non-AI deterministic D3 chart builder on /analysis (user confirmed this approach)
-- Commit each page as working increment
+- Optional data upgrade: re-source `gdp_growth` + `inflation` from IMF WEO across all 16 countries (currently World Bank) to gain 2025 projections and align with the documented source preference — touches the leave-be countries' history, so deferred to a deliberate call.
+- Build the News, Publications, and Deals pages.
+- Add FDI and spending-vs-revenue views to the Data page (mirror the budget pie).
+- Deferred: deterministic D3 chart builder on `/analysis`.
 
-## Session Log
+## Session Log (condensed)
 
-### 2026-06-17 — Data consolidation: one source of truth
-- Diagnosed a two-dataset split: `indicators.json` (7 indicators, IMF/WB) drove the live charts while `almanac-data.json` (24 indicators, primary) only fed the export — different slugs, so displayed vs exported numbers could diverge. Chose almanac as canonical; deleted `indicators.json`.
-- Schema↔data reconciliation: merged `debt_to_gdp` → `gross_govt_debt_pct_gdp` (caught that 8 ECCU countries had ONLY `debt_to_gdp` and JM's primary `gross_govt_debt_pct_gdp` was empty — a blind delete would have wiped debt data; resolved by standardizing on the IMF WEO comparable series across all 13, BB/BS divergence preserved in `seriesNote`). Renamed `sourceTier` `fallback`→`comparable` (254→249 records after dropping 5 duplicate primary debt records).
-- New `data/indicator-meta.json` (slug-keyed: `chartGroup`/`defaultChart`/`order`); `label`/`unit` still derive from records. `dataHub.ts` repointed to almanac + meta, added `getFeaturedIndicators()` and a build-time drift guard. `types.ts` extended with `sourceTier`/`sourceRef`/`confidence`/`unitNote`/`seriesNote` + `derived` point type. SCHEMA.md trued-up (24 indicators × 16 countries).
-- Consumer slug migration: data.astro snapshots (`govt_debt`→`gross_govt_debt_pct_gdp`, `fdi_inflows`→`fdi`), ChartControls dropdown → featured set, almanacExport order list. RegionalChart de-hardcoded — reads `real_gdp` from the hub, indexed to 2021 (almanac's TT data starts 2021); GY oil-boom story preserved via pre-base years rendering below 100.
-- Hygiene: deleted orphan `StatCards.astro`, untracked `.DS_Store`, removed dead `macro_dashboard.html` + stale duplicate `files/CLAUDE.md`; `files/` reorganized to `docs/`. Build green, both pages screenshot-verified.
-
-### 2026-06-13 — Data page V2 + 18-country almanac merge
-- Sub-agent collected `almanac-data.json`: 254 records, 16 countries, hybrid sourcing (IMF/WB macro spine + primary fiscal for TT/GY/BB/JM/BS/KY). MS and AI absent (no accessible primary tier). Schema frozen in `data/SCHEMA.md`.
-- Budget section: data-driven country `<select>` (auto-discovers from budgets.json, defaults T&T). Single BudgetPie shown at a time.
-- Per-country XLSX export: `src/lib/almanacExport.ts` (4 sheets: Data + 3 chart-ready tables). SheetJS 0.18.5 (community build, no embedded charts — chart-ready tables instruct user to Insert→Chart). Dynamic import on click.
-- CountrySnapshot redesigned: responsive metric-card grid (auto-fit 190px), Lucide icons, `--gold` lead accent, `border-radius: 8px` (explicit exception). Flag guard prevents stray space in header.
-- Merge review: BB gross_govt_debt 2019–2023 and BS gross_govt_debt_pct_gdp 2024 annotated with sourceNote explaining GDP-base divergence (CBB/CBOB vs World Bank WDI). Flagged, not forced.
-
-### 2026-06-11 — Data page visual refinement
-- TopBar ticker rebuilt: derived from dataHub (was hardcoded), "CC · Indicator value" pattern, superscript est flag, continuous scroll + hover-pause, reduced-motion static row
-- New CountrySnapshot.astro (reusable per-country card: lead GDP, supporting indicators, "vs year" deltas, quiet projection flags) + CountryCarousel.astro (pills, 5s ambient auto-advance, any interaction stops it for the session, 250ms crossfade)
-- LineChart: stats strip redesigned into country cells + labeled Range block; chart upgraded earlier same cycle with area gradients, crosshair unified tooltip, draw-in animations
-- BudgetPie: padAngle 0.015 + cornerRadius 3, synced legend (swatch/name/value/pct), hover lift +6px with 0.4 dim, centre swap, click pins centre + projects panel, two-way legend↔segment hover
-- Data page de-boxed: snapshot strip on hairline rules, budget section on --paper-warm band
-- StatCards.astro retired from data.astro (file kept)
-
-### 2026-06-10 — Project initialized
-- Git init; Astro + D3 scaffolded
-- Design tokens and base styles written from DESIGN_SYSTEM.md
-- Shared shell (Shell.astro, TopBar.astro, Nav.astro) built
-- Data hub: types.ts, dataHub.ts, all five data/*.json files populated (Phase 1: GY + TT, 2018–2024)
-- All five page stubs (index, data, news, publications, deals) and component skeletons created
-- CLAUDE.md moved to root; tech stack, data sources table, session log added
+- **2026-06-18** — (1) Imported the Claude Design "v2" mock and reskinned Home to the EDDESIGN petrol-and-gold system; fixed a scoped-CSS bug where the key-indicators rail lost its layout on click-to-repoint (`:global` under `.rail-stats`); flattened the page onto one `--paper` surface. (2) Brought the dataset current to 2025: additive IMF WEO (Apr 2026) collector via direct World Bank + IMF DataMapper APIs — +31 points, 0 history changes, TT byte-identical, primary records preserved. Validator clean (0 errors).
+- **2026-06-17** — Data consolidation: almanac made canonical, `indicators.json` deleted, `indicator-meta.json` added, `debt_to_gdp` merged, `types.ts` extended, `SCHEMA.md` trued-up. Hygiene: removed orphan/dead files; `files/` → `docs/`.
+- **2026-06-13** — `almanac-data.json` collected (16 countries); Data page V2 (budget dropdown, per-country XLSX export, CountrySnapshot metric-card grid).
+- **2026-06-11** — Data-page visual refinement (ticker derived from hub; CountrySnapshot + CountryCarousel; LineChart and BudgetPie upgrades).
+- **2026-06-10** — Project init: Astro + D3 scaffold, shared shell, data hub, page stubs.

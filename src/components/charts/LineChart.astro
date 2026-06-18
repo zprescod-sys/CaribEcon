@@ -385,11 +385,17 @@ const namesJSON = JSON.stringify(Object.fromEntries(getCountries().map(c => [c.c
 
   // ── Year-in-focus panel ────────────────────────────────────────────────
   const YEAR_EVENTS: Record<number, string> = {
-    2020: 'COVID-19 pandemic; Guyana begins commercial oil production (Liza Phase 1, Dec 2019 on-stream).',
+    2015: 'Oil-price collapse weighs on energy exporters (T&T, Suriname); ExxonMobil announces the Liza discovery offshore Guyana.',
+    2016: 'Regional recovery from the commodity downturn; Caribbean tourism arrivals reach record highs.',
+    2017: 'Hurricanes Irma and Maria devastate the northern Caribbean; Dominica and Barbuda suffer severe damage.',
+    2018: 'Barbados enters an IMF programme and launches a comprehensive debt restructuring.',
+    2019: 'Guyana brings first oil on-stream (Liza Phase 1, December); regional growth steady pre-pandemic.',
+    2020: 'COVID-19 pandemic; tourism-dependent economies contract sharply while Guyana begins commercial oil production.',
     2021: 'Post-COVID recovery; Guyana\'s oil ramp-up accelerates with Liza Phase 1 reaching plateau.',
     2022: 'Global commodity price spike (Russia-Ukraine war); Guyana GDP surges 57.8% — world\'s fastest growth.',
     2023: 'Liza Phase 2 and Payara developments progress; T&T signs new upstream exploration agreements.',
     2024: 'Yellowtail FPSO on track; Guyana Natural Resource Fund surpasses USD 2bn.',
+    2025: 'IMF projections (April 2026 WEO): Guyana growth moderates from peak; regional debt ratios edge lower.',
   };
 
   function openYearInFocus(year: number, series: IndicatorSeries[]) {

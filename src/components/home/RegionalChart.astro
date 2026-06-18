@@ -10,12 +10,13 @@ interface Props {
 }
 const { baseYear = 2018 } = Astro.props;
 
-// Guyana highlighted; flat peers that have history back to the base year render muted.
+// Guyana highlighted in --teal; flat peers in the muted series palette (navy/slate/clay),
+// drawn at reduced opacity so the divergence story reads instantly.
 const DISPLAY = [
-  { code: 'GY', color: '#0c7a74', highlight: true },
-  { code: 'JM', color: '#c4bfb1', highlight: false },
-  { code: 'BB', color: '#cfcabd', highlight: false },
-  { code: 'BS', color: '#d6d1c4', highlight: false },
+  { code: 'GY', color: '#0E5E4E', highlight: true },
+  { code: 'JM', color: '#1E3A5F', highlight: false },
+  { code: 'BB', color: '#5A6B6E', highlight: false },
+  { code: 'BS', color: '#A8542E', highlight: false },
 ];
 
 const names = Object.fromEntries(getCountries().map(c => [c.code, c.name]));
@@ -97,10 +98,10 @@ const chartJSON = JSON.stringify({ series: rawSeries, baseYear });
     .call(d3.axisLeft(yScale).ticks(5).tickSize(-width).tickFormat(d => `${d}`))
     .call(g => {
       g.select('.domain').remove();
-      g.selectAll('.tick line').attr('stroke', '#ebe7dc');
+      g.selectAll('.tick line').attr('stroke', 'rgba(15,35,30,0.08)');
       g.selectAll('text')
-        .attr('font-family', 'IBM Plex Mono, monospace')
-        .attr('font-size', '10').attr('fill', '#b3ad9e').attr('x', -8);
+        .attr('font-family', 'JetBrains Mono, monospace')
+        .attr('font-size', '10').attr('fill', '#8A958F').attr('x', -8);
     });
 
   // X axis (years)
@@ -111,8 +112,8 @@ const chartJSON = JSON.stringify({ series: rawSeries, baseYear });
       g.select('.domain').remove();
       g.selectAll('.tick line').remove();
       g.selectAll('text')
-        .attr('font-family', 'IBM Plex Mono, monospace')
-        .attr('font-size', '10').attr('fill', '#b3ad9e');
+        .attr('font-family', 'JetBrains Mono, monospace')
+        .attr('font-size', '10').attr('fill', '#8A958F');
     });
 
   const line = d3.line<{ year: number; value: number }>()
@@ -129,31 +130,34 @@ const chartJSON = JSON.stringify({ series: rawSeries, baseYear });
   // Draw muted peers first, highlight (Guyana) last so it sits on top.
   [...data].sort((a, b) => Number(a.highlight) - Number(b.highlight)).forEach(series => {
     if (series.highlight) {
+      // Soft teal area-fill under the lead line only (~8%).
       svg.append('path').datum(series.indexed)
-        .attr('fill', series.color).attr('fill-opacity', 0.07).attr('d', area);
+        .attr('fill', series.color).attr('fill-opacity', 0.08).attr('d', area);
     }
     svg.append('path').datum(series.indexed)
       .attr('fill', 'none')
       .attr('stroke', series.color)
       .attr('stroke-width', series.highlight ? 2.5 : 1.5)
+      .attr('stroke-opacity', series.highlight ? 1 : 0.5)
       .attr('d', line);
 
     const last = series.indexed[series.indexed.length - 1];
     if (series.highlight) {
+      // Gold endpoint marker — the signal accent (EDDESIGN.md).
       svg.append('circle')
-        .attr('cx', xScale(last.year)!).attr('cy', yScale(last.value)).attr('r', 3.5)
-        .attr('fill', series.color);
+        .attr('cx', xScale(last.year)!).attr('cy', yScale(last.value)).attr('r', 4)
+        .attr('fill', '#BC8A2E');
       svg.append('text')
         .attr('x', xScale(last.year)! - 12).attr('y', yScale(last.value) - 8)
         .attr('text-anchor', 'end')
-        .attr('font-family', 'Source Serif 4, serif')
-        .attr('font-size', '13').attr('font-weight', '600').attr('fill', series.color)
+        .attr('font-family', 'Bricolage Grotesque, sans-serif')
+        .attr('font-size', '13').attr('font-weight', '700').attr('fill', '#0F231E')
         .text(series.name);
     } else {
       svg.append('text')
         .attr('x', xScale(last.year)! + 8).attr('y', yScale(last.value) + 3)
-        .attr('font-family', 'IBM Plex Mono, monospace')
-        .attr('font-size', '10').attr('fill', '#a8a496')
+        .attr('font-family', 'JetBrains Mono, monospace')
+        .attr('font-size', '10').attr('fill', '#8A958F')
         .text(series.country);
     }
   });
@@ -172,23 +176,23 @@ const chartJSON = JSON.stringify({ series: rawSeries, baseYear });
   }
 
   .chart-title {
-    font-family: 'Source Serif 4', Georgia, serif;
-    font-size: 21px;
-    font-weight: 600;
-    color: #16170f;
+    font-family: var(--font-display);
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--ink);
     letter-spacing: -0.01em;
   }
 
   .chart-subtitle {
-    font-size: 13px;
-    color: #6f6e64;
-    margin-top: 4px;
+    font-size: 14px;
+    color: var(--ink-soft);
+    margin-top: 5px;
   }
 
   .chart-base {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: var(--font-mono);
     font-size: 11px;
-    color: #a8a496;
+    color: var(--ink-faint);
     letter-spacing: 0.04em;
   }
 
@@ -200,7 +204,7 @@ const chartJSON = JSON.stringify({ series: rawSeries, baseYear });
     align-items: center;
     justify-content: center;
     min-height: 200px;
-    color: #a8a496;
+    color: var(--ink-faint);
     font-size: 11px;
   }
 </style>

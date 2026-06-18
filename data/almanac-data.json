@@ -274,20 +274,78 @@
     "indicator": "inflation",
     "indicatorLabel": "Inflation Rate",
     "unit": "%",
-    "unitNote": "Headline CPI, annual average",
-    "source": "IMF 2024 Article IV mission / MoF Review narrative",
-    "sourceOrg": "IMF / CBTT",
+    "source": "IMF World Economic Outlook (DataMapper)",
+    "sourceOrg": "IMF WEO",
     "sourceTier": "comparable",
-    "sourceUrl": "https://www.imf.org/en/news/articles/2024/03/11/mcs031124-trinidad-and-tobago-staff-concluding-statement-of-the-2024-article-iv-mission",
-    "sourceRef": "IMF Art. IV concluding statement, Mar 2024",
+    "sourceUrl": "https://www.imf.org/external/datamapper/PCPIPCH/TTO",
+    "sourceRef": "WEO series PCPIPCH",
     "confidence": "flagged",
     "series": [
+      {
+        "year": 2015,
+        "value": 4.7,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2016,
+        "value": 3.1,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2017,
+        "value": 1.9,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2018,
+        "value": 1,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2019,
+        "value": 1,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2020,
+        "value": 0.6,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2021,
+        "value": 2.1,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2022,
+        "value": 5.8,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2023,
+        "value": 4.6,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
       {
         "year": 2024,
         "value": 0.5,
         "type": "estimate",
-        "vintage": "2024-03",
-        "sourceNote": "[FALLBACK — IMF] CBTT narrative confirms very low (Dec-24 ~ -0.3% y/y). Exact CSO annual average to confirm from CSO CPI release"
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2025,
+        "value": 1,
+        "type": "projection",
+        "vintage": "2026-04"
       }
     ]
   },
@@ -1170,59 +1228,58 @@
     "indicator": "gdp_growth",
     "indicatorLabel": "GDP Growth Rate",
     "unit": "%",
-    "unitNote": "Real GDP, annual % change (World Bank WDI)",
-    "source": "World Bank — World Development Indicators (NY.GDP.MKTP.KD.ZG)",
-    "sourceOrg": "World Bank WDI",
+    "source": "IMF World Economic Outlook (DataMapper)",
+    "sourceOrg": "IMF WEO",
     "sourceTier": "comparable",
-    "sourceUrl": "https://api.worldbank.org/v2/country/GUY/indicator/NY.GDP.MKTP.KD.ZG?format=json",
-    "sourceRef": "WDI series NY.GDP.MKTP.KD.ZG, retrieved 2026-06-13",
+    "sourceUrl": "https://www.imf.org/external/datamapper/NGDP_RPCH/GUY",
+    "sourceRef": "WEO series NGDP_RPCH",
     "confidence": "flagged",
     "series": [
       {
         "year": 2015,
-        "value": 0.69,
+        "value": 0.7,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2016,
-        "value": 3.81,
+        "value": 3.8,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2017,
-        "value": 3.73,
+        "value": 3.7,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2018,
-        "value": 4.44,
+        "value": 4.4,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2019,
-        "value": 5.35,
+        "value": 5.4,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2020,
-        "value": 43.48,
+        "value": 43.5,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2021,
-        "value": 20.06,
+        "value": 20.1,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2022,
-        "value": 63.33,
+        "value": 63.3,
         "type": "actual",
         "vintage": "2026-04"
       },
@@ -1234,8 +1291,14 @@
       },
       {
         "year": 2024,
-        "value": 43.82,
+        "value": 43.8,
         "type": "estimate",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2025,
+        "value": 19.3,
+        "type": "projection",
         "vintage": "2026-04"
       }
     ]
@@ -1387,6 +1450,12 @@
         "value": 24.3,
         "type": "estimate",
         "vintage": "2025"
+      },
+      {
+        "year": 2025,
+        "value": 28.6,
+        "type": "projection",
+        "vintage": "2026-04"
       }
     ]
   },
@@ -1470,23 +1539,22 @@
     "indicator": "inflation",
     "indicatorLabel": "Inflation Rate",
     "unit": "%",
-    "unitNote": "Consumer prices, annual average % change (World Bank WDI)",
-    "source": "World Bank — World Development Indicators (FP.CPI.TOTL.ZG)",
-    "sourceOrg": "World Bank WDI",
+    "source": "IMF World Economic Outlook (DataMapper)",
+    "sourceOrg": "IMF WEO",
     "sourceTier": "comparable",
-    "sourceUrl": "https://api.worldbank.org/v2/country/GUY/indicator/FP.CPI.TOTL.ZG?format=json",
-    "sourceRef": "WDI series FP.CPI.TOTL.ZG, retrieved 2026-06-13",
+    "sourceUrl": "https://www.imf.org/external/datamapper/PCPIPCH/GUY",
+    "sourceRef": "WEO series PCPIPCH",
     "confidence": "flagged",
     "series": [
       {
         "year": 2015,
-        "value": -1,
+        "value": -0.9,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2016,
-        "value": 0.84,
+        "value": 0.8,
         "type": "actual",
         "vintage": "2026-04"
       },
@@ -1498,37 +1566,37 @@
       },
       {
         "year": 2018,
-        "value": 1.28,
+        "value": 1.3,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2019,
-        "value": 2.09,
+        "value": 2.1,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2020,
-        "value": 0.99,
+        "value": 0.7,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2021,
-        "value": 5.03,
+        "value": 4.5,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2022,
-        "value": 6.12,
+        "value": 6.9,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2023,
-        "value": 2.82,
+        "value": 2.8,
         "type": "actual",
         "vintage": "2026-04"
       },
@@ -1536,6 +1604,12 @@
         "year": 2024,
         "value": 2.9,
         "type": "estimate",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2025,
+        "value": 3.3,
+        "type": "projection",
         "vintage": "2026-04"
       }
     ]
@@ -2070,72 +2144,77 @@
     "indicator": "gdp_growth",
     "indicatorLabel": "GDP Growth Rate",
     "unit": "%",
-    "unitNote": "Real GDP, annual % change (World Bank WDI)",
-    "source": "World Bank — World Development Indicators (NY.GDP.MKTP.KD.ZG)",
-    "sourceOrg": "World Bank WDI",
+    "source": "IMF World Economic Outlook (DataMapper)",
+    "sourceOrg": "IMF WEO",
     "sourceTier": "comparable",
-    "sourceUrl": "https://api.worldbank.org/v2/country/BRB/indicator/NY.GDP.MKTP.KD.ZG?format=json",
-    "sourceRef": "WDI series NY.GDP.MKTP.KD.ZG, retrieved 2026-06-13",
+    "sourceUrl": "https://www.imf.org/external/datamapper/NGDP_RPCH/BRB",
+    "sourceRef": "WEO series NGDP_RPCH",
     "confidence": "flagged",
     "series": [
       {
         "year": 2015,
-        "value": -1.17,
+        "value": -0.8,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2016,
-        "value": 1.5,
+        "value": 1.4,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2017,
-        "value": 0.71,
+        "value": 0.7,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2018,
-        "value": -1.28,
+        "value": -0.3,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2019,
-        "value": 0.23,
+        "value": 0.2,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2020,
-        "value": -14.36,
+        "value": -17.4,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2021,
-        "value": -0.1,
+        "value": 8,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2022,
-        "value": 17.23,
+        "value": 15.9,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2023,
-        "value": 2.91,
+        "value": 1.8,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2024,
-        "value": 2.48,
+        "value": 3.4,
         "type": "estimate",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2025,
+        "value": 2.7,
+        "type": "projection",
         "vintage": "2026-04"
       }
     ]
@@ -2287,6 +2366,12 @@
         "value": 98.9,
         "type": "estimate",
         "vintage": "2025"
+      },
+      {
+        "year": 2025,
+        "value": 94.2,
+        "type": "projection",
+        "vintage": "2026-04"
       }
     ],
     "seriesNote": "IMF WEO series used here for cross-country comparability. The Central Bank of Barbados reports a higher gross-debt ratio (e.g. 103% for 2024 vs IMF 98.9%) on a different GDP base."
@@ -2371,41 +2456,40 @@
     "indicator": "inflation",
     "indicatorLabel": "Inflation Rate",
     "unit": "%",
-    "unitNote": "Consumer prices, annual average % change (World Bank WDI)",
-    "source": "World Bank — World Development Indicators (FP.CPI.TOTL.ZG)",
-    "sourceOrg": "World Bank WDI",
+    "source": "IMF World Economic Outlook (DataMapper)",
+    "sourceOrg": "IMF WEO",
     "sourceTier": "comparable",
-    "sourceUrl": "https://api.worldbank.org/v2/country/BRB/indicator/FP.CPI.TOTL.ZG?format=json",
-    "sourceRef": "WDI series FP.CPI.TOTL.ZG, retrieved 2026-06-13",
+    "sourceUrl": "https://www.imf.org/external/datamapper/PCPIPCH/BRB",
+    "sourceRef": "WEO series PCPIPCH",
     "confidence": "flagged",
     "series": [
       {
         "year": 2015,
-        "value": -1.11,
+        "value": -1.1,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2016,
-        "value": 1.28,
+        "value": 1.3,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2017,
-        "value": 4.66,
+        "value": 4.7,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2018,
-        "value": 3.11,
+        "value": 3.1,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2019,
-        "value": 1.68,
+        "value": 1.7,
         "type": "actual",
         "vintage": "2026-04"
       },
@@ -2413,34 +2497,39 @@
         "year": 2020,
         "value": 0.6,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2021,
         "value": 1.5,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2022,
         "value": 4.4,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2023,
-        "value": 3.19,
+        "value": 3.2,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2024,
-        "value": 1.45,
+        "value": 1.5,
         "type": "estimate",
         "vintage": "2026-04"
+      },
+      {
+        "year": 2025,
+        "value": 0.8,
+        "type": "projection",
+        "vintage": "2026-04"
       }
-    ],
-    "seriesNote": "Series blends World Bank WDI (primary points) with IMF WEO gap-fill where WDI is null."
+    ]
   },
   {
     "country": "BB",
@@ -2972,41 +3061,40 @@
     "indicator": "gdp_growth",
     "indicatorLabel": "GDP Growth Rate",
     "unit": "%",
-    "unitNote": "Real GDP, annual % change (World Bank WDI)",
-    "source": "World Bank — World Development Indicators (NY.GDP.MKTP.KD.ZG)",
-    "sourceOrg": "World Bank WDI",
+    "source": "IMF World Economic Outlook (DataMapper)",
+    "sourceOrg": "IMF WEO",
     "sourceTier": "comparable",
-    "sourceUrl": "https://api.worldbank.org/v2/country/JAM/indicator/NY.GDP.MKTP.KD.ZG?format=json",
-    "sourceRef": "WDI series NY.GDP.MKTP.KD.ZG, retrieved 2026-06-13",
+    "sourceUrl": "https://www.imf.org/external/datamapper/NGDP_RPCH/JAM",
+    "sourceRef": "WEO series NGDP_RPCH",
     "confidence": "flagged",
     "series": [
       {
         "year": 2015,
-        "value": 0.92,
+        "value": 1.4,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2016,
-        "value": 2.76,
+        "value": 2.8,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2017,
-        "value": 2.29,
+        "value": 2.3,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2018,
-        "value": 2.52,
+        "value": 2.5,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2019,
-        "value": 1.81,
+        "value": 1.8,
         "type": "actual",
         "vintage": "2026-04"
       },
@@ -3024,20 +3112,26 @@
       },
       {
         "year": 2022,
-        "value": 6.44,
+        "value": 6.4,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2023,
-        "value": 2.75,
+        "value": 2.7,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2024,
-        "value": -0.54,
+        "value": -0.5,
         "type": "estimate",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2025,
+        "value": -0.1,
+        "type": "projection",
         "vintage": "2026-04"
       }
     ]
@@ -3189,6 +3283,12 @@
         "value": 62.5,
         "type": "estimate",
         "vintage": "2025"
+      },
+      {
+        "year": 2025,
+        "value": 67.7,
+        "type": "projection",
+        "vintage": "2026-04"
       }
     ]
   },
@@ -3272,72 +3372,77 @@
     "indicator": "inflation",
     "indicatorLabel": "Inflation Rate",
     "unit": "%",
-    "unitNote": "Consumer prices, annual average % change (World Bank WDI)",
-    "source": "World Bank — World Development Indicators (FP.CPI.TOTL.ZG)",
-    "sourceOrg": "World Bank WDI",
+    "source": "IMF World Economic Outlook (DataMapper)",
+    "sourceOrg": "IMF WEO",
     "sourceTier": "comparable",
-    "sourceUrl": "https://api.worldbank.org/v2/country/JAM/indicator/FP.CPI.TOTL.ZG?format=json",
-    "sourceRef": "WDI series FP.CPI.TOTL.ZG, retrieved 2026-06-13",
+    "sourceUrl": "https://www.imf.org/external/datamapper/PCPIPCH/JAM",
+    "sourceRef": "WEO series PCPIPCH",
     "confidence": "flagged",
     "series": [
       {
         "year": 2015,
-        "value": 3.69,
+        "value": 3.7,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2016,
-        "value": 2.35,
+        "value": 2.3,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2017,
-        "value": 4.38,
+        "value": 4.4,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2018,
-        "value": 3.74,
+        "value": 3.7,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2019,
-        "value": 3.91,
+        "value": 3.9,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2020,
-        "value": 5.23,
+        "value": 5.2,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2021,
-        "value": 5.86,
+        "value": 5.9,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2022,
-        "value": 10.35,
+        "value": 10.3,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2023,
-        "value": 6.47,
+        "value": 6.5,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2024,
-        "value": 5.41,
+        "value": 5.5,
         "type": "estimate",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2025,
+        "value": 3.9,
+        "type": "projection",
         "vintage": "2026-04"
       }
     ]
@@ -3872,12 +3977,11 @@
     "indicator": "gdp_growth",
     "indicatorLabel": "GDP Growth Rate",
     "unit": "%",
-    "unitNote": "Real GDP, annual % change (World Bank WDI)",
-    "source": "World Bank — World Development Indicators (NY.GDP.MKTP.KD.ZG)",
-    "sourceOrg": "World Bank WDI",
+    "source": "IMF World Economic Outlook (DataMapper)",
+    "sourceOrg": "IMF WEO",
     "sourceTier": "comparable",
-    "sourceUrl": "https://api.worldbank.org/v2/country/BHS/indicator/NY.GDP.MKTP.KD.ZG?format=json",
-    "sourceRef": "WDI series NY.GDP.MKTP.KD.ZG, retrieved 2026-06-13",
+    "sourceUrl": "https://www.imf.org/external/datamapper/NGDP_RPCH/BHS",
+    "sourceRef": "WEO series NGDP_RPCH",
     "confidence": "flagged",
     "series": [
       {
@@ -3888,13 +3992,13 @@
       },
       {
         "year": 2016,
-        "value": -1.16,
+        "value": -1.2,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2017,
-        "value": 3.37,
+        "value": 3.4,
         "type": "actual",
         "vintage": "2026-04"
       },
@@ -3906,38 +4010,44 @@
       },
       {
         "year": 2019,
-        "value": -0.84,
+        "value": -0.8,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2020,
-        "value": -20.09,
+        "value": -20.1,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2021,
-        "value": 17.59,
+        "value": 17.6,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2022,
-        "value": 10.88,
+        "value": 10.9,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2023,
-        "value": 3.05,
+        "value": 3,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2024,
-        "value": 3.38,
+        "value": 3.4,
         "type": "estimate",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2025,
+        "value": 2.8,
+        "type": "projection",
         "vintage": "2026-04"
       }
     ]
@@ -4089,6 +4199,12 @@
         "value": 73.8,
         "type": "estimate",
         "vintage": "2025"
+      },
+      {
+        "year": 2025,
+        "value": 73.8,
+        "type": "projection",
+        "vintage": "2026-04"
       }
     ],
     "seriesNote": "IMF WEO series used here for cross-country comparability. The Central Bank of The Bahamas reports a higher ratio (e.g. 81.5% for 2024 vs IMF 73.8%) on a different GDP base."
@@ -4173,47 +4289,46 @@
     "indicator": "inflation",
     "indicatorLabel": "Inflation Rate",
     "unit": "%",
-    "unitNote": "Consumer prices, annual average % change (World Bank WDI)",
-    "source": "World Bank — World Development Indicators (FP.CPI.TOTL.ZG)",
-    "sourceOrg": "World Bank WDI",
+    "source": "IMF World Economic Outlook (DataMapper)",
+    "sourceOrg": "IMF WEO",
     "sourceTier": "comparable",
-    "sourceUrl": "https://api.worldbank.org/v2/country/BHS/indicator/FP.CPI.TOTL.ZG?format=json",
-    "sourceRef": "WDI series FP.CPI.TOTL.ZG, retrieved 2026-06-13",
+    "sourceUrl": "https://www.imf.org/external/datamapper/PCPIPCH/BHS",
+    "sourceRef": "WEO series PCPIPCH",
     "confidence": "flagged",
     "series": [
       {
         "year": 2015,
-        "value": 1.86,
+        "value": 1.9,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2016,
-        "value": -0.35,
+        "value": -0.3,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2017,
-        "value": 1.52,
+        "value": 1.5,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2018,
-        "value": 2.27,
+        "value": 2.3,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2019,
-        "value": 2.49,
+        "value": 2.5,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2020,
-        "value": 0.04,
+        "value": 0,
         "type": "actual",
         "vintage": "2026-04"
       },
@@ -4225,20 +4340,26 @@
       },
       {
         "year": 2022,
-        "value": 5.61,
+        "value": 5.6,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2023,
-        "value": 3.05,
+        "value": 3.1,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2024,
-        "value": 0.41,
+        "value": 0.4,
         "type": "estimate",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2025,
+        "value": 0.6,
+        "type": "projection",
         "vintage": "2026-04"
       }
     ]
@@ -4773,59 +4894,58 @@
     "indicator": "gdp_growth",
     "indicatorLabel": "GDP Growth Rate",
     "unit": "%",
-    "unitNote": "Real GDP, annual % change (World Bank WDI)",
-    "source": "World Bank — World Development Indicators (NY.GDP.MKTP.KD.ZG)",
-    "sourceOrg": "World Bank WDI",
+    "source": "IMF World Economic Outlook (DataMapper)",
+    "sourceOrg": "IMF WEO",
     "sourceTier": "comparable",
-    "sourceUrl": "https://api.worldbank.org/v2/country/BLZ/indicator/NY.GDP.MKTP.KD.ZG?format=json",
-    "sourceRef": "WDI series NY.GDP.MKTP.KD.ZG, retrieved 2026-06-13",
+    "sourceUrl": "https://www.imf.org/external/datamapper/NGDP_RPCH/BLZ",
+    "sourceRef": "WEO series NGDP_RPCH",
     "confidence": "flagged",
     "series": [
       {
         "year": 2015,
-        "value": 2.76,
+        "value": 2.8,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2016,
-        "value": -0.02,
+        "value": 0,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2017,
-        "value": -1.83,
+        "value": -1.8,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2018,
-        "value": 0.82,
+        "value": 0.8,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2019,
-        "value": 4.26,
+        "value": 4.3,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2020,
-        "value": -13.52,
+        "value": -13.5,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2021,
-        "value": 17.99,
+        "value": 18,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2022,
-        "value": 9.25,
+        "value": 9.3,
         "type": "actual",
         "vintage": "2026-04"
       },
@@ -4839,6 +4959,12 @@
         "year": 2024,
         "value": 3.5,
         "type": "estimate",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2025,
+        "value": 2.7,
+        "type": "projection",
         "vintage": "2026-04"
       }
     ]
@@ -4990,6 +5116,12 @@
         "value": 65.4,
         "type": "estimate",
         "vintage": "2025"
+      },
+      {
+        "year": 2025,
+        "value": 67.9,
+        "type": "projection",
+        "vintage": "2026-04"
       }
     ]
   },
@@ -5073,72 +5205,77 @@
     "indicator": "inflation",
     "indicatorLabel": "Inflation Rate",
     "unit": "%",
-    "unitNote": "Consumer prices, annual average % change (World Bank WDI)",
-    "source": "World Bank — World Development Indicators (FP.CPI.TOTL.ZG)",
-    "sourceOrg": "World Bank WDI",
+    "source": "IMF World Economic Outlook (DataMapper)",
+    "sourceOrg": "IMF WEO",
     "sourceTier": "comparable",
-    "sourceUrl": "https://api.worldbank.org/v2/country/BLZ/indicator/FP.CPI.TOTL.ZG?format=json",
-    "sourceRef": "WDI series FP.CPI.TOTL.ZG, retrieved 2026-06-13",
+    "sourceUrl": "https://www.imf.org/external/datamapper/PCPIPCH/BLZ",
+    "sourceRef": "WEO series PCPIPCH",
     "confidence": "flagged",
     "series": [
       {
         "year": 2015,
-        "value": -0.86,
+        "value": -0.9,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2016,
-        "value": 0.66,
+        "value": 0.7,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2017,
-        "value": 1.15,
+        "value": 1.1,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2018,
-        "value": 0.27,
+        "value": 0.3,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2019,
-        "value": 0.19,
+        "value": 0.2,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2020,
-        "value": 0.12,
+        "value": 0.1,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2021,
-        "value": 3.24,
+        "value": 3.2,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2022,
-        "value": 6.28,
+        "value": 6.3,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2023,
-        "value": 4.39,
+        "value": 4.4,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2024,
-        "value": 3.29,
+        "value": 3.3,
         "type": "estimate",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2025,
+        "value": 1.1,
+        "type": "projection",
         "vintage": "2026-04"
       }
     ]
@@ -5290,6 +5427,12 @@
         "value": 8.7,
         "type": "estimate",
         "vintage": "2026-04"
+      },
+      {
+        "year": 2025,
+        "value": 8.86,
+        "type": "actual",
+        "vintage": "2026-04"
       }
     ]
   },
@@ -5364,6 +5507,12 @@
         "year": 2024,
         "value": 56.85,
         "type": "estimate",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2025,
+        "value": 59.1,
+        "type": "actual",
         "vintage": "2026-04"
       }
     ]
@@ -5673,72 +5822,77 @@
     "indicator": "gdp_growth",
     "indicatorLabel": "GDP Growth Rate",
     "unit": "%",
-    "unitNote": "Real GDP, annual % change (World Bank WDI)",
-    "source": "World Bank — World Development Indicators (NY.GDP.MKTP.KD.ZG)",
-    "sourceOrg": "World Bank WDI",
+    "source": "IMF World Economic Outlook (DataMapper)",
+    "sourceOrg": "IMF WEO",
     "sourceTier": "comparable",
-    "sourceUrl": "https://api.worldbank.org/v2/country/SUR/indicator/NY.GDP.MKTP.KD.ZG?format=json",
-    "sourceRef": "WDI series NY.GDP.MKTP.KD.ZG, retrieved 2026-06-13",
+    "sourceUrl": "https://www.imf.org/external/datamapper/NGDP_RPCH/SUR",
+    "sourceRef": "WEO series NGDP_RPCH",
     "confidence": "flagged",
     "series": [
       {
         "year": 2015,
-        "value": -3.41,
+        "value": -3.4,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2016,
-        "value": -4.91,
+        "value": -4.9,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2017,
-        "value": 1.57,
+        "value": 1.6,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2018,
-        "value": 4.95,
+        "value": 4.9,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2019,
-        "value": 1.17,
+        "value": 1.2,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2020,
-        "value": -15.98,
+        "value": -16,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2021,
-        "value": -2.44,
+        "value": -2.4,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2022,
-        "value": 2.41,
+        "value": 2.4,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2023,
-        "value": 2.42,
+        "value": 2.4,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2024,
-        "value": 1.72,
+        "value": 1.7,
         "type": "estimate",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2025,
+        "value": 1.5,
+        "type": "projection",
         "vintage": "2026-04"
       }
     ]
@@ -5890,6 +6044,12 @@
         "value": 88,
         "type": "estimate",
         "vintage": "2025"
+      },
+      {
+        "year": 2025,
+        "value": 105.8,
+        "type": "projection",
+        "vintage": "2026-04"
       }
     ]
   },
@@ -5973,23 +6133,22 @@
     "indicator": "inflation",
     "indicatorLabel": "Inflation Rate",
     "unit": "%",
-    "unitNote": "Consumer prices, annual average % change (World Bank WDI)",
-    "source": "World Bank — World Development Indicators (FP.CPI.TOTL.ZG)",
-    "sourceOrg": "World Bank WDI",
+    "source": "IMF World Economic Outlook (DataMapper)",
+    "sourceOrg": "IMF WEO",
     "sourceTier": "comparable",
-    "sourceUrl": "https://api.worldbank.org/v2/country/SUR/indicator/FP.CPI.TOTL.ZG?format=json",
-    "sourceRef": "WDI series FP.CPI.TOTL.ZG, retrieved 2026-06-13",
+    "sourceUrl": "https://www.imf.org/external/datamapper/PCPIPCH/SUR",
+    "sourceRef": "WEO series PCPIPCH",
     "confidence": "flagged",
     "series": [
       {
         "year": 2015,
-        "value": 6.89,
+        "value": 6.9,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2016,
-        "value": 55.41,
+        "value": 55.5,
         "type": "actual",
         "vintage": "2026-04"
       },
@@ -6003,46 +6162,51 @@
         "year": 2018,
         "value": 6.9,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2019,
         "value": 4.4,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2020,
-        "value": 34.89,
+        "value": 34.9,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2021,
-        "value": 59.12,
+        "value": 59.1,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2022,
-        "value": 52.45,
+        "value": 52.4,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2023,
-        "value": 51.59,
+        "value": 51.6,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2024,
-        "value": 16.23,
+        "value": 16.2,
         "type": "estimate",
         "vintage": "2026-04"
+      },
+      {
+        "year": 2025,
+        "value": 9.2,
+        "type": "projection",
+        "vintage": "2026-04"
       }
-    ],
-    "seriesNote": "Series blends World Bank WDI (primary points) with IMF WEO gap-fill where WDI is null."
+    ]
   },
   {
     "country": "SR",
@@ -6191,6 +6355,12 @@
         "value": 7.62,
         "type": "estimate",
         "vintage": "2026-04"
+      },
+      {
+        "year": 2025,
+        "value": 7.83,
+        "type": "actual",
+        "vintage": "2026-04"
       }
     ]
   },
@@ -6265,6 +6435,12 @@
         "year": 2024,
         "value": 53.84,
         "type": "estimate",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2025,
+        "value": 53.82,
+        "type": "actual",
         "vintage": "2026-04"
       }
     ]
@@ -6574,47 +6750,46 @@
     "indicator": "gdp_growth",
     "indicatorLabel": "GDP Growth Rate",
     "unit": "%",
-    "unitNote": "Real GDP, annual % change (World Bank WDI)",
-    "source": "World Bank — World Development Indicators (NY.GDP.MKTP.KD.ZG)",
-    "sourceOrg": "World Bank WDI",
+    "source": "IMF World Economic Outlook (DataMapper)",
+    "sourceOrg": "IMF WEO",
     "sourceTier": "comparable",
-    "sourceUrl": "https://api.worldbank.org/v2/country/GRD/indicator/NY.GDP.MKTP.KD.ZG?format=json",
-    "sourceRef": "WDI series NY.GDP.MKTP.KD.ZG, retrieved 2026-06-13",
+    "sourceUrl": "https://www.imf.org/external/datamapper/NGDP_RPCH/GRD",
+    "sourceRef": "WEO series NGDP_RPCH",
     "confidence": "flagged",
     "series": [
       {
         "year": 2015,
-        "value": 6.45,
+        "value": 6.4,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2016,
-        "value": 3.74,
+        "value": 3.7,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2017,
-        "value": 4.44,
+        "value": 4.4,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2018,
-        "value": 4.36,
+        "value": 4.4,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2019,
-        "value": 0.68,
+        "value": 0.7,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2020,
-        "value": -13.76,
+        "value": -13.8,
         "type": "actual",
         "vintage": "2026-04"
       },
@@ -6626,20 +6801,26 @@
       },
       {
         "year": 2022,
-        "value": 7.31,
+        "value": 7.3,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2023,
-        "value": 4.53,
+        "value": 4.5,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2024,
-        "value": 3.96,
+        "value": 2.4,
         "type": "estimate",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2025,
+        "value": 4.4,
+        "type": "projection",
         "vintage": "2026-04"
       }
     ]
@@ -6791,6 +6972,12 @@
         "value": 75.1,
         "type": "estimate",
         "vintage": "2025"
+      },
+      {
+        "year": 2025,
+        "value": 71.6,
+        "type": "projection",
+        "vintage": "2026-04"
       }
     ]
   },
@@ -6874,29 +7061,28 @@
     "indicator": "inflation",
     "indicatorLabel": "Inflation Rate",
     "unit": "%",
-    "unitNote": "Consumer prices, annual average % change (World Bank WDI)",
-    "source": "World Bank — World Development Indicators (FP.CPI.TOTL.ZG)",
-    "sourceOrg": "World Bank WDI",
+    "source": "IMF World Economic Outlook (DataMapper)",
+    "sourceOrg": "IMF WEO",
     "sourceTier": "comparable",
-    "sourceUrl": "https://api.worldbank.org/v2/country/GRD/indicator/FP.CPI.TOTL.ZG?format=json",
-    "sourceRef": "WDI series FP.CPI.TOTL.ZG, retrieved 2026-06-13",
+    "sourceUrl": "https://www.imf.org/external/datamapper/PCPIPCH/GRD",
+    "sourceRef": "WEO series PCPIPCH",
     "confidence": "flagged",
     "series": [
       {
         "year": 2015,
-        "value": -0.52,
+        "value": -0.5,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2016,
-        "value": 1.65,
+        "value": 1.6,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2017,
-        "value": 0.91,
+        "value": 0.9,
         "type": "actual",
         "vintage": "2026-04"
       },
@@ -6914,19 +7100,19 @@
       },
       {
         "year": 2020,
-        "value": -0.74,
+        "value": -0.7,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2021,
-        "value": 1.22,
+        "value": 1.2,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2022,
-        "value": 2.58,
+        "value": 2.6,
         "type": "actual",
         "vintage": "2026-04"
       },
@@ -6938,8 +7124,14 @@
       },
       {
         "year": 2024,
-        "value": 1.09,
+        "value": 1.1,
         "type": "estimate",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2025,
+        "value": 0.6,
+        "type": "projection",
         "vintage": "2026-04"
       }
     ]
@@ -7324,35 +7516,34 @@
     "indicator": "gdp_growth",
     "indicatorLabel": "GDP Growth Rate",
     "unit": "%",
-    "unitNote": "Real GDP, annual % change (World Bank WDI)",
-    "source": "World Bank — World Development Indicators (NY.GDP.MKTP.KD.ZG)",
-    "sourceOrg": "World Bank WDI",
+    "source": "IMF World Economic Outlook (DataMapper)",
+    "sourceOrg": "IMF WEO",
     "sourceTier": "comparable",
-    "sourceUrl": "https://api.worldbank.org/v2/country/LCA/indicator/NY.GDP.MKTP.KD.ZG?format=json",
-    "sourceRef": "WDI series NY.GDP.MKTP.KD.ZG, retrieved 2026-06-13",
+    "sourceUrl": "https://www.imf.org/external/datamapper/NGDP_RPCH/LCA",
+    "sourceRef": "WEO series NGDP_RPCH",
     "confidence": "flagged",
     "series": [
       {
         "year": 2015,
-        "value": 0.1,
+        "value": -0.2,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2016,
-        "value": 3.43,
+        "value": 3.8,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2017,
-        "value": 3.38,
+        "value": 3.4,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2018,
-        "value": 2.89,
+        "value": 2.9,
         "type": "actual",
         "vintage": "2026-04"
       },
@@ -7364,32 +7555,38 @@
       },
       {
         "year": 2020,
-        "value": -24.36,
+        "value": -23.8,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2021,
-        "value": 11.6,
+        "value": 11.3,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2022,
-        "value": 20.39,
+        "value": 20.6,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2023,
-        "value": 2.21,
+        "value": 3.3,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2024,
-        "value": 3.89,
+        "value": 4.7,
         "type": "estimate",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2025,
+        "value": 1.7,
+        "type": "projection",
         "vintage": "2026-04"
       }
     ]
@@ -7541,6 +7738,12 @@
         "value": 76.7,
         "type": "estimate",
         "vintage": "2025"
+      },
+      {
+        "year": 2025,
+        "value": 77.1,
+        "type": "projection",
+        "vintage": "2026-04"
       }
     ]
   },
@@ -7624,23 +7827,22 @@
     "indicator": "inflation",
     "indicatorLabel": "Inflation Rate",
     "unit": "%",
-    "unitNote": "Consumer prices, annual average % change (World Bank WDI)",
-    "source": "World Bank — World Development Indicators (FP.CPI.TOTL.ZG)",
-    "sourceOrg": "World Bank WDI",
+    "source": "IMF World Economic Outlook (DataMapper)",
+    "sourceOrg": "IMF WEO",
     "sourceTier": "comparable",
-    "sourceUrl": "https://api.worldbank.org/v2/country/LCA/indicator/FP.CPI.TOTL.ZG?format=json",
-    "sourceRef": "WDI series FP.CPI.TOTL.ZG, retrieved 2026-06-13",
+    "sourceUrl": "https://www.imf.org/external/datamapper/PCPIPCH/LCA",
+    "sourceRef": "WEO series PCPIPCH",
     "confidence": "flagged",
     "series": [
       {
         "year": 2015,
-        "value": -0.98,
+        "value": -1,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2016,
-        "value": -3.08,
+        "value": -3.1,
         "type": "actual",
         "vintage": "2026-04"
       },
@@ -7652,44 +7854,50 @@
       },
       {
         "year": 2018,
-        "value": 1.94,
+        "value": 1.9,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2019,
-        "value": 0.54,
+        "value": 0.5,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2020,
-        "value": -1.76,
+        "value": -1.8,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2021,
-        "value": 2.41,
+        "value": 2.4,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2022,
-        "value": 6.38,
+        "value": 9.7,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2023,
-        "value": 4.07,
+        "value": 3.8,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2024,
-        "value": -0.11,
+        "value": -0.7,
         "type": "estimate",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2025,
+        "value": 2,
+        "type": "projection",
         "vintage": "2026-04"
       }
     ]
@@ -7841,6 +8049,12 @@
         "value": 10.2,
         "type": "estimate",
         "vintage": "2026-04"
+      },
+      {
+        "year": 2025,
+        "value": 9.45,
+        "type": "actual",
+        "vintage": "2026-04"
       }
     ]
   },
@@ -7915,6 +8129,12 @@
         "year": 2024,
         "value": 68.23,
         "type": "estimate",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2025,
+        "value": 68.27,
+        "type": "actual",
         "vintage": "2026-04"
       }
     ]
@@ -8224,72 +8444,77 @@
     "indicator": "gdp_growth",
     "indicatorLabel": "GDP Growth Rate",
     "unit": "%",
-    "unitNote": "Real GDP, annual % change (World Bank WDI)",
-    "source": "World Bank — World Development Indicators (NY.GDP.MKTP.KD.ZG)",
-    "sourceOrg": "World Bank WDI",
+    "source": "IMF World Economic Outlook (DataMapper)",
+    "sourceOrg": "IMF WEO",
     "sourceTier": "comparable",
-    "sourceUrl": "https://api.worldbank.org/v2/country/ATG/indicator/NY.GDP.MKTP.KD.ZG?format=json",
-    "sourceRef": "WDI series NY.GDP.MKTP.KD.ZG, retrieved 2026-06-13",
+    "sourceUrl": "https://www.imf.org/external/datamapper/NGDP_RPCH/ATG",
+    "sourceRef": "WEO series NGDP_RPCH",
     "confidence": "flagged",
     "series": [
       {
         "year": 2015,
-        "value": 1.42,
+        "value": 1.4,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2016,
-        "value": 4.12,
+        "value": 4.1,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2017,
-        "value": 2.71,
+        "value": 2.7,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2018,
-        "value": 6.71,
+        "value": 6.7,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2019,
-        "value": 3.17,
+        "value": 3.2,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2020,
-        "value": -18.87,
+        "value": -18.9,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2021,
-        "value": 8.17,
+        "value": 8.2,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2022,
-        "value": 9.11,
+        "value": 8.5,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2023,
-        "value": 2.43,
+        "value": 3.9,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2024,
-        "value": 3.66,
+        "value": 2.5,
         "type": "estimate",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2025,
+        "value": 3,
+        "type": "projection",
         "vintage": "2026-04"
       }
     ]
@@ -8441,6 +8666,12 @@
         "value": 71.8,
         "type": "estimate",
         "vintage": "2025"
+      },
+      {
+        "year": 2025,
+        "value": 69.7,
+        "type": "projection",
+        "vintage": "2026-04"
       }
     ]
   },
@@ -8524,65 +8755,64 @@
     "indicator": "inflation",
     "indicatorLabel": "Inflation Rate",
     "unit": "%",
-    "unitNote": "Consumer prices, annual average % change (World Bank WDI)",
-    "source": "World Bank — World Development Indicators (FP.CPI.TOTL.ZG)",
-    "sourceOrg": "World Bank WDI",
+    "source": "IMF World Economic Outlook (DataMapper)",
+    "sourceOrg": "IMF WEO",
     "sourceTier": "comparable",
-    "sourceUrl": "https://api.worldbank.org/v2/country/ATG/indicator/FP.CPI.TOTL.ZG?format=json",
-    "sourceRef": "WDI series FP.CPI.TOTL.ZG, retrieved 2026-06-13",
+    "sourceUrl": "https://www.imf.org/external/datamapper/PCPIPCH/ATG",
+    "sourceRef": "WEO series PCPIPCH",
     "confidence": "flagged",
     "series": [
       {
         "year": 2015,
-        "value": 0.97,
+        "value": 1,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2016,
-        "value": -0.49,
+        "value": -0.5,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2017,
-        "value": 2.43,
+        "value": 2.4,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2018,
-        "value": 1.21,
+        "value": 1.2,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2019,
-        "value": 1.43,
+        "value": 1.4,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2020,
-        "value": 0.63,
+        "value": 1.1,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2021,
-        "value": 2.06,
+        "value": 1.6,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2022,
-        "value": 7.53,
+        "value": 7.5,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2023,
-        "value": 5.07,
+        "value": 5.1,
         "type": "actual",
         "vintage": "2026-04"
       },
@@ -8590,6 +8820,12 @@
         "year": 2024,
         "value": 6.2,
         "type": "estimate",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2025,
+        "value": 1.4,
+        "type": "projection",
         "vintage": "2026-04"
       }
     ]
@@ -8974,72 +9210,77 @@
     "indicator": "gdp_growth",
     "indicatorLabel": "GDP Growth Rate",
     "unit": "%",
-    "unitNote": "Real GDP, annual % change (World Bank WDI)",
-    "source": "World Bank — World Development Indicators (NY.GDP.MKTP.KD.ZG)",
-    "sourceOrg": "World Bank WDI",
+    "source": "IMF World Economic Outlook (DataMapper)",
+    "sourceOrg": "IMF WEO",
     "sourceTier": "comparable",
-    "sourceUrl": "https://api.worldbank.org/v2/country/KNA/indicator/NY.GDP.MKTP.KD.ZG?format=json",
-    "sourceRef": "WDI series NY.GDP.MKTP.KD.ZG, retrieved 2026-06-13",
+    "sourceUrl": "https://www.imf.org/external/datamapper/NGDP_RPCH/KNA",
+    "sourceRef": "WEO series NGDP_RPCH",
     "confidence": "flagged",
     "series": [
       {
         "year": 2015,
-        "value": 0.69,
+        "value": -0.7,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2016,
-        "value": 3.93,
+        "value": 3.9,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2017,
-        "value": 0.22,
+        "value": 0.2,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2018,
-        "value": 2,
+        "value": 0.3,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2019,
-        "value": 2.94,
+        "value": 2.4,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2020,
-        "value": -15.3,
+        "value": -15.2,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2021,
-        "value": 0.37,
+        "value": 0.6,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2022,
-        "value": 10.48,
+        "value": 10.5,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2023,
-        "value": 3.02,
+        "value": 4.6,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2024,
-        "value": 0.31,
+        "value": 1.7,
         "type": "estimate",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2025,
+        "value": 1.5,
+        "type": "projection",
         "vintage": "2026-04"
       }
     ]
@@ -9191,6 +9432,12 @@
         "value": 58.1,
         "type": "estimate",
         "vintage": "2025"
+      },
+      {
+        "year": 2025,
+        "value": 58.4,
+        "type": "projection",
+        "vintage": "2026-04"
       }
     ]
   },
@@ -9274,12 +9521,11 @@
     "indicator": "inflation",
     "indicatorLabel": "Inflation Rate",
     "unit": "%",
-    "unitNote": "Consumer prices, annual average % change (World Bank WDI)",
-    "source": "World Bank — World Development Indicators (FP.CPI.TOTL.ZG)",
-    "sourceOrg": "World Bank WDI",
+    "source": "IMF World Economic Outlook (DataMapper)",
+    "sourceOrg": "IMF WEO",
     "sourceTier": "comparable",
-    "sourceUrl": "https://api.worldbank.org/v2/country/KNA/indicator/FP.CPI.TOTL.ZG?format=json",
-    "sourceRef": "WDI series FP.CPI.TOTL.ZG, retrieved 2026-06-13",
+    "sourceUrl": "https://www.imf.org/external/datamapper/PCPIPCH/KNA",
+    "sourceRef": "WEO series PCPIPCH",
     "confidence": "flagged",
     "series": [
       {
@@ -9290,31 +9536,31 @@
       },
       {
         "year": 2016,
-        "value": -0.69,
+        "value": -0.7,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2017,
-        "value": 0.69,
+        "value": 0.7,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2018,
-        "value": -1.04,
+        "value": -1,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2019,
-        "value": -0.33,
+        "value": -0.3,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2020,
-        "value": -1.17,
+        "value": -1.2,
         "type": "actual",
         "vintage": "2026-04"
       },
@@ -9326,13 +9572,13 @@
       },
       {
         "year": 2022,
-        "value": 2.67,
+        "value": 2.7,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2023,
-        "value": 3.56,
+        "value": 3.6,
         "type": "actual",
         "vintage": "2026-04"
       },
@@ -9340,10 +9586,15 @@
         "year": 2024,
         "value": 1.1,
         "type": "estimate",
-        "vintage": "2025"
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2025,
+        "value": 1.3,
+        "type": "projection",
+        "vintage": "2026-04"
       }
-    ],
-    "seriesNote": "Series blends World Bank WDI (primary points) with IMF WEO gap-fill where WDI is null."
+    ]
   },
   {
     "country": "KN",
@@ -9725,72 +9976,77 @@
     "indicator": "gdp_growth",
     "indicatorLabel": "GDP Growth Rate",
     "unit": "%",
-    "unitNote": "Real GDP, annual % change (World Bank WDI)",
-    "source": "World Bank — World Development Indicators (NY.GDP.MKTP.KD.ZG)",
-    "sourceOrg": "World Bank WDI",
+    "source": "IMF World Economic Outlook (DataMapper)",
+    "sourceOrg": "IMF WEO",
     "sourceTier": "comparable",
-    "sourceUrl": "https://api.worldbank.org/v2/country/DMA/indicator/NY.GDP.MKTP.KD.ZG?format=json",
-    "sourceRef": "WDI series NY.GDP.MKTP.KD.ZG, retrieved 2026-06-13",
+    "sourceUrl": "https://www.imf.org/external/datamapper/NGDP_RPCH/DMA",
+    "sourceRef": "WEO series NGDP_RPCH",
     "confidence": "flagged",
     "series": [
       {
         "year": 2015,
-        "value": -3.37,
+        "value": -2.7,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2016,
-        "value": 1.45,
+        "value": 2.8,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2017,
-        "value": -7.54,
+        "value": -6.6,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2018,
-        "value": 2.96,
+        "value": 3.5,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2019,
-        "value": 3.95,
+        "value": 5.5,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2020,
-        "value": -15.71,
+        "value": -16.6,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2021,
-        "value": 5.38,
+        "value": 6.9,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2022,
-        "value": 10.4,
+        "value": 5.6,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2023,
-        "value": 3.65,
+        "value": 4.7,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2024,
-        "value": 2.05,
+        "value": 3.5,
         "type": "estimate",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2025,
+        "value": 4.5,
+        "type": "projection",
         "vintage": "2026-04"
       }
     ]
@@ -9942,6 +10198,12 @@
         "value": 108.2,
         "type": "estimate",
         "vintage": "2025"
+      },
+      {
+        "year": 2025,
+        "value": 102.6,
+        "type": "projection",
+        "vintage": "2026-04"
       }
     ]
   },
@@ -10025,23 +10287,22 @@
     "indicator": "inflation",
     "indicatorLabel": "Inflation Rate",
     "unit": "%",
-    "unitNote": "Consumer prices, annual average % change (World Bank WDI)",
-    "source": "World Bank — World Development Indicators (FP.CPI.TOTL.ZG)",
-    "sourceOrg": "World Bank WDI",
+    "source": "IMF World Economic Outlook (DataMapper)",
+    "sourceOrg": "IMF WEO",
     "sourceTier": "comparable",
-    "sourceUrl": "https://api.worldbank.org/v2/country/DMA/indicator/FP.CPI.TOTL.ZG?format=json",
-    "sourceRef": "WDI series FP.CPI.TOTL.ZG, retrieved 2026-06-13",
+    "sourceUrl": "https://www.imf.org/external/datamapper/PCPIPCH/DMA",
+    "sourceRef": "WEO series PCPIPCH",
     "confidence": "flagged",
     "series": [
       {
         "year": 2015,
-        "value": -0.84,
+        "value": -0.9,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2016,
-        "value": 0.14,
+        "value": 0.1,
         "type": "actual",
         "vintage": "2026-04"
       },
@@ -10053,7 +10314,7 @@
       },
       {
         "year": 2018,
-        "value": 0.99,
+        "value": 1,
         "type": "actual",
         "vintage": "2026-04"
       },
@@ -10065,32 +10326,38 @@
       },
       {
         "year": 2020,
-        "value": 1.22,
+        "value": -0.7,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2021,
-        "value": 2.23,
+        "value": 1.6,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2022,
-        "value": 2.88,
+        "value": 7.7,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2023,
-        "value": 5.09,
+        "value": 4.2,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2024,
-        "value": 2.57,
+        "value": 3.1,
         "type": "estimate",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2025,
+        "value": 2.3,
+        "type": "projection",
         "vintage": "2026-04"
       }
     ]
@@ -10475,72 +10742,77 @@
     "indicator": "gdp_growth",
     "indicatorLabel": "GDP Growth Rate",
     "unit": "%",
-    "unitNote": "Real GDP, annual % change (World Bank WDI)",
-    "source": "World Bank — World Development Indicators (NY.GDP.MKTP.KD.ZG)",
-    "sourceOrg": "World Bank WDI",
+    "source": "IMF World Economic Outlook (DataMapper)",
+    "sourceOrg": "IMF WEO",
     "sourceTier": "comparable",
-    "sourceUrl": "https://api.worldbank.org/v2/country/VCT/indicator/NY.GDP.MKTP.KD.ZG?format=json",
-    "sourceRef": "WDI series NY.GDP.MKTP.KD.ZG, retrieved 2026-06-13",
+    "sourceUrl": "https://www.imf.org/external/datamapper/NGDP_RPCH/VCT",
+    "sourceRef": "WEO series NGDP_RPCH",
     "confidence": "flagged",
     "series": [
       {
         "year": 2015,
-        "value": 2.79,
+        "value": 2.8,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2016,
-        "value": 4.15,
+        "value": 4.1,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2017,
-        "value": 1.55,
+        "value": 1.5,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2018,
-        "value": 3.18,
+        "value": 3.2,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2019,
-        "value": 0.67,
+        "value": 0.7,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2020,
-        "value": -4.27,
+        "value": -4.8,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2021,
-        "value": 2.09,
+        "value": 2.1,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2022,
-        "value": 3.11,
+        "value": 5,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2023,
-        "value": 5.33,
+        "value": 4.5,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2024,
-        "value": 4.06,
+        "value": 4.5,
         "type": "estimate",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2025,
+        "value": 3.4,
+        "type": "projection",
         "vintage": "2026-04"
       }
     ]
@@ -10692,6 +10964,12 @@
         "value": 102.8,
         "type": "estimate",
         "vintage": "2025"
+      },
+      {
+        "year": 2025,
+        "value": 113.4,
+        "type": "projection",
+        "vintage": "2026-04"
       }
     ]
   },
@@ -10775,72 +11053,77 @@
     "indicator": "inflation",
     "indicatorLabel": "Inflation Rate",
     "unit": "%",
-    "unitNote": "Consumer prices, annual average % change (World Bank WDI)",
-    "source": "World Bank — World Development Indicators (FP.CPI.TOTL.ZG)",
-    "sourceOrg": "World Bank WDI",
+    "source": "IMF World Economic Outlook (DataMapper)",
+    "sourceOrg": "IMF WEO",
     "sourceTier": "comparable",
-    "sourceUrl": "https://api.worldbank.org/v2/country/VCT/indicator/FP.CPI.TOTL.ZG?format=json",
-    "sourceRef": "WDI series FP.CPI.TOTL.ZG, retrieved 2026-06-13",
+    "sourceUrl": "https://www.imf.org/external/datamapper/PCPIPCH/VCT",
+    "sourceRef": "WEO series PCPIPCH",
     "confidence": "flagged",
     "series": [
       {
         "year": 2015,
-        "value": -1.73,
+        "value": -1.7,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2016,
-        "value": -0.15,
+        "value": -0.2,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2017,
-        "value": 2.15,
+        "value": 2.2,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2018,
-        "value": 2.32,
+        "value": 2.3,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2019,
-        "value": 0.91,
+        "value": 0.9,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2020,
-        "value": -0.63,
+        "value": -0.6,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2021,
-        "value": 1.57,
+        "value": 1.6,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2022,
-        "value": 5.66,
+        "value": 5.7,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2023,
-        "value": 4.56,
+        "value": 4.6,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2024,
-        "value": 3.63,
+        "value": 3.6,
         "type": "estimate",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2025,
+        "value": 0.9,
+        "type": "projection",
         "vintage": "2026-04"
       }
     ]
@@ -10992,6 +11275,12 @@
         "value": 18.09,
         "type": "estimate",
         "vintage": "2026-04"
+      },
+      {
+        "year": 2025,
+        "value": 18,
+        "type": "actual",
+        "vintage": "2026-04"
       }
     ]
   },
@@ -11066,6 +11355,12 @@
         "year": 2024,
         "value": 68.04,
         "type": "estimate",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2025,
+        "value": 67.9,
+        "type": "actual",
         "vintage": "2026-04"
       }
     ]
@@ -13944,6 +14239,12 @@
         "value": -296,
         "type": "estimate",
         "vintage": "2025"
+      },
+      {
+        "year": 2025,
+        "value": -602,
+        "type": "projection",
+        "vintage": "2026-04"
       }
     ],
     "seriesNote": "[FALLBACK — IMF] CBB reports BoP current account at -4.5% of GDP for 2024 (AR2024 Table 1), consistent."
@@ -14478,6 +14779,12 @@
         "value": 645,
         "type": "estimate",
         "vintage": "2025"
+      },
+      {
+        "year": 2025,
+        "value": 270,
+        "type": "projection",
+        "vintage": "2026-04"
       }
     ],
     "seriesNote": "[FALLBACK — IMF] Jamaica swung to current-account surplus 2023-24 (remittances + tourism)."
@@ -14966,6 +15273,12 @@
         "value": -1206,
         "type": "estimate",
         "vintage": "2024"
+      },
+      {
+        "year": 2025,
+        "value": -1643,
+        "type": "projection",
+        "vintage": "2026-04"
       }
     ],
     "seriesNote": "[FALLBACK — IMF] Large goods deficit offset by tourism; BSD pegged 1:1 to USD."
@@ -15272,6 +15585,12 @@
         "value": -296,
         "type": "estimate",
         "vintage": "2025"
+      },
+      {
+        "year": 2025,
+        "value": -252,
+        "type": "projection",
+        "vintage": "2026-04"
       }
     ],
     "seriesNote": "[FALLBACK — IMF] WEO balance of payments current account."
@@ -15348,6 +15667,12 @@
         "value": -161,
         "type": "estimate",
         "vintage": "2025"
+      },
+      {
+        "year": 2025,
+        "value": -265,
+        "type": "projection",
+        "vintage": "2026-04"
       }
     ],
     "seriesNote": "[FALLBACK — IMF] WEO balance of payments current account."
@@ -15596,6 +15921,12 @@
         "value": -260,
         "type": "estimate",
         "vintage": "2025"
+      },
+      {
+        "year": 2025,
+        "value": -283,
+        "type": "projection",
+        "vintage": "2026-04"
       }
     ],
     "seriesNote": "[FALLBACK — IMF] WEO balance of payments current account."
@@ -15672,6 +16003,12 @@
         "value": -193,
         "type": "estimate",
         "vintage": "2025"
+      },
+      {
+        "year": 2025,
+        "value": -237,
+        "type": "projection",
+        "vintage": "2026-04"
       }
     ],
     "seriesNote": "[FALLBACK — IMF] WEO balance of payments current account."
@@ -15748,6 +16085,12 @@
         "value": -61,
         "type": "estimate",
         "vintage": "2025"
+      },
+      {
+        "year": 2025,
+        "value": -118,
+        "type": "projection",
+        "vintage": "2026-04"
       }
     ],
     "seriesNote": "[FALLBACK — IMF] WEO balance of payments current account."
@@ -15910,6 +16253,12 @@
         "value": -570,
         "type": "estimate",
         "vintage": "2025"
+      },
+      {
+        "year": 2025,
+        "value": -2484,
+        "type": "projection",
+        "vintage": "2026-04"
       }
     ],
     "seriesNote": "[FALLBACK — IMF] WEO balance of payments current account."
@@ -16158,6 +16507,12 @@
         "value": -40,
         "type": "estimate",
         "vintage": "2025"
+      },
+      {
+        "year": 2025,
+        "value": -122,
+        "type": "projection",
+        "vintage": "2026-04"
       }
     ],
     "seriesNote": "[FALLBACK — IMF] WEO balance of payments current account."
@@ -16320,6 +16675,12 @@
         "value": -137,
         "type": "estimate",
         "vintage": "2025"
+      },
+      {
+        "year": 2025,
+        "value": -158,
+        "type": "projection",
+        "vintage": "2026-04"
       }
     ],
     "seriesNote": "[FALLBACK — IMF] WEO current account."
