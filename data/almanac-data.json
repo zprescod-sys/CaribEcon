@@ -1143,7 +1143,7 @@
       {
         "year": 2024,
         "value": 5142175,
-        "type": "estimate",
+        "type": "actual",
         "vintage": "2026-04"
       }
     ]
@@ -1218,7 +1218,7 @@
       {
         "year": 2024,
         "value": 5652795,
-        "type": "estimate",
+        "type": "actual",
         "vintage": "2026-04"
       }
     ]
@@ -1373,7 +1373,7 @@
       {
         "year": 2024,
         "value": 6187288,
-        "type": "estimate",
+        "type": "actual",
         "vintage": "2026-04"
       }
     ]
@@ -1395,61 +1395,61 @@
         "year": 2015,
         "value": 42.2,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2016,
         "value": 35.7,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2017,
         "value": 35.2,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2018,
         "value": 37.4,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2019,
         "value": 34.2,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2020,
         "value": 47.4,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2021,
         "value": 38.9,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2022,
         "value": 24.8,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2023,
         "value": 26.7,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2024,
         "value": 24.3,
         "type": "estimate",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2025,
@@ -1529,7 +1529,7 @@
       {
         "year": 2024,
         "value": 831087,
-        "type": "estimate",
+        "type": "actual",
         "vintage": "2026-04"
       }
     ]
@@ -1684,7 +1684,7 @@
       {
         "year": 2024,
         "value": 208.5,
-        "type": "estimate",
+        "type": "actual",
         "vintage": "2026-04"
       }
     ]
@@ -1759,7 +1759,13 @@
       {
         "year": 2024,
         "value": 11.87,
-        "type": "estimate",
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2025,
+        "value": 11.96,
+        "type": "actual",
         "vintage": "2026-04"
       }
     ]
@@ -1834,7 +1840,13 @@
       {
         "year": 2024,
         "value": 55.14,
-        "type": "estimate",
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2025,
+        "value": 54.99,
+        "type": "actual",
         "vintage": "2026-04"
       }
     ]
@@ -1854,19 +1866,19 @@
     "series": [
       {
         "year": 2015,
-        "value": 55.2,
+        "value": 55.24,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2016,
-        "value": 55.3,
+        "value": 55.26,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2017,
-        "value": 55.4,
+        "value": 55.44,
         "type": "actual",
         "vintage": "2026-04"
       },
@@ -1878,38 +1890,38 @@
       },
       {
         "year": 2019,
-        "value": 54,
+        "value": 53.97,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2020,
-        "value": 55,
+        "value": 54.96,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2021,
-        "value": 55.1,
+        "value": 55.09,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2022,
-        "value": 55.3,
+        "value": 55.34,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2023,
-        "value": 55.8,
+        "value": 55.77,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2024,
         "value": 56,
-        "type": "estimate",
+        "type": "actual",
         "vintage": "2026-04"
       }
     ]
@@ -1984,7 +1996,7 @@
       {
         "year": 2024,
         "value": 8629.5,
-        "type": "estimate",
+        "type": "actual",
         "vintage": "2026-04"
       }
     ]
@@ -2059,7 +2071,7 @@
       {
         "year": 2024,
         "value": 14996.1,
-        "type": "estimate",
+        "type": "actual",
         "vintage": "2026-04"
       }
     ]
@@ -2134,7 +2146,7 @@
       {
         "year": 2024,
         "value": 14805.1,
-        "type": "estimate",
+        "type": "actual",
         "vintage": "2026-04"
       }
     ]
@@ -2289,7 +2301,7 @@
       {
         "year": 2024,
         "value": 53090,
-        "type": "estimate",
+        "type": "actual",
         "vintage": "2026-04"
       }
     ]
@@ -2311,61 +2323,61 @@
         "year": 2015,
         "value": 122.5,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2016,
         "value": 127.1,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2017,
         "value": 134.6,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2018,
         "value": 107.2,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2019,
         "value": 101.6,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2020,
         "value": 129.6,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2021,
         "value": 108.6,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2022,
         "value": 104,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2023,
         "value": 104.1,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2024,
         "value": 98.9,
         "type": "estimate",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2025,
@@ -2446,7 +2458,7 @@
       {
         "year": 2024,
         "value": 282467,
-        "type": "estimate",
+        "type": "actual",
         "vintage": "2026-04"
       }
     ]
@@ -2601,7 +2613,7 @@
       {
         "year": 2024,
         "value": 2,
-        "type": "estimate",
+        "type": "actual",
         "vintage": "2026-04"
       }
     ]
@@ -2676,7 +2688,13 @@
       {
         "year": 2024,
         "value": 6.45,
-        "type": "estimate",
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2025,
+        "value": 6.52,
+        "type": "actual",
         "vintage": "2026-04"
       }
     ]
@@ -2738,7 +2756,7 @@
       },
       {
         "year": 2022,
-        "value": 65.34,
+        "value": 65.35,
         "type": "actual",
         "vintage": "2026-04"
       },
@@ -2751,7 +2769,13 @@
       {
         "year": 2024,
         "value": 64.97,
-        "type": "estimate",
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2025,
+        "value": 64.69,
+        "type": "actual",
         "vintage": "2026-04"
       }
     ]
@@ -2771,7 +2795,7 @@
     "series": [
       {
         "year": 2015,
-        "value": 47.3,
+        "value": 47.29,
         "type": "actual",
         "vintage": "2026-04"
       },
@@ -2783,50 +2807,50 @@
       },
       {
         "year": 2017,
-        "value": 47.4,
+        "value": 47.44,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2018,
-        "value": 47.8,
+        "value": 47.76,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2019,
-        "value": 48.2,
+        "value": 48.23,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2020,
-        "value": 48.9,
+        "value": 48.88,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2021,
-        "value": 49.6,
+        "value": 49.62,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2022,
-        "value": 50.2,
+        "value": 50.21,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2023,
-        "value": 50.6,
+        "value": 50.56,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2024,
-        "value": 51,
-        "type": "estimate",
+        "value": 51.04,
+        "type": "actual",
         "vintage": "2026-04"
       }
     ]
@@ -2901,7 +2925,7 @@
       {
         "year": 2024,
         "value": 303.1,
-        "type": "estimate",
+        "type": "actual",
         "vintage": "2026-04"
       }
     ]
@@ -2976,7 +3000,7 @@
       {
         "year": 2024,
         "value": 3443922,
-        "type": "estimate",
+        "type": "actual",
         "vintage": "2026-04"
       }
     ]
@@ -3051,7 +3075,7 @@
       {
         "year": 2024,
         "value": 2024611.3,
-        "type": "estimate",
+        "type": "actual",
         "vintage": "2026-04"
       }
     ]
@@ -3206,7 +3230,7 @@
       {
         "year": 2024,
         "value": 1213001,
-        "type": "estimate",
+        "type": "actual",
         "vintage": "2026-04"
       }
     ]
@@ -3228,61 +3252,61 @@
         "year": 2015,
         "value": 115.9,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2016,
         "value": 106.9,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2017,
         "value": 95.1,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2018,
         "value": 88.3,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2019,
         "value": 87.7,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2020,
         "value": 101.3,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2021,
         "value": 86.3,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2022,
         "value": 70.2,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2023,
         "value": 66.5,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2024,
         "value": 62.5,
         "type": "estimate",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2025,
@@ -3362,7 +3386,7 @@
       {
         "year": 2024,
         "value": 2839175,
-        "type": "estimate",
+        "type": "actual",
         "vintage": "2026-04"
       }
     ]
@@ -3517,7 +3541,7 @@
       {
         "year": 2024,
         "value": 156.4395,
-        "type": "estimate",
+        "type": "actual",
         "vintage": "2026-04"
       }
     ]
@@ -3592,7 +3616,13 @@
       {
         "year": 2024,
         "value": 3.15,
-        "type": "estimate",
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2025,
+        "value": 3.29,
+        "type": "actual",
         "vintage": "2026-04"
       }
     ]
@@ -3667,7 +3697,13 @@
       {
         "year": 2024,
         "value": 69.44,
-        "type": "estimate",
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2025,
+        "value": 69.57,
+        "type": "actual",
         "vintage": "2026-04"
       }
     ]
@@ -3687,62 +3723,62 @@
     "series": [
       {
         "year": 2015,
-        "value": 42.5,
+        "value": 42.47,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2016,
-        "value": 41.5,
+        "value": 41.54,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2017,
-        "value": 40.7,
+        "value": 40.66,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2018,
-        "value": 39.8,
+        "value": 39.81,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2019,
-        "value": 39,
+        "value": 39.04,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2020,
-        "value": 38.3,
+        "value": 38.32,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2021,
-        "value": 37.7,
+        "value": 37.67,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2022,
-        "value": 37.2,
+        "value": 37.21,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2023,
-        "value": 37,
+        "value": 36.98,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2024,
-        "value": 36.8,
-        "type": "estimate",
+        "value": 36.82,
+        "type": "actual",
         "vintage": "2026-04"
       }
     ]
@@ -3817,7 +3853,7 @@
       {
         "year": 2024,
         "value": 305.1,
-        "type": "estimate",
+        "type": "actual",
         "vintage": "2026-04"
       }
     ]
@@ -3892,7 +3928,7 @@
       {
         "year": 2024,
         "value": 15832.8,
-        "type": "estimate",
+        "type": "actual",
         "vintage": "2026-04"
       }
     ]
@@ -3967,7 +4003,7 @@
       {
         "year": 2024,
         "value": 14108.5,
-        "type": "estimate",
+        "type": "actual",
         "vintage": "2026-04"
       }
     ]
@@ -4122,7 +4158,7 @@
       {
         "year": 2024,
         "value": 39455,
-        "type": "estimate",
+        "type": "actual",
         "vintage": "2026-04"
       }
     ]
@@ -4144,61 +4180,61 @@
         "year": 2015,
         "value": 49.9,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2016,
         "value": 51.1,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2017,
         "value": 54.6,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2018,
         "value": 61.5,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2019,
         "value": 60.3,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2020,
         "value": 71.9,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2021,
         "value": 90.7,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2022,
         "value": 84.7,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2023,
         "value": 78.3,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2024,
         "value": 73.8,
         "type": "estimate",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2025,
@@ -4279,7 +4315,7 @@
       {
         "year": 2024,
         "value": 401283,
-        "type": "estimate",
+        "type": "actual",
         "vintage": "2026-04"
       }
     ]
@@ -4434,7 +4470,7 @@
       {
         "year": 2024,
         "value": 1,
-        "type": "estimate",
+        "type": "actual",
         "vintage": "2026-04"
       }
     ]
@@ -4502,14 +4538,20 @@
       },
       {
         "year": 2023,
-        "value": 8.64,
+        "value": 8.65,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2024,
         "value": 9.05,
-        "type": "estimate",
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2025,
+        "value": 9.21,
+        "type": "actual",
         "vintage": "2026-04"
       }
     ]
@@ -4584,7 +4626,13 @@
       {
         "year": 2024,
         "value": 74,
-        "type": "estimate",
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2025,
+        "value": 73.78,
+        "type": "actual",
         "vintage": "2026-04"
       }
     ]
@@ -4604,49 +4652,49 @@
     "series": [
       {
         "year": 2015,
-        "value": 46,
+        "value": 45.95,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2016,
-        "value": 45.5,
+        "value": 45.54,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2017,
-        "value": 45.1,
+        "value": 45.11,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2018,
-        "value": 44.7,
+        "value": 44.68,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2019,
-        "value": 44.2,
+        "value": 44.25,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2020,
-        "value": 43.8,
+        "value": 43.81,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2021,
-        "value": 43.3,
+        "value": 43.33,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2022,
-        "value": 42.9,
+        "value": 42.86,
         "type": "actual",
         "vintage": "2026-04"
       },
@@ -4658,8 +4706,8 @@
       },
       {
         "year": 2024,
-        "value": 42.2,
-        "type": "estimate",
+        "value": 42.22,
+        "type": "actual",
         "vintage": "2026-04"
       }
     ]
@@ -4734,7 +4782,7 @@
       {
         "year": 2024,
         "value": 240.6,
-        "type": "estimate",
+        "type": "actual",
         "vintage": "2026-04"
       }
     ]
@@ -4809,7 +4857,7 @@
       {
         "year": 2024,
         "value": 6407.3,
-        "type": "estimate",
+        "type": "actual",
         "vintage": "2026-04"
       }
     ]
@@ -4884,7 +4932,7 @@
       {
         "year": 2024,
         "value": 5257.1,
-        "type": "estimate",
+        "type": "actual",
         "vintage": "2026-04"
       }
     ]
@@ -5039,7 +5087,7 @@
       {
         "year": 2024,
         "value": 15362,
-        "type": "estimate",
+        "type": "actual",
         "vintage": "2026-04"
       }
     ]
@@ -5061,61 +5109,61 @@
         "year": 2015,
         "value": 65.1,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2016,
         "value": 70.5,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2017,
         "value": 78.1,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2018,
         "value": 79,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2019,
         "value": 78.6,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2020,
         "value": 103,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2021,
         "value": 82.2,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2022,
         "value": 66.8,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2023,
         "value": 67.5,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2024,
         "value": 65.4,
         "type": "estimate",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2025,
@@ -5195,7 +5243,7 @@
       {
         "year": 2024,
         "value": 417072,
-        "type": "estimate",
+        "type": "actual",
         "vintage": "2026-04"
       }
     ]
@@ -5350,7 +5398,7 @@
       {
         "year": 2024,
         "value": 2,
-        "type": "estimate",
+        "type": "actual",
         "vintage": "2026-04"
       }
     ]
@@ -5425,7 +5473,7 @@
       {
         "year": 2024,
         "value": 8.7,
-        "type": "estimate",
+        "type": "actual",
         "vintage": "2026-04"
       },
       {
@@ -5506,7 +5554,7 @@
       {
         "year": 2024,
         "value": 56.85,
-        "type": "estimate",
+        "type": "actual",
         "vintage": "2026-04"
       },
       {
@@ -5532,7 +5580,7 @@
     "series": [
       {
         "year": 2015,
-        "value": 56,
+        "value": 56.04,
         "type": "actual",
         "vintage": "2026-04"
       },
@@ -5544,7 +5592,7 @@
       },
       {
         "year": 2017,
-        "value": 52.9,
+        "value": 52.94,
         "type": "actual",
         "vintage": "2026-04"
       },
@@ -5556,25 +5604,25 @@
       },
       {
         "year": 2019,
-        "value": 51,
+        "value": 51.04,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2020,
-        "value": 50.1,
+        "value": 50.11,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2021,
-        "value": 49.1,
+        "value": 49.06,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2022,
-        "value": 47.8,
+        "value": 47.75,
         "type": "actual",
         "vintage": "2026-04"
       },
@@ -5587,7 +5635,7 @@
       {
         "year": 2024,
         "value": 46.2,
-        "type": "estimate",
+        "type": "actual",
         "vintage": "2026-04"
       }
     ]
@@ -5662,7 +5710,7 @@
       {
         "year": 2024,
         "value": 128.5,
-        "type": "estimate",
+        "type": "actual",
         "vintage": "2026-04"
       }
     ]
@@ -5737,7 +5785,7 @@
       {
         "year": 2024,
         "value": 146551,
-        "type": "estimate",
+        "type": "actual",
         "vintage": "2026-04"
       }
     ]
@@ -5812,7 +5860,7 @@
       {
         "year": 2024,
         "value": 15707.3,
-        "type": "estimate",
+        "type": "actual",
         "vintage": "2026-04"
       }
     ]
@@ -5967,7 +6015,7 @@
       {
         "year": 2024,
         "value": 230996,
-        "type": "estimate",
+        "type": "actual",
         "vintage": "2026-04"
       }
     ]
@@ -5989,61 +6037,61 @@
         "year": 2015,
         "value": 41.2,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2016,
         "value": 75.4,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2017,
         "value": 73,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2018,
         "value": 68.6,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2019,
         "value": 84,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2020,
         "value": 146.4,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2021,
         "value": 115.8,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2022,
         "value": 111.7,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2023,
         "value": 97.7,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2024,
         "value": 88,
         "type": "estimate",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2025,
@@ -6123,7 +6171,7 @@
       {
         "year": 2024,
         "value": 634431,
-        "type": "estimate",
+        "type": "actual",
         "vintage": "2026-04"
       }
     ]
@@ -6278,7 +6326,7 @@
       {
         "year": 2024,
         "value": 33.1806,
-        "type": "estimate",
+        "type": "actual",
         "vintage": "2026-04"
       }
     ]
@@ -6322,7 +6370,7 @@
       },
       {
         "year": 2019,
-        "value": 7.75,
+        "value": 7.76,
         "type": "actual",
         "vintage": "2026-04"
       },
@@ -6353,7 +6401,7 @@
       {
         "year": 2024,
         "value": 7.62,
-        "type": "estimate",
+        "type": "actual",
         "vintage": "2026-04"
       },
       {
@@ -6415,7 +6463,7 @@
       },
       {
         "year": 2021,
-        "value": 53.24,
+        "value": 53.25,
         "type": "actual",
         "vintage": "2026-04"
       },
@@ -6434,7 +6482,7 @@
       {
         "year": 2024,
         "value": 53.84,
-        "type": "estimate",
+        "type": "actual",
         "vintage": "2026-04"
       },
       {
@@ -6466,25 +6514,25 @@
       },
       {
         "year": 2016,
-        "value": 52.7,
+        "value": 52.74,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2017,
-        "value": 52.2,
+        "value": 52.19,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2018,
-        "value": 51.7,
+        "value": 51.74,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2019,
-        "value": 51.4,
+        "value": 51.37,
         "type": "actual",
         "vintage": "2026-04"
       },
@@ -6496,26 +6544,26 @@
       },
       {
         "year": 2021,
-        "value": 50.8,
+        "value": 50.85,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2022,
-        "value": 50.6,
+        "value": 50.63,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2023,
-        "value": 50.5,
+        "value": 50.53,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2024,
-        "value": 50.5,
-        "type": "estimate",
+        "value": 50.46,
+        "type": "actual",
         "vintage": "2026-04"
       }
     ]
@@ -6590,7 +6638,7 @@
       {
         "year": 2024,
         "value": -37.6,
-        "type": "estimate",
+        "type": "actual",
         "vintage": "2026-04"
       }
     ]
@@ -6622,7 +6670,7 @@
       },
       {
         "year": 2017,
-        "value": 3039.3,
+        "value": 3039.4,
         "type": "actual",
         "vintage": "2026-04"
       },
@@ -6665,7 +6713,7 @@
       {
         "year": 2024,
         "value": 3704.2,
-        "type": "estimate",
+        "type": "actual",
         "vintage": "2026-04"
       }
     ]
@@ -6740,7 +6788,7 @@
       {
         "year": 2024,
         "value": 2621.6,
-        "type": "estimate",
+        "type": "actual",
         "vintage": "2026-04"
       }
     ]
@@ -6895,7 +6943,7 @@
       {
         "year": 2024,
         "value": 31604,
-        "type": "estimate",
+        "type": "actual",
         "vintage": "2026-04"
       }
     ]
@@ -6917,61 +6965,61 @@
         "year": 2015,
         "value": 90.1,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2016,
         "value": 81.6,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2017,
         "value": 70.3,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2018,
         "value": 68.5,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2019,
         "value": 62.7,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2020,
         "value": 89.5,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2021,
         "value": 86.6,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2022,
         "value": 79.3,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2023,
         "value": 74.5,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2024,
         "value": 75.1,
         "type": "estimate",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2025,
@@ -7051,7 +7099,7 @@
       {
         "year": 2024,
         "value": 117207,
-        "type": "estimate",
+        "type": "actual",
         "vintage": "2026-04"
       }
     ]
@@ -7206,7 +7254,7 @@
       {
         "year": 2024,
         "value": 2.7,
-        "type": "estimate",
+        "type": "actual",
         "vintage": "2026-04"
       }
     ]
@@ -7232,37 +7280,37 @@
       },
       {
         "year": 2016,
-        "value": 47.6,
+        "value": 47.65,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2017,
-        "value": 47.4,
+        "value": 47.41,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2018,
-        "value": 47.1,
+        "value": 47.14,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2019,
-        "value": 47,
+        "value": 46.99,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2020,
-        "value": 46.8,
+        "value": 46.81,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2021,
-        "value": 46.6,
+        "value": 46.62,
         "type": "actual",
         "vintage": "2026-04"
       },
@@ -7274,14 +7322,14 @@
       },
       {
         "year": 2023,
-        "value": 46.4,
+        "value": 46.45,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2024,
-        "value": 46.4,
-        "type": "estimate",
+        "value": 46.37,
+        "type": "actual",
         "vintage": "2026-04"
       }
     ]
@@ -7356,7 +7404,7 @@
       {
         "year": 2024,
         "value": 163.9,
-        "type": "estimate",
+        "type": "actual",
         "vintage": "2026-04"
       }
     ]
@@ -7424,14 +7472,14 @@
       },
       {
         "year": 2023,
-        "value": 6561.4,
+        "value": 6561.5,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2024,
         "value": 6882.5,
-        "type": "estimate",
+        "type": "actual",
         "vintage": "2026-04"
       }
     ]
@@ -7463,7 +7511,7 @@
       },
       {
         "year": 2017,
-        "value": 5408.4,
+        "value": 5408.5,
         "type": "actual",
         "vintage": "2026-04"
       },
@@ -7506,7 +7554,7 @@
       {
         "year": 2024,
         "value": 5962.7,
-        "type": "estimate",
+        "type": "actual",
         "vintage": "2026-04"
       }
     ]
@@ -7661,7 +7709,7 @@
       {
         "year": 2024,
         "value": 38290,
-        "type": "estimate",
+        "type": "actual",
         "vintage": "2026-04"
       }
     ]
@@ -7683,61 +7731,61 @@
         "year": 2015,
         "value": 60.6,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2016,
         "value": 60.2,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2017,
         "value": 59.9,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2018,
         "value": 60.3,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2019,
         "value": 62.1,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2020,
         "value": 94.4,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2021,
         "value": 81.9,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2022,
         "value": 73.9,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2023,
         "value": 75.2,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2024,
         "value": 76.7,
         "type": "estimate",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2025,
@@ -7817,7 +7865,7 @@
       {
         "year": 2024,
         "value": 179744,
-        "type": "estimate",
+        "type": "actual",
         "vintage": "2026-04"
       }
     ]
@@ -7972,7 +8020,7 @@
       {
         "year": 2024,
         "value": 2.7,
-        "type": "estimate",
+        "type": "actual",
         "vintage": "2026-04"
       }
     ]
@@ -8047,7 +8095,7 @@
       {
         "year": 2024,
         "value": 10.2,
-        "type": "estimate",
+        "type": "actual",
         "vintage": "2026-04"
       },
       {
@@ -8128,7 +8176,7 @@
       {
         "year": 2024,
         "value": 68.23,
-        "type": "estimate",
+        "type": "actual",
         "vintage": "2026-04"
       },
       {
@@ -8154,49 +8202,49 @@
     "series": [
       {
         "year": 2015,
-        "value": 40.6,
+        "value": 40.58,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2016,
-        "value": 39.7,
+        "value": 39.73,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2017,
-        "value": 39.1,
+        "value": 39.05,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2018,
-        "value": 38.5,
+        "value": 38.54,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2019,
-        "value": 38.1,
+        "value": 38.13,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2020,
-        "value": 37.8,
+        "value": 37.82,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2021,
-        "value": 37.5,
+        "value": 37.53,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2022,
-        "value": 37.3,
+        "value": 37.33,
         "type": "actual",
         "vintage": "2026-04"
       },
@@ -8208,8 +8256,8 @@
       },
       {
         "year": 2024,
-        "value": 37.3,
-        "type": "estimate",
+        "value": 37.28,
+        "type": "actual",
         "vintage": "2026-04"
       }
     ]
@@ -8284,7 +8332,7 @@
       {
         "year": 2024,
         "value": 186.6,
-        "type": "estimate",
+        "type": "actual",
         "vintage": "2026-04"
       }
     ]
@@ -8359,7 +8407,7 @@
       {
         "year": 2024,
         "value": 5960.6,
-        "type": "estimate",
+        "type": "actual",
         "vintage": "2026-04"
       }
     ]
@@ -8434,7 +8482,7 @@
       {
         "year": 2024,
         "value": 4705.5,
-        "type": "estimate",
+        "type": "actual",
         "vintage": "2026-04"
       }
     ]
@@ -8589,7 +8637,7 @@
       {
         "year": 2024,
         "value": 63565,
-        "type": "estimate",
+        "type": "actual",
         "vintage": "2026-04"
       }
     ]
@@ -8611,61 +8659,61 @@
         "year": 2015,
         "value": 92.1,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2016,
         "value": 83.1,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2017,
         "value": 88.2,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2018,
         "value": 84.3,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2019,
         "value": 81.6,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2020,
         "value": 100.5,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2021,
         "value": 93,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2022,
         "value": 82.4,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2023,
         "value": 74.5,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2024,
         "value": 71.8,
         "type": "estimate",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2025,
@@ -8745,7 +8793,7 @@
       {
         "year": 2024,
         "value": 93772,
-        "type": "estimate",
+        "type": "actual",
         "vintage": "2026-04"
       }
     ]
@@ -8900,7 +8948,7 @@
       {
         "year": 2024,
         "value": 2.7,
-        "type": "estimate",
+        "type": "actual",
         "vintage": "2026-04"
       }
     ]
@@ -8920,62 +8968,62 @@
     "series": [
       {
         "year": 2015,
-        "value": 41.4,
+        "value": 41.38,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2016,
-        "value": 41,
+        "value": 41.02,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2017,
-        "value": 40.9,
+        "value": 40.85,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2018,
-        "value": 40.7,
+        "value": 40.68,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2019,
-        "value": 40.6,
+        "value": 40.61,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2020,
-        "value": 40.8,
+        "value": 40.78,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2021,
-        "value": 41.1,
+        "value": 41.09,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2022,
-        "value": 41.4,
+        "value": 41.45,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2023,
-        "value": 41.8,
+        "value": 41.76,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2024,
-        "value": 42,
-        "type": "estimate",
+        "value": 42.01,
+        "type": "actual",
         "vintage": "2026-04"
       }
     ]
@@ -9050,7 +9098,7 @@
       {
         "year": 2024,
         "value": 245.7,
-        "type": "estimate",
+        "type": "actual",
         "vintage": "2026-04"
       }
     ]
@@ -9124,8 +9172,8 @@
       },
       {
         "year": 2024,
-        "value": 3030.4,
-        "type": "estimate",
+        "value": 3030.5,
+        "type": "actual",
         "vintage": "2026-04"
       }
     ]
@@ -9200,7 +9248,7 @@
       {
         "year": 2024,
         "value": 2306.8,
-        "type": "estimate",
+        "type": "actual",
         "vintage": "2026-04"
       }
     ]
@@ -9355,7 +9403,7 @@
       {
         "year": 2024,
         "value": 64694,
-        "type": "estimate",
+        "type": "actual",
         "vintage": "2026-04"
       }
     ]
@@ -9377,61 +9425,61 @@
         "year": 2015,
         "value": 62.2,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2016,
         "value": 57.4,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2017,
         "value": 56.2,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2018,
         "value": 54.7,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2019,
         "value": 57.2,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2020,
         "value": 71.7,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2021,
         "value": 73,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2022,
         "value": 64.5,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2023,
         "value": 60,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2024,
         "value": 58.1,
         "type": "estimate",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2025,
@@ -9511,7 +9559,7 @@
       {
         "year": 2024,
         "value": 46843,
-        "type": "estimate",
+        "type": "actual",
         "vintage": "2026-04"
       }
     ]
@@ -9666,7 +9714,7 @@
       {
         "year": 2024,
         "value": 2.7,
-        "type": "estimate",
+        "type": "actual",
         "vintage": "2026-04"
       }
     ]
@@ -9686,62 +9734,62 @@
     "series": [
       {
         "year": 2015,
-        "value": 39.4,
+        "value": 39.37,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2016,
-        "value": 39,
+        "value": 38.99,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2017,
-        "value": 38.9,
+        "value": 38.92,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2018,
-        "value": 39.1,
+        "value": 39.08,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2019,
-        "value": 39.4,
+        "value": 39.42,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2020,
-        "value": 39.9,
+        "value": 39.86,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2021,
-        "value": 40.2,
+        "value": 40.22,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2022,
-        "value": 40.5,
+        "value": 40.48,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2023,
-        "value": 40.9,
+        "value": 40.91,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2024,
-        "value": 41.7,
-        "type": "estimate",
+        "value": 41.67,
+        "type": "actual",
         "vintage": "2026-04"
       }
     ]
@@ -9816,7 +9864,7 @@
       {
         "year": 2024,
         "value": 42.1,
-        "type": "estimate",
+        "type": "actual",
         "vintage": "2026-04"
       }
     ]
@@ -9891,7 +9939,7 @@
       {
         "year": 2024,
         "value": 1860,
-        "type": "estimate",
+        "type": "actual",
         "vintage": "2026-04"
       }
     ]
@@ -9947,7 +9995,7 @@
       },
       {
         "year": 2021,
-        "value": 1566.2,
+        "value": 1566.3,
         "type": "actual",
         "vintage": "2026-04"
       },
@@ -9966,7 +10014,7 @@
       {
         "year": 2024,
         "value": 1829,
-        "type": "estimate",
+        "type": "actual",
         "vintage": "2026-04"
       }
     ]
@@ -10121,7 +10169,7 @@
       {
         "year": 2024,
         "value": 28094,
-        "type": "estimate",
+        "type": "actual",
         "vintage": "2026-04"
       }
     ]
@@ -10143,61 +10191,61 @@
         "year": 2015,
         "value": 68.2,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2016,
         "value": 76.9,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2017,
         "value": 84.2,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2018,
         "value": 85.7,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2019,
         "value": 97.8,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2020,
         "value": 118.4,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2021,
         "value": 116.3,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2022,
         "value": 110,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2023,
         "value": 101.3,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2024,
         "value": 108.2,
         "type": "estimate",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2025,
@@ -10277,7 +10325,7 @@
       {
         "year": 2024,
         "value": 66205,
-        "type": "estimate",
+        "type": "actual",
         "vintage": "2026-04"
       }
     ]
@@ -10432,7 +10480,7 @@
       {
         "year": 2024,
         "value": 2.7,
-        "type": "estimate",
+        "type": "actual",
         "vintage": "2026-04"
       }
     ]
@@ -10452,7 +10500,7 @@
     "series": [
       {
         "year": 2015,
-        "value": 45.6,
+        "value": 45.61,
         "type": "actual",
         "vintage": "2026-04"
       },
@@ -10464,50 +10512,50 @@
       },
       {
         "year": 2017,
-        "value": 46,
+        "value": 46.02,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2018,
-        "value": 45.6,
+        "value": 45.59,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2019,
-        "value": 45.3,
+        "value": 45.26,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2020,
-        "value": 45,
+        "value": 44.99,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2021,
-        "value": 44.8,
+        "value": 44.79,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2022,
-        "value": 44.7,
+        "value": 44.67,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2023,
-        "value": 44.6,
+        "value": 44.62,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2024,
-        "value": 44.6,
-        "type": "estimate",
+        "value": 44.57,
+        "type": "actual",
         "vintage": "2026-04"
       }
     ]
@@ -10582,7 +10630,7 @@
       {
         "year": 2024,
         "value": 60,
-        "type": "estimate",
+        "type": "actual",
         "vintage": "2026-04"
       }
     ]
@@ -10657,7 +10705,7 @@
       {
         "year": 2024,
         "value": 3124.5,
-        "type": "estimate",
+        "type": "actual",
         "vintage": "2026-04"
       }
     ]
@@ -10732,7 +10780,7 @@
       {
         "year": 2024,
         "value": 2654.9,
-        "type": "estimate",
+        "type": "actual",
         "vintage": "2026-04"
       }
     ]
@@ -10887,7 +10935,7 @@
       {
         "year": 2024,
         "value": 31053,
-        "type": "estimate",
+        "type": "actual",
         "vintage": "2026-04"
       }
     ]
@@ -10909,61 +10957,61 @@
         "year": 2015,
         "value": 76,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2016,
         "value": 78.1,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2017,
         "value": 69.5,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2018,
         "value": 69.3,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2019,
         "value": 68,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2020,
         "value": 81.7,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2021,
         "value": 88.3,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2022,
         "value": 88.6,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2023,
         "value": 91.3,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2024,
         "value": 102.8,
         "type": "estimate",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2025,
@@ -11043,7 +11091,7 @@
       {
         "year": 2024,
         "value": 100616,
-        "type": "estimate",
+        "type": "actual",
         "vintage": "2026-04"
       }
     ]
@@ -11198,7 +11246,7 @@
       {
         "year": 2024,
         "value": 2.7,
-        "type": "estimate",
+        "type": "actual",
         "vintage": "2026-04"
       }
     ]
@@ -11236,7 +11284,7 @@
       },
       {
         "year": 2018,
-        "value": 19,
+        "value": 19.01,
         "type": "actual",
         "vintage": "2026-04"
       },
@@ -11273,7 +11321,7 @@
       {
         "year": 2024,
         "value": 18.09,
-        "type": "estimate",
+        "type": "actual",
         "vintage": "2026-04"
       },
       {
@@ -11354,7 +11402,7 @@
       {
         "year": 2024,
         "value": 68.04,
-        "type": "estimate",
+        "type": "actual",
         "vintage": "2026-04"
       },
       {
@@ -11380,62 +11428,62 @@
     "series": [
       {
         "year": 2015,
-        "value": 49.8,
+        "value": 49.76,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2016,
-        "value": 49.5,
+        "value": 49.49,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2017,
-        "value": 49.3,
+        "value": 49.27,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2018,
-        "value": 49.2,
+        "value": 49.18,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2019,
-        "value": 49.3,
+        "value": 49.26,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2020,
-        "value": 49.3,
+        "value": 49.29,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2021,
-        "value": 49.4,
+        "value": 49.35,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2022,
-        "value": 49.6,
+        "value": 49.58,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2023,
-        "value": 49.7,
+        "value": 49.72,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2024,
-        "value": 49.7,
-        "type": "estimate",
+        "value": 49.66,
+        "type": "actual",
         "vintage": "2026-04"
       }
     ]
@@ -11510,7 +11558,7 @@
       {
         "year": 2024,
         "value": 138.9,
-        "type": "estimate",
+        "type": "actual",
         "vintage": "2026-04"
       }
     ]
@@ -11585,7 +11633,7 @@
       {
         "year": 2024,
         "value": 1745.4,
-        "type": "estimate",
+        "type": "actual",
         "vintage": "2026-04"
       }
     ]
@@ -11660,7 +11708,7 @@
       {
         "year": 2024,
         "value": 1622.6,
-        "type": "estimate",
+        "type": "actual",
         "vintage": "2026-04"
       }
     ]
@@ -11735,7 +11783,7 @@
       {
         "year": 2024,
         "value": 5.64,
-        "type": "estimate",
+        "type": "actual",
         "vintage": "2026-04"
       }
     ]
@@ -11810,7 +11858,7 @@
       {
         "year": 2024,
         "value": 37507,
-        "type": "estimate",
+        "type": "actual",
         "vintage": "2026-04"
       }
     ]
@@ -11885,7 +11933,7 @@
       {
         "year": 2024,
         "value": 46535,
-        "type": "estimate",
+        "type": "actual",
         "vintage": "2026-04"
       }
     ]
@@ -11960,7 +12008,7 @@
       {
         "year": 2024,
         "value": 1,
-        "type": "estimate",
+        "type": "actual",
         "vintage": "2026-04"
       }
     ]
@@ -11980,62 +12028,62 @@
     "series": [
       {
         "year": 2015,
-        "value": 37.1,
+        "value": 37.14,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2016,
-        "value": 36.7,
+        "value": 36.73,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2017,
-        "value": 36.5,
+        "value": 36.53,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2018,
-        "value": 36.4,
+        "value": 36.45,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2019,
-        "value": 36.4,
+        "value": 36.44,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2020,
-        "value": 36.5,
+        "value": 36.53,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2021,
-        "value": 36.7,
+        "value": 36.71,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2022,
-        "value": 36.9,
+        "value": 36.94,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2023,
-        "value": 37.2,
+        "value": 37.21,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2024,
         "value": 37.6,
-        "type": "estimate",
+        "type": "actual",
         "vintage": "2026-04"
       }
     ]
@@ -12110,7 +12158,7 @@
       {
         "year": 2024,
         "value": 44,
-        "type": "estimate",
+        "type": "actual",
         "vintage": "2026-04"
       }
     ]
@@ -12461,7 +12509,7 @@
       {
         "year": 2024,
         "value": 74457,
-        "type": "estimate",
+        "type": "actual",
         "vintage": "2026-04"
       }
     ]
@@ -12563,7 +12611,7 @@
       {
         "year": 2024,
         "value": 0.8333,
-        "type": "estimate",
+        "type": "actual",
         "vintage": "2026-04"
       }
     ]
@@ -12583,19 +12631,19 @@
     "series": [
       {
         "year": 2015,
-        "value": 31.3,
+        "value": 31.27,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2016,
-        "value": 31.3,
+        "value": 31.28,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2017,
-        "value": 31.3,
+        "value": 31.32,
         "type": "actual",
         "vintage": "2026-04"
       },
@@ -12607,38 +12655,38 @@
       },
       {
         "year": 2019,
-        "value": 31.5,
+        "value": 31.46,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2020,
-        "value": 31.4,
+        "value": 31.44,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2021,
-        "value": 31.8,
+        "value": 31.77,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2022,
-        "value": 32.4,
+        "value": 32.44,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2023,
-        "value": 33,
+        "value": 33.04,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2024,
-        "value": 33.7,
-        "type": "estimate",
+        "value": 33.66,
+        "type": "actual",
         "vintage": "2026-04"
       }
     ]
@@ -12713,7 +12761,7 @@
       {
         "year": 2024,
         "value": 3177.4,
-        "type": "estimate",
+        "type": "actual",
         "vintage": "2026-04"
       }
     ]
@@ -12788,7 +12836,7 @@
       {
         "year": 2024,
         "value": 39471,
-        "type": "estimate",
+        "type": "actual",
         "vintage": "2026-04"
       }
     ]
@@ -12808,62 +12856,62 @@
     "series": [
       {
         "year": 2015,
-        "value": 35.6,
+        "value": 35.59,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2016,
-        "value": 35.6,
+        "value": 35.63,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2017,
-        "value": 35.7,
+        "value": 35.68,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2018,
-        "value": 34.9,
+        "value": 34.95,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2019,
-        "value": 34.3,
+        "value": 34.35,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2020,
-        "value": 33.9,
+        "value": 33.91,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2021,
-        "value": 33.4,
+        "value": 33.44,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2022,
-        "value": 32.9,
+        "value": 32.89,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2023,
-        "value": 32.2,
+        "value": 32.17,
         "type": "actual",
         "vintage": "2026-04"
       },
       {
         "year": 2024,
-        "value": 31.8,
-        "type": "estimate",
+        "value": 31.78,
+        "type": "actual",
         "vintage": "2026-04"
       }
     ]
@@ -12938,7 +12986,7 @@
       {
         "year": 2024,
         "value": 53598.7,
-        "type": "estimate",
+        "type": "actual",
         "vintage": "2026-04"
       }
     ]
@@ -14184,61 +14232,61 @@
         "year": 2015,
         "value": -289,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2016,
         "value": -206,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2017,
         "value": -189,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2018,
         "value": -201,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2019,
         "value": -60,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2020,
         "value": -277,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2021,
         "value": -470,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2022,
         "value": -543,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2023,
         "value": -563,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2024,
         "value": -296,
         "type": "estimate",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2025,
@@ -14724,61 +14772,61 @@
         "year": 2015,
         "value": -430,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2016,
         "value": -43,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2017,
         "value": -397,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2018,
         "value": -235,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2019,
         "value": -303,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2020,
         "value": -157,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2021,
         "value": 149,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2022,
         "value": -136,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2023,
         "value": 569,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2024,
         "value": 645,
         "type": "estimate",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2025,
@@ -15218,61 +15266,61 @@
         "year": 2015,
         "value": -1478,
         "type": "actual",
-        "vintage": "2024"
+        "vintage": "2026-04"
       },
       {
         "year": 2016,
         "value": -1473,
         "type": "actual",
-        "vintage": "2024"
+        "vintage": "2026-04"
       },
       {
         "year": 2017,
         "value": -1653,
         "type": "actual",
-        "vintage": "2024"
+        "vintage": "2026-04"
       },
       {
         "year": 2018,
         "value": -1199,
         "type": "actual",
-        "vintage": "2024"
+        "vintage": "2026-04"
       },
       {
         "year": 2019,
         "value": -281,
         "type": "actual",
-        "vintage": "2024"
+        "vintage": "2026-04"
       },
       {
         "year": 2020,
         "value": -2280,
         "type": "actual",
-        "vintage": "2024"
+        "vintage": "2026-04"
       },
       {
         "year": 2021,
         "value": -2434,
         "type": "actual",
-        "vintage": "2024"
+        "vintage": "2026-04"
       },
       {
         "year": 2022,
         "value": -1233,
         "type": "actual",
-        "vintage": "2024"
+        "vintage": "2026-04"
       },
       {
         "year": 2023,
         "value": -1069,
         "type": "actual",
-        "vintage": "2024"
+        "vintage": "2026-04"
       },
       {
         "year": 2024,
         "value": -1206,
         "type": "estimate",
-        "vintage": "2024"
+        "vintage": "2026-04"
       },
       {
         "year": 2025,
@@ -15444,71 +15492,61 @@
         "year": 2015,
         "value": -223.7,
         "type": "derived",
-        "vintage": "2025",
-        "sourceNote": "-5.1% of GDP × 4,386mn nominal GDP"
+        "vintage": "2026-04"
       },
       {
         "year": 2016,
         "value": -201.6,
         "type": "derived",
-        "vintage": "2025",
-        "sourceNote": "-4.5% of GDP × 4,479mn nominal GDP"
+        "vintage": "2026-04"
       },
       {
         "year": 2017,
         "value": -158.6,
         "type": "derived",
-        "vintage": "2025",
-        "sourceNote": "-3.5% of GDP × 4,532mn nominal GDP"
+        "vintage": "2026-04"
       },
       {
         "year": 2018,
         "value": -64,
         "type": "derived",
-        "vintage": "2025",
-        "sourceNote": "-1.4% of GDP × 4,572mn nominal GDP"
+        "vintage": "2026-04"
       },
       {
         "year": 2019,
         "value": -138.1,
         "type": "derived",
-        "vintage": "2025",
-        "sourceNote": "-2.9% of GDP × 4,762mn nominal GDP"
+        "vintage": "2026-04"
       },
       {
         "year": 2020,
         "value": -352.1,
         "type": "derived",
-        "vintage": "2025",
-        "sourceNote": "-8.6% of GDP × 4,095mn nominal GDP"
+        "vintage": "2026-04"
       },
       {
         "year": 2021,
         "value": -160.3,
         "type": "derived",
-        "vintage": "2025",
-        "sourceNote": "-3.3% of GDP × 4,857mn nominal GDP"
+        "vintage": "2026-04"
       },
       {
         "year": 2022,
         "value": -56.9,
         "type": "derived",
-        "vintage": "2025",
-        "sourceNote": "-1% of GDP × 5,693mn nominal GDP"
+        "vintage": "2026-04"
       },
       {
         "year": 2023,
         "value": -146.5,
         "type": "derived",
-        "vintage": "2025",
-        "sourceNote": "-2.4% of GDP × 6,105mn nominal GDP"
+        "vintage": "2026-04"
       },
       {
         "year": 2024,
         "value": -96.1,
         "type": "derived",
-        "vintage": "2025",
-        "sourceNote": "-1.5% of GDP × 6,407mn nominal GDP"
+        "vintage": "2026-04"
       }
     ],
     "seriesNote": "[FALLBACK — IMF] Level derived from WEO overall-balance ratio applied to nominal GDP; national-source detail (revenue/expenditure) not yet collected."
@@ -15530,61 +15568,61 @@
         "year": 2015,
         "value": -106,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2016,
         "value": -94,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2017,
         "value": -129,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2018,
         "value": -149,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2019,
         "value": -125,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2020,
         "value": -168,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2021,
         "value": -161,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2022,
         "value": -148,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2023,
         "value": -271,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2024,
         "value": -296,
         "type": "estimate",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2025,
@@ -15612,61 +15650,61 @@
         "year": 2015,
         "value": 29,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2016,
         "value": -36,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2017,
         "value": -118,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2018,
         "value": -233,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2019,
         "value": -112,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2020,
         "value": -220,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2021,
         "value": -282,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2022,
         "value": -280,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2023,
         "value": -265,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2024,
         "value": -161,
         "type": "estimate",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2025,
@@ -15694,71 +15732,61 @@
         "year": 2015,
         "value": 147.3,
         "type": "derived",
-        "vintage": "2025",
-        "sourceNote": "5.7% of GDP × 2,584mn nominal GDP"
+        "vintage": "2026-04"
       },
       {
         "year": 2016,
         "value": 103.3,
         "type": "derived",
-        "vintage": "2025",
-        "sourceNote": "3.8% of GDP × 2,718mn nominal GDP"
+        "vintage": "2026-04"
       },
       {
         "year": 2017,
         "value": 48.5,
         "type": "derived",
-        "vintage": "2025",
-        "sourceNote": "1.7% of GDP × 2,854mn nominal GDP"
+        "vintage": "2026-04"
       },
       {
         "year": 2018,
         "value": 52.3,
         "type": "derived",
-        "vintage": "2025",
-        "sourceNote": "1.8% of GDP × 2,907mn nominal GDP"
+        "vintage": "2026-04"
       },
       {
         "year": 2019,
         "value": -20.9,
         "type": "derived",
-        "vintage": "2025",
-        "sourceNote": "-0.7% of GDP × 2,991mn nominal GDP"
+        "vintage": "2026-04"
       },
       {
         "year": 2020,
         "value": -74,
         "type": "derived",
-        "vintage": "2025",
-        "sourceNote": "-3.1% of GDP × 2,387mn nominal GDP"
+        "vintage": "2026-04"
       },
       {
         "year": 2021,
         "value": 127.5,
         "type": "derived",
-        "vintage": "2025",
-        "sourceNote": "5.5% of GDP × 2,318mn nominal GDP"
+        "vintage": "2026-04"
       },
       {
         "year": 2022,
         "value": -111.3,
         "type": "derived",
-        "vintage": "2025",
-        "sourceNote": "-4.2% of GDP × 2,650mn nominal GDP"
+        "vintage": "2026-04"
       },
       {
         "year": 2023,
         "value": 5.7,
         "type": "derived",
-        "vintage": "2025",
-        "sourceNote": "0.2% of GDP × 2,850mn nominal GDP"
+        "vintage": "2026-04"
       },
       {
         "year": 2024,
         "value": -342.4,
         "type": "derived",
-        "vintage": "2025",
-        "sourceNote": "-11.3% of GDP × 3,030mn nominal GDP"
+        "vintage": "2026-04"
       }
     ],
     "seriesNote": "[FALLBACK — IMF] Level derived from WEO overall-balance ratio applied to nominal GDP; national-source detail (revenue/expenditure) not yet collected."
@@ -15780,71 +15808,61 @@
         "year": 2015,
         "value": 179.5,
         "type": "derived",
-        "vintage": "2025",
-        "sourceNote": "11.4% of GDP × 1,575mn nominal GDP"
+        "vintage": "2026-04"
       },
       {
         "year": 2016,
         "value": 191.9,
         "type": "derived",
-        "vintage": "2025",
-        "sourceNote": "11.6% of GDP × 1,654mn nominal GDP"
+        "vintage": "2026-04"
       },
       {
         "year": 2017,
         "value": -50.2,
         "type": "derived",
-        "vintage": "2025",
-        "sourceNote": "-3.3% of GDP × 1,521mn nominal GDP"
+        "vintage": "2026-04"
       },
       {
         "year": 2018,
         "value": -291.8,
         "type": "derived",
-        "vintage": "2025",
-        "sourceNote": "-17.2% of GDP × 1,696mn nominal GDP"
+        "vintage": "2026-04"
       },
       {
         "year": 2019,
         "value": -151.3,
         "type": "derived",
-        "vintage": "2025",
-        "sourceNote": "-8.7% of GDP × 1,740mn nominal GDP"
+        "vintage": "2026-04"
       },
       {
         "year": 2020,
         "value": -107.1,
         "type": "derived",
-        "vintage": "2025",
-        "sourceNote": "-7.5% of GDP × 1,428mn nominal GDP"
+        "vintage": "2026-04"
       },
       {
         "year": 2021,
         "value": -124.6,
         "type": "derived",
-        "vintage": "2025",
-        "sourceNote": "-8.2% of GDP × 1,520mn nominal GDP"
+        "vintage": "2026-04"
       },
       {
         "year": 2022,
         "value": -121.1,
         "type": "derived",
-        "vintage": "2025",
-        "sourceNote": "-7.2% of GDP × 1,682mn nominal GDP"
+        "vintage": "2026-04"
       },
       {
         "year": 2023,
         "value": -80.1,
         "type": "derived",
-        "vintage": "2025",
-        "sourceNote": "-4.5% of GDP × 1,780mn nominal GDP"
+        "vintage": "2026-04"
       },
       {
         "year": 2024,
         "value": -126.5,
         "type": "derived",
-        "vintage": "2025",
-        "sourceNote": "-6.8% of GDP × 1,860mn nominal GDP"
+        "vintage": "2026-04"
       }
     ],
     "seriesNote": "[FALLBACK — IMF] Level derived from WEO overall-balance ratio applied to nominal GDP; national-source detail (revenue/expenditure) not yet collected."
@@ -15866,61 +15884,61 @@
         "year": 2015,
         "value": -38,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2016,
         "value": -52,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2017,
         "value": -58,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2018,
         "value": -259,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2019,
         "value": -233,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2020,
         "value": -186,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2021,
         "value": -186,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2022,
         "value": -165,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2023,
         "value": -266,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2024,
         "value": -260,
         "type": "estimate",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2025,
@@ -15948,61 +15966,61 @@
         "year": 2015,
         "value": -123,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2016,
         "value": -107,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2017,
         "value": -100,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2018,
         "value": -91,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2019,
         "value": -22,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2020,
         "value": -137,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2021,
         "value": -206,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2022,
         "value": -199,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2023,
         "value": -191,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2024,
         "value": -193,
         "type": "estimate",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2025,
@@ -16030,61 +16048,61 @@
         "year": 2015,
         "value": -175,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2016,
         "value": -163,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2017,
         "value": -158,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2018,
         "value": -151,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2019,
         "value": -185,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2020,
         "value": -128,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2021,
         "value": -158,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2022,
         "value": -236,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2023,
         "value": -31,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2024,
         "value": -61,
         "type": "estimate",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2025,
@@ -16112,71 +16130,61 @@
         "year": 2015,
         "value": -1453.7,
         "type": "derived",
-        "vintage": "2025",
-        "sourceNote": "-8.3% of GDP × 17,515mn nominal GDP"
+        "vintage": "2026-04"
       },
       {
         "year": 2016,
         "value": -2107.6,
         "type": "derived",
-        "vintage": "2025",
-        "sourceNote": "-10.2% of GDP × 20,663mn nominal GDP"
+        "vintage": "2026-04"
       },
       {
         "year": 2017,
         "value": -2312.8,
         "type": "derived",
-        "vintage": "2025",
-        "sourceNote": "-8.6% of GDP × 26,893mn nominal GDP"
+        "vintage": "2026-04"
       },
       {
         "year": 2018,
         "value": -2564.7,
         "type": "derived",
-        "vintage": "2025",
-        "sourceNote": "-8.6% of GDP × 29,822mn nominal GDP"
+        "vintage": "2026-04"
       },
       {
         "year": 2019,
         "value": -6409.9,
         "type": "derived",
-        "vintage": "2025",
-        "sourceNote": "-20.2% of GDP × 31,732mn nominal GDP"
+        "vintage": "2026-04"
       },
       {
         "year": 2020,
         "value": -4646.3,
         "type": "derived",
-        "vintage": "2025",
-        "sourceNote": "-12% of GDP × 38,720mn nominal GDP"
+        "vintage": "2026-04"
       },
       {
         "year": 2021,
         "value": -3489.9,
         "type": "derived",
-        "vintage": "2025",
-        "sourceNote": "-5.7% of GDP × 61,226mn nominal GDP"
+        "vintage": "2026-04"
       },
       {
         "year": 2022,
         "value": -2435.9,
         "type": "derived",
-        "vintage": "2025",
-        "sourceNote": "-2.6% of GDP × 93,687mn nominal GDP"
+        "vintage": "2026-04"
       },
       {
         "year": 2023,
         "value": -2171.1,
         "type": "derived",
-        "vintage": "2025",
-        "sourceNote": "-1.7% of GDP × 127,711mn nominal GDP"
+        "vintage": "2026-04"
       },
       {
         "year": 2024,
         "value": -4982.7,
         "type": "derived",
-        "vintage": "2025",
-        "sourceNote": "-3.4% of GDP × 146,551mn nominal GDP"
+        "vintage": "2026-04"
       }
     ],
     "seriesNote": "[FALLBACK — IMF] Level derived from WEO overall-balance ratio applied to nominal GDP; national-source detail (revenue/expenditure) not yet collected."
@@ -16198,61 +16206,61 @@
         "year": 2015,
         "value": -786,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2016,
         "value": -161,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2017,
         "value": 69,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2018,
         "value": -119,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2019,
         "value": -448,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2020,
         "value": 260,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2021,
         "value": -79,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2022,
         "value": 51,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2023,
         "value": -128,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2024,
         "value": -570,
         "type": "estimate",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2025,
@@ -16280,71 +16288,61 @@
         "year": 2015,
         "value": -21.5,
         "type": "derived",
-        "vintage": "2025",
-        "sourceNote": "-0.8% of GDP × 2,692mn nominal GDP"
+        "vintage": "2026-04"
       },
       {
         "year": 2016,
         "value": 77.4,
         "type": "derived",
-        "vintage": "2025",
-        "sourceNote": "2.7% of GDP × 2,866mn nominal GDP"
+        "vintage": "2026-04"
       },
       {
         "year": 2017,
         "value": 91.2,
         "type": "derived",
-        "vintage": "2025",
-        "sourceNote": "3% of GDP × 3,039mn nominal GDP"
+        "vintage": "2026-04"
       },
       {
         "year": 2018,
         "value": 154.3,
         "type": "derived",
-        "vintage": "2025",
-        "sourceNote": "4.9% of GDP × 3,150mn nominal GDP"
+        "vintage": "2026-04"
       },
       {
         "year": 2019,
         "value": 163.8,
         "type": "derived",
-        "vintage": "2025",
-        "sourceNote": "5% of GDP × 3,276mn nominal GDP"
+        "vintage": "2026-04"
       },
       {
         "year": 2020,
         "value": -126.8,
         "type": "derived",
-        "vintage": "2025",
-        "sourceNote": "-4.5% of GDP × 2,817mn nominal GDP"
+        "vintage": "2026-04"
       },
       {
         "year": 2021,
         "value": 9.1,
         "type": "derived",
-        "vintage": "2025",
-        "sourceNote": "0.3% of GDP × 3,030mn nominal GDP"
+        "vintage": "2026-04"
       },
       {
         "year": 2022,
         "value": 29.7,
         "type": "derived",
-        "vintage": "2025",
-        "sourceNote": "0.9% of GDP × 3,305mn nominal GDP"
+        "vintage": "2026-04"
       },
       {
         "year": 2023,
         "value": 285.1,
         "type": "derived",
-        "vintage": "2025",
-        "sourceNote": "7.9% of GDP × 3,608mn nominal GDP"
+        "vintage": "2026-04"
       },
       {
         "year": 2024,
         "value": 255.6,
         "type": "derived",
-        "vintage": "2025",
-        "sourceNote": "6.9% of GDP × 3,704mn nominal GDP"
+        "vintage": "2026-04"
       }
     ],
     "seriesNote": "[FALLBACK — IMF] Level derived from WEO overall-balance ratio applied to nominal GDP; national-source detail (revenue/expenditure) not yet collected."
@@ -16366,71 +16364,61 @@
         "year": 2015,
         "value": -58.6,
         "type": "derived",
-        "vintage": "2025",
-        "sourceNote": "-1.2% of GDP × 4,881mn nominal GDP"
+        "vintage": "2026-04"
       },
       {
         "year": 2016,
         "value": -75.7,
         "type": "derived",
-        "vintage": "2025",
-        "sourceNote": "-1.5% of GDP × 5,045mn nominal GDP"
+        "vintage": "2026-04"
       },
       {
         "year": 2017,
         "value": -113.3,
         "type": "derived",
-        "vintage": "2025",
-        "sourceNote": "-2.1% of GDP × 5,396mn nominal GDP"
+        "vintage": "2026-04"
       },
       {
         "year": 2018,
         "value": -66.8,
         "type": "derived",
-        "vintage": "2025",
-        "sourceNote": "-1.2% of GDP × 5,565mn nominal GDP"
+        "vintage": "2026-04"
       },
       {
         "year": 2019,
         "value": -164.1,
         "type": "derived",
-        "vintage": "2025",
-        "sourceNote": "-2.9% of GDP × 5,657mn nominal GDP"
+        "vintage": "2026-04"
       },
       {
         "year": 2020,
         "value": -465.5,
         "type": "derived",
-        "vintage": "2025",
-        "sourceNote": "-11.5% of GDP × 4,048mn nominal GDP"
+        "vintage": "2026-04"
       },
       {
         "year": 2021,
         "value": -272.2,
         "type": "derived",
-        "vintage": "2025",
-        "sourceNote": "-5.4% of GDP × 5,041mn nominal GDP"
+        "vintage": "2026-04"
       },
       {
         "year": 2022,
         "value": -158.1,
         "type": "derived",
-        "vintage": "2025",
-        "sourceNote": "-2.5% of GDP × 6,325mn nominal GDP"
+        "vintage": "2026-04"
       },
       {
         "year": 2023,
         "value": -210,
         "type": "derived",
-        "vintage": "2025",
-        "sourceNote": "-3.2% of GDP × 6,561mn nominal GDP"
+        "vintage": "2026-04"
       },
       {
         "year": 2024,
         "value": -123.9,
         "type": "derived",
-        "vintage": "2025",
-        "sourceNote": "-1.8% of GDP × 6,882mn nominal GDP"
+        "vintage": "2026-04"
       }
     ],
     "seriesNote": "[FALLBACK — IMF] Level derived from WEO overall-balance ratio applied to nominal GDP; national-source detail (revenue/expenditure) not yet collected."
@@ -16452,61 +16440,61 @@
         "year": 2015,
         "value": -9,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2016,
         "value": -118,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2017,
         "value": -38,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2018,
         "value": 30,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2019,
         "value": 70,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2020,
         "value": -284,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2021,
         "value": -194,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2022,
         "value": -77,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2023,
         "value": -52,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2024,
         "value": -40,
         "type": "estimate",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2025,
@@ -16534,71 +16522,61 @@
         "year": 2015,
         "value": -93.1,
         "type": "derived",
-        "vintage": "2025",
-        "sourceNote": "-2.4% of GDP × 3,881mn nominal GDP"
+        "vintage": "2026-04"
       },
       {
         "year": 2016,
         "value": -4,
         "type": "derived",
-        "vintage": "2025",
-        "sourceNote": "-0.1% of GDP × 4,022mn nominal GDP"
+        "vintage": "2026-04"
       },
       {
         "year": 2017,
         "value": -111.9,
         "type": "derived",
-        "vintage": "2025",
-        "sourceNote": "-2.7% of GDP × 4,144mn nominal GDP"
+        "vintage": "2026-04"
       },
       {
         "year": 2018,
         "value": -107.7,
         "type": "derived",
-        "vintage": "2025",
-        "sourceNote": "-2.4% of GDP × 4,486mn nominal GDP"
+        "vintage": "2026-04"
       },
       {
         "year": 2019,
         "value": -167.8,
         "type": "derived",
-        "vintage": "2025",
-        "sourceNote": "-3.6% of GDP × 4,661mn nominal GDP"
+        "vintage": "2026-04"
       },
       {
         "year": 2020,
         "value": -236.3,
         "type": "derived",
-        "vintage": "2025",
-        "sourceNote": "-6.2% of GDP × 3,811mn nominal GDP"
+        "vintage": "2026-04"
       },
       {
         "year": 2021,
         "value": -194.7,
         "type": "derived",
-        "vintage": "2025",
-        "sourceNote": "-4.5% of GDP × 4,326mn nominal GDP"
+        "vintage": "2026-04"
       },
       {
         "year": 2022,
         "value": -146.2,
         "type": "derived",
-        "vintage": "2025",
-        "sourceNote": "-2.9% of GDP × 5,040mn nominal GDP"
+        "vintage": "2026-04"
       },
       {
         "year": 2023,
         "value": -92.1,
         "type": "derived",
-        "vintage": "2025",
-        "sourceNote": "-1.7% of GDP × 5,416mn nominal GDP"
+        "vintage": "2026-04"
       },
       {
         "year": 2024,
         "value": 95.4,
         "type": "derived",
-        "vintage": "2025",
-        "sourceNote": "1.6% of GDP × 5,961mn nominal GDP"
+        "vintage": "2026-04"
       }
     ],
     "seriesNote": "[FALLBACK — IMF] Level derived from WEO overall-balance ratio applied to nominal GDP; national-source detail (revenue/expenditure) not yet collected."
@@ -16620,61 +16598,61 @@
         "year": 2015,
         "value": -78,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2016,
         "value": -122,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2017,
         "value": -108,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2018,
         "value": -63,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2019,
         "value": -53,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2020,
         "value": -96,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2021,
         "value": -29,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2022,
         "value": -104,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2023,
         "value": -142,
         "type": "actual",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2024,
         "value": -137,
         "type": "estimate",
-        "vintage": "2025"
+        "vintage": "2026-04"
       },
       {
         "year": 2025,
@@ -16702,71 +16680,61 @@
         "year": 2015,
         "value": -42.5,
         "type": "derived",
-        "vintage": "2025",
-        "sourceNote": "-2% of GDP × 2,124mn nominal GDP"
+        "vintage": "2026-04"
       },
       {
         "year": 2016,
         "value": 0,
         "type": "derived",
-        "vintage": "2025",
-        "sourceNote": "0% of GDP × 2,199mn nominal GDP"
+        "vintage": "2026-04"
       },
       {
         "year": 2017,
         "value": -36.5,
         "type": "derived",
-        "vintage": "2025",
-        "sourceNote": "-1.6% of GDP × 2,279mn nominal GDP"
+        "vintage": "2026-04"
       },
       {
         "year": 2018,
         "value": -38.2,
         "type": "derived",
-        "vintage": "2025",
-        "sourceNote": "-1.6% of GDP × 2,388mn nominal GDP"
+        "vintage": "2026-04"
       },
       {
         "year": 2019,
         "value": -83.6,
         "type": "derived",
-        "vintage": "2025",
-        "sourceNote": "-3.4% of GDP × 2,458mn nominal GDP"
+        "vintage": "2026-04"
       },
       {
         "year": 2020,
         "value": -137.7,
         "type": "derived",
-        "vintage": "2025",
-        "sourceNote": "-5.9% of GDP × 2,334mn nominal GDP"
+        "vintage": "2026-04"
       },
       {
         "year": 2021,
         "value": -172.8,
         "type": "derived",
-        "vintage": "2025",
-        "sourceNote": "-7.2% of GDP × 2,399mn nominal GDP"
+        "vintage": "2026-04"
       },
       {
         "year": 2022,
         "value": -251.1,
         "type": "derived",
-        "vintage": "2025",
-        "sourceNote": "-9.4% of GDP × 2,671mn nominal GDP"
+        "vintage": "2026-04"
       },
       {
         "year": 2023,
         "value": -361.9,
         "type": "derived",
-        "vintage": "2025",
-        "sourceNote": "-12.5% of GDP × 2,895mn nominal GDP"
+        "vintage": "2026-04"
       },
       {
         "year": 2024,
         "value": -499.9,
         "type": "derived",
-        "vintage": "2025",
-        "sourceNote": "-16% of GDP × 3,124mn nominal GDP"
+        "vintage": "2026-04"
       }
     ],
     "seriesNote": "[FALLBACK — IMF] Level derived from WEO overall-balance ratio × nominal GDP."

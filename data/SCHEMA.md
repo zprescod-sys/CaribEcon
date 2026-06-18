@@ -5,13 +5,19 @@ in scope but not yet collected — no accessible primary tier). One JSON array; 
 element is one (country, indicator) record holding a time series. This is the
 *rich* hub for all data on the page. This is the master dataset for macroeconomic indicators used by charts, exports, country profiles, and future analysis features. Other indicator files should not be manually maintained unless they are generated from this file.
 
-**Temporal coverage:** 2015–2025. The comparable spine (World Bank WDI) carries
-actuals to its publication frontier (typically 2024 — 2025 actuals do not yet
-exist); the IMF WEO series (`gross_govt_debt_pct_gdp`, `current_account`,
-`fiscal_balance`) carry IMF estimates/projections through 2025 (April 2026 WEO,
-vintage `2026-04`). 2025 points are tagged `projection`. Comparable growth/inflation
-top out at 2024 by source necessity — do not append IMF 2025 figures onto a
-World-Bank-sourced series (it would mix source families within one series).
+**Temporal coverage:** 2015–2025. **Comparable series always reflect the most recent
+available data** — when refreshed, the full series (all years) is re-pulled from the
+current World Bank / IMF release and overwritten; historical values are NOT pinned to
+the vintage at which they were first collected. The `vintage` field on each point
+records the source release the value came from (informational), not a freeze.
+- `gdp_growth`, `inflation` → IMF WEO (`NGDP_RPCH`, `PCPIPCH`) for all IMF-member
+  countries; KY/TC/VG (non-members) stay on World Bank. TT growth stays primary (MoF).
+- `gross_govt_debt_pct_gdp`, `current_account`, `fiscal_balance` → IMF WEO.
+- All other spine indicators → World Bank WDI.
+- 2024 IMF points are `estimate`, 2025 `projection` (latest WEO, vintage `2026-04`).
+  World Bank actuals top out at their publication frontier (typically 2024).
+- Never mix source families within one series (e.g. don't append an IMF year onto a
+  World-Bank-sourced series). Primary national series are left untouched on refresh.
 
 ## Record shape
 
