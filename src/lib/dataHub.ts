@@ -7,13 +7,27 @@ import type {
   NewsData, PublicationsData, DealsData
 } from './types';
 
-import indicatorsRaw from '../../data/indicators.json';
+import indicatorsRaw from '../../data/almanac-data.json';
+import indicatorMetaRaw from '../../data/indicator-meta.json';
 import budgetsRaw    from '../../data/budgets.json';
 import newsRaw       from '../../data/news.json';
 import publicationsRaw from '../../data/publications.json';
 import dealsRaw      from '../../data/deals.json';
 
 const indicators  = indicatorsRaw  as IndicatorsData;
+
+// Presentation policy per indicator slug (chartGroup / defaultChart / order).
+// Lives in data/indicator-meta.json, NOT on the data records — see SCHEMA.md.
+type IndicatorMetaEntry = { chartGroup: string; defaultChart: boolean; order: number };
+const indicatorMeta = indicatorMetaRaw as Record<string, IndicatorMetaEntry>;
+
+// Guard: warn at build time if the data and the meta file have drifted apart —
+// the exact failure mode (two stores diverging) this hub is meant to prevent.
+for (const slug of new Set(indicators.map(s => s.indicator))) {
+  if (!(slug in indicatorMeta)) {
+    console.warn(`[dataHub] indicator "${slug}" is in the data but missing from indicator-meta.json`);
+  }
+}
 const budgets     = budgetsRaw     as BudgetsData;
 const news        = newsRaw        as NewsData;
 const publications = publicationsRaw as PublicationsData;
@@ -56,15 +70,36 @@ export function getCountries(): Country[] {
   }));
 }
 
-// Returns all available indicator slugs with labels
-export function getIndicatorMeta(): { slug: string; label: string; unit: string }[] {
+export interface IndicatorMeta {
+  slug: string;
+  label: string;        // derived from the data records
+  unit: string;         // derived from the data records
+  chartGroup: string;   // from indicator-meta.json
+  defaultChart: boolean;
+  order: number;
+}
+
+// All indicators, label/unit derived from the data and merged with the
+// presentation policy in indicator-meta.json, sorted by display order.
+export function getIndicatorMeta(): IndicatorMeta[] {
   const seen = new Map<string, { label: string; unit: string }>();
   for (const s of indicators) {
     if (!seen.has(s.indicator)) {
       seen.set(s.indicator, { label: s.indicatorLabel, unit: s.unit });
     }
   }
-  return [...seen.entries()].map(([slug, meta]) => ({ slug, ...meta }));
+  return [...seen.entries()]
+    .map(([slug, meta]) => {
+      const m = indicatorMeta[slug] ?? { chartGroup: 'other', defaultChart: false, order: 999 };
+      return { slug, ...meta, ...m };
+    })
+    .sort((a, b) => a.order - b.order);
+}
+
+// The subset shown in public chart selectors (defaultChart: true). These are the
+// cross-country-comparable indicators; local-currency levels are export-only.
+export function getFeaturedIndicators(): IndicatorMeta[] {
+  return getIndicatorMeta().filter(m => m.defaultChart);
 }
 
 // Returns series for a specific country + indicator combo

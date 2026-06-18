@@ -1,33 +1,47 @@
 ---
 // Country multi-select + indicator selector.
-// Renders server-side; JS handles interactivity client-side.
+// Country chips replaced with a searchable multi-select dropdown.
 
-import { getCountries, getIndicatorMeta } from '../../lib/dataHub';
+import { getCountries, getFeaturedIndicators } from '../../lib/dataHub';
 
 const countries   = getCountries();
-const indicators  = getIndicatorMeta();
+const indicators  = getFeaturedIndicators();
 const defaultCountries  = ['GY', 'TT'];
 const defaultIndicator  = 'gdp_growth';
+
+const countriesJSON  = JSON.stringify(countries.map(c => ({ code: c.code, name: c.name, flag: c.flag ?? '' })));
+const defaultsJSON   = JSON.stringify(defaultCountries);
 ---
 
 <div class="chart-controls">
-  <!-- Country selector -->
-  <fieldset class="control-group" aria-label="Select countries">
-    <legend class="control-label mono">Countries</legend>
-    <div class="chip-row" id="country-chips">
-      {countries.map(c => (
-        <button
-          type="button"
-          class={`chip ${defaultCountries.includes(c.code) ? 'active' : ''}`}
-          data-country={c.code}
-          aria-pressed={defaultCountries.includes(c.code) ? 'true' : 'false'}
-        >
-          {c.flag && <span aria-hidden="true">{c.flag}</span>}
-          {c.name}
-        </button>
-      ))}
+  <!-- Country multi-select with search -->
+  <div class="control-group">
+    <span class="control-label mono" id="cc-label">Countries</span>
+    <div class="cc-wrapper" id="cc-wrapper">
+      <button
+        class="cc-btn"
+        id="cc-btn"
+        type="button"
+        aria-haspopup="listbox"
+        aria-expanded="false"
+        aria-labelledby="cc-label"
+      >
+        <span id="cc-display">Loading…</span>
+        <span class="cc-caret" aria-hidden="true">▾</span>
+      </button>
+      <div class="cc-dropdown" id="cc-dropdown" hidden>
+        <input
+          type="search"
+          id="cc-search"
+          class="cc-search mono"
+          placeholder="Search countries…"
+          autocomplete="off"
+          aria-label="Search countries"
+        />
+        <ul class="cc-list" id="cc-list" role="listbox" aria-multiselectable="true" aria-label="Countries"></ul>
+      </div>
     </div>
-  </fieldset>
+  </div>
 
   <!-- Indicator selector -->
   <div class="control-group">
@@ -47,30 +61,101 @@ const defaultIndicator  = 'gdp_growth';
   </div>
 </div>
 
+<div id="cc-data" data-countries={countriesJSON} data-defaults={defaultsJSON} hidden></div>
+
 <script>
-  const chips = document.querySelectorAll<HTMLButtonElement>('#country-chips .chip');
+  const dataEl     = document.getElementById('cc-data') as HTMLElement;
+  const btn        = document.getElementById('cc-btn') as HTMLButtonElement;
+  const display    = document.getElementById('cc-display') as HTMLElement;
+  const dropdown   = document.getElementById('cc-dropdown') as HTMLElement;
+  const searchInput = document.getElementById('cc-search') as HTMLInputElement;
+  const list       = document.getElementById('cc-list') as HTMLElement;
+
+  const countries: { code: string; name: string; flag: string }[] =
+    JSON.parse(dataEl.dataset.countries ?? '[]');
+  let selected: Set<string> = new Set(JSON.parse(dataEl.dataset.defaults ?? '[]'));
 
   function broadcastCountries() {
     document.dispatchEvent(new CustomEvent('countries-changed', {
-      detail: { countries: [...chips]
-        .filter(c => c.classList.contains('active'))
-        .map(c => c.dataset.country!) },
+      detail: { countries: [...selected] },
     }));
   }
 
-  chips.forEach(chip => {
-    chip.addEventListener('click', () => {
-      const activeChips = [...chips].filter(c => c.classList.contains('active'));
+  function updateDisplay() {
+    const names = countries
+      .filter(c => selected.has(c.code))
+      .map(c => c.name);
+    if (names.length === 0) {
+      display.textContent = 'None selected';
+    } else if (names.length <= 2) {
+      display.textContent = names.join(', ');
+    } else {
+      display.textContent = `${names.length} countries selected`;
+    }
+  }
 
-      // Cannot deselect the last active country
-      if (chip.classList.contains('active') && activeChips.length <= 1) return;
-
-      chip.classList.toggle('active');
-      chip.setAttribute('aria-pressed', chip.classList.contains('active') ? 'true' : 'false');
-      broadcastCountries();
+  function renderList(filter = '') {
+    const q = filter.toLowerCase();
+    list.innerHTML = '';
+    countries.forEach(c => {
+      if (q && !c.name.toLowerCase().includes(q) && !c.code.toLowerCase().includes(q)) return;
+      const isActive = selected.has(c.code);
+      const li = document.createElement('li');
+      li.setAttribute('role', 'option');
+      li.setAttribute('aria-selected', String(isActive));
+      li.dataset.code = c.code;
+      li.className = 'cc-item' + (isActive ? ' active' : '');
+      li.innerHTML = `<span class="cc-check" aria-hidden="true">${isActive ? '✓' : ''}</span>
+        <span class="cc-flag">${c.flag}</span>
+        <span class="cc-name">${c.name}</span>`;
+      li.addEventListener('click', () => {
+        if (selected.has(c.code) && selected.size <= 1) return; // must keep at least 1
+        if (selected.has(c.code)) {
+          selected.delete(c.code);
+        } else {
+          selected.add(c.code);
+        }
+        renderList(searchInput.value);
+        updateDisplay();
+        broadcastCountries();
+      });
+      list.appendChild(li);
     });
+  }
+
+  function openDropdown() {
+    dropdown.hidden = false;
+    btn.setAttribute('aria-expanded', 'true');
+    searchInput.value = '';
+    renderList();
+    searchInput.focus();
+  }
+
+  function closeDropdown() {
+    dropdown.hidden = true;
+    btn.setAttribute('aria-expanded', 'false');
+  }
+
+  btn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    dropdown.hidden ? openDropdown() : closeDropdown();
   });
 
+  searchInput.addEventListener('input', () => renderList(searchInput.value));
+
+  // Close on outside click
+  document.addEventListener('click', (e) => {
+    if (!document.getElementById('cc-wrapper')?.contains(e.target as Node)) {
+      closeDropdown();
+    }
+  });
+
+  // Close on Escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeDropdown();
+  });
+
+  // Indicator dropdown
   const indicatorSelect = document.getElementById('indicator-select') as HTMLSelectElement | null;
   indicatorSelect?.addEventListener('change', () => {
     document.dispatchEvent(new CustomEvent('indicator-changed', {
@@ -78,7 +163,9 @@ const defaultIndicator  = 'gdp_growth';
     }));
   });
 
-  // Fire initial state so the chart syncs to the default chip selection (GY + TT)
+  // Init
+  updateDisplay();
+  renderList();
   document.addEventListener('DOMContentLoaded', broadcastCountries);
 </script>
 
@@ -110,12 +197,102 @@ const defaultIndicator  = 'gdp_growth';
     color: var(--ink-faint);
   }
 
-  .chip-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
+  /* ── Country multi-select ─────────────────────────────── */
+  .cc-wrapper {
+    position: relative;
   }
 
+  .cc-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    appearance: none;
+    background-color: var(--card);
+    border: var(--border);
+    border-radius: 0;
+    padding: 7px 12px;
+    font-size: 14px;
+    font-family: var(--font-body);
+    font-weight: 500;
+    color: var(--ink);
+    cursor: pointer;
+    min-width: 220px;
+    text-align: left;
+    justify-content: space-between;
+  }
+
+  .cc-btn:hover { border-color: var(--ink-faint); }
+  .cc-btn:focus-visible { outline: var(--focus-ring); outline-offset: 2px; }
+
+  .cc-caret {
+    font-size: 10px;
+    color: var(--ink-faint);
+    flex-shrink: 0;
+  }
+
+  .cc-dropdown {
+    position: absolute;
+    top: calc(100% + 2px);
+    left: 0;
+    z-index: 100;
+    background: var(--card);
+    border: var(--border);
+    min-width: 240px;
+    max-width: 320px;
+    box-shadow: 0 6px 20px rgba(9,35,30,0.12);
+  }
+
+  .cc-search {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    border: none;
+    border-bottom: var(--border);
+    border-radius: 0;
+    padding: 8px 12px;
+    font-size: 11px;
+    font-family: var(--font-mono);
+    color: var(--ink);
+    background: var(--paper-warm);
+    outline: none;
+  }
+
+  .cc-search:focus { border-bottom-color: var(--teal); }
+
+  .cc-list {
+    list-style: none;
+    margin: 0;
+    padding: 4px 0;
+    max-height: 240px;
+    overflow-y: auto;
+  }
+
+  .cc-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 12px;
+    cursor: pointer;
+    font-size: 13px;
+    color: var(--ink-soft);
+    transition: background 80ms;
+  }
+
+  .cc-item:hover { background: var(--paper-warm); }
+  .cc-item.active { color: var(--ink); }
+
+  .cc-check {
+    font-size: 11px;
+    width: 14px;
+    color: var(--teal);
+    font-family: var(--font-mono);
+    flex-shrink: 0;
+  }
+
+  .cc-flag { font-size: 15px; line-height: 1; }
+  .cc-name { flex: 1; }
+
+  /* ── Indicator select ─────────────────────────────────── */
   .select-wrapper {
     position: relative;
   }

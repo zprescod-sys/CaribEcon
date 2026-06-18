@@ -1,6 +1,4 @@
 ---
-// Insight callout — 3px left-border emphasis block with a key analytical observation.
-
 interface Props {
   text: string;
   accentColor?: 'teal' | 'gold';
@@ -9,23 +7,111 @@ interface Props {
 const { text, accentColor = 'teal' } = Astro.props;
 ---
 
-<div class={`insight-callout emphasis-${accentColor} card`}>
-  <span class="eyebrow">Key Insight</span>
-  <p class="insight-text">{text}</p>
+<div class={`insight-callout accent-${accentColor}`}>
+  <button class="insight-header" type="button" aria-expanded="true">
+    <span class="insight-label">Key Insight</span>
+    <svg class="insight-chevron" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+      <path d="M2 4.5l4 4 4-4" stroke="currentColor" stroke-width="1.75" stroke-linecap="square"/>
+    </svg>
+  </button>
+  <div class="insight-body">
+    <div class="insight-body-inner">
+      <p class="insight-text">{text}</p>
+    </div>
+  </div>
 </div>
+
+<script>
+  document.querySelectorAll<HTMLElement>('.insight-header').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!expanded));
+      btn.closest('.insight-callout')?.classList.toggle('collapsed', expanded);
+    });
+  });
+</script>
 
 <style>
   .insight-callout {
-    padding: 16px 20px;
     margin-top: var(--gap-md);
+    border: 1px solid var(--line);
+    background: var(--card);
+    overflow: hidden;
+  }
+
+  .insight-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 11px 16px;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    gap: 8px;
+    transition: background-color 120ms ease;
+  }
+
+  .accent-teal .insight-header { background: var(--teal); }
+  .accent-gold  .insight-header { background: var(--gold); }
+
+  .accent-teal .insight-header:hover { background: var(--teal-deep); }
+  .accent-gold  .insight-header:hover { opacity: 0.88; }
+
+  .insight-header:focus-visible {
+    outline: 2px solid var(--teal);
+    outline-offset: -3px;
+  }
+
+  .insight-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(246, 247, 242, 0.9);
+    font-weight: 600;
+    user-select: none;
+  }
+
+  .insight-chevron {
+    color: rgba(246, 247, 242, 0.6);
+    flex-shrink: 0;
+    transition: transform 200ms ease;
+  }
+
+  .insight-callout.collapsed .insight-chevron {
+    transform: rotate(-90deg);
+  }
+
+  /* Smooth height collapse via CSS grid trick — no JS height measurement needed */
+  .insight-body {
+    display: grid;
+    grid-template-rows: 1fr;
+    transition: grid-template-rows 220ms ease;
+  }
+
+  .insight-callout.collapsed .insight-body {
+    grid-template-rows: 0fr;
+  }
+
+  .insight-body-inner {
+    overflow: hidden;
   }
 
   .insight-text {
-    margin-top: 6px;
+    padding: 14px 16px 16px;
+    margin: 0;
     font-size: 15px;
     line-height: 1.6;
     color: var(--ink-soft);
     font-weight: 500;
     max-width: 72ch;
+    border-left: 3px solid var(--teal);
+  }
+
+  .accent-gold .insight-text { border-left-color: var(--gold); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .insight-header, .insight-chevron, .insight-body { transition: none; }
   }
 </style>

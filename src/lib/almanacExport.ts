@@ -33,7 +33,7 @@ export interface AlmanacRecord {
 
 // Canonical indicator order (matches data/SCHEMA.md)
 const INDICATOR_ORDER = [
-  'nominal_gdp', 'real_gdp', 'gdp_growth', 'gdp_per_capita', 'debt_to_gdp',
+  'nominal_gdp', 'real_gdp', 'gdp_growth', 'gdp_per_capita',
   'population', 'inflation', 'fx_rate_usd', 'unemployment', 'labour_participation',
   'dependency_ratio', 'fdi', 'monetary_base', 'current_account', 'capital_account',
   'primary_balance', 'fiscal_balance', 'govt_revenue_total', 'govt_current_expenditure',

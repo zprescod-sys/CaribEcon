@@ -1,84 +1,128 @@
 ---
-// Story of the day — generalist, not country-specific.
-// Content is hand-curated in the page; this component handles the layout.
+// Daily Briefing — two-column lead story + per-country key-indicators rail.
+// Renders the active briefing; the homepage script repoints it (heading, dek,
+// stats) when a Recent News item is clicked. IDs below are the update targets.
 
-interface Props {
-  date: string;
-  eyebrow: string;
-  headline: string;
-  standfirst: string;
-  source?: string;
-  sourceUrl?: string;
+export interface BriefingStat {
+  label: string;
+  value: string;
+  color: string;
+}
+export interface Briefing {
+  key: string;
+  tag: string;        // country display name, e.g. "Guyana" / "Regional"
+  time: string;       // formatted date
+  heading: string;
+  dek: string;
+  source: string;
+  url: string;
+  showRail: boolean;
+  stats: BriefingStat[];
 }
 
-const { date, eyebrow, headline, standfirst, source, sourceUrl } = Astro.props;
-
-const formattedDate = new Date(date).toLocaleDateString('en-US', {
-  year: 'numeric', month: 'long', day: 'numeric',
-});
+interface Props { briefing: Briefing }
+const { briefing: b } = Astro.props;
 ---
 
-<article class="daily-briefing emphasis-teal fade-up fade-up-1">
+<div class="briefing">
   <div class="briefing-meta">
-    <span class="eyebrow">{eyebrow}</span>
-    <time class="mono" datetime={date}>{formattedDate}</time>
+    <span class="eyebrow mono">Daily Briefing</span>
+    <span class="briefing-chip mono" id="brief-tag">{b.tag}</span>
+    <span class="briefing-updated mono">Updated <span id="brief-time">{b.time}</span></span>
   </div>
 
-  <h2 class="briefing-headline">{headline}</h2>
-  <p class="briefing-standfirst">{standfirst}</p>
-
-  {source && (
-    <div class="source-line">
-      <span>Source:</span>
-      {sourceUrl
-        ? <a href={sourceUrl} target="_blank" rel="noopener noreferrer">{source}</a>
-        : <span>{source}</span>
-      }
+  <div class="briefing-grid">
+    <div class="briefing-lead">
+      <a class="briefing-headline-link" id="brief-link" href={b.url} target="_blank" rel="noopener noreferrer">
+        <h2 class="briefing-headline" id="brief-heading">{b.heading}</h2>
+      </a>
+      <p class="briefing-dek" id="brief-dek">{b.dek}</p>
+      <div class="briefing-source mono">
+        <span class="briefing-rule"></span><span id="brief-source">{b.source}</span>
+      </div>
     </div>
-  )}
-</article>
+
+    <div class="briefing-rail" id="brief-rail" data-show={String(b.showRail)} hidden={!b.showRail}>
+      <div class="rail-label mono"><span id="rail-tag">{b.tag}</span> · KEY INDICATORS</div>
+      <div class="rail-stats" id="rail-stats">
+        {b.stats.map(s => (
+          <div class="rail-row">
+            <span class="rail-stat-label">{s.label}</span>
+            <span class="rail-stat-value" style={`color:${s.color}`}>{s.value}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</div>
 
 <style>
-  .daily-briefing {
-    padding: 24px 24px 24px 20px;
-    background-color: var(--card-tint);
+  .briefing { padding: 40px 40px 36px; border-bottom: 1px solid #e6e3da; }
+
+  .briefing-meta { display: flex; align-items: center; gap: 14px; margin-bottom: 22px; flex-wrap: wrap; }
+
+  .eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: #0c7a74;
   }
 
-  .briefing-meta {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    margin-bottom: 12px;
+  .briefing-chip {
+    display: inline-flex; align-items: center; gap: 7px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+    color: #16170f; background: #eceadf; border: 1px solid #ddd9cc;
+    padding: 4px 10px; border-radius: 3px;
   }
+
+  .briefing-updated {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px; color: #a8a496; letter-spacing: 0.04em;
+  }
+
+  .briefing-grid { display: grid; grid-template-columns: 1.7fr 1fr; gap: 48px; align-items: start; }
+
+  .briefing-headline-link { text-decoration: none; }
 
   .briefing-headline {
-    font-size: clamp(22px, 3vw, 30px);
-    font-weight: 800;
-    line-height: 1.1;
-    margin-bottom: 12px;
-    max-width: 52ch;
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 36px; line-height: 1.13; font-weight: 600; letter-spacing: -0.02em;
+    color: #16170f; margin-bottom: 18px; text-wrap: balance;
+    transition: color 0.12s ease;
+  }
+  .briefing-headline-link:hover .briefing-headline { color: #0c7a74; }
+
+  .briefing-dek {
+    font-size: 16px; line-height: 1.66; color: #494841; max-width: 60ch;
   }
 
-  .briefing-standfirst {
-    font-size: 16px;
-    line-height: 1.6;
-    color: var(--ink-soft);
-    max-width: 60ch;
-    font-weight: 500;
+  .briefing-source {
+    display: flex; align-items: center; gap: 10px; margin-top: 24px;
+    font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; color: #8a857a; letter-spacing: 0.03em;
+  }
+  .briefing-rule { width: 24px; height: 1px; background: #c9c4b6; }
+
+  .briefing-rail { border-left: 1px solid #e6e3da; padding-left: 32px; }
+
+  .rail-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10.5px; letter-spacing: 0.14em; color: #a8a496; margin-bottom: 18px;
   }
 
-  .source-line {
-    font-family: var(--font-mono);
-    font-size: 10px;
-    color: var(--ink-faint);
-    margin-top: 12px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
+  .rail-stats { display: flex; flex-direction: column; gap: 16px; }
+
+  .rail-row { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; }
+
+  .rail-stat-label { font-size: 13px; color: #6f6e64; }
+
+  .rail-stat-value {
+    font-family: 'Source Serif 4', serif;
+    font-size: 22px; font-weight: 600; line-height: 1;
   }
 
-  .source-line a {
-    color: var(--ink-faint);
-    text-decoration: underline;
+  @media (max-width: 820px) {
+    .briefing { padding: 30px 24px 28px; }
+    .briefing-grid { grid-template-columns: 1fr; gap: 28px; }
+    .briefing-rail { border-left: none; padding-left: 0; border-top: 1px solid #e6e3da; padding-top: 24px; }
+    .briefing-headline { font-size: 28px; }
   }
 </style>

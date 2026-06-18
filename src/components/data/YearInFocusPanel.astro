@@ -82,18 +82,54 @@
   }
 
   :global(.yif-headline-item) {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
     font-size: 13px;
     color: var(--ink);
     border-top: 1px solid var(--line);
-    padding-top: 8px;
+    padding-top: 10px;
     line-height: 1.4;
   }
 
-  :global(.yif-headline-source) {
+  :global(.yif-dot) {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 4px;
+  }
+
+  :global(.yif-country) {
     font-family: var(--font-mono);
     font-size: 10px;
+    letter-spacing: 0.05em;
     color: var(--ink-faint);
     display: block;
-    margin-top: 2px;
+    margin-bottom: 2px;
+    text-transform: uppercase;
+  }
+
+  :global(.yif-val) {
+    font-family: var(--font-display);
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--ink);
+    font-variant-numeric: tabular-nums;
+  }
+
+  :global(.yif-unit) {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 400;
+    color: var(--ink-faint);
+  }
+
+  :global(.yif-type) {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    color: #BC8A2E;
+    margin-left: 4px;
+    vertical-align: super;
   }
 </style>

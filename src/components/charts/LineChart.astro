@@ -161,7 +161,7 @@ const namesJSON = JSON.stringify(Object.fromEntries(getCountries().map(c => [c.c
       .attr('width',  w + margin.left + margin.right)
       .attr('height', h + margin.top  + margin.bottom);
 
-    // Defs: dot-grid backdrop + per-series area gradients
+    // Defs: dot-grid backdrop pattern
     const defs = svgRoot.append('defs');
     defs.append('pattern')
       .attr('id', 'plot-dot-grid')
@@ -244,15 +244,6 @@ const namesJSON = JSON.stringify(Object.fromEntries(getCountries().map(c => [c.c
       .y(d => yScale(d.value as number))
       .curve(d3.curveMonotoneX);
 
-    // Area baseline sits on zero when visible, otherwise the chart floor
-    const baseY = d0 < 0 && d1 > 0 ? yScale(0) : h;
-    const area = d3.area<IndicatorPoint>()
-      .defined(d => d.value !== null)
-      .x(d => xScale(d.year)!)
-      .y0(baseY)
-      .y1(d => yScale(d.value as number))
-      .curve(d3.curveMonotoneX);
-
     // Draw series
     filtered.forEach((series, i) => {
       const color = SERIES_COLORS[series.country] ?? FALLBACK_COLORS[i % FALLBACK_COLORS.length];
@@ -261,22 +252,6 @@ const namesJSON = JSON.stringify(Object.fromEntries(getCountries().map(c => [c.c
       // Dashed segment for estimates/projections
       const actualPoints = validPoints.filter(d => d.type === 'actual');
       const nonActualPoints = validPoints.filter(d => d.type !== 'actual');
-
-      // Soft gradient fill under the line
-      const gradId = `area-grad-${series.country}`;
-      const grad = defs.append('linearGradient')
-        .attr('id', gradId)
-        .attr('x1', 0).attr('y1', 0).attr('x2', 0).attr('y2', 1);
-      grad.append('stop').attr('offset', '0%').attr('stop-color', color).attr('stop-opacity', 0.13);
-      grad.append('stop').attr('offset', '100%').attr('stop-color', color).attr('stop-opacity', 0);
-
-      svg.append('path')
-        .datum(validPoints)
-        .attr('fill', `url(#${gradId})`)
-        .attr('d', area as any)
-        .attr('opacity', 0)
-        .transition().duration(D(700)).delay(D(150))
-        .attr('opacity', 1);
 
       if (actualPoints.length > 0) {
         const path = svg.append('path').datum(actualPoints)
@@ -427,15 +402,21 @@ const namesJSON = JSON.stringify(Object.fromEntries(getCountries().map(c => [c.c
     yearEl.textContent  = String(year);
     eventEl.textContent = YEAR_EVENTS[year] ?? 'No notable event recorded for this year.';
 
-    // Build a summary of values across all loaded series for that year
+    // Show values for the active indicator only (not all indicators)
     const rows = series
-      .filter(s => activeCountries.includes(s.country))
-      .map(s => {
+      .filter(s => activeCountries.includes(s.country) && s.indicator === currentIndicator)
+      .map((s, i) => {
         const pt = s.series.find(d => d.year === year);
         if (!pt || pt.value === null) return null;
+        const color = SERIES_COLORS[s.country] ?? FALLBACK_COLORS[i % FALLBACK_COLORS.length];
+        const typeTag = pt.type !== 'actual'
+          ? `<span class="yif-type">${pt.type}</span>` : '';
         return `<div class="yif-headline-item">
-          <strong>${s.country} ${s.indicatorLabel}:</strong> ${pt.value.toFixed(1)} ${s.unit}
-          <span class="yif-headline-source">${pt.type !== 'actual' ? `[${pt.type}] ` : ''}${s.source}</span>
+          <span class="yif-dot" style="background:${color}"></span>
+          <div>
+            <span class="yif-country">${COUNTRY_NAMES[s.country] ?? s.country}</span>
+            <span class="yif-val">${fmtVal(pt.value)} <span class="yif-unit">${s.unit}</span>${typeTag}</span>
+          </div>
         </div>`;
       })
       .filter(Boolean);
@@ -456,6 +437,12 @@ const namesJSON = JSON.stringify(Object.fromEntries(getCountries().map(c => [c.c
     const evt = e as CustomEvent<{ indicator: string }>;
     currentIndicator = evt.detail.indicator;
     drawChart();
+    // Refresh the YIF panel if it's open so data matches the new indicator
+    const yif = document.getElementById('year-in-focus') as HTMLElement | null;
+    const yearEl = document.getElementById('yif-year');
+    if (yif && !yif.hidden && yearEl?.textContent) {
+      openYearInFocus(Number(yearEl.textContent), allSeries);
+    }
   });
 
   // CSV export

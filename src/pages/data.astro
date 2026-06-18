@@ -34,25 +34,13 @@ const budgetEntries = getCountries()
 const defaultBudgetCode =
   budgetEntries.find(b => b.code === 'TT')?.code ?? budgetEntries[0]?.code ?? '';
 
-// ── Full 25-indicator dataset (read-only) for the per-country XLSX export ──
-// Owned by the data agent; we only read it to populate the export dropdown.
-import almanacData from '../../data/almanac-data.json';
-
-const COUNTRY_NAMES: Record<string, string> = {
-  TT: 'Trinidad & Tobago', GY: 'Guyana', BB: 'Barbados', JM: 'Jamaica',
-  BS: 'Bahamas', BZ: 'Belize', SR: 'Suriname', GD: 'Grenada', LC: 'Saint Lucia',
-  AG: 'Antigua & Barbuda', KN: 'Saint Kitts & Nevis', DM: 'Dominica',
-  VC: 'Saint Vincent & the Grenadines', MS: 'Montserrat', AI: 'Anguilla',
-  TC: 'Turks & Caicos', KY: 'Cayman Islands', VG: 'British Virgin Islands',
-};
-
-// Countries that currently have extended data, in canonical order
-const exportCountries = [...new Set(almanacData.map(r => r.country))]
-  .map(code => ({ code, name: COUNTRY_NAMES[code] ?? code }));
+// Countries available for the per-country XLSX export. The hub now reads the
+// full almanac dataset, so the country list is simply the hub's countries.
+const exportCountries = getCountries().map(c => ({ code: c.code, name: c.name }));
 
 // ── Country snapshots for the header carousel ──────────────────────────────
 // Lead indicator first; the rest render as supporting rows.
-const SNAPSHOT_INDICATORS = ['gdp_growth', 'inflation', 'govt_debt', 'fdi_inflows'];
+const SNAPSHOT_INDICATORS = ['gdp_growth', 'inflation', 'gross_govt_debt_pct_gdp', 'fdi'];
 
 // Compact number: thousands get separators; percentages keep one decimal,
 // currency amounts round to whole numbers
@@ -130,7 +118,7 @@ const snapshots: CountrySnapshotData[] = getCountries().flatMap(c => {
     <!-- ── Insight ──────────────────────────────────────────── -->
     <InsightCallout
       text="Guyana's 57.8% real GDP growth in 2022 — the world's fastest that year — reflects the rapid ramp-up of the Stabroek Block. The structural divergence between Guyana's oil-led expansion and Trinidad & Tobago's gradual post-COVID recovery is the defining macroeconomic dynamic in the Caribbean this decade."
-      accentColor="gold"
+      accentColor="teal"
     />
 
     <!-- ── Budget section (tinted band) ─────────────────────── -->

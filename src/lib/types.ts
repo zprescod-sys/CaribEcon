@@ -11,7 +11,11 @@ export interface Country {
 
 // ── Indicators ─────────────────────────────────────────────────────────────
 
-export type DataPointType = 'actual' | 'estimate' | 'projection';
+export type DataPointType = 'actual' | 'estimate' | 'projection' | 'derived';
+
+// Sourcing tier and confidence (see data/SCHEMA.md)
+export type SourceTier = 'primary' | 'comparable';
+export type Confidence = 'high' | 'medium' | 'flagged';
 
 export interface IndicatorPoint {
   year: number;
@@ -29,7 +33,11 @@ export interface IndicatorSeries {
   unitNote?: string;        // e.g. "constant 2017 prices"
   source: string;           // e.g. "IMF World Economic Outlook (Oct 2024)"
   sourceOrg: string;        // e.g. "IMF"
+  sourceTier: SourceTier;   // primary (national) | comparable (IMF/WB/UN)
   sourceUrl: string;
+  sourceRef?: string;       // table/appendix/section cited — never a page number
+  confidence: Confidence;   // high | medium | flagged
+  seriesNote?: string;      // record-level note (e.g. source-divergence caveat)
   series: IndicatorPoint[];
 }
 

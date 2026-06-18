@@ -23,7 +23,7 @@ Initial data scope: Guyana and Trinidad & Tobago, with full structure for adding
 
 Fable 5 does the majority of coding in VS Code. These MD files brief Fable — keep them tight and unambiguous.
 
-Visual verification: screenshot any changed page with `node screenshot.mjs <localhost url> [label]` and read the PNG. Full workflow + design checklist in `files/SCREENSHOT_WORKFLOW.md`.
+Visual verification: screenshot any changed page with `node screenshot.mjs <localhost url> [label]` and read the PNG. Full workflow + design checklist in `docs/SCREENSHOT_WORKFLOW.md`.
 
 ## Data Hub (build first, freeze before pages)
 
@@ -114,7 +114,8 @@ Phase 2 (later): scheduled scraper/fetcher replaces static hub.
 
 ## Current State
 
-- 2026-06-13: feature/data-extraction merged to main. `data/almanac-data.json` now holds 254 records across 16 countries (TT, GY, BB, JM, BS, BZ, SR, GD, LC, AG, KN, DM, VC, TC, KY, VG). Full 25 indicators for TT/GY/BB/JM/BS; 12–14 indicators for the smaller ECCU/OFC countries (fiscal/monetary detail unavailable at primary tier). MS and AI not collected. Schema frozen in `data/SCHEMA.md`. Data page V2 live: budget country dropdown (data-driven), per-country XLSX export (4-sheet SheetJS workbook), CountrySnapshot redesigned as metric-card grid. `src/lib/almanacExport.ts` handles the export logic. SheetJS 0.18.5 added to package.json.
+- 2026-06-17: **Single source of truth.** `data/almanac-data.json` is now the canonical indicator hub for every page (the old 7-indicator `indicators.json` was deleted). 249 records, 16 countries, 24 indicators. `dataHub.ts` reads it; charts, ticker, snapshots, and the XLSX export all draw from the same file, so on-screen and exported numbers can no longer diverge. Presentation policy (`chartGroup`/`defaultChart`/`order`) lives in new `data/indicator-meta.json` (slug-keyed, not on records); `dataHub.ts` warns at build if a data slug lacks a meta entry. `getFeaturedIndicators()` gates the chart selector to the 5 cross-country-comparable indicators. `debt_to_gdp` merged into `gross_govt_debt_pct_gdp` (IMF WEO series canonical across all 13 countries; BB/BS primary divergence noted in `seriesNote`). `sourceTier` vocab is now `primary | comparable`. `types.ts` `IndicatorSeries` carries the full provenance fields. RegionalChart de-hardcoded (reads `real_gdp` from the hub, base year 2021).
+- 2026-06-13: feature/data-extraction merged to main. `data/almanac-data.json` collected (originally 254 records; see SCHEMA.md). Data page V2 live: budget country dropdown (data-driven), per-country XLSX export (4-sheet SheetJS workbook), CountrySnapshot redesigned as metric-card grid. `src/lib/almanacExport.ts` handles the export logic. SheetJS 0.18.5 added to package.json.
 
 ## Next Steps
 
@@ -125,6 +126,13 @@ Phase 2 (later): scheduled scraper/fetcher replaces static hub.
 - Commit each page as working increment
 
 ## Session Log
+
+### 2026-06-17 — Data consolidation: one source of truth
+- Diagnosed a two-dataset split: `indicators.json` (7 indicators, IMF/WB) drove the live charts while `almanac-data.json` (24 indicators, primary) only fed the export — different slugs, so displayed vs exported numbers could diverge. Chose almanac as canonical; deleted `indicators.json`.
+- Schema↔data reconciliation: merged `debt_to_gdp` → `gross_govt_debt_pct_gdp` (caught that 8 ECCU countries had ONLY `debt_to_gdp` and JM's primary `gross_govt_debt_pct_gdp` was empty — a blind delete would have wiped debt data; resolved by standardizing on the IMF WEO comparable series across all 13, BB/BS divergence preserved in `seriesNote`). Renamed `sourceTier` `fallback`→`comparable` (254→249 records after dropping 5 duplicate primary debt records).
+- New `data/indicator-meta.json` (slug-keyed: `chartGroup`/`defaultChart`/`order`); `label`/`unit` still derive from records. `dataHub.ts` repointed to almanac + meta, added `getFeaturedIndicators()` and a build-time drift guard. `types.ts` extended with `sourceTier`/`sourceRef`/`confidence`/`unitNote`/`seriesNote` + `derived` point type. SCHEMA.md trued-up (24 indicators × 16 countries).
+- Consumer slug migration: data.astro snapshots (`govt_debt`→`gross_govt_debt_pct_gdp`, `fdi_inflows`→`fdi`), ChartControls dropdown → featured set, almanacExport order list. RegionalChart de-hardcoded — reads `real_gdp` from the hub, indexed to 2021 (almanac's TT data starts 2021); GY oil-boom story preserved via pre-base years rendering below 100.
+- Hygiene: deleted orphan `StatCards.astro`, untracked `.DS_Store`, removed dead `macro_dashboard.html` + stale duplicate `files/CLAUDE.md`; `files/` reorganized to `docs/`. Build green, both pages screenshot-verified.
 
 ### 2026-06-13 — Data page V2 + 18-country almanac merge
 - Sub-agent collected `almanac-data.json`: 254 records, 16 countries, hybrid sourcing (IMF/WB macro spine + primary fiscal for TT/GY/BB/JM/BS/KY). MS and AI absent (no accessible primary tier). Schema frozen in `data/SCHEMA.md`.

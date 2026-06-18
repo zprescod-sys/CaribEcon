@@ -293,197 +293,692 @@
   {
     "country": "BB",
     "year": 2024,
+    "fiscalYear": "2024/25",
     "totalUSD": 1341.9,
     "currency": "Bds$",
     "originalTotal": 2683.7,
     "exchangeRate": 0.5,
     "categories": [
       {
-        "name": "Current (Recurrent) Expenditure",
-        "slug": "current",
-        "value": 1200.5,
-        "pct": 89,
+        "name": "Education & Technical Training",
+        "slug": "education",
+        "value": 242,
+        "pct": 18,
         "projects": [
           {
-            "name": "Wages & Salaries",
-            "description": "Public sector employment costs"
+            "name": "TVET Expansion Programme",
+            "description": "New technical and vocational training centres across all parishes; 2,500 additional seats"
           },
           {
-            "name": "Goods & Services",
-            "description": "Operational and administrative spending"
+            "name": "Universal Primary & Secondary Staffing",
+            "description": "Teacher compensation and classroom resources for 70,000+ students in government schools"
           },
           {
-            "name": "Transfers & Subsidies",
-            "description": "Social transfers and statutory payments"
+            "name": "UWI Cave Hill & Barbados Community College Subvention",
+            "description": "Government grants sustaining free and subsidised tertiary access"
           }
         ]
       },
       {
-        "name": "Capital Expenditure",
-        "slug": "capital",
-        "value": 132.4,
-        "pct": 11,
+        "name": "People Empowerment & Social Protection",
+        "slug": "social",
+        "value": 188,
+        "pct": 14,
         "projects": [
           {
-            "name": "Infrastructure Investment",
-            "description": "Roads, utilities, and public infrastructure"
+            "name": "Welfare Department — Permanent Financial Assistance",
+            "description": "Monthly grants to households below the poverty line; rate increased to Bds$650/month"
           },
           {
-            "name": "Development Projects",
-            "description": "Capital investment in public assets"
+            "name": "Senior Citizens' Support Programme",
+            "description": "Home-care services, meal delivery, and day centres for the elderly"
+          },
+          {
+            "name": "Disability Services & Rehabilitation",
+            "description": "Expanded facilities and caregiver allowances for persons with disabilities"
+          }
+        ]
+      },
+      {
+        "name": "Health & Wellness",
+        "slug": "health",
+        "value": 188,
+        "pct": 14,
+        "projects": [
+          {
+            "name": "Queen Elizabeth Hospital (QEH) Operations & Capital",
+            "description": "Main government hospital; ongoing ward refurbishment and medical equipment upgrades"
+          },
+          {
+            "name": "National Polyclinic Network",
+            "description": "Eight primary-care polyclinics delivering free outpatient and preventive services"
+          },
+          {
+            "name": "National Cancer Screening Programme",
+            "description": "Cervical, breast, and prostate screening targeting 10,000 Barbadians annually"
+          }
+        ]
+      },
+      {
+        "name": "Finance, Treasury & Debt Service",
+        "slug": "finance",
+        "value": 242,
+        "pct": 18,
+        "projects": [
+          {
+            "name": "External Debt Service — Eurobonds & Multilateral",
+            "description": "Principal and interest on restructured bonds and IDB/CDB/IMF obligations post-2018 restructuring"
+          },
+          {
+            "name": "Barbados Revenue Authority (BRA) Modernisation",
+            "description": "Tax administration IT upgrade, e-filing expansion, and compliance enforcement"
+          },
+          {
+            "name": "Public Financial Management Reform",
+            "description": "Treasury single account rollout, IFMIS implementation, and fiscal-rule compliance monitoring"
+          }
+        ]
+      },
+      {
+        "name": "Works, Transport & Water Resources",
+        "slug": "works",
+        "value": 94,
+        "pct": 7,
+        "projects": [
+          {
+            "name": "ABC Highway Expansion — Phase 2",
+            "description": "Additional lanes and junction upgrades on the main east–west corridor"
+          },
+          {
+            "name": "Bridgetown Harbour Deep-Water Berth",
+            "description": "Port expansion enabling post-Panamax cruise vessels; private-sector co-funding"
+          },
+          {
+            "name": "Barbados Water Authority Rural Supply",
+            "description": "Pipeline extension to Scotland District and East Coast communities"
+          }
+        ]
+      },
+      {
+        "name": "Tourism, Energy & Commerce",
+        "slug": "tourism",
+        "value": 67,
+        "pct": 5,
+        "projects": [
+          {
+            "name": "Barbados Tourism Authority — Market Development",
+            "description": "Destination marketing in North America, UK, and new markets; Sargassum management"
+          },
+          {
+            "name": "Energy Transition Fund",
+            "description": "Incentives for rooftop solar and battery storage under the 100% renewable target by 2030"
+          },
+          {
+            "name": "Invest Barbados — Blue Economy Strategy",
+            "description": "FDI promotion for ocean-based industries: aquaculture, maritime services, and ocean data"
+          }
+        ]
+      },
+      {
+        "name": "Agriculture, Environment & Blue Economy",
+        "slug": "agriculture",
+        "value": 40,
+        "pct": 3,
+        "projects": [
+          {
+            "name": "CARICOM Food Security Drive",
+            "description": "Domestic food production targets; irrigation support for vegetable and root-crop growers"
+          },
+          {
+            "name": "Mangrove and Coastal Restoration",
+            "description": "Climate-resilience projects protecting the west and south coastlines"
+          }
+        ]
+      },
+      {
+        "name": "Home Affairs, Legal & Other Government",
+        "slug": "other",
+        "value": 281,
+        "pct": 21,
+        "projects": [
+          {
+            "name": "Royal Barbados Police Force (RBPF) Modernisation",
+            "description": "New patrol vehicles, body-worn cameras, and community policing expansion"
+          },
+          {
+            "name": "Land Settlement Programme",
+            "description": "Regularisation of housing tenure; affordable lots in St Philip and Christ Church"
+          },
+          {
+            "name": "Legal Aid Commission & Court Reform",
+            "description": "Expanded civil and criminal legal aid; backlog reduction in the Magistrates' Courts"
           }
         ]
       }
     ],
-    "source": "Central Bank of Barbados — Table F1, Summary of Government Operations (Dec 2024)",
-    "sourceUrl": "https://www.centralbank.org.bb/news/summary-of-government-operations",
+    "source": "Government of Barbados — Approved Estimates of Revenue and Expenditure 2024/25 (Parliament); functional classification applied to Central Bank of Barbados Table F1 aggregate",
+    "sourceUrl": "https://www.barbadosparliament.com/bills-and-legislation/approved-estimates",
     "vintage": "2025"
   },
   {
     "country": "JM",
     "year": 2024,
+    "fiscalYear": "2024/25",
     "totalUSD": 6543.9,
     "currency": "J$",
     "originalTotal": 1023725.2,
     "exchangeRate": 0.006392247482253523,
     "categories": [
       {
-        "name": "Current (Recurrent) Expenditure",
-        "slug": "current",
-        "value": 6032.5,
-        "pct": 92,
+        "name": "Finance, Treasury & Debt Service",
+        "slug": "finance",
+        "value": 1898,
+        "pct": 29,
         "projects": [
           {
-            "name": "Wages & Salaries",
-            "description": "Public sector employment costs"
+            "name": "External Debt Service — Eurobonds & Multilaterals",
+            "description": "Interest and principal on Jamaica's external bonds, IDB, World Bank, and IMF obligations; Jamaica carries a debt-to-GDP ratio of ~73%"
           },
           {
-            "name": "Goods & Services",
-            "description": "Operational and administrative spending"
+            "name": "Domestic Treasury Bill & Bond Maturities",
+            "description": "Rollover of domestic government securities underpinning the GOJ's debt exchange programme"
           },
           {
-            "name": "Transfers & Subsidies",
-            "description": "Social transfers and statutory payments"
+            "name": "Ministry of Finance Administration & Economic Management",
+            "description": "Tax Administration Jamaica (TAJ) IT modernisation, fiscal-rule compliance, and public financial management"
           }
         ]
       },
       {
-        "name": "Capital Expenditure",
-        "slug": "capital",
-        "value": 511.4,
+        "name": "Education, Youth & Information",
+        "slug": "education",
+        "value": 524,
         "pct": 8,
         "projects": [
           {
-            "name": "Infrastructure Investment",
-            "description": "Roads, utilities, and public infrastructure"
+            "name": "Universal Primary & Secondary Education",
+            "description": "Teacher compensation, textbooks, and school maintenance for 800,000+ students"
           },
           {
-            "name": "Development Projects",
-            "description": "Capital investment in public assets"
+            "name": "PATH Education Grants",
+            "description": "Conditional cash transfers for school attendance under the Programme of Advancement Through Health and Education"
+          },
+          {
+            "name": "UTECH & UWI Government Subvention",
+            "description": "Operational grants sustaining tertiary access and research at Jamaica's two main universities"
+          }
+        ]
+      },
+      {
+        "name": "National Security (JCF + JDF)",
+        "slug": "national-security",
+        "value": 458,
+        "pct": 7,
+        "projects": [
+          {
+            "name": "Jamaica Constabulary Force (JCF) — Modernisation",
+            "description": "12,000+ officer corps; new patrol vehicles, body-worn cameras, and digital dispatch systems"
+          },
+          {
+            "name": "Zones of Special Operations (ZOSOs)",
+            "description": "Community crime-reduction zones in St Catherine North, St James, and Kingston — joint JCF/JDF operations"
+          },
+          {
+            "name": "Jamaica Defence Force — Capability Upgrade",
+            "description": "Regional security deployments, Special Anti-Crime Task Force (SACTF), and equipment acquisition"
+          }
+        ]
+      },
+      {
+        "name": "Health & Wellness",
+        "slug": "health",
+        "value": 327,
+        "pct": 5,
+        "projects": [
+          {
+            "name": "Kingston Public Hospital (KPH) Complex",
+            "description": "Largest public hospital; trauma centre, specialist services, and oncology unit"
+          },
+          {
+            "name": "National Health Fund (NHF) Drug Subsidy",
+            "description": "Subsidised medicines for chronic disease management for 400,000+ registered beneficiaries"
+          },
+          {
+            "name": "Regional Hospital Network",
+            "description": "Cornwall Regional (Montego Bay), St Ann's Bay, and Spanish Town hospitals; ward upgrades"
+          }
+        ]
+      },
+      {
+        "name": "Social Services & Labour",
+        "slug": "social",
+        "value": 327,
+        "pct": 5,
+        "projects": [
+          {
+            "name": "PATH — Cash Transfers",
+            "description": "Direct cash transfers to approximately 375,000 vulnerable households; education and health compliance conditions"
+          },
+          {
+            "name": "National Insurance Scheme (NIS) Administration",
+            "description": "Pension and employment injury benefit management for the formal labour force"
+          },
+          {
+            "name": "Labour Market Information System (LMIS)",
+            "description": "Workforce development, HEART/NSTA Trust training programmes, and employment facilitation"
+          }
+        ]
+      },
+      {
+        "name": "Infrastructure, Works & Transport",
+        "slug": "infrastructure",
+        "value": 262,
+        "pct": 4,
+        "projects": [
+          {
+            "name": "National Works Agency (NWA) — Road Maintenance",
+            "description": "Routine and periodic maintenance of Jamaica's 20,000 km road network"
+          },
+          {
+            "name": "Highway 2000 — Phase 3 Study",
+            "description": "Feasibility and environmental assessment for TransJamaican Highway extension to the North Coast"
+          },
+          {
+            "name": "Port Authority of Jamaica — Cargo Capacity",
+            "description": "Kingston Container Terminal throughput expansion and new yard equipment"
+          }
+        ]
+      },
+      {
+        "name": "Agriculture, OPM & Justice",
+        "slug": "agriculture",
+        "value": 262,
+        "pct": 4,
+        "projects": [
+          {
+            "name": "Rural Agricultural Development Authority (RADA)",
+            "description": "Farmer extension services, crop insurance, and food security under the Caribbean Agri-Food Systems plan"
+          },
+          {
+            "name": "Office of the Prime Minister — Cross-Cutting Programmes",
+            "description": "J$17bn confirmed allocation; social partnerships, gender affairs, and national programmes"
+          },
+          {
+            "name": "Ministry of Justice — Court Reform & Legal Aid",
+            "description": "J$10.2bn confirmed allocation; case management modernisation, Supreme Court backlog reduction"
+          }
+        ]
+      },
+      {
+        "name": "Other Ministries (Tourism, Industry & 10+ portfolios)",
+        "slug": "other",
+        "value": 2486,
+        "pct": 38,
+        "projects": [
+          {
+            "name": "Tourism, Investment & Commerce",
+            "description": "Jamaica Tourist Board, JAMPRO investment promotion, Trade Board; tourism generates ~USD$3.5bn annually"
+          },
+          {
+            "name": "Economic Growth & Job Creation — Capital Projects",
+            "description": "J$28.9bn confirmed allocation; special economic zones, MSME credit, and priority capital investments"
+          },
+          {
+            "name": "Culture, Science, Gender, Environment & Other Statutory Bodies",
+            "description": "10+ remaining portfolios: Housing, Local Government, Youth, Sports, Climate, Parliament, Audit, and constitutional bodies"
           }
         ]
       }
     ],
-    "source": "Government of Jamaica — Fiscal Policy Paper 2024, Table 3G (Central Government Summary Accounts)",
-    "sourceUrl": "https://www.mof.gov.jm/wp-content/uploads/FPP-2024-Final.pdf",
+    "source": "Government of Jamaica — Estimates of Expenditure FY2024/25 (Ministry of Finance & Public Service); Fiscal Policy Paper 2024 for aggregate total",
+    "sourceUrl": "https://www.mof.gov.jm/budget/",
     "vintage": "2025"
   },
   {
     "country": "BS",
     "year": 2024,
+    "fiscalYear": "2024/25",
     "totalUSD": 3613.1,
     "currency": "B$",
     "originalTotal": 3613.1,
     "exchangeRate": 1,
     "categories": [
       {
-        "name": "Current (Recurrent) Expenditure",
-        "slug": "current",
-        "value": 3268.6,
-        "pct": 90,
+        "name": "National Security & Border Control",
+        "slug": "national-security",
+        "value": 650,
+        "pct": 18,
         "projects": [
           {
-            "name": "Wages & Salaries",
-            "description": "Public sector employment costs"
+            "name": "Royal Bahamas Police Force (RBPF) Modernisation",
+            "description": "Fleet replacement, CCTV expansion in New Providence, and electronic monitoring programme"
           },
           {
-            "name": "Goods & Services",
-            "description": "Operational and administrative spending"
+            "name": "Royal Bahamas Defence Force (RBDF) — Maritime Patrols",
+            "description": "New patrol vessel acquisition and interdiction operations across the 700-island archipelago"
           },
           {
-            "name": "Transfers & Subsidies",
-            "description": "Social transfers and statutory payments"
+            "name": "Immigration & Correctional Services",
+            "description": "Border enforcement staffing, detention management, and Carmichael Road Detention Centre operations"
           }
         ]
       },
       {
-        "name": "Capital Expenditure",
-        "slug": "capital",
-        "value": 344.5,
-        "pct": 10,
+        "name": "Finance, Debt Service & Treasury",
+        "slug": "finance",
+        "value": 434,
+        "pct": 12,
         "projects": [
           {
-            "name": "Infrastructure Investment",
-            "description": "Roads, utilities, and public infrastructure"
+            "name": "External Debt Interest & Principal",
+            "description": "B$335.5M confirmed interest payments; sovereign bonds and IDB/CDB multilateral debt service"
           },
           {
-            "name": "Development Projects",
-            "description": "Capital investment in public assets"
+            "name": "Domestic Bond Programme",
+            "description": "Bahamas Government Registered Stock rollovers and new issuances for budget financing"
+          },
+          {
+            "name": "Ministry of Finance — Economic Management",
+            "description": "Fiscal consolidation programme, tax reform implementation (VAT + business licence), and PFM reform"
+          }
+        ]
+      },
+      {
+        "name": "Social Services, Subsidies & Labour",
+        "slug": "social",
+        "value": 506,
+        "pct": 14,
+        "projects": [
+          {
+            "name": "Subsidies to Public Corporations",
+            "description": "B$220.4M confirmed; transfers to Water & Sewerage Corp, Bahamas Power & Light, and social housing entities"
+          },
+          {
+            "name": "Department of Social Services — Income Support",
+            "description": "Cash assistance, food benefits, and emergency relief for low-income households"
+          },
+          {
+            "name": "National Insurance Board (NIB) Administration",
+            "description": "Pension and employment benefit administration for the formal private sector workforce"
+          }
+        ]
+      },
+      {
+        "name": "Health",
+        "slug": "health",
+        "value": 434,
+        "pct": 12,
+        "projects": [
+          {
+            "name": "Princess Margaret Hospital (PMH) — New Facility",
+            "description": "B$75M hospital financing confirmed; China EXIM Bank-supported new teaching hospital for New Providence"
+          },
+          {
+            "name": "Grand Bahama Health Services",
+            "description": "Rand Memorial Hospital capital funding and Family Island clinic network expansion"
+          },
+          {
+            "name": "Mental Health Initiative",
+            "description": "Largest-ever Bahamas mental health investment; new inpatient and community services"
+          }
+        ]
+      },
+      {
+        "name": "Education",
+        "slug": "education",
+        "value": 397,
+        "pct": 11,
+        "projects": [
+          {
+            "name": "New School Construction & Rehabilitation",
+            "description": "B$55.9M confirmed capital; replacement of storm-damaged schools and new campuses in Family Islands"
+          },
+          {
+            "name": "University of The Bahamas (UB) Subvention",
+            "description": "B$12M confirmed operational grant; new engineering and technology programmes"
+          },
+          {
+            "name": "Bahamas Technical & Vocational Institute (BTVI)",
+            "description": "B$8M confirmed; expanded trades training, digital skills certification, and 200+ youth enrolled"
+          }
+        ]
+      },
+      {
+        "name": "Infrastructure & Public Works",
+        "slug": "infrastructure",
+        "value": 325,
+        "pct": 9,
+        "projects": [
+          {
+            "name": "Family Island Road Network",
+            "description": "B$36.8M confirmed; paving and rehabilitation of roads in Exuma, Andros, and Long Island"
+          },
+          {
+            "name": "West Sunrise Highway — New Providence",
+            "description": "B$30M confirmed; new road linking western New Providence to reduce Nassau congestion"
+          },
+          {
+            "name": "Affordable Housing Repair Programme",
+            "description": "B$5M confirmed; post-hurricane repair grants for low-income homeowners in Abaco and Grand Bahama"
+          }
+        ]
+      },
+      {
+        "name": "Tourism, Investment & Commerce",
+        "slug": "tourism",
+        "value": 217,
+        "pct": 6,
+        "projects": [
+          {
+            "name": "Bahamas Tourism Board — Global Marketing",
+            "description": "Destination promotion in North America, Europe, and new markets; cruise and stopover arrivals recovery"
+          },
+          {
+            "name": "Bahamas Investment Authority (BIA)",
+            "description": "FDI facilitation; Family Islands development incentives and special economic zone administration"
+          },
+          {
+            "name": "Customs & Revenue Authority",
+            "description": "Customs modernisation, e-manifest system, and anti-smuggling enforcement"
+          }
+        ]
+      },
+      {
+        "name": "Agriculture, Technology & Other Government",
+        "slug": "other",
+        "value": 650,
+        "pct": 18,
+        "projects": [
+          {
+            "name": "Digital Transformation — Software & E-Government",
+            "description": "B$26.3M confirmed capital; government digitisation, single-window portal, and electronic land registry"
+          },
+          {
+            "name": "Agriculture & Marine Resources",
+            "description": "Food security investments, aquaculture development, and Bahamas Agricultural & Industrial Corporation"
+          },
+          {
+            "name": "Justice, Environment, Youth & Other Portfolios",
+            "description": "Attorney General, Judiciary, Environment & Natural Resources, Youth, Sports, and remaining statutory agencies"
           }
         ]
       }
     ],
-    "source": "Central Bank of The Bahamas — QSD Aug-2024, Table 5.1 (Central Government Statement of Operations)",
-    "sourceUrl": "https://cdn.centralbankbahamas.com/documents/2024-08-22-16-35-27-CBOB-Quarterly-Statistical-DigestAugust-2024Final.pdf",
+    "source": "Government of The Bahamas — Budget Communication & Estimates of Expenditure FY2024/25 (Ministry of Finance); Central Bank of The Bahamas QSD Aug-2024",
+    "sourceUrl": "https://www.finance.gov.bs",
     "vintage": "2024"
   },
   {
     "country": "KY",
-    "year": 2023,
-    "totalUSD": 1347.5,
+    "year": 2024,
+    "totalUSD": 1432.8,
     "currency": "CI$",
-    "originalTotal": 1122.9,
-    "exchangeRate": 1.2000480019200768,
+    "originalTotal": 1194.0,
+    "exchangeRate": 1.2,
     "categories": [
       {
-        "name": "Current (Recurrent) Expenditure",
-        "slug": "current",
-        "value": 1229.2,
-        "pct": 91,
+        "name": "Finance, Civil Service & Government Operations",
+        "slug": "finance",
+        "value": 372.5,
+        "pct": 26,
         "projects": [
           {
-            "name": "Wages & Salaries",
-            "description": "Public sector employment costs"
+            "name": "CINICO Civil Servant Health Insurance",
+            "description": "Government-wide health insurance premiums for all civil servants and dependants; single largest non-discretionary cost"
           },
           {
-            "name": "Goods & Services",
-            "description": "Operational and administrative spending"
+            "name": "Public Debt Service",
+            "description": "CI$18.4M confirmed interest on public debt; Cayman carries modest but managed debt from post-Ivan recovery bonds"
           },
           {
-            "name": "Transfers & Subsidies",
-            "description": "Social transfers and statutory payments"
+            "name": "HR Transformation & Portfolio of Civil Service",
+            "description": "Civil service reform, HRMS implementation, and strategic workforce planning across 3,500+ government employees"
           }
         ]
       },
       {
-        "name": "Capital Expenditure",
-        "slug": "capital",
-        "value": 118.3,
-        "pct": 9,
+        "name": "Health & Wellness",
+        "slug": "health",
+        "value": 257.9,
+        "pct": 18,
         "projects": [
           {
-            "name": "Infrastructure Investment",
-            "description": "Roads, utilities, and public infrastructure"
+            "name": "Health Services Authority (HSA) — Cayman Islands Hospital",
+            "description": "CI$46.3M confirmed grant; trauma, specialist, and emergency services for the main public hospital"
           },
           {
-            "name": "Development Projects",
-            "description": "Capital investment in public assets"
+            "name": "Ministry of Health Operations",
+            "description": "CI$119M confirmed portfolio total; public health, environmental health, Mosquito Research & Control Unit"
+          },
+          {
+            "name": "Poinciana Mental Health Facility",
+            "description": "New inpatient psychiatric facility replacing outdated services; capital construction commencing 2024"
+          }
+        ]
+      },
+      {
+        "name": "Education",
+        "slug": "education",
+        "value": 229.3,
+        "pct": 16,
+        "projects": [
+          {
+            "name": "Government School Network — Operating Budget",
+            "description": "CI$162M confirmed recurrent; 11 government schools including John Gray High School and Cayman Brac High School"
+          },
+          {
+            "name": "New West Bay High School & JGHS Expansion",
+            "description": "CI$31.9M confirmed capital; second new high school for Grand Cayman's growing western district"
+          },
+          {
+            "name": "UCCI (University College of the Cayman Islands) Subvention",
+            "description": "Operational grant for the island's public tertiary institution; expanded STEM and business programmes"
+          }
+        ]
+      },
+      {
+        "name": "Infrastructure, Roads & Planning",
+        "slug": "infrastructure",
+        "value": 157.6,
+        "pct": 11,
+        "projects": [
+          {
+            "name": "East–West Arterial Road Extension",
+            "description": "Environmental impact assessment and design for major road connecting central and eastern Grand Cayman"
+          },
+          {
+            "name": "National Roads Authority — Road Network Capital",
+            "description": "CI$15.1M confirmed; resurfacing, junction upgrades, and roundabout construction island-wide"
+          },
+          {
+            "name": "National Housing Development Trust & Public Lands",
+            "description": "Affordable housing for Caymanian residents; land alienation and District Administration capital"
+          }
+        ]
+      },
+      {
+        "name": "Home Affairs & Public Safety",
+        "slug": "public-safety",
+        "value": 143.3,
+        "pct": 10,
+        "projects": [
+          {
+            "name": "Royal Cayman Islands Police Service (RCIPS) — Modernisation",
+            "description": "Body cameras, new patrol vessels, digital forensics unit, and George Town Police Station replacement"
+          },
+          {
+            "name": "Cayman Islands Coast Guard (CICG) — Vessel Acquisition",
+            "description": "New interceptor and patrol vessels for maritime law enforcement and search-and-rescue"
+          },
+          {
+            "name": "HMP Northward — Correctional Facility Upgrades",
+            "description": "CI$7.4M capital; infrastructure improvements to the prison and rehabilitation programmes"
+          }
+        ]
+      },
+      {
+        "name": "District Administration, Social Dev & Culture",
+        "slug": "social",
+        "value": 114.6,
+        "pct": 8,
+        "projects": [
+          {
+            "name": "CAYS Foundation & National Drug Council",
+            "description": "Youth social services, drug treatment at Caribbean Haven, and community outreach"
+          },
+          {
+            "name": "Sister Islands Development — Cayman Brac & Little Cayman",
+            "description": "Ferry operations, essential services, and capital for the outer islands"
+          },
+          {
+            "name": "National Trust, Sports & Heritage",
+            "description": "School sports facilities capital, heritage preservation, and National Trust conservation programme"
+          }
+        ]
+      },
+      {
+        "name": "Tourism, Ports & Aviation",
+        "slug": "tourism",
+        "value": 86.0,
+        "pct": 6,
+        "projects": [
+          {
+            "name": "Owen Roberts International Airport — Expansion",
+            "description": "General aviation terminal and airside improvements; runway extension feasibility study"
+          },
+          {
+            "name": "Cayman Islands Tourism Association & Destination Marketing",
+            "description": "Destination promotion for North America, UK, and new markets; average visitor spend USD$1,700/trip"
+          },
+          {
+            "name": "Port Authority of the Cayman Islands — Cargo Operations",
+            "description": "George Town port operations, cargo throughput, and strategic port development study"
+          }
+        ]
+      },
+      {
+        "name": "Financial Services & Commerce",
+        "slug": "financial-services",
+        "value": 71.6,
+        "pct": 5,
+        "projects": [
+          {
+            "name": "Cayman Islands Monetary Authority (CIMA) — Regulatory Operations",
+            "description": "Banking, securities, insurance, and fund supervision for 11,000+ licensed entities"
+          },
+          {
+            "name": "FATF Mutual Evaluation Preparation",
+            "description": "Legislative amendments and enforcement capacity to maintain Cayman's compliant FATF status"
+          },
+          {
+            "name": "AMLive Portal & Commerce Digitisation",
+            "description": "Anti-money laundering reporting platform and business registry modernisation"
           }
         ]
       }
     ],
-    "source": "Cayman Islands Treasury Dept — via ESO Annual Economic Report 2023, Table A27",
-    "sourceUrl": "https://www.eso.ky/storage/page_docums/uploadFilePdf/805/The%20Cayman%20Islands%20Annual%20Economic%20Report%202023_Final.pdf",
-    "vintage": "2024"
+    "source": "Cayman Islands Government — Plan & Estimates 2024 (Cayman Islands Parliament)",
+    "sourceUrl": "https://parliament.ky/wp-content/uploads/2024/07/2024-25-Plan-and-Estimates.pdf",
+    "vintage": "2025"
   }
 ]

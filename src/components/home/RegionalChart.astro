@@ -1,90 +1,82 @@
 ---
-// Indexed GDP chart — shows GDP indexed to 100 at a base year for all countries.
-// D3 chart hydrated client-side via <script>.
+// "The Guyana divergence" — regional real GDP indexed to a base year, with Guyana
+// as the breakout line against flat regional peers. Data is read from the hub at
+// build time (never hardcoded) and serialised into a hidden element the D3 script reads.
+
+import { getSeries, getCountries } from '../../lib/dataHub';
 
 interface Props {
   baseYear?: number;
 }
-
 const { baseYear = 2018 } = Astro.props;
+
+// Guyana highlighted; flat peers that have history back to the base year render muted.
+const DISPLAY = [
+  { code: 'GY', color: '#0c7a74', highlight: true },
+  { code: 'JM', color: '#c4bfb1', highlight: false },
+  { code: 'BB', color: '#cfcabd', highlight: false },
+  { code: 'BS', color: '#d6d1c4', highlight: false },
+];
+
+const names = Object.fromEntries(getCountries().map(c => [c.code, c.name]));
+
+const rawSeries = DISPLAY
+  .map(d => {
+    const s = getSeries(d.code, 'real_gdp');
+    if (!s) return null;
+    const values = s.series
+      .filter(p => p.value !== null && p.year >= baseYear)
+      .map(p => ({ year: p.year, value: p.value as number }));
+    // Only include a country if it actually has the base year to index against.
+    return values.some(v => v.year === baseYear)
+      ? { country: d.code, name: names[d.code] ?? d.code, color: d.color, highlight: d.highlight, values }
+      : null;
+  })
+  .filter((r): r is NonNullable<typeof r> => r !== null);
+
+const chartJSON = JSON.stringify({ series: rawSeries, baseYear });
 ---
 
 <section class="regional-chart-section">
   <div class="chart-header">
     <div>
-      <span class="eyebrow">Regional Overview</span>
-      <h2 class="chart-title">Real GDP, indexed ({baseYear} = 100)</h2>
-      <p class="chart-subtitle mono">Annual data · constant prices</p>
+      <h3 class="chart-title">The Guyana divergence</h3>
+      <p class="chart-subtitle">Regional real GDP indexed to {baseYear} — the resource boom in one line.</p>
     </div>
-    <div class="chart-legend" id="regional-legend" aria-label="Chart legend"></div>
+    <div class="chart-base mono">{baseYear} = 100</div>
   </div>
 
-  <div class="chart-container" id="regional-chart" role="img" aria-label="Indexed GDP chart for Caribbean economies">
+  <div class="chart-container" id="regional-chart" role="img" aria-label="Regional real GDP indexed chart, Guyana diverging">
     <div class="chart-loading mono">Loading chart…</div>
   </div>
 
-  <div class="source-line">
-    <span>Source:</span>
-    <a href="https://www.imf.org/en/Publications/WEO" target="_blank" rel="noopener noreferrer">
-      IMF World Economic Outlook (October 2024)
-    </a>
-    <span>·</span>
-    <span>2024 data are IMF estimates</span>
-  </div>
+  <div id="regional-data" data-chart={chartJSON} hidden></div>
 </section>
 
 <script>
   import * as d3 from 'd3';
 
-  // Inline data for the regional chart (indexed GDP from indicators.json)
-  // This is populated at build time; in Phase 2 this will be fetched from the hub
-  const RAW_DATA = [
-    { country: 'GY', name: 'Guyana',            values: [
-      { year: 2018, value: 4631  },
-      { year: 2019, value: 5001  },
-      { year: 2020, value: 6929  },
-      { year: 2021, value: 9267  },
-      { year: 2022, value: 17862 },
-      { year: 2023, value: 25910 },
-      { year: 2024, value: 33014 },
-    ]},
-    { country: 'TT', name: 'Trinidad & Tobago', values: [
-      { year: 2018, value: 16818 },
-      { year: 2019, value: 17097 },
-      { year: 2020, value: 15226 },
-      { year: 2021, value: 15882 },
-      { year: 2022, value: 19348 },
-      { year: 2023, value: 20012 },
-      { year: 2024, value: 20543 },
-    ]},
-  ];
+  type Point  = { year: number; value: number };
+  type Series = { country: string; name: string; color: string; highlight: boolean; values: Point[] };
 
-  const BASE_YEAR = 2018;
-  const SERIES_COLORS: Record<string, string> = {
-    GY: '#0E5E4E',
-    TT: '#BC8A2E',
-  };
+  const dataEl = document.getElementById('regional-data') as HTMLElement;
+  const { series: RAW_DATA, baseYear: BASE_YEAR } =
+    JSON.parse(dataEl.dataset.chart ?? '{"series":[],"baseYear":0}') as
+    { series: Series[]; baseYear: number };
 
-  // Index each series to BASE_YEAR = 100
-  const data = RAW_DATA.map(series => {
-    const base = series.values.find(v => v.year === BASE_YEAR)?.value ?? 1;
-    return {
-      ...series,
-      indexed: series.values
-        .filter(v => v.value !== null)
-        .map(v => ({ year: v.year, value: (v.value / base) * 100 })),
-    };
+  // Index each series to BASE_YEAR = 100.
+  const data = RAW_DATA.map(s => {
+    const base = s.values.find(v => v.year === BASE_YEAR)?.value ?? s.values[0]?.value ?? 1;
+    return { ...s, indexed: s.values.map(v => ({ year: v.year, value: (v.value / base) * 100 })) };
   });
 
   const container = document.getElementById('regional-chart');
-  const legendEl  = document.getElementById('regional-legend');
   if (!container) throw new Error('Chart container not found');
 
-  const margin = { top: 20, right: 24, bottom: 36, left: 52 };
-  const width  = container.clientWidth  - margin.left - margin.right;
-  const height = Math.min(320, Math.max(220, container.clientWidth * 0.35)) - margin.top - margin.bottom;
+  const margin = { top: 22, right: 64, bottom: 34, left: 40 };
+  const width  = container.clientWidth - margin.left - margin.right;
+  const height = Math.min(300, Math.max(220, container.clientWidth * 0.34)) - margin.top - margin.bottom;
 
-  // Clear loading placeholder
   container.innerHTML = '';
 
   const svg = d3.select(container)
@@ -97,139 +89,110 @@ const { baseYear = 2018 } = Astro.props;
   const allYears  = [...new Set(data.flatMap(s => s.indexed.map(d => d.year)))].sort();
   const allValues = data.flatMap(s => s.indexed.map(d => d.value));
 
-  const xScale = d3.scalePoint<number>()
-    .domain(allYears)
-    .range([0, width])
-    .padding(0.1);
+  const xScale = d3.scalePoint<number>().domain(allYears).range([0, width]).padding(0.04);
+  const yScale = d3.scaleLinear().domain([0, Math.max(...allValues) * 1.08]).range([height, 0]).nice();
 
-  const yScale = d3.scaleLinear()
-    .domain([0, Math.max(...allValues) * 1.08])
-    .range([height, 0])
-    .nice();
-
-  // Grid lines
+  // Horizontal gridlines + value labels
   svg.append('g')
-    .attr('class', 'grid')
-    .call(
-      d3.axisLeft(yScale)
-        .tickSize(-width)
-        .tickFormat('' as any)
-        .ticks(5)
-    )
+    .call(d3.axisLeft(yScale).ticks(5).tickSize(-width).tickFormat(d => `${d}`))
     .call(g => {
       g.select('.domain').remove();
-      g.selectAll('.tick line')
-        .attr('stroke', 'rgba(15,35,30,0.08)')
-        .attr('stroke-dasharray', '3,3');
+      g.selectAll('.tick line').attr('stroke', '#ebe7dc');
+      g.selectAll('text')
+        .attr('font-family', 'IBM Plex Mono, monospace')
+        .attr('font-size', '10').attr('fill', '#b3ad9e').attr('x', -8);
     });
 
-  // Axes
+  // X axis (years)
   svg.append('g')
     .attr('transform', `translate(0,${height})`)
     .call(d3.axisBottom(xScale).tickFormat(d => String(d)))
     .call(g => {
-      g.select('.domain').attr('stroke', 'rgba(15,35,30,0.15)');
-      g.selectAll('text')
-        .attr('font-family', 'JetBrains Mono, monospace')
-        .attr('font-size', '10')
-        .attr('fill', '#8A958F');
-      g.selectAll('.tick line').remove();
-    });
-
-  svg.append('g')
-    .call(d3.axisLeft(yScale).ticks(5).tickFormat(d => `${d}`))
-    .call(g => {
       g.select('.domain').remove();
-      g.selectAll('text')
-        .attr('font-family', 'JetBrains Mono, monospace')
-        .attr('font-size', '10')
-        .attr('fill', '#8A958F');
       g.selectAll('.tick line').remove();
+      g.selectAll('text')
+        .attr('font-family', 'IBM Plex Mono, monospace')
+        .attr('font-size', '10').attr('fill', '#b3ad9e');
     });
 
-  // Line generator
   const line = d3.line<{ year: number; value: number }>()
     .x(d => xScale(d.year)!)
     .y(d => yScale(d.value))
     .curve(d3.curveMonotoneX);
 
-  // Draw lines + dots
-  data.forEach(series => {
-    const color = SERIES_COLORS[series.country] ?? '#5A6B6E';
+  const area = d3.area<{ year: number; value: number }>()
+    .x(d => xScale(d.year)!)
+    .y0(height)
+    .y1(d => yScale(d.value))
+    .curve(d3.curveMonotoneX);
 
-    svg.append('path')
-      .datum(series.indexed)
+  // Draw muted peers first, highlight (Guyana) last so it sits on top.
+  [...data].sort((a, b) => Number(a.highlight) - Number(b.highlight)).forEach(series => {
+    if (series.highlight) {
+      svg.append('path').datum(series.indexed)
+        .attr('fill', series.color).attr('fill-opacity', 0.07).attr('d', area);
+    }
+    svg.append('path').datum(series.indexed)
       .attr('fill', 'none')
-      .attr('stroke', color)
-      .attr('stroke-width', 2)
+      .attr('stroke', series.color)
+      .attr('stroke-width', series.highlight ? 2.5 : 1.5)
       .attr('d', line);
 
-    // Dots for each point
-    svg.selectAll(`.dot-${series.country}`)
-      .data(series.indexed)
-      .join('circle')
-      .attr('cx', d => xScale(d.year)!)
-      .attr('cy', d => yScale(d.value))
-      .attr('r', 3)
-      .attr('fill', color)
-      .attr('stroke', 'var(--paper)')
-      .attr('stroke-width', 1.5);
-
-    // Label on last point
     const last = series.indexed[series.indexed.length - 1];
-    svg.append('text')
-      .attr('x', xScale(last.year)! + 6)
-      .attr('y', yScale(last.value) + 4)
-      .attr('font-family', 'JetBrains Mono, monospace')
-      .attr('font-size', '10')
-      .attr('fill', color)
-      .text(series.country);
+    if (series.highlight) {
+      svg.append('circle')
+        .attr('cx', xScale(last.year)!).attr('cy', yScale(last.value)).attr('r', 3.5)
+        .attr('fill', series.color);
+      svg.append('text')
+        .attr('x', xScale(last.year)! - 12).attr('y', yScale(last.value) - 8)
+        .attr('text-anchor', 'end')
+        .attr('font-family', 'Source Serif 4, serif')
+        .attr('font-size', '13').attr('font-weight', '600').attr('fill', series.color)
+        .text(series.name);
+    } else {
+      svg.append('text')
+        .attr('x', xScale(last.year)! + 8).attr('y', yScale(last.value) + 3)
+        .attr('font-family', 'IBM Plex Mono, monospace')
+        .attr('font-size', '10').attr('fill', '#a8a496')
+        .text(series.country);
+    }
   });
-
-  // Legend
-  if (legendEl) {
-    legendEl.innerHTML = data.map(s => `
-      <div class="legend-item">
-        <span class="legend-dot" style="background:${SERIES_COLORS[s.country]}"></span>
-        <span class="mono">${s.name}</span>
-      </div>
-    `).join('');
-  }
 </script>
 
 <style>
-  .regional-chart-section {
-    margin-top: var(--section-gap);
-  }
+  .regional-chart-section { padding: 4px 0; }
 
   .chart-header {
     display: flex;
-    align-items: flex-start;
+    align-items: baseline;
     justify-content: space-between;
-    margin-bottom: 16px;
     gap: var(--gap-md);
+    margin-bottom: 20px;
     flex-wrap: wrap;
   }
 
   .chart-title {
-    font-size: 20px;
-    font-weight: 700;
-    margin: 6px 0 4px;
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 21px;
+    font-weight: 600;
+    color: #16170f;
+    letter-spacing: -0.01em;
   }
 
   .chart-subtitle {
-    color: var(--ink-faint);
+    font-size: 13px;
+    color: #6f6e64;
+    margin-top: 4px;
+  }
+
+  .chart-base {
+    font-family: 'IBM Plex Mono', monospace;
     font-size: 11px;
+    color: #a8a496;
+    letter-spacing: 0.04em;
   }
 
-  .chart-container {
-    border: var(--border);
-    background-color: var(--card);
-    padding: 12px 8px 8px;
-    width: 100%;
-    min-height: 200px;
-  }
-
+  .chart-container { width: 100%; min-height: 200px; }
   .chart-container svg { display: block; width: 100%; }
 
   .chart-loading {
@@ -237,29 +200,7 @@ const { baseYear = 2018 } = Astro.props;
     align-items: center;
     justify-content: center;
     min-height: 200px;
-    color: var(--ink-faint);
+    color: #a8a496;
     font-size: 11px;
-  }
-
-  .chart-legend {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    flex-shrink: 0;
-  }
-
-  :global(.legend-item) {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 11px;
-    color: var(--ink-soft);
-  }
-
-  :global(.legend-dot) {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    flex-shrink: 0;
   }
 </style>

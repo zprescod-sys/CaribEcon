@@ -1,0 +1,122 @@
+{
+  "nominal_gdp": {
+    "chartGroup": "macro",
+    "defaultChart": false,
+    "order": 1
+  },
+  "real_gdp": {
+    "chartGroup": "macro",
+    "defaultChart": false,
+    "order": 2
+  },
+  "gdp_growth": {
+    "chartGroup": "macro",
+    "defaultChart": true,
+    "order": 3
+  },
+  "gdp_per_capita": {
+    "chartGroup": "macro",
+    "defaultChart": false,
+    "order": 4
+  },
+  "population": {
+    "chartGroup": "demographics",
+    "defaultChart": false,
+    "order": 5
+  },
+  "inflation": {
+    "chartGroup": "macro",
+    "defaultChart": true,
+    "order": 6
+  },
+  "fx_rate_usd": {
+    "chartGroup": "external",
+    "defaultChart": false,
+    "order": 7
+  },
+  "unemployment": {
+    "chartGroup": "labour",
+    "defaultChart": true,
+    "order": 8
+  },
+  "labour_participation": {
+    "chartGroup": "labour",
+    "defaultChart": false,
+    "order": 9
+  },
+  "dependency_ratio": {
+    "chartGroup": "demographics",
+    "defaultChart": false,
+    "order": 10
+  },
+  "fdi": {
+    "chartGroup": "external",
+    "defaultChart": true,
+    "order": 11
+  },
+  "monetary_base": {
+    "chartGroup": "monetary",
+    "defaultChart": false,
+    "order": 12
+  },
+  "current_account": {
+    "chartGroup": "external",
+    "defaultChart": false,
+    "order": 13
+  },
+  "capital_account": {
+    "chartGroup": "external",
+    "defaultChart": false,
+    "order": 14
+  },
+  "primary_balance": {
+    "chartGroup": "fiscal",
+    "defaultChart": false,
+    "order": 15
+  },
+  "fiscal_balance": {
+    "chartGroup": "fiscal",
+    "defaultChart": false,
+    "order": 16
+  },
+  "govt_revenue_total": {
+    "chartGroup": "fiscal",
+    "defaultChart": false,
+    "order": 17
+  },
+  "govt_current_expenditure": {
+    "chartGroup": "fiscal",
+    "defaultChart": false,
+    "order": 18
+  },
+  "govt_capital_expenditure": {
+    "chartGroup": "fiscal",
+    "defaultChart": false,
+    "order": 19
+  },
+  "govt_total_expenditure": {
+    "chartGroup": "fiscal",
+    "defaultChart": false,
+    "order": 20
+  },
+  "gross_govt_debt": {
+    "chartGroup": "fiscal",
+    "defaultChart": false,
+    "order": 21
+  },
+  "net_govt_debt": {
+    "chartGroup": "fiscal",
+    "defaultChart": false,
+    "order": 22
+  },
+  "gross_govt_debt_pct_gdp": {
+    "chartGroup": "fiscal",
+    "defaultChart": true,
+    "order": 23
+  },
+  "import_cover": {
+    "chartGroup": "external",
+    "defaultChart": false,
+    "order": 24
+  }
+}

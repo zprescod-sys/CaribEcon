@@ -1,5 +1,5 @@
 ---
-// News feed — country filter chips + article list.
+// News feed — country search bar + article list.
 import type { NewsData } from '../../lib/types';
 import { getCountries } from '../../lib/dataHub';
 
@@ -9,7 +9,12 @@ interface Props {
 
 const { news } = Astro.props;
 const countries = getCountries();
-const newsJSON  = JSON.stringify(news);
+
+// Code → name map for search matching
+const countryNameMap: Record<string, string> = Object.fromEntries(
+  countries.map(c => [c.code, c.name.toLowerCase()])
+);
+const namesMapJSON = JSON.stringify(countryNameMap);
 
 function formatDate(d: string) {
   return new Date(d).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
@@ -17,14 +22,24 @@ function formatDate(d: string) {
 ---
 
 <div class="news-section">
-  <!-- Filter chips -->
-  <div class="filter-bar" role="group" aria-label="Filter news by country">
-    <button type="button" class="chip active" data-filter="ALL">All Caribbean</button>
-    {countries.map(c => (
-      <button type="button" class="chip" data-filter={c.code}>
-        {c.flag} {c.name}
-      </button>
-    ))}
+  <!-- Search bar -->
+  <div class="filter-bar">
+    <div class="search-wrap">
+      <svg class="search-icon" width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+        <circle cx="6.5" cy="6.5" r="5" stroke="currentColor" stroke-width="1.5"/>
+        <line x1="10.5" y1="10.5" x2="15" y2="15" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/>
+      </svg>
+      <input
+        type="search"
+        id="news-search"
+        class="news-search mono"
+        placeholder="Filter by country…"
+        autocomplete="off"
+        aria-label="Filter news by country"
+      />
+      <button class="search-clear" id="news-clear" type="button" aria-label="Clear filter" hidden>✕</button>
+    </div>
+    <span class="filter-hint mono" id="filter-hint"></span>
   </div>
 
   <!-- Feed -->
@@ -50,36 +65,51 @@ function formatDate(d: string) {
   </div>
 
   <div id="news-empty" class="news-empty mono" hidden>
-    No news for this country in the current dataset.
+    No articles match that country.
   </div>
 </div>
 
-<!-- Pass data for client-side filtering -->
-<div id="news-data" data-news={newsJSON} hidden></div>
+<div id="news-country-map" data-map={namesMapJSON} hidden></div>
 
 <script>
-  const chips    = document.querySelectorAll<HTMLButtonElement>('[data-filter]');
-  const items    = document.querySelectorAll<HTMLElement>('.news-item');
-  const emptyEl  = document.getElementById('news-empty') as HTMLElement | null;
+  const searchInput = document.getElementById('news-search') as HTMLInputElement | null;
+  const clearBtn    = document.getElementById('news-clear') as HTMLButtonElement | null;
+  const hint        = document.getElementById('filter-hint') as HTMLElement | null;
+  const items       = document.querySelectorAll<HTMLElement>('.news-item');
+  const emptyEl     = document.getElementById('news-empty') as HTMLElement | null;
+  const mapEl       = document.getElementById('news-country-map') as HTMLElement | null;
 
-  function filterNews(filter: string) {
-    let visibleCount = 0;
+  const countryNames: Record<string, string> = JSON.parse(mapEl?.dataset.map ?? '{}');
+
+  function filterNews(query: string) {
+    const q = query.trim().toLowerCase();
+    let visible = 0;
+
     items.forEach(item => {
-      const countries = (item.dataset.country ?? '').split(',');
-      const match = filter === 'ALL' || countries.includes(filter) || countries.includes('ALL');
+      const codes = (item.dataset.country ?? '').split(',');
+      let match = false;
+      if (!q || codes.includes('ALL')) {
+        match = true;
+      } else {
+        match = codes.some(code =>
+          code.toLowerCase().includes(q) ||
+          (countryNames[code] ?? '').includes(q)
+        );
+      }
       item.hidden = !match;
-      if (match) visibleCount++;
+      if (match) visible++;
     });
-    if (emptyEl) emptyEl.hidden = visibleCount > 0;
+
+    if (emptyEl) emptyEl.hidden = visible > 0;
+    if (clearBtn) clearBtn.hidden = !q;
+    if (hint) hint.textContent = q && visible > 0 ? `${visible} article${visible === 1 ? '' : 's'}` : '';
   }
 
-  chips.forEach(chip => {
-    chip.addEventListener('click', () => {
-      chips.forEach(c => { c.classList.remove('active'); c.setAttribute('aria-pressed', 'false'); });
-      chip.classList.add('active');
-      chip.setAttribute('aria-pressed', 'true');
-      filterNews(chip.dataset.filter ?? 'ALL');
-    });
+  searchInput?.addEventListener('input', () => filterNews(searchInput.value));
+  clearBtn?.addEventListener('click', () => {
+    if (searchInput) searchInput.value = '';
+    filterNews('');
+    searchInput?.focus();
   });
 </script>
 
@@ -88,11 +118,62 @@ function formatDate(d: string) {
 
   .filter-bar {
     display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
+    align-items: center;
+    gap: 12px;
     padding-bottom: 20px;
     border-bottom: var(--border);
     margin-bottom: 20px;
+    flex-wrap: wrap;
+  }
+
+  .search-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  .search-icon {
+    position: absolute;
+    left: 10px;
+    color: var(--ink-faint);
+    pointer-events: none;
+  }
+
+  .news-search {
+    appearance: none;
+    border: var(--border);
+    border-radius: 0;
+    background: var(--card);
+    padding: 8px 32px 8px 32px;
+    font-size: 12px;
+    font-family: var(--font-mono);
+    color: var(--ink);
+    min-width: 240px;
+    outline: none;
+  }
+
+  .news-search:focus { border-color: var(--teal); }
+
+  .news-search::-webkit-search-cancel-button { display: none; }
+
+  .search-clear {
+    position: absolute;
+    right: 8px;
+    background: none;
+    border: none;
+    padding: 0;
+    font-size: 10px;
+    color: var(--ink-faint);
+    cursor: pointer;
+    line-height: 1;
+  }
+
+  .search-clear:hover { color: var(--ink); }
+
+  .filter-hint {
+    font-size: 11px;
+    color: var(--ink-faint);
+    letter-spacing: 0.04em;
   }
 
   .news-list {

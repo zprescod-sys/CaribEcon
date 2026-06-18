@@ -4,7 +4,7 @@ The visual contract for this project. Read before any UI work. Derive every colo
 
 ## Thesis
 
-A multi-page Caribbean macroeconomic research tool with the register of a research institute, not a consumer app. Hard-edged and precise — angular geometry, no soft rounded corners. The data is the hero. Distinctive through typography, structure, and disciplined color, not decoration.
+A multi-page Caribbean macroeconomic research tool with the register of a research institute, more than a consumer app. The data is the hero. Distinctive through typography, structure, and disciplined color, not decoration but still well displayed and designed 
 
 This is a portfolio-grade piece: it should look professional and near-perfect, the kind of project that stands on a GitHub repo and a LinkedIn post as evidence of connecting a real economic problem to a real workflow. Build to that bar.
 
@@ -44,7 +44,7 @@ Sentence case everywhere. Two body weights only (400, 500). Tabular numerals for
 
 ## Geometry — Hard Edges
 
-- Border radius: 0 on cards, panels, buttons, inputs, chart containers, nav items. Square corners are the signature.
+- Border radius: 0 on cards, panels, buttons, inputs, chart containers, nav items.
 - Exception: pure circles only (legend dots, live point, pie segments). Nothing else is rounded.
 - Borders: 1px solid --line. Use a 3px left border in --teal or --gold to mark emphasis blocks.
 - Flat surfaces. No drop shadows except a functional square offset shadow on open dropdowns/menus.
