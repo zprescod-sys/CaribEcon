@@ -148,11 +148,12 @@ const namesJSON = JSON.stringify(Object.fromEntries(getCountries().map(c => [c.c
       // Cite every distinct source across the displayed series — a chart can mix a
       // primary national source (e.g. T&T MoF growth) with IMF/WB comparable data
       // (e.g. Guyana growth from IMF WEO), so a single citation would be misleading.
+      // Dedup by source name (same publication across countries differs only by URL
+      // — show it once, linking the first occurrence).
       const seen = new Set<string>();
       const uniq = filtered.filter(s => {
-        const k = `${s.source}|${s.sourceUrl}`;
-        if (seen.has(k)) return false;
-        seen.add(k); return true;
+        if (seen.has(s.source)) return false;
+        seen.add(s.source); return true;
       });
       const links = uniq
         .map(s => `<a href="${s.sourceUrl}" target="_blank" rel="noopener noreferrer">${s.source}</a>`)

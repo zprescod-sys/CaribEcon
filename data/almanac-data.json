@@ -94,44 +94,78 @@
     "indicator": "gdp_growth",
     "indicatorLabel": "GDP Growth Rate",
     "unit": "%",
-    "unitNote": "Real GDP at purchaser prices, annual % change",
-    "source": "T&T Ministry of Finance — Review of the Economy 2025",
-    "sourceOrg": "MoF (T&T) / CSO",
-    "sourceTier": "primary",
-    "sourceUrl": "https://www.finance.gov.tt/category/economic-review/",
-    "sourceRef": "Appendix 2, GDP at purchaser prices (% change)",
-    "confidence": "medium",
+    "source": "IMF World Economic Outlook (DataMapper)",
+    "sourceOrg": "IMF WEO",
+    "sourceTier": "comparable",
+    "sourceUrl": "https://www.imf.org/external/datamapper/NGDP_RPCH/TTO",
+    "sourceRef": "WEO series NGDP_RPCH",
+    "confidence": "flagged",
     "series": [
+      {
+        "year": 2015,
+        "value": -0.4,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2016,
+        "value": -7.5,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2017,
+        "value": -4.9,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2018,
+        "value": -0.9,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2019,
+        "value": 0.5,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
+      {
+        "year": 2020,
+        "value": -8.8,
+        "type": "actual",
+        "vintage": "2026-04"
+      },
       {
         "year": 2021,
         "value": -0.7,
         "type": "actual",
-        "vintage": "2025-08"
+        "vintage": "2026-04"
       },
       {
         "year": 2022,
         "value": 0.9,
         "type": "actual",
-        "vintage": "2025-08"
+        "vintage": "2026-04"
       },
       {
         "year": 2023,
         "value": 1.5,
         "type": "actual",
-        "vintage": "2025-08"
+        "vintage": "2026-04"
       },
       {
         "year": 2024,
         "value": 2.5,
-        "type": "actual",
-        "vintage": "2025-08",
-        "sourceNote": "CSO/MoF official; cross-ref IMF Art. IV 2024 est. 2.4% and CBTT prelim 1.4% — material divergence"
+        "type": "estimate",
+        "vintage": "2026-04"
       },
       {
         "year": 2025,
-        "value": -0.8,
-        "type": "estimate",
-        "vintage": "2025-08"
+        "value": 0.8,
+        "type": "projection",
+        "vintage": "2026-04"
       }
     ]
   },
