@@ -1,0 +1,46 @@
+name: Refresh feeds (news + publications)
+
+# Snapshots the Google Sheet buffer into data/news.json + data/publications.json
+# and commits if anything changed. The host (Vercel / Cloudflare Pages) auto-deploys
+# on push. No secrets: the sheet is read as public CSV.
+
+on:
+  schedule:
+    - cron: '0 11 * * *'        # daily ~11:00 UTC (~7am Caribbean) — publish cadence
+  workflow_dispatch:            # manual/ad-hoc runs
+
+permissions:
+  contents: write               # allow the action to commit regenerated JSON
+
+concurrency:
+  group: feeds
+  cancel-in-progress: false
+
+jobs:
+  feeds:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Generate feeds from the Sheet
+        env:
+          SHEET_ID: ${{ vars.SHEET_ID }}     # repo Variable (Settings → Variables), not a Secret — it's public anyway
+          NEWS_WINDOW_DAYS: '90'
+          NEWS_MAX: '60'
+        run: npm run feeds
+
+      - name: Commit if changed
+        run: |
+          if [ -n "$(git status --porcelain data/news.json data/publications.json)" ]; then
+            git config user.name  "feeds-bot"
+            git config user.email "actions@github.com"
+            git add data/news.json data/publications.json
+            git commit -m "data(feeds): refresh news + publications [skip ci]"
+            git push
+          else
+            echo "No feed changes."
+          fi

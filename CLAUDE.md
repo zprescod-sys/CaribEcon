@@ -76,10 +76,12 @@ Every page reads from one hub; no per-page hardcoded numbers.
 - **Data consolidated to one source of truth.** `almanac-data.json` (249 records, 2167 points, 24 indicators, 16 countries) drives every page via `dataHub.ts`; the legacy `indicators.json` was deleted. `indicator-meta.json` gates which indicators appear in selectors. `debt_to_gdp` was merged into `gross_govt_debt_pct_gdp` (IMF series canonical across countries; BB/BS primary divergence noted in `seriesNote`). Full detail in `data/SCHEMA.md`.
 - **Dataset refreshed to most-recent data, current to 2025.** Every comparable series is re-pulled in full from the current World Bank / IMF WEO (April 2026) release — historical values reflect the latest revisions, not the vintage they were first collected at. `gdp_growth` + `inflation` are now IMF WEO across all IMF-member countries (KY/TC/VG stay World Bank; TT growth stays primary MoF). `gross_govt_debt_pct_gdp`/`current_account`/`fiscal_balance` = IMF WEO; all other spine indicators = World Bank WDI. 2024 IMF points are estimates, 2025 projections. Primary national records (TT, GY/BB/JM/BS fiscal, KY ESO) left untouched. Collector/refresh/validator scripts in `.tmp/`; policy in `data/SCHEMA.md`.
 - **Home page rebuilt** from the imported Claude Design "Caribbean Almanac v2" mock and aligned to `EDDESIGN.md` (cool petrol-and-gold tokens, hard edges): daily briefing + live key-indicators rail + "Guyana divergence" chart + Explore + recent news, click-to-repoint wired to the hub, content on a single `--paper` surface.
+- **Feeds pipeline built (repo side); awaiting sheet go-live.** This realizes the deferred "Phase 2 scheduled fetcher" for News/Publications. RSS-by-Zapier → Google Sheet (two tabs) → `scripts/build-feeds.mjs` (CSV→JSON, validate, editorial gate for pubs) → daily GitHub Action commit (`.github/workflows/feeds.yml`) → host auto-deploy. No API keys; bodies never stored. Tested against `scripts/fixtures/*.sample.csv`. To go live: user shares the sheet public-read + sets repo Variable `SHEET_ID`. Setup: `docs/FEEDS_PIPELINE.md`.
 
 ## Next Steps
 
-- Build the News, Publications, and Deals pages.
+- **Feeds go-live:** user shares the Google Sheet "Anyone with link → Viewer" and sets repo Variable `SHEET_ID`; then `workflow_dispatch` the feeds Action once to confirm commit + redeploy.
+- Build the Deals page (News + Publications are scaffolded and now fed by the pipeline).
 - Add FDI and spending-vs-revenue views to the Data page (mirror the budget pie).
 - Deferred: deterministic D3 chart builder on `/analysis`.
 

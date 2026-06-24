@@ -1,0 +1,5 @@
+title,org,date,country,url,feed_summary,type,summary,approved
+Guyana 2026 Article IV Consultation — Staff Report,International Monetary Fund,2026-05-30,GY,https://example.com/imf-gy-2026-art-iv,Raw feed blurb that should be ignored,Article IV,IMF staff judge Guyana's outlook exceptionally strong on oil but flag absorptive-capacity and diversification risks.,TRUE
+Caribbean Regional Economic Outlook 2026,International Monetary Fund,2026-05-20,REGION,https://example.com/imf-reo-2026,Feed text,Regional Economic Outlook,Survey of regional growth and external-balance trends; sees resilient but uneven recovery across the Caribbean.,TRUE
+Barbados Country Report awaiting editorial review,International Monetary Fund,2026-06-12,BB,https://example.com/imf-bb-pending,Feed text,Country Report,,FALSE
+Working paper with no summary yet,World Bank,2026-06-01,JM,https://example.com/wb-wp-nosummary,Feed text,Working Paper,,TRUE

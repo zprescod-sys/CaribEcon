@@ -5,6 +5,12 @@ in scope but not yet collected — no accessible primary tier). One JSON array; 
 element is one (country, indicator) record holding a time series. This is the
 *rich* hub for all data on the page. This is the master dataset for macroeconomic indicators used by charts, exports, country profiles, and future analysis features. Other indicator files should not be manually maintained unless they are generated from this file.
 
+> `news.json` / `publications.json` are not maintained here — they are regenerated
+> from a Google Sheet buffer by `scripts/build-feeds.mjs`. Rule reminders: store
+> headline + source + date + link only (never republish bodies); publications carry an
+> editorial `summary` (own words) + validated `type` and publish only when approved.
+> Full setup in [`docs/FEEDS_PIPELINE.md`](../docs/FEEDS_PIPELINE.md).
+
 **Temporal coverage:** 2015–2025. **Comparable series always reflect the most recent
 available data** — when refreshed, the full series (all years) is re-pulled from the
 current World Bank / IMF release and overwritten; historical values are NOT pinned to
