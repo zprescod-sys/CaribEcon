@@ -1,23 +1,22 @@
-name: Refresh feeds (news + publications)
+name: Refresh news feeds
 
-# Snapshots the Google Sheet buffer into data/news.json + data/publications.json
-# and commits if anything changed. The host (Vercel / Cloudflare Pages) auto-deploys
-# on push. No secrets: the sheet is read as public CSV.
-
+# Daily publish cadence. The feeds are polled at run time and merged into
+# data/news.json; the commit triggers the host's auto-deploy. workflow_dispatch
+# allows a manual refresh from the Actions tab.
 on:
   schedule:
-    - cron: '0 11 * * *'        # daily ~11:00 UTC (~7am Caribbean) — publish cadence
-  workflow_dispatch:            # manual/ad-hoc runs
+    - cron: '0 11 * * *'   # 11:00 UTC ≈ 7am Caribbean, daily
+  workflow_dispatch:
 
 permissions:
-  contents: write               # allow the action to commit regenerated JSON
+  contents: write
 
 concurrency:
   group: feeds
   cancel-in-progress: false
 
 jobs:
-  feeds:
+  refresh:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -26,21 +25,19 @@ jobs:
         with:
           node-version: 20
 
-      - name: Generate feeds from the Sheet
-        env:
-          SHEET_ID: ${{ vars.SHEET_ID }}     # repo Variable (Settings → Variables), not a Secret — it's public anyway
-          NEWS_WINDOW_DAYS: '90'
-          NEWS_MAX: '60'
+      - run: npm ci
+
+      - name: Fetch & merge feeds
         run: npm run feeds
 
       - name: Commit if changed
         run: |
-          if [ -n "$(git status --porcelain data/news.json data/publications.json)" ]; then
-            git config user.name  "feeds-bot"
-            git config user.email "actions@github.com"
-            git add data/news.json data/publications.json
-            git commit -m "data(feeds): refresh news + publications [skip ci]"
-            git push
-          else
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/news.json data/publications.json data/pub_inbox.json
+          if git diff --staged --quiet; then
             echo "No feed changes."
+          else
+            git commit -m "chore(data): daily feed refresh"
+            git push
           fi
