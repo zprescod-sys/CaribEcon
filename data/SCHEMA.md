@@ -5,12 +5,6 @@ in scope but not yet collected — no accessible primary tier). One JSON array; 
 element is one (country, indicator) record holding a time series. This is the
 *rich* hub for all data on the page. This is the master dataset for macroeconomic indicators used by charts, exports, country profiles, and future analysis features. Other indicator files should not be manually maintained unless they are generated from this file.
 
-> `news.json` / `publications.json` are not maintained here — they are regenerated
-> from a Google Sheet buffer by `scripts/build-feeds.mjs`. Rule reminders: store
-> headline + source + date + link only (never republish bodies); publications carry an
-> editorial `summary` (own words) + validated `type` and publish only when approved.
-> Full setup in [`docs/FEEDS_PIPELINE.md`](../docs/FEEDS_PIPELINE.md).
-
 **Temporal coverage:** 2015–2025. **Comparable series always reflect the most recent
 available data** — when refreshed, the full series (all years) is re-pulled from the
 current World Bank / IMF release and overwritten; historical values are NOT pinned to
@@ -125,3 +119,34 @@ Local-currency level indicators are source records, not always chart-comparable 
 
 TT, GY, BB, JM, BS, BZ, SR, GD, LC, AG, KN, DM, VC, TC, KY, VG (16 collected).
 MS (Montserrat) and AI (Anguilla) are in scope but not yet collected.
+
+## News & Publications feeds pipeline
+
+`data/news.json` is regenerated daily from RSS/Atom feeds by `scripts/build-feeds.mjs`
+(`npm run feeds`), run on a cron by `.github/workflows/feeds.yml`. It is **not**
+hand-maintained — edits are overwritten on the next run.
+
+- **Source list:** `data/feeds.json` — `{ country, source, url, insecureTLS? }` per feed
+  (one or more curated outlets per country; `country: "ALL"` for regional outlets).
+  Set `insecureTLS: true` only for feeds with a broken/expired TLS cert.
+- **Record shape:** unchanged `NewsItem` (`id, title, source, date, country, url, tags?`).
+  `id` is derived as `slug(source)-sha1(url)[0:8]` (stable, dedupes across runs). Only
+  headline + source + date + link are stored — **never article bodies** (`tags` come
+  from feed categories). Items failing validation (bad date/url, unknown country) are skipped.
+- **Financial filter:** only items whose title/tags match the economic-relevance lexicon
+  in `build-feeds.mjs` (`FIN_RE` / `FIN_PHRASES`) are kept — set `FINANCE_FILTER=0` to disable.
+- **Merge, not replace — full archive:** each run unions fetched items with the existing
+  store by `id`, windows to the last `NEWS_WINDOW_DAYS` (120), and keeps the **entire**
+  filtered set (safety bound `NEWS_MAX` 2000), newest-first. A rolling archive, not a
+  fixed top-N: the `/news` page paginates all of it; the home page shows the 20 most
+  recent. The committed JSON is the durable buffer (CI runners are stateless).
+- **Resilience:** a feed that 403s / TLS-fails / returns non-RSS is logged and skipped,
+  never crashing the run. Bot-protected feeds (e.g. Dominica) may need a proxied URL
+  (RSS.app / RSSHub) in `data/feeds.json`.
+
+**Publications stay editorial-in-the-loop.** Institutional feeds (IMF, etc.) are fetched
+best-effort into `data/pub_inbox.json` as staging rows (`approved: false`, empty
+`type`/`summary`). A human fills the editorial `summary`, assigns a valid `PublicationType`,
+and sets `approved: true`; the next run promotes approved rows into `publications.json`
+**without overwriting** existing curated records. IMF feeds often block datacenter IPs,
+so hand-adding rows to `publications.json` remains valid.

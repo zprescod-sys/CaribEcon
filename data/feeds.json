@@ -1,0 +1,23 @@
+[
+  { "country": "GY", "source": "Kaieteur News",            "url": "https://www.kaieteurnewsonline.com/feed/" },
+  { "country": "TT", "source": "T&T Newsday",              "url": "https://newsday.co.tt/feed/" },
+  { "country": "BB", "source": "Barbados Today",           "url": "https://barbadostoday.bb/feed/" },
+  { "country": "JM", "source": "Jamaica Observer",         "url": "https://www.jamaicaobserver.com/feed/" },
+  { "country": "BS", "source": "Eyewitness News",          "url": "https://ewnews.com/feed" },
+  { "country": "BZ", "source": "Breaking Belize News",     "url": "https://www.breakingbelizenews.com/feed/" },
+  { "country": "SR", "source": "Starnieuws",               "url": "http://www.starnieuws.com/rss/starnieuws.rss" },
+  { "country": "GD", "source": "NOW Grenada",              "url": "https://www.nowgrenada.com/feed/" },
+  { "country": "LC", "source": "St. Lucia Times",          "url": "https://stluciatimes.com/feed/" },
+  { "country": "AG", "source": "Antigua News Room",        "url": "https://antiguanewsroom.com/feed/" },
+  { "country": "KN", "source": "St. Kitts-Nevis Observer", "url": "https://www.thestkittsnevisobserver.com/feed/" },
+  { "country": "DM", "source": "Dominica News Online",     "url": "https://dominicanewsonline.com/feed/" },
+  { "country": "VC", "source": "iWitness News",            "url": "https://www.iwnsvg.com/feed/" },
+  { "country": "TC", "source": "Magnetic Media",           "url": "https://magneticmediatv.com/feed/" },
+  { "country": "KY", "source": "Cayman News Service",      "url": "https://caymannewsservice.com/feed/" },
+  { "country": "VG", "source": "BVI News",                 "url": "https://bvinews.com/feed/" },
+  { "country": "ALL", "source": "Loop News",               "url": "https://www.loopnews.com/news/feed", "insecureTLS": true },
+  { "country": "JM", "source": "The Star (Jamaica)",       "url": "https://jamaica-star.com/feed/news.xml", "insecureTLS": true },
+  { "country": "LC", "source": "St. Lucia Star",           "url": "https://stluciastar.com/feed" },
+  { "country": "TT", "source": "CNC3",                     "url": "https://www.cnc3.co.tt/feed/" },
+  { "country": "ALL", "source": "WIC News",                "url": "https://wicnews.com/feed" }
+]

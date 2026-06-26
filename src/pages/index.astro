@@ -72,6 +72,7 @@ function buildDek(country: string, name: string, source: string) {
 }
 
 // Build one briefing per recent news item; clicking the story repoints the lead.
+// Home shows the 6 most recent; the full archive lives on /news (paginated).
 const newsShown = getNews().slice(0, 6);
 const briefings: Briefing[] = newsShown.map(n => {
   const isRegional = n.country === 'ALL' || Array.isArray(n.country);
