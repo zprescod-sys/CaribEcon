@@ -84,16 +84,6 @@ a:hover { text-decoration: underline; }
   padding: 0 var(--side-padding);
 }
 
-.section-band {
-  background-color: var(--paper-warm);
-}
-
-.section-divider {
-  border: none;
-  border-top: 1px solid var(--line);
-  margin: var(--section-gap) 0;
-}
-
 /* ── Cards ──────────────────────────────────────────────────────────────── */
 .card {
   background-color: var(--card);
@@ -214,10 +204,6 @@ button:hover, .btn:hover {
 @media (max-width: 820px) {
   :root {
     --side-padding: 16px;
-  }
-
-  .two-col {
-    grid-template-columns: 1fr !important;
   }
 }
 
