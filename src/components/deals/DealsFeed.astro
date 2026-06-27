@@ -1,0 +1,401 @@
+---
+// Deals feed — keyword/country search bar + paginated headline list.
+// Mirrors the News feed pattern (search + client-side pagination); cards keep the
+// original DealsHeadlines layout (type badge, date, country, value, headline, parties).
+import type { DealsData } from '../../lib/types';
+import { getCountries } from '../../lib/dataHub';
+
+interface Props {
+  deals: DealsData;
+}
+
+const { deals } = Astro.props;
+const countries = getCountries();
+
+// Code -> name map for search matching
+const countryNameMap: Record<string, string> = Object.fromEntries(
+  countries.map(c => [c.code, c.name])
+);
+
+function countryLabels(country: string | string[]) {
+  return (Array.isArray(country) ? country : [country]).map(code => (
+    countryNameMap[code] ?? code
+  ));
+}
+
+function formatDate(d: string) {
+  return new Date(d).toLocaleDateString('en-US', { year: 'numeric', month: 'short' });
+}
+
+const sorted = [...deals].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+---
+
+<div class="deals-section">
+  <!-- Search bar -->
+  <div class="filter-bar">
+    <form class="search-wrap" id="deal-search-form" role="search">
+      <svg class="search-icon" width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+        <circle cx="6.5" cy="6.5" r="5" stroke="currentColor" stroke-width="1.5"/>
+        <line x1="10.5" y1="10.5" x2="15" y2="15" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/>
+      </svg>
+      <input
+        type="search"
+        id="deal-search"
+        class="deal-search mono"
+        placeholder="Search by keyword, party, type, or country..."
+        autocomplete="off"
+        aria-label="Search deals by keyword, party, type, or country"
+      />
+      <button class="search-clear" id="deal-clear" type="button" aria-label="Clear search" hidden>x</button>
+      <button class="search-submit mono" type="submit">Search</button>
+    </form>
+    <span class="filter-hint mono" id="deal-hint"></span>
+  </div>
+
+  <!-- List -->
+  <div id="deals-list" class="deals-list" aria-live="polite" aria-label="Deals and investments">
+    {sorted.map(deal => {
+      const countryArr = Array.isArray(deal.country) ? deal.country : [deal.country];
+      const countryAttr = countryArr.join(',');
+      const searchText = [
+        deal.headline,
+        deal.parties ?? '',
+        deal.value ?? '',
+        deal.type,
+        deal.source,
+        countryAttr,
+        ...countryLabels(deal.country),
+      ].join(' ');
+      return (
+        <article class="deal-item" data-country={countryAttr} data-search={searchText}>
+          <div class="deal-meta">
+            <span class="badge">{deal.type}</span>
+            <time class="mono" datetime={deal.date}>{formatDate(deal.date)}</time>
+            {countryArr.map(c => <span class="badge">{c}</span>)}
+            {deal.value && <span class="mono deal-value">{deal.value}</span>}
+          </div>
+
+          <a
+            href={deal.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="deal-headline"
+          >
+            {deal.headline}
+            <span class="deal-link-icon" aria-hidden="true">↗</span>
+          </a>
+
+          {deal.parties && (
+            <span class="deal-parties mono">{deal.parties}</span>
+          )}
+        </article>
+      );
+    })}
+  </div>
+
+  <div id="deals-empty" class="deals-empty mono" hidden>
+    No transactions match that search.
+  </div>
+
+  <!-- Pagination -->
+  <nav class="pager mono" id="deals-pager" aria-label="Deals pagination"></nav>
+</div>
+
+<script>
+  const PAGE_SIZE = 25;
+
+  const searchForm  = document.getElementById('deal-search-form') as HTMLFormElement | null;
+  const searchInput = document.getElementById('deal-search') as HTMLInputElement | null;
+  const clearBtn    = document.getElementById('deal-clear') as HTMLButtonElement | null;
+  const hint        = document.getElementById('deal-hint') as HTMLElement | null;
+  const list        = document.getElementById('deals-list') as HTMLElement | null;
+  const emptyEl     = document.getElementById('deals-empty') as HTMLElement | null;
+  const pager       = document.getElementById('deals-pager') as HTMLElement | null;
+  const items       = Array.from(document.querySelectorAll<HTMLElement>('.deal-item'));
+
+  let filtered: HTMLElement[] = items;   // items matching the current search
+  let page = 1;
+
+  function normalize(value: string) {
+    return value
+      .toLowerCase()
+      .normalize('NFD')
+      .replace(/[̀-ͯ]/g, '')
+      .replace(/\bt\s*(?:&|and)\s*t\b/g, 'tt trinidad tobago')
+      .replace(/&/g, ' and ')
+      .replace(/[^a-z0-9]+/g, ' ')
+      .trim();
+  }
+
+  // Recompute the matching set from the query, reset to page 1, re-render.
+  function applyFilter(query: string) {
+    const q = normalize(query);
+    const terms = q ? q.split(/\s+/).filter(term => term !== 'and') : [];
+    filtered = terms.length === 0
+      ? items
+      : items.filter(item => {
+          const haystack = normalize(item.dataset.search ?? '');
+          return terms.every(term => haystack.includes(term));
+        });
+    page = 1;
+    if (clearBtn) clearBtn.hidden = !q;
+    render();
+  }
+
+  // Show only the current page's slice of the filtered set; rebuild the pager.
+  function render() {
+    const total = filtered.length;
+    const pages = Math.max(1, Math.ceil(total / PAGE_SIZE));
+    if (page > pages) page = pages;
+    const start = (page - 1) * PAGE_SIZE;
+    const shown = new Set(filtered.slice(start, start + PAGE_SIZE));
+
+    items.forEach(item => { item.hidden = !shown.has(item); });
+    if (emptyEl) emptyEl.hidden = total > 0;
+    if (hint) {
+      hint.textContent = total
+        ? `${total} transaction${total === 1 ? '' : 's'}${pages > 1 ? ` · page ${page} of ${pages}` : ''}`
+        : '';
+    }
+    renderPager(pages);
+  }
+
+  // Build the page numbers to show: always first + last, plus a window around the
+  // current page, with gaps ("…") collapsing the rest.
+  function pageWindow(pages: number, current: number): (number | 'gap')[] {
+    const keep = new Set<number>([1, pages, current, current - 1, current + 1]);
+    const nums = [...keep].filter(p => p >= 1 && p <= pages).sort((a, b) => a - b);
+    const out: (number | 'gap')[] = [];
+    let prev = 0;
+    for (const p of nums) {
+      if (p - prev > 1) out.push('gap');
+      out.push(p);
+      prev = p;
+    }
+    return out;
+  }
+
+  function renderPager(pages: number) {
+    if (!pager) return;
+    pager.innerHTML = '';
+    if (pages <= 1) return;
+
+    const btn = (label: string, opts: { target?: number; active?: boolean; disabled?: boolean; gap?: boolean }) => {
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'page-btn' + (opts.active ? ' active' : '') + (opts.gap ? ' gap' : '');
+      b.textContent = label;
+      if (opts.gap || opts.disabled) {
+        b.disabled = true;
+      } else {
+        b.addEventListener('click', () => {
+          page = opts.target!;
+          render();
+          list?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+      }
+      pager.appendChild(b);
+    };
+
+    btn('‹', { target: page - 1, disabled: page === 1 });
+    for (const p of pageWindow(pages, page)) {
+      if (p === 'gap') btn('…', { gap: true });
+      else btn(String(p), { target: p, active: p === page });
+    }
+    btn('›', { target: page + 1, disabled: page === pages });
+  }
+
+  searchInput?.addEventListener('input', () => applyFilter(searchInput.value));
+  searchForm?.addEventListener('submit', event => {
+    event.preventDefault();
+    applyFilter(searchInput?.value ?? '');
+  });
+  clearBtn?.addEventListener('click', () => {
+    if (searchInput) searchInput.value = '';
+    applyFilter('');
+    searchInput?.focus();
+  });
+
+  render();   // initial paint
+</script>
+
+<style>
+  .deals-section { margin-top: var(--gap-md); }
+
+  .filter-bar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-bottom: 20px;
+    border-bottom: var(--border);
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+  }
+
+  .search-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .search-icon {
+    position: absolute;
+    left: 10px;
+    color: var(--ink-faint);
+    pointer-events: none;
+  }
+
+  .deal-search {
+    appearance: none;
+    border: var(--border);
+    border-radius: 0;
+    background: var(--card);
+    padding: 8px 32px 8px 32px;
+    font-size: 12px;
+    font-family: var(--font-mono);
+    color: var(--ink);
+    min-width: 240px;
+    outline: none;
+  }
+
+  .deal-search:focus { border-color: var(--teal); }
+
+  .deal-search::-webkit-search-cancel-button { display: none; }
+
+  .search-clear {
+    position: absolute;
+    right: 8px;
+    background: none;
+    border: none;
+    padding: 0;
+    font-size: 10px;
+    color: var(--ink-faint);
+    cursor: pointer;
+    line-height: 1;
+  }
+
+  .search-clear:hover { color: var(--ink); }
+
+  .search-submit {
+    border: var(--border);
+    border-radius: 0;
+    background: var(--teal);
+    color: #fff;
+    padding: 9px 14px;
+    font-size: 11px;
+    font-family: var(--font-mono);
+    cursor: pointer;
+    letter-spacing: 0.04em;
+  }
+
+  .search-submit:hover,
+  .search-submit:focus-visible {
+    background: var(--ink);
+  }
+
+  .filter-hint {
+    font-size: 11px;
+    color: var(--ink-faint);
+    letter-spacing: 0.04em;
+  }
+
+  .deals-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .deal-item {
+    padding: 16px 0;
+    border-bottom: 1px solid var(--line);
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .deal-item[hidden] { display: none; }
+
+  .deal-meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .deal-value {
+    color: var(--gold);
+    font-size: 11px;
+    font-weight: 500;
+  }
+
+  .deal-headline {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--ink);
+    text-decoration: none;
+    line-height: 1.4;
+    max-width: 76ch;
+    display: inline-flex;
+    align-items: baseline;
+    gap: 6px;
+  }
+
+  .deal-headline:hover { color: var(--teal); text-decoration: underline; }
+
+  .deal-link-icon { font-size: 11px; color: var(--ink-faint); flex-shrink: 0; }
+
+  .deal-parties {
+    color: var(--ink-faint);
+    font-size: 10px;
+    letter-spacing: 0.02em;
+  }
+
+  .deals-empty { padding: 40px 0; color: var(--ink-faint); font-size: 12px; }
+
+  /* Pagination */
+  .pager {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    align-items: center;
+    justify-content: center;
+    margin-top: 28px;
+  }
+
+  .pager:empty { display: none; }
+
+  .page-btn {
+    min-width: 32px;
+    border: var(--border);
+    background: var(--card);
+    color: var(--ink-soft);
+    padding: 7px 10px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    line-height: 1;
+    cursor: pointer;
+  }
+
+  .page-btn:hover:not(:disabled):not(.active) {
+    border-color: var(--teal);
+    color: var(--ink);
+  }
+
+  .page-btn.active {
+    background: var(--teal);
+    color: #fff;
+    border-color: var(--teal);
+    cursor: default;
+  }
+
+  .page-btn:disabled { cursor: default; }
+
+  .page-btn.gap {
+    border: none;
+    background: none;
+    color: var(--ink-faint);
+    min-width: 0;
+    padding: 7px 2px;
+  }
+</style>

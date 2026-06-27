@@ -120,7 +120,7 @@ Local-currency level indicators are source records, not always chart-comparable 
 TT, GY, BB, JM, BS, BZ, SR, GD, LC, AG, KN, DM, VC, TC, KY, VG (16 collected).
 MS (Montserrat) and AI (Anguilla) are in scope but not yet collected.
 
-## News & Publications feeds pipeline
+## News, Deals & Publications feeds pipeline
 
 `data/news.json` is regenerated daily from RSS/Atom feeds by `scripts/build-feeds.mjs`
 (`npm run feeds`), run on a cron by `.github/workflows/feeds.yml`. It is **not**
@@ -141,12 +141,25 @@ hand-maintained — edits are overwritten on the next run.
   fixed top-N: the `/news` page paginates all of it; the home page shows the 20 most
   recent. The committed JSON is the durable buffer (CI runners are stateless).
 - **Resilience:** a feed that 403s / TLS-fails / returns non-RSS is logged and skipped,
-  never crashing the run. Bot-protected feeds (e.g. Dominica) may need a proxied URL
-  (RSS.app / RSSHub) in `data/feeds.json`.
+  never crashing the run.
+- **Removed / known-blocked feeds:** Dominica News Online (`dominicanewsonline.com/feed/`,
+  permanent 403), Loop News (`loopnews.com/news/feed`, not a valid RSS path), and the 13
+  IMF per-country news feeds (`imf.org/en/news/rss`, block datacenter IPs) were **deleted**
+  rather than left failing each run. To revive any, add a proxied URL (RSS.app / RSSHub) in
+  `data/feeds.json` (news) or reinstate an inbox-discovery loop in `build-feeds.mjs`.
 
-**Publications stay editorial-in-the-loop.** Institutional feeds (IMF, etc.) are fetched
-best-effort into `data/pub_inbox.json` as staging rows (`approved: false`, empty
-`type`/`summary`). A human fills the editorial `summary`, assigns a valid `PublicationType`,
-and sets `approved: true`; the next run promotes approved rows into `publications.json`
-**without overwriting** existing curated records. IMF feeds often block datacenter IPs,
-so hand-adding rows to `publications.json` remains valid.
+**Deals are mined from news (editorial-in-the-loop).** There is no reliable M&A/FDI RSS
+source, so `buildDeals()` scans the merged `data/news.json` for genuine transactions using
+a deliberately strict filter — a title must name a deal action (`DEAL_VERB_RE`) **and** a
+money/scale figure (`MONEY_RE`), **or** contain a high-confidence standalone phrase
+(`DEAL_PHRASES`). Candidates are staged in `data/deals_inbox.json` (`approved: false`,
+empty `value`/`parties`/`type`, plus a `suggestedType`). A human fills `value`/`parties`,
+confirms a valid `DealType`, and sets `approved: true`; the next run promotes approved rows
+into `data/deals.json` **without overwriting** existing curated records.
+
+**Publications stay editorial-in-the-loop.** The auto-discovery IMF feeds were removed, so
+new rows are hand-entered into `data/pub_inbox.json` as staging rows (`approved: false`,
+empty `type`/`summary`). A human fills the editorial `summary`, assigns a valid
+`PublicationType`, and sets `approved: true`; the next run promotes approved rows into
+`publications.json` **without overwriting** existing curated records. Hand-adding rows
+directly to `publications.json` also remains valid.

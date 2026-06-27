@@ -104,7 +104,10 @@
     "parties": "Digicel Group / Marathon Asset Management",
     "value": "USD 1.7bn",
     "date": "2023-09-01",
-    "country": ["GY", "TT"],
+    "country": [
+      "GY",
+      "TT"
+    ],
     "type": "M&A",
     "url": "https://www.digicelgroup.com",
     "source": "Digicel / FT"

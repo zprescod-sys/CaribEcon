@@ -50,15 +50,43 @@ function isFinancial(title, tags = []) {
 // The 16 country codes (mirror dataHub.ts) + ALL for pan-Caribbean.
 const COUNTRIES = new Set(['GY','TT','BB','JM','BS','BZ','SR','GD','LC','AG','KN','DM','VC','TC','KY','VG','ALL']);
 
-// IMF per-country news — best-effort source for the Publications inbox. IMF often
-// blocks datacenter IPs (403); failures are skipped. Publications stay editorial.
-const PUB_FEEDS = [
-  ['GY','GUY'],['TT','TTO'],['BB','BRB'],['JM','JAM'],['BS','BHS'],['BZ','BLZ'],
-  ['SR','SUR'],['GD','GRD'],['LC','LCA'],['AG','ATG'],['KN','KNA'],['DM','DMA'],['VC','VCT'],
-].map(([country, iso3]) => ({
-  country, org: 'International Monetary Fund',
-  url: `https://www.imf.org/en/news/rss?Language=ENG&Country=${iso3}`,
-}));
+// ── Deal detector ──────────────────────────────────────────────────────────────
+// Mine the (already finance-filtered) news set for genuine transactions and stage
+// them in data/deals_inbox.json. The filter is deliberately strict to keep noise
+// out: an item qualifies only if its title names a deal action AND a money/scale
+// figure, OR it contains a single high-confidence standalone phrase. Candidates are
+// editorial — a human fills value/parties/type and sets approved:true before they
+// promote to data/deals.json.
+const DEAL_VERB_RE = new RegExp('\\b(?:' + [
+  'acquir', 'acquisit', 'merger', 'buyout', 'takeover', 'divest', 'divestiture',
+  'privatiz', 'recapitaliz', 'refinanc', 'concession', 'tender offer',
+  'stake in', 'majority stake', 'equity stake', 'bond issue', 'bond issuance',
+].join('|') + ')', 'i');
+// A currency-tagged amount, or a number with a scale word (bn/mn/billion/million).
+const MONEY_RE = /(?:us\$|usd|ttd|gyd|jmd|bbd|bsd|xcd|\$)\s?\d|\b\d+(?:\.\d+)?\s?(?:bn|billion|mn|million|trillion)\b/i;
+// High-confidence phrases that stand alone (no money figure required).
+const DEAL_PHRASES = [
+  'final investment decision', 'joint venture', 'completes acquisition',
+  'completed acquisition', 'initial public offering', 'bond issuance',
+  'sovereign bond', 'rights issue',
+];
+
+function isDeal(title) {
+  const hay = String(title).toLowerCase();
+  return (DEAL_VERB_RE.test(hay) && MONEY_RE.test(hay)) || DEAL_PHRASES.some(p => hay.includes(p));
+}
+
+// Suggest a DealType (src/lib/types.ts) from the title; the human can correct it.
+function inferDealType(title) {
+  const t = String(title).toLowerCase();
+  if (/\bipo\b|initial public offering|rights issue|lists on/.test(t)) return 'IPO';
+  if (/bond|eurobond|sovereign|note issue/.test(t)) return 'Bond';
+  if (/joint venture|\bjv\b/.test(t)) return 'JV';
+  if (/concession|licen[cs]e/.test(t)) return 'Concession';
+  if (/acquir|acquisit|merger|buyout|takeover|stake|divest/.test(t)) return 'M&A';
+  if (/invest|fdi|final investment decision/.test(t)) return 'FDI';
+  return 'Other';
+}
 
 const REPORT = [];
 const log = (s) => { REPORT.push(s); console.log(s); };
@@ -70,6 +98,7 @@ const slug = (s) => String(s).toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,
   .replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 40);
 const shortHash = (s) => crypto.createHash('sha1').update(s).digest('hex').slice(0, 8);
 const newsId = (source, url) => `${slug(source)}-${shortHash(url)}`;
+const dealId = (url) => `deal-${shortHash(url)}`;
 
 // "2026-06-24T..." | "Tue, 24 Jun 2026 ..." -> "2026-06-24", or null if unparseable.
 function toISODate(item) {
@@ -169,52 +198,71 @@ async function buildNews() {
 }
 
 // ── Publications (editorial-in-the-loop) ───────────────────────────────────────
+// Publications are curated by hand. New rows are entered into data/pub_inbox.json
+// (the IMF auto-discovery feeds were removed — they block datacenter IPs); a human
+// fills type + summary and sets approved:true, then they promote here without
+// clobbering existing curated records. See data/SCHEMA.md for the policy.
 async function buildPublications() {
   const inbox = readJSON('./data/pub_inbox.json', []);
-  const byUrl = new Map(inbox.map(r => [r.url, r]));
-  let discovered = 0;
-
-  for (const feed of PUB_FEEDS) {
-    try {
-      const xml = await fetchFeed(feed.url, false);
-      const parsed = await parser.parseString(xml);
-      for (const item of (parsed.items ?? [])) {
-        const url = (item.link || '').trim();
-        const title = (item.title || '').trim();
-        const date = toISODate(item);
-        if (!url || !title || !date || byUrl.has(url)) continue;
-        // New inbox row: human fills type + summary, then sets approved: true.
-        const row = {
-          id: `${slug(feed.org)}-${shortHash(url)}`, title, body: feed.org,
-          type: '', date, country: feed.country, summary: '', url, approved: false,
-        };
-        byUrl.set(url, row); discovered++;
-      }
-      log(`  ✓ pub ${feed.country} (${feed.org})`);
-    } catch (e) {
-      log(`  ✗ pub ${feed.country} (${feed.org}) — ${e.message}`);
-    }
-  }
-  const newInbox = [...byUrl.values()];
-  writeJSON('./data/pub_inbox.json', newInbox);
 
   // Promote approved rows into publications.json WITHOUT clobbering curated records.
   const pubs = readJSON('./data/publications.json', []);
   const byId = new Map(pubs.map(p => [p.id, p]));
   let promoted = 0;
-  for (const r of newInbox) {
+  for (const r of inbox) {
     if (r.approved === true && r.type && r.summary && !byId.has(r.id)) {
       const { approved, ...pub } = r;          // drop the staging-only flag
       byId.set(r.id, pub); promoted++;
     }
   }
   writeJSON('./data/publications.json', [...byId.values()]);
-  log(`Publications: ${discovered} new in inbox, ${promoted} promoted, ${byId.size} total.`);
+  log(`Publications: ${promoted} promoted from inbox, ${byId.size} total.`);
+}
+
+// ── Deals (mined from news, editorial-in-the-loop) ─────────────────────────────
+// Scan the merged news set (already written + finance-filtered) for genuine
+// transactions and stage candidates in data/deals_inbox.json. A human fills
+// value/parties/type and sets approved:true, then approved rows promote to
+// data/deals.json without clobbering the curated headline records.
+async function buildDeals() {
+  const news = readJSON('./data/news.json', []);
+  const inbox = readJSON('./data/deals_inbox.json', []);
+  const byUrl = new Map(inbox.map(r => [r.url, r]));
+  let discovered = 0;
+
+  for (const item of news) {
+    if (!isDeal(item.title) || byUrl.has(item.url)) continue;
+    // New inbox row: human fills value + parties, confirms type, sets approved:true.
+    const row = {
+      id: dealId(item.url), headline: item.title, parties: '', value: '',
+      date: item.date, country: item.country, type: '',
+      suggestedType: inferDealType(item.title), url: item.url,
+      source: item.source, approved: false,
+    };
+    byUrl.set(item.url, row); discovered++;
+  }
+  const newInbox = [...byUrl.values()];
+  writeJSON('./data/deals_inbox.json', newInbox);
+
+  // Promote approved rows into deals.json WITHOUT clobbering curated records.
+  const deals = readJSON('./data/deals.json', []);
+  const byId = new Map(deals.map(d => [d.id, d]));
+  let promoted = 0;
+  for (const r of newInbox) {
+    if (r.approved === true && r.type && r.headline && !byId.has(r.id)) {
+      const { approved, suggestedType, ...deal } = r;  // drop staging-only fields
+      byId.set(r.id, deal); promoted++;
+    }
+  }
+  writeJSON('./data/deals.json', [...byId.values()]);
+  log(`Deals: ${discovered} new candidates in inbox, ${promoted} promoted, ${byId.size} total.`);
 }
 
 // ── Run ──────────────────────────────────────────────────────────────────────
 log('Fetching news feeds…');
 await buildNews();
-log('Fetching publication feeds…');
+log('Mining deals from news…');
+await buildDeals();
+log('Promoting approved publications…');
 await buildPublications();
 log('Done.');

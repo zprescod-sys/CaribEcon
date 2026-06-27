@@ -1,7 +1,7 @@
 ---
-import Shell          from '../layouts/Shell.astro';
-import DealsHeadlines from '../components/deals/DealsHeadlines.astro';
-import { getDeals }  from '../lib/dataHub';
+import Shell        from '../layouts/Shell.astro';
+import DealsFeed    from '../components/deals/DealsFeed.astro';
+import { getDeals } from '../lib/dataHub';
 
 const deals = getDeals();
 ---
@@ -27,7 +27,7 @@ const deals = getDeals();
     </div>
 
     <section class="fade-up fade-up-2">
-      <DealsHeadlines deals={deals} />
+      <DealsFeed deals={deals} />
     </section>
 
   </div>

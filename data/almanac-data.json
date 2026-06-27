@@ -226,6 +226,55 @@
     "confidence": "high",
     "series": [
       {
+        "year": 2015,
+        "value": 43.2,
+        "type": "actual",
+        "vintage": "2026-04",
+        "sourceNote": "IMF WEO (comparable); MoF T&T primary from 2022"
+      },
+      {
+        "year": 2016,
+        "value": 53.3,
+        "type": "actual",
+        "vintage": "2026-04",
+        "sourceNote": "IMF WEO (comparable); MoF T&T primary from 2022"
+      },
+      {
+        "year": 2017,
+        "value": 57.2,
+        "type": "actual",
+        "vintage": "2026-04",
+        "sourceNote": "IMF WEO (comparable); MoF T&T primary from 2022"
+      },
+      {
+        "year": 2018,
+        "value": 58.1,
+        "type": "actual",
+        "vintage": "2026-04",
+        "sourceNote": "IMF WEO (comparable); MoF T&T primary from 2022"
+      },
+      {
+        "year": 2019,
+        "value": 62.9,
+        "type": "actual",
+        "vintage": "2026-04",
+        "sourceNote": "IMF WEO (comparable); MoF T&T primary from 2022"
+      },
+      {
+        "year": 2020,
+        "value": 81.6,
+        "type": "actual",
+        "vintage": "2026-04",
+        "sourceNote": "IMF WEO (comparable); MoF T&T primary from 2022"
+      },
+      {
+        "year": 2021,
+        "value": 80.2,
+        "type": "actual",
+        "vintage": "2026-04",
+        "sourceNote": "IMF WEO (comparable); MoF T&T primary from 2022"
+      },
+      {
         "year": 2022,
         "value": 74.7,
         "type": "actual",
@@ -265,6 +314,34 @@
     "sourceRef": "Appendix 13, Total Population (mid-year)",
     "confidence": "high",
     "series": [
+      {
+        "year": 2015,
+        "value": 1349667,
+        "type": "actual",
+        "vintage": "2026-04",
+        "sourceNote": "World Bank WDI (comparable); CSO T&T primary from 2019"
+      },
+      {
+        "year": 2016,
+        "value": 1353895,
+        "type": "actual",
+        "vintage": "2026-04",
+        "sourceNote": "World Bank WDI (comparable); CSO T&T primary from 2019"
+      },
+      {
+        "year": 2017,
+        "value": 1356633,
+        "type": "actual",
+        "vintage": "2026-04",
+        "sourceNote": "World Bank WDI (comparable); CSO T&T primary from 2019"
+      },
+      {
+        "year": 2018,
+        "value": 1359193,
+        "type": "actual",
+        "vintage": "2026-04",
+        "sourceNote": "World Bank WDI (comparable); CSO T&T primary from 2019"
+      },
       {
         "year": 2019,
         "value": 1363985,
@@ -472,6 +549,34 @@
     "confidence": "high",
     "series": [
       {
+        "year": 2015,
+        "value": 2.43,
+        "type": "actual",
+        "vintage": "2026-04",
+        "sourceNote": "World Bank WDI — ILO modelled estimate (comparable); CSO T&T primary from 2019"
+      },
+      {
+        "year": 2016,
+        "value": 3.21,
+        "type": "actual",
+        "vintage": "2026-04",
+        "sourceNote": "World Bank WDI — ILO modelled estimate (comparable); CSO T&T primary from 2019"
+      },
+      {
+        "year": 2017,
+        "value": 3.39,
+        "type": "actual",
+        "vintage": "2026-04",
+        "sourceNote": "World Bank WDI — ILO modelled estimate (comparable); CSO T&T primary from 2019"
+      },
+      {
+        "year": 2018,
+        "value": 3.5,
+        "type": "actual",
+        "vintage": "2026-04",
+        "sourceNote": "World Bank WDI — ILO modelled estimate (comparable); CSO T&T primary from 2019"
+      },
+      {
         "year": 2019,
         "value": 4.2,
         "type": "actual",
@@ -506,6 +611,13 @@
         "value": 5,
         "type": "actual",
         "vintage": "2025-08"
+      },
+      {
+        "year": 2025,
+        "value": 3.33,
+        "type": "actual",
+        "vintage": "2026-04",
+        "sourceNote": "World Bank WDI — ILO modelled estimate (comparable); CSO T&T primary from 2019"
       }
     ]
   },
@@ -522,6 +634,34 @@
     "sourceRef": "Appendix 13, Participation Rate",
     "confidence": "high",
     "series": [
+      {
+        "year": 2015,
+        "value": 63.05,
+        "type": "actual",
+        "vintage": "2026-04",
+        "sourceNote": "World Bank WDI — ILO modelled estimate (comparable); CSO T&T primary from 2019"
+      },
+      {
+        "year": 2016,
+        "value": 62.04,
+        "type": "actual",
+        "vintage": "2026-04",
+        "sourceNote": "World Bank WDI — ILO modelled estimate (comparable); CSO T&T primary from 2019"
+      },
+      {
+        "year": 2017,
+        "value": 61.56,
+        "type": "actual",
+        "vintage": "2026-04",
+        "sourceNote": "World Bank WDI — ILO modelled estimate (comparable); CSO T&T primary from 2019"
+      },
+      {
+        "year": 2018,
+        "value": 61.15,
+        "type": "actual",
+        "vintage": "2026-04",
+        "sourceNote": "World Bank WDI — ILO modelled estimate (comparable); CSO T&T primary from 2019"
+      },
       {
         "year": 2019,
         "value": 57.4,
@@ -557,6 +697,13 @@
         "value": 55.1,
         "type": "actual",
         "vintage": "2025-08"
+      },
+      {
+        "year": 2025,
+        "value": 57.75,
+        "type": "actual",
+        "vintage": "2026-04",
+        "sourceNote": "World Bank WDI — ILO modelled estimate (comparable); CSO T&T primary from 2019"
       }
     ]
   },
@@ -639,6 +786,62 @@
     "sourceRef": "Review of the Economy 2025, Balance of Payments narrative (p.167)",
     "confidence": "high",
     "series": [
+      {
+        "year": 2015,
+        "value": 2057.2,
+        "type": "actual",
+        "vintage": "2026-04",
+        "sourceNote": "World Bank WDI — BN.CAB.XOKA.CD, converted to US$ mn (comparable); CBTT primary from 2023"
+      },
+      {
+        "year": 2016,
+        "value": -776.4,
+        "type": "actual",
+        "vintage": "2026-04",
+        "sourceNote": "World Bank WDI — BN.CAB.XOKA.CD, converted to US$ mn (comparable); CBTT primary from 2023"
+      },
+      {
+        "year": 2017,
+        "value": 1409.2,
+        "type": "actual",
+        "vintage": "2026-04",
+        "sourceNote": "World Bank WDI — BN.CAB.XOKA.CD, converted to US$ mn (comparable); CBTT primary from 2023"
+      },
+      {
+        "year": 2018,
+        "value": 1625.8,
+        "type": "actual",
+        "vintage": "2026-04",
+        "sourceNote": "World Bank WDI — BN.CAB.XOKA.CD, converted to US$ mn (comparable); CBTT primary from 2023"
+      },
+      {
+        "year": 2019,
+        "value": 1020.1,
+        "type": "actual",
+        "vintage": "2026-04",
+        "sourceNote": "World Bank WDI — BN.CAB.XOKA.CD, converted to US$ mn (comparable); CBTT primary from 2023"
+      },
+      {
+        "year": 2020,
+        "value": -1356.4,
+        "type": "actual",
+        "vintage": "2026-04",
+        "sourceNote": "World Bank WDI — BN.CAB.XOKA.CD, converted to US$ mn (comparable); CBTT primary from 2023"
+      },
+      {
+        "year": 2021,
+        "value": 2629.3,
+        "type": "actual",
+        "vintage": "2026-04",
+        "sourceNote": "World Bank WDI — BN.CAB.XOKA.CD, converted to US$ mn (comparable); CBTT primary from 2023"
+      },
+      {
+        "year": 2022,
+        "value": 2882.6,
+        "type": "actual",
+        "vintage": "2026-04",
+        "sourceNote": "World Bank WDI — BN.CAB.XOKA.CD, converted to US$ mn (comparable); CBTT primary from 2023"
+      },
       {
         "year": 2023,
         "value": 2948.5,

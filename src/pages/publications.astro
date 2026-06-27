@@ -1,6 +1,6 @@
 ---
 import Shell              from '../layouts/Shell.astro';
-import PublicationsIndex  from '../components/publications/PublicationsIndex.astro';
+import PublicationsFeed   from '../components/publications/PublicationsFeed.astro';
 import { getPublications } from '../lib/dataHub';
 
 const publications = getPublications();
@@ -27,7 +27,7 @@ const publications = getPublications();
     </div>
 
     <section class="fade-up fade-up-2">
-      <PublicationsIndex publications={publications} />
+      <PublicationsFeed publications={publications} />
     </section>
 
   </div>
