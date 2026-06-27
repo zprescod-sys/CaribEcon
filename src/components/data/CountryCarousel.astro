@@ -23,6 +23,7 @@ const { snapshots } = Astro.props;
           role="tab"
           aria-selected={i === 0 ? 'true' : 'false'}
           data-index={i}
+          data-code={s.code}
         >
           {s.flag} {s.code}
         </button>
@@ -75,6 +76,13 @@ const { snapshots } = Astro.props;
     pills.forEach(p => p.addEventListener('click', () => {
       stopAuto();
       show(Number(p.dataset.index));
+      // Sync the chart explorer to this country and scroll to it
+      if (p.dataset.code) {
+        document.dispatchEvent(new CustomEvent('country-select', {
+          detail: { country: p.dataset.code },
+        }));
+        document.getElementById('chart-explorer')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
     }));
   }
 </script>

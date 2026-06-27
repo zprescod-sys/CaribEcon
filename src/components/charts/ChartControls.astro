@@ -163,6 +163,26 @@ const defaultsJSON   = JSON.stringify(defaultCountries);
     }));
   });
 
+  // Carousel → chart sync: set selected to the clicked country, update display, broadcast
+  document.addEventListener('country-select', (e: Event) => {
+    const code = (e as CustomEvent<{ country: string }>).detail.country;
+    if (!countries.some(c => c.code === code)) return;
+    selected = new Set([code]);
+    renderList(searchInput.value);
+    updateDisplay();
+    broadcastCountries();
+  });
+
+  // Carousel indicator card → update dropdown and re-broadcast
+  document.addEventListener('indicator-select', (e: Event) => {
+    const slug = (e as CustomEvent<{ indicator: string }>).detail.indicator;
+    if (!indicatorSelect) return;
+    const opt = indicatorSelect.querySelector<HTMLOptionElement>(`option[value="${slug}"]`);
+    if (!opt) return;
+    indicatorSelect.value = slug;
+    document.dispatchEvent(new CustomEvent('indicator-changed', { detail: { indicator: slug } }));
+  });
+
   // Init
   updateDisplay();
   renderList();

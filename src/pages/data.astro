@@ -3,6 +3,8 @@ import Shell             from '../layouts/Shell.astro';
 import ChartControls     from '../components/charts/ChartControls.astro';
 import LineChart         from '../components/charts/LineChart.astro';
 import BudgetPie         from '../components/charts/BudgetPie.astro';
+import FDIChart          from '../components/charts/FDIChart.astro';
+import FiscalChart       from '../components/charts/FiscalChart.astro';
 import CountryCarousel   from '../components/data/CountryCarousel.astro';
 import type { CountrySnapshotData, SnapshotRow } from '../components/data/CountrySnapshot.astro';
 import InsightCallout    from '../components/data/InsightCallout.astro';
@@ -13,6 +15,7 @@ import {
   getBudget,
   getBudgetYears,
   getAllSeries,
+  getIndicatorAllCountries,
 } from '../lib/dataHub';
 
 // All series — passed to the chart so indicator switching works client-side
@@ -37,6 +40,18 @@ const defaultBudgetCode =
 // full almanac dataset, so the country list is simply the hub's countries.
 const exportCountries = getCountries().map(c => ({ code: c.code, name: c.name }));
 
+// ── FDI cross-country chart ────────────────────────────────────────────────
+const fdiSeries = getIndicatorAllCountries('fdi');
+
+// ── Fiscal chart (revenue vs expenditure — primary sources only) ───────────
+// Only countries that have both series are shown; others display "unavailable".
+const FISCAL_CODES = ['TT', 'GY', 'BB', 'JM', 'BS', 'KY'];
+const revSeries = FISCAL_CODES.map(c => getSeries(c, 'govt_revenue_total')).filter((s): s is NonNullable<typeof s> => s != null);
+const expSeries = FISCAL_CODES.map(c => getSeries(c, 'govt_total_expenditure')).filter((s): s is NonNullable<typeof s> => s != null);
+
+// Country name map for client-side labels
+const countryNames = Object.fromEntries(getCountries().map(c => [c.code, c.name]));
+
 // ── Country snapshots for the header carousel ──────────────────────────────
 // Lead indicator first; the rest render as supporting rows.
 const SNAPSHOT_INDICATORS = ['gdp_growth', 'inflation', 'gross_govt_debt_pct_gdp', 'fdi'];
@@ -60,6 +75,7 @@ function snapshotRow(country: string, indicator: string): SnapshotRow | null {
   const delta  = prev ? (last.value as number) - (prev.value as number) : null;
 
   return {
+    slug:       indicator,
     label:      s.indicatorLabel,
     value:      `${fmtNum(last.value as number, isPct)}${isPct ? '%' : ''}`,
     unitSuffix: isPct ? '' : s.unit,
@@ -102,13 +118,22 @@ const snapshots: CountrySnapshotData[] = getCountries().flatMap(c => {
       </p>
     </header>
 
+    <!-- ── In-page anchor nav ────────────────────────────────── -->
+    <nav class="page-nav mono" aria-label="Jump to section">
+      <a href="#chart-explorer" class="page-nav-link">Chart Explorer</a>
+      <a href="#section-fdi"    class="page-nav-link">Net FDI</a>
+      <a href="#section-budget" class="page-nav-link">Budget</a>
+      <a href="#section-fiscal" class="page-nav-link">Spending vs Revenue</a>
+      <a href="#section-export" class="page-nav-link">Export CSV</a>
+    </nav>
+
     <!-- ── Country snapshot carousel ────────────────────────── -->
     <section class="fade-up fade-up-2">
       <CountryCarousel snapshots={snapshots} />
     </section>
 
     <!-- ── Chart controls + line chart ─────────────────────── -->
-    <section class="chart-section fade-up fade-up-3">
+    <section class="chart-section fade-up fade-up-3" id="chart-explorer">
       <ChartControls />
       <LineChart initialSeries={allSeries} initialIndicator="gdp_growth" />
       <YearInFocusPanel />
@@ -120,8 +145,14 @@ const snapshots: CountrySnapshotData[] = getCountries().flatMap(c => {
       accentColor="teal"
     />
 
+    <!-- ── FDI cross-country view ────────────────────────────── -->
+    <section class="fdi-section" id="section-fdi">
+      <p class="section-context mono">Single-year snapshot ranked by economy. For multi-year trends, select Net FDI in the Chart Explorer above.</p>
+      <FDIChart fdiSeries={fdiSeries} countryNames={countryNames} />
+    </section>
+
     <!-- ── Budget section (tinted band) ─────────────────────── -->
-    <section class="budget-section">
+    <section class="budget-section" id="section-budget">
       <div class="budget-section-head">
         <div>
           <span class="eyebrow">Budget Breakdown</span>
@@ -149,8 +180,13 @@ const snapshots: CountrySnapshotData[] = getCountries().flatMap(c => {
       </div>
     </section>
 
+    <!-- ── Spending vs Revenue section (tinted band) ────────── -->
+    <section class="fiscal-section" id="section-fiscal">
+      <FiscalChart revSeries={revSeries} expSeries={expSeries} countryNames={countryNames} />
+    </section>
+
     <!-- ── Per-country dataset export ────────────────────────── -->
-    <section class="export-section">
+    <section class="export-section" id="section-export">
       <span class="eyebrow">Download</span>
       <h2 class="section-heading">Export country dataset</h2>
       <p class="section-sub">
@@ -190,6 +226,44 @@ const snapshots: CountrySnapshotData[] = getCountries().flatMap(c => {
 
   .page-title { font-size: var(--text-page); margin: 6px 0 10px; }
   .page-sub   { font-size: 15px; color: var(--ink-soft); max-width: 68ch; }
+
+  /* ── In-page anchor nav ─────────────────────────────────── */
+  .page-nav {
+    display: flex;
+    gap: 0;
+    border: 1px solid var(--line);
+    width: fit-content;
+    overflow: hidden;
+  }
+  .page-nav-link {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    text-decoration: none;
+    padding: 7px 14px;
+    border-right: 1px solid var(--line);
+    transition: background-color 120ms, color 120ms;
+  }
+  .page-nav-link:last-child { border-right: none; }
+  .page-nav-link:hover { background-color: var(--card-tint); color: var(--ink); }
+  .page-nav-link:focus-visible { outline: var(--focus-ring); outline-offset: -2px; }
+
+  @media (max-width: 600px) {
+    .page-nav { flex-wrap: wrap; width: 100%; }
+    .page-nav-link { border-right: none; border-bottom: 1px solid var(--line); flex: 1 0 auto; text-align: center; }
+    .page-nav-link:last-child { border-bottom: none; }
+  }
+
+  /* ── FDI section context note ───────────────────────────── */
+  .section-context {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--ink-faint);
+    letter-spacing: 0.04em;
+    margin-bottom: 8px;
+  }
 
   .section-heading { font-size: var(--text-section); margin: 8px 0 6px; }
   .section-sub     { font-size: 14px; color: var(--ink-soft); margin-bottom: 20px; }
@@ -323,6 +397,20 @@ const snapshots: CountrySnapshotData[] = getCountries().flatMap(c => {
 
   @media (max-width: 820px) {
     .export-select, .export-xlsx-btn { width: 100%; }
+  }
+
+  /* ── FDI section ── plain paper background to contrast with surrounding bands */
+  .fdi-section {
+    border-top: 1px solid var(--line);
+    padding-top: 8px;
+  }
+
+  /* ── Fiscal section — tinted band matching the budget section rhythm ── */
+  .fiscal-section {
+    background-color: var(--paper-warm);
+    margin-inline: calc(-1 * var(--side-padding));
+    padding: 36px var(--side-padding) 44px;
+    border-top: 1px solid var(--line);
   }
 </style>
 

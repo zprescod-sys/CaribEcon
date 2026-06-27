@@ -4,6 +4,7 @@
 // the carousel — data is pre-computed in data.astro from the data hub.
 
 export interface SnapshotRow {
+  slug: string;             // indicator slug, e.g. "gdp_growth"
   label: string;            // "Real GDP Growth"
   value: string;            // "43.8%" or "1,834"
   unitSuffix: string;       // "" for %, "USD mn" for FDI
@@ -53,7 +54,7 @@ function iconFor(label: string): string {
 }
 ---
 
-<article class="country-snapshot" aria-label={`${snapshot.name} key statistics`}>
+<article class="country-snapshot" aria-label={`${snapshot.name} key statistics`} data-country={snapshot.code}>
   <header class="snap-head">
     {snapshot.flag && <span class="snap-flag" aria-hidden="true">{snapshot.flag}</span>}
     <h2 class="snap-name">{snapshot.name}</h2>
@@ -61,7 +62,7 @@ function iconFor(label: string): string {
 
   <div class="metric-grid">
     {metrics.map((m, i) => (
-      <div class={`metric-card ${i === 0 ? 'lead' : ''}`}>
+      <div class={`metric-card ${i === 0 ? 'lead' : ''}`} data-slug={m.slug} role="button" tabindex="0" aria-label={`View ${m.label} in chart explorer`}>
         <div class="metric-head">
           <span class="metric-title mono">{m.label}</span>
           <svg class="metric-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
@@ -90,6 +91,23 @@ function iconFor(label: string): string {
 
   <footer class="snap-source mono">Source: {snapshot.sources}</footer>
 </article>
+
+<script>
+  // Clicking a metric card sets both the country and indicator in the chart explorer.
+  document.querySelectorAll<HTMLElement>('.metric-card[data-slug]').forEach(card => {
+    const activate = () => {
+      const article = card.closest<HTMLElement>('.country-snapshot');
+      const country = article?.dataset.country;
+      const slug    = card.dataset.slug;
+      if (!country || !slug) return;
+      document.dispatchEvent(new CustomEvent('country-select',    { detail: { country } }));
+      document.dispatchEvent(new CustomEvent('indicator-select',  { detail: { indicator: slug } }));
+      document.getElementById('chart-explorer')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    };
+    card.addEventListener('click', activate);
+    card.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); activate(); } });
+  });
+</script>
 
 <style>
   .country-snapshot { padding: 20px 0 8px; }
@@ -124,12 +142,16 @@ function iconFor(label: string): string {
     background-color: var(--card);
     border: 1px solid var(--line);
     border-radius: var(--radius);
-    /* lift on hover — translate + border shift only; no soft shadow (per system) */
+    cursor: pointer;
     transition: transform 150ms ease, border-color 150ms ease;
   }
   .metric-card:hover {
     transform: translateY(-3px);
-    border-color: var(--ink-faint);
+    border-color: var(--teal);
+  }
+  .metric-card:focus-visible {
+    outline: var(--focus-ring);
+    outline-offset: 2px;
   }
   /* Lead metric carries the gold signal accent */
   .metric-card.lead { border-top: 3px solid var(--gold); }
