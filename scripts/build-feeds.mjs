@@ -33,21 +33,29 @@ const UA = 'Mozilla/5.0 (compatible; CaribbeanMacroAlmanac/1.0; +https://github.
 const FIN_RE = new RegExp('\\b(?:' + [
   'econom', 'financ', 'fiscal', 'monetar', 'inflation', 'deflation', 'budget', 'deficit',
   'surplus', 'debt', 'gdp', 'imf', 'eclac', 'tax', 'tariff', 'trade', 'export', 'import',
-  'invest', 'fdi', 'oil', 'gas', 'petroleum', 'energy', 'lng', 'refiner', 'tourism', 'tourist',
+  // invest(?!igat) prevents "Police investigate" / "under investigation" false-positives
+  'invest(?!igat)', 'fdi', 'oil', 'gas', 'petroleum', 'energy', 'lng', 'refiner', 'tourism', 'tourist',
   'currenc', 'devalu', 'revenue', 'fintech', 'bank', 'loan', 'credit', 'bond', 'treasur',
   'market', 'stock', 'ipo', 'business', 'commerce', 'manufactur', 'agricultur', 'mining',
   'bauxite', 'shipping', 'logistic', 'employ', 'unemploy', 'job', 'labou?r', 'wage', 'salar',
   'pension', 'recession', 'growth', 'productiv', 'subsid', 'price', 'remittance', 'reserve',
   'default', 'restructur', 'rating', 'procurement', 'merger', 'acquisition', 'privatiz',
-  'infrastructure', 'construction', 'housing', 'insurance', 'forex', 'crypto', 'bitcoin', 'fund',
+  'infrastructure', 'forex', 'crypto', 'bitcoin', 'fund',
 ].join('|') + ')', 'i');
 const FIN_PHRASES = ['world bank', 'central bank', 'interest rate', 'exchange rate',
   'real estate', 'cost of living', 'credit rating', 'sovereign wealth', 'natural resource fund',
-  'private sector', 'gross domestic'];
+  'private sector', 'gross domestic', 'construction sector', 'construction industry',
+  'construction project', 'housing market', 'housing prices', 'insurance sector',
+  'insurance industry', 'infrastructure project', 'infrastructure spending'];
+
+// Explicit crime/non-financial deny list — matched items are excluded even if they
+// also contain a financial keyword (e.g. crime at an "insurance company car park").
+const CRIME_DENY_RE = /\b(?:murder(?:ed)?|homicide|manslaughter|sexual.?assault|rape[ds]?\b|kidnap(?:ped)?|shot dead|gunman|gunshot|stabb(?:ed|ing)|robbery|drug bust|cocaine bust|marijuana bust|arson)\b/i;
 
 function isFinancial(title, tags = []) {
   if (!FINANCE_FILTER) return true;
   const hay = `${title} ${tags.join(' ')}`.toLowerCase();
+  if (CRIME_DENY_RE.test(hay)) return false;
   return FIN_RE.test(hay) || FIN_PHRASES.some(p => hay.includes(p));
 }
 
