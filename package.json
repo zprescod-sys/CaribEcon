@@ -7,7 +7,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "check": "astro check",
-    "feeds": "node scripts/build-feeds.mjs"
+    "feeds": "node scripts/build-feeds.mjs",
+    "promote": "node scripts/build-feeds.mjs --promote-only"
   },
   "dependencies": {
     "astro": "^5.0.0",

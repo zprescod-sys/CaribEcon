@@ -20,6 +20,10 @@ import Parser from 'rss-parser';
 const NEWS_WINDOW_DAYS  = Number(process.env.NEWS_WINDOW_DAYS ?? 120);  // keep this much history in the archive
 const NEWS_MAX          = Number(process.env.NEWS_MAX ?? 2000);         // hard safety bound on total
 const FINANCE_FILTER    = process.env.FINANCE_FILTER !== '0';           // keep only financial/economic items
+// Promote-only: skip the news fetch so a local deal/publication approval never
+// rewrites data/news.json (which the daily CI cron owns) — avoids merge conflicts.
+// Run via `npm run promote`. The daily workflow runs the full `npm run feeds`.
+const PROMOTE_ONLY      = process.argv.includes('--promote-only') || process.env.PROMOTE_ONLY === '1';
 const UA = 'Mozilla/5.0 (compatible; CaribbeanMacroAlmanac/1.0; +https://github.com/) feeds-bot';
 
 // Financial / economic relevance filter. Items whose title or tags match are kept;
@@ -259,8 +263,12 @@ async function buildDeals() {
 }
 
 // ── Run ──────────────────────────────────────────────────────────────────────
-log('Fetching news feeds…');
-await buildNews();
+if (PROMOTE_ONLY) {
+  log('Promote-only mode: skipping news fetch (data/news.json left untouched).');
+} else {
+  log('Fetching news feeds…');
+  await buildNews();
+}
 log('Mining deals from news…');
 await buildDeals();
 log('Promoting approved publications…');

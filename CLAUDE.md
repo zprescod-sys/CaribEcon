@@ -57,6 +57,7 @@ Every page reads from one hub; no per-page hardcoded numbers.
 - Fable 5 does most coding in VS Code; keep these MD files tight and unambiguous.
 - Verify any changed page: `node screenshot.mjs <localhost url> [label]` and read the PNG (see `docs/SCREENSHOT_WORKFLOW.md`).
 - Git: branch per feature (`feature/<page>`), commit each working increment, consolidate via PR; use Plan Mode for complex tasks.
+- **Generated data files & git.** `data/news.json` is owned by the daily CI cron — to approve a deal/publication locally run **`npm run promote`** (not `npm run feeds`), which skips the news fetch so `news.json` is never rewritten locally. Use `npm run feeds` only for testing the full pipeline; discard its `news.json` churn with `git checkout data/news.json` before committing. As a safety net, `.gitattributes` + local merge drivers auto-resolve these files on pull (news → keep incoming CI copy; deals/publications inboxes → keep local human edits) so a conflict can never leave broken JSON. A fresh clone must re-run the one-time `git config` commands listed at the top of `.gitattributes`.
 - Build order: shell + hub built and frozen first; each page scoped to its own files; the main agent consolidates and verifies.
 
 ### File ownership

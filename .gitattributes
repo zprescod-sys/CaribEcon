@@ -1,0 +1,18 @@
+# Generated / staged data files are rewritten by the daily CI feed cron AND by
+# local builder runs, so a plain merge can leave git conflict markers inside the
+# JSON (breaking it). Custom merge drivers auto-resolve instead of conflicting.
+#
+# One-time local setup (per clone) — defines the drivers referenced below:
+#   git config merge.ci-data.driver    "cp -f %B %A"   # keep the incoming (CI) copy
+#   git config merge.ci-data.name      "keep incoming CI-generated data"
+#   git config merge.local-data.driver true            # keep the local (human-edited) copy
+#   git config merge.local-data.name   "keep local human-edited data"
+
+# news.json is owned by the daily CI cron — on conflict, take the incoming copy.
+data/news.json          merge=ci-data
+
+# These carry human edits (approvals, summaries) — on conflict, keep the local copy.
+data/deals_inbox.json   merge=local-data
+data/deals.json         merge=local-data
+data/pub_inbox.json     merge=local-data
+data/publications.json  merge=local-data
