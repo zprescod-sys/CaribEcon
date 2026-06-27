@@ -9,3 +9,4 @@ node_modules/
 temporary screenshots/
 .tmp
 .DS_Store
+.vercel
