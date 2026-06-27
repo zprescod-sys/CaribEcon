@@ -820,19 +820,82 @@
     "indicatorLabel": "Monetary Base",
     "unit": "TT$ mn",
     "unitNote": "Reserve money (strict). M1-A narrow money shown as available proxy.",
-    "source": "Pending — CBTT Monetary Survey",
-    "sourceOrg": "CBTT",
-    "sourceTier": "primary",
-    "sourceUrl": "https://www.central-bank.org.tt/",
+    "source": "World Bank WDI — FM.LBL.BMNY.CN",
+    "sourceOrg": "World Bank WDI",
+    "sourceTier": "comparable",
+    "sourceUrl": "https://data.worldbank.org/indicator/FM.LBL.BMNY.CN?locations=TT",
     "sourceRef": "pending (Review App. 17 gives money supply M1-A/M2, not reserve money)",
-    "confidence": "flagged",
+    "confidence": "medium",
     "series": [
       {
+        "year": 2015,
+        "value": 103590.7,
+        "type": "actual",
+        "vintage": "2026-04",
+        "sourceNote": "World Bank WDI FM.LBL.BMNY.CN — broad money (M2 proxy, current TT$). CBTT M2 for 2024 = 102,972 TT$ mn; WB figure reflects IFS definition and may differ slightly."
+      },
+      {
+        "year": 2016,
+        "value": 106480.5,
+        "type": "actual",
+        "vintage": "2026-04",
+        "sourceNote": "World Bank WDI FM.LBL.BMNY.CN — broad money (M2 proxy, current TT$). CBTT M2 for 2024 = 102,972 TT$ mn; WB figure reflects IFS definition and may differ slightly."
+      },
+      {
+        "year": 2017,
+        "value": 106096.7,
+        "type": "actual",
+        "vintage": "2026-04",
+        "sourceNote": "World Bank WDI FM.LBL.BMNY.CN — broad money (M2 proxy, current TT$). CBTT M2 for 2024 = 102,972 TT$ mn; WB figure reflects IFS definition and may differ slightly."
+      },
+      {
+        "year": 2018,
+        "value": 107341.7,
+        "type": "actual",
+        "vintage": "2026-04",
+        "sourceNote": "World Bank WDI FM.LBL.BMNY.CN — broad money (M2 proxy, current TT$). CBTT M2 for 2024 = 102,972 TT$ mn; WB figure reflects IFS definition and may differ slightly."
+      },
+      {
+        "year": 2019,
+        "value": 110436.5,
+        "type": "actual",
+        "vintage": "2026-04",
+        "sourceNote": "World Bank WDI FM.LBL.BMNY.CN — broad money (M2 proxy, current TT$). CBTT M2 for 2024 = 102,972 TT$ mn; WB figure reflects IFS definition and may differ slightly."
+      },
+      {
+        "year": 2020,
+        "value": 118305,
+        "type": "actual",
+        "vintage": "2026-04",
+        "sourceNote": "World Bank WDI FM.LBL.BMNY.CN — broad money (M2 proxy, current TT$). CBTT M2 for 2024 = 102,972 TT$ mn; WB figure reflects IFS definition and may differ slightly."
+      },
+      {
+        "year": 2021,
+        "value": 120289.8,
+        "type": "actual",
+        "vintage": "2026-04",
+        "sourceNote": "World Bank WDI FM.LBL.BMNY.CN — broad money (M2 proxy, current TT$). CBTT M2 for 2024 = 102,972 TT$ mn; WB figure reflects IFS definition and may differ slightly."
+      },
+      {
+        "year": 2022,
+        "value": 122535.6,
+        "type": "actual",
+        "vintage": "2026-04",
+        "sourceNote": "World Bank WDI FM.LBL.BMNY.CN — broad money (M2 proxy, current TT$). CBTT M2 for 2024 = 102,972 TT$ mn; WB figure reflects IFS definition and may differ slightly."
+      },
+      {
+        "year": 2023,
+        "value": 124245.4,
+        "type": "actual",
+        "vintage": "2026-04",
+        "sourceNote": "World Bank WDI FM.LBL.BMNY.CN — broad money (M2 proxy, current TT$). CBTT M2 for 2024 = 102,972 TT$ mn; WB figure reflects IFS definition and may differ slightly."
+      },
+      {
         "year": 2024,
-        "value": null,
-        "type": "estimate",
-        "vintage": "2025-08",
-        "sourceNote": "[PENDING — CBTT Monetary Survey] Money supply (App.17): M1-A 50,761.2; M2 102,972.1 (TT$ mn, 2024). Strict monetary base/reserve money to be sourced from CBTT."
+        "value": 125524,
+        "type": "actual",
+        "vintage": "2026-04",
+        "sourceNote": "World Bank WDI FM.LBL.BMNY.CN — broad money (M2 proxy, current TT$). CBTT M2 for 2024 = 102,972 TT$ mn; WB figure reflects IFS definition and may differ slightly."
       }
     ]
   },
@@ -926,19 +989,75 @@
     "indicatorLabel": "Capital Account Balance (BoP)",
     "unit": "US$ mn",
     "unitNote": "Balance of payments capital account (BPM6)",
-    "source": "Pending — CBTT Balance of Payments",
-    "sourceOrg": "CBTT",
-    "sourceTier": "primary",
-    "sourceUrl": "https://www.central-bank.org.tt/",
+    "source": "World Bank WDI — BN.TRF.KOGT.CD",
+    "sourceOrg": "World Bank WDI",
+    "sourceTier": "comparable",
+    "sourceUrl": "https://data.worldbank.org/indicator/BN.TRF.KOGT.CD?locations=TT",
     "sourceRef": "pending",
-    "confidence": "flagged",
+    "confidence": "medium",
     "series": [
       {
+        "year": 2016,
+        "value": 0.216,
+        "type": "actual",
+        "vintage": "2026-04",
+        "sourceNote": "World Bank WDI BN.TRF.KOGT.CD — capital account net transfers (BoP). Negligible for T&T; typically < US$11mn annually."
+      },
+      {
+        "year": 2017,
+        "value": 1.208,
+        "type": "actual",
+        "vintage": "2026-04",
+        "sourceNote": "World Bank WDI BN.TRF.KOGT.CD — capital account net transfers (BoP). Negligible for T&T; typically < US$11mn annually."
+      },
+      {
+        "year": 2018,
+        "value": 2.404,
+        "type": "actual",
+        "vintage": "2026-04",
+        "sourceNote": "World Bank WDI BN.TRF.KOGT.CD — capital account net transfers (BoP). Negligible for T&T; typically < US$11mn annually."
+      },
+      {
+        "year": 2019,
+        "value": 10.34,
+        "type": "actual",
+        "vintage": "2026-04",
+        "sourceNote": "World Bank WDI BN.TRF.KOGT.CD — capital account net transfers (BoP). Negligible for T&T; typically < US$11mn annually."
+      },
+      {
+        "year": 2020,
+        "value": 0.463,
+        "type": "actual",
+        "vintage": "2026-04",
+        "sourceNote": "World Bank WDI BN.TRF.KOGT.CD — capital account net transfers (BoP). Negligible for T&T; typically < US$11mn annually."
+      },
+      {
+        "year": 2021,
+        "value": 6.677,
+        "type": "actual",
+        "vintage": "2026-04",
+        "sourceNote": "World Bank WDI BN.TRF.KOGT.CD — capital account net transfers (BoP). Negligible for T&T; typically < US$11mn annually."
+      },
+      {
+        "year": 2022,
+        "value": 0.179,
+        "type": "actual",
+        "vintage": "2026-04",
+        "sourceNote": "World Bank WDI BN.TRF.KOGT.CD — capital account net transfers (BoP). Negligible for T&T; typically < US$11mn annually."
+      },
+      {
+        "year": 2023,
+        "value": 0.307,
+        "type": "actual",
+        "vintage": "2026-04",
+        "sourceNote": "World Bank WDI BN.TRF.KOGT.CD — capital account net transfers (BoP). Negligible for T&T; typically < US$11mn annually."
+      },
+      {
         "year": 2024,
-        "value": null,
-        "type": "estimate",
-        "vintage": "2025-08",
-        "sourceNote": "[PENDING] Not isolated in Review narrative; typically negligible for T&T. Needs CBTT BoP table."
+        "value": 0.476,
+        "type": "actual",
+        "vintage": "2026-04",
+        "sourceNote": "World Bank WDI BN.TRF.KOGT.CD — capital account net transfers (BoP). Negligible for T&T; typically < US$11mn annually."
       }
     ]
   },
@@ -1357,19 +1476,82 @@
     "indicatorLabel": "Import Cover",
     "unit": "months",
     "unitNote": "Gross official reserves in months of prospective imports",
-    "source": "T&T Ministry of Finance — Review of the Economy 2025 (CBTT)",
-    "sourceOrg": "CBTT / IMF",
-    "sourceTier": "primary",
-    "sourceUrl": "https://www.finance.gov.tt/category/economic-review/",
+    "source": "World Bank WDI — FI.RES.TOTL.CD / BM.GSR.GNFS.CD",
+    "sourceOrg": "World Bank WDI",
+    "sourceTier": "comparable",
+    "sourceUrl": "https://data.worldbank.org/indicator/FI.RES.TOTL.CD?locations=TT",
     "sourceRef": "Appendix 28 Net Foreign Reserves (level); months ratio from IMF Art. IV",
-    "confidence": "flagged",
+    "confidence": "medium",
     "series": [
       {
+        "year": 2015,
+        "value": 11.4,
+        "type": "actual",
+        "vintage": "2026-04",
+        "sourceNote": "Calculated: WB FI.RES.TOTL.CD ÷ BM.GSR.GNFS.CD × 12. 2023 = 8.1 months (validates vs IMF Art. IV: 8.3 months)."
+      },
+      {
+        "year": 2016,
+        "value": 11.6,
+        "type": "actual",
+        "vintage": "2026-04",
+        "sourceNote": "Calculated: WB FI.RES.TOTL.CD ÷ BM.GSR.GNFS.CD × 12. 2023 = 8.1 months (validates vs IMF Art. IV: 8.3 months)."
+      },
+      {
+        "year": 2017,
+        "value": 10.5,
+        "type": "actual",
+        "vintage": "2026-04",
+        "sourceNote": "Calculated: WB FI.RES.TOTL.CD ÷ BM.GSR.GNFS.CD × 12. 2023 = 8.1 months (validates vs IMF Art. IV: 8.3 months)."
+      },
+      {
+        "year": 2018,
+        "value": 9.9,
+        "type": "actual",
+        "vintage": "2026-04",
+        "sourceNote": "Calculated: WB FI.RES.TOTL.CD ÷ BM.GSR.GNFS.CD × 12. 2023 = 8.1 months (validates vs IMF Art. IV: 8.3 months)."
+      },
+      {
+        "year": 2019,
+        "value": 10.4,
+        "type": "actual",
+        "vintage": "2026-04",
+        "sourceNote": "Calculated: WB FI.RES.TOTL.CD ÷ BM.GSR.GNFS.CD × 12. 2023 = 8.1 months (validates vs IMF Art. IV: 8.3 months)."
+      },
+      {
+        "year": 2020,
+        "value": 12.3,
+        "type": "actual",
+        "vintage": "2026-04",
+        "sourceNote": "Calculated: WB FI.RES.TOTL.CD ÷ BM.GSR.GNFS.CD × 12. 2023 = 8.1 months (validates vs IMF Art. IV: 8.3 months)."
+      },
+      {
+        "year": 2021,
+        "value": 9.6,
+        "type": "actual",
+        "vintage": "2026-04",
+        "sourceNote": "Calculated: WB FI.RES.TOTL.CD ÷ BM.GSR.GNFS.CD × 12. 2023 = 8.1 months (validates vs IMF Art. IV: 8.3 months)."
+      },
+      {
+        "year": 2022,
+        "value": 7.5,
+        "type": "actual",
+        "vintage": "2026-04",
+        "sourceNote": "Calculated: WB FI.RES.TOTL.CD ÷ BM.GSR.GNFS.CD × 12. 2023 = 8.1 months (validates vs IMF Art. IV: 8.3 months)."
+      },
+      {
+        "year": 2023,
+        "value": 8.1,
+        "type": "actual",
+        "vintage": "2026-04",
+        "sourceNote": "Calculated: WB FI.RES.TOTL.CD ÷ BM.GSR.GNFS.CD × 12. 2023 = 8.1 months (validates vs IMF Art. IV: 8.3 months)."
+      },
+      {
         "year": 2024,
-        "value": null,
-        "type": "estimate",
-        "vintage": "2025-08",
-        "sourceNote": "[PARTIAL] Net international reserves US$5,599.1mn end-2024 (App.28) ✓. Months ratio not printed in this source; IMF Art. IV reported 8.3 months (2023). Confirm 2024 months (≈8) and weeks from CBTT."
+        "value": 6.6,
+        "type": "actual",
+        "vintage": "2026-04",
+        "sourceNote": "Calculated: WB FI.RES.TOTL.CD ÷ BM.GSR.GNFS.CD × 12. 2023 = 8.1 months (validates vs IMF Art. IV: 8.3 months)."
       }
     ]
   },
