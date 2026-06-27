@@ -32,7 +32,7 @@ const STAT_SPECS = [
   { slug: 'inflation',               label: 'Inflation',  kind: 'pct'    as const, color: MUTED },
   { slug: 'unemployment',            label: 'Unemployment', kind: 'pct'  as const, color: INK },
   { slug: 'gross_govt_debt_pct_gdp', label: 'Debt / GDP', kind: 'pct'    as const, color: INK },
-  { slug: 'fdi',                     label: 'FDI',        kind: 'usd'    as const, color: INK },
+  { slug: 'fdi',                     label: 'Net FDI',    kind: 'usd'    as const, color: INK },
 ];
 
 function buildStats(country: string): BriefingStat[] {

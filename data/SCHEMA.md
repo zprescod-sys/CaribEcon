@@ -88,7 +88,7 @@ warns if a slug in the data has no matching entry in `indicator-meta.json`.
 | unemployment             | Unemployment Rate                 | %                                | labour           | yes          |
 | labour_participation     | Labour Force Participation Rate   | %                                | labour           | no           |
 | dependency_ratio         | Dependency Ratio                  | %                                | demographics     | no           |
-| fdi                      | FDI                               | US$ mn                           | external         | yes          |
+| fdi                      | Net FDI                           | US$ mn                           | external         | yes          |
 | monetary_base            | Monetary Base                     | `<local>` mn                     | monetary         | no           |
 | current_account          | Current Account Balance (BoP)     | US$ mn                           | external         | no           |
 | capital_account          | Capital Account Balance (BoP)     | US$ mn                           | external         | no           |

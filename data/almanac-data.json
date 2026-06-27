@@ -732,7 +732,7 @@
   {
     "country": "TT",
     "indicator": "fdi",
-    "indicatorLabel": "FDI",
+    "indicatorLabel": "Net FDI",
     "unit": "US$ mn",
     "unitNote": "Net foreign direct investment inflows",
     "source": "World Bank WDI — BX.KLT.DINV.CD.WD",
@@ -2411,7 +2411,7 @@
   {
     "country": "GY",
     "indicator": "fdi",
-    "indicatorLabel": "FDI",
+    "indicatorLabel": "Net FDI",
     "unit": "US$ mn",
     "unitNote": "Foreign direct investment, net inflows, BoP (World Bank WDI, current US$)",
     "source": "World Bank — World Development Indicators (BX.KLT.DINV.CD.WD)",
@@ -3340,7 +3340,7 @@
   {
     "country": "BB",
     "indicator": "fdi",
-    "indicatorLabel": "FDI",
+    "indicatorLabel": "Net FDI",
     "unit": "US$ mn",
     "unitNote": "Foreign direct investment, net inflows, BoP (World Bank WDI, current US$)",
     "source": "World Bank — World Development Indicators (BX.KLT.DINV.CD.WD)",
@@ -4268,7 +4268,7 @@
   {
     "country": "JM",
     "indicator": "fdi",
-    "indicatorLabel": "FDI",
+    "indicatorLabel": "Net FDI",
     "unit": "US$ mn",
     "unitNote": "Foreign direct investment, net inflows, BoP (World Bank WDI, current US$)",
     "source": "World Bank — World Development Indicators (BX.KLT.DINV.CD.WD)",
@@ -5197,7 +5197,7 @@
   {
     "country": "BS",
     "indicator": "fdi",
-    "indicatorLabel": "FDI",
+    "indicatorLabel": "Net FDI",
     "unit": "US$ mn",
     "unitNote": "Foreign direct investment, net inflows, BoP (World Bank WDI, current US$)",
     "source": "World Bank — World Development Indicators (BX.KLT.DINV.CD.WD)",
@@ -6125,7 +6125,7 @@
   {
     "country": "BZ",
     "indicator": "fdi",
-    "indicatorLabel": "FDI",
+    "indicatorLabel": "Net FDI",
     "unit": "US$ mn",
     "unitNote": "Foreign direct investment, net inflows, BoP (World Bank WDI, current US$)",
     "source": "World Bank — World Development Indicators (BX.KLT.DINV.CD.WD)",
@@ -7053,7 +7053,7 @@
   {
     "country": "SR",
     "indicator": "fdi",
-    "indicatorLabel": "FDI",
+    "indicatorLabel": "Net FDI",
     "unit": "US$ mn",
     "unitNote": "Foreign direct investment, net inflows, BoP (World Bank WDI, current US$)",
     "source": "World Bank — World Development Indicators (BX.KLT.DINV.CD.WD)",
@@ -7819,7 +7819,7 @@
   {
     "country": "GD",
     "indicator": "fdi",
-    "indicatorLabel": "FDI",
+    "indicatorLabel": "Net FDI",
     "unit": "US$ mn",
     "unitNote": "Foreign direct investment, net inflows, BoP (World Bank WDI, current US$)",
     "source": "World Bank — World Development Indicators (BX.KLT.DINV.CD.WD)",
@@ -8747,7 +8747,7 @@
   {
     "country": "LC",
     "indicator": "fdi",
-    "indicatorLabel": "FDI",
+    "indicatorLabel": "Net FDI",
     "unit": "US$ mn",
     "unitNote": "Foreign direct investment, net inflows, BoP (World Bank WDI, current US$)",
     "source": "World Bank — World Development Indicators (BX.KLT.DINV.CD.WD)",
@@ -9513,7 +9513,7 @@
   {
     "country": "AG",
     "indicator": "fdi",
-    "indicatorLabel": "FDI",
+    "indicatorLabel": "Net FDI",
     "unit": "US$ mn",
     "unitNote": "Foreign direct investment, net inflows, BoP (World Bank WDI, current US$)",
     "source": "World Bank — World Development Indicators (BX.KLT.DINV.CD.WD)",
@@ -10279,7 +10279,7 @@
   {
     "country": "KN",
     "indicator": "fdi",
-    "indicatorLabel": "FDI",
+    "indicatorLabel": "Net FDI",
     "unit": "US$ mn",
     "unitNote": "Foreign direct investment, net inflows, BoP (World Bank WDI, current US$)",
     "source": "World Bank — World Development Indicators (BX.KLT.DINV.CD.WD)",
@@ -11045,7 +11045,7 @@
   {
     "country": "DM",
     "indicator": "fdi",
-    "indicatorLabel": "FDI",
+    "indicatorLabel": "Net FDI",
     "unit": "US$ mn",
     "unitNote": "Foreign direct investment, net inflows, BoP (World Bank WDI, current US$)",
     "source": "World Bank — World Development Indicators (BX.KLT.DINV.CD.WD)",
@@ -11973,7 +11973,7 @@
   {
     "country": "VC",
     "indicator": "fdi",
-    "indicatorLabel": "FDI",
+    "indicatorLabel": "Net FDI",
     "unit": "US$ mn",
     "unitNote": "Foreign direct investment, net inflows, BoP (World Bank WDI, current US$)",
     "source": "World Bank — World Development Indicators (BX.KLT.DINV.CD.WD)",
@@ -12573,7 +12573,7 @@
   {
     "country": "TC",
     "indicator": "fdi",
-    "indicatorLabel": "FDI",
+    "indicatorLabel": "Net FDI",
     "unit": "US$ mn",
     "unitNote": "Foreign direct investment, net inflows, BoP (World Bank WDI, current US$)",
     "source": "World Bank — World Development Indicators (BX.KLT.DINV.CD.WD)",
@@ -13176,7 +13176,7 @@
   {
     "country": "KY",
     "indicator": "fdi",
-    "indicatorLabel": "FDI",
+    "indicatorLabel": "Net FDI",
     "unit": "US$ mn",
     "unitNote": "Foreign direct investment, net inflows, BoP (World Bank WDI, current US$)",
     "source": "World Bank — World Development Indicators (BX.KLT.DINV.CD.WD)",
@@ -13401,7 +13401,7 @@
   {
     "country": "VG",
     "indicator": "fdi",
-    "indicatorLabel": "FDI",
+    "indicatorLabel": "Net FDI",
     "unit": "US$ mn",
     "unitNote": "Foreign direct investment, net inflows, BoP (World Bank WDI, current US$)",
     "source": "World Bank — World Development Indicators (BX.KLT.DINV.CD.WD)",
