@@ -129,7 +129,14 @@
     "parties": "Republic Financial Holdings Ltd (acquirer) / Scotiabank",
     "value": "~USD 178-179mn combined (EC 7-territory close ~USD 58-60mn premium-over-NAV + BVI close ~USD 120mn)",
     "date": "2019-10-31",
-    "country": ["DM", "GD", "KN", "LC", "VC", "VG"],
+    "country": [
+      "DM",
+      "GD",
+      "KN",
+      "LC",
+      "VC",
+      "VG"
+    ],
     "type": "M&A",
     "url": "https://www.republicbankdominica.com/news/rfhl-closes-acquisition-seven-scotiabank-operations",
     "source": "Republic Bank / Scotiabank"
@@ -162,7 +169,14 @@
     "parties": "1st National Bank of St. Lucia, Antigua Commercial Bank, Bank of Dominica, Bank of Montserrat, Bank of Nevis (consortium) / Royal Bank of Canada",
     "value": "Undisclosed",
     "date": "2021-04-01",
-    "country": ["AG", "DM", "GD", "KN", "LC", "VC"],
+    "country": [
+      "AG",
+      "DM",
+      "GD",
+      "KN",
+      "LC",
+      "VC"
+    ],
     "type": "M&A",
     "url": "https://www.newswire.ca/news-releases/rbc-successfully-completes-sale-of-its-eastern-caribbean-banking-operations-805697572.html",
     "source": "RBC / Newswire"
@@ -173,7 +187,14 @@
     "parties": "Cable & Wireless Communications (acquirer) / Columbus International Inc.",
     "value": "USD 1.85bn equity (USD 707.5mn cash + 36% of enlarged CWC share capital); ~USD 3.025bn enterprise value incl. ~USD 1.17bn assumed debt",
     "date": "2015-03-31",
-    "country": ["TT", "JM", "BB", "GD", "VC", "LC"],
+    "country": [
+      "TT",
+      "JM",
+      "BB",
+      "GD",
+      "VC",
+      "LC"
+    ],
     "type": "M&A",
     "url": "https://www.globenewswire.com/news-release/2015/03/31/1157223/0/en/Columbus-International-Inc-Closes-Upon-Its-Acquisition-by-CWC.html",
     "source": "GlobeNewswire / Cable & Wireless Communications"
