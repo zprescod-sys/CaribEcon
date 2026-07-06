@@ -113,6 +113,72 @@
     "source": "Digicel / FT"
   },
   {
+    "id": "tt-agostini-prestige-takeover",
+    "headline": "Agostini Ltd completes takeover of Prestige Holdings Ltd (KFC, Pizza Hut franchisee) in all-share deal",
+    "parties": "Agostini Ltd (acquirer) / Prestige Holdings Ltd",
+    "value": "All-share exchange; cash consideration not disclosed",
+    "date": "2025-06-23",
+    "country": "TT",
+    "type": "M&A",
+    "url": "https://www.trinidadexpress.com",
+    "source": "Trinidad Express"
+  },
+  {
+    "id": "tt-republic-scotiabank-ec",
+    "headline": "Republic Bank (RFHL) completes acquisition of Scotiabank's Eastern Caribbean and BVI banking operations across 8 territories",
+    "parties": "Republic Financial Holdings Ltd (acquirer) / Scotiabank",
+    "value": "~USD 178-179mn combined (EC 7-territory close ~USD 58-60mn premium-over-NAV + BVI close ~USD 120mn)",
+    "date": "2019-10-31",
+    "country": ["DM", "GD", "KN", "LC", "VC", "VG"],
+    "type": "M&A",
+    "url": "https://www.republicbankdominica.com/news/rfhl-closes-acquisition-seven-scotiabank-operations",
+    "source": "Republic Bank / Scotiabank"
+  },
+  {
+    "id": "ky-republic-cayman-national",
+    "headline": "Republic Bank (RFHL) acquires 74.99% of Cayman National Corporation for USD 198.5mn",
+    "parties": "Republic Financial Holdings Ltd (acquirer) / Cayman National Corporation",
+    "value": "USD 198.47mn (US$6.25/share x 31,755,842 shares)",
+    "date": "2019-03-13",
+    "country": "KY",
+    "type": "M&A",
+    "url": "https://www.rfhl.com/rfhl-completes-purchase-of-cayman-national-corporation-shares/",
+    "source": "Republic Financial Holdings Ltd"
+  },
+  {
+    "id": "tt-ansa-bank-of-baroda",
+    "headline": "ANSA Merchant Bank acquires Bank of Baroda's Trinidad and Tobago operations (3 branches), rebrands as ANSA Bank",
+    "parties": "ANSA Merchant Bank Ltd (subsidiary of ANSA McAL) / Bank of Baroda (Trinidad and Tobago) Ltd",
+    "value": "Undisclosed (reported INR crore figures in secondary press could not be corroborated against any primary source)",
+    "date": "2021-03-01",
+    "country": "TT",
+    "type": "M&A",
+    "url": "https://www.ansamcal.com/news/ansa-merchant-bank-limited-acquires-operations-of-bank-of-baroda-trinidad-and-tobago-limited/",
+    "source": "ANSA McAL"
+  },
+  {
+    "id": "ec-rbc-bank-consortium",
+    "headline": "Five-bank indigenous Eastern Caribbean consortium completes acquisition of RBC's regional branch network (11 branches, 7 territories)",
+    "parties": "1st National Bank of St. Lucia, Antigua Commercial Bank, Bank of Dominica, Bank of Montserrat, Bank of Nevis (consortium) / Royal Bank of Canada",
+    "value": "Undisclosed",
+    "date": "2021-04-01",
+    "country": ["AG", "DM", "GD", "KN", "LC", "VC"],
+    "type": "M&A",
+    "url": "https://www.newswire.ca/news-releases/rbc-successfully-completes-sale-of-its-eastern-caribbean-banking-operations-805697572.html",
+    "source": "RBC / Newswire"
+  },
+  {
+    "id": "flow-cwc-columbus",
+    "headline": "Cable & Wireless Communications completes ~USD 3.0bn acquisition of Columbus International (Flow brand)",
+    "parties": "Cable & Wireless Communications (acquirer) / Columbus International Inc.",
+    "value": "USD 1.85bn equity (USD 707.5mn cash + 36% of enlarged CWC share capital); ~USD 3.025bn enterprise value incl. ~USD 1.17bn assumed debt",
+    "date": "2015-03-31",
+    "country": ["TT", "JM", "BB", "GD", "VC", "LC"],
+    "type": "M&A",
+    "url": "https://www.globenewswire.com/news-release/2015/03/31/1157223/0/en/Columbus-International-Inc-Closes-Upon-Its-Acquisition-by-CWC.html",
+    "source": "GlobeNewswire / Cable & Wireless Communications"
+  },
+  {
     "id": "deal-865766bf",
     "headline": "Petronas eyes final investment decision in Suriname after 8 discoveries totalling over 1 billion barrels",
     "parties": "Petronas",

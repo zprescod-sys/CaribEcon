@@ -17,5 +17,6 @@
   { "country": "JM", "source": "The Star (Jamaica)",       "url": "https://jamaica-star.com/feed/news.xml", "insecureTLS": true },
   { "country": "LC", "source": "St. Lucia Star",           "url": "https://stluciastar.com/feed" },
   { "country": "TT", "source": "CNC3",                     "url": "https://www.cnc3.co.tt/feed/" },
+  { "country": "TT", "source": "Trinidad Express",         "url": "https://www.trinidadexpress.com/feed/" },
   { "country": "ALL", "source": "WIC News",                "url": "https://wicnews.com/feed" }
 ]

@@ -80,12 +80,21 @@ const MONEY_RE = /(?:us\$|usd|ttd|gyd|jmd|bbd|bsd|xcd|\$)\s?\d|\b\d+(?:\.\d+)?\s
 const DEAL_PHRASES = [
   'final investment decision', 'joint venture', 'completes acquisition',
   'completed acquisition', 'initial public offering', 'bond issuance',
-  'sovereign bond', 'rights issue',
+  'sovereign bond', 'rights issue', 'tender offer', 'takeover bid',
+  'completes takeover', 'completed takeover', 'takes control of',
+  'takes effective control', 'majority stake in', 'all-share deal',
+  'share exchange',
 ];
+
+// A deal-verb hit + a share/equity signal also qualifies (covers all-stock M&A where no
+// cash value is stated in the headline — the MONEY_RE would miss these).
+const SHARE_SIGNAL_RE = /\b(?:shares?|stock|equity|all.?share|all.?stock)\b/i;
 
 function isDeal(title) {
   const hay = String(title).toLowerCase();
-  return (DEAL_VERB_RE.test(hay) && MONEY_RE.test(hay)) || DEAL_PHRASES.some(p => hay.includes(p));
+  const hasVerb = DEAL_VERB_RE.test(hay);
+  return (hasVerb && (MONEY_RE.test(hay) || SHARE_SIGNAL_RE.test(hay)))
+    || DEAL_PHRASES.some(p => hay.includes(p));
 }
 
 // Suggest a DealType (src/lib/types.ts) from the title; the human can correct it.

@@ -16,6 +16,7 @@ const { snapshots } = Astro.props;
 <section class="country-carousel" id="country-carousel" aria-roledescription="carousel" aria-label="Country snapshots">
   <div class="carousel-top">
     <span class="eyebrow">Country Snapshot</span>
+    <!-- Desktop: pill tabs -->
     <div class="carousel-pills" role="tablist" aria-label="Select country">
       {snapshots.map((s, i) => (
         <button
@@ -29,6 +30,12 @@ const { snapshots } = Astro.props;
         </button>
       ))}
     </div>
+    <!-- Mobile: dropdown selector -->
+    <select class="carousel-select mono" aria-label="Select country">
+      {snapshots.map((s, i) => (
+        <option value={i}>{s.flag} {s.name}</option>
+      ))}
+    </select>
   </div>
 
   <div class="carousel-panels">
@@ -41,9 +48,10 @@ const { snapshots } = Astro.props;
 </section>
 
 <script>
-  const root   = document.getElementById('country-carousel');
-  const pills  = root ? [...root.querySelectorAll<HTMLButtonElement>('.carousel-pill')] : [];
-  const panels = root ? [...root.querySelectorAll<HTMLElement>('.carousel-panel')] : [];
+  const root         = document.getElementById('country-carousel');
+  const pills        = root ? [...root.querySelectorAll<HTMLButtonElement>('.carousel-pill')] : [];
+  const panels       = root ? [...root.querySelectorAll<HTMLElement>('.carousel-panel')] : [];
+  const mobileSelect = root?.querySelector<HTMLSelectElement>('.carousel-select') ?? null;
 
   let index = 0;
   let timer: ReturnType<typeof setInterval> | null = null;
@@ -56,9 +64,10 @@ const { snapshots } = Astro.props;
       p.classList.toggle('active', j === index);
       p.setAttribute('aria-selected', String(j === index));
     });
+    // Keep the mobile select in sync during auto-advance
+    if (mobileSelect) mobileSelect.value = String(index);
   }
 
-  // Once stopped, auto-advance never restarts this session
   function stopAuto() {
     if (timer !== null) { clearInterval(timer); timer = null; }
   }
@@ -68,7 +77,6 @@ const { snapshots } = Astro.props;
       timer = setInterval(() => show(index + 1), 5000);
     }
 
-    // Any interaction with the carousel pauses ambient motion permanently
     root.addEventListener('pointerenter', stopAuto);
     root.addEventListener('pointerdown', stopAuto);
     root.addEventListener('keydown', stopAuto);
@@ -76,7 +84,6 @@ const { snapshots } = Astro.props;
     pills.forEach(p => p.addEventListener('click', () => {
       stopAuto();
       show(Number(p.dataset.index));
-      // Sync the chart explorer to this country and scroll to it
       if (p.dataset.code) {
         document.dispatchEvent(new CustomEvent('country-select', {
           detail: { country: p.dataset.code },
@@ -84,6 +91,20 @@ const { snapshots } = Astro.props;
         document.getElementById('chart-explorer')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
     }));
+
+    // Mobile dropdown: same behaviour as clicking a pill
+    mobileSelect?.addEventListener('change', () => {
+      stopAuto();
+      const i = Number(mobileSelect.value);
+      show(i);
+      const code = pills[i]?.dataset.code;
+      if (code) {
+        document.dispatchEvent(new CustomEvent('country-select', {
+          detail: { country: code },
+        }));
+        document.getElementById('chart-explorer')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
   }
 </script>
 
@@ -102,6 +123,9 @@ const { snapshots } = Astro.props;
     gap: var(--gap-md);
     flex-wrap: wrap;
   }
+
+  /* Mobile select — hidden on desktop */
+  .carousel-select { display: none; }
 
   .carousel-pills {
     display: flex;
@@ -147,5 +171,35 @@ const { snapshots } = Astro.props;
 
   @media (prefers-reduced-motion: reduce) {
     .carousel-panel, .carousel-pill { transition: none; }
+  }
+
+  @media (max-width: 640px) {
+    .carousel-top { flex-direction: column; align-items: flex-start; gap: 10px; }
+    /* Swap pills → select on mobile */
+    .carousel-pills { display: none; }
+    .carousel-select {
+      display: block;
+      width: 100%;
+      appearance: none;
+      -webkit-appearance: none;
+      border: 1px solid var(--line);
+      border-radius: 0;
+      background-color: var(--card-tint);
+      color: var(--ink);
+      font-family: var(--font-mono);
+      font-size: 13px;
+      letter-spacing: 0.04em;
+      font-weight: 500;
+      padding: 9px 38px 9px 13px;
+      cursor: pointer;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%230F231E'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+    }
+    .carousel-select:focus-visible {
+      outline: 2px solid var(--teal);
+      outline-offset: 1px;
+      border-color: var(--teal);
+    }
   }
 </style>
