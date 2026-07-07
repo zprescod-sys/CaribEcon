@@ -1,0 +1,790 @@
+---
+import Shell from '../layouts/Shell.astro';
+import { getCountries } from '../lib/dataHub';
+import { geoMercator, geoPath } from 'd3-geo';
+import { feature } from 'topojson-client';
+import type { Topology, GeometryCollection } from 'topojson-specification';
+import type { FeatureCollection, Geometry, Polygon } from 'geojson';
+import worldData from 'world-atlas/countries-50m.json';
+
+const countries = getCountries();
+
+type LonLat = [number, number];
+
+// ── Caribbean coverage map (projected once, at build time) ────────────────
+// Framed on the basin — Yucatán/Florida down to the Guianas — and rendered
+// straight to SVG here so the page ships static markup: no client-side D3,
+// no CDN fetch, no runtime topojson.
+const MAP_W = 716;
+const MAP_H = 680;
+
+const world = worldData as unknown as Topology;
+const worldFeatures = (
+  feature(world, world.objects.countries as GeometryCollection) as FeatureCollection<Geometry, { name: string }>
+).features;
+
+const basin: Polygon = {
+  type: 'Polygon',
+  coordinates: [[[-92, 27.5], [-51, 27.5], [-51, 2], [-92, 2], [-92, 27.5]]],
+};
+const projection = geoMercator().fitExtent([[54, 8], [MAP_W - 120, MAP_H - 8]], basin);
+const toPath = geoPath(projection);
+
+// Economies in the dataset, matched to world-atlas country names.
+const COVERED = new Set([
+  'Guyana', 'Suriname', 'Trinidad and Tobago', 'Jamaica', 'Bahamas', 'Belize',
+  'Barbados', 'Grenada', 'Saint Lucia', 'Antigua and Barbuda',
+  'Saint Kitts and Nevis', 'Dominica', 'Saint Vincent and the Grenadines',
+  'Turks and Caicos Islands', 'Cayman Islands', 'British Virgin Islands',
+]);
+
+// Keep only landmasses that fall inside the framed extent — drops ~200
+// off-frame countries so the page ships a lean SVG, not the whole world.
+const inFrame = (b: [[number, number], [number, number]]) =>
+  b[1][0] >= -40 && b[0][0] <= MAP_W + 40 && b[1][1] >= -40 && b[0][1] <= MAP_H + 40;
+
+const mapShapes = worldFeatures
+  .filter(f => inFrame(toPath.bounds(f)))
+  .map(f => ({ d: toPath(f), covered: COVERED.has(f.properties.name) }))
+  .filter(s => s.d);
+
+// Small islands that don't render as fills at this resolution — guarantee a mark.
+const mapDots = ([
+  [-77.3, 18.1], [-77.9, 24.6], [-73.0, 21.5], [-61.25, 10.45], [-59.55, 13.18],
+  [-61.68, 12.12], [-60.98, 13.9], [-61.2, 13.25], [-61.37, 15.42], [-61.8, 17.1],
+  [-62.68, 17.33], [-71.8, 21.75], [-81.25, 19.3], [-64.6, 18.42],
+] as LonLat[]).map(pt => { const [cx, cy] = projection(pt)!; return { cx, cy }; });
+
+// Leader-line labels for the anchor economies.
+const mapLabels = ([
+  { name: 'The Bahamas',       at: [-76.5, 24.8],   dx: 66,  dy: -4,  anchor: 'start' },
+  { name: 'Jamaica',           at: [-77.3, 18.1],   dx: -46, dy: -12, anchor: 'end' },
+  { name: 'Eastern Caribbean', at: [-61.4, 15.4],   dx: 60,  dy: -30, anchor: 'start' },
+  { name: 'Trinidad & Tobago', at: [-61.25, 10.45], dx: -88, dy: 12,  anchor: 'end' },
+  { name: 'Guyana',            at: [-58.7, 5.9],    dx: 44,  dy: -8,  anchor: 'start' },
+  { name: 'Suriname',          at: [-55.9, 4.2],    dx: 58,  dy: 22,  anchor: 'start' },
+  { name: 'Belize',            at: [-88.6, 17.2],   dx: -26, dy: 30,  anchor: 'end' },
+] as { name: string; at: LonLat; dx: number; dy: number; anchor: 'start' | 'end' }[]).map(L => {
+  const [px, py] = projection(L.at)!;
+  const tx = px + L.dx, ty = py + L.dy;
+  return {
+    name: L.name, x1: px, y1: py, x2: tx, y2: ty,
+    textX: L.anchor === 'end' ? tx - 6 : tx + 6,
+    textY: ty + 4,
+    anchor: L.anchor,
+  };
+});
+
+// Curated headline economies shown beside the map.
+const highlights = [
+  'Guyana', 'Jamaica', 'Barbados', 'Trinidad & Tobago',
+  'Suriname', 'The Bahamas', 'Eastern Caribbean economies',
+];
+
+const toc = [
+  ['01', 'Data sources', 'data-sources'],
+  ['02', 'Country coverage', 'country-coverage'],
+  ['03', 'Indicator definitions', 'indicator-definitions'],
+  ['04', 'Actuals, estimates, and forecasts', 'actuals-estimates-forecasts'],
+  ['05', 'Missing data treatment', 'missing-data-treatment'],
+  ['06', 'Offshore financial centres', 'offshore-financial-centres'],
+  ['07', 'Update frequency', 'update-frequency'],
+  ['08', 'Limitations', 'limitations'],
+  ['09', 'Corrections', 'corrections'],
+];
+
+const definitions = [
+  ['Real GDP growth', 'Annual percentage change in real GDP.'],
+  ['Inflation', 'Annual consumer price inflation or the latest available CPI inflation metric, depending on source coverage.'],
+  ['Unemployment', 'Unemployment rate where a comparable or primary national series is available.'],
+  ['Public debt / GDP', 'Gross government debt as a percentage of GDP.'],
+  ['Fiscal balance / GDP', 'Government balance as a percentage of GDP where available; local-currency fiscal balances are also retained for country detail.'],
+  ['FDI inflows', 'Net foreign direct investment inflows, usually shown in current US dollars.'],
+  ['External accounts', 'Current account, capital account, import cover, and related external-sector indicators where available.'],
+  ['Investment/deals', 'Tracked public investment, M&A, infrastructure, energy, capital market, and market-entry developments from curated public sources.'],
+];
+---
+
+<Shell
+  title="Methodology"
+  description="How Caribbean Macro Almanac sources, labels, and interprets its Caribbean macroeconomic dataset."
+>
+  <div class="page-wrapper methodology-page">
+
+    <header class="methodology-hero fade-up fade-up-1">
+      <span class="eyebrow">Methodology</span>
+      <h1 class="page-title">Methodology</h1>
+      <p class="page-sub">
+        How the Almanac sources, labels, and interprets its Caribbean
+        macroeconomic dataset — {countries.length} economies tracked across the
+        IMF, World Bank, UNCTAD and national data spine.
+      </p>
+
+      <div class="hero-grid">
+        <!-- Caribbean coverage map -->
+        <div class="map-wrap">
+          <svg
+            class="coverage-map"
+            viewBox={`0 0 ${MAP_W} ${MAP_H}`}
+            role="img"
+            aria-label="Map of the Caribbean basin highlighting the economies the Almanac covers"
+          >
+            <g>
+              {mapShapes.map(shape => (
+                <path d={shape.d} class={shape.covered ? 'geo covered' : 'geo'} />
+              ))}
+            </g>
+            <g>
+              {mapDots.map(dot => (
+                <circle cx={dot.cx} cy={dot.cy} r="3" class="geo-dot" />
+              ))}
+            </g>
+            <g class="map-labels">
+              {mapLabels.map(l => (
+                <>
+                  <line x1={l.x1} y1={l.y1} x2={l.x2} y2={l.y2} class="leader" />
+                  <circle cx={l.x1} cy={l.y1} r="2" class="leader-dot" />
+                  <text x={l.textX} y={l.textY} text-anchor={l.anchor}>{l.name}</text>
+                </>
+              ))}
+            </g>
+          </svg>
+          <div class="map-legend">
+            <span class="legend-swatch" aria-hidden="true"></span>
+            <span>Covered economies</span>
+          </div>
+        </div>
+
+        <!-- Coverage panel -->
+        <div class="hero-panel">
+          <div class="panel-glyph" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+              <circle cx="12" cy="12" r="9"></circle>
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <ellipse cx="12" cy="12" rx="4" ry="9"></ellipse>
+            </svg>
+          </div>
+          <h2 class="panel-title">{countries.length} economies tracked</h2>
+          <div class="panel-rule"></div>
+          <p class="panel-lede">
+            Comprehensive coverage of Caribbean economies to support informed
+            macroeconomic analysis and regional comparison.
+          </p>
+
+          <p class="panel-label mono">Including:</p>
+          <ul class="panel-list">
+            {highlights.map(name => (
+              <li><span class="dot" aria-hidden="true"></span>{name}</li>
+            ))}
+          </ul>
+
+          <div class="panel-facts">
+            <div class="fact">
+              <span class="fact-icon" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="17"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="16" y1="2" x2="16" y2="6"></line></svg>
+              </span>
+              <div>
+                <span class="fact-label mono">Years covered</span>
+                <strong>2015–2025</strong>
+              </div>
+            </div>
+            <div class="fact">
+              <span class="fact-icon" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="10" width="3.4" height="10"></rect><rect x="10.3" y="5" width="3.4" height="15"></rect><rect x="16.6" y="13" width="3.4" height="7"></rect></svg>
+              </span>
+              <div>
+                <span class="fact-label mono">Sources</span>
+                <strong>IMF, World Bank, UNCTAD, national sources</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="methodology-layout fade-up fade-up-2">
+      <aside class="contents-rail" aria-label="Methodology contents">
+        <span class="contents-label mono">Contents</span>
+        <nav>
+          {toc.map(([number, label, id]) => (
+            <a href={`#${id}`} class="contents-link">
+              <span>{number}</span>
+              <strong>{label}</strong>
+            </a>
+          ))}
+        </nav>
+      </aside>
+
+      <article class="methodology-sections">
+        <section id="data-sources" class="method-section">
+          <span class="section-number mono">01</span>
+          <h2>Data Sources</h2>
+          <p>
+            The Almanac uses a combination of comparable international datasets and
+            primary national sources. For regional macroeconomic comparison, the
+            dataset relies primarily on IMF World Economic Outlook series for
+            macroeconomic estimates and forecasts, and World Bank World Development
+            Indicators for cross-country development, labour, and FDI-related data.
+          </p>
+          <p>
+            UNCTAD is retained in the project's source framing where applicable for
+            investment and capital-flow context. National sources are used where they
+            provide stronger country-specific detail, including central banks, national
+            statistical offices, ministries of finance, budget documents, treasury
+            reports, and official releases.
+          </p>
+          <p>
+            Publications are indexed from the IMF, World Bank, Caribbean Development
+            Bank, ECLAC, and regional institutions where available. News and deals are
+            sourced from curated Caribbean outlets, company announcements, official
+            releases, and linked public source material.
+          </p>
+        </section>
+
+        <section id="country-coverage" class="method-section">
+          <span class="section-number mono">02</span>
+          <h2>Country Coverage</h2>
+          <p>
+            The current dataset covers {countries.length} Caribbean economies. Coverage
+            may vary by indicator because not every economy reports every metric on the
+            same schedule or through the same institutional channel.
+          </p>
+          <div class="country-list">
+            {countries.map(country => (
+              <span>{country.name}</span>
+            ))}
+          </div>
+        </section>
+
+        <section id="indicator-definitions" class="method-section">
+          <span class="section-number mono">03</span>
+          <h2>Indicator Definitions</h2>
+          <p>
+            Indicator labels are standardized for the interface, while source notes and
+            units preserve important country-level differences. The main public-facing
+            indicators use the following working definitions.
+          </p>
+          <div class="definition-table">
+            {definitions.map(([term, description]) => (
+              <div class="definition-row">
+                <dt>{term}</dt>
+                <dd>{description}</dd>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section id="actuals-estimates-forecasts" class="method-section">
+          <span class="section-number mono">04</span>
+          <h2>Actuals, Estimates, And Forecasts</h2>
+          <p>
+            Values are labelled by status. <strong>Actual</strong> indicates historical
+            reported data. <strong>Estimate</strong> or <strong>est</strong> indicates a
+            source-provided estimate where final reported data may not yet be available.
+            <strong>Forecast</strong>, <strong>projection</strong>, or <strong>f</strong>
+            indicates a forward-looking projection from source datasets such as IMF WEO.
+          </p>
+          <p>
+            Estimates and forecasts are not official outcomes. They may be revised as
+            source institutions publish new vintages, national accounts are updated, or
+            economic conditions change.
+          </p>
+        </section>
+
+        <section id="missing-data-treatment" class="method-section">
+          <span class="section-number mono">05</span>
+          <h2>Missing Data Treatment</h2>
+          <p>
+            Missing data is not treated as zero. Where no reliable official or comparable
+            source value is available, the dataset records a blank value and may attach a
+            source note explaining the gap.
+          </p>
+          <p>
+            Countries may be excluded from specific charts when no comparable value is
+            available. Some views use latest available data rather than forcing every
+            country into the same year. Any derived values, interpolation, or fallback
+            logic should be labelled in the source notes when used.
+          </p>
+        </section>
+
+        <section id="offshore-financial-centres" class="method-section">
+          <span class="section-number mono">06</span>
+          <h2>Offshore Financial Centres</h2>
+          <p>
+            Offshore financial centres such as the British Virgin Islands and Cayman
+            Islands can distort regional FDI comparisons because reported flows may
+            reflect financial intermediation rather than domestic real-economy
+            investment.
+          </p>
+          <p>
+            Where the site provides an exclusion toggle or filtered comparison, that
+            treatment is intended to improve interpretability. The excluded economies are
+            not wrong; they are separated because they behave differently in
+            capital-flow data.
+          </p>
+        </section>
+
+        <section id="update-frequency" class="method-section">
+          <span class="section-number mono">07</span>
+          <h2>Update Frequency</h2>
+          <p>
+            Data updates depend on source release schedules. Macroeconomic indicators may
+            update annually, quarterly, or monthly depending on the metric, country, and
+            source institution. Comparable international datasets are refreshed when new
+            source releases become available.
+          </p>
+          <p>
+            News feeds are designed as a more frequent rolling archive when the pipeline
+            is active. Deals and publications remain editorial-in-the-loop, so additions
+            depend on source discovery, validation, and curation.
+          </p>
+        </section>
+
+        <section id="limitations" class="method-section">
+          <span class="section-number mono">08</span>
+          <h2>Limitations</h2>
+          <ul class="method-list">
+            <li>Caribbean data can be fragmented across institutions and release formats.</li>
+            <li>Some countries have reporting lags or incomplete public time series.</li>
+            <li>Definitions may vary slightly across comparable and primary sources.</li>
+            <li>Small economies can show volatile percentage changes from one year to the next.</li>
+            <li>Forecasts are sensitive to shocks such as commodity prices, tourism cycles, natural disasters, fiscal policy, and external financing conditions.</li>
+            <li>The Almanac is a research and educational tool, not an official statistical source or investment advice.</li>
+          </ul>
+        </section>
+
+        <section id="corrections" class="method-section">
+          <span class="section-number mono">09</span>
+          <h2>Corrections</h2>
+          <p>
+            If users notice a source mismatch, labelling issue, or data inconsistency,
+            they can contact the project maintainer or submit a correction through the
+            project repository or existing public project channel. No private contact
+            information is published by the site.
+          </p>
+        </section>
+      </article>
+    </div>
+
+  </div>
+</Shell>
+
+<style>
+  .methodology-page {
+    padding-top: 36px;
+    padding-bottom: 64px;
+  }
+
+  .methodology-hero {
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 40px;
+  }
+
+  .page-title {
+    font-size: var(--text-page);
+    max-width: 780px;
+    margin: 8px 0 12px;
+  }
+
+  .page-sub {
+    font-size: 16px;
+    color: var(--ink-soft);
+    max-width: 70ch;
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 360px;
+    gap: 48px;
+    align-items: start;
+    margin-top: 30px;
+  }
+
+  /* ── Coverage map ─────────────────────────────────────────── */
+  .map-wrap {
+    position: relative;
+  }
+
+  .coverage-map {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .coverage-map .geo {
+    fill: rgba(15, 35, 30, 0.05);
+    stroke: rgba(15, 35, 30, 0.16);
+    stroke-width: 0.6;
+  }
+
+  .coverage-map .geo.covered {
+    fill: var(--teal);
+    stroke: var(--teal);
+  }
+
+  .coverage-map .geo-dot {
+    fill: var(--teal);
+  }
+
+  .coverage-map .leader {
+    stroke: var(--ink-soft);
+    stroke-width: 1;
+  }
+
+  .coverage-map .leader-dot {
+    fill: var(--ink-soft);
+  }
+
+  .coverage-map text {
+    font-family: var(--font-body);
+    font-size: 13px;
+    fill: var(--ink);
+  }
+
+  .map-legend {
+    position: absolute;
+    left: 0;
+    bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: var(--paper);
+    border: 1px solid var(--line);
+    padding: 8px 14px;
+  }
+
+  .map-legend .legend-swatch {
+    width: 14px;
+    height: 14px;
+    background-color: var(--teal);
+  }
+
+  .map-legend span:last-child {
+    font-size: 13px;
+    color: var(--ink);
+  }
+
+  /* ── Coverage panel ───────────────────────────────────────── */
+  .panel-glyph {
+    width: 48px;
+    height: 48px;
+    border: 1.5px solid var(--teal);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--teal);
+  }
+
+  .panel-title {
+    font-size: 26px;
+    margin: 22px 0 0;
+  }
+
+  .panel-rule {
+    height: 1px;
+    background-color: var(--line);
+    margin: 16px 0;
+  }
+
+  .panel-lede {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+  }
+
+  .panel-label {
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--teal);
+    margin: 24px 0 12px;
+  }
+
+  .panel-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .panel-list li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 15px;
+    color: var(--ink);
+  }
+
+  .panel-list .dot {
+    flex-shrink: 0;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background-color: var(--teal);
+  }
+
+  .panel-facts {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 24px;
+  }
+
+  .fact {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    background-color: var(--card);
+    border: 1px solid var(--line);
+    padding: 14px 16px;
+  }
+
+  .fact-icon {
+    flex-shrink: 0;
+    width: 34px;
+    height: 34px;
+    border: 1px solid var(--line);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--teal);
+  }
+
+  .fact-label {
+    display: block;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ink-faint);
+    margin-bottom: 4px;
+  }
+
+  .fact strong {
+    display: block;
+    font-size: 15px;
+    color: var(--ink);
+    line-height: 1.3;
+  }
+
+  .methodology-layout {
+    display: grid;
+    grid-template-columns: 260px minmax(0, 1fr);
+    gap: 64px;
+    align-items: start;
+    margin-top: 42px;
+  }
+
+  .contents-rail {
+    position: sticky;
+    top: calc(var(--topbar-height) + var(--nav-height) + 24px);
+    border-left: 3px solid var(--teal);
+    padding-left: 16px;
+  }
+
+  .contents-label {
+    display: block;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 12px;
+  }
+
+  .contents-rail nav {
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid var(--line);
+  }
+
+  .contents-link {
+    display: grid;
+    grid-template-columns: 32px 1fr;
+    gap: 10px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--line);
+    color: var(--ink-soft);
+    text-decoration: none;
+  }
+
+  .contents-link span {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--ink-faint);
+    letter-spacing: 0.06em;
+  }
+
+  .contents-link strong {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .contents-link:hover {
+    color: var(--teal);
+    text-decoration: none;
+  }
+
+  .methodology-sections {
+    border-top: 1px solid var(--line);
+  }
+
+  .method-section {
+    display: grid;
+    grid-template-columns: 48px minmax(0, 1fr);
+    column-gap: 24px;
+    padding: 34px 0 38px;
+    border-bottom: 1px solid var(--line);
+    scroll-margin-top: calc(var(--topbar-height) + var(--nav-height) + 24px);
+  }
+
+  .section-number {
+    font-size: 11px;
+    color: var(--gold);
+    letter-spacing: 0.08em;
+    padding-top: 7px;
+  }
+
+  .method-section h2 {
+    font-size: 22px;
+    text-transform: uppercase;
+    letter-spacing: 0;
+    margin-bottom: 14px;
+  }
+
+  .method-section p,
+  .method-list {
+    grid-column: 2;
+  }
+
+  .method-section p {
+    color: var(--ink-soft);
+    font-size: 15px;
+    line-height: 1.7;
+    margin-bottom: 14px;
+  }
+
+  .method-section p:last-child {
+    margin-bottom: 0;
+  }
+
+  .country-list {
+    grid-column: 2;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    border-top: 1px solid var(--line);
+    margin-top: 8px;
+  }
+
+  .country-list span {
+    border-bottom: 1px solid var(--line);
+    color: var(--ink);
+    font-size: 14px;
+    padding: 9px 12px 9px 0;
+  }
+
+  .definition-table {
+    grid-column: 2;
+    border-top: 1px solid var(--line);
+    margin-top: 10px;
+  }
+
+  .definition-row {
+    display: grid;
+    grid-template-columns: minmax(140px, 0.36fr) 1fr;
+    gap: 22px;
+    border-bottom: 1px solid var(--line);
+    padding: 13px 0;
+  }
+
+  .definition-row dt {
+    font-weight: 700;
+    color: var(--ink);
+  }
+
+  .definition-row dd {
+    color: var(--ink-soft);
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .method-list {
+    color: var(--ink-soft);
+    font-size: 15px;
+    line-height: 1.7;
+    padding-left: 18px;
+  }
+
+  .method-list li + li {
+    margin-top: 8px;
+  }
+
+  @media (max-width: 880px) {
+    .hero-grid {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+
+    .methodology-layout {
+      grid-template-columns: 1fr;
+      gap: 28px;
+      margin-top: 30px;
+    }
+
+    .contents-rail {
+      position: static;
+      border-left: 0;
+      padding-left: 0;
+    }
+
+    .contents-rail nav {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      column-gap: 20px;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .methodology-page {
+      padding-top: 30px;
+    }
+
+    .page-sub {
+      font-size: 15px;
+    }
+
+    .contents-rail nav,
+    .country-list,
+    .definition-row {
+      grid-template-columns: 1fr;
+    }
+
+    .contents-link {
+      grid-template-columns: 30px 1fr;
+    }
+
+    .method-section {
+      grid-template-columns: 1fr;
+      padding: 30px 0 34px;
+    }
+
+    .section-number,
+    .method-section p,
+    .method-list,
+    .country-list,
+    .definition-table {
+      grid-column: 1;
+    }
+
+    .section-number {
+      padding-top: 0;
+      margin-bottom: 5px;
+    }
+
+    .method-section h2 {
+      font-size: 20px;
+    }
+  }
+</style>
