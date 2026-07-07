@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spending vs Revenue — Caribbean Macro Almanac Preview</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..60,700;12..60,800&family=Hanken+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --paper:      #ECEEE8;
+      --paper-warm: #E6E9E0;
+      --surface:    #FFFFFF;
+      --card:       #F6F7F2;
+      --card-tint:  #E8EFE9;
+      --ink:        #0F231E;
+      --ink-soft:   #4C5A54;
+      --ink-faint:  #8A958F;
+      --line:       rgba(15,35,30,0.12);
+      --teal:       #0E5E4E;
+      --teal-deep:  #093F34;
+      --gold:       #BC8A2E;
+      --pos:        #2F7D5B;
+      --neg:        #B4543E;
+      --navy:       #1E3A5F;
+    }
+
+    body {
+      font-family: 'Hanken Grotesk', sans-serif;
+      background: var(--paper);
+      color: var(--ink);
+      min-height: 100vh;
+    }
+
+    .page {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 44px 28px 64px;
+    }
+
+    /* ── Header ── */
+    .eyebrow {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--teal);
+      margin-bottom: 12px;
+    }
+    h1 {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-weight: 800;
+      font-size: clamp(28px, 4.5vw, 42px);
+      line-height: 1.05;
+      color: var(--ink);
+      margin-bottom: 10px;
+    }
+    .subtitle {
+      font-size: 15px;
+      color: var(--ink-soft);
+      line-height: 1.6;
+      max-width: 640px;
+      margin-bottom: 32px;
+    }
+
+    /* ── Controls ── */
+    .controls {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+      padding: 14px 20px;
+      background: var(--card);
+      border-left: 3px solid var(--teal);
+    }
+    .control-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .control-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--ink-faint);
+    }
+    select {
+      font-family: 'Hanken Grotesk', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--ink);
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 0;
+      padding: 6px 30px 6px 10px;
+      cursor: pointer;
+      appearance: none;
+      -webkit-appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%234C5A54'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 10px center;
+    }
+    select:focus { outline: 2px solid var(--teal); outline-offset: 1px; }
+
+    /* ── Unavailable state ── */
+    .unavailable {
+      display: none;
+      padding: 40px 28px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      text-align: center;
+    }
+    .unavailable p.label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--ink-faint);
+      margin-bottom: 8px;
+    }
+    .unavailable p.msg {
+      font-size: 15px;
+      color: var(--ink-soft);
+    }
+
+    /* ── Chart wrapper ── */
+    .chart-wrap {
+      background: var(--surface);
+      border: 1px solid var(--line);
+    }
+    .chart-section {
+      padding: 28px 28px 22px;
+    }
+    .chart-section + .chart-section {
+      border-top: 1px solid var(--line);
+      background: var(--paper-warm);
+    }
+    .chart-head {
+      margin-bottom: 20px;
+    }
+    .chart-title {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-weight: 700;
+      font-size: 17px;
+      color: var(--ink);
+      margin-bottom: 3px;
+    }
+    .chart-meta {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--ink-faint);
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+    }
+
+    #rev-exp-svg, #balance-svg { display: block; width: 100%; overflow: visible; }
+
+    /* ── Legend ── */
+    .legend {
+      display: flex; gap: 20px; flex-wrap: wrap;
+      margin-top: 18px;
+    }
+    .legend-item {
+      display: flex; align-items: center; gap: 7px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px; color: var(--ink-soft);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .legend-swatch { width: 12px; height: 12px; }
+
+    /* ── Key stats strip ── */
+    .stats-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--line);
+      border-top: 1px solid var(--line);
+    }
+    .stat-cell {
+      background: var(--card);
+      padding: 16px 20px;
+    }
+    .stat-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--ink-faint);
+      margin-bottom: 4px;
+    }
+    .stat-value {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-weight: 700;
+      font-size: 22px;
+      font-variant-numeric: tabular-nums;
+      line-height: 1.1;
+    }
+    .stat-value.pos { color: var(--pos); }
+    .stat-value.neg { color: var(--neg); }
+    .stat-value.neutral { color: var(--ink); }
+    .stat-sub {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--ink-faint);
+      margin-top: 2px;
+    }
+
+    /* ── Source ── */
+    .source {
+      margin-top: 20px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--ink-faint);
+      letter-spacing: 0.04em;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 640px) {
+      .controls { flex-direction: column; align-items: flex-start; gap: 14px; }
+      .chart-section { padding: 18px 14px 16px; }
+      .stats-strip { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 400px) {
+      .stats-strip { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <p class="eyebrow">Caribbean Macro Almanac · Data Preview</p>
+  <h1>Government Spending vs Revenue</h1>
+  <p class="subtitle">Per-country comparison of total government revenue against total expenditure in local currency. The gap is the fiscal balance — a surplus where revenue exceeds spending, a deficit where spending exceeds revenue.</p>
+
+  <div class="controls">
+    <div class="control-group">
+      <span class="control-label">Country</span>
+      <select id="country-select">
+        <option value="TT">Trinidad &amp; Tobago</option>
+        <option value="GY">Guyana</option>
+        <option value="BB">Barbados</option>
+        <option value="JM">Jamaica</option>
+        <option value="BS">The Bahamas</option>
+        <option value="KY">Cayman Islands</option>
+        <option value="BZ" disabled>Belize — revenue unavailable</option>
+        <option value="SR" disabled>Suriname — revenue unavailable</option>
+        <option value="GD" disabled>Grenada — revenue unavailable</option>
+        <option value="LC" disabled>St. Lucia — revenue unavailable</option>
+        <option value="AG" disabled>Antigua &amp; Barbuda — unavailable</option>
+        <option value="KN" disabled>St. Kitts &amp; Nevis — unavailable</option>
+        <option value="DM" disabled>Dominica — unavailable</option>
+        <option value="VC" disabled>St. Vincent — unavailable</option>
+        <option value="TC" disabled>Turks &amp; Caicos — unavailable</option>
+        <option value="VG" disabled>British Virgin Islands — unavailable</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Unavailable state -->
+  <div class="unavailable" id="unavailable">
+    <p class="label">Data Unavailable</p>
+    <p class="msg">Government revenue and expenditure series are not yet collected for this economy.</p>
+  </div>
+
+  <!-- Main chart -->
+  <div class="chart-wrap" id="chart-wrap">
+
+    <!-- Key stats -->
+    <div class="stats-strip" id="stats-strip">
+      <div class="stat-cell">
+        <p class="stat-label">Latest Revenue</p>
+        <p class="stat-value neutral" id="stat-rev">—</p>
+        <p class="stat-sub" id="stat-rev-yr">—</p>
+      </div>
+      <div class="stat-cell">
+        <p class="stat-label">Latest Expenditure</p>
+        <p class="stat-value neutral" id="stat-exp">—</p>
+        <p class="stat-sub" id="stat-exp-yr">—</p>
+      </div>
+      <div class="stat-cell">
+        <p class="stat-label">Fiscal Balance</p>
+        <p class="stat-value neutral" id="stat-bal">—</p>
+        <p class="stat-sub" id="stat-bal-yr">—</p>
+      </div>
+    </div>
+
+    <!-- Revenue vs Expenditure grouped bars -->
+    <div class="chart-section">
+      <div class="chart-head">
+        <p class="chart-title" id="rev-exp-title">Revenue &amp; Expenditure</p>
+        <p class="chart-meta" id="rev-exp-meta">LOCAL CURRENCY (mn) · PRIMARY NATIONAL SOURCE</p>
+      </div>
+      <svg id="rev-exp-svg"></svg>
+      <div class="legend">
+        <div class="legend-item">
+          <div class="legend-swatch" style="background:var(--teal)"></div>
+          Revenue
+        </div>
+        <div class="legend-item">
+          <div class="legend-swatch" style="background:var(--navy)"></div>
+          Expenditure
+        </div>
+      </div>
+    </div>
+
+    <!-- Fiscal Balance bars -->
+    <div class="chart-section">
+      <div class="chart-head">
+        <p class="chart-title">Fiscal Balance</p>
+        <p class="chart-meta" id="bal-meta">LOCAL CURRENCY (mn) · SURPLUS / DEFICIT</p>
+      </div>
+      <svg id="balance-svg"></svg>
+      <div class="legend">
+        <div class="legend-item">
+          <div class="legend-swatch" style="background:var(--pos)"></div>
+          Surplus
+        </div>
+        <div class="legend-item">
+          <div class="legend-swatch" style="background:var(--neg)"></div>
+          Deficit
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /chart-wrap -->
+
+  <p class="source" id="source-note">Source: Primary national sources (Ministry of Finance / Central Bank). Local currency. Cross-country comparisons not applicable — figures are in each economy's own currency.</p>
+
+</div><!-- /page -->
+
+<script>
+const REV_DATA = [
+  {country:"TT",unit:"TT$ mn",series:[{year:2020,value:34369},{year:2021,value:37266.5},{year:2022,value:54607},{year:2023,value:54683.9},{year:2024,value:47840.4},{year:2025,value:50572.6}]},
+  {country:"GY",unit:"G$ mn",series:[{year:2015,value:168983},{year:2016,value:185199},{year:2017,value:207259},{year:2018,value:227789},{year:2019,value:252530},{year:2020,value:234984},{year:2021,value:272425},{year:2022,value:437573},{year:2023,value:601206},{year:2024,value:787359}]},
+  {country:"BB",unit:"Bds$ mn",series:[{year:2015,value:2458.4},{year:2016,value:2754},{year:2017,value:2845.4},{year:2018,value:2993.6},{year:2019,value:2984.2},{year:2020,value:2563.3},{year:2021,value:2823.8},{year:2022,value:3320},{year:2023,value:3378},{year:2024,value:2910.2}]},
+  {country:"JM",unit:"J$ mn",series:[{year:2020,value:575401.1},{year:2021,value:720224.5},{year:2022,value:827775.1},{year:2023,value:947666.3},{year:2024,value:1033594.6}]},
+  {country:"BS",unit:"B$ mn",series:[{year:2018,value:2426.3},{year:2019,value:2082},{year:2020,value:1908.8},{year:2021,value:2605.7},{year:2022,value:2855.4},{year:2023,value:3319},{year:2024,value:3543.3}]},
+  {country:"KY",unit:"CI$ mn",series:[{year:2015,value:672.7},{year:2016,value:705.9},{year:2017,value:753.2},{year:2018,value:830.2},{year:2019,value:860},{year:2020,value:797.4},{year:2021,value:961.1},{year:2022,value:1021.3},{year:2023,value:1060.1}]},
+];
+
+const EXP_DATA = [
+  {country:"TT",unit:"TT$ mn",series:[{year:2020,value:51058.9},{year:2021,value:49617.2},{year:2022,value:53274},{year:2023,value:57856.4},{year:2024,value:56892.7},{year:2025,value:59297.9}]},
+  {country:"GY",unit:"G$ mn",series:[{year:2015,value:178303},{year:2016,value:216770},{year:2017,value:240018},{year:2018,value:254632},{year:2019,value:282456},{year:2020,value:325472},{year:2021,value:387274},{year:2022,value:593097},{year:2023,value:804149},{year:2024,value:1163768}]},
+  {country:"BB",unit:"Bds$ mn",series:[{year:2015,value:3321.8},{year:2016,value:3278.1},{year:2017,value:3295.6},{year:2018,value:3024.1},{year:2019,value:2599.7},{year:2020,value:2992.9},{year:2021,value:3314.4},{year:2022,value:3564.9},{year:2023,value:3608.5},{year:2024,value:2683.7}]},
+  {country:"JM",unit:"J$ mn",series:[{year:2020,value:635911.3},{year:2021,value:698895.6},{year:2022,value:819989},{year:2023,value:938524},{year:2024,value:1023725.2}]},
+  {country:"BS",unit:"B$ mn",series:[{year:2018,value:2645.6},{year:2019,value:2920.5},{year:2020,value:3243.6},{year:2021,value:3327.4},{year:2022,value:3389.2},{year:2023,value:3450.1},{year:2024,value:3613.1}]},
+  {country:"KY",unit:"CI$ mn",series:[{year:2015,value:556.2},{year:2016,value:605},{year:2017,value:622.5},{year:2018,value:696.6},{year:2019,value:758.1},{year:2020,value:894.2},{year:2021,value:1078.3},{year:2022,value:1017.4},{year:2023,value:1122.9}]},
+];
+
+const SOURCES = {
+  TT: "T&T Ministry of Finance — Review of the Economy",
+  GY: "Guyana Ministry of Finance — National Budget",
+  BB: "Barbados Ministry of Finance",
+  JM: "Jamaica Ministry of Finance & Public Service",
+  BS: "Bahamas Ministry of Finance",
+  KY: "Cayman Islands Ministry of Finance",
+};
+
+const countrySel = document.getElementById('country-select');
+const unavailEl  = document.getElementById('unavailable');
+const chartWrap  = document.getElementById('chart-wrap');
+
+const revExpSvg  = d3.select('#rev-exp-svg');
+const balSvg     = d3.select('#balance-svg');
+
+const ML = 56, MR = 24, MT = 6, MB = 36;
+
+function fmtVal(v, unit) {
+  const abs = Math.abs(v);
+  if (unit.includes('J$') && abs >= 1000000) return d3.format(',.0f')(v/1000) + 'k';
+  if (unit.includes('G$') && abs >= 1000000) return d3.format(',.0f')(v/1000) + 'k';
+  if (abs >= 100000) return d3.format(',.0f')(v/1000) + 'k';
+  if (abs >= 1000)   return d3.format(',.0f')(v);
+  return d3.format(',.1f')(v);
+}
+
+function fmtAxis(v, unit) {
+  const abs = Math.abs(v);
+  if (unit.includes('J$') || unit.includes('G$')) {
+    if (abs >= 1000000) return (v/1000000).toFixed(1) + 'M';
+    if (abs >= 1000)    return (v/1000).toFixed(0) + 'k';
+    return v.toFixed(0);
+  }
+  if (abs >= 100000) return (v/1000).toFixed(0) + 'k';
+  if (abs >= 1000)   return d3.format(',.0f')(v);
+  return v.toFixed(0);
+}
+
+function applyAxisStyle(g) {
+  g.selectAll('text')
+    .style('font-family', "'JetBrains Mono', monospace")
+    .style('font-size', '11px')
+    .style('fill', 'var(--ink-faint)');
+  g.selectAll('.tick line').style('stroke', 'var(--line)');
+  g.select('.domain').remove();
+}
+
+function renderRevExp(rows, unit, containerWidth) {
+  const BAR_W  = Math.max(14, Math.min(32, (containerWidth - ML - MR) / (rows.length * 2 + rows.length * 0.5) - 2));
+  const GROUP_W = BAR_W * 2 + 4;
+  const W = containerWidth;
+  const H = 240 + MB;
+
+  revExpSvg.attr('viewBox', `0 0 ${W} ${H}`).attr('height', H);
+  revExpSvg.selectAll('*').remove();
+
+  const g = revExpSvg.append('g').attr('transform', `translate(${ML},${MT})`);
+  const innerW = W - ML - MR;
+  const innerH = H - MT - MB;
+
+  const allVals = rows.flatMap(d => [d.revenue, d.expenditure].filter(v => v != null));
+  const yMax = d3.max(allVals) * 1.1;
+
+  const x = d3.scaleBand()
+    .domain(rows.map(d => d.year))
+    .range([0, innerW])
+    .padding(0.3);
+  const y = d3.scaleLinear().domain([0, yMax]).range([innerH, 0]);
+
+  // Gridlines
+  y.ticks(5).forEach(t => {
+    g.append('line')
+      .attr('x1', 0).attr('x2', innerW)
+      .attr('y1', y(t)).attr('y2', y(t))
+      .attr('stroke', 'var(--line)')
+      .attr('stroke-dasharray', '3 3');
+  });
+
+  // Bars
+  rows.forEach(d => {
+    const cx  = x(d.year);
+    const bw  = x.bandwidth() / 2 - 1;
+
+    if (d.revenue != null) {
+      g.append('rect')
+        .attr('x', cx).attr('y', y(d.revenue))
+        .attr('width', bw).attr('height', innerH - y(d.revenue))
+        .attr('fill', 'var(--teal)');
+    }
+    if (d.expenditure != null) {
+      g.append('rect')
+        .attr('x', cx + bw + 2).attr('y', y(d.expenditure))
+        .attr('width', bw).attr('height', innerH - y(d.expenditure))
+        .attr('fill', 'var(--navy)');
+    }
+  });
+
+  // X axis
+  g.append('g')
+    .attr('transform', `translate(0,${innerH})`)
+    .call(d3.axisBottom(x).tickSize(4))
+    .call(applyAxisStyle);
+
+  // Y axis
+  g.append('g')
+    .call(d3.axisLeft(y).ticks(5).tickFormat(v => fmtAxis(v, unit)))
+    .call(applyAxisStyle);
+}
+
+function renderBalance(rows, unit, containerWidth) {
+  const W = containerWidth;
+  const innerH = 120;
+  const H = innerH + MT + MB;
+
+  balSvg.attr('viewBox', `0 0 ${W} ${H}`).attr('height', H);
+  balSvg.selectAll('*').remove();
+
+  const g = balSvg.append('g').attr('transform', `translate(${ML},${MT})`);
+  const innerW = W - ML - MR;
+
+  const balVals = rows.map(d => d.balance).filter(v => v != null);
+  const absMax  = d3.max(balVals.map(Math.abs)) * 1.15 || 1;
+
+  const x = d3.scaleBand()
+    .domain(rows.map(d => d.year))
+    .range([0, innerW])
+    .padding(0.35);
+  const y = d3.scaleLinear().domain([-absMax, absMax]).range([innerH, 0]);
+
+  // Zero line
+  g.append('line')
+    .attr('x1', 0).attr('x2', innerW)
+    .attr('y1', y(0)).attr('y2', y(0))
+    .attr('stroke', 'var(--ink-soft)')
+    .attr('stroke-width', 1.5);
+
+  // Gridlines
+  y.ticks(4).filter(t => t !== 0).forEach(t => {
+    g.append('line')
+      .attr('x1', 0).attr('x2', innerW)
+      .attr('y1', y(t)).attr('y2', y(t))
+      .attr('stroke', 'var(--line)')
+      .attr('stroke-dasharray', '3 3');
+  });
+
+  // Balance bars
+  rows.forEach(d => {
+    if (d.balance == null) return;
+    const barH = Math.abs(y(d.balance) - y(0));
+    const barY = d.balance >= 0 ? y(d.balance) : y(0);
+    g.append('rect')
+      .attr('x', x(d.year))
+      .attr('y', barY)
+      .attr('width', x.bandwidth())
+      .attr('height', Math.max(1, barH))
+      .attr('fill', d.balance >= 0 ? 'var(--pos)' : 'var(--neg)');
+  });
+
+  // X axis
+  g.append('g')
+    .attr('transform', `translate(0,${innerH})`)
+    .call(d3.axisBottom(x).tickSize(4))
+    .call(applyAxisStyle);
+
+  // Y axis
+  g.append('g')
+    .call(d3.axisLeft(y).ticks(4).tickFormat(v => fmtAxis(v, unit)))
+    .call(applyAxisStyle);
+}
+
+function updateStats(rows, unit) {
+  const latest = rows[rows.length - 1];
+  if (!latest) return;
+
+  const fv = v => fmtVal(v, unit) + ' ' + unit;
+  const yrLabel = yr => `${yr}`;
+
+  document.getElementById('stat-rev').textContent    = latest.revenue != null ? fmtVal(latest.revenue, unit) : '—';
+  document.getElementById('stat-rev-yr').textContent = `${unit} · ${latest.year}`;
+  document.getElementById('stat-exp').textContent    = latest.expenditure != null ? fmtVal(latest.expenditure, unit) : '—';
+  document.getElementById('stat-exp-yr').textContent = `${unit} · ${latest.year}`;
+
+  const bal = latest.balance;
+  const balEl = document.getElementById('stat-bal');
+  balEl.textContent = bal != null ? (bal >= 0 ? '+' : '') + fmtVal(bal, unit) : '—';
+  balEl.className   = 'stat-value ' + (bal == null ? 'neutral' : bal >= 0 ? 'pos' : 'neg');
+  document.getElementById('stat-bal-yr').textContent = bal != null ? `${unit} · ${latest.year}` : '';
+}
+
+function render() {
+  const code = countrySel.value;
+  const rev  = REV_DATA.find(r => r.country === code);
+  const exp  = EXP_DATA.find(r => r.country === code);
+
+  if (!rev || !exp) {
+    unavailEl.style.display = 'block';
+    chartWrap.style.display = 'none';
+    return;
+  }
+
+  unavailEl.style.display = 'none';
+  chartWrap.style.display = 'block';
+
+  const unit  = rev.unit;
+  const years = [...new Set([...rev.series.map(p => p.year), ...exp.series.map(p => p.year)])].sort();
+
+  const rows = years.map(yr => {
+    const r = rev.series.find(p => p.year === yr)?.value ?? null;
+    const e = exp.series.find(p => p.year === yr)?.value ?? null;
+    const b = (r != null && e != null) ? r - e : null;
+    return { year: yr, revenue: r, expenditure: e, balance: b };
+  });
+
+  // Update titles
+  document.getElementById('rev-exp-title').textContent = `Revenue & Expenditure — ${countrySel.options[countrySel.selectedIndex].text.split('—')[0].trim()}`;
+  document.getElementById('rev-exp-meta').textContent  = `${unit} · PRIMARY NATIONAL SOURCE`;
+  document.getElementById('bal-meta').textContent      = `${unit} · SURPLUS = POSITIVE`;
+  document.getElementById('source-note').textContent   = `Source: ${SOURCES[code] || 'Primary national source'}. Values in ${unit}. Cross-country comparisons not applicable.`;
+
+  updateStats(rows, unit);
+
+  const W = document.getElementById('rev-exp-svg').parentElement.clientWidth - 56;
+  renderRevExp(rows, unit, W);
+  renderBalance(rows, unit, W);
+}
+
+countrySel.addEventListener('change', render);
+window.addEventListener('resize', render);
+render();
+</script>
+</body>
+</html>

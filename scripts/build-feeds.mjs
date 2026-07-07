@@ -15,6 +15,7 @@
 import fs from 'fs';
 import crypto from 'crypto';
 import Parser from 'rss-parser';
+import { isRelevantNews } from '../src/lib/newsRelevance.mjs';
 
 // ── Config ───────────────────────────────────────────────────────────────────
 const NEWS_WINDOW_DAYS  = Number(process.env.NEWS_WINDOW_DAYS ?? 120);  // keep this much history in the archive
@@ -26,37 +27,13 @@ const FINANCE_FILTER    = process.env.FINANCE_FILTER !== '0';           // keep 
 const PROMOTE_ONLY      = process.argv.includes('--promote-only') || process.env.PROMOTE_ONLY === '1';
 const UA = 'Mozilla/5.0 (compatible; CaribbeanMacroAlmanac/1.0; +https://github.com/) feeds-bot';
 
-// Financial / economic relevance filter. Items whose title or tags match are kept;
-// everything else is dropped at ingestion. Heuristic + tunable: stems (e.g. "econom"
-// matches economy/economic), whole tokens, and a few multi-word phrases. Matched on a
-// word boundary to avoid false hits (e.g. "import" not "important", "port" excluded).
-const FIN_RE = new RegExp('\\b(?:' + [
-  'econom', 'financ', 'fiscal', 'monetar', 'inflation', 'deflation', 'budget', 'deficit',
-  'surplus', 'debt', 'gdp', 'imf', 'eclac', 'tax', 'tariff', 'trade', 'export', 'import',
-  // invest(?!igat) prevents "Police investigate" / "under investigation" false-positives
-  'invest(?!igat)', 'fdi', 'oil', 'gas', 'petroleum', 'energy', 'lng', 'refiner', 'tourism', 'tourist',
-  'currenc', 'devalu', 'revenue', 'fintech', 'bank', 'loan', 'credit', 'bond', 'treasur',
-  'market', 'stock', 'ipo', 'business', 'commerce', 'manufactur', 'agricultur', 'mining',
-  'bauxite', 'shipping', 'logistic', 'employ', 'unemploy', 'job', 'labou?r', 'wage', 'salar',
-  'pension', 'recession', 'growth', 'productiv', 'subsid', 'price', 'remittance', 'reserve',
-  'default', 'restructur', 'rating', 'procurement', 'merger', 'acquisition', 'privatiz',
-  'infrastructure', 'forex', 'crypto', 'bitcoin', 'fund',
-].join('|') + ')', 'i');
-const FIN_PHRASES = ['world bank', 'central bank', 'interest rate', 'exchange rate',
-  'real estate', 'cost of living', 'credit rating', 'sovereign wealth', 'natural resource fund',
-  'private sector', 'gross domestic', 'construction sector', 'construction industry',
-  'construction project', 'housing market', 'housing prices', 'insurance sector',
-  'insurance industry', 'infrastructure project', 'infrastructure spending'];
-
-// Explicit crime/non-financial deny list — matched items are excluded even if they
-// also contain a financial keyword (e.g. crime at an "insurance company car park").
-const CRIME_DENY_RE = /\b(?:murder(?:ed)?|homicide|manslaughter|sexual.?assault|rape[ds]?\b|kidnap(?:ped)?|shot dead|gunman|gunshot|stabb(?:ed|ing)|robbery|drug bust|cocaine bust|marijuana bust|arson)\b/i;
-
+// Economic-relevance filter — the rule lives in src/lib/newsRelevance.mjs so ingest
+// (here) and render (src/lib/dataHub.ts) can never drift. Precision-first: an economic
+// keyword is required, and any sport/crime/lifestyle signal drops the item unless a
+// strong, unambiguous economic term also appears. See that module for the full policy.
 function isFinancial(title, tags = []) {
   if (!FINANCE_FILTER) return true;
-  const hay = `${title} ${tags.join(' ')}`.toLowerCase();
-  if (CRIME_DENY_RE.test(hay)) return false;
-  return FIN_RE.test(hay) || FIN_PHRASES.some(p => hay.includes(p));
+  return isRelevantNews(title, tags);
 }
 
 // The 16 country codes (mirror dataHub.ts) + ALL for pan-Caribbean.

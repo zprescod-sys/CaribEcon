@@ -2,8 +2,9 @@
 import Shell         from '../layouts/Shell.astro';
 import DailyBriefing from '../components/home/DailyBriefing.astro';
 import RegionalChart  from '../components/home/RegionalChart.astro';
-import { getNews, getCountries, getSeries } from '../lib/dataHub';
+import { getNews, getCountries, getSeries, getIndicatorAllCountries } from '../lib/dataHub';
 import type { Briefing, BriefingStat } from '../components/home/DailyBriefing.astro';
+import type { DataPointType, IndicatorSeries } from '../lib/types';
 
 const names = Object.fromEntries(getCountries().map(c => [c.code, c.name]));
 
@@ -18,6 +19,21 @@ function fmtDate(d: string) {
 function typeFlag(t: string) {
   return t === 'projection' ? 'f' : t === 'estimate' ? 'e' : '';
 }
+function formatYearLabel(year: number | null, type?: DataPointType | string | null) {
+  if (!year) return 'latest';
+  return `${year}${typeFlag(type ?? '')}`;
+}
+function formatPercent(v: number | null, signed = false) {
+  if (v === null) return 'Data unavailable';
+  const sign = signed && v >= 0 ? '+' : signed && v < 0 ? '−' : '';
+  return `${sign}${Math.abs(v).toFixed(1)}%`;
+}
+function formatUsdMillions(v: number | null) {
+  if (v === null) return 'Data unavailable';
+  const a = Math.abs(v);
+  if (a >= 1000) return `US$${(v / 1000).toFixed(1)}B`;
+  return `US$${v.toFixed(1)}m`;
+}
 function latestPoint(country: string, slug: string) {
   const s = getSeries(country, slug);
   if (!s) return null;
@@ -25,6 +41,131 @@ function latestPoint(country: string, slug: string) {
   const last = pts[pts.length - 1];
   return last ? { value: last.value as number, year: last.year, type: last.type } : null;
 }
+function getLatestAvailableValue(series: IndicatorSeries | undefined) {
+  if (!series) return null;
+  const pts = series.series.filter(p => p.value !== null);
+  const last = pts[pts.length - 1];
+  return last ? { series, value: last.value as number, year: last.year, type: last.type } : null;
+}
+
+function topLatestIndicator(indicator: string, exclude = new Set<string>()) {
+  return getIndicatorAllCountries(indicator)
+    .filter(s => !exclude.has(s.country))
+    .map(s => getLatestAvailableValue(s))
+    .filter((p): p is NonNullable<ReturnType<typeof getLatestAvailableValue>> => p !== null)
+    .sort((a, b) => b.value - a.value)[0] ?? null;
+}
+
+function getGrowthLeader() {
+  return topLatestIndicator('gdp_growth');
+}
+
+function getInflationWatch() {
+  return topLatestIndicator('inflation');
+}
+
+function getDebtWatch() {
+  return topLatestIndicator('gross_govt_debt_pct_gdp');
+}
+
+function getFdiLeaderExcludingOffshoreCenters() {
+  return topLatestIndicator('fdi', new Set(['VG', 'KY']));
+}
+
+function getFiscalSignal() {
+  const rows = getCountries().flatMap(country => {
+    const fiscal = getSeries(country.code, 'fiscal_balance');
+    const gdp = getSeries(country.code, 'nominal_gdp');
+    if (!fiscal || !gdp) return [];
+
+    const gdpByYear = new Map(gdp.series.filter(p => p.value !== null).map(p => [p.year, p]));
+    const latest = [...fiscal.series]
+      .reverse()
+      .find(p => p.value !== null && gdpByYear.has(p.year));
+    if (!latest) return [];
+
+    const gdpPoint = gdpByYear.get(latest.year);
+    if (!gdpPoint?.value) return [];
+
+    return [{
+      series: fiscal,
+      value: ((latest.value as number) / gdpPoint.value) * 100,
+      year: latest.year,
+      type: latest.type,
+    }];
+  });
+
+  return rows.sort((a, b) => b.value - a.value)[0] ?? null;
+}
+
+type PreviewCard = {
+  key: string;
+  icon: string;
+  category: string;
+  name: string;
+  value: string;
+  subtext: string;
+  commentary: string;
+  href?: string;
+};
+
+const growthLeader = getGrowthLeader();
+const inflationWatch = getInflationWatch();
+const debtWatch = getDebtWatch();
+const fdiLeader = getFdiLeaderExcludingOffshoreCenters();
+const fiscalSignal = getFiscalSignal();
+
+const regionalPreviewCards: PreviewCard[] = [
+  {
+    key: 'growth-leader',
+    icon: '↗',
+    category: 'Growth Leader',
+    name: growthLeader ? names[growthLeader.series.country] ?? growthLeader.series.country : 'Data unavailable',
+    value: growthLeader ? formatPercent(growthLeader.value, true) : 'Data unavailable',
+    subtext: growthLeader ? `Real GDP growth · ${formatYearLabel(growthLeader.year, growthLeader.type)}` : 'Real GDP growth · latest',
+    commentary: growthLeader?.series.country === 'GY'
+      ? 'Resource-led expansion remains the region’s clearest outlier.'
+      : 'Fastest real GDP expansion among tracked economies.',
+  },
+  {
+    key: 'inflation-watch',
+    icon: '%',
+    category: 'Inflation Watch',
+    name: inflationWatch ? names[inflationWatch.series.country] ?? inflationWatch.series.country : 'Data unavailable',
+    value: inflationWatch ? formatPercent(inflationWatch.value) : 'Data unavailable',
+    subtext: inflationWatch ? `CPI inflation · ${formatYearLabel(inflationWatch.year, inflationWatch.type)}` : 'CPI inflation · latest',
+    commentary: 'Above the regional median as price pressures persist.',
+  },
+  {
+    key: 'debt-watch',
+    icon: '▥',
+    category: 'Debt Watch',
+    name: debtWatch ? names[debtWatch.series.country] ?? debtWatch.series.country : 'Data unavailable',
+    value: debtWatch ? formatPercent(debtWatch.value) : 'Data unavailable',
+    subtext: debtWatch ? `Public debt / GDP · ${formatYearLabel(debtWatch.year, debtWatch.type)}` : 'Public debt / GDP · latest',
+    commentary: 'High debt levels continue to constrain fiscal space.',
+  },
+  {
+    key: 'fdi-leader',
+    icon: '◎',
+    category: 'FDI Leader',
+    name: fdiLeader ? names[fdiLeader.series.country] ?? fdiLeader.series.country : 'Data unavailable',
+    value: fdiLeader ? formatUsdMillions(fdiLeader.value) : 'Data unavailable',
+    subtext: fdiLeader ? `Net FDI inflows · ${formatYearLabel(fdiLeader.year, fdiLeader.type)}` : 'Net FDI inflows · latest',
+    commentary: 'Largest inflow after excluding offshore financial centres.',
+  },
+  {
+    key: 'fiscal-signal',
+    icon: '⚖',
+    category: 'Fiscal Signal',
+    name: fiscalSignal ? names[fiscalSignal.series.country] ?? fiscalSignal.series.country : 'Data unavailable',
+    value: fiscalSignal ? formatPercent(fiscalSignal.value, true) : 'Data unavailable',
+    subtext: fiscalSignal ? `Fiscal balance / GDP · ${formatYearLabel(fiscalSignal.year, fiscalSignal.type)}` : 'Fiscal balance / GDP · latest',
+    commentary: fiscalSignal && fiscalSignal.value >= 0
+      ? 'One of the few economies with a fiscal surplus.'
+      : 'Fiscal position remains under pressure.',
+  },
+];
 
 // Per-country key-indicators rail, pulled live from the hub. First four available win.
 const STAT_SPECS = [
@@ -95,6 +236,7 @@ const briefings: Briefing[] = newsShown.map(n => {
 });
 
 const active = briefings[0];
+const regionalPreviewUpdated = newsShown[0]?.date ? fmtDate(newsShown[0].date) : null;
 
 const newsRows = newsShown.map((n, i) => ({
   key: n.id,
@@ -120,6 +262,47 @@ const explore = [
 
       <!-- Daily briefing (repoints on news click) -->
       <DailyBriefing briefing={active} />
+
+      <!-- Regional dashboard preview -->
+      <section class="dashboard-preview card-section" aria-labelledby="regional-dashboard-preview-title">
+        <div class="dashboard-preview-head">
+          <div>
+            <h2 id="regional-dashboard-preview-title" class="dashboard-preview-heading">Regional Dashboard Preview</h2>
+            <p class="dashboard-preview-title">A quick read on the Caribbean’s macro pulse across 16 economies.</p>
+          </div>
+          {regionalPreviewUpdated && (
+            <p class="dashboard-updated mono" aria-label={`Homepage data updated ${regionalPreviewUpdated}`}>
+              Updated {regionalPreviewUpdated}
+            </p>
+          )}
+        </div>
+
+        <div class="dashboard-card-grid">
+          {regionalPreviewCards.map(card => {
+            const Tag = card.href ? 'a' : 'article';
+            return (
+              <Tag href={card.href} class={`dashboard-card dashboard-card-${card.key}`} aria-label={card.href ? `Open ${card.category}: ${card.name}` : undefined}>
+                <div class="dashboard-card-top">
+                  <span class="dashboard-icon" aria-hidden="true">{card.icon}</span>
+                  <span class="dashboard-category mono">{card.category}</span>
+                </div>
+                <h3 class="dashboard-card-name">{card.name}</h3>
+                <p class="dashboard-card-value tabular">{card.value}</p>
+                <p class="dashboard-card-sub">{card.subtext}</p>
+                <div class="dashboard-divider" aria-hidden="true"></div>
+                <p class="dashboard-card-note">{card.commentary}</p>
+              </Tag>
+            );
+          })}
+        </div>
+
+        <div class="dashboard-actions">
+          <a href="/data" class="all-news" aria-label="Explore the full data explorer">Explore full data explorer →</a>
+          <p class="dashboard-source mono">
+            Sources: IMF WEO, World Bank WDI, UNCTAD and national sources.
+          </p>
+        </div>
+      </section>
 
       <!-- Regional chart -->
       <div class="card-section">
@@ -246,6 +429,168 @@ const explore = [
     margin-bottom: 24px;
   }
 
+  /* Regional dashboard preview */
+  .dashboard-preview {
+    padding-top: 40px;
+    padding-bottom: 34px;
+  }
+
+  .dashboard-preview-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    gap: 24px;
+    margin-bottom: 24px;
+  }
+
+  .dashboard-preview-heading {
+    font-family: var(--font-display);
+    font-size: 28px;
+    font-weight: 700;
+    line-height: var(--lh-tight);
+    color: var(--ink);
+    letter-spacing: -0.01em;
+  }
+
+  .dashboard-preview-title {
+    font-size: 14px;
+    color: var(--ink-soft);
+    margin-top: 5px;
+    max-width: 58ch;
+  }
+
+  .dashboard-updated {
+    white-space: nowrap;
+    color: var(--ink-faint);
+    margin-bottom: 2px;
+  }
+
+  .dashboard-card-grid {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .dashboard-card {
+    display: flex;
+    min-height: 218px;
+    flex-direction: column;
+    padding: 18px 16px 16px;
+    border: 1px solid rgba(9, 78, 60, 0.12);
+    border-radius: 16px;
+    background:
+      linear-gradient(145deg, rgba(236, 238, 232, 0.99) 0%, rgba(235, 238, 232, 0.96) 58%, rgba(226, 233, 225, 0.42) 100%),
+      var(--paper);
+    color: var(--ink);
+    text-decoration: none;
+    transition: transform 0.16s ease, border-color 0.16s ease, background-color 0.16s ease;
+  }
+
+  .dashboard-card:hover {
+    border-color: rgba(9, 78, 60, 0.2);
+    background:
+      linear-gradient(145deg, rgba(236, 238, 232, 1) 0%, rgba(235, 238, 232, 0.97) 56%, rgba(222, 231, 222, 0.5) 100%),
+      var(--paper);
+    transform: translateY(-2px);
+    text-decoration: none;
+  }
+
+  .dashboard-card-top {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 18px;
+  }
+
+  .dashboard-icon {
+    display: inline-flex;
+    width: 42px;
+    height: 42px;
+    flex: 0 0 42px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(14, 94, 78, 0.11);
+    color: var(--teal-deep);
+    font-family: var(--font-display);
+    font-size: 18px;
+    font-weight: 800;
+    line-height: 1;
+  }
+
+  .dashboard-category {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--teal-deep);
+  }
+
+  .dashboard-card-name {
+    font-family: var(--font-display);
+    font-size: 17px;
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--ink);
+    margin-bottom: 12px;
+    min-height: 38px;
+  }
+
+  .dashboard-card-value {
+    font-family: var(--font-display);
+    font-size: clamp(28px, 2.45vw, 34px);
+    font-weight: 700;
+    line-height: 1;
+    color: var(--teal-deep);
+    letter-spacing: 0;
+    margin-bottom: 10px;
+    overflow-wrap: anywhere;
+  }
+
+  .dashboard-card-sub {
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0;
+    color: var(--ink);
+    line-height: 1.35;
+  }
+
+  .dashboard-divider {
+    height: 1px;
+    background: rgba(9, 78, 60, 0.12);
+    margin: 13px 0 12px;
+  }
+
+  .dashboard-card-note {
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0;
+    color: var(--ink-soft);
+    line-height: 1.5;
+    max-width: none;
+  }
+
+  .dashboard-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    margin-top: 26px;
+    text-align: center;
+  }
+
+  .dashboard-actions .all-news {
+    margin-top: 0;
+  }
+
+  .dashboard-source {
+    max-width: 82ch;
+    color: var(--ink-faint);
+    line-height: 1.45;
+  }
+
   /* Explore — quick-link cards: 2px ink top rule, mono index, Bricolage title */
   .explore-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
 
@@ -294,10 +639,36 @@ const explore = [
   }
   .all-news:hover { text-decoration: none; }
 
+  @media (max-width: 1040px) {
+    .dashboard-card-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  }
+
   @media (max-width: 820px) {
     .home-frame { padding: 24px 14px; }
     .card-section { padding: 30px 24px; }
+    .dashboard-preview { padding-left: 24px; padding-right: 24px; }
+    .dashboard-preview-head {
+      display: block;
+      margin-bottom: 20px;
+      padding: 0;
+    }
+    .dashboard-updated { margin-top: 10px; }
+    .dashboard-card-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .explore-grid { grid-template-columns: repeat(2, 1fr); gap: 22px; }
     .news-meta { display: none; }
+  }
+
+  @media (max-width: 560px) {
+    .home-frame { padding: 18px 0 0; }
+    .card-section { padding: 28px 16px; }
+    .dashboard-card-grid { grid-template-columns: 1fr; }
+    .dashboard-card { min-height: 0; padding: 17px 16px 15px; }
+    .dashboard-card-name { min-height: 0; }
+    .dashboard-actions { padding: 0; }
+    .explore-grid { grid-template-columns: 1fr; }
+    .recent-head { display: block; }
+    .recent-hint { display: inline-block; margin-top: 6px; }
+    .news-row-main { display: block; }
+    .news-tag { display: block; min-width: 0; margin-bottom: 4px; }
   }
 </style>

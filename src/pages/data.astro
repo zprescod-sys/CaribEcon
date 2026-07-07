@@ -274,9 +274,9 @@ const snapshots: CountrySnapshotData[] = getCountries().flatMap(c => {
     gap: 0;
   }
 
-  /* Tinted full-bleed band so the page isn't flat white */
+  /* Full-width section with the same cream surface as the page */
   .budget-section {
-    background-color: var(--card-tint);
+    background-color: var(--paper);
     margin-inline: calc(-1 * var(--side-padding));
     padding: 36px var(--side-padding) 44px;
     border-top: 1px solid var(--line);
@@ -312,7 +312,7 @@ const snapshots: CountrySnapshotData[] = getCountries().flatMap(c => {
     -webkit-appearance: none;
     border: 1px solid var(--line);
     border-radius: 0;
-    background-color: var(--card-tint);
+    background-color: var(--paper);
     color: var(--ink);
     font-family: var(--font-body);
     font-size: 15px;
@@ -405,9 +405,9 @@ const snapshots: CountrySnapshotData[] = getCountries().flatMap(c => {
     padding-top: 8px;
   }
 
-  /* ── Fiscal section — tinted band matching the budget section rhythm ── */
+  /* ── Fiscal section ── */
   .fiscal-section {
-    background-color: var(--paper-warm);
+    background-color: var(--paper);
     margin-inline: calc(-1 * var(--side-padding));
     padding: 36px var(--side-padding) 44px;
     border-top: 1px solid var(--line);

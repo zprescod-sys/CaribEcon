@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Net FDI — Caribbean Macro Almanac Preview</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..60,700;12..60,800&family=Hanken+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --paper:      #ECEEE8;
+      --paper-warm: #E6E9E0;
+      --surface:    #FFFFFF;
+      --card:       #F6F7F2;
+      --card-tint:  #E8EFE9;
+      --ink:        #0F231E;
+      --ink-soft:   #4C5A54;
+      --ink-faint:  #8A958F;
+      --line:       rgba(15,35,30,0.12);
+      --teal:       #0E5E4E;
+      --teal-deep:  #093F34;
+      --gold:       #BC8A2E;
+      --pos:        #2F7D5B;
+      --neg:        #B4543E;
+    }
+
+    body {
+      font-family: 'Hanken Grotesk', sans-serif;
+      background: var(--paper);
+      color: var(--ink);
+      min-height: 100vh;
+    }
+
+    .page {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 44px 28px 64px;
+    }
+
+    /* ── Header ── */
+    .eyebrow {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--teal);
+      margin-bottom: 12px;
+    }
+    h1 {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-weight: 800;
+      font-size: clamp(28px, 4.5vw, 42px);
+      line-height: 1.05;
+      color: var(--ink);
+      margin-bottom: 10px;
+    }
+    .subtitle {
+      font-size: 15px;
+      color: var(--ink-soft);
+      line-height: 1.6;
+      max-width: 640px;
+      margin-bottom: 32px;
+    }
+
+    /* ── Controls ── */
+    .controls {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+      padding: 14px 20px;
+      background: var(--card);
+      border-left: 3px solid var(--teal);
+    }
+    .control-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .control-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--ink-faint);
+    }
+    select {
+      font-family: 'Hanken Grotesk', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--ink);
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 0;
+      padding: 6px 30px 6px 10px;
+      cursor: pointer;
+      appearance: none;
+      -webkit-appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%234C5A54'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 10px center;
+    }
+    select:focus { outline: 2px solid var(--teal); outline-offset: 1px; }
+
+    /* ── Toggle ── */
+    .toggle-wrap {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      cursor: pointer;
+      user-select: none;
+    }
+    .toggle-wrap input[type="checkbox"] {
+      width: 36px;
+      height: 20px;
+      position: relative;
+      appearance: none;
+      -webkit-appearance: none;
+      background: rgba(15,35,30,0.22);
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.18s;
+      flex-shrink: 0;
+    }
+    .toggle-wrap input[type="checkbox"]:checked { background: var(--teal); }
+    .toggle-wrap input[type="checkbox"]::after {
+      content: '';
+      position: absolute;
+      width: 16px; height: 16px;
+      border-radius: 50%;
+      background: white;
+      top: 2px; left: 2px;
+      transition: transform 0.18s;
+    }
+    .toggle-wrap input[type="checkbox"]:checked::after { transform: translateX(16px); }
+    .toggle-label {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--ink-soft);
+    }
+
+    /* ── Chart ── */
+    .chart-wrap {
+      background: var(--surface);
+      padding: 28px 28px 22px;
+      border: 1px solid var(--line);
+    }
+    .chart-head {
+      margin-bottom: 20px;
+    }
+    .chart-title {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-weight: 700;
+      font-size: 18px;
+      color: var(--ink);
+      margin-bottom: 3px;
+    }
+    .chart-meta {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--ink-faint);
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+    }
+
+    #fdi-svg { display: block; width: 100%; overflow: visible; }
+
+    /* D3 chart element styles */
+    .bar-pos { fill: var(--teal); }
+    .bar-neg { fill: var(--neg); }
+    .country-label {
+      font-family: 'Hanken Grotesk', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      fill: var(--ink);
+    }
+    .country-label.is-fc { fill: var(--ink-soft); font-style: italic; }
+    .val-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      fill: var(--ink-soft);
+    }
+    .axis-x text {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      fill: var(--ink-faint);
+    }
+    .axis-x .domain { display: none; }
+    .axis-x .tick line { stroke: var(--line); }
+    .gridline { stroke: var(--line); stroke-dasharray: 3 3; }
+    .zero-line { stroke: var(--ink-soft); stroke-width: 1.5px; }
+    .gold-tip { fill: var(--gold); }
+    .estimate-stripe { fill: url(#stripe); }
+
+    /* ── Legend ── */
+    .legend {
+      display: flex; gap: 20px; flex-wrap: wrap;
+      margin-top: 18px;
+    }
+    .legend-item {
+      display: flex; align-items: center; gap: 7px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px; color: var(--ink-soft);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .legend-swatch {
+      width: 12px; height: 12px;
+    }
+
+    /* ── FC note ── */
+    .fc-note {
+      margin-top: 18px;
+      padding: 12px 16px;
+      background: var(--card-tint);
+      border-left: 3px solid var(--gold);
+      font-size: 13px;
+      color: var(--ink-soft);
+      line-height: 1.55;
+    }
+    .fc-note strong { color: var(--ink); font-weight: 600; }
+
+    /* ── Source ── */
+    .source {
+      margin-top: 20px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--ink-faint);
+      letter-spacing: 0.04em;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 640px) {
+      .controls { flex-direction: column; align-items: flex-start; gap: 14px; }
+      .chart-wrap { padding: 18px 14px 16px; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <p class="eyebrow">Caribbean Macro Almanac · Data Preview</p>
+  <h1>Net Foreign Direct Investment</h1>
+  <p class="subtitle">Cross-country net FDI inflows on a balance-of-payments basis. Negative values indicate net disinvestment — capital outflows exceeded inflows for that year. All values in US$ millions.</p>
+
+  <div class="controls">
+    <div class="control-group">
+      <span class="control-label">Year</span>
+      <select id="year-select">
+        <option value="2024">2024</option>
+        <option value="2023" selected>2023</option>
+        <option value="2022">2022</option>
+        <option value="2021">2021</option>
+        <option value="2020">2020</option>
+        <option value="2019">2019</option>
+        <option value="2018">2018</option>
+        <option value="2017">2017</option>
+        <option value="2016">2016</option>
+        <option value="2015">2015</option>
+      </select>
+    </div>
+    <label class="toggle-wrap">
+      <input type="checkbox" id="fc-toggle" checked>
+      <span class="toggle-label">Exclude offshore financial centres (VG &amp; KY)</span>
+    </label>
+  </div>
+
+  <div class="chart-wrap">
+    <div class="chart-head">
+      <p class="chart-title" id="chart-title">Net FDI by Economy, 2023</p>
+      <p class="chart-meta">US$ MILLIONS · WORLD BANK WDI · RANKED BY VALUE</p>
+    </div>
+    <svg id="fdi-svg"></svg>
+    <div class="legend">
+      <div class="legend-item">
+        <div class="legend-swatch" style="background:var(--teal)"></div>
+        Net inflow
+      </div>
+      <div class="legend-item">
+        <div class="legend-swatch" style="background:var(--neg)"></div>
+        Net disinvestment
+      </div>
+      <div class="legend-item">
+        <div class="legend-swatch" style="background:var(--gold);border-radius:50%"></div>
+        Highest value
+      </div>
+    </div>
+  </div>
+
+  <div class="fc-note" id="fc-note" style="display:none">
+    <strong>Note on VG &amp; KY:</strong> British Virgin Islands and Cayman Islands are offshore financial centres. Their FDI figures primarily reflect pass-through capital via special-purpose entities, not domestic productive investment — VG typically logs $39–67B annually. Their inclusion compresses the scale for all other economies.
+  </div>
+
+  <p class="source">Source: World Bank WDI (BX.KLT.DINV.CD.WD). Net FDI on BoP basis; negative = net disinvestment outflows. 2024 figures are World Bank estimates where marked.</p>
+
+</div>
+
+<script>
+const FDI_DATA = [
+  {country:"TT",series:[{year:2015,value:176.8,type:"actual"},{year:2016,value:-23.6,type:"actual"},{year:2017,value:-470.9,type:"actual"},{year:2018,value:-700.2,type:"actual"},{year:2019,value:184,type:"actual"},{year:2020,value:1056,type:"actual"},{year:2021,value:-934.8,type:"actual"},{year:2022,value:1172.5,type:"actual"},{year:2023,value:-1498.4,type:"actual"},{year:2024,value:-453.2,type:"estimate"}]},
+  {country:"GY",series:[{year:2015,value:137.7,type:"actual"},{year:2016,value:58,type:"actual"},{year:2017,value:212.2,type:"actual"},{year:2018,value:1231.8,type:"actual"},{year:2019,value:2690.3,type:"actual"},{year:2020,value:1283.1,type:"actual"},{year:2021,value:2236.5,type:"actual"},{year:2022,value:-2997,type:"actual"},{year:2023,value:-1135,type:"actual"},{year:2024,value:8629.5,type:"actual"}]},
+  {country:"BB",series:[{year:2015,value:688.5,type:"actual"},{year:2016,value:557.5,type:"actual"},{year:2017,value:91.5,type:"actual"},{year:2018,value:241.6,type:"actual"},{year:2019,value:215.4,type:"actual"},{year:2020,value:262.1,type:"actual"},{year:2021,value:238.7,type:"actual"},{year:2022,value:200,type:"actual"},{year:2023,value:224.9,type:"actual"},{year:2024,value:303.1,type:"actual"}]},
+  {country:"JM",series:[{year:2015,value:925,type:"actual"},{year:2016,value:928,type:"actual"},{year:2017,value:888.8,type:"actual"},{year:2018,value:774.6,type:"actual"},{year:2019,value:665.4,type:"actual"},{year:2020,value:265.1,type:"actual"},{year:2021,value:320.5,type:"actual"},{year:2022,value:318.7,type:"actual"},{year:2023,value:492.4,type:"actual"},{year:2024,value:305.1,type:"actual"}]},
+  {country:"BS",series:[{year:2015,value:76.1,type:"actual"},{year:2016,value:390.4,type:"actual"},{year:2017,value:304.6,type:"actual"},{year:2018,value:491.4,type:"actual"},{year:2019,value:482.2,type:"actual"},{year:2020,value:434.6,type:"actual"},{year:2021,value:383.1,type:"actual"},{year:2022,value:530.9,type:"actual"},{year:2023,value:322.5,type:"actual"},{year:2024,value:240.6,type:"actual"}]},
+  {country:"BZ",series:[{year:2015,value:59.1,type:"actual"},{year:2016,value:32.7,type:"actual"},{year:2017,value:31.8,type:"actual"},{year:2018,value:122,type:"actual"},{year:2019,value:93.9,type:"actual"},{year:2020,value:76.2,type:"actual"},{year:2021,value:125.5,type:"actual"},{year:2022,value:140.9,type:"actual"},{year:2023,value:16,type:"actual"},{year:2024,value:128.5,type:"actual"}]},
+  {country:"SR",series:[{year:2015,value:183.7,type:"actual"},{year:2016,value:231.7,type:"actual"},{year:2017,value:96.1,type:"actual"},{year:2018,value:131,type:"actual"},{year:2019,value:84.2,type:"actual"},{year:2020,value:1,type:"actual"},{year:2021,value:-132.7,type:"actual"},{year:2022,value:-9.3,type:"actual"},{year:2023,value:-53.1,type:"actual"},{year:2024,value:-37.6,type:"actual"}]},
+  {country:"GD",series:[{year:2015,value:154.3,type:"actual"},{year:2016,value:109.4,type:"actual"},{year:2017,value:153.3,type:"actual"},{year:2018,value:186,type:"actual"},{year:2019,value:208.6,type:"actual"},{year:2020,value:141.3,type:"actual"},{year:2021,value:152.2,type:"actual"},{year:2022,value:163,type:"actual"},{year:2023,value:220.3,type:"actual"},{year:2024,value:163.9,type:"actual"}]},
+  {country:"LC",series:[{year:2015,value:152.2,type:"actual"},{year:2016,value:161.6,type:"actual"},{year:2017,value:89.9,type:"actual"},{year:2018,value:45.5,type:"actual"},{year:2019,value:75.5,type:"actual"},{year:2020,value:99.1,type:"actual"},{year:2021,value:70.2,type:"actual"},{year:2022,value:58,type:"actual"},{year:2023,value:203.1,type:"actual"},{year:2024,value:186.6,type:"actual"}]},
+  {country:"AG",series:[{year:2015,value:114,type:"actual"},{year:2016,value:97.4,type:"actual"},{year:2017,value:151.3,type:"actual"},{year:2018,value:202.3,type:"actual"},{year:2019,value:133.9,type:"actual"},{year:2020,value:96.4,type:"actual"},{year:2021,value:286.5,type:"actual"},{year:2022,value:305.8,type:"actual"},{year:2023,value:293,type:"actual"},{year:2024,value:245.7,type:"actual"}]},
+  {country:"KN",series:[{year:2015,value:128.3,type:"actual"},{year:2016,value:121.4,type:"actual"},{year:2017,value:48,type:"actual"},{year:2018,value:40.1,type:"actual"},{year:2019,value:62.5,type:"actual"},{year:2020,value:2.8,type:"actual"},{year:2021,value:19.2,type:"actual"},{year:2022,value:41.1,type:"actual"},{year:2023,value:29.8,type:"actual"},{year:2024,value:42.1,type:"actual"}]},
+  {country:"DM",series:[{year:2015,value:7.2,type:"actual"},{year:2016,value:42.3,type:"actual"},{year:2017,value:22.7,type:"actual"},{year:2018,value:78.3,type:"actual"},{year:2019,value:63,type:"actual"},{year:2020,value:22.8,type:"actual"},{year:2021,value:28.3,type:"actual"},{year:2022,value:16.9,type:"actual"},{year:2023,value:48,type:"actual"},{year:2024,value:60,type:"actual"}]},
+  {country:"VC",series:[{year:2015,value:123.9,type:"actual"},{year:2016,value:70.5,type:"actual"},{year:2017,value:165.4,type:"actual"},{year:2018,value:40,type:"actual"},{year:2019,value:68.8,type:"actual"},{year:2020,value:65.2,type:"actual"},{year:2021,value:167.9,type:"actual"},{year:2022,value:65.2,type:"actual"},{year:2023,value:73.8,type:"actual"},{year:2024,value:138.9,type:"actual"}]},
+  {country:"TC",series:[{year:2015,value:-69.9,type:"actual"},{year:2016,value:16.6,type:"actual"},{year:2017,value:22.1,type:"actual"},{year:2018,value:42.2,type:"actual"},{year:2019,value:27,type:"actual"},{year:2020,value:30.4,type:"actual"},{year:2021,value:28.7,type:"actual"},{year:2022,value:35,type:"actual"},{year:2023,value:32.7,type:"actual"},{year:2024,value:44,type:"actual"}]},
+  {country:"KY",series:[{year:2015,value:80501.5,type:"actual"},{year:2016,value:2684.2,type:"actual"},{year:2017,value:2506.5,type:"actual"},{year:2018,value:173.6,type:"actual"},{year:2019,value:1080.4,type:"actual"},{year:2020,value:6973.8,type:"actual"},{year:2021,value:-807.8,type:"actual"},{year:2022,value:-3144.7,type:"actual"},{year:2023,value:12092.6,type:"actual"},{year:2024,value:3177.4,type:"actual"}]},
+  {country:"VG",series:[{year:2015,value:66712.7,type:"actual"},{year:2016,value:49022.9,type:"actual"},{year:2017,value:39610,type:"actual"},{year:2018,value:34389.7,type:"actual"},{year:2019,value:39103.4,type:"actual"},{year:2020,value:39619.6,type:"actual"},{year:2021,value:39361.5,type:"actual"},{year:2022,value:38118.6,type:"actual"},{year:2023,value:39889.4,type:"actual"},{year:2024,value:53598.7,type:"actual"}]},
+];
+
+const NAMES = {
+  TT:"Trinidad & Tobago", GY:"Guyana", BB:"Barbados",
+  JM:"Jamaica", BS:"The Bahamas", BZ:"Belize",
+  SR:"Suriname", GD:"Grenada", LC:"St. Lucia",
+  AG:"Antigua & Barbuda", KN:"St. Kitts & Nevis",
+  DM:"Dominica", VC:"St. Vincent & Gren.",
+  TC:"Turks & Caicos", KY:"Cayman Islands",
+  VG:"British Virgin Islands",
+};
+
+const FC = new Set(['VG', 'KY']);
+
+const yearSel  = document.getElementById('year-select');
+const fcToggle = document.getElementById('fc-toggle');
+const fcNote   = document.getElementById('fc-note');
+const titleEl  = document.getElementById('chart-title');
+const svg      = d3.select('#fdi-svg');
+
+const BAR_H  = 28;
+const BAR_G  = 7;
+const ML     = 168;
+const MR     = 90;
+const MT     = 6;
+const MB     = 36;
+
+function fmt(v) {
+  const abs = Math.abs(v);
+  if (abs >= 10000) return d3.format(',.0f')(v / 1000) + 'k';
+  if (abs >= 1000)  return d3.format(',.1f')(v / 1000) + 'k';
+  return d3.format(',.1f')(v);
+}
+function fmtAxis(v) {
+  const abs = Math.abs(v);
+  if (abs >= 1000) return (v / 1000).toFixed(0) + 'k';
+  return v.toFixed(0);
+}
+
+function render() {
+  const year      = +yearSel.value;
+  const excludeFC = fcToggle.checked;
+
+  titleEl.textContent = `Net FDI by Economy, ${year}`;
+  fcNote.style.display = excludeFC ? 'none' : 'block';
+
+  let rows = FDI_DATA.map(d => {
+    const pt = d.series.find(p => p.year === year);
+    return { code: d.country, name: NAMES[d.country], value: pt ? pt.value : null, isEst: pt?.type === 'estimate', isFC: FC.has(d.country) };
+  }).filter(d => d.value !== null);
+
+  if (excludeFC) rows = rows.filter(d => !d.isFC);
+  rows.sort((a, b) => b.value - a.value);
+
+  const W = document.getElementById('fdi-svg').parentElement.clientWidth - 56;
+  const H = rows.length * (BAR_H + BAR_G) + MT + MB;
+
+  svg.attr('viewBox', `0 0 ${W} ${H}`).attr('height', H);
+  svg.selectAll('*').remove();
+
+  // stripe pattern for estimates
+  const defs = svg.append('defs');
+  defs.append('pattern')
+    .attr('id','stripe').attr('patternUnits','userSpaceOnUse').attr('width',6).attr('height',6)
+    .attr('patternTransform','rotate(45)')
+    .append('rect').attr('width',3).attr('height',6).attr('fill','rgba(14,94,78,0.25)');
+
+  const g = svg.append('g').attr('transform', `translate(${ML},${MT})`);
+  const innerW = W - ML - MR;
+
+  const maxAbs = d3.max(rows, d => Math.abs(d.value)) * 1.08;
+  const x = d3.scaleLinear().domain([-maxAbs, maxAbs]).range([0, innerW]);
+
+  // Gridlines
+  x.ticks(5).forEach(t => {
+    g.append('line')
+      .attr('class','gridline')
+      .attr('x1', x(t)).attr('x2', x(t))
+      .attr('y1', 0).attr('y2', rows.length * (BAR_H + BAR_G));
+  });
+
+  // Zero line
+  g.append('line')
+    .attr('class','zero-line')
+    .attr('x1', x(0)).attr('x2', x(0))
+    .attr('y1', -6)
+    .attr('y2', rows.length * (BAR_H + BAR_G) + 4);
+
+  // Bars
+  rows.forEach((d, i) => {
+    const yy = i * (BAR_H + BAR_G);
+    const barX = d.value >= 0 ? x(0) : x(d.value);
+    const barW = Math.max(1, Math.abs(x(d.value) - x(0)));
+
+    // Main bar
+    g.append('rect')
+      .attr('x', barX).attr('y', yy)
+      .attr('width', barW).attr('height', BAR_H)
+      .attr('fill', d.value >= 0 ? 'var(--teal)' : 'var(--neg)')
+      .attr('opacity', d.isFC ? 0.55 : 1);
+
+    // Estimate hatch overlay
+    if (d.isEst) {
+      g.append('rect')
+        .attr('x', barX).attr('y', yy)
+        .attr('width', barW).attr('height', BAR_H)
+        .attr('fill', 'url(#stripe)');
+    }
+
+    // Country label (left of zero)
+    g.append('text')
+      .attr('class', 'country-label' + (d.isFC ? ' is-fc' : ''))
+      .attr('x', -10).attr('y', yy + BAR_H / 2)
+      .attr('dy', '0.35em').attr('text-anchor', 'end')
+      .style('font-family', "'Hanken Grotesk', sans-serif")
+      .style('font-size', '13px')
+      .style('font-weight', '500')
+      .style('fill', d.isFC ? 'var(--ink-soft)' : 'var(--ink)')
+      .text(d.name);
+
+    // Value label (at bar tip)
+    const labelX = d.value >= 0 ? x(d.value) + 6 : x(d.value) - 6;
+    g.append('text')
+      .attr('class','val-label')
+      .attr('x', labelX).attr('y', yy + BAR_H / 2)
+      .attr('dy', '0.35em')
+      .attr('text-anchor', d.value >= 0 ? 'start' : 'end')
+      .style('font-family', "'JetBrains Mono', monospace")
+      .style('font-size', '11px')
+      .style('fill', 'var(--ink-soft)')
+      .text(fmt(d.value));
+  });
+
+  // Gold dot on max positive
+  const top = rows.find(d => d.value > 0);
+  if (top) {
+    const yy = rows.indexOf(top) * (BAR_H + BAR_G);
+    g.append('circle')
+      .attr('class','gold-tip')
+      .attr('cx', x(top.value))
+      .attr('cy', yy + BAR_H / 2)
+      .attr('r', 5)
+      .attr('fill','var(--gold)');
+  }
+
+  // X axis
+  const xAxis = d3.axisBottom(x).ticks(5).tickFormat(fmtAxis);
+  g.append('g')
+    .attr('class','axis-x')
+    .attr('transform', `translate(0, ${rows.length * (BAR_H + BAR_G) + 10})`)
+    .call(xAxis)
+    .call(ax => ax.select('.domain').remove())
+    .call(ax => ax.selectAll('text')
+      .style('font-family', "'JetBrains Mono', monospace")
+      .style('font-size', '11px')
+      .style('fill', 'var(--ink-faint)'))
+    .call(ax => ax.selectAll('.tick line').style('stroke', 'var(--line)'));
+}
+
+yearSel.addEventListener('change', render);
+fcToggle.addEventListener('change', render);
+window.addEventListener('resize', render);
+
+render();
+</script>
+</body>
+</html>
