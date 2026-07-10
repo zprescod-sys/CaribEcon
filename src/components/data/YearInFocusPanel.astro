@@ -18,6 +18,10 @@
   <div class="yif-year" id="yif-year"></div>
   <p class="yif-event" id="yif-event"></p>
 
+  <div class="yif-metrics mono" id="yif-metrics"></div>
+
+  <div class="yif-trust mono" id="yif-trust"></div>
+
   <div class="yif-headlines" id="yif-headlines"></div>
 </aside>
 
@@ -75,6 +79,47 @@
     margin-bottom: 16px;
   }
 
+  .yif-metrics {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+    margin-bottom: 14px;
+  }
+
+  :global(.yif-metric) {
+    border: 1px solid var(--line);
+    background: var(--card);
+    padding: 9px 10px;
+  }
+
+  :global(.yif-metric-label) {
+    display: block;
+    color: var(--ink-faint);
+    font-size: 9px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 3px;
+  }
+
+  :global(.yif-metric-value) { color: var(--ink); font-size: 12px; }
+
+  .yif-trust {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-bottom: 14px;
+    font-size: 9px;
+  }
+
+  :global(.yif-trust-badge) {
+    border: 1px solid var(--line);
+    background: var(--card);
+    color: var(--ink-soft);
+    padding: 4px 6px;
+  }
+
+  :global(.yif-trust-badge a) { color: inherit; text-decoration: underline; }
+
   .yif-headlines {
     display: flex;
     flex-direction: column;
@@ -131,5 +176,9 @@
     color: #BC8A2E;
     margin-left: 4px;
     vertical-align: super;
+  }
+
+  @media (max-width: 560px) {
+    .yif-metrics { grid-template-columns: 1fr; }
   }
 </style>

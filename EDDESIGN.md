@@ -1,4 +1,4 @@
-# DESIGN_SYSTEM.md — Caribbean Macro Almanac
+# DESIGN_SYSTEM.md — CaribEcon
 
 The visual contract for this project. Read before any UI work. Derive every color, type, and spacing decision from here. This is the merged, canonical system: built on the disciplined petrol-and-gold direction, with a few warmth refinements folded in (generous hero spacing, clean white data surfaces).
 

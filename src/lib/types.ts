@@ -1,4 +1,4 @@
-/* Shared TypeScript types for the Caribbean Macro Almanac data hub.
+/* Shared TypeScript types for the CaribEcon data hub.
    All pages import from here — never define data shapes inline in pages. */
 
 // ── Countries ──────────────────────────────────────────────────────────────

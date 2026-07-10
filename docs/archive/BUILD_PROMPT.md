@@ -1,4 +1,4 @@
-# Build Prompt — Caribbean Macro Almanac
+# Build Prompt — CaribEcon
 
 Paste this into VS Code as the kickoff brief. Read CLAUDE.md and DESIGN_SYSTEM.md first; they are the binding contract for architecture and visual style. This prompt says what to build and in what order. Do not restyle away from DESIGN_SYSTEM.md.
 

@@ -4,6 +4,8 @@ import DealsFeed    from '../components/deals/DealsFeed.astro';
 import { getDeals } from '../lib/dataHub';
 
 const deals = getDeals();
+const dealYears = deals.map(d => new Date(d.date).getUTCFullYear()).filter(Number.isFinite);
+const dealRange = dealYears.length ? `${Math.min(...dealYears)}–${Math.max(...dealYears)}` : 'No dates';
 ---
 
 <Shell
@@ -23,7 +25,7 @@ const deals = getDeals();
     </header>
 
     <div class="deals-meta-note mono fade-up">
-      {deals.length} transactions · 2022–2024 · Sources: company announcements, Caribbean Business, Caribbean Journal
+      {deals.length} transactions · {dealRange} · Sources: company announcements, official releases, public filings, and credible regional business press
     </div>
 
     <section class="fade-up fade-up-2">

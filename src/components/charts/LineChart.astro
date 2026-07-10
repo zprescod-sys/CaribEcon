@@ -85,6 +85,7 @@ const namesJSON = JSON.stringify(Object.fromEntries(getCountries().map(c => [c.c
   // Large values (e.g. FDI in USD mn) get separators; small ones one decimal
   const fmtVal  = (v: number) => Math.abs(v) >= 1000 ? d3.format(',.0f')(v) : v.toFixed(1);
   const fmtTick = (v: number) => Math.abs(v) >= 1000 ? d3.format('~s')(v)   : String(v);
+  const publicStatus = (type: string) => type === 'projection' ? 'forecast' : type;
 
   // ── Stats strip: per-country cells + labeled range block on the right ────
   function updateStatsRow(filtered: IndicatorSeries[]) {
@@ -397,29 +398,80 @@ const namesJSON = JSON.stringify(Object.fromEntries(getCountries().map(c => [c.c
   }
 
   // ── Year-in-focus panel ────────────────────────────────────────────────
-  const YEAR_EVENTS: Record<number, string> = {
-    2015: 'Oil-price collapse weighs on energy exporters (T&T, Suriname); ExxonMobil announces the Liza discovery offshore Guyana.',
-    2016: 'Regional recovery from the commodity downturn; Caribbean tourism arrivals reach record highs.',
-    2017: 'Hurricanes Irma and Maria devastate the northern Caribbean; Dominica and Barbuda suffer severe damage.',
-    2018: 'Barbados enters an IMF programme and launches a comprehensive debt restructuring.',
-    2019: 'Guyana brings first oil on-stream (Liza Phase 1, December); regional growth steady pre-pandemic.',
-    2020: 'COVID-19 pandemic; tourism-dependent economies contract sharply while Guyana begins commercial oil production.',
-    2021: 'Post-COVID recovery; Guyana\'s oil ramp-up accelerates with Liza Phase 1 reaching plateau.',
-    2022: 'Global commodity price spike (Russia-Ukraine war); Guyana GDP surges 63.3% — world\'s fastest growth.',
-    2023: 'Liza Phase 2 and Payara developments progress; T&T signs new upstream exploration agreements.',
-    2024: 'Yellowtail FPSO on track; Guyana Natural Resource Fund surpasses USD 2bn.',
-    2025: 'IMF projections (April 2026 WEO): Guyana growth moderates from peak; regional debt ratios edge lower.',
+  // Narratives are deliberately keyed by country. When no editorial note exists,
+  // the panel falls back to a statistical comparison generated from the live data.
+  const COUNTRY_CONTEXT: Record<string, Record<string, string>> = {
+    GY: {
+      gdp_growth: 'Guyana’s growth path is dominated by the offshore oil ramp-up in the Stabroek Block, producing a pace and scale unlike the rest of the region.',
+      default: 'Guyana’s macro path is increasingly shaped by oil production, public investment, and management of Natural Resource Fund inflows.',
+    },
+    TT: {
+      gdp_growth: 'Trinidad & Tobago’s slower recovery path reflects mature energy-sector constraints, uneven gas supply, and a more gradual post-COVID rebound.',
+      default: 'Trinidad & Tobago remains highly exposed to energy output, commodity prices, and the pace of non-energy diversification.',
+    },
+    JM: {
+      gdp_growth: 'Jamaica’s performance reflects the tourism recovery alongside continued fiscal consolidation and a sustained reduction in the public-debt burden.',
+      inflation: 'Jamaica’s inflation path reflects imported food and energy pressures, Bank of Jamaica policy tightening, and the normalization of tourism demand.',
+      gross_govt_debt_pct_gdp: 'Jamaica’s debt ratio reflects a long-running fiscal consolidation programme and disciplined primary surpluses following earlier debt exchanges.',
+      default: 'Jamaica’s macro story is anchored by fiscal consolidation, debt reduction, inflation management, and tourism-led external earnings.',
+    },
   };
+
+  function generatedInsight(country: string, value: number, unit: string, rank: number, total: number, delta: number | null) {
+    const name = COUNTRY_NAMES[country] ?? country;
+    const direction = delta === null ? '' : ` Compared with the prior year, the value is ${delta >= 0 ? 'up' : 'down'} ${fmtVal(Math.abs(delta))}${unit.startsWith('%') ? ' percentage points' : ` ${unit}`}.`;
+    return `${name} records ${fmtVal(value)} ${unit}, ranking ${rank} of ${total} Caribbean economies with available data for this selection.${direction}`;
+  }
 
   function openYearInFocus(year: number, series: IndicatorSeries[]) {
     const panel  = document.getElementById('year-in-focus') as HTMLElement | null;
     const yearEl  = document.getElementById('yif-year');
     const eventEl = document.getElementById('yif-event');
+    const metricsEl = document.getElementById('yif-metrics');
+    const trustEl = document.getElementById('yif-trust');
     const hlEl    = document.getElementById('yif-headlines');
-    if (!panel || !yearEl || !eventEl || !hlEl) return;
+    if (!panel || !yearEl || !eventEl || !metricsEl || !trustEl || !hlEl) return;
 
-    yearEl.textContent  = String(year);
-    eventEl.textContent = YEAR_EVENTS[year] ?? 'No notable event recorded for this year.';
+    const comparable = series
+      .filter(s => s.indicator === currentIndicator)
+      .map(s => ({ s, pt: s.series.find(d => d.year === year) }))
+      .filter((d): d is { s: IndicatorSeries; pt: IndicatorPoint & { value: number } } => d.pt?.value !== null && d.pt?.value !== undefined)
+      .sort((a, b) => b.pt.value - a.pt.value);
+    const selected = comparable.find(d => d.s.country === activeCountries[0]) ?? comparable[0];
+
+    if (!selected) {
+      yearEl.textContent = String(year);
+      eventEl.textContent = 'No data is available for this selection.';
+      metricsEl.innerHTML = '';
+      trustEl.innerHTML = '';
+      hlEl.innerHTML = '';
+      panel.hidden = false;
+      return;
+    }
+
+    const { s: selectedSeries, pt } = selected;
+    const prior = selectedSeries.series
+      .filter(d => d.value !== null && d.year < year)
+      .sort((a, b) => b.year - a.year)[0];
+    const delta = prior?.value == null ? null : pt.value - prior.value;
+    const rank = comparable.findIndex(d => d.s.country === selectedSeries.country) + 1;
+    const statusSuffix = pt.type === 'projection' ? 'f' : pt.type === 'estimate' ? 'e' : '';
+    const context = COUNTRY_CONTEXT[selectedSeries.country];
+
+    yearEl.textContent = `${COUNTRY_NAMES[selectedSeries.country] ?? selectedSeries.country} · ${selectedSeries.indicatorLabel} · ${year}${statusSuffix}`;
+    eventEl.textContent = context?.[currentIndicator] ?? context?.default ?? generatedInsight(
+      selectedSeries.country, pt.value, selectedSeries.unit, rank, comparable.length, delta,
+    );
+    metricsEl.innerHTML = `
+      <div class="yif-metric"><span class="yif-metric-label">Value</span><span class="yif-metric-value">${fmtVal(pt.value)} ${selectedSeries.unit}</span></div>
+      <div class="yif-metric"><span class="yif-metric-label">Regional rank</span><span class="yif-metric-value">${rank} of ${comparable.length}</span></div>
+      <div class="yif-metric"><span class="yif-metric-label">YoY change</span><span class="yif-metric-value">${delta === null ? 'Unavailable' : `${delta >= 0 ? '+' : '−'}${fmtVal(Math.abs(delta))}${selectedSeries.unit.startsWith('%') ? ' pp' : ` ${selectedSeries.unit}`}`}</span></div>`;
+    trustEl.innerHTML = `
+      <span class="yif-trust-badge">${year}</span>
+      <span class="yif-trust-badge">${publicStatus(pt.type)}</span>
+      <span class="yif-trust-badge">Updated ${pt.vintage}</span>
+      <span class="yif-trust-badge">Source: <a href="${selectedSeries.sourceUrl}" target="_blank" rel="noopener noreferrer">${selectedSeries.sourceOrg}</a></span>
+      ${selectedSeries.unitNote ? `<span class="yif-trust-badge">Method: ${selectedSeries.unitNote}</span>` : ''}`;
 
     // Show values for the active indicator only (not all indicators)
     const rows = series
@@ -450,6 +502,9 @@ const namesJSON = JSON.stringify(Object.fromEntries(getCountries().map(c => [c.c
     const evt = e as CustomEvent<{ countries: string[] }>;
     activeCountries = evt.detail.countries;
     drawChart();
+    const yif = document.getElementById('year-in-focus') as HTMLElement | null;
+    const match = document.getElementById('yif-year')?.textContent?.match(/(\d{4})[ef]?$/);
+    if (yif && !yif.hidden && match) openYearInFocus(Number(match[1]), allSeries);
   });
 
   document.addEventListener('indicator-changed', (e: Event) => {
@@ -459,8 +514,9 @@ const namesJSON = JSON.stringify(Object.fromEntries(getCountries().map(c => [c.c
     // Refresh the YIF panel if it's open so data matches the new indicator
     const yif = document.getElementById('year-in-focus') as HTMLElement | null;
     const yearEl = document.getElementById('yif-year');
-    if (yif && !yif.hidden && yearEl?.textContent) {
-      openYearInFocus(Number(yearEl.textContent), allSeries);
+    const yearMatch = yearEl?.textContent?.match(/(\d{4})[ef]?$/);
+    if (yif && !yif.hidden && yearMatch) {
+      openYearInFocus(Number(yearMatch[1]), allSeries);
     }
   });
 
@@ -484,7 +540,7 @@ const namesJSON = JSON.stringify(Object.fromEntries(getCountries().map(c => [c.c
           vintage: d.vintage,
         }))
     );
-    downloadCSV(rows, `caribbean-macro-${currentIndicator}`);
+    downloadCSV(rows, `caribecon-${currentIndicator}`);
   });
 
   // Redraw on resize so the chart stays crisp at any width
@@ -681,7 +737,6 @@ const namesJSON = JSON.stringify(Object.fromEntries(getCountries().map(c => [c.c
   }
 
   :global(.tt-type) { color: #D9B36A; font-size: 9px; }
-
   :global(.tt-hint) {
     margin-top: 6px;
     padding-top: 4px;

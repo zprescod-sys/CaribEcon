@@ -1,4 +1,4 @@
-# CLAUDE.md — Caribbean Macro Almanac
+# CLAUDE.md — CaribEcon
 
 Read this at the start of every session to re-ground context. Update "Current State" and "Next Steps" at the end of every session.
 
