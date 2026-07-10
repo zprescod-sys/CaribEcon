@@ -133,8 +133,27 @@ hand-maintained — edits are overwritten on the next run.
   `id` is derived as `slug(source)-sha1(url)[0:8]` (stable, dedupes across runs). Only
   headline + source + date + link are stored — **never article bodies** (`tags` come
   from feed categories). Items failing validation (bad date/url, unknown country) are skipped.
-- **Financial filter:** only items whose title/tags match the economic-relevance lexicon
-  in `build-feeds.mjs` (`FIN_RE` / `FIN_PHRASES`) are kept — set `FINANCE_FILTER=0` to disable.
+- **Relevance + classification (single source of truth):** the whole policy lives in
+  `src/lib/newsRelevance.mjs` and is applied at **both** ingest (`build-feeds.mjs`) and
+  render (`src/lib/dataHub.ts`) so the two can never drift. Precision over volume — better
+  to drop a borderline story than show one that undermines credibility. Three exported
+  pieces:
+  - `isRelevantNews(title, tags)` — an economic **include** term must appear; if any
+    off-topic **exclude** signal (sport / crime / death / entertainment / human-interest)
+    is also present, the item is dropped **unless** a *strong, unambiguous* economic term
+    rescues it. (Bare `oil`/`bond`/`business`/`pension` are **not** strong — they co-occur
+    with crime/sport/obituaries too easily.)
+  - `classifyNews(title, tags)` → `{ category, group, confidence }`. **Title-driven, not
+    tag-driven** (a stray "business"/"trade" tag on an obituary must never yield a
+    confident chip): a specific category term in the *title* = `high`; an on-topic title
+    with no specific rule = `medium` (Macro); a headline whose only economic signal is a
+    *tag*, or none at all, = `low`/`Unclassified`. `category` is the fine card chip;
+    `group` is the coarse `NEWS_GROUPS` filter-bar bucket (Macro / Energy / Finance /
+    Fiscal Policy / Investment / Trade & Tourism).
+  - `isDisplayableNews(title, tags)` — the **gate the site actually uses**: relevant **and**
+    `confidence` ≥ `MIN_NEWS_CONFIDENCE` (`medium`). Low-confidence items are hidden
+    entirely rather than shown with a wrong category. Set `FINANCE_FILTER=0` to disable the
+    whole gate at ingest.
 - **Merge, not replace — full archive:** each run unions fetched items with the existing
   store by `id`, windows to the last `NEWS_WINDOW_DAYS` (120), and keeps the **entire**
   filtered set (safety bound `NEWS_MAX` 2000), newest-first. A rolling archive, not a

@@ -13,7 +13,7 @@ import budgetsRaw    from '../../data/budgets.json';
 import newsRaw       from '../../data/news.json';
 import publicationsRaw from '../../data/publications.json';
 import dealsRaw      from '../../data/deals.json';
-import { isRelevantNews } from './newsRelevance.mjs';
+import { isDisplayableNews } from './newsRelevance.mjs';
 
 // Re-export so pages/components have one import surface for news classification.
 export { classifyNews, NEWS_GROUPS } from './newsRelevance.mjs';
@@ -35,7 +35,7 @@ for (const slug of new Set(indicators.map(s => s.indicator))) {
 const budgets     = budgetsRaw     as BudgetsData;
 // Render-time relevance guard: even if a messy or stale headline slips into the stored
 // archive, it can never reach the page. Mirrors the ingest filter in build-feeds.mjs.
-const news        = (newsRaw as NewsData).filter(n => isRelevantNews(n.title, n.tags));
+const news        = (newsRaw as NewsData).filter(n => isDisplayableNews(n.title, n.tags));
 const publications = publicationsRaw as PublicationsData;
 const deals       = dealsRaw       as DealsData;
 

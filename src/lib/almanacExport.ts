@@ -68,14 +68,35 @@ function valueAt(rec: AlmanacRecord, year: number): number | null {
   return rec.series.find(p => p.year === year)?.value ?? null;
 }
 
-/** Builds the wide "Data" sheet: one row per indicator, one column per year. */
+/** Sizes each column to its widest cell (in characters) so nothing is clipped in
+ *  Excel. Widths are clamped to a sensible band and padded slightly for breathing
+ *  room; ragged rows (short title rows) are handled — a column only grows to fit
+ *  the cells that actually exist in it. */
+function fitColumns(
+  ws: XLSX.WorkSheet,
+  aoa: (string | number | null)[][],
+  { min = 6, max = 64 }: { min?: number; max?: number } = {},
+) {
+  const widths: number[] = [];
+  aoa.forEach(row => {
+    row.forEach((cell, c) => {
+      const len = cell === null || cell === undefined ? 0 : String(cell).length;
+      widths[c] = Math.max(widths[c] ?? 0, len);
+    });
+  });
+  ws['!cols'] = widths.map(w => ({ wch: Math.min(max, Math.max(min, w + 2)) }));
+}
+
+/** Builds the wide "Data" sheet: one row per indicator, one column per year.
+ *  Source tier and provenance-confidence are intentionally omitted — they are
+ *  internal QA fields, not something a reader of the export needs. */
 function buildDataSheet(recs: AlmanacRecord[], years: number[], countryName: string, code: string) {
   const aoa: (string | number | null)[][] = [];
-  aoa.push([`Caribbean Macro Almanac — ${countryName} (${code})`]);
+  aoa.push([`CaribEcon — ${countryName} (${code})`]);
   aoa.push([`Generated ${new Date().toISOString().slice(0, 10)}`,
             years.length ? `Range FY${years[0]}–FY${years[years.length - 1]}` : 'No data']);
   aoa.push([]);
-  aoa.push(['Indicator', 'Unit', ...years.map(y => `FY${y}`), 'Source', 'Source ref', 'Tier', 'Confidence']);
+  aoa.push(['Indicator', 'Unit', ...years.map(y => `FY${y}`), 'Source', 'Source ref']);
 
   recs.forEach(r => {
     aoa.push([
@@ -84,11 +105,11 @@ function buildDataSheet(recs: AlmanacRecord[], years: number[], countryName: str
       ...years.map(y => valueAt(r, y)),
       r.source,
       r.sourceRef ?? '',
-      r.sourceTier,
-      r.confidence,
     ]);
   });
-  return XLSX.utils.aoa_to_sheet(aoa);
+  const ws = XLSX.utils.aoa_to_sheet(aoa);
+  fitColumns(ws, aoa);
+  return ws;
 }
 
 /** Builds a chart-ready Year/Value sheet for a single indicator. */
@@ -96,7 +117,9 @@ function buildChartSheet(rec: AlmanacRecord | undefined, title: string, years: n
   const aoa: (string | number | null)[][] = [];
   if (!rec) {
     aoa.push([title], [], ['No data available for this indicator yet.']);
-    return XLSX.utils.aoa_to_sheet(aoa);
+    const empty = XLSX.utils.aoa_to_sheet(aoa);
+    fitColumns(empty, aoa);
+    return empty;
   }
   aoa.push([`${rec.indicatorLabel} (${rec.unit}) — ${title}`]);
   aoa.push([rec.source]);
@@ -107,7 +130,9 @@ function buildChartSheet(rec: AlmanacRecord | undefined, title: string, years: n
     if (v !== null) aoa.push([y, v]);
   });
   aoa.push([], ['To chart: select the Year/value range above → Insert → Chart.']);
-  return XLSX.utils.aoa_to_sheet(aoa);
+  const ws = XLSX.utils.aoa_to_sheet(aoa);
+  fitColumns(ws, aoa);
+  return ws;
 }
 
 /** Builds the full workbook for one country. Returns null if no data exists. */
@@ -134,6 +159,6 @@ export function exportCountryXLSX(
 ): boolean {
   const wb = buildCountryWorkbook(records, country, countryName);
   if (!wb) return false;
-  XLSX.writeFile(wb, `caribbean-macro-${country.toLowerCase()}.xlsx`);
+  XLSX.writeFile(wb, `caribecon-${country.toLowerCase()}.xlsx`);
   return true;
 }

@@ -15,7 +15,7 @@
 import fs from 'fs';
 import crypto from 'crypto';
 import Parser from 'rss-parser';
-import { isRelevantNews } from '../src/lib/newsRelevance.mjs';
+import { isDisplayableNews } from '../src/lib/newsRelevance.mjs';
 
 // ── Config ───────────────────────────────────────────────────────────────────
 const NEWS_WINDOW_DAYS  = Number(process.env.NEWS_WINDOW_DAYS ?? 120);  // keep this much history in the archive
@@ -33,7 +33,7 @@ const UA = 'Mozilla/5.0 (compatible; CaribbeanMacroAlmanac/1.0; +https://github.
 // strong, unambiguous economic term also appears. See that module for the full policy.
 function isFinancial(title, tags = []) {
   if (!FINANCE_FILTER) return true;
-  return isRelevantNews(title, tags);
+  return isDisplayableNews(title, tags);
 }
 
 // The 16 country codes (mirror dataHub.ts) + ALL for pan-Caribbean.

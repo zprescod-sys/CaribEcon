@@ -141,6 +141,8 @@ function iconFor(label: string): string {
     padding: 16px;
     background-color: var(--card);
     border: 1px solid var(--line);
+    /* Gold signal strip along the top of every card (consistent across the grid) */
+    border-top: 3px solid var(--gold);
     border-radius: var(--radius);
     cursor: pointer;
     transition: transform 150ms ease, border-color 150ms ease;
@@ -153,8 +155,6 @@ function iconFor(label: string): string {
     outline: var(--focus-ring);
     outline-offset: 2px;
   }
-  /* Lead metric carries the gold signal accent */
-  .metric-card.lead { border-top: 3px solid var(--gold); }
 
   .metric-head {
     display: flex;
