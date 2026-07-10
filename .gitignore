@@ -10,3 +10,4 @@ temporary screenshots/
 .tmp
 .DS_Store
 .vercel
+.vscode/
