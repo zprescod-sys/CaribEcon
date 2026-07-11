@@ -11,6 +11,7 @@
     "promote": "node scripts/build-feeds.mjs --promote-only"
   },
   "dependencies": {
+    "@astrojs/vercel": "^9.0.5",
     "astro": "^5.0.0",
     "d3": "^7.9.0",
     "rss-parser": "^3.13.0",
