@@ -26,14 +26,14 @@ const { snapshots } = Astro.props;
           data-index={i}
           data-code={s.code}
         >
-          {s.flag} {s.code}
+          {s.flag && <img class="pill-flag" src={s.flag} alt="" width="18" height="13" loading="lazy" />} {s.code}
         </button>
       ))}
     </div>
     <!-- Mobile: dropdown selector -->
     <select class="carousel-select mono" aria-label="Select country">
       {snapshots.map((s, i) => (
-        <option value={i}>{s.flag} {s.name}</option>
+        <option value={i}>{s.name}</option>
       ))}
     </select>
   </div>
@@ -133,6 +133,9 @@ const { snapshots } = Astro.props;
   }
 
   .carousel-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
     font-size: 10px;
     letter-spacing: 0.05em;
     padding: 5px 10px;
@@ -141,6 +144,14 @@ const { snapshots } = Astro.props;
     color: var(--ink-soft);
     cursor: pointer;
     transition: background-color 150ms ease, color 150ms ease;
+  }
+
+  .pill-flag {
+    width: 18px;
+    height: 13px;
+    object-fit: cover;
+    border-radius: 1px;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08);
   }
 
   .carousel-pill:hover { background-color: var(--card-tint); }

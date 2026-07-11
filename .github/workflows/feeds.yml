@@ -30,6 +30,9 @@ jobs:
       - name: Fetch & merge feeds
         run: npm run feeds
 
+      - name: Verify the site still builds with today's data
+        run: npm run build
+
       - name: Commit if changed
         run: |
           git config user.name  "github-actions[bot]"

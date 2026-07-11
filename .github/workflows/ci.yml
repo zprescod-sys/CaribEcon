@@ -1,0 +1,24 @@
+name: CI
+
+# Guards every push/PR with a typecheck + test + build, so a broken commit is
+# caught here instead of surfacing as a failed Cloudflare Pages deploy (or,
+# worse, a daily feeds-cron commit nobody is watching).
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - run: npm ci
+      - run: npm run test
+      - run: npm run check
+      - run: npm run build

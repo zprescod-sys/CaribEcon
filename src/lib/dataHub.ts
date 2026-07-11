@@ -60,19 +60,19 @@ const COUNTRY_NAMES: Record<string, string> = {
   VG: 'British Virgin Islands',
 };
 
-const COUNTRY_FLAGS: Record<string, string> = {
-  GY: '🇬🇾', TT: '🇹🇹', BB: '🇧🇧', JM: '🇯🇲', BS: '🇧🇸',
-  BZ: '🇧🇿', SR: '🇸🇷', GD: '🇬🇩', LC: '🇱🇨', AG: '🇦🇬',
-  KN: '🇰🇳', DM: '🇩🇲', VC: '🇻🇨', TC: '🇹🇨', KY: '🇰🇾',
-  VG: '🇻🇬',
-};
+// Flags are local SVG assets (public/flags/<code>.svg), not emoji — emoji flags
+// don't render on Windows (Segoe UI Emoji omits the glyphs), so they're
+// unreliable cross-browser. SVGs render identically everywhere.
+function flagSrc(code: string): string {
+  return `/flags/${code.toLowerCase()}.svg`;
+}
 
 export function getCountries(): Country[] {
   const codes = [...new Set(indicators.map(s => s.country))].sort();
   return codes.map(code => ({
     code,
     name: COUNTRY_NAMES[code] ?? code,
-    flag: COUNTRY_FLAGS[code],
+    flag: flagSrc(code),
   }));
 }
 
