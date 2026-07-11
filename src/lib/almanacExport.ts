@@ -1,4 +1,4 @@
-/* Per-country Excel export for the 25-indicator almanac dataset.
+/* Per-country Excel export for the 24-indicator almanac dataset.
    Reads almanac-data.json, builds a multi-sheet .xlsx and triggers a download.
 
    Note on charts: the community build of SheetJS cannot draw native Excel

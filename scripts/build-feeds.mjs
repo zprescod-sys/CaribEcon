@@ -133,9 +133,16 @@ async function fetchFeed(url, insecureTLS, tries = 3) {
   }
 }
 
+// Missing file -> fallback (first run). Malformed file (e.g. a stray comma from a
+// hand-edit) -> abort the whole run instead of silently treating it as empty, which
+// would otherwise get written back out and wipe every curated record it held.
 function readJSON(path, fallback) {
+  if (!fs.existsSync(path)) return fallback;
   try { return JSON.parse(fs.readFileSync(path, 'utf8')); }
-  catch { return fallback; }
+  catch (e) {
+    console.error(`FATAL: ${path} is not valid JSON — fix it before rerunning.\n${e.message}`);
+    process.exit(1);
+  }
 }
 const writeJSON = (path, data) => fs.writeFileSync(path, JSON.stringify(data, null, 2) + '\n');
 
