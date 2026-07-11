@@ -45,8 +45,17 @@ const tickerDuration = `${tickerItems.length * 6}s`;
 <header class="topbar">
   <div class="page-wrapper topbar-inner">
     <a href="/" class="brand" aria-label="CaribEcon home">
-      <span class="brand-name">CaribEcon</span>
-      <span class="brand-region mono">Caribbean Marco Almanac</span>
+      <img
+        class="brand-logo"
+        src="/carib-econ-index-logo.svg"
+        alt=""
+        width="36"
+        height="36"
+      />
+      <span class="brand-copy">
+        <span class="brand-name">CaribEcon</span>
+        <span class="brand-region mono">Caribbean Marco Almanac</span>
+      </span>
     </a>
 
     <div class="ticker" aria-label="Key economic indicators" style={`--ticker-duration: ${tickerDuration}`}>
@@ -89,10 +98,25 @@ const tickerDuration = `${tickerItems.length * 6}s`;
 
   .brand {
     display: flex;
-    align-items: baseline;
+    align-items: center;
     gap: 10px;
     text-decoration: none;
     flex-shrink: 0;
+  }
+
+  .brand-logo {
+    display: block;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+
+  .brand-copy {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
   }
 
   .brand-name {
@@ -187,5 +211,6 @@ const tickerDuration = `${tickerItems.length * 6}s`;
   @media (max-width: 640px) {
     .ticker { display: none; }
     .brand-region { display: none; }
+    .brand-copy { gap: 0; }
   }
 </style>
