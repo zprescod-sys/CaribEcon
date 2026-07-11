@@ -106,7 +106,7 @@ const defaultsJSON   = JSON.stringify(defaultCountries);
       li.dataset.code = c.code;
       li.className = 'cc-item' + (isActive ? ' active' : '');
       li.innerHTML = `<span class="cc-check" aria-hidden="true">${isActive ? '✓' : ''}</span>
-        <span class="cc-flag">${c.flag}</span>
+        <img class="cc-flag" src="${c.flag}" alt="" width="20" height="15" loading="lazy" />
         <span class="cc-name">${c.name}</span>`;
       li.addEventListener('click', () => {
         if (selected.has(c.code) && selected.size <= 1) return; // must keep at least 1
@@ -309,7 +309,14 @@ const defaultsJSON   = JSON.stringify(defaultCountries);
     flex-shrink: 0;
   }
 
-  .cc-flag { font-size: 15px; line-height: 1; }
+  .cc-flag {
+    width: 20px;
+    height: 15px;
+    flex-shrink: 0;
+    object-fit: cover;
+    border-radius: 1px;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08); /* hairline keeps white/pale flags legible */
+  }
   .cc-name { flex: 1; }
 
   /* ── Indicator select ─────────────────────────────────── */

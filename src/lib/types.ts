@@ -6,7 +6,7 @@
 export interface Country {
   code: string;        // ISO 3166-1 alpha-2 (GY, TT, etc.)
   name: string;        // Display name
-  flag?: string;       // Emoji flag (optional)
+  flag?: string;       // SVG flag asset path, e.g. "/flags/gy.svg"
 }
 
 // ── Indicators ─────────────────────────────────────────────────────────────
