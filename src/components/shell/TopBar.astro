@@ -54,7 +54,7 @@ const tickerDuration = `${tickerItems.length * 6}s`;
       />
       <span class="brand-copy">
         <span class="brand-name">CaribEcon</span>
-        <span class="brand-region mono">Caribbean Marco Almanac</span>
+        <span class="brand-region mono">Caribbean Macro Almanac</span>
       </span>
     </a>
 
@@ -210,7 +210,15 @@ const tickerDuration = `${tickerItems.length * 6}s`;
 
   @media (max-width: 640px) {
     .ticker { display: none; }
-    .brand-region { display: none; }
-    .brand-copy { gap: 0; }
+    .brand-copy {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1px;
+    }
+    .brand-region {
+      display: block;
+      font-size: 8px;
+      line-height: 1.1;
+    }
   }
 </style>
