@@ -19,7 +19,22 @@ function isActive(href: string): boolean {
 
 <nav class="site-nav" aria-label="Main navigation">
   <div class="page-wrapper nav-inner">
-    <ul class="nav-list" role="list">
+    <button
+      type="button"
+      class="nav-toggle"
+      id="nav-toggle"
+      aria-expanded="false"
+      aria-controls="nav-list"
+      aria-label="Open menu"
+    >
+      <svg class="nav-toggle-icon" width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+        <line class="bar bar-top"    x1="2" y1="4.5" x2="16" y2="4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+        <line class="bar bar-mid"    x1="2" y1="9"   x2="16" y2="9"   stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+        <line class="bar bar-bottom" x1="2" y1="13.5" x2="16" y2="13.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+      </svg>
+    </button>
+
+    <ul class="nav-list" id="nav-list" role="list">
       {navItems.map(item => (
         <li>
           <a
@@ -35,6 +50,42 @@ function isActive(href: string): boolean {
 
   </div>
 </nav>
+
+<script>
+  // Mobile hamburger: nav-list is a horizontal-scroll bar on desktop and a
+  // dropdown panel on mobile (CSS handles which, via .nav-open). Closes on
+  // outside click, Escape, or resizing past the mobile breakpoint.
+  const toggle = document.getElementById('nav-toggle') as HTMLButtonElement | null;
+  const navEl  = document.querySelector<HTMLElement>('.site-nav');
+  const list   = document.getElementById('nav-list') as HTMLElement | null;
+
+  function setOpen(open: boolean) {
+    if (!toggle || !navEl) return;
+    navEl.classList.toggle('nav-open', open);
+    toggle.setAttribute('aria-expanded', String(open));
+    toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  }
+
+  toggle?.addEventListener('click', () => {
+    setOpen(!navEl?.classList.contains('nav-open'));
+  });
+
+  list?.addEventListener('click', (e) => {
+    if ((e.target as HTMLElement).closest('a')) setOpen(false);
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!navEl?.classList.contains('nav-open')) return;
+    if (!navEl.contains(e.target as Node)) setOpen(false);
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') setOpen(false);
+  });
+
+  const mql = window.matchMedia('(min-width: 641px)');
+  mql.addEventListener('change', (e) => { if (e.matches) setOpen(false); });
+</script>
 
 <style>
   .site-nav {
@@ -90,7 +141,75 @@ function isActive(href: string): boolean {
     border-bottom-color: var(--gold);
   }
 
-  @media (max-width: 600px) {
+  /* ── Hamburger toggle — hidden on desktop ────────────────── */
+  .nav-toggle {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    border: 1px solid var(--line);
+    background: transparent;
+    color: var(--ink);
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+  .nav-toggle:hover { background-color: var(--card-tint); }
+  .nav-toggle:focus-visible { outline: var(--focus-ring); outline-offset: 1px; }
+
+  /* Each bar rotates around its OWN center (not the icon's shared center) —
+     rotating in place first means the following translateY lands it exactly
+     on the icon's midpoint, forming a true X. Sharing one transform-origin
+     for all three bars would rotate the top/bottom bars around a point that
+     isn't their own center, displacing them sideways as a side effect. */
+  .nav-toggle-icon .bar { transition: transform 150ms ease, opacity 150ms ease; }
+  .nav-toggle-icon .bar-top    { transform-origin: 9px 4.5px; }
+  .nav-toggle-icon .bar-bottom { transform-origin: 9px 13.5px; }
+  .nav-open .nav-toggle .bar-top    { transform: translateY(4.5px) rotate(45deg); }
+  .nav-open .nav-toggle .bar-mid    { opacity: 0; }
+  .nav-open .nav-toggle .bar-bottom { transform: translateY(-4.5px) rotate(-45deg); }
+
+  @media (max-width: 641px) {
     .nav-link { padding: 0 10px; }
+
+    .nav-toggle { display: flex; }
+
+    .nav-inner { justify-content: flex-start; gap: 12px; overflow: visible; position: relative; }
+
+    /* Collapsed by default: dropdown panel instead of a horizontal-scroll bar */
+    .nav-list {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      flex-direction: column;
+      align-items: stretch;
+      height: auto;
+      background-color: var(--paper);
+      border-bottom: 1px solid var(--line);
+      box-shadow: 0 6px 20px rgba(9, 35, 30, 0.12);
+    }
+    .nav-open .nav-list { display: flex; }
+
+    .nav-inner { position: relative; }
+
+    .nav-list li { width: 100%; }
+
+    .nav-link {
+      height: auto;
+      padding: 14px 20px;
+      top: 0;
+      border-bottom: 1px solid var(--line);
+      border-left: 3px solid transparent;
+    }
+    .nav-list li:last-child .nav-link { border-bottom: none; }
+
+    .nav-link.active {
+      border-bottom-color: var(--line);
+      border-left-color: var(--gold);
+      background-color: var(--card-tint);
+    }
   }
 </style>

@@ -194,8 +194,26 @@ button:hover, .btn:hover {
 .fade-up-2 { animation-delay: 60ms; }
 .fade-up-3 { animation-delay: 120ms; }
 
+/* Pop-in — a heavier entrance for hero-weight content (e.g. the homepage
+   daily briefing): fade + blur + rise with a slight overshoot at 65% for a
+   springy settle, no JS/animation library required. Stagger with -1/-2/-3. */
+@keyframes popIn {
+  from { opacity: 0; filter: blur(10px); transform: translateY(16px); }
+  65%  { opacity: 1; filter: blur(0);     transform: translateY(-3px); }
+  to   { opacity: 1; filter: blur(0);     transform: translateY(0); }
+}
+
+.pop-in {
+  animation: popIn 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.pop-in-1 { animation-delay: 0ms; }
+.pop-in-2 { animation-delay: 120ms; }
+.pop-in-3 { animation-delay: 220ms; }
+
 @media (prefers-reduced-motion: reduce) {
-  .fade-up, .fade-up-1, .fade-up-2, .fade-up-3 {
+  .fade-up, .fade-up-1, .fade-up-2, .fade-up-3,
+  .pop-in, .pop-in-1, .pop-in-2, .pop-in-3 {
     animation: none;
   }
 }

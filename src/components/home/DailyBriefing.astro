@@ -25,14 +25,14 @@ const { briefing: b } = Astro.props;
 ---
 
 <div class="briefing">
-  <div class="briefing-meta">
+  <div class="briefing-meta pop-in pop-in-1">
     <span class="briefing-eyebrow mono">Daily briefing</span>
     <span class="briefing-chip mono" id="brief-tag">{b.tag}</span>
     <span class="briefing-updated mono">Updated <span id="brief-time">{b.time}</span></span>
   </div>
 
   <div class="briefing-grid">
-    <div class="briefing-lead">
+    <div class="briefing-lead pop-in pop-in-2">
       <a class="briefing-headline-link" id="brief-link" href={b.url} target="_blank" rel="noopener noreferrer">
         <h2 class="briefing-headline" id="brief-heading">{b.heading}</h2>
       </a>
@@ -42,7 +42,7 @@ const { briefing: b } = Astro.props;
       </div>
     </div>
 
-    <div class="briefing-rail" id="brief-rail" data-show={String(b.showRail)} hidden={!b.showRail}>
+    <div class="briefing-rail pop-in pop-in-3" id="brief-rail" data-show={String(b.showRail)} hidden={!b.showRail}>
       <div class="rail-label mono"><span id="rail-tag">{b.tag}</span> · KEY INDICATORS</div>
       <div class="rail-stats" id="rail-stats">
         {b.stats.map(s => (
@@ -88,7 +88,6 @@ const { briefing: b } = Astro.props;
     font-family: var(--font-display);
     font-size: 40px; line-height: 1.04; font-weight: 800; letter-spacing: -0.02em;
     color: var(--ink); margin-bottom: 20px; text-wrap: balance;
-    min-height: 128px;
     display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
     transition: color 0.12s ease;
   }
@@ -96,7 +95,6 @@ const { briefing: b } = Astro.props;
 
   .briefing-dek {
     font-size: 16px; line-height: 1.6; color: var(--ink-soft); max-width: 60ch;
-    min-height: 77px;
     display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
   }
 
@@ -136,6 +134,6 @@ const { briefing: b } = Astro.props;
   @media (max-width: 820px) {
     .briefing { padding: 36px 24px 32px; }
     .briefing-grid { grid-template-columns: 1fr; gap: 28px; }
-    .briefing-headline { font-size: 30px; min-height: 0; }
+    .briefing-headline { font-size: 30px; }
   }
 </style>
