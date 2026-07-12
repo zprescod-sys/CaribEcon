@@ -1,11 +1,15 @@
 name: Refresh news feeds
 
-# Daily publish cadence. The feeds are polled at run time and merged into
-# data/news.json; the commit triggers the host's auto-deploy. workflow_dispatch
+# Twice-daily publish cadence. The feeds are polled at run time and merged into
+# data/news.json; the commit triggers the host's auto-deploy. Two runs because
+# the highest-volume feeds (Kaieteur, WIC News) post ~25-30 items/day against
+# 25-30-item feed windows — a 21h gap can let same-day items scroll off unseen;
+# a 12h gap keeps every feed safely inside its window. workflow_dispatch
 # allows a manual refresh from the Actions tab.
 on:
   schedule:
-    - cron: '0 11 * * *'   # 11:00 UTC ≈ 7am Caribbean, daily
+    - cron: '0 11 * * *'   # 11:00 UTC ≈ 7am Caribbean
+    - cron: '0 23 * * *'   # 23:00 UTC ≈ 7pm Caribbean
   workflow_dispatch:
 
 permissions:
