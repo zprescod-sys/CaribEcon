@@ -1,5 +1,79 @@
 [
   {
+    "id": "kaieteur-news-af4c60d7",
+    "title": "Sod turned for $528M East Ruimveldt Market rehabilitation",
+    "source": "Kaieteur News",
+    "date": "2026-07-12",
+    "country": "GY",
+    "url": "https://kaieteurnewsonline.com/2026/07/12/sod-turned-for-528m-east-ruimveldt-market-rehabilitation/",
+    "tags": [
+      "news"
+    ]
+  },
+  {
+    "id": "kaieteur-news-5ab6d132",
+    "title": "GPL trains staff in renewable energy, battery storage technologies",
+    "source": "Kaieteur News",
+    "date": "2026-07-12",
+    "country": "GY",
+    "url": "https://kaieteurnewsonline.com/2026/07/12/gpl-trains-staff-in-renewable-energy-battery-storage-technologies/",
+    "tags": [
+      "news"
+    ]
+  },
+  {
+    "id": "kaieteur-news-dbcd92f5",
+    "title": "43-room Rooster International Hotel opens on Essequibo Coast",
+    "source": "Kaieteur News",
+    "date": "2026-07-12",
+    "country": "GY",
+    "url": "https://kaieteurnewsonline.com/2026/07/12/43-room-rooster-international-hotel-opens-on-essequibo-coast/",
+    "tags": [
+      "news"
+    ]
+  },
+  {
+    "id": "st-kitts-nevis-observer-3c6be915",
+    "title": "Jamaica: Industry leaders say AI will boost, not replace, global services jobs",
+    "source": "St. Kitts-Nevis Observer",
+    "date": "2026-07-12",
+    "country": "KN",
+    "url": "https://www.thestkittsnevisobserver.com/jamaica-industry-leaders-say-ai-will-boost-not-replace-global-services-jobs/",
+    "tags": [
+      "regional"
+    ]
+  },
+  {
+    "id": "st-kitts-nevis-observer-fa4afce3",
+    "title": "Trinidad: Cabinet approval paves way for US$2 billion Point Lisas investment, says US envoy",
+    "source": "St. Kitts-Nevis Observer",
+    "date": "2026-07-12",
+    "country": "KN",
+    "url": "https://www.thestkittsnevisobserver.com/trinidad-cabinet-approval-paves-way-for-us2-billion-point-lisas-investment-says-us-envoy/",
+    "tags": [
+      "regional"
+    ]
+  },
+  {
+    "id": "cnc3-e4ceb6fe",
+    "title": "PNM rejects Balisier House funding probe as political persecution…claims UNC Govt weaponising ‘machinery and financial resources of State against its opponent’",
+    "source": "CNC3",
+    "date": "2026-07-12",
+    "country": "TT",
+    "url": "https://www.cnc3.co.tt/pnm-rejects-balisier-house-funding-probe-as-political-persecution-claims-unc-govt-weaponising-machinery-and-financial-resources-of-state-against-its-opponent/?utm_source=rss&utm_medium=rss&utm_campaign=pnm-rejects-balisier-house-funding-probe-as-political-persecution-claims-unc-govt-weaponising-machinery-and-financial-resources-of-state-against-its-opponent",
+    "tags": [
+      "news"
+    ]
+  },
+  {
+    "id": "wic-news-3b292691",
+    "title": "Caribbean Airlines launches discounted Barbados-Guyana fares for September",
+    "source": "WIC News",
+    "date": "2026-07-12",
+    "country": "ALL",
+    "url": "https://wicnews.com/barbados/caribbean-airlines-launches-discounted-barbados-guyana-fares-for-september"
+  },
+  {
     "id": "kaieteur-news-85829102",
     "title": "Regional leaders, Private Sector agree on measures to improve affordability across the region",
     "source": "Kaieteur News",
@@ -135,6 +209,150 @@
     "date": "2026-07-11",
     "country": "ALL",
     "url": "https://wicnews.com/trinidad-tobago/caribbean-airlines-offers-discounted-trinidad-barbados-fares-this-september"
+  },
+  {
+    "id": "barbados-today-dae702db",
+    "title": "Enterprise vendors fear worsening sargassum will threaten livelihoods",
+    "source": "Barbados Today",
+    "date": "2026-07-11",
+    "country": "BB",
+    "url": "https://barbadostoday.bb/2026/07/11/enterprise-vendors-fear-worsening-sargassum-will-threaten-livelihoods/",
+    "tags": [
+      "environment",
+      "local news",
+      "tourism"
+    ]
+  },
+  {
+    "id": "jamaica-observer-f3364a34",
+    "title": "Mavis Bank Coffee Factory achieves Safe Quality Food Recertification",
+    "source": "Jamaica Observer",
+    "date": "2026-07-11",
+    "country": "JM",
+    "url": "https://www.jamaicaobserver.com/2026/07/11/mavis-bank-coffee-factory-achieves-safe-quality-food-recertification/",
+    "tags": [
+      "latest news",
+      "news",
+      "coffee",
+      "food",
+      "safety"
+    ]
+  },
+  {
+    "id": "breaking-belize-news-61a42028",
+    "title": "Belize advances development of first Industrial Strategy through Japan study tour",
+    "source": "Breaking Belize News",
+    "date": "2026-07-11",
+    "country": "BZ",
+    "url": "https://www.breakingbelizenews.com/2026/07/11/belize-advances-development-of-first-industrial-strategy-through-japan-study-tour/",
+    "tags": [
+      "community development",
+      "last news"
+    ]
+  },
+  {
+    "id": "st-lucia-times-f3df3572",
+    "title": "PMs to engage EU on future of Citizenship by Investment programmes",
+    "source": "St. Lucia Times",
+    "date": "2026-07-11",
+    "country": "LC",
+    "url": "https://stluciatimes.com/181949/2026/07/pms-to-engage-eu-on-future-of-citizenship-by-investment-programmes/",
+    "tags": [
+      "caribbean",
+      "headlines",
+      "politics & government",
+      "region",
+      "brussels mission",
+      "cbi"
+    ]
+  },
+  {
+    "id": "antigua-news-room-942a4d31",
+    "title": "Airport Authority undertakes crucial vegetation management exercise this weekend as Airfield Upgrade enters final phase",
+    "source": "Antigua News Room",
+    "date": "2026-07-11",
+    "country": "AG",
+    "url": "https://antiguanewsroom.com/airport-authority-undertakes-crucial-vegetation-management-exercise-this-weekend-as-airfield-upgrade-enters-final-phase/",
+    "tags": [
+      "news"
+    ]
+  },
+  {
+    "id": "antigua-news-room-1b6b341c",
+    "title": "Single-Lane Traffic on All Saints Road as Major Infrastructure Works Begin",
+    "source": "Antigua News Room",
+    "date": "2026-07-11",
+    "country": "AG",
+    "url": "https://antiguanewsroom.com/single-lane-traffic-on-all-saints-road-as-major-infrastructure-works-begin/",
+    "tags": [
+      "news"
+    ]
+  },
+  {
+    "id": "antigua-news-room-37873773",
+    "title": "Monetary Council Keeps Savings and Discount Rates Unchanged",
+    "source": "Antigua News Room",
+    "date": "2026-07-11",
+    "country": "AG",
+    "url": "https://antiguanewsroom.com/monetary-council-keeps-savings-and-discount-rates-unchanged/",
+    "tags": [
+      "news"
+    ]
+  },
+  {
+    "id": "antigua-news-room-a9772a51",
+    "title": "Boat carrying tourists capsizes off Vietnam’s Phu Quoc island, killing 15",
+    "source": "Antigua News Room",
+    "date": "2026-07-11",
+    "country": "AG",
+    "url": "https://antiguanewsroom.com/boat-carrying-tourists-capsizes-off-vietnams-phu-quoc-island-killing-15/",
+    "tags": [
+      "news"
+    ]
+  },
+  {
+    "id": "antigua-news-room-02bdb563",
+    "title": "Antigua among CARICOM states Weighing Insurance Plan to Protect Hotels, Hospitals from Disasters",
+    "source": "Antigua News Room",
+    "date": "2026-07-11",
+    "country": "AG",
+    "url": "https://antiguanewsroom.com/antigua-among-caricom-states-weighing-insurance-plan-to-protect-hotels-hospitals-from-disasters/",
+    "tags": [
+      "news"
+    ]
+  },
+  {
+    "id": "antigua-news-room-0a47bfa3",
+    "title": "Global Uncertainty Could Slow Tourism and Economic Growth, ECCB Warns",
+    "source": "Antigua News Room",
+    "date": "2026-07-11",
+    "country": "AG",
+    "url": "https://antiguanewsroom.com/global-uncertainty-could-slow-tourism-and-economic-growth-eccb-warns/",
+    "tags": [
+      "news"
+    ]
+  },
+  {
+    "id": "st-kitts-nevis-observer-7105a7ed",
+    "title": "ECLAC warns of higher price for oil in LAC this year",
+    "source": "St. Kitts-Nevis Observer",
+    "date": "2026-07-11",
+    "country": "KN",
+    "url": "https://www.thestkittsnevisobserver.com/eclac-warns-of-higher-price-for-oil-in-lac-this-year/",
+    "tags": [
+      "regional"
+    ]
+  },
+  {
+    "id": "st-kitts-nevis-observer-5f09f931",
+    "title": "Antigua PM reiterates call for OECS airline",
+    "source": "St. Kitts-Nevis Observer",
+    "date": "2026-07-11",
+    "country": "KN",
+    "url": "https://www.thestkittsnevisobserver.com/antigua-pm-reiterates-call-for-oecs-airline/",
+    "tags": [
+      "regional"
+    ]
   },
   {
     "id": "kaieteur-news-03d7b2e6",
@@ -490,6 +708,54 @@
     "url": "https://antiguanewsroom.com/antigua-and-barbuda-inland-revenue-collects-ec377-9m-in-first-half-of-2026/",
     "tags": [
       "news"
+    ]
+  },
+  {
+    "id": "st-kitts-nevis-observer-c604b1b2",
+    "title": "New Zealand:  Government Support For Flood-Hit Kaikōura Farmers",
+    "source": "St. Kitts-Nevis Observer",
+    "date": "2026-07-10",
+    "country": "KN",
+    "url": "https://www.thestkittsnevisobserver.com/new-zealand-government-support-for-flood-hit-kaikoura-farmers/",
+    "tags": [
+      "press releases",
+      "regional/international news"
+    ]
+  },
+  {
+    "id": "st-kitts-nevis-observer-3c7704db",
+    "title": "United States:  Department of War Establishes The Directed Energy Bio-Effects Cross-Functional Team, Delivering First HAVANA Act Payments",
+    "source": "St. Kitts-Nevis Observer",
+    "date": "2026-07-10",
+    "country": "KN",
+    "url": "https://www.thestkittsnevisobserver.com/united-states-department-of-war-establishes-the-directed-energy-bio-effects-cross-functional-team-delivering-first-havana-act-payments/",
+    "tags": [
+      "press releases",
+      "regional/international news"
+    ]
+  },
+  {
+    "id": "st-kitts-nevis-observer-caac0705",
+    "title": "United States: Secretary Scott Bessent Delivers Remarks at the Official Unveiling of the President Donald J. Trump Bridge along Interstate 40 in Dandridge, Tennessee",
+    "source": "St. Kitts-Nevis Observer",
+    "date": "2026-07-10",
+    "country": "KN",
+    "url": "https://www.thestkittsnevisobserver.com/united-states-secretary-scott-bessent-delivers-remarks-at-the-official-unveiling-of-the-president-donald-j-trump-bridge-along-interstate-40-in-dandridge-tennessee/",
+    "tags": [
+      "press releases",
+      "regional/international news"
+    ]
+  },
+  {
+    "id": "st-kitts-nevis-observer-d768bf30",
+    "title": "United States:  U.S. Squeezes Iran’s Regime Financiers And Shadow Banking Networks",
+    "source": "St. Kitts-Nevis Observer",
+    "date": "2026-07-10",
+    "country": "KN",
+    "url": "https://www.thestkittsnevisobserver.com/united-states-u-s-squeezes-irans-regime-financiers-and-shadow-banking-networks/",
+    "tags": [
+      "press releases",
+      "regional/international news"
     ]
   },
   {
