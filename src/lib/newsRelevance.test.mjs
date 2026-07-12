@@ -39,6 +39,13 @@ const DISPLAYABLE_CASES = [
   ['central bank rate story', 'Central bank raises interest rate to curb inflation', [], true],
   ['budget tabling', 'Government tables 2026 budget in parliament', [], true],
   ['IMF growth forecast', 'IMF forecasts growth for Guyana', [], true],
+  // Real CNC3 business-section headlines the lexicon originally missed (2026-07-12):
+  // corporate ESG reporting and WIPO/patent vocabulary must count as economic.
+  ['corporate ESG report counts', 'ANSA McAL releases 2025 sustainability and ESG reports', [], true],
+  ['WIPO/patent story counts', 'Hosein signs WIPO agreement to boost local patent drafting capacity', [], true],
+  // patents?\b is deliberately not patent\w* — "patently" in political rhetoric
+  // must not read as an economic signal.
+  ['"patently" is not a patent', 'Opposition calls minister claim patently false', [], false],
 ];
 
 test('isDisplayableNews: documented bug classes and core cases', () => {
@@ -56,6 +63,8 @@ const CLASSIFY_CASES = [
   ['World Bank does not classify as retail Banking', 'World Bank report highlights regional growth', 'Macro', 'medium'],
   ['development bank does not classify as retail Banking', 'Development bank funds new housing project', 'Infrastructure', 'high'],
   ['off-topic title is Unclassified/low, never a confident chip', 'Best Friend Remembers Cody Gomes', 'Unclassified', 'low'],
+  ['ESG report routes to Corporate', 'ANSA McAL releases 2025 sustainability and ESG reports', 'Corporate', 'high'],
+  ['WIPO/patent routes to Corporate', 'Hosein signs WIPO agreement to boost local patent drafting capacity', 'Corporate', 'high'],
 ];
 
 test('classifyNews: category + confidence pinning', () => {

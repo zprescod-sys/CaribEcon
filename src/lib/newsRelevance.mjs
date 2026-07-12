@@ -45,6 +45,9 @@ const INCLUDE_RE = re([
   'insur\\w*', 'reinsur\\w*', 'underwrit\\w*', 'actuar\\w*', 'annuit\\w*',
   'market\\w*', 'stock\\w*', 'shareholder\\w*', 'equit\\w*', 'ipo', 'dividend\\w*', 'earnings', 'profit\\w*', 'turnover',
   'business\\w*', 'commerc\\w*', 'corporate', 'compan(?:y|ies)', 'enterprise\\w*',
+  // corporate reporting & intellectual property. patents?\b (not patent\w*) so
+  // "patently false" political stories don't match.
+  'esg\\b', 'wipo\\b', 'patents?\\b', 'trademark\\w*',
   'manufactur\\w*', 'industr\\w*', 'factory', 'production',
   'agricultur\\w*', 'farm\\w*', 'crop\\w*', 'commodit\\w*', 'sugar', 'banana\\w*', 'rice', 'cocoa', 'coffee', '\\brum\\b',
   'mining', 'bauxite', 'gold\\b', 'quarr\\w*',
@@ -60,6 +63,7 @@ const INCLUDE_PHRASES = [
   'real estate', 'private sector', 'public sector', 'gross domestic', 'balance of payments',
   'current account', 'foreign exchange', 'development bank', 'stake in', 'joint venture', 'free trade',
   'doing business', 'sovereign wealth', 'natural resource fund', 'per capita', 'ease of doing',
+  'sustainability report', 'intellectual property', 'ESG'
 ];
 
 // ── Strong: unambiguous economics (overrides a single exclusion signal) ───────
@@ -144,7 +148,7 @@ const RULES = [
   { category: 'Tourism',        group: 'Trade & Tourism',  re: re(['tourism', 'tourist\\w*', 'hotel\\w*', 'resort\\w*', 'cruise\\w*', 'airline\\w*', 'airports?', 'visitor arrival']) },
   { category: 'Infrastructure', group: 'Investment',       re: re(['infrastructure', 'construction', 'highway', '\\broads?\\b', 'bridge', 'logistic\\w*', 'housing', 'real estate']) },
   { category: 'Labor',          group: 'Macro',            re: re(['employ\\w*', 'unemploy\\w*', 'jobs?\\b', 'labou?r\\w*', 'wage\\w*', 'salar\\w*', 'workforce', 'layoffs?', 'redundanc\\w*', 'union\\b', 'pension\\w*']) },
-  { category: 'Corporate',      group: 'Finance',          re: re(['earnings', 'profit\\w*', 'dividend\\w*', 'shareholder\\w*', 'stock\\w*', 'equit\\w*', 'company', 'corporate', 'business\\w*', 'enterprise\\w*']) },
+  { category: 'Corporate',      group: 'Finance',          re: re(['earnings', 'profit\\w*', 'dividend\\w*', 'shareholder\\w*', 'stock\\w*', 'equit\\w*', 'company', 'corporate', 'business\\w*', 'enterprise\\w*', 'esg\\b', 'sustainability report\\w*', 'wipo\\b', 'patents?\\b', 'trademark\\w*', 'intellectual property']) },
 ];
 
 // ── Editorial confidence ──────────────────────────────────────────────────────
