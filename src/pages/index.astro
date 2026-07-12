@@ -362,6 +362,19 @@ const explore = [
 
   const $ = (id: string) => document.getElementById(id);
 
+  // Restart the CSS pop-in animation (base.css) on an already-animated element.
+  // Clearing to an inline 'none', forcing a reflow, then clearing the inline
+  // override lets the .pop-in class's animation re-trigger from its keyframe
+  // start instead of staying parked at its finished state. Respects
+  // prefers-reduced-motion automatically, since that's resolved by the CSS
+  // cascade once the inline override is cleared.
+  function replayPopIn(el: Element | null) {
+    if (!el || !(el instanceof HTMLElement)) return;
+    el.style.animation = 'none';
+    void el.offsetWidth;
+    el.style.animation = '';
+  }
+
   function repoint(b: Briefing) {
     const set = (id: string, text: string) => { const el = $(id); if (el) el.textContent = text; };
     set('brief-tag', b.tag);
@@ -388,6 +401,13 @@ const explore = [
         rail.hidden = true;
       }
     }
+
+    // Replay the same pop-in entrance used on initial page load, so repointing
+    // to a different story feels like a fresh briefing arriving, not a
+    // static text swap.
+    replayPopIn(document.querySelector('.briefing-meta'));
+    replayPopIn(document.querySelector('.briefing-lead'));
+    replayPopIn(rail);
   }
 
   document.querySelectorAll<HTMLButtonElement>('.news-row').forEach(row => {
