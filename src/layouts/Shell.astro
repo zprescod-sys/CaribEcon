@@ -27,9 +27,14 @@ const fullTitle = title === 'Home'
     <meta name="description" content={description} />
     <title>{fullTitle}</title>
 
-    <!-- Preconnect for Google Fonts (CDN, Phase 1; replace with self-hosted in Phase 2) -->
+    <!-- Google Fonts (CDN, Phase 1; replace with self-hosted in Phase 2). A <link>
+         here (not a CSS @import in base.css) lets the browser fetch it in parallel
+         instead of serially, and avoids a known false-positive in some CSS linters
+         that mis-scan the semicolons inside this URL's query string as statement
+         terminators. -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" />
 
     <link rel="icon" type="image/svg+xml" href="/carib-econ-index-logo.svg" />
   </head>

@@ -2,7 +2,8 @@
    Reset + font declarations + global defaults derived from design tokens.
    Import tokens.css first. */
 
-@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+/* Google Fonts are loaded via a <link rel="stylesheet"> in Shell.astro's <head>,
+   not a CSS @import here — see that file for why. */
 /* Display: Bricolage Grotesque · Body/UI: Hanken Grotesk · Data/mono: JetBrains Mono (EDDESIGN.md). */
 /* TODO Phase 2: replace with self-hosted WOFF2 files in /public/fonts/ */
 
