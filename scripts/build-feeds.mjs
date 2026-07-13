@@ -15,7 +15,11 @@
 import fs from 'fs';
 import crypto from 'crypto';
 import Parser from 'rss-parser';
-import { isDisplayableNews } from '../src/lib/newsRelevance.mjs';
+import {
+  isDisplayableNews,
+  getNewsReviewDecision,
+  NEWS_CATEGORY_GROUPS,
+} from '../src/lib/newsRelevance.mjs';
 
 // ── Config ───────────────────────────────────────────────────────────────────
 const NEWS_WINDOW_DAYS  = Number(process.env.NEWS_WINDOW_DAYS ?? 120);  // keep this much history in the archive
@@ -25,6 +29,7 @@ const FINANCE_FILTER    = process.env.FINANCE_FILTER !== '0';           // keep 
 // rewrites data/news.json (which the daily CI cron owns) — avoids merge conflicts.
 // Run via `npm run promote`. The daily workflow runs the full `npm run feeds`.
 const PROMOTE_ONLY      = process.argv.includes('--promote-only') || process.env.PROMOTE_ONLY === '1';
+const AUDIT_ONLY        = process.argv.includes('--audit-only');
 const UA = 'Mozilla/5.0 (compatible; CaribbeanMacroAlmanac/1.0; +https://github.com/) feeds-bot';
 
 // Economic-relevance filter — the rule lives in src/lib/newsRelevance.mjs so ingest
@@ -34,6 +39,27 @@ const UA = 'Mozilla/5.0 (compatible; CaribbeanMacroAlmanac/1.0; +https://github.
 function isFinancial(title, tags = []) {
   if (!FINANCE_FILTER) return true;
   return isDisplayableNews(title, tags);
+}
+
+const NEWS_CATEGORIES = new Set(Object.keys(NEWS_CATEGORY_GROUPS));
+
+// Validate only editor-controlled fields. Unapproved rows may keep category blank;
+// approved rows must be complete enough for the data hub to publish safely.
+function validateNewsReviewInbox(rows) {
+  const seen = new Set();
+  for (const [index, row] of rows.entries()) {
+    if (!row?.id || !row.title || !row.source || !row.date || !row.url || !row.country) {
+      throw new Error(`data/news_unclassified.json row ${index + 1} is missing required news fields`);
+    }
+    if (seen.has(row.id)) throw new Error(`data/news_unclassified.json has duplicate id "${row.id}"`);
+    seen.add(row.id);
+    if (row.category && !NEWS_CATEGORIES.has(row.category)) {
+      throw new Error(`data/news_unclassified.json row ${index + 1} has invalid category "${row.category}"`);
+    }
+    if (row.approved === true && !NEWS_CATEGORIES.has(row.category)) {
+      throw new Error(`data/news_unclassified.json row ${index + 1} is approved but has no valid category`);
+    }
+  }
 }
 
 // The 16 country codes (mirror dataHub.ts) + ALL for pan-Caribbean.
@@ -147,9 +173,10 @@ function readJSON(path, fallback) {
 const writeJSON = (path, data) => fs.writeFileSync(path, JSON.stringify(data, null, 2) + '\n');
 
 // ── News ─────────────────────────────────────────────────────────────────────
-async function buildNews() {
+async function buildNews({ auditOnly = false } = {}) {
   const feeds = readJSON('./data/feeds.json', []);
   const fetched = [];
+  const reviewCandidates = [];
 
   for (const feed of feeds) {
     try {
@@ -167,10 +194,26 @@ async function buildNews() {
         const tags = (item.categories ?? [])
           .map(c => (typeof c === 'string' ? c : c?._ ?? '').trim().toLowerCase())
           .filter(Boolean).slice(0, 6);
-        fetched.push({
+        const record = {
           id: newsId(feed.source, url), title, source: feed.source,
           date, country: feed.country, url, ...(tags.length ? { tags } : {}),
-        });
+        };
+        fetched.push(record);
+
+        // Business-specific feeds are useful context, but never sufficient by
+        // themselves: getNewsReviewDecision still requires credible edge vocabulary.
+        const businessFeed = /(?:category\/business|feed\/business|[?&]c=business)/i.test(feed.url);
+        const review = getNewsReviewDecision(title, tags, { businessFeed });
+        if (review.candidate) {
+          reviewCandidates.push({
+            ...record,
+            approved: false,
+            category: '',
+            suggestedCategory: review.suggestedCategory,
+            confidence: review.confidence,
+            reason: review.reason,
+          });
+        }
         added++;
       }
       log(`  ✓ ${feed.source} (${feed.country}) — ${added} items${skipped ? `, ${skipped} skipped` : ''}`);
@@ -178,6 +221,45 @@ async function buildNews() {
       log(`  ✗ ${feed.source} (${feed.country}) — FAILED: ${e.message}`);
     }
   }
+
+  const cutoff = new Date(Date.now() - NEWS_WINDOW_DAYS * 864e5).toISOString().slice(0, 10);
+
+  // Stage plausible rejected stories non-destructively. Refresh machine-owned feed
+  // metadata and suggestions, but preserve the two editor-owned fields (category and
+  // approval). Old unapproved rows age out with the news window; approved rows remain
+  // until an editor removes them.
+  const existingReview = readJSON('./data/news_unclassified.json', []);
+  const reviewById = new Map(existingReview.map(row => [row.id, row]));
+  const fetchedIds = new Set(fetched.map(row => row.id));
+  const currentCandidateIds = new Set(reviewCandidates.map(row => row.id));
+  let reviewAdded = 0;
+  for (const candidate of reviewCandidates) {
+    const existing = reviewById.get(candidate.id);
+    if (!existing) {
+      reviewById.set(candidate.id, candidate);
+      reviewAdded++;
+      continue;
+    }
+    reviewById.set(candidate.id, {
+      ...candidate,
+      approved: existing.approved === true,
+      category: existing.category ?? '',
+    });
+  }
+  const reviewInbox = [...reviewById.values()]
+    .filter(row => row.approved === true || (
+      row.date >= cutoff
+      // If a still-live feed item no longer meets the selective rule, clean it out.
+      && (!fetchedIds.has(row.id) || currentCandidateIds.has(row.id))
+    ))
+    .sort((a, b) => (a.date < b.date ? 1 : a.date > b.date ? -1 : 0));
+  validateNewsReviewInbox(reviewInbox);
+  writeJSON('./data/news_unclassified.json', reviewInbox);
+  log(`News review inbox: ${reviewAdded} new candidates, ${reviewInbox.length} total, ${reviewInbox.filter(row => row.approved === true).length} approved.`);
+
+  // The editorial audit command refreshes only the review inbox. It must never
+  // rewrite the CI-owned public archive or touch deals/publications.
+  if (auditOnly) return;
 
   // Merge with the existing store (union by id — keep whichever copy we already had,
   // so previously-captured items survive after they leave the source feed).
@@ -191,7 +273,6 @@ async function buildNews() {
   // paginate all of it); window -> finance filter -> sort newest-first -> safety bound.
   // The finance filter is applied to the whole union so items saved before the filter
   // existed are cleaned out too.
-  const cutoff = new Date(Date.now() - NEWS_WINDOW_DAYS * 864e5).toISOString().slice(0, 10);
   const byDateDesc = (a, b) => (a.date < b.date ? 1 : a.date > b.date ? -1 : 0);
   const merged = [...byId.values()]
     .filter(it => it.date >= cutoff && isFinancial(it.title, it.tags ?? []))
@@ -264,14 +345,22 @@ async function buildDeals() {
 }
 
 // ── Run ──────────────────────────────────────────────────────────────────────
-if (PROMOTE_ONLY) {
+if (AUDIT_ONLY) {
+  log('News audit mode: refreshing selective review inbox only (news.json left untouched).');
+  await buildNews({ auditOnly: true });
+} else if (PROMOTE_ONLY) {
   log('Promote-only mode: skipping news fetch (data/news.json left untouched).');
+  const reviewInbox = readJSON('./data/news_unclassified.json', []);
+  validateNewsReviewInbox(reviewInbox);
+  log(`News review inbox: ${reviewInbox.filter(row => row.approved === true).length} approved rows validated for data-hub merge.`);
 } else {
   log('Fetching news feeds…');
   await buildNews();
 }
-log('Mining deals from news…');
-await buildDeals();
-log('Promoting approved publications…');
-await buildPublications();
+if (!AUDIT_ONLY) {
+  log('Mining deals from news…');
+  await buildDeals();
+  log('Promoting approved publications…');
+  await buildPublications();
+}
 log('Done.');

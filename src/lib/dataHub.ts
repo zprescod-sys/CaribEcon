@@ -4,16 +4,17 @@
 
 import type {
   DataHub, Country, IndicatorsData, BudgetsData,
-  NewsData, PublicationsData, DealsData
+  NewsData, NewsReviewItem, PublicationsData, DealsData
 } from './types';
 
 import indicatorsRaw from '../../data/almanac-data.json';
 import indicatorMetaRaw from '../../data/indicator-meta.json';
 import budgetsRaw    from '../../data/budgets.json';
 import newsRaw       from '../../data/news.json';
+import newsReviewRaw from '../../data/news_unclassified.json';
 import publicationsRaw from '../../data/publications.json';
 import dealsRaw      from '../../data/deals.json';
-import { isDisplayableNews } from './newsRelevance.mjs';
+import { isDisplayableNews, NEWS_CATEGORY_GROUPS } from './newsRelevance.mjs';
 
 // Re-export so pages/components have one import surface for news classification.
 export { classifyNews, NEWS_GROUPS } from './newsRelevance.mjs';
@@ -33,9 +34,38 @@ for (const slug of new Set(indicators.map(s => s.indicator))) {
   }
 }
 const budgets     = budgetsRaw     as BudgetsData;
-// Render-time relevance guard: even if a messy or stale headline slips into the stored
-// archive, it can never reach the page. Mirrors the ingest filter in build-feeds.mjs.
-const news        = (newsRaw as NewsData).filter(n => isDisplayableNews(n.title, n.tags));
+
+// Base archive stays machine-owned and precision-filtered. Approved editorial inbox
+// rows bypass that classifier intentionally, carry an explicit category override, and
+// replace a same-id archive row when present. news.json itself is never hand-edited.
+const approvedNews = (newsReviewRaw as NewsReviewItem[])
+  .filter(row => row.approved === true)
+  .map(row => {
+    const group = NEWS_CATEGORY_GROUPS[row.category];
+    if (!group) {
+      throw new Error(`[dataHub] approved news review row "${row.id}" has invalid category "${row.category}"`);
+    }
+    return {
+      id: row.id,
+      title: row.title,
+      source: row.source,
+      date: row.date,
+      country: row.country,
+      url: row.url,
+      ...(row.tags?.length ? { tags: row.tags } : {}),
+      categoryOverride: row.category,
+      groupOverride: group,
+    };
+  });
+
+const newsById = new Map(
+  (newsRaw as NewsData)
+    .filter(n => isDisplayableNews(n.title, n.tags))
+    .map(item => [item.id, item]),
+);
+for (const item of approvedNews) newsById.set(item.id, item);
+const news = [...newsById.values()]
+  .sort((a, b) => (a.date < b.date ? 1 : a.date > b.date ? -1 : 0));
 const publications = publicationsRaw as PublicationsData;
 const deals       = dealsRaw       as DealsData;
 

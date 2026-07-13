@@ -1,0 +1,104 @@
+[
+  {
+    "id": "barbados-today-53a3006b",
+    "title": "Untapped demand for Caribbean travel revealed by Barbados campaign, says TEMPO CEO",
+    "source": "Barbados Today",
+    "date": "2026-07-12",
+    "country": "BB",
+    "url": "https://barbadostoday.bb/2026/07/12/untapped-demand-for-caribbean-travel-revealed-by-barbados-campaign-says-tempo-ceo/",
+    "tags": [
+      "local news"
+    ],
+    "approved": false,
+    "category": "",
+    "suggestedCategory": "Corporate",
+    "confidence": "low",
+    "reason": "Recognized editorial edge-case vocabulary; suggested Corporate."
+  },
+  {
+    "id": "trinidad-express-ab41e52b",
+    "title": "Ragbir appointed First Citizens  deputy CEO",
+    "source": "Trinidad Express",
+    "date": "2026-07-11",
+    "country": "TT",
+    "url": "https://trinidadexpress.com/business/local/ragbir-appointed-first-citizens-deputy-ceo/article_cbaaa9d8-1a69-4661-b0d2-3ce24aed2032.html",
+    "approved": false,
+    "category": "",
+    "suggestedCategory": "Corporate",
+    "confidence": "low",
+    "reason": "Recognized editorial edge-case vocabulary; suggested Corporate."
+  },
+  {
+    "id": "trinidad-express-4b76be66",
+    "title": "ExxonMobil backs T&T in deepwater exploration",
+    "source": "Trinidad Express",
+    "date": "2026-07-09",
+    "country": "TT",
+    "url": "https://trinidadexpress.com/business/local/exxonmobil-backs-t-t-in-deepwater-exploration/article_dc19bfea-cb5b-4ed8-a086-303d930f47e3.html",
+    "approved": true,
+    "category": "Energy",
+    "suggestedCategory": "Energy",
+    "confidence": "low",
+    "reason": "Recognized editorial edge-case vocabulary; suggested Energy."
+  },
+  {
+    "id": "trinidad-express-a89c05c1",
+    "title": "Nestle’s review raises concern in dairy sector",
+    "source": "Trinidad Express",
+    "date": "2026-07-08",
+    "country": "TT",
+    "url": "https://trinidadexpress.com/business/local/nestle-s-review-raises-concern-in-dairy-sector/article_ca3b870f-3e2d-4b49-8d76-9bebdc871dc9.html",
+    "approved": true,
+    "category": "Macro",
+    "suggestedCategory": "",
+    "confidence": "low",
+    "reason": "Business-feed headline contains commercial vocabulary not covered by the public classifier."
+  },
+  {
+    "id": "caribbean-dev-bank-bcfb7328",
+    "title": "Annual Report on Evaluation 2025",
+    "source": "Caribbean Dev Bank",
+    "date": "2026-07-08",
+    "country": "ALL",
+    "url": "https://www.caribank.org/evaluations-resources/annual-report-evaluation-2025",
+    "approved": false,
+    "category": "",
+    "suggestedCategory": "Corporate",
+    "confidence": "low",
+    "reason": "Recognized editorial edge-case vocabulary; suggested Corporate."
+  },
+  {
+    "id": "trinidad-express-3a8f0f52",
+    "title": "No Blue Waters supply contract",
+    "source": "Trinidad Express",
+    "date": "2026-07-07",
+    "country": "TT",
+    "url": "https://trinidadexpress.com/business/local/no-blue-waters-supply-contract/article_25210e98-fb42-4b09-96f4-ddba6d0eca0a.html",
+    "approved": false,
+    "category": "",
+    "suggestedCategory": "",
+    "confidence": "low",
+    "reason": "Business-feed headline contains commercial vocabulary not covered by the public classifier."
+  },
+  {
+    "id": "cnc3-913f6865",
+    "title": "WASA launches $20M wastewater project in Beetham Gardens",
+    "source": "CNC3",
+    "date": "2026-06-18",
+    "country": "TT",
+    "url": "https://www.cnc3.co.tt/wasa-launches-20m-wastewater-project-in-beetham-gardens/?utm_source=rss&utm_medium=rss&utm_campaign=wasa-launches-20m-wastewater-project-in-beetham-gardens",
+    "tags": [
+      "business",
+      "news",
+      "beetham gardens",
+      "pipeline replacement",
+      "wastewater",
+      "water and sewerage authority"
+    ],
+    "approved": false,
+    "category": "",
+    "suggestedCategory": "Corporate",
+    "confidence": "low",
+    "reason": "Business-feed headline contains commercial vocabulary not covered by the public classifier."
+  }
+]

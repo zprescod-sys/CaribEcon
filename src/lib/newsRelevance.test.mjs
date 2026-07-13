@@ -5,7 +5,12 @@
 // (stems, lookaheads, word boundaries) so a future lexicon tweak can't reintroduce it.
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { isDisplayableNews, classifyNews } from './newsRelevance.mjs';
+import {
+  isDisplayableNews,
+  classifyNews,
+  getNewsReviewDecision,
+  NEWS_CATEGORY_GROUPS,
+} from './newsRelevance.mjs';
 
 // [label, title, tags, expectedDisplayable]
 const DISPLAYABLE_CASES = [
@@ -73,4 +78,41 @@ test('classifyNews: category + confidence pinning', () => {
     assert.equal(category, expectedCategory, `${label} — category`);
     assert.equal(confidence, expectedConfidence, `${label} — confidence`);
   }
+});
+
+test('getNewsReviewDecision: stages only plausible rejected edge cases', () => {
+  const exxon = getNewsReviewDecision('ExxonMobil backs T&T in deepwater exploration');
+  assert.equal(exxon.candidate, true);
+  assert.equal(exxon.suggestedCategory, 'Energy');
+  assert.equal(exxon.confidence, 'low');
+
+  const tagOnly = getNewsReviewDecision('New leadership announced', ['business']);
+  assert.equal(tagOnly.candidate, false);
+
+  const businessEdge = getNewsReviewDecision(
+    'Local firm announces a new regional contract',
+    ['business'],
+    { businessFeed: true },
+  );
+  assert.equal(businessEdge.candidate, true);
+  assert.equal(businessEdge.suggestedCategory, 'Corporate');
+
+  const schoolNoise = getNewsReviewDecision('Local school wins regional debate contest', ['business']);
+  assert.equal(schoolNoise.candidate, false);
+
+  const sportNoise = getNewsReviewDecision('Local team wins football championship');
+  assert.equal(sportNoise.candidate, false);
+
+  const shellSurname = getNewsReviewDecision('Mourners pay respects to Dr Shelly-Ann Cox');
+  assert.equal(shellSurname.candidate, false);
+
+  const politicalMou = getNewsReviewDecision('Trump says MoU to end war is over');
+  assert.equal(politicalMou.candidate, false);
+});
+
+test('NEWS_CATEGORY_GROUPS: every editorial category resolves to a public filter group', () => {
+  assert.equal(NEWS_CATEGORY_GROUPS.Energy, 'Energy');
+  assert.equal(NEWS_CATEGORY_GROUPS.Trade, 'Trade & Tourism');
+  assert.equal(NEWS_CATEGORY_GROUPS.Infrastructure, 'Investment');
+  assert.equal(NEWS_CATEGORY_GROUPS.Banking, 'Finance');
 });

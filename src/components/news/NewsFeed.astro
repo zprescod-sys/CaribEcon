@@ -28,7 +28,14 @@ function formatDate(d: string) {
 // Classify each item once, on the server, into a macro category (card chip) + coarse
 // group (filter bar). Then order the group tabs "All" first, then only the groups that
 // actually have stories in this set — no empty tabs.
-const items = news.map(item => ({ item, ...classifyNews(item.title, item.tags) }));
+const items = news.map(item => {
+  const classified = classifyNews(item.title, item.tags);
+  return {
+    item,
+    category: item.categoryOverride ?? classified.category,
+    group: item.groupOverride ?? classified.group,
+  };
+});
 const presentGroups = NEWS_GROUPS.filter(g => items.some(i => i.group === g));
 const groupTabs = ['All', ...presentGroups];
 ---

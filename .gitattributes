@@ -16,3 +16,4 @@ data/deals_inbox.json   merge=local-data
 data/deals.json         merge=local-data
 data/pub_inbox.json     merge=local-data
 data/publications.json  merge=local-data
+data/news_unclassified.json merge=local-data

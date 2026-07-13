@@ -151,6 +151,51 @@ const RULES = [
   { category: 'Corporate',      group: 'Finance',          re: re(['earnings', 'profit\\w*', 'dividend\\w*', 'shareholder\\w*', 'stock\\w*', 'equit\\w*', 'company', 'corporate', 'business\\w*', 'enterprise\\w*', 'esg\\b', 'sustainability report\\w*', 'wipo\\b', 'patents?\\b', 'trademark\\w*', 'intellectual property']) },
 ];
 
+// Public editorial categories and their filter-bar groups. Approved inbox rows use
+// this map so a manually assigned category always lands in the correct UI group.
+export const NEWS_CATEGORY_GROUPS = Object.freeze({
+  Macro: 'Macro',
+  Energy: 'Energy',
+  Debt: 'Fiscal Policy',
+  'Fiscal Policy': 'Fiscal Policy',
+  Inflation: 'Macro',
+  Banking: 'Finance',
+  Investment: 'Investment',
+  Trade: 'Trade & Tourism',
+  Tourism: 'Trade & Tourism',
+  Infrastructure: 'Investment',
+  Labor: 'Macro',
+  Corporate: 'Finance',
+});
+
+// Narrow edge-case rules for the editorial inbox. These do NOT make a story public;
+// they only identify plausible economic stories whose vocabulary the strict public
+// classifier does not yet understand (for example an operator + "deepwater").
+const REVIEW_RULES = [
+  {
+    category: 'Energy',
+    re: re([
+      'exxonmobil', 'exxon', 'chevron', 'hess', 'shell\\b', 'bp\\b', 'petronas', 'repsol',
+      'deepwater', 'offshore', 'upstream', 'downstream', 'hydrocarbon\\w*', 'drill\\w*',
+      'exploration', 'production sharing', 'fpsos?\\b', 'stabroek', 'yellowtail', 'liza',
+      'payara', 'hammerhead',
+    ]),
+  },
+  {
+    category: 'Investment',
+    re: re(['expansion plan', 'project financing', 'greenfield', 'brownfield']),
+  },
+  {
+    category: 'Corporate',
+    re: re(['chief executive', '\\bceo\\b', 'annual report', 'quarterly results', 'operating profit']),
+  },
+];
+
+const BUSINESS_FEED_EDGE_RE = re([
+  '\\bfirm\\b', '\\bsector\\b', '\\bindustry\\b', '\\bcontract\\b', '\\bproject\\b',
+  '\\bdeal\\b', '\\bmillion\\b', '\\bbillion\\b', '\\bceo\\b', 'chief executive',
+]);
+
 // ── Editorial confidence ──────────────────────────────────────────────────────
 // Classification is TITLE-driven, not tag-driven. Tags are noisy site metadata: a
 // human-interest obituary can carry a stray "business"/"trade" tag and — under the
@@ -204,6 +249,42 @@ export function isDisplayableNews(title, tags = []) {
   if (!isRelevantNews(title, tags)) return false;
   const { confidence } = classifyNews(title, tags);
   return CONFIDENCE_RANK[confidence] >= CONFIDENCE_RANK[MIN_NEWS_CONFIDENCE];
+}
+
+/**
+ * Decide whether a rejected story is worth human review. This deliberately stages a
+ * much smaller set than "all rejected": narrow sector edge cases and headlines from
+ * dedicated business feeds that also contain credible commercial vocabulary. Feed
+ * tags alone are too noisy to qualify a story for the inbox.
+ * @param {string} title
+ * @param {string[]} [tags]
+ * @param {{ businessFeed?: boolean }} [context]
+ * @returns {{ candidate: boolean, suggestedCategory: string, confidence: 'low'|'medium'|'high', reason: string }}
+ */
+export function getNewsReviewDecision(title, tags = [], context = {}) {
+  const classification = classifyNews(title, tags);
+  if (isDisplayableNews(title, tags)) {
+    return { candidate: false, suggestedCategory: classification.category, confidence: classification.confidence, reason: 'Already displayable.' };
+  }
+
+  const titleHay = norm(title);
+  const tagHay = norm((tags ?? []).join(' '));
+  const titleExcluded = EXCLUDE_RE.test(titleHay);
+  const reviewRule = REVIEW_RULES.find(rule => rule.re.test(titleHay));
+  const tagRule = RULES.find(rule => rule.re.test(tagHay));
+  const businessEdge = Boolean(context.businessFeed) && BUSINESS_FEED_EDGE_RE.test(titleHay);
+  // A title with an explicit sport/crime/death/lifestyle exclusion is not a middle
+  // ground editorial case. Keep it out even if a name resembles a company/operator.
+  const candidate = !titleExcluded && (Boolean(reviewRule) || businessEdge);
+  const suggestedCategory = reviewRule?.category
+    ?? tagRule?.category
+    ?? (classification.category !== 'Unclassified' ? classification.category : '');
+
+  let reason = 'Rejected with no selective editorial-review signal.';
+  if (reviewRule) reason = `Recognized editorial edge-case vocabulary; suggested ${reviewRule.category}.`;
+  else if (businessEdge) reason = 'Business-feed headline contains commercial vocabulary not covered by the public classifier.';
+
+  return { candidate, suggestedCategory, confidence: classification.confidence, reason };
 }
 
 // The filter-bar buttons, in display order. "All" is handled in the UI.

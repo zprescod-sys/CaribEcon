@@ -159,6 +159,19 @@ hand-maintained — edits are overwritten on the next run.
   filtered set (safety bound `NEWS_MAX` 2000), newest-first. A rolling archive, not a
   fixed top-N: the `/news` page paginates all of it; the home page shows the 20 most
   recent. The committed JSON is the durable buffer (CI runners are stateless).
+- **Selective editorial review inbox:** rejected stories are not all retained. The
+  pipeline stages only plausible edge cases in `data/news_unclassified.json`: stories
+  with narrow sector/operator vocabulary, or credible commercial language from a
+  business-specific feed. Feed tags alone never qualify a story. Obvious sport, crime, death,
+  school and lifestyle noise remains discarded. Run `npm run news:audit` to refresh
+  this inbox without touching `news.json`, deals or publications. To approve a row,
+  set `category` to a valid public category and `approved` to `true`, then run
+  `npm run promote` (validation) or `npm run build`. `dataHub.ts` merges approved rows
+  at build time with an explicit category/group override; it does **not** rewrite the
+  CI-owned `news.json`. Refreshes update machine suggestions and feed metadata while
+  preserving the editor-owned `category` and `approved` fields.
+  Valid categories: `Macro`, `Energy`, `Debt`, `Fiscal Policy`, `Inflation`, `Banking`,
+  `Investment`, `Trade`, `Tourism`, `Infrastructure`, `Labor`, `Corporate`.
 - **Resilience:** a feed that 403s / TLS-fails / returns non-RSS is logged and skipped,
   never crashing the run.
 - **Removed / known-blocked feeds:** Dominica News Online (`dominicanewsonline.com/feed/`,

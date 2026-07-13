@@ -85,9 +85,19 @@ export interface NewsItem {
   country: string | string[];  // "ALL" for pan-Caribbean; or country code(s)
   url: string;
   tags?: string[];
+  categoryOverride?: string;  // approved editorial category from news_unclassified.json
+  groupOverride?: string;     // derived from categoryOverride; never entered manually
 }
 
 export type NewsData = NewsItem[];
+
+export interface NewsReviewItem extends NewsItem {
+  approved: boolean;
+  category: string;           // editor fills this before setting approved: true
+  suggestedCategory: string;  // pipeline suggestion; may be blank
+  confidence: 'low' | 'medium' | 'high';
+  reason: string;
+}
 
 // ── Publications ───────────────────────────────────────────────────────────
 
