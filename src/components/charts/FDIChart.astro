@@ -148,11 +148,16 @@ const namesJSON = JSON.stringify(countryNames);
     // Dimensions
     const BAR_H  = 28;
     const BAR_G  = 7;
-    const ML     = 170;
-    const MR     = 90;
+    const W      = container.clientWidth || 760;
+    // Narrow screens can't spare 260px of fixed gutters, so shrink the country-name
+    // and value-label margins and thin the axis ticks to keep them legible.
+    const isNarrow = W < 520;
+    const ML     = isNarrow ? 108 : 170;
+    const MR     = isNarrow ? 56  : 90;
+    const nameSize  = isNarrow ? 11 : 13;
+    const tickCount = isNarrow ? 3  : 5;
     const MT     = 4;
     const MB     = 36;
-    const W      = container.clientWidth || 760;
     const H      = rows.length * (BAR_H + BAR_G) + MT + MB;
 
     container.innerHTML = '';
@@ -180,7 +185,7 @@ const namesJSON = JSON.stringify(countryNames);
     const x = d3.scaleLinear().domain([-maxAbs, maxAbs]).range([0, IW]);
 
     // Gridlines
-    x.ticks(5).forEach(t => {
+    x.ticks(tickCount).forEach(t => {
       g.append('line')
         .attr('x1', x(t)).attr('x2', x(t))
         .attr('y1', 0).attr('y2', rows.length * (BAR_H + BAR_G))
@@ -233,23 +238,31 @@ const namesJSON = JSON.stringify(countryNames);
         .attr('dy', '0.35em')
         .attr('text-anchor', 'end')
         .attr('font-family', 'var(--font-body)')
-        .attr('font-size', '13')
+        .attr('font-size', String(nameSize))
         .attr('font-weight', '500')
         .attr('fill', r.isFC ? 'var(--ink-faint)' : 'var(--ink)')
         .text(r.name);
 
-      // Value label at bar tip
-      const labelX = r.value >= 0 ? x(r.value) + 6 : x(r.value) - 6;
+      // Value label at bar tip. Default: just outside the tip (right of positive
+      // bars, left of negative bars). But a long negative bar's outside-left label
+      // would spill into the country-name gutter, so when the tip sits too close to
+      // the left edge, flip the label inside the bar (light fill for contrast).
+      const label = fmtBar(r.value);
+      const estW  = label.length * 6.5;                 // rough mono width at 11px
+      const flipInside = r.value < 0 && x(r.value) - 6 - estW < 2;
+      const labelX = r.value >= 0
+        ? x(r.value) + 6
+        : flipInside ? x(r.value) + 6 : x(r.value) - 6;
       g.append('text')
         .attr('x', labelX)
         .attr('y', yy + BAR_H / 2)
         .attr('dy', '0.35em')
-        .attr('text-anchor', r.value >= 0 ? 'start' : 'end')
+        .attr('text-anchor', r.value >= 0 || flipInside ? 'start' : 'end')
         .attr('font-family', 'var(--font-mono)')
         .attr('font-size', '11')
-        .attr('fill', 'var(--ink-faint)')
+        .attr('fill', flipInside ? 'var(--paper)' : 'var(--ink-faint)')
         .attr('opacity', 0)
-        .text(fmtBar(r.value))
+        .text(label)
         .transition().duration(D(200)).delay(D(i * 30 + 450))
         .attr('opacity', 1);
     });
@@ -270,7 +283,7 @@ const namesJSON = JSON.stringify(countryNames);
     // X axis
     g.append('g')
       .attr('transform', `translate(0, ${rows.length * (BAR_H + BAR_G) + 10})`)
-      .call(d3.axisBottom(x).ticks(5).tickFormat(fmtAxis))
+      .call(d3.axisBottom(x).ticks(tickCount).tickFormat(fmtAxis))
       .call(ax => ax.select('.domain').remove())
       .call(ax => ax.selectAll('text')
         .attr('font-family', 'var(--font-mono)')

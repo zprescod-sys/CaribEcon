@@ -76,6 +76,9 @@ const namesJSON = JSON.stringify(Object.fromEntries(getCountries().map(c => [c.c
   let currentIndicator = dataEl.dataset.indicator ?? 'gdp_growth';
   let activeCountries  = allSeries.map(s => s.country);
   const COUNTRY_NAMES: Record<string, string> = JSON.parse(dataEl.dataset.names ?? '{}');
+  // Which country the Year-in-Focus panel is currently pinned to. Null = default
+  // (first selected). Survives redraws so clicking another country row sticks.
+  let focusCountry: string | null = null;
 
   // Zero out animation durations for users who prefer reduced motion
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -393,6 +396,8 @@ const namesJSON = JSON.stringify(Object.fromEntries(getCountries().map(c => [c.c
       })
       .on('click', (event) => {
         const [mx] = d3.pointer(event);
+        // A fresh click on the chart resets to the default (first-selected) country.
+        focusCountry = null;
         openYearInFocus(nearestYear(mx), allSeries);
       });
   }
@@ -423,7 +428,7 @@ const namesJSON = JSON.stringify(Object.fromEntries(getCountries().map(c => [c.c
     return `${name} records ${fmtVal(value)} ${unit}, ranking ${rank} of ${total} Caribbean economies with available data for this selection.${direction}`;
   }
 
-  function openYearInFocus(year: number, series: IndicatorSeries[]) {
+  function openYearInFocus(year: number, series: IndicatorSeries[], focus?: string) {
     const panel  = document.getElementById('year-in-focus') as HTMLElement | null;
     const yearEl  = document.getElementById('yif-year');
     const eventEl = document.getElementById('yif-event');
@@ -437,7 +442,11 @@ const namesJSON = JSON.stringify(Object.fromEntries(getCountries().map(c => [c.c
       .map(s => ({ s, pt: s.series.find(d => d.year === year) }))
       .filter((d): d is { s: IndicatorSeries; pt: IndicatorPoint & { value: number } } => d.pt?.value !== null && d.pt?.value !== undefined)
       .sort((a, b) => b.pt.value - a.pt.value);
-    const selected = comparable.find(d => d.s.country === activeCountries[0]) ?? comparable[0];
+    // Pick the focused country: explicit arg → sticky focusCountry (if still has data)
+    // → first selected → highest-valued. Then remember it so it survives redraws.
+    const want = focus ?? focusCountry ?? activeCountries[0];
+    const selected = comparable.find(d => d.s.country === want) ?? comparable[0];
+    focusCountry = selected?.s.country ?? null;
 
     if (!selected) {
       yearEl.textContent = String(year);
@@ -482,7 +491,8 @@ const namesJSON = JSON.stringify(Object.fromEntries(getCountries().map(c => [c.c
         const color = SERIES_COLORS[s.country] ?? FALLBACK_COLORS[i % FALLBACK_COLORS.length];
         const typeTag = pt.type !== 'actual'
           ? `<span class="yif-type">${pt.type}</span>` : '';
-        return `<div class="yif-headline-item">
+        const focusedClass = s.country === selectedSeries.country ? ' is-focused' : '';
+        return `<div class="yif-headline-item${focusedClass}" data-country="${s.country}" role="button" tabindex="0" aria-pressed="${s.country === selectedSeries.country}">
           <span class="yif-dot" style="background:${color}"></span>
           <div>
             <span class="yif-country">${COUNTRY_NAMES[s.country] ?? s.country}</span>
@@ -498,9 +508,27 @@ const namesJSON = JSON.stringify(Object.fromEntries(getCountries().map(c => [c.c
   }
 
   // ── Event listeners ────────────────────────────────────────────────────
+  // Clicking (or keyboard-activating) a country row re-points the panel to it.
+  document.getElementById('yif-headlines')?.addEventListener('click', (e) => {
+    const row = (e.target as HTMLElement).closest<HTMLElement>('.yif-headline-item[data-country]');
+    if (!row) return;
+    const match = document.getElementById('yif-year')?.textContent?.match(/(\d{4})[ef]?$/);
+    if (match) openYearInFocus(Number(match[1]), allSeries, row.dataset.country);
+  });
+  document.getElementById('yif-headlines')?.addEventListener('keydown', (e) => {
+    if (e.key !== 'Enter' && e.key !== ' ') return;
+    const row = (e.target as HTMLElement).closest<HTMLElement>('.yif-headline-item[data-country]');
+    if (!row) return;
+    e.preventDefault();
+    const match = document.getElementById('yif-year')?.textContent?.match(/(\d{4})[ef]?$/);
+    if (match) openYearInFocus(Number(match[1]), allSeries, row.dataset.country);
+  });
+
   document.addEventListener('countries-changed', (e: Event) => {
     const evt = e as CustomEvent<{ countries: string[] }>;
     activeCountries = evt.detail.countries;
+    // If the pinned country was deselected, fall back to the default first-selected.
+    if (focusCountry && !activeCountries.includes(focusCountry)) focusCountry = null;
     drawChart();
     const yif = document.getElementById('year-in-focus') as HTMLElement | null;
     const match = document.getElementById('yif-year')?.textContent?.match(/(\d{4})[ef]?$/);
