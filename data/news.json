@@ -1,5 +1,282 @@
 [
   {
+    "id": "kaieteur-news-06396b04",
+    "title": "Govt. must come clean on Exxon’s cost bank balance – Opposition Leader",
+    "source": "Kaieteur News",
+    "date": "2026-07-15",
+    "country": "GY",
+    "url": "https://kaieteurnewsonline.com/2026/07/15/govt-must-come-clean-on-exxons-cost-bank-balance-opposition-leader/",
+    "tags": [
+      "news",
+      "azruddin mohamed",
+      "cost bank",
+      "exxonmobil",
+      "natural resource fund"
+    ]
+  },
+  {
+    "id": "kaieteur-news-e7595328",
+    "title": "Trump resumes Iran port blockade and threatens strikes on energy targets",
+    "source": "Kaieteur News",
+    "date": "2026-07-15",
+    "country": "GY",
+    "url": "https://kaieteurnewsonline.com/2026/07/15/trump-resumes-iran-port-blockade-and-threatens-strikes-on-energy-targets/",
+    "tags": [
+      "news",
+      "iran port blockade"
+    ]
+  },
+  {
+    "id": "kaieteur-news-210ad4b2",
+    "title": "GTE contractors can be debarred under Guyana’s procurement laws over ‘hidden info’, checking off substandard work",
+    "source": "Kaieteur News",
+    "date": "2026-07-15",
+    "country": "GY",
+    "url": "https://kaieteurnewsonline.com/2026/07/15/gte-contractors-can-be-debarred-under-guyanas-procurement-laws-over-hidden-info-checking-off-substandard-work/",
+    "tags": [
+      "news",
+      "gas-to-energy",
+      "gte contractors",
+      "procurement laws",
+      "substandard work"
+    ]
+  },
+  {
+    "id": "kaieteur-news-53f7ae3d",
+    "title": "Govt. seeks contractor to design, build bridges at Mahaica, Mahaicony & Abary",
+    "source": "Kaieteur News",
+    "date": "2026-07-15",
+    "country": "GY",
+    "url": "https://kaieteurnewsonline.com/2026/07/15/govt-seeks-contractor-to-design-build-bridges-at-mahaica-mahaicony-abary/",
+    "tags": [
+      "news",
+      "abary",
+      "bridges",
+      "mahaica",
+      "mahaicony"
+    ]
+  },
+  {
+    "id": "kaieteur-news-ecd801f2",
+    "title": "The resource curse is a disease of economics before it is a disease of institutions",
+    "source": "Kaieteur News",
+    "date": "2026-07-15",
+    "country": "GY",
+    "url": "https://kaieteurnewsonline.com/2026/07/15/the-resource-curse-is-a-disease-of-economics-before-it-is-a-disease-of-institutions/",
+    "tags": [
+      "features / columnists",
+      "peeping tom",
+      "disease of economics",
+      "disease of institutions",
+      "resource curse"
+    ]
+  },
+  {
+    "id": "kaieteur-news-b979426d",
+    "title": "Oil revenues 2025 and Guyana’s shares",
+    "source": "Kaieteur News",
+    "date": "2026-07-15",
+    "country": "GY",
+    "url": "https://kaieteurnewsonline.com/2026/07/15/oil-revenues-2025-and-guyanas-shares/",
+    "tags": [
+      "letters",
+      "exxon",
+      "guyana oil revenue",
+      "hess",
+      "oggn"
+    ]
+  },
+  {
+    "id": "guyana-chronicle-0914f4d9",
+    "title": "Health investments turning Guyana into regional medical hub",
+    "source": "Guyana Chronicle",
+    "date": "2026-07-15",
+    "country": "GY",
+    "url": "https://guyanachronicle.com/2026/07/15/health-investments-turning-guyana-into-regional-medical-hub/",
+    "tags": [
+      "news"
+    ]
+  },
+  {
+    "id": "guyana-chronicle-37a2ddd3",
+    "title": "374 Region Four rice farmers get $113M in relief subsidies",
+    "source": "Guyana Chronicle",
+    "date": "2026-07-15",
+    "country": "GY",
+    "url": "https://guyanachronicle.com/2026/07/15/374-region-four-rice-farmers-get-113m-in-relief-subsidies/",
+    "tags": [
+      "news"
+    ]
+  },
+  {
+    "id": "cnc3-a6f0b18f",
+    "title": "Privy Council reserves decision on SoE detention of senior cop, two others",
+    "source": "CNC3",
+    "date": "2026-07-15",
+    "country": "TT",
+    "url": "https://www.cnc3.co.tt/privy-council-reserves-decision-on-soe-detention-of-senior-cop-two-others/?utm_source=rss&utm_medium=rss&utm_campaign=privy-council-reserves-decision-on-soe-detention-of-senior-cop-two-others",
+    "tags": [
+      "news"
+    ]
+  },
+  {
+    "id": "cnc3-3013b604",
+    "title": "PNM rejects public financial disclosure amid Balisier House probe",
+    "source": "CNC3",
+    "date": "2026-07-15",
+    "country": "TT",
+    "url": "https://www.cnc3.co.tt/pnm-rejects-public-financial-disclosure-amid-balisier-house-probe/?utm_source=rss&utm_medium=rss&utm_campaign=pnm-rejects-public-financial-disclosure-amid-balisier-house-probe",
+    "tags": [
+      "news"
+    ]
+  },
+  {
+    "id": "barbados-today-b8e89097",
+    "title": "‘Tourism 3.0’ shift declared with hotel opening",
+    "source": "Barbados Today",
+    "date": "2026-07-15",
+    "country": "BB",
+    "url": "https://barbadostoday.bb/2026/07/14/tourism-3-0-shift-declared-with-hotel-opening/",
+    "tags": [
+      "business",
+      "local news",
+      "tourism",
+      "headline",
+      "headlines"
+    ]
+  },
+  {
+    "id": "barbados-today-98053d35",
+    "title": "Banks withhold backing as govts scramble to fix gaps, restore confidence",
+    "source": "Barbados Today",
+    "date": "2026-07-15",
+    "country": "BB",
+    "url": "https://barbadostoday.bb/2026/07/14/banks-withhold-backing-as-govts-scramble-to-fix-gaps-restore-confidence/",
+    "tags": [
+      "business",
+      "economy",
+      "local news"
+    ]
+  },
+  {
+    "id": "jamaica-observer-5e9be47a",
+    "title": "Newly formed St Lucian company to take control of Dolphin Cove",
+    "source": "Jamaica Observer",
+    "date": "2026-07-15",
+    "country": "JM",
+    "url": "https://www.jamaicaobserver.com/2026/07/15/newly-formed-st-lucian-company-take-control-dolphin-cove/",
+    "tags": [
+      "business"
+    ]
+  },
+  {
+    "id": "eyewitness-news-c2a1964b",
+    "title": "J.P. Morgan Trust Company set to unveil new Bahamas office after relocation",
+    "source": "Eyewitness News",
+    "date": "2026-07-15",
+    "country": "BS",
+    "url": "https://ewnews.com/j-p-morgan-trust-company-set-to-unveil-new-bahamas-office-after-relocation/?utm_source=rss&utm_medium=rss&utm_campaign=j-p-morgan-trust-company-set-to-unveil-new-bahamas-office-after-relocation",
+    "tags": [
+      "business",
+      "always a headline ahead",
+      "bahamas news",
+      "eyewitness news online",
+      "nassau bahamas"
+    ]
+  },
+  {
+    "id": "now-grenada-ef8d42b6",
+    "title": "Nominations open: Caricom Farmer of the Year Award",
+    "source": "NOW Grenada",
+    "date": "2026-07-15",
+    "country": "GD",
+    "url": "https://nowgrenada.com/2026/07/nominations-open-caricom-farmer-of-the-year-award/",
+    "tags": [
+      "agriculture/fisheries",
+      "business",
+      "press release",
+      "caribbean week of agriculture",
+      "caricom",
+      "farmer"
+    ]
+  },
+  {
+    "id": "now-grenada-7d73c9b6",
+    "title": "Communiqué of the 113th Meeting of the ECCB Monetary Council",
+    "source": "NOW Grenada",
+    "date": "2026-07-15",
+    "country": "GD",
+    "url": "https://www.eccb-centralbank.org/news/communique-of-the-113th-meeting-of-the-monetary-council-of-the-eastern-caribbean-central-bank#new_tab",
+    "tags": [
+      "business",
+      "external link",
+      "dominica",
+      "eastern caribbean central bank",
+      "eastern caribbean currency union",
+      "eccb"
+    ]
+  },
+  {
+    "id": "st-lucia-times-8959645f",
+    "title": "OPINION: If road safety is a productivity issue, so is insurance access",
+    "source": "St. Lucia Times",
+    "date": "2026-07-15",
+    "country": "LC",
+    "url": "https://stluciatimes.com/182043/2026/07/opinion-if-road-safety-is-a-productivity-issue-so-is-insurance-access/",
+    "tags": [
+      "headlines",
+      "opinions",
+      "car insurance",
+      "insurance reform",
+      "ncpc",
+      "productivity"
+    ]
+  },
+  {
+    "id": "antigua-news-room-d7b82912",
+    "title": "APUA Pipe Installation Works to Affect Traffic on Market Street Today",
+    "source": "Antigua News Room",
+    "date": "2026-07-15",
+    "country": "AG",
+    "url": "https://antiguanewsroom.com/apua-pipe-installation-works-to-affect-traffic-on-market-street-today/",
+    "tags": [
+      "news"
+    ]
+  },
+  {
+    "id": "antigua-observer-e57b03a8",
+    "title": "Bank Fees Erode Abandoned Account Balances",
+    "source": "Antigua Observer",
+    "date": "2026-07-15",
+    "country": "AG",
+    "url": "https://antiguaobserver.com/bank-fees-erode-abandoned-account-balances/",
+    "tags": [
+      "the big stories"
+    ]
+  },
+  {
+    "id": "cayman-compass-05562a3c",
+    "title": "Cayman’s booming property market breaks records in Q2 2026",
+    "source": "Cayman Compass",
+    "date": "2026-07-15",
+    "country": "KY",
+    "url": "https://www.caymancompass.com/2026/07/15/caymans-booming-property-market-breaks-records-in-q2-2026/",
+    "tags": [
+      "business",
+      "condos",
+      "property",
+      "provenance properties"
+    ]
+  },
+  {
+    "id": "wic-news-b35ae58f",
+    "title": "‘Investment migration isn’t shrinking, it’s growing up,’ says CS Global Partners CEO",
+    "source": "WIC News",
+    "date": "2026-07-15",
+    "country": "ALL",
+    "url": "https://wicnews.com/world/investment-migration-isnt-shrinking-its-growing-up-says-cs-global-partners-ceo"
+  },
+  {
     "id": "kaieteur-news-d6fec6a0",
     "title": "Govt. still silent on full 50% profits in Exxon deal… Guyana raked in US$1.2B from oil in 2nd quarter",
     "source": "Kaieteur News",
@@ -546,6 +823,53 @@
       "featured",
       "finance committee",
       "joey hew"
+    ]
+  },
+  {
+    "id": "st-kitts-nevis-observer-67cd06bc",
+    "title": "New Zealand:  Guidance To Increase Supermarket Competition And Help Lower Prices",
+    "source": "St. Kitts-Nevis Observer",
+    "date": "2026-07-14",
+    "country": "KN",
+    "url": "https://www.thestkittsnevisobserver.com/new-zealand-guidance-to-increase-supermarket-competition-and-help-lower-prices/",
+    "tags": [
+      "press releases",
+      "regional/international news"
+    ]
+  },
+  {
+    "id": "st-kitts-nevis-observer-33c7cb8d",
+    "title": "New Zealand:  Capital Market Reforms To Power Economic Growth",
+    "source": "St. Kitts-Nevis Observer",
+    "date": "2026-07-14",
+    "country": "KN",
+    "url": "https://www.thestkittsnevisobserver.com/new-zealand-capital-market-reforms-to-power-economic-growth/",
+    "tags": [
+      "press releases",
+      "regional/international news"
+    ]
+  },
+  {
+    "id": "st-kitts-nevis-observer-20121c66",
+    "title": "United States:  U.S.-UK Transatlantic Taskforce for the Markets Of The Future Publishes Recommendations To Promote Growth And Innovation In Capital Markets And Digital Assets",
+    "source": "St. Kitts-Nevis Observer",
+    "date": "2026-07-14",
+    "country": "KN",
+    "url": "https://www.thestkittsnevisobserver.com/united-states-u-s-uk-transatlantic-taskforce-for-the-markets-of-the-future-publishes-recommendations-to-promote-growth-and-innovation-in-capital-markets-and-digital-assets/",
+    "tags": [
+      "press releases",
+      "regional/international news"
+    ]
+  },
+  {
+    "id": "st-kitts-nevis-observer-284d3b82",
+    "title": "Nevis targets expansion of financial services sector",
+    "source": "St. Kitts-Nevis Observer",
+    "date": "2026-07-14",
+    "country": "KN",
+    "url": "https://www.thestkittsnevisobserver.com/nevis-targets-expansion-of-financial-services-sector/",
+    "tags": [
+      "local news"
     ]
   },
   {
