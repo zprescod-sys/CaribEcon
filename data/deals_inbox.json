@@ -37,5 +37,31 @@
     "url": "http://jamaica-gleaner.com/article/business/20260714/st-lucian-company-buy-majority-stake-dolphin-cove",
     "source": "Jamaica Gleaner",
     "approved": false
+  },
+  {
+    "id": "deal-de9ce100",
+    "headline": "Government exempts proposed US$800m bond issue from taxes, exchange control",
+    "parties": "",
+    "value": "",
+    "date": "2026-07-15",
+    "country": "TT",
+    "type": "",
+    "suggestedType": "Bond",
+    "url": "https://www.cnc3.co.tt/government-exempts-proposed-us800m-bond-issue-from-taxes-exchange-control/?utm_source=rss&utm_medium=rss&utm_campaign=government-exempts-proposed-us800m-bond-issue-from-taxes-exchange-control",
+    "source": "CNC3",
+    "approved": false
+  },
+  {
+    "id": "deal-d8d24625",
+    "headline": "Image Plus to pay $620m for recent acquisitions",
+    "parties": "",
+    "value": "",
+    "date": "2026-07-15",
+    "country": "JM",
+    "type": "",
+    "suggestedType": "M&A",
+    "url": "http://jamaica-gleaner.com/article/business/20260715/image-plus-pay-620m-recent-acquisitions",
+    "source": "Jamaica Gleaner",
+    "approved": false
   }
 ]

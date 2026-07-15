@@ -1,5 +1,56 @@
 [
   {
+    "id": "jamaica-gleaner-fd2e77b6",
+    "title": "Gov’t puts Silver Sands villas up for sale as Harmony Cove project stays dormant",
+    "source": "Jamaica Gleaner",
+    "date": "2026-07-15",
+    "country": "JM",
+    "url": "http://jamaica-gleaner.com/article/business/20260715/govt-puts-silver-sands-villas-sale-harmony-cove-project-stays-dormant",
+    "approved": false,
+    "category": "",
+    "suggestedCategory": "",
+    "confidence": "low",
+    "reason": "Business-feed headline contains commercial vocabulary not covered by the public classifier."
+  },
+  {
+    "id": "breaking-belize-news-6ffa9582",
+    "title": "Foreign Affairs CEO and Venezuelan Ambassador discuss strengthening bilateral cooperation",
+    "source": "Breaking Belize News",
+    "date": "2026-07-15",
+    "country": "BZ",
+    "url": "https://www.breakingbelizenews.com/2026/07/15/foreign-affairs-ceo-and-venezuelan-ambassador-discuss-strengthening-bilateral-cooperation/",
+    "tags": [
+      "community development",
+      "last news"
+    ],
+    "approved": false,
+    "category": "",
+    "suggestedCategory": "Corporate",
+    "confidence": "low",
+    "reason": "Recognized editorial edge-case vocabulary; suggested Corporate."
+  },
+  {
+    "id": "nature-isle-news-ca6d92e1",
+    "title": "VACANCY NOTICE-Chief Executive Officer/General Manager",
+    "source": "Nature Isle News",
+    "date": "2026-07-15",
+    "country": "DM",
+    "url": "https://natureisle.news/announcement/vacancy-notice-chief-executive-officer-general-manager/",
+    "tags": [
+      "announcement",
+      "government",
+      "politics",
+      "public relations",
+      "regional/international",
+      "tourism/travel"
+    ],
+    "approved": false,
+    "category": "",
+    "suggestedCategory": "Corporate",
+    "confidence": "low",
+    "reason": "Recognized editorial edge-case vocabulary; suggested Corporate."
+  },
+  {
     "id": "barbados-today-53a3006b",
     "title": "Untapped demand for Caribbean travel revealed by Barbados campaign, says TEMPO CEO",
     "source": "Barbados Today",
