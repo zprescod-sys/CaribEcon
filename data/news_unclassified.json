@@ -1,5 +1,38 @@
 [
   {
+    "id": "trinidad-express-1e4e549a",
+    "title": "SM Jaleel eyes CAL water contract",
+    "source": "Trinidad Express",
+    "date": "2026-07-16",
+    "country": "TT",
+    "url": "https://trinidadexpress.com/business/local/sm-jaleel-eyes-cal-water-contract/article_0033ef6d-0fd2-4036-a2fc-514d282cbb32.html",
+    "approved": false,
+    "category": "",
+    "suggestedCategory": "",
+    "confidence": "low",
+    "reason": "Business-feed headline contains commercial vocabulary not covered by the public classifier."
+  },
+  {
+    "id": "magnetic-media-494cefb9",
+    "title": "Ministry of Health Welcomes Appointment of New NHIB Chief Executive Officer and Highlights Progress of Organisational Transformation",
+    "source": "Magnetic Media",
+    "date": "2026-07-16",
+    "country": "TC",
+    "url": "https://magneticmediatv.com/2026/07/ministry-of-health-welcomes-appointment-of-new-nhib-chief-executive-officer-and-highlights-progress-of-organisational-transformation/",
+    "tags": [
+      "news",
+      "tci news",
+      "#magneticmedianews",
+      "#nhib",
+      "#ralphpatrick"
+    ],
+    "approved": false,
+    "category": "",
+    "suggestedCategory": "Corporate",
+    "confidence": "low",
+    "reason": "Recognized editorial edge-case vocabulary; suggested Corporate."
+  },
+  {
     "id": "jamaica-gleaner-fd2e77b6",
     "title": "Gov’t puts Silver Sands villas up for sale as Harmony Cove project stays dormant",
     "source": "Jamaica Gleaner",
