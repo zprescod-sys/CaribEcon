@@ -226,7 +226,7 @@ const briefings: Briefing[] = newsShown.map(n => {
     time: fmtDate(n.date),
     heading: n.title,
     dek: isRegional
-      ? 'Pan-Caribbean coverage — 16 economies tracked across the IMF, World Bank and ECLAC data spine.'
+      ? 'Pan-Caribbean coverage — 19 economies tracked across the IMF, World Bank and ECLAC data spine.'
       : buildDek(code, name, n.source),
     source: n.source,
     url: n.url,
@@ -268,7 +268,7 @@ const explore = [
         <div class="dashboard-preview-head">
           <div>
             <h2 id="regional-dashboard-preview-title" class="dashboard-preview-heading">Regional Dashboard Preview</h2>
-            <p class="dashboard-preview-title">A quick read on the Caribbean’s macro pulse across 16 economies.</p>
+            <p class="dashboard-preview-title">A quick read on the Caribbean’s macro pulse across 19 economies.</p>
           </div>
           {regionalPreviewUpdated && (
             <p class="dashboard-updated mono" aria-label={`Homepage data updated ${regionalPreviewUpdated}`}>
