@@ -13,8 +13,8 @@
       "oggn",
       "oil profit"
     ],
-    "approved": false,
-    "category": "",
+    "approved": true,
+    "category": "Energy",
     "suggestedCategory": "Energy",
     "confidence": "low",
     "reason": "Recognized editorial edge-case vocabulary; suggested Energy."
@@ -61,8 +61,8 @@
     "date": "2026-07-16",
     "country": "TT",
     "url": "https://trinidadexpress.com/business/local/sm-jaleel-eyes-cal-water-contract/article_0033ef6d-0fd2-4036-a2fc-514d282cbb32.html",
-    "approved": false,
-    "category": "",
+    "approved": true,
+    "category": "Macro",
     "suggestedCategory": "",
     "confidence": "low",
     "reason": "Business-feed headline contains commercial vocabulary not covered by the public classifier."
@@ -81,8 +81,8 @@
       "#nhib",
       "#ralphpatrick"
     ],
-    "approved": false,
-    "category": "",
+    "approved": true,
+    "category": "Coroporate",
     "suggestedCategory": "Corporate",
     "confidence": "low",
     "reason": "Recognized editorial edge-case vocabulary; suggested Corporate."
@@ -111,8 +111,8 @@
       "community development",
       "last news"
     ],
-    "approved": false,
-    "category": "",
+    "approved": true,
+    "category": "Macro",
     "suggestedCategory": "Corporate",
     "confidence": "low",
     "reason": "Recognized editorial edge-case vocabulary; suggested Corporate."
@@ -148,8 +148,8 @@
     "tags": [
       "local news"
     ],
-    "approved": false,
-    "category": "",
+    "approved": true,
+    "category": "Macro",
     "suggestedCategory": "Corporate",
     "confidence": "low",
     "reason": "Recognized editorial edge-case vocabulary; suggested Corporate."
