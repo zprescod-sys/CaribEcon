@@ -88,6 +88,9 @@ const COUNTRY_NAMES: Record<string, string> = {
   TC: 'Turks & Caicos',
   KY: 'Cayman Islands',
   VG: 'British Virgin Islands',
+  HT: 'Haiti',
+  AW: 'Aruba',
+  CW: 'Curaçao',
 };
 
 // Flags are local SVG assets (public/flags/<code>.svg), not emoji — emoji flags

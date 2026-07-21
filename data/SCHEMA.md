@@ -1,7 +1,8 @@
 # almanac-data.json — schema
 
-The full 24-indicator macro dataset for 16 economies (Montserrat and Anguilla are
-in scope but not yet collected — no accessible primary tier). One JSON array; each
+The full 24-indicator macro dataset for 19 economies — 17 of the 19 Caribbean
+Development Bank Borrowing Member Countries, plus Curaçao and Aruba. (Anguilla and
+Montserrat remain out of scope — ECCB/UN only, no comparable spine.) One JSON array; each
 element is one (country, indicator) record holding a time series. This is the
 *rich* hub for all data on the page. This is the master dataset for macroeconomic indicators used by charts, exports, country profiles, and future analysis features. Other indicator files should not be manually maintained unless they are generated from this file.
 
@@ -10,9 +11,10 @@ available data** — when refreshed, the full series (all years) is re-pulled fr
 current World Bank / IMF release and overwritten; historical values are NOT pinned to
 the vintage at which they were first collected. The `vintage` field on each point
 records the source release the value came from (informational), not a freeze.
-- `gdp_growth`, `inflation` → IMF WEO (`NGDP_RPCH`, `PCPIPCH`) for all IMF-member
-  countries; KY/TC/VG (non-members) stay on World Bank. TT growth stays primary (MoF).
-- `gross_govt_debt_pct_gdp`, `current_account`, `fiscal_balance` → IMF WEO.
+- `gdp_growth`, `inflation` → IMF WEO (`NGDP_RPCH`, `PCPIPCH`) for economies in WEO
+  (incl. HT, AW); KY/TC/VG/CW (not in WEO) stay on World Bank. TT growth stays primary (MoF).
+- `gross_govt_debt_pct_gdp`, `current_account`, `fiscal_balance` → IMF WEO (absent for
+  KY/TC/VG/CW, which are not in WEO; not substituted with non-comparable national bases).
 - All other spine indicators → World Bank WDI.
 - 2024 IMF points are `estimate`, 2025 `projection` (latest WEO, vintage `2026-04`).
   World Bank actuals top out at their publication frontier (typically 2024).
@@ -117,8 +119,11 @@ Local-currency level indicators are source records, not always chart-comparable 
 
 ## Country order (codes)
 
-TT, GY, BB, JM, BS, BZ, SR, GD, LC, AG, KN, DM, VC, TC, KY, VG (16 collected).
-MS (Montserrat) and AI (Anguilla) are in scope but not yet collected.
+TT, GY, BB, JM, BS, BZ, SR, GD, LC, AG, KN, DM, VC, TC, KY, VG, HT, AW, CW (19 collected).
+HT (Haiti), AW (Aruba), CW (Curaçao) added 2026-07. Haiti and Aruba are in IMF WEO
+(full comparable spine); Curaçao is not in WEO (World Bank spine only — debt%, current
+account and fiscal balance are absent, reported only union-level / current-budget by CBCS).
+MS (Montserrat) and AI (Anguilla) are out of scope (ECCB/UN only, no comparable spine).
 
 ## News, Deals & Publications feeds pipeline
 

@@ -1,6 +1,6 @@
 ---
 import Shell from '../layouts/Shell.astro';
-import { getCountries } from '../lib/dataHub';
+import { getCountries, getAllSeries } from '../lib/dataHub';
 import { geoMercator, geoPath } from 'd3-geo';
 import { feature } from 'topojson-client';
 import type { Topology, GeometryCollection } from 'topojson-specification';
@@ -8,6 +8,12 @@ import type { FeatureCollection, Geometry, Polygon } from 'geojson';
 import worldData from 'world-atlas/countries-50m.json';
 
 const countries = getCountries();
+
+// Year coverage is derived from the data, not hardcoded, so it advances automatically
+// as the weekly data refresh (see .github/workflows/data.yml) pulls newer years.
+const allYears = getAllSeries().flatMap(s => s.series.map(p => p.year));
+const minYear = Math.min(...allYears);
+const maxYear = Math.max(...allYears);
 
 type LonLat = [number, number];
 
@@ -36,6 +42,7 @@ const COVERED = new Set([
   'Barbados', 'Grenada', 'Saint Lucia', 'Antigua and Barbuda',
   'Saint Kitts and Nevis', 'Dominica', 'Saint Vincent and the Grenadines',
   'Turks and Caicos Islands', 'Cayman Islands', 'British Virgin Islands',
+  'Haiti',
 ]);
 
 // Keep only landmasses that fall inside the framed extent — drops ~200
@@ -53,6 +60,7 @@ const mapDots = ([
   [-77.3, 18.1], [-77.9, 24.6], [-73.0, 21.5], [-61.25, 10.45], [-59.55, 13.18],
   [-61.68, 12.12], [-60.98, 13.9], [-61.2, 13.25], [-61.37, 15.42], [-61.8, 17.1],
   [-62.68, 17.33], [-71.8, 21.75], [-81.25, 19.3], [-64.6, 18.42],
+  [-69.97, 12.52], [-68.99, 12.17],
 ] as LonLat[]).map(pt => { const [cx, cy] = projection(pt)!; return { cx, cy }; });
 
 // Leader-line labels for the anchor economies.
@@ -185,7 +193,7 @@ const definitions = [
               </span>
               <div>
                 <span class="fact-label mono">Years covered</span>
-                <strong>2015–2025</strong>
+                <strong>{minYear}–{maxYear}</strong>
               </div>
             </div>
             <div class="fact">
@@ -245,9 +253,10 @@ const definitions = [
           <span class="section-number mono">02</span>
           <h2>Country Coverage</h2>
           <p>
-            The current dataset covers {countries.length} Caribbean economies. Coverage
-            may vary by indicator because not every economy reports every metric on the
-            same schedule or through the same institutional channel.
+            The current dataset covers {countries.length} Caribbean economies — 17 of the
+            19 Caribbean Development Bank Borrowing Member Countries, plus Curaçao and
+            Aruba. Coverage may vary by indicator because not every economy reports every
+            metric on the same schedule or through the same institutional channel.
           </p>
           <div class="country-list">
             {countries.map(country => (

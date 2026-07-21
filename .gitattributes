@@ -11,6 +11,12 @@
 # news.json is owned by the daily CI cron — on conflict, take the incoming copy.
 data/news.json          merge=ci-data
 
+# almanac-data.json is hybrid: the comparable spine is machine-refreshed weekly (via a PR),
+# but 68 primary records are irreplaceable hand-keyed national data. On conflict keep the
+# LOCAL copy so a human's primary edits are never clobbered — the comparable spine self-heals
+# on the next weekly refresh anyway.
+data/almanac-data.json  merge=local-data
+
 # These carry human edits (approvals, summaries) — on conflict, keep the local copy.
 data/deals_inbox.json   merge=local-data
 data/deals.json         merge=local-data

@@ -62,8 +62,8 @@ function validateNewsReviewInbox(rows) {
   }
 }
 
-// The 16 country codes (mirror dataHub.ts) + ALL for pan-Caribbean.
-const COUNTRIES = new Set(['GY','TT','BB','JM','BS','BZ','SR','GD','LC','AG','KN','DM','VC','TC','KY','VG','ALL']);
+// The 19 country codes (mirror dataHub.ts) + ALL for pan-Caribbean.
+const COUNTRIES = new Set(['GY','TT','BB','JM','BS','BZ','SR','GD','LC','AG','KN','DM','VC','TC','KY','VG','HT','AW','CW','ALL']);
 
 // ── Deal detector ──────────────────────────────────────────────────────────────
 // Mine the (already finance-filtered) news set for genuine transactions and stage
