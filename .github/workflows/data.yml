@@ -1,0 +1,69 @@
+name: Refresh economic data
+
+# Weekly re-pull of the comparable macro spine (World Bank WDI + IMF WEO) into
+# data/almanac-data.json, plus a drift check of the hand-keyed primary records.
+# Unlike the news cron, this does NOT push to main — it opens a pull request so the
+# refreshed data can be reviewed before it deploys (Vercel deploys only from main).
+# World Bank / IMF update only a few times a year, so weekly is ample; workflow_dispatch
+# allows a manual run from the Actions tab.
+on:
+  schedule:
+    - cron: '0 6 * * 1'   # Mondays 06:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write        # push the automated branch
+  pull-requests: write   # open/update the PR
+
+concurrency:
+  group: data-refresh
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - run: npm ci
+
+      - name: Refresh comparable series (World Bank + IMF)
+        run: npm run data:refresh
+
+      - name: Check primary-source drift
+        run: npm run data:drift
+
+      - name: Validate dataset against schema
+        run: npm run data:validate
+
+      - name: Verify the site still builds with the new data
+        run: npm run build
+
+      - name: Open / update the review pull request
+        uses: peter-evans/create-pull-request@v6
+        with:
+          branch: automated/data-refresh
+          delete-branch: true
+          commit-message: "chore(data): weekly economic data refresh"
+          title: "chore(data): weekly economic data refresh"
+          add-paths: |
+            data/almanac-data.json
+            audit/primary-drift.md
+            audit/primary-drift.json
+          body: |
+            Automated weekly refresh of the comparable macro spine from the live
+            **World Bank WDI** and **IMF WEO DataMapper** APIs. Primary (hand-keyed
+            national-source) records are left untouched.
+
+            **Review before merging:**
+            - `data/almanac-data.json` — the refreshed comparable series (Files changed).
+            - `audit/primary-drift.md` — ⚠ primary records that now diverge from World
+              Bank / IMF and may need a manual update from the national source. These are
+              **flagged only**, never changed automatically.
+
+            Merging this PR deploys the updated data (Vercel builds from `main`). Closing
+            it discards the refresh; the next weekly run will reopen a fresh one.

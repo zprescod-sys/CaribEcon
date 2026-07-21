@@ -1,6 +1,6 @@
 ---
 import Shell from '../layouts/Shell.astro';
-import { getCountries } from '../lib/dataHub';
+import { getCountries, getAllSeries } from '../lib/dataHub';
 import { geoMercator, geoPath } from 'd3-geo';
 import { feature } from 'topojson-client';
 import type { Topology, GeometryCollection } from 'topojson-specification';
@@ -8,6 +8,12 @@ import type { FeatureCollection, Geometry, Polygon } from 'geojson';
 import worldData from 'world-atlas/countries-50m.json';
 
 const countries = getCountries();
+
+// Year coverage is derived from the data, not hardcoded, so it advances automatically
+// as the weekly data refresh (see .github/workflows/data.yml) pulls newer years.
+const allYears = getAllSeries().flatMap(s => s.series.map(p => p.year));
+const minYear = Math.min(...allYears);
+const maxYear = Math.max(...allYears);
 
 type LonLat = [number, number];
 
@@ -187,7 +193,7 @@ const definitions = [
               </span>
               <div>
                 <span class="fact-label mono">Years covered</span>
-                <strong>2015–2025</strong>
+                <strong>{minYear}–{maxYear}</strong>
               </div>
             </div>
             <div class="fact">
