@@ -1,5 +1,235 @@
 [
   {
+    "id": "kaieteur-news-153946ae",
+    "title": "‘US$12.7M MV Ma Lisha still idle’ …embattled Edghill blames shifting soil, failed Port Kaituma wharf",
+    "source": "Kaieteur News",
+    "date": "2026-07-22",
+    "country": "GY",
+    "url": "https://kaieteurnewsonline.com/2026/07/22/us12-7m-mv-ma-lisha-still-idle-embattled-edghill-blames-shifting-soil-failed-port-kaituma-wharf/",
+    "tags": [
+      "news",
+      "mv ma lisha",
+      "port kaituma wharf",
+      "shifting soil"
+    ]
+  },
+  {
+    "id": "kaieteur-news-397022fd",
+    "title": "LOCAL HERO: Veteran fisherman’s instinct locates sunken vessel, guides rescue teams to site",
+    "source": "Kaieteur News",
+    "date": "2026-07-22",
+    "country": "GY",
+    "url": "https://kaieteurnewsonline.com/2026/07/22/local-hero-veteran-fishermans-instinct-locates-sunken-vessel-guides-rescue-teams-to-site/",
+    "tags": [
+      "news",
+      "mv barima",
+      "tragedy",
+      "veteran fisherman"
+    ]
+  },
+  {
+    "id": "guyana-chronicle-e100560e",
+    "title": "VP outlines major shift towards jobs, wealth creation in hinterland communities",
+    "source": "Guyana Chronicle",
+    "date": "2026-07-22",
+    "country": "GY",
+    "url": "https://guyanachronicle.com/2026/07/22/vp-outlines-major-shift-towards-jobs-wealth-creation-in-hinterland-communities/",
+    "tags": [
+      "news"
+    ]
+  },
+  {
+    "id": "demerara-waves-82fe1717",
+    "title": "Heavy govt cargo was loaded on MV Barima; “break down” in routine inspection",
+    "source": "Demerara Waves",
+    "date": "2026-07-22",
+    "country": "GY",
+    "url": "https://demerarawaves.com/2026/07/22/heavy-govt-cargo-was-loaded-on-mv-barima-break-down-in-routine-inspection/",
+    "tags": [
+      "business",
+      "maritime",
+      "news"
+    ]
+  },
+  {
+    "id": "cnc3-773ff5f0",
+    "title": "Renita Enterprises releases final details before MV St Vincent VII disappeared",
+    "source": "CNC3",
+    "date": "2026-07-22",
+    "country": "TT",
+    "url": "https://www.cnc3.co.tt/renita-enterprises-releases-final-details-before-mv-st-vincent-vii-disappeared/?utm_source=rss&utm_medium=rss&utm_campaign=renita-enterprises-releases-final-details-before-mv-st-vincent-vii-disappeared",
+    "tags": [
+      "news"
+    ]
+  },
+  {
+    "id": "barbados-today-4eb450a7",
+    "title": "PM to employers: ‘Pay out workers first if you go bust’",
+    "source": "Barbados Today",
+    "date": "2026-07-22",
+    "country": "BB",
+    "url": "https://barbadostoday.bb/2026/07/21/pm-to-employers-pay-out-workers-first-if-you-go-bust/",
+    "tags": [
+      "local news",
+      "politics",
+      "headline",
+      "headlines"
+    ]
+  },
+  {
+    "id": "jamaica-observer-a3a266a7",
+    "title": "US$18-m fuel shield",
+    "source": "Jamaica Observer",
+    "date": "2026-07-22",
+    "country": "JM",
+    "url": "https://www.jamaicaobserver.com/2026/07/22/us18-m-fuel-shield/",
+    "tags": [
+      "business"
+    ]
+  },
+  {
+    "id": "jamaica-observer-f237ee0d",
+    "title": "Brent crude passes $92 a barrel, highest price since June amid US-Iran flare up",
+    "source": "Jamaica Observer",
+    "date": "2026-07-22",
+    "country": "JM",
+    "url": "https://www.jamaicaobserver.com/2026/07/21/brent-crude-passes-92-barrel-highest-price-since-june-amid-us-iran-flare/",
+    "tags": [
+      "international news",
+      "latest news",
+      "iran",
+      "oil",
+      "united states"
+    ]
+  },
+  {
+    "id": "jamaica-gleaner-51388499",
+    "title": "AI system hacks into another AI company on its own in ‘unprecedented cyber incident’: OpenAI",
+    "source": "Jamaica Gleaner",
+    "date": "2026-07-22",
+    "country": "JM",
+    "url": "http://jamaica-gleaner.com/article/world-news/20260721/ai-system-hacks-another-ai-company-its-own-unprecedented-cyber-incident"
+  },
+  {
+    "id": "jamaica-gleaner-d38a1e2d",
+    "title": "French energy firm secures Jamaica land for utility-scale solar and hydrogen project",
+    "source": "Jamaica Gleaner",
+    "date": "2026-07-22",
+    "country": "JM",
+    "url": "http://jamaica-gleaner.com/article/business/20260722/french-energy-firm-secures-jamaica-land-utility-scale-solar-and-hydrogen"
+  },
+  {
+    "id": "jamaica-gleaner-fd5e3486",
+    "title": "AMG profit slides amid dip in production",
+    "source": "Jamaica Gleaner",
+    "date": "2026-07-22",
+    "country": "JM",
+    "url": "http://jamaica-gleaner.com/article/business/20260722/amg-profit-slides-amid-dip-production"
+  },
+  {
+    "id": "jamaica-gleaner-6a283d37",
+    "title": "Jamaica airport traffic and revenue show signs of recovery in latest quarter",
+    "source": "Jamaica Gleaner",
+    "date": "2026-07-22",
+    "country": "JM",
+    "url": "http://jamaica-gleaner.com/article/business/20260722/jamaica-airport-traffic-and-revenue-show-signs-recovery-latest-quarter"
+  },
+  {
+    "id": "jamaica-gleaner-e1316afb",
+    "title": "AI stocks lead Wall Street higher, even as Brent oil’s price tops US$91",
+    "source": "Jamaica Gleaner",
+    "date": "2026-07-22",
+    "country": "JM",
+    "url": "http://jamaica-gleaner.com/article/business/20260722/ai-stocks-lead-wall-street-higher-even-brent-oils-price-tops-us91"
+  },
+  {
+    "id": "the-star-jamaica-8442e7f2",
+    "title": "Extreme heat threatens egg production",
+    "source": "The Star (Jamaica)",
+    "date": "2026-07-22",
+    "country": "JM",
+    "url": "https://jamaica-star.com/article/news/20260722/extreme-heat-threatens-egg-production"
+  },
+  {
+    "id": "starnieuws-89fb9ba3",
+    "title": "Rasoelbaks: Corruptie jaagt investeerders weg en vraagt om nieuwe manier van opsporen",
+    "source": "Starnieuws",
+    "date": "2026-07-22",
+    "country": "SR",
+    "url": "https://www.starnieuws.com/index.php/welcome/index/nieuwsitem/93078"
+  },
+  {
+    "id": "antigua-news-room-a76c10dd",
+    "title": "TRINIDAD: Six Crew Members of Fishing Vessel ST VINCENT VII Rescued at Sea",
+    "source": "Antigua News Room",
+    "date": "2026-07-22",
+    "country": "AG",
+    "url": "https://antiguanewsroom.com/trinidad-six-crew-members-of-fishing-vessel-st-vincent-vii-rescued-at-sea/",
+    "tags": [
+      "news"
+    ]
+  },
+  {
+    "id": "antigua-news-room-0bc4e60f",
+    "title": "Family Appeals for Public’s Help to Find Missing Vessel",
+    "source": "Antigua News Room",
+    "date": "2026-07-22",
+    "country": "AG",
+    "url": "https://antiguanewsroom.com/family-appeals-for-publics-help-to-find-missing-vessel/",
+    "tags": [
+      "news"
+    ]
+  },
+  {
+    "id": "antigua-observer-cad63c2b",
+    "title": "Minister Links National Security to Tourism, Investment and Prosperity",
+    "source": "Antigua Observer",
+    "date": "2026-07-22",
+    "country": "AG",
+    "url": "https://antiguaobserver.com/minister-links-national-security-to-tourism-investment-and-prosperity/",
+    "tags": [
+      "the big stories"
+    ]
+  },
+  {
+    "id": "antigua-observer-51be1c99",
+    "title": "Activist Urges Tourism Sector to Fund Waste Management",
+    "source": "Antigua Observer",
+    "date": "2026-07-22",
+    "country": "AG",
+    "url": "https://antiguaobserver.com/activist-urges-tourism-sector-to-fund-waste-management/",
+    "tags": [
+      "the big stories"
+    ]
+  },
+  {
+    "id": "bvi-news-f9ad6be4",
+    "title": "Start-up business hub taking shape in Huntums Ghut",
+    "source": "BVI News",
+    "date": "2026-07-22",
+    "country": "VG",
+    "url": "https://bvinews.com/start-up-business-hub-taking-shape-in-huntums-ghut/",
+    "tags": [
+      "all news"
+    ]
+  },
+  {
+    "id": "wic-news-139903ae",
+    "title": "Barbados to make payday a legal obligation under new Wages Bill",
+    "source": "WIC News",
+    "date": "2026-07-22",
+    "country": "ALL",
+    "url": "https://wicnews.com/barbados/barbados-to-make-payday-a-legal-obligation-under-new-wages-bill"
+  },
+  {
+    "id": "wic-news-9d2c4659",
+    "title": "Caribbean Airlines launches Travel Tuesday fares between Trinidad and Toronto for August",
+    "source": "WIC News",
+    "date": "2026-07-22",
+    "country": "ALL",
+    "url": "https://wicnews.com/trinidad-tobago/caribbean-airlines-launches-travel-tuesday-fares-between-trinidad-and-toronto-for-august"
+  },
+  {
     "id": "guyana-chronicle-fc38433a",
     "title": "MV Barima tragedy…Vessel located, search and rescue operation remains in effect",
     "source": "Guyana Chronicle",
@@ -454,6 +684,66 @@
     "date": "2026-07-21",
     "country": "ALL",
     "url": "https://www.caribank.org/publications-and-resources/resource-library/reports/2025-annual-procurement-report"
+  },
+  {
+    "id": "jamaica-gleaner-e8adf9a0",
+    "title": "KSAMC removes illegal signs, billboards in Corporate Area crackdown",
+    "source": "Jamaica Gleaner",
+    "date": "2026-07-21",
+    "country": "JM",
+    "url": "http://jamaica-gleaner.com/article/news/20260721/ksamc-removes-illegal-signs-billboards-corporate-area-crackdown"
+  },
+  {
+    "id": "st-kitts-nevis-observer-a1d7a506",
+    "title": "Great Britain:  Construction Begins On New Army Facilities At Tidworth And Warminster",
+    "source": "St. Kitts-Nevis Observer",
+    "date": "2026-07-21",
+    "country": "KN",
+    "url": "https://www.thestkittsnevisobserver.com/great-britain-construction-begins-on-new-army-facilities-at-tidworth-and-warminster/",
+    "tags": [
+      "press releases",
+      "regional/international news"
+    ]
+  },
+  {
+    "id": "st-kitts-nevis-observer-06fb532d",
+    "title": "United States:  Two Men Charged With $52 Million COVID-19 Tax Credit Fraud Conspiracy",
+    "source": "St. Kitts-Nevis Observer",
+    "date": "2026-07-21",
+    "country": "KN",
+    "url": "https://www.thestkittsnevisobserver.com/united-states-two-men-charged-with-52-million-covid-19-tax-credit-fraud-conspiracy/",
+    "tags": [
+      "press releases",
+      "regional/international news"
+    ]
+  },
+  {
+    "id": "st-kitts-nevis-observer-20a17019",
+    "title": "New banknotes to honour C’bean icons as Queen’s image removed",
+    "source": "St. Kitts-Nevis Observer",
+    "date": "2026-07-21",
+    "country": "KN",
+    "url": "https://www.thestkittsnevisobserver.com/new-banknotes-to-honour-cbean-icons-as-queens-image-removed/",
+    "tags": [
+      "local news",
+      "regional"
+    ]
+  },
+  {
+    "id": "magnetic-media-eb8b4900",
+    "title": "ANDY BURNHAM, NEW UK PM’S FIRST ORDER: LOWER THE COST OF LIVING",
+    "source": "Magnetic Media",
+    "date": "2026-07-21",
+    "country": "TC",
+    "url": "https://magneticmediatv.com/2026/07/andy-burnham-new-uk-pms-first-order-lower-the-cost-of-living/",
+    "tags": [
+      "news",
+      "world news",
+      "#andyburnham",
+      "#britainsnewprimeminister",
+      "#kierstarmer",
+      "#magneticmedianews"
+    ]
   },
   {
     "id": "guyana-chronicle-3a2a1802",
