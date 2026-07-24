@@ -166,6 +166,15 @@ export const NEWS_CATEGORY_GROUPS = Object.freeze({
   Infrastructure: 'Investment',
   Labor: 'Macro',
   Corporate: 'Finance',
+  // These five are LLM-classifier-only categories (src/lib/newsRubric.md) — the regex
+  // heuristic below has no rules that produce them, but they must resolve to a group so
+  // classifyHeadlinesLLM's structured-output schema (built from this object's keys) and
+  // the stored records it produces never end up with an undefined group.
+  Agriculture: 'Macro',
+  Climate: 'Macro',
+  Government: 'Macro',
+  Technology: 'Macro',
+  'Regional Developments': 'Macro',
 });
 
 // Narrow edge-case rules for the editorial inbox. These do NOT make a story public;

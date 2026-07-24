@@ -37,13 +37,13 @@ change in with a regression fixture so past decisions can't silently regress.
 - Periodic audit of recent decisions.
 
 **Files it owns / touches:**
-- **The rubric source** — the LLM system prompt. *Design note:* keep it as a versioned text/markdown
-  constant the classifier imports (e.g. `src/lib/newsRubric.md`) so tuning is a clean doc edit, not
-  a code edit buried in `newsClassifierLLM.mjs`.
+- **`src/lib/newsRubric.md`** — the rubric source, sent verbatim as the LLM system prompt.
+  Editing it changes what ships on the next feed run; no code change needed.
 - `src/lib/newsRelevance.mjs` — the heuristic **fallback**; keep its intent aligned with the rubric.
 - **Regression fixtures** — a `{title, source, tags} → expected {decision, category}` table
   (replaces the deleted `newsRelevance.test.mjs`; e.g. `src/lib/newsClassifier.fixtures.mjs`).
-- `docs/news-llm-classifier-plan.md` — the canonical rubric doc; keep in sync with the shipped prompt.
+- `docs/news-llm-classifier-plan.md` — the architecture/integration doc; it points at
+  `newsRubric.md` rather than embedding the prompt, so there's nothing to keep in sync here.
 - Reference only: `data/feeds.json` (sources + languages), `NEWS_CATEGORY_GROUPS` / `NEWS_GROUPS`
   (the fixed category vocabulary).
 
@@ -112,8 +112,6 @@ into **approve (publish)** or **reject (drop)**, and route the hard cases back i
 
 ## Open questions to refine (yours to decide)
 
-- **Where the rubric physically lives** — a standalone `src/lib/newsRubric.md` the classifier imports
-  (recommended, clean to tune) vs. an inline constant in `newsClassifierLLM.mjs`.
 - **Auto-approve threshold** in triage — approve `review` items above some confidence automatically, or
   always hold the whole queue for your eyes? (Affects how "hands-on" the skill is.)
 - **Do these stay skills, or does one graduate to a subagent** once the volume is known? Start as skills;
