@@ -367,34 +367,72 @@ output, not a sports medal"), not generic.
 | "Boat carrying tourists capsizes off Vietnam, killing 15"                            | drop     | null          | foreign disaster, no Caribbean nexus         |
 | "GIZ vacancy: Technical Advisor – Circular Economy"                                 | drop     | null          | single job-vacancy listing, not sector news  |
 
-## Deals & Investment Page Routing
+## Deals & Investment Page Routing — LLM replaces the regex detector
 
-For articles about investments, acquisitions, mergers, financing, or similar transactions, determine the status.
+**Decision (confirmed with user, 2026-07-23):** `data/deals_inbox.json` already exists and is
+already live — populated today by a regex-based deal detector in `scripts/build-feeds.mjs`
+(`isDeal()` / `inferDealType()`, ~line 68–113). The LLM classifier **replaces** that detector; it
+does not run alongside it and does not create a second, differently-shaped queue file. One
+detection path, using the schema the Deals page already reads.
 
-A transaction is **completed** if reported as closed, finalized, acquired/sold, financially closed, commissioned, or operational.
+For articles about investments, acquisitions, mergers, financing, or similar transactions,
+determine the transaction status as part of the same classification call already described above
+(no separate pass, no separate API call).
 
-If completed or operational, flag as eligible for the **Deals & Investment** page.
+A transaction is **completed** if reported as closed, finalized, acquired/sold, financially
+closed, commissioned, or operational. Do **not** flag as completed if the article describes only
+proposals, intentions, early discussions, MOUs, pending deals, approvals, financing stages, or
+non-operational projects. If status is unclear, leave it off the deals queue — the article still
+gets its normal `publish | review | drop` news decision independently.
 
-This classifier is the orechastrator for this. A separate **Deals & Investment Agent** will review, verify, extract details, check duplicates, and update the page.
-
-When an article is flagged as eligible, it must also be added to a separate JSON-style file that references these articles. This file serves as an input queue for the Deals & Investment Agent. If the file does not exist, create it.
-
-Each entry in the file should include structured fields such as:
+### Output — add to the per-item JSON shape
 
 ```json
 {
-  "article_id": "<unique_id>",
-  "title": "<article_title>",
-  "source": "<source_name>",
-  "url": "<article_url>",
-  "transaction_status": "completed",
-  "deals_page_candidate": true,
-  "timestamp": "<iso_datetime>"
+  "decision": "publish | review | drop",
+  "category": "...",
+  "confidence": "high | medium | low",
+  "reason": "...",
+  "deal_status": "completed | pending | not_a_deal"
 }
 ```
 
-Append new entries without overwriting existing ones. This file enables the Deals & Investment Agent to process, validate, and update the Deals & Investment page. In this file include the entries from data/delas_inbox.json that already exists and append from these.
+`deal_status` is evaluated on every item (cheap — one extra token or two), but only
+`"completed"` items are staged into the deals queue.
 
-Do **not** flag as completed if the article describes only proposals, intentions, early discussions, MOUs, pending deals, approvals, financing stages, or non-operational projects.
+### Queue file — reuse `data/deals_inbox.json`, existing schema, no new file
 
-If status is unclear, route to `review`.
+When `deal_status: "completed"`, append an entry to `data/deals_inbox.json` in its **existing**
+shape (`src/lib/types.ts` `DealType`, `src/components/deals/DealsFeed.astro` consumer):
+
+```json
+{
+  "id": "deal-<shortHash(url)>",
+  "headline": "<article title>",
+  "parties": "",
+  "value": "",
+  "date": "<ISO date>",
+  "country": "<country code, or best guess>",
+  "type": "",
+  "suggestedType": "<M&A | FDI | Bond | IPO | JV | Concession | Other>",
+  "url": "<article url>",
+  "source": "<source name>",
+  "approved": false
+}
+```
+
+Same fields the existing detector already leaves blank for a human to fill in (`parties`,
+`value`, `type`) stay blank here too — the LLM does not fabricate deal terms it can't verify from
+a headline. `suggestedType` is the one upgrade: the LLM's judgment call, from the `DealType`
+vocabulary above, replacing `inferDealType()`'s keyword guess. Dedupe by `id` (same
+`deal-<shortHash(url)>` scheme as today) so a re-run never double-appends. `approved` always
+starts `false` — a human still promotes to `data/deals.json` exactly as today, via the existing
+review step.
+
+### Removed
+
+`isDeal()`, `DEAL_VERB_RE`, `MONEY_RE`, `DEAL_PHRASES`, `SHARE_SIGNAL_RE`, `inferDealType()` in
+`scripts/build-feeds.mjs` are deleted once the LLM path lands — kept only as the description of
+what the LLM must judgmentally replace, not as a fallback (the heuristic fallback path for deals
+is: no key → no `deal_status` is set → nothing is staged to the deals queue that day; a human can
+still add a deal by hand as always).
