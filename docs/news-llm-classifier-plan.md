@@ -361,7 +361,7 @@ output, not a sports medal"), not generic.
 | "Antigua & Barbuda Chamber of Commerce introduces 2026 executive team"               | publish  | Corporate     | governance of an economic institution        |
 | "PNM renews call for campaign finance reform"                                        | publish  | Fiscal Policy | political-process story with a finance angle |
 | "Cayman's reinsurance association rebuts Apollo criticism"                           | publish  | Banking       | insurance-sector news                        |
-| "Is there an economic war of the United States against Cuba?"                        | review  | Macro         | economic opinion, not reporting              |
+| "Is there an economic war of the United States against Cuba?"                        | review   | Macro         | economic opinion, not reporting              |
 | "IShowSpeed and Tom Cruise join World Cup closing ceremony"                          | drop     | null          | entertainment / sport                        |
 | "Farmer crushed to death under tractor"                                              | drop     | null          | fatality, not agricultural-sector news       |
 | "Boat carrying tourists capsizes off Vietnam, killing 15"                            | drop     | null          | foreign disaster, no Caribbean nexus         |
@@ -393,7 +393,7 @@ Each entry in the file should include structured fields such as:
 }
 ```
 
-Append new entries without overwriting existing ones. This file enables the Deals & Investment Agent to process, validate, and update the Deals & Investment page.
+Append new entries without overwriting existing ones. This file enables the Deals & Investment Agent to process, validate, and update the Deals & Investment page. In this file include the entries from data/delas_inbox.json that already exists and append from these.
 
 Do **not** flag as completed if the article describes only proposals, intentions, early discussions, MOUs, pending deals, approvals, financing stages, or non-operational projects.
 
