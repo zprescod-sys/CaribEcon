@@ -87,6 +87,17 @@ export interface NewsItem {
   tags?: string[];
   categoryOverride?: string;  // approved editorial category from news_unclassified.json
   groupOverride?: string;     // derived from categoryOverride; never entered manually
+  // Stored classifier verdict — set once when an item is first ingested (by
+  // classifyHeadlinesLLM or, on fallback, the heuristic), then never recomputed.
+  // Absent on legacy records that predate this field; both the build-feeds.mjs ingest
+  // gate and the dataHub.ts render gate fall back to the live isDisplayableNews /
+  // classifyNews heuristic when it's missing.
+  category?: string | null;
+  group?: string | null;
+  decision?: 'publish' | 'review' | 'drop';
+  confidence?: 'low' | 'medium' | 'high';
+  reason?: string;
+  classifier?: 'llm' | 'heuristic';
 }
 
 export type NewsData = NewsItem[];

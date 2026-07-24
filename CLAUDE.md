@@ -1,6 +1,6 @@
 # CLAUDE.md — CaribEcon
 
-Read at the start of every session to re-ground; update **Current State** and the **Session Log** at the end. This file is the project's orientation map. Two companion docs are authoritative in their own domains — do not duplicate or contradict them here:
+Read at the start of every session to re-ground. This file is the project's orientation map. Two companion docs are authoritative in their own domains — do not duplicate or contradict them here:
 
 - **Design / visual system → `EDDESIGN.md`** — the sole authority on look: color, type, geometry, motion, components, page layout.
 - **Data schema & sourcing → `data/SCHEMA.md`** — the canonical record shape, indicator slugs, source tiers, and integrity rules.
@@ -17,7 +17,7 @@ Bar: a portfolio-grade piece for GitHub and LinkedIn — evidence of connecting 
 - **Framework:** Astro — static output, native multi-page.
 - **Charts:** D3.js, hand-built and hub-driven (never hardcoded data).
 - **Export:** SheetJS (`xlsx`) 0.18.5, dynamic-imported on demand.
-- **Hosting:** Cloudflare Pages (Phase 2: Pages Functions for server-side API keys).
+- **Hosting:** Vercel
 - **No dark mode** unless explicitly requested — no color-scheme logic.
 - All fonts and visual rules live in `EDDESIGN.md`.
 
@@ -34,27 +34,22 @@ Every page reads from one hub; no per-page hardcoded numbers.
 
 ## Pages
 
-- **Home** — daily briefing (repoints per story) + per-country key-indicators rail + regional indexed-GDP chart + Explore links + recent news. **Built.**
-- **Data** — chart explorer (country multi-select, indicator selector, year-in-focus) + CSV/XLSX export + budget pie; FDI and spending-vs-revenue views planned. **Built (V2).**
-- **News** — all Caribbean news, country filter chips. *Scaffolded.*
-- **Publications** — browsable index (title, summary, type, date, link out); host nothing. *Scaffolded.*
-- **Deals & Investment** — headline M&A / FDI list, headlines only. *Scaffolded.*
-- **Analysis** — DEFERRED client-facing builder; the hub and chart components are built so they can feed it later.
+- **Home** — daily briefing (repoints per story) + per-country key-indicators rail + regional indexed-GDP chart + Explore links + recent news.
+- **Data** — chart explorer (country multi-select, indicator selector, year-in-focus) + CSV/XLSX export + budget pie; FDI and spending-vs-revenue views planned.
+- **News** — all Caribbean news, country filter chips.
+- **Publications** — browsable index (title, summary, type, date, link out); host nothing.
+- **Deals & Investment** — headline M&A / FDI list, headlines only.
 
 ## Architecture
 
 - The front end is a pure presentation layer — it reads the hub and never calls external APIs directly.
-- Any live API keys stay server-side (Cloudflare Pages Function).
+- Any live API keys stay server-side (Vercel Function).
 - Regenerable / scratch output lives in `/data/` or `/.tmp/`.
 
 ## Coding Philosophy
 
 - Working code first; clear over clever; readable by a non-expert (a short comment on every non-trivial function).
 - Minimize dependencies; smallest effective change; avoid scope creep.
-
-## Build & Workflow
-
-- Fable 5 does most coding in VS Code; keep these MD files tight and unambiguous.
 - Verify any changed page: `node screenshot.mjs <localhost url> [label]` and read the PNG (see `docs/SCREENSHOT_WORKFLOW.md`).
 - Git: branch per feature (`feature/<page>`), commit each working increment, consolidate via PR; use Plan Mode for complex tasks.
 - **Generated data files & git.** `data/news.json` is owned by the daily CI cron. Run **`npm run news:audit`** to refresh only the selective `news_unclassified.json` review inbox; set a valid `category` + `approved: true`, then run **`npm run promote`** to validate approvals without rewriting `news.json`. Approved news is merged by `dataHub.ts` at build time. Use `npm run feeds` only for testing the full pipeline; discard its `news.json` churn with `git checkout data/news.json` before committing. As a safety net, `.gitattributes` + local merge drivers auto-resolve these files on pull (news → keep incoming CI copy; editorial inboxes → keep local human edits) so a conflict can never leave broken JSON. A fresh clone must re-run the one-time `git config` commands listed at the top of `.gitattributes`.
@@ -86,6 +81,21 @@ Every page reads from one hub; no per-page hardcoded numbers.
   basis, not IMF's fixed twice-yearly cycle, so monthly beats a fixed bimonthly schedule at
   no extra CI cost. Full sourcing rules in `data/SCHEMA.md`; see Session Log for detail
   including two deviations from the original migration plan (data-verified, not assumed).
+- **News classifier moved to an LLM (Claude Haiku 4.5), replacing the regex heuristic as
+  primary.** `scripts/build-feeds.mjs` classifies each newly-ingested headline via
+  `src/lib/newsClassifierLLM.mjs` (structured-output API call, chunked batching, rubric kept
+  in its own tunable file, `src/lib/newsRubric.md`); the verdict
+  (`decision`/`category`/`confidence`) is stored once on the record and never recomputed.
+  `newsRelevance.mjs`'s old keyword heuristic survives only as the no-key/API-down fallback.
+  Deals & Investment detection moved the same way — regex `isDeal()`/`inferDealType()`
+  replaced by the classifier's own `deal_status`/`deal_type` judgment, staged into the
+  existing `deals_inbox.json` queue unchanged. Both the publish gate (`dataHub.ts`) and the
+  category chips (`NewsFeed.astro`) trust the stored verdict, falling back to the heuristic
+  only for legacy records with none. Verified live in GitHub Actions (428 items classified
+  end-to-end; key never exposed to the browser, only ever a GitHub Actions secret); 3 rubric
+  calibration issues found in that run were fixed and locked in as regression fixtures. Cost
+  at current volume: ~$1.50–4/month. See Session Log for detail; full plan in
+  `docs/news-llm-classifier-plan.md`.
 - **Coverage expanded to 19 economies + full data health check.** Added **Haiti (HT), Aruba (AW), Curaçao (CW)** — now 17 of the 19 CDB Borrowing Member Countries plus Curaçao and Aruba (`almanac-data.json` = 284 records, 19 countries). HT/AW are in IMF WEO (full comparable spine); CW is not in WEO (World Bank spine only — debt%/current-account/fiscal absent, since CBCS reports them only union-level / current-budget, not comparably). A full source-verification health check (see `audit/claude/`) re-pulled every comparable WB/IMF series against live sources: fixed a Suriname FDI sign error (2021–24 were negative, source is positive), refreshed 184 stale points, re-mapped `confidence` (was 191 flagged defaults → now 68 primary=high / 216 verified-comparable=medium / 0 flagged), and documented all derived series (GY/JM accounting identities verified numerically). Frontend updated: `COUNTRY_NAMES`, 3 flag SVGs, `LineChart` colors, methodology map + CDB framing, "19 economies" copy, `build-feeds` country set. Open follow-ups: GY 2024 budget conversion is 4.2% off (needs source figure); Curaçao debt/CA/fiscal pending a properly-sourced CBCS/Article-IV series.
 - **Selective news editorial inbox.** `npm run news:audit` stages only plausible rejected feed items in `data/news_unclassified.json` without rewriting `news.json`. Editors assign a valid category and set `approved: true`; `npm run promote` validates, and `dataHub.ts` merges approved rows into the public feed with explicit category/group overrides.
 - **CaribEcon naming and interaction refresh.** Product naming is now CaribEcon throughout. Year in Focus is selection-aware and produces country/indicator/year context, value, regional rank, YoY change, country narratives for Guyana/T&T/Jamaica, statistical fallback copy, and point-level provenance. Deals derive their date range and separate transaction type from institutional status.
@@ -151,6 +161,30 @@ Every page reads from one hub; no per-page hardcoded numbers.
   (DataMapper)" for the comparable countries. **Out of scope** (per plan): finding F (Guyana
   2024 budget 4.2% gap, needs the real source figure), Curaçao debt/CA/fiscal (needs a sourced
   CBCS/Article-IV series), and the news-classifier WIP branch cleanup.
+- **2026-07-23** — News classifier rebuilt on Claude Haiku 4.5, replacing the regex heuristic
+  as the primary decision-maker (branch `new-news`; built step-by-step in chat with explicit
+  confirmation at each step, not auto-approved). **Classifier**
+  (`src/lib/newsClassifierLLM.mjs`) sends each newly-ingested headline to Haiku 4.5 with a
+  structured-output schema — the category `enum` is built directly from
+  `NEWS_CATEGORY_GROUPS`, so the model can't return a category the rest of the app doesn't
+  understand; chunked batching keeps `max_tokens` bounded. The editorial system prompt lives
+  in its own tunable file, `src/lib/newsRubric.md` (publish/review/drop rules, category table,
+  worked examples), not embedded in code — `thinking`/`effort` are unsupported on Haiku 4.5
+  and deliberately omitted. The old regex heuristic (`newsRelevance.mjs`) survives only as the
+  no-key/API-down fallback, never the primary path when a key is present. **Deals detection**
+  moved the same way: regex `isDeal()`/`inferDealType()` (removed from `build-feeds.mjs`)
+  replaced by the classifier's own `deal_status`/`deal_type` judgment, staged into the
+  existing `deals_inbox.json` queue unchanged. **Wiring**: `dataHub.ts`'s publish gate and
+  `NewsFeed.astro`'s category chips both now trust a record's stored `decision`/`category`
+  first, falling back to the live heuristic only for legacy records with neither — a real
+  chip-display bug here (chips silently ignoring the stored verdict) was only caught by
+  loading `/news` in a browser, not by any automated check. **Verified live**: a real GitHub
+  Actions run classified 428 new items end-to-end (secret masked in logs, key never exposed
+  to the browser); 3 rubric over-inclusion cases found in that run were fixed and locked in as
+  regression fixtures (`newsClassifier.fixtures.mjs`, 12/12 passing, no regressions). Cost at
+  current volume: ~$1.50–4/month. Full architecture in `docs/news-llm-classifier-plan.md`;
+  skills-scope notes (a `tune-news-rubric` workflow, and a scoped-but-not-yet-built
+  `triage-review-deals` skill) in `docs/news-skills-scope.md` / `docs/deals-skill-scope.md`.
 - **2026-07-17** — Data health check + coverage expansion to 19 economies (branch `analysis/data-verification`; work isolated under `audit/claude/` alongside a parallel Codex audit). (1) **Health check.** Copied the auditor to `scratchpad/claude-audit-data-health.mjs` (relaxed vintage regex to `^\d{4}(-\d{2})?$`; dropped dead `debt_to_gdp` from `pctIndicators`; output to `audit/claude/`), ran `--online` over 249 series: found 4 critical (Suriname FDI sign-flipped 2021–24 vs live WB), ~28 stale GDP-family points (BB `real_gdp` rebasing, LC, AG, GD), 134 derived-without-per-point-note flags (mostly documented at `seriesNote` level), and a 191× `flagged`-confidence collector default. No prose hallucinations (GY 63.3% narrative matches hub). Report: `audit/claude/DISCREPANCY_REPORT.md`. (2) **Fixes (approved).** Re-pulled all comparable WB/IMF → 184 points refreshed to current vintage (primary national records untouched); confidence re-mapped (verified-comparable→medium, primary→high, 0 flagged); IMF `fiscal_balance` + JM records got formula notes; GY/JM identities `total_exp=cur+cap` and `fiscal=rev−totExp` verified exactly. (3) **New countries.** HT (14 records, IMF member spine), AW (12, no WB unemployment/LFP), CW (9, WB-only — not in WEO). Curaçao debt%/current-account/fiscal left **absent** on purpose: CBCS reports them union-level (CUR+SXM) / current-budget, not comparable, and IMF Article-IV PDFs are datacenter-IP blocked. Candidate re-audited: **0 critical, 0 source mismatches**. (4) **Frontend (19).** `dataHub COUNTRY_NAMES`, `ht/aw/cw.svg` flags, `LineChart SERIES_COLORS`, `methodology.astro` (COVERED +Haiti, mapDots +Aruba/Curaçao, CDB framing), index.astro "19 economies", `build-feeds` COUNTRIES, SCHEMA.md, this file. Open: GY 2024 budget conversion 4.2% off (needs source); new-country news RSS outlets deferred; Curaçao 3 indicators pending a sourced CBCS series.
 - **2026-07-14** — Data-page interaction + mobile fixes. (1) **Year in Focus is now multi-country.** The country rows the panel already renders (`#yif-headlines`) are clickable/keyboard-activatable and re-point the whole panel — title, narrative, Value/Regional-rank/YoY, provenance badges — to that country for the same year, with a gold left-accent highlight on the pinned row (`LineChart.astro` + `YearInFocusPanel.astro` CSS). `openYearInFocus` gained an optional `focus` arg; a module-scoped `focusCountry` makes the choice sticky across `countries-changed`/`indicator-changed` redraws (falls back to first-selected if the pinned country is deselected). A fresh chart click still resets to the default first-selected country, as before. (2) **Net FDI chart is legible on mobile** (`FDIChart.astro`): margins + axis tick count are now width-aware (`isNarrow = W < 520` → `ML 108/MR 56/3 ticks/11px names` vs desktop `170/90/5 ticks/13px`), mirroring LineChart's responsive idiom. Also fixed a value-label collision: a long negative bar's tip-label used to spill into the country-name gutter, so it now flips **inside** the bar (paper fill) when the tip sits too close to the left edge — improves desktop too. Build clean (6 pages); both fixes verified via Puppeteer (clicked TT → panel repointed with rank 5 of 15; 375px FDI screenshot shows clean axis + no label overlap).
 - **2026-07-12** — Added selective `news_unclassified.json` staging, audit-only feed mode, approval validation, and data-hub merge/category overrides. Seeded the ExxonMobil deepwater edge case for editorial review and added regression coverage.
