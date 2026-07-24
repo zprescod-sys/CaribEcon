@@ -105,6 +105,52 @@ Every page reads from one hub; no per-page hardcoded numbers.
 
 ## Session Log (condensed)
 
+- **2026-07-23** — World Bank/IMF source migration (`docs/worldbank-imf-migration-plan.md`,
+  branch `feature/worldbank-imf`; done in 6 commits, one per plan part, walked through
+  step-by-step in chat rather than auto-approved). **Root cause:** the weekly `data.yml`
+  refresh was failing — the IMF DataMapper API sits behind an Akamai bot-WAF that blocks
+  GitHub-runner IPs (403/hang), and IMF terms discourage bulk automated download; WB WDI is
+  open (CC BY 4.0) and API-friendly. **Part A** — flipped `gdp_growth`/`inflation` metadata
+  for 15 countries × 2 indicators to World Bank, then ran `refresh-data.mjs` to repopulate
+  values. **Deviation 1** (caught before committing, not assumed from the plan): the plan
+  claimed 19/19 invisible coverage for all 30 records; year-by-year diffing found 4 inflation
+  series (BB, SR, KN, AW) with real WB gaps (BB missing 2020-22 actuals mid-spike, SR missing
+  2018-19, KN/AW trailing 2-6 years) — held on IMF instead, each with a `seriesNote`. Of the
+  remaining 26, 3 more lost only a bare 2025 IMF *projection* with no WB actual yet (BS
+  growth/inflation, AW growth) — flipped anyway on user sign-off, since 23/26 already had a
+  2025 WB *actual* and holding would have frozen those 3 records against ever receiving the
+  real 2025 figure. Net: 26 flipped, 4 held (41 IMF records total incl. debt/fiscal/CA).
+  **Part B** — stripped the IMF prefetch/branch from `refresh-data.mjs` and
+  `check-primary-drift.mjs` entirely (verified: 12s run, 0 `imf.org` refs, 172 refreshed + 41
+  held = 213 = exact pre-migration total); `sources.mjs` IMF helpers kept for manual
+  local top-ups only; `data.yml` cadence weekly → monthly (user's call: WB revises on a
+  rolling basis, not IMF's fixed cycle, so monthly beats bimonthly at no extra CI cost).
+  **Part C** — rewrote the methodology "relies primarily on IMF WEO" copy, SCHEMA.md sourcing
+  rules, and this file; along the way corrected two stale claims that would have contradicted
+  the new data (TT `gdp_growth` was never actually primary/MoF despite a SCHEMA line saying
+  so — schema drift, not this migration's doing; HT/AW's old "full IMF comparable spine"
+  description). **Part D** — checked all 5 records finding D named before touching anything:
+  4 already had the derivation note the plan wanted (no-op). The 5th, `BB/gross_govt_debt`,
+  was the one real gap — **deviation 2**: verified the plan's proposed formula
+  (`gross_govt_debt_pct_gdp × nominal_gdp`) numerically first and it did NOT tie out (2-9%
+  off); the actual source is CBB's own debt ratio × CBB's own GDP estimate, a different base
+  than this hub's WB-sourced `nominal_gdp` — confirmed independently via
+  `gross_govt_debt_pct_gdp`'s own `seriesNote`. Documented the correct formula instead of the
+  plan's literal text. **Part G** — normalized 4 TT WB `sourceUrl`s from the human
+  `data.worldbank.org` portal form to `api.worldbank.org` (all 4 verified returning real
+  data); live-checked all 241 unique source URLs across almanac/budgets/publications
+  (Python+urllib — `xargs` choked on this shell's env size), found 42 `imf.org` 403s
+  (bot-WAF, expected/out of scope) + 8 genuine dead links matching the audit's list exactly,
+  researched and verified a live replacement for all 8 (GY/TT/BB/BS budget pages, 2 WB
+  country reports, ECLAC Caribbean survey, CDB AR2023) — none left over. **Verification**:
+  all 6 plan checks passed — idempotent refresh (0 imf.org calls, 0 values changed on
+  re-run), drift report puts TT debt%/current-account under "not cross-checkable" as
+  intended, validator 0 errors throughout (same pre-existing BB/2020 debt-ratio warning),
+  build clean, and Puppeteer-verified the GDP Growth chart now reads "Source: World Bank —
+  World Development Indicators" while the debt chart still reads "IMF World Economic Outlook
+  (DataMapper)" for the comparable countries. **Out of scope** (per plan): finding F (Guyana
+  2024 budget 4.2% gap, needs the real source figure), Curaçao debt/CA/fiscal (needs a sourced
+  CBCS/Article-IV series), and the news-classifier WIP branch cleanup.
 - **2026-07-17** — Data health check + coverage expansion to 19 economies (branch `analysis/data-verification`; work isolated under `audit/claude/` alongside a parallel Codex audit). (1) **Health check.** Copied the auditor to `scratchpad/claude-audit-data-health.mjs` (relaxed vintage regex to `^\d{4}(-\d{2})?$`; dropped dead `debt_to_gdp` from `pctIndicators`; output to `audit/claude/`), ran `--online` over 249 series: found 4 critical (Suriname FDI sign-flipped 2021–24 vs live WB), ~28 stale GDP-family points (BB `real_gdp` rebasing, LC, AG, GD), 134 derived-without-per-point-note flags (mostly documented at `seriesNote` level), and a 191× `flagged`-confidence collector default. No prose hallucinations (GY 63.3% narrative matches hub). Report: `audit/claude/DISCREPANCY_REPORT.md`. (2) **Fixes (approved).** Re-pulled all comparable WB/IMF → 184 points refreshed to current vintage (primary national records untouched); confidence re-mapped (verified-comparable→medium, primary→high, 0 flagged); IMF `fiscal_balance` + JM records got formula notes; GY/JM identities `total_exp=cur+cap` and `fiscal=rev−totExp` verified exactly. (3) **New countries.** HT (14 records, IMF member spine), AW (12, no WB unemployment/LFP), CW (9, WB-only — not in WEO). Curaçao debt%/current-account/fiscal left **absent** on purpose: CBCS reports them union-level (CUR+SXM) / current-budget, not comparable, and IMF Article-IV PDFs are datacenter-IP blocked. Candidate re-audited: **0 critical, 0 source mismatches**. (4) **Frontend (19).** `dataHub COUNTRY_NAMES`, `ht/aw/cw.svg` flags, `LineChart SERIES_COLORS`, `methodology.astro` (COVERED +Haiti, mapDots +Aruba/Curaçao, CDB framing), index.astro "19 economies", `build-feeds` COUNTRIES, SCHEMA.md, this file. Open: GY 2024 budget conversion 4.2% off (needs source); new-country news RSS outlets deferred; Curaçao 3 indicators pending a sourced CBCS series.
 - **2026-07-14** — Data-page interaction + mobile fixes. (1) **Year in Focus is now multi-country.** The country rows the panel already renders (`#yif-headlines`) are clickable/keyboard-activatable and re-point the whole panel — title, narrative, Value/Regional-rank/YoY, provenance badges — to that country for the same year, with a gold left-accent highlight on the pinned row (`LineChart.astro` + `YearInFocusPanel.astro` CSS). `openYearInFocus` gained an optional `focus` arg; a module-scoped `focusCountry` makes the choice sticky across `countries-changed`/`indicator-changed` redraws (falls back to first-selected if the pinned country is deselected). A fresh chart click still resets to the default first-selected country, as before. (2) **Net FDI chart is legible on mobile** (`FDIChart.astro`): margins + axis tick count are now width-aware (`isNarrow = W < 520` → `ML 108/MR 56/3 ticks/11px names` vs desktop `170/90/5 ticks/13px`), mirroring LineChart's responsive idiom. Also fixed a value-label collision: a long negative bar's tip-label used to spill into the country-name gutter, so it now flips **inside** the bar (paper fill) when the tip sits too close to the left edge — improves desktop too. Build clean (6 pages); both fixes verified via Puppeteer (clicked TT → panel repointed with rank 5 of 15; 375px FDI screenshot shows clean axis + no label overlap).
 - **2026-07-12** — Added selective `news_unclassified.json` staging, audit-only feed mode, approval validation, and data-hub merge/category overrides. Seeded the ExxonMobil deepwater edge case for editorial review and added regression coverage.
