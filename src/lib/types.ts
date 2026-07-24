@@ -95,7 +95,7 @@ export interface NewsReviewItem extends NewsItem {
   approved: boolean;
   category: string;           // editor fills this before setting approved: true
   suggestedCategory: string;  // pipeline suggestion; may be blank
-  confidence: 'low' | 'weak' | 'medium' | 'high';
+  confidence: 'low' | 'medium' | 'high';
   reason: string;
 }
 

@@ -1,5 +1,223 @@
 [
   {
+    "id": "now-grenada-77c05b4f",
+    "title": "Stacey Liburd has concluded tenure as CEO at GTA",
+    "source": "NOW Grenada",
+    "date": "2026-07-23",
+    "country": "GD",
+    "url": "https://nowgrenada.com/2026/07/stacey-liburd-has-concluded-tenure-as-ceo-at-gta/",
+    "tags": [
+      "business",
+      "press release",
+      "travel/tourism",
+      "grenada tourism authority",
+      "gta",
+      "stacey liburd"
+    ],
+    "approved": false,
+    "category": "",
+    "suggestedCategory": "Corporate",
+    "confidence": "low",
+    "reason": "Recognized editorial edge-case vocabulary; suggested Corporate."
+  },
+  {
+    "id": "kaieteur-news-2de51408",
+    "title": "2026 ExxonMobil GSL\u2026  Future stars rub shoulders with international players as part of mini clinic",
+    "source": "Kaieteur News",
+    "date": "2026-07-21",
+    "country": "GY",
+    "url": "https://kaieteurnewsonline.com/2026/07/21/2026-exxonmobil-gsl-future-stars-rub-shoulders-with-international-players-as-part-of-mini-clinic/",
+    "tags": [
+      "sports"
+    ],
+    "approved": false,
+    "category": "",
+    "suggestedCategory": "Energy",
+    "confidence": "low",
+    "reason": "Recognized editorial edge-case vocabulary; suggested Energy."
+  },
+  {
+    "id": "kaieteur-news-41bdebc4",
+    "title": "Guyana a key global FPSO hotspot \u2013 Rystad report",
+    "source": "Kaieteur News",
+    "date": "2026-07-21",
+    "country": "GY",
+    "url": "https://kaieteurnewsonline.com/2026/07/21/guyana-a-key-global-fpso-hotspot-rystad-report/",
+    "tags": [
+      "news",
+      "exxonmobil",
+      "fpso",
+      "fpso one guyana",
+      "longtail",
+      "rystad energy"
+    ],
+    "approved": false,
+    "category": "",
+    "suggestedCategory": "Energy",
+    "confidence": "low",
+    "reason": "Recognized editorial edge-case vocabulary; suggested Energy."
+  },
+  {
+    "id": "now-grenada-171c4b9d",
+    "title": "GNT calls for independent review before Drill Yard demolition",
+    "source": "NOW Grenada",
+    "date": "2026-07-21",
+    "country": "GD",
+    "url": "https://nowgrenada.com/2026/07/gnt-calls-for-independent-review-before-drill-yard-demolition/",
+    "tags": [
+      "business",
+      "environment",
+      "history",
+      "alva browne",
+      "curlan campbell",
+      "davionne phillip"
+    ],
+    "approved": false,
+    "category": "",
+    "suggestedCategory": "Energy",
+    "confidence": "low",
+    "reason": "Recognized editorial edge-case vocabulary; suggested Energy."
+  },
+  {
+    "id": "kaieteur-news-c2dac7e4",
+    "title": "OGGN flags bloated costs recovered by ExxonMobil",
+    "source": "Kaieteur News",
+    "date": "2026-07-19",
+    "country": "GY",
+    "url": "https://kaieteurnewsonline.com/2026/07/19/oggn-flags-bloated-costs-recovered-by-exxonmobil/",
+    "tags": [
+      "news",
+      "bank of guyana",
+      "exxonmobil",
+      "oggn",
+      "oil profit"
+    ],
+    "approved": true,
+    "category": "Energy",
+    "suggestedCategory": "Energy",
+    "confidence": "low",
+    "reason": "Recognized editorial edge-case vocabulary; suggested Energy."
+  },
+  {
+    "id": "kaieteur-news-5ce97ce4",
+    "title": "ExxonMobil contract boat done gone ah falls",
+    "source": "Kaieteur News",
+    "date": "2026-07-18",
+    "country": "GY",
+    "url": "https://kaieteurnewsonline.com/2026/07/18/exxonmobil-contract-boat-done-gone-ah-falls/",
+    "tags": [
+      "letters",
+      "exxonmobil",
+      "oil contract",
+      "sean ori"
+    ],
+    "approved": false,
+    "category": "",
+    "suggestedCategory": "Energy",
+    "confidence": "low",
+    "reason": "Recognized editorial edge-case vocabulary; suggested Energy."
+  },
+  {
+    "id": "guyana-chronicle-d1200c33",
+    "title": "Vocational training can \u2018Turn uncertainty into direction\u2019 for Guyana\u2019s youth \u2013 BIT CEO",
+    "source": "Guyana Chronicle",
+    "date": "2026-07-17",
+    "country": "GY",
+    "url": "https://guyanachronicle.com/2026/07/17/vocational-training-can-turn-uncertainty-into-direction-for-guyanas-youth-bit-ceo/",
+    "tags": [
+      "news"
+    ],
+    "approved": false,
+    "category": "",
+    "suggestedCategory": "Corporate",
+    "confidence": "low",
+    "reason": "Recognized editorial edge-case vocabulary; suggested Corporate."
+  },
+  {
+    "id": "trinidad-express-1e4e549a",
+    "title": "SM Jaleel eyes CAL water contract",
+    "source": "Trinidad Express",
+    "date": "2026-07-16",
+    "country": "TT",
+    "url": "https://trinidadexpress.com/business/local/sm-jaleel-eyes-cal-water-contract/article_0033ef6d-0fd2-4036-a2fc-514d282cbb32.html",
+    "approved": true,
+    "category": "Macro",
+    "suggestedCategory": "",
+    "confidence": "low",
+    "reason": "Business-feed headline contains commercial vocabulary not covered by the public classifier."
+  },
+  {
+    "id": "magnetic-media-494cefb9",
+    "title": "Ministry of Health Welcomes Appointment of New NHIB Chief Executive Officer and Highlights Progress of Organisational Transformation",
+    "source": "Magnetic Media",
+    "date": "2026-07-16",
+    "country": "TC",
+    "url": "https://magneticmediatv.com/2026/07/ministry-of-health-welcomes-appointment-of-new-nhib-chief-executive-officer-and-highlights-progress-of-organisational-transformation/",
+    "tags": [
+      "news",
+      "tci news",
+      "#magneticmedianews",
+      "#nhib",
+      "#ralphpatrick"
+    ],
+    "approved": true,
+    "category": "Corporate",
+    "suggestedCategory": "Corporate",
+    "confidence": "low",
+    "reason": "Recognized editorial edge-case vocabulary; suggested Corporate."
+  },
+  {
+    "id": "jamaica-gleaner-fd2e77b6",
+    "title": "Gov\u2019t puts Silver Sands villas up for sale as Harmony Cove project stays dormant",
+    "source": "Jamaica Gleaner",
+    "date": "2026-07-15",
+    "country": "JM",
+    "url": "http://jamaica-gleaner.com/article/business/20260715/govt-puts-silver-sands-villas-sale-harmony-cove-project-stays-dormant",
+    "approved": false,
+    "category": "",
+    "suggestedCategory": "",
+    "confidence": "low",
+    "reason": "Business-feed headline contains commercial vocabulary not covered by the public classifier."
+  },
+  {
+    "id": "breaking-belize-news-6ffa9582",
+    "title": "Foreign Affairs CEO and Venezuelan Ambassador discuss strengthening bilateral cooperation",
+    "source": "Breaking Belize News",
+    "date": "2026-07-15",
+    "country": "BZ",
+    "url": "https://www.breakingbelizenews.com/2026/07/15/foreign-affairs-ceo-and-venezuelan-ambassador-discuss-strengthening-bilateral-cooperation/",
+    "tags": [
+      "community development",
+      "last news"
+    ],
+    "approved": true,
+    "category": "Macro",
+    "suggestedCategory": "Corporate",
+    "confidence": "low",
+    "reason": "Recognized editorial edge-case vocabulary; suggested Corporate."
+  },
+  {
+    "id": "nature-isle-news-ca6d92e1",
+    "title": "VACANCY NOTICE-Chief Executive Officer/General Manager",
+    "source": "Nature Isle News",
+    "date": "2026-07-15",
+    "country": "DM",
+    "url": "https://natureisle.news/announcement/vacancy-notice-chief-executive-officer-general-manager/",
+    "tags": [
+      "announcement",
+      "government",
+      "politics",
+      "public relations",
+      "regional/international",
+      "tourism/travel"
+    ],
+    "approved": false,
+    "category": "",
+    "suggestedCategory": "Corporate",
+    "confidence": "low",
+    "reason": "Recognized editorial edge-case vocabulary; suggested Corporate."
+  },
+  {
     "id": "barbados-today-53a3006b",
     "title": "Untapped demand for Caribbean travel revealed by Barbados campaign, says TEMPO CEO",
     "source": "Barbados Today",
@@ -43,7 +261,7 @@
   },
   {
     "id": "trinidad-express-a89c05c1",
-    "title": "Nestle’s review raises concern in dairy sector",
+    "title": "Nestle\u2019s review raises concern in dairy sector",
     "source": "Trinidad Express",
     "date": "2026-07-08",
     "country": "TT",
