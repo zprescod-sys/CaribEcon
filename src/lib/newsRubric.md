@@ -115,6 +115,11 @@ Send to the editor when the story is plausibly economic but you shouldn't decide
   corroborating economic action, result, or actor.
 - **Local physical-market / small-project items** — a market rehabilitation, a small grant — real
   but marginal; let the editor decide if it clears the bar.
+- **Accident/tragedy stories with only a tangential regulatory or accountability angle** — a call
+  to investigate an accident, or a body's response to a tragedy, is not itself economic just
+  because the investigating body oversees an economic sector. Only `publish` if the headline
+  states an actual economic mechanism or consequence (a fine, a rate change, a measured sector
+  loss); a bare investigation call is `review`, not `publish`.
 
 ## Geographic relevance
 
@@ -187,6 +192,13 @@ deliberate here — it is now the only judgment deciding what reaches the Deals 
 If genuinely unsure whether a transaction is `completed` vs `pending`, choose `pending` — same
 never-silently-lose-it bias as the publish/review/drop decision.
 
+**Ordinary operational news is not a deal.** A new flight route, a new store opening, a branch
+expansion, or a new service launch is routine business activity, not a capital transaction —
+`deal_status` is `not_a_deal` even when the news itself is legitimately `publish`-worthy (as
+tourism, trade, or corporate news). Reserve `completed`/`pending` for an actual
+ownership/investment/financing event: money or equity changing hands, a stake being acquired, a
+bond or share being issued, a concession being awarded.
+
 ## Output
 
 For each `id` you were given, return one object with exactly these fields — nothing else:
@@ -225,3 +237,6 @@ output, not a sports medal"), not generic.
 | "Petronas eyes final investment decision in Suriname after 8 discoveries"            | publish  | Energy        | major energy FDI decision pending             | pending     | FDI       |
 | "Dolla Financial completes acquisition of Evolve loan portfolio"                     | publish  | Banking       | closed acquisition in financial services      | completed   | M&A       |
 | "St Lucian company to buy majority stake in Dolphin Cove"                            | publish  | Investment    | proposed majority-stake purchase, not closed  | pending     | M&A       |
+| "Transparency Institute wants IMO to investigate MV Barima tragedy"                  | review   | Government    | accident-investigation call; no stated economic mechanism, only a tangential regulatory angle | not_a_deal | null |
+| "Reyme slaat alarm over vervuiling Marowijnerivier" (pollution alarm, Marowijne River) | drop    | null          | environmental alarm with no stated economic impact (no sector loss cited) | not_a_deal | null |
+| "Sunrise Airways launches new Antigua-Barbados route"                                | publish  | Tourism       | new route is legitimate tourism/trade news    | not_a_deal  | null (operational service launch, not a capital transaction) |

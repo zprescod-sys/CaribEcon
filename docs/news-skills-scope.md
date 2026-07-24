@@ -40,8 +40,10 @@ change in with a regression fixture so past decisions can't silently regress.
 - **`src/lib/newsRubric.md`** — the rubric source, sent verbatim as the LLM system prompt.
   Editing it changes what ships on the next feed run; no code change needed.
 - `src/lib/newsRelevance.mjs` — the heuristic **fallback**; keep its intent aligned with the rubric.
-- **Regression fixtures** — a `{title, source, tags} → expected {decision, category}` table
-  (replaces the deleted `newsRelevance.test.mjs`; e.g. `src/lib/newsClassifier.fixtures.mjs`).
+- **`src/lib/newsClassifier.fixtures.mjs`** — the regression fixtures: `{title, source, country}
+  → expected {decision, category?, deal_status?, deal_type?}`. Not wired into `npm test` — a
+  fixture only asserts correctly against a live, billed Haiku call, so `tune-news-rubric` dry-runs
+  it manually (see Verify below), not as an automated CI assertion.
 - `docs/news-llm-classifier-plan.md` — the architecture/integration doc; it points at
   `newsRubric.md` rather than embedding the prompt, so there's nothing to keep in sync here.
 - Reference only: `data/feeds.json` (sources + languages), `NEWS_CATEGORY_GROUPS` / `NEWS_GROUPS`
@@ -116,5 +118,37 @@ into **approve (publish)** or **reject (drop)**, and route the hard cases back i
   always hold the whole queue for your eyes? (Affects how "hands-on" the skill is.)
 - **Do these stay skills, or does one graduate to a subagent** once the volume is known? Start as skills;
   promote only if a queue genuinely gets large and recurring.
-- **Fixtures format** — revive `newsRelevance.test.mjs` as the fixtures home, or a new
-  `newsClassifier.fixtures.mjs`? (Tie to `npm run test`.)
+
+---
+
+## Example invocation — `tune-news-rubric` (until this is a real `.claude/skills/` file)
+
+Neither skill exists as an actual invokable `.claude/skills/<name>/SKILL.md` yet — this doc is
+still the plan, followed by hand. Until it's built, this is the prompt shape to type when you
+want the workflow above run against real evidence. It follows the same steps this doc already
+specifies (gather evidence → diagnose → edit the rubric minimally → add fixtures → verify), so
+copying this pattern gets you the same result whether or not a formal skill exists yet.
+
+**Real example — this is the prompt that would have triggered the 2026-07-24 fix**, after a live
+`npm run feeds` run surfaced two over-inclusion cases and one deal-detection over-trigger:
+
+> Run `tune-news-rubric`. From today's live feed run, three headlines were misclassified:
+> 1. "Transparency Institute wants IMO to investigate MV Barima tragedy" — got `publish/Government`,
+>    should be `review` (bare accident-investigation call, no stated economic mechanism).
+> 2. "Reyme slaat alarm over vervuiling Marowijnerivier" — got `publish/Climate`, should be `drop`
+>    (pollution alarm with no stated economic impact).
+> 3. "Sunrise Airways launches new Antigua-Barbados route" — got staged as a `completed/FDI` deal,
+>    should be `not_a_deal` (operational route launch, not a capital transaction; the `publish`
+>    news decision itself was already correct).
+>
+> Diagnose each against the rubric's own "judge meaning, not words" standard, make the smallest
+> rubric edit that fixes all three without narrowing anything already correct (prefer a worked
+> example over a blanket rule), add each as a fixture in `newsClassifier.fixtures.mjs`, then
+> dry-run the fixtures against the live classifier to confirm the fix — including a sample of
+> cases that must NOT regress — before treating it as done.
+
+The general template for any future case: name the specific headline(s), what they got vs. what
+they should have gotten, and why — then let the workflow's own steps (in this doc) drive the
+rest. Don't hand-write the rubric edit yourself; describing the failure precisely is the
+important part, since the model doing the tuning needs the same "judge meaning, not words"
+evidence a human editor would.
