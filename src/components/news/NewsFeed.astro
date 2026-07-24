@@ -25,16 +25,21 @@ function formatDate(d: string) {
   return new Date(d).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
 }
 
-// Classify each item once, on the server, into a macro category (card chip) + coarse
-// group (filter bar). Then order the group tabs "All" first, then only the groups that
-// actually have stories in this set — no empty tabs.
+// Category + group (card chip / filter bar), in priority order: a human-approved
+// categoryOverride wins; then the stored classifier verdict (LLM or heuristic
+// fallback, written once at ingest — see src/lib/newsClassifierLLM.mjs); only a
+// legacy record with neither falls through to a fresh classifyNews() re-derivation.
+// Then order the group tabs "All" first, then only the groups that actually have
+// stories in this set — no empty tabs.
 const items = news.map(item => {
-  const classified = classifyNews(item.title, item.tags);
-  return {
-    item,
-    category: item.categoryOverride ?? classified.category,
-    group: item.groupOverride ?? classified.group,
-  };
+  let category = item.categoryOverride ?? item.category;
+  let group = item.groupOverride ?? item.group;
+  if (category == null || group == null) {
+    const classified = classifyNews(item.title, item.tags);
+    category ??= classified.category;
+    group ??= classified.group;
+  }
+  return { item, category, group };
 });
 const presentGroups = NEWS_GROUPS.filter(g => items.some(i => i.group === g));
 const groupTabs = ['All', ...presentGroups];
