@@ -6,20 +6,33 @@ Montserrat remain out of scope — ECCB/UN only, no comparable spine.) One JSON 
 element is one (country, indicator) record holding a time series. This is the
 *rich* hub for all data on the page. This is the master dataset for macroeconomic indicators used by charts, exports, country profiles, and future analysis features. Other indicator files should not be manually maintained unless they are generated from this file.
 
-**Temporal coverage:** 2015–2025. **Comparable series always reflect the most recent
-available data** — when refreshed, the full series (all years) is re-pulled from the
-current World Bank / IMF release and overwritten; historical values are NOT pinned to
-the vintage at which they were first collected. The `vintage` field on each point
-records the source release the value came from (informational), not a freeze.
-- `gdp_growth`, `inflation` → IMF WEO (`NGDP_RPCH`, `PCPIPCH`) for economies in WEO
-  (incl. HT, AW); KY/TC/VG/CW (not in WEO) stay on World Bank. TT growth stays primary (MoF).
-- `gross_govt_debt_pct_gdp`, `current_account`, `fiscal_balance` → IMF WEO (absent for
-  KY/TC/VG/CW, which are not in WEO; not substituted with non-comparable national bases).
-- All other spine indicators → World Bank WDI.
-- 2024 IMF points are `estimate`, 2025 `projection` (latest WEO, vintage `2026-04`).
-  World Bank actuals top out at their publication frontier (typically 2024).
+**Temporal coverage:** 2015–2025. **World-Bank-sourced comparable series always reflect
+the most recent available data** — every monthly run, the full series (all years) is
+re-pulled from the current WDI release and overwritten; historical values are NOT pinned
+to the vintage at which they were first collected. IMF-sourced comparable series are
+hand-maintained (see below) and only advance when someone runs a manual top-up. The
+`vintage` field on each point records the source release the value came from
+(informational), not a freeze.
+- **The automated pipeline is World-Bank-only** (`scripts/refresh-data.mjs`,
+  `scripts/check-primary-drift.mjs`, run monthly by `.github/workflows/data.yml`). The IMF
+  DataMapper API blocks CI-runner IPs behind a bot-WAF and its terms discourage bulk
+  automated download, so nothing in CI fetches it.
+- `gdp_growth`, `inflation` → **World Bank WDI** (`NY.GDP.MKTP.KD.ZG`, `FP.CPI.TOTL.ZG`) for
+  every country **except** four inflation series where WB coverage has material gaps
+  (missing/interior years) — `BB`, `SR`, `KN`, `AW` — which stay on **IMF WEO**,
+  hand-maintained, each with a `seriesNote` explaining the gap.
+- `gross_govt_debt_pct_gdp`, `current_account`, `fiscal_balance` → **IMF WEO**, hand-maintained
+  (absent for KY/TC/VG/CW, which are not in WEO; not substituted with non-comparable
+  national bases). These, plus the four held inflation series above, are the full
+  hand-maintenance list (see the pipeline scripts' headers) — top up from the April/October
+  WEO release; nothing else needs manual attention.
+- All other spine indicators → World Bank WDI, refreshed monthly.
+- IMF-held points keep whatever `type` (`actual`/`estimate`/`projection`) and vintage they
+  had at last hand refresh — not advanced automatically. World Bank actuals top out at
+  their publication frontier (typically the current year minus one).
 - Never mix source families within one series (e.g. don't append an IMF year onto a
-  World-Bank-sourced series). Primary national series are left untouched on refresh.
+  World-Bank-sourced series, or patch a WB gap with an IMF year — flip the whole series or
+  hold it, never both). Primary national series are left untouched on refresh.
 
 ## Record shape
 
@@ -120,9 +133,11 @@ Local-currency level indicators are source records, not always chart-comparable 
 ## Country order (codes)
 
 TT, GY, BB, JM, BS, BZ, SR, GD, LC, AG, KN, DM, VC, TC, KY, VG, HT, AW, CW (19 collected).
-HT (Haiti), AW (Aruba), CW (Curaçao) added 2026-07. Haiti and Aruba are in IMF WEO
-(full comparable spine); Curaçao is not in WEO (World Bank spine only — debt%, current
-account and fiscal balance are absent, reported only union-level / current-budget by CBCS).
+HT (Haiti), AW (Aruba), CW (Curaçao) added 2026-07. Haiti and Aruba are IMF WEO members
+(debt%/current-account/fiscal-balance covered as hand-maintained records per the sourcing
+rules above; Aruba's inflation is also held on WEO). Curaçao is not in WEO at all — World
+Bank spine only; debt%, current account and fiscal balance are absent, reported only
+union-level / current-budget by CBCS.
 MS (Montserrat) and AI (Anguilla) are out of scope (ECCB/UN only, no comparable spine).
 
 ## News, Deals & Publications feeds pipeline

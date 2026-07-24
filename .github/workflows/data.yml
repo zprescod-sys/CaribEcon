@@ -1,14 +1,21 @@
 name: Refresh economic data
 
-# Weekly re-pull of the comparable macro spine (World Bank WDI + IMF WEO) into
+# Monthly re-pull of the comparable macro spine (World Bank WDI) into
 # data/almanac-data.json, plus a drift check of the hand-keyed primary records.
 # Unlike the news cron, this does NOT push to main — it opens a pull request so the
 # refreshed data can be reviewed before it deploys (Vercel deploys only from main).
-# World Bank / IMF update only a few times a year, so weekly is ample; workflow_dispatch
-# allows a manual run from the Actions tab.
+#
+# World-Bank-only: the IMF DataMapper API blocks GitHub-runner IPs behind a bot-WAF and
+# its terms discourage bulk automated pulls. The IMF-sourced records (debt, fiscal
+# balance, current account, four inflation series) are hand-maintained from the
+# April/October WEO releases — see scripts/refresh-data.mjs.
+#
+# The World Bank revises on a rolling basis rather than a fixed release calendar, so
+# monthly keeps the data current without churn; workflow_dispatch allows a manual run
+# from the Actions tab.
 on:
   schedule:
-    - cron: '0 6 * * 1'   # Mondays 06:00 UTC
+    - cron: '0 6 1 * *'   # 1st of each month, 06:00 UTC
   workflow_dispatch:
 
 permissions:
@@ -31,7 +38,7 @@ jobs:
 
       - run: npm ci
 
-      - name: Refresh comparable series (World Bank + IMF)
+      - name: Refresh comparable series (World Bank)
         run: npm run data:refresh
 
       - name: Check primary-source drift
@@ -48,22 +55,28 @@ jobs:
         with:
           branch: automated/data-refresh
           delete-branch: true
-          commit-message: "chore(data): weekly economic data refresh"
-          title: "chore(data): weekly economic data refresh"
+          commit-message: "chore(data): monthly economic data refresh"
+          title: "chore(data): monthly economic data refresh"
           add-paths: |
             data/almanac-data.json
             audit/primary-drift.md
             audit/primary-drift.json
           body: |
-            Automated weekly refresh of the comparable macro spine from the live
-            **World Bank WDI** and **IMF WEO DataMapper** APIs. Primary (hand-keyed
-            national-source) records are left untouched.
+            Automated monthly refresh of the comparable macro spine from the live
+            **World Bank WDI** API. Primary (hand-keyed national-source) records are left
+            untouched.
+
+            **Not included:** the IMF WEO series — general-government debt, fiscal balance,
+            current account, and four inflation series the World Bank does not cover
+            cleanly — are **maintained by hand** from the April/October WEO releases. The
+            IMF API blocks CI runners and its terms discourage bulk automated pulls, so
+            this pipeline never fetches it. Those records are skipped, not stale-refreshed.
 
             **Review before merging:**
             - `data/almanac-data.json` — the refreshed comparable series (Files changed).
-            - `audit/primary-drift.md` — ⚠ primary records that now diverge from World
-              Bank / IMF and may need a manual update from the national source. These are
+            - `audit/primary-drift.md` — ⚠ primary records that now diverge from the World
+              Bank and may need a manual update from the national source. These are
               **flagged only**, never changed automatically.
 
             Merging this PR deploys the updated data (Vercel builds from `main`). Closing
-            it discards the refresh; the next weekly run will reopen a fresh one.
+            it discards the refresh; the next monthly run will reopen a fresh one.

@@ -1,16 +1,22 @@
-// Cross-check hand-keyed PRIMARY records against the live World Bank / IMF comparable
-// series and report where they have drifted apart — WITHOUT changing any value.
+// Cross-check hand-keyed PRIMARY records against the live World Bank comparable series
+// and report where they have drifted apart — WITHOUT changing any value.
 // National sources (MoF / central-bank PDFs) have no API, so they can't be auto-refreshed;
-// this flags the ones worth re-checking by hand and writes a report the weekly PR carries.
+// this flags the ones worth re-checking by hand and writes a report the scheduled PR carries.
 //
-// Only indicators with a direct comparable equivalent are checked. Derived comparables
-// (fiscal_balance) and primary-only series (revenue/expenditure breakdowns, monetary_base,
-// import_cover, capital_account, gross/net debt levels, primary_balance) have no clean
-// cross-reference and are listed as "not cross-checkable" rather than falsely flagged.
+// World-Bank-only by design (see scripts/refresh-data.mjs): the IMF DataMapper API blocks
+// CI IPs and its terms discourage bulk automated pulls. Primary records whose only
+// comparable counterpart was IMF (TT gross_govt_debt_pct_gdp, TT/GY current_account) are
+// therefore reported as "not cross-checkable" — honest, since they are verified against
+// national sources by hand.
+//
+// Only indicators with a direct World Bank equivalent are checked. Primary-only series
+// (revenue/expenditure breakdowns, monetary_base, import_cover, capital_account,
+// gross/net debt levels, primary_balance, fiscal_balance) have no clean cross-reference
+// and are listed as "not cross-checkable" rather than falsely flagged.
 //
 // Run: npm run data:drift   (part of .github/workflows/data.yml)
 import fs from 'fs';
-import { ISO3, WB, rnd, prefetchIMF, prefetchWB } from './lib/sources.mjs';
+import { ISO3, WB, rnd, prefetchWB } from './lib/sources.mjs';
 
 const FILE = './data/almanac-data.json';
 const MD_OUT = './audit/primary-drift.md';
@@ -25,47 +31,37 @@ const PP_THRESHOLD = 1.0;    // percentage points, for unit === '%'
 const REL_THRESHOLD = 0.05;  // 5% relative, for level indicators
 const NEAR_ZERO = 50;        // |value| below this uses an absolute fallback (in stored unit)
 
-// Indicators we can fetch directly and compare 1:1 against a stored primary value.
-const IMF_DIRECT = { gross_govt_debt_pct_gdp: 'GGXWDG_NGDP', current_account: 'BCA' };
+// Primary indicators with no World Bank equivalent to compare against. gross_govt_debt_pct_gdp
+// and current_account are here because their only comparable source was IMF WEO, which this
+// pipeline no longer fetches.
 const NO_CROSS_REF = new Set([
   'fiscal_balance', 'primary_balance', 'gross_govt_debt', 'net_govt_debt', 'capital_account',
   'monetary_base', 'import_cover', 'govt_revenue_total', 'govt_current_expenditure',
   'govt_capital_expenditure', 'govt_total_expenditure',
+  'gross_govt_debt_pct_gdp', 'current_account',
 ]);
 
 const data = JSON.parse(fs.readFileSync(FILE, 'utf8'));
 const primary = data.filter((r) => r.sourceTier === 'primary');
 const ISO_LIST = Object.values(ISO3);
 
-// Prefetch only what the cross-check needs: the IMF direct codes, and the WB codes for
-// whichever cross-checkable indicators actually appear among the primary records.
-const IMF = await prefetchIMF([...new Set(Object.values(IMF_DIRECT))]);
+// Prefetch only what the cross-check needs: the WB codes for whichever cross-checkable
+// indicators actually appear among the primary records.
 const wbCodesNeeded = [...new Set(primary.filter((r) => WB[r.indicator]).map((r) => WB[r.indicator].code))];
 const WB_DATA = await prefetchWB(wbCodesNeeded, ISO_LIST, START_YEAR, END_YEAR);
 
-// Return the comparable series for a primary record as { year: value } in stored units,
-// or null if the indicator has no direct cross-reference.
+// Return the World Bank comparable series for a primary record as { year: value } in
+// stored units, or null if the indicator has no World Bank cross-reference.
 function comparableByYear(rec) {
   const iso = ISO3[rec.country];
   const ind = rec.indicator;
-  if (!iso) return null;
+  if (!iso || !WB[ind]) return null;
 
-  if (WB[ind]) {
-    const { code, div, round } = WB[ind];
-    const byYear = WB_DATA[code]?.[iso]?.byYear || {};
-    const out = {};
-    for (const y of Object.keys(byYear)) out[+y] = rnd(byYear[y] / div, round);
-    return out;
-  }
-  if (IMF_DIRECT[ind]) {
-    const vals = IMF[IMF_DIRECT[ind]][iso] || {};
-    const scale = ind === 'current_account' ? 1000 : 1;   // BCA US$ bn -> US$ mn
-    const round = ind === 'current_account' ? 0 : 1;
-    const out = {};
-    for (const y of Object.keys(vals)) if (+y >= START_YEAR && +y <= END_YEAR) out[+y] = rnd(vals[y] * scale, round);
-    return out;
-  }
-  return null;
+  const { code, div, round } = WB[ind];
+  const byYear = WB_DATA[code]?.[iso]?.byYear || {};
+  const out = {};
+  for (const y of Object.keys(byYear)) out[+y] = rnd(byYear[y] / div, round);
+  return out;
 }
 
 // Decide whether a stored vs comparable pair has drifted, and describe the gap.
@@ -86,7 +82,7 @@ const notCrossRef = [];  // primary records with no comparable equivalent
 const skipped = [];      // cross-checkable, but the comparable source returned no overlapping data this run
 
 for (const rec of primary) {
-  if (NO_CROSS_REF.has(rec.indicator) || (!WB[rec.indicator] && !IMF_DIRECT[rec.indicator])) {
+  if (NO_CROSS_REF.has(rec.indicator) || !WB[rec.indicator]) {
     notCrossRef.push(`${rec.country} · ${rec.indicator}`);
     continue;
   }
@@ -133,7 +129,7 @@ const fmt = (v) => (Math.abs(v) >= 1000 ? v.toLocaleString('en-US') : String(v))
 const lines = [];
 lines.push('# Primary-source drift report');
 lines.push('');
-lines.push(`Cross-checks hand-keyed **primary** records against live World Bank / IMF data (frontier ${START_YEAR}–${END_YEAR}).`);
+lines.push(`Cross-checks hand-keyed **primary** records against live World Bank WDI data (frontier ${START_YEAR}–${END_YEAR}).`);
 lines.push('These values are **not** changed automatically — this is a to-do list of national figures worth re-checking by hand.');
 lines.push('');
 lines.push(`- Primary records: **${primary.length}** · cross-checked: **${checked.length}** · **flagged: ${flagged.length}** · not cross-checkable: ${notCrossRef.length}${skipped.length ? ` · skipped (source unavailable): ${skipped.length}` : ''}`);
@@ -143,13 +139,13 @@ lines.push('');
 if (!flagged.length) {
   lines.push('✅ **No primary records drifted beyond threshold.**');
 } else {
-  lines.push('## ⚠ Flagged — primary value diverges from World Bank / IMF');
+  lines.push('## ⚠ Flagged — primary value diverges from World Bank');
   lines.push('');
   for (const f of flagged) {
     lines.push(`### ${f.country} · ${f.indicator} (${f.unit})`);
     lines.push(`Source: ${f.source}${f.sourceUrl ? ` — ${f.sourceUrl}` : ''}`);
     lines.push('');
-    lines.push('| Year | Stored (primary) | Comparable (WB/IMF) | Δ |');
+    lines.push('| Year | Stored (primary) | Comparable (World Bank) | Δ |');
     lines.push('| ---- | ---- | ---- | ---- |');
     for (const y of f.years) {
       const d = y.kind === 'pp' ? `${y.delta > 0 ? '+' : ''}${rnd(y.delta, 2)} pp` : `${y.delta > 0 ? '+' : ''}${fmt(rnd(y.delta, 1))} (${rnd(y.rel * 100, 1)}%)`;
@@ -162,7 +158,7 @@ if (!flagged.length) {
 if (skipped.length) {
   lines.push('## Skipped this run (comparable source unavailable)');
   lines.push('');
-  lines.push('The World Bank / IMF series for these could not be fetched this run (e.g. a rate-limited or failed request), so they were **not** checked — not confirmed clean. They will be re-checked next run:');
+  lines.push('The World Bank series for these could not be fetched this run (e.g. a rate-limited or failed request), so they were **not** checked — not confirmed clean. They will be re-checked next run:');
   lines.push('');
   lines.push(skipped.map((s) => `- ${s}`).join('\n'));
   lines.push('');
@@ -171,7 +167,7 @@ if (skipped.length) {
 if (notCrossRef.length) {
   lines.push('## Not cross-checkable (no comparable equivalent)');
   lines.push('');
-  lines.push('These primary series have no clean World Bank / IMF counterpart, so they can only be verified against the national source manually:');
+  lines.push('These primary series have no clean World Bank counterpart, so they can only be verified against the national source manually. (Debt-ratio and current-account series previously cross-checked against IMF WEO are included here: the pipeline no longer fetches the IMF, so they are confirmed by hand against the national source.)');
   lines.push('');
   lines.push(notCrossRef.map((s) => `- ${s}`).join('\n'));
   lines.push('');
