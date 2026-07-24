@@ -15375,42 +15375,42 @@
         "value": 12502.7,
         "type": "derived",
         "vintage": "2025",
-        "sourceNote": "CBB reports debt as % of its own GDP estimate; nominal_gdp uses World Bank WDI — different GDP base accounts for the divergence. CBB figure is primary and used as gross_govt_debt_pct_gdp."
+        "sourceNote": "Derived: Central Bank of Barbados AR2024 Table 1 gross public-sector debt %GDP x CBB's own nominal GDP estimate / 100 -- CBB's own figures, not this hub's stored gross_govt_debt_pct_gdp (IMF WEO) or nominal_gdp (World Bank) records, which use a different GDP base (see gross_govt_debt_pct_gdp seriesNote, e.g. CBB 103% vs IMF 98.9% for 2024)."
       },
       {
         "year": 2020,
         "value": 12817.5,
         "type": "derived",
         "vintage": "2025",
-        "sourceNote": "CBB reports debt as % of its own GDP estimate; nominal_gdp uses World Bank WDI — different GDP base accounts for the divergence. CBB figure is primary and used as gross_govt_debt_pct_gdp."
+        "sourceNote": "Derived: Central Bank of Barbados AR2024 Table 1 gross public-sector debt %GDP x CBB's own nominal GDP estimate / 100 -- CBB's own figures, not this hub's stored gross_govt_debt_pct_gdp (IMF WEO) or nominal_gdp (World Bank) records, which use a different GDP base (see gross_govt_debt_pct_gdp seriesNote, e.g. CBB 103% vs IMF 98.9% for 2024)."
       },
       {
         "year": 2021,
         "value": 13356.9,
         "type": "derived",
         "vintage": "2025",
-        "sourceNote": "CBB reports debt as % of its own GDP estimate; nominal_gdp uses World Bank WDI — different GDP base accounts for the divergence. CBB figure is primary and used as gross_govt_debt_pct_gdp."
+        "sourceNote": "Derived: Central Bank of Barbados AR2024 Table 1 gross public-sector debt %GDP x CBB's own nominal GDP estimate / 100 -- CBB's own figures, not this hub's stored gross_govt_debt_pct_gdp (IMF WEO) or nominal_gdp (World Bank) records, which use a different GDP base (see gross_govt_debt_pct_gdp seriesNote, e.g. CBB 103% vs IMF 98.9% for 2024)."
       },
       {
         "year": 2022,
         "value": 14053.9,
         "type": "derived",
         "vintage": "2025",
-        "sourceNote": "CBB reports debt as % of its own GDP estimate; nominal_gdp uses World Bank WDI — different GDP base accounts for the divergence. CBB figure is primary and used as gross_govt_debt_pct_gdp."
+        "sourceNote": "Derived: Central Bank of Barbados AR2024 Table 1 gross public-sector debt %GDP x CBB's own nominal GDP estimate / 100 -- CBB's own figures, not this hub's stored gross_govt_debt_pct_gdp (IMF WEO) or nominal_gdp (World Bank) records, which use a different GDP base (see gross_govt_debt_pct_gdp seriesNote, e.g. CBB 103% vs IMF 98.9% for 2024)."
       },
       {
         "year": 2023,
         "value": 14758.8,
         "type": "derived",
         "vintage": "2025",
-        "sourceNote": "CBB reports debt as % of its own GDP estimate; nominal_gdp uses World Bank WDI — different GDP base accounts for the divergence. CBB figure is primary and used as gross_govt_debt_pct_gdp."
+        "sourceNote": "Derived: Central Bank of Barbados AR2024 Table 1 gross public-sector debt %GDP x CBB's own nominal GDP estimate / 100 -- CBB's own figures, not this hub's stored gross_govt_debt_pct_gdp (IMF WEO) or nominal_gdp (World Bank) records, which use a different GDP base (see gross_govt_debt_pct_gdp seriesNote, e.g. CBB 103% vs IMF 98.9% for 2024)."
       },
       {
         "year": 2024,
         "value": 14764.5,
         "type": "derived",
         "vintage": "2025",
-        "sourceNote": "103.0% × Bds$14334.5mn GDP"
+        "sourceNote": "Derived: Central Bank of Barbados AR2024 Table 1 gross public-sector debt %GDP x CBB's own nominal GDP estimate / 100 -- here 103.0% x Bds$14,334.5mn GDP -- CBB's own figures, not this hub's stored gross_govt_debt_pct_gdp (IMF WEO) or nominal_gdp (World Bank) records, which use a different GDP base (see gross_govt_debt_pct_gdp seriesNote, e.g. CBB 103% vs IMF 98.9% for 2024)."
       }
     ]
   },
