@@ -1,0 +1,92 @@
+{
+  "generatedAt": "2026-07-17T21:10:09.386Z",
+  "online": false,
+  "scope": {
+    "rendered": [
+      "almanac-data.json",
+      "indicator-meta.json",
+      "budgets.json",
+      "news.json",
+      "news_unclassified.json",
+      "publications.json",
+      "deals.json"
+    ],
+    "pipelineInputs": [
+      "feeds.json",
+      "pub_inbox.json",
+      "deals_inbox.json"
+    ]
+  },
+  "summary": {
+    "datasets": 10,
+    "countries": 19,
+    "indicators": 24,
+    "almanacSeries": 284,
+    "almanacPoints": 2745,
+    "severityCounts": {
+      "critical": 0,
+      "high": 1,
+      "medium": 1,
+      "low": 0
+    },
+    "onlineSummary": {
+      "attempted": 0,
+      "fetched": 0,
+      "unavailable": 0,
+      "sourceValuesCompared": 0,
+      "sourceValueMismatches": 0
+    }
+  },
+  "checks": {
+    "almanac-data.json": {
+      "records": 284
+    },
+    "indicator-meta.json": {
+      "records": 24
+    },
+    "budgets.json": {
+      "records": 6
+    },
+    "news.json": {
+      "records": 519
+    },
+    "news_unclassified.json": {
+      "records": 7
+    },
+    "publications.json": {
+      "records": 8
+    },
+    "deals.json": {
+      "records": 17
+    },
+    "feeds.json": {
+      "records": 33
+    },
+    "pub_inbox.json": {
+      "records": 0
+    },
+    "deals_inbox.json": {
+      "records": 3
+    }
+  },
+  "issues": [
+    {
+      "severity": "medium",
+      "dataset": "almanac-data.json",
+      "code": "debt_ratio_divergence",
+      "message": "BB/2020: calculated 118.6% vs stored 129.6%",
+      "country": "BB",
+      "year": 2020,
+      "deltaPercentagePoints": 10.99
+    },
+    {
+      "severity": "high",
+      "dataset": "budgets.json",
+      "code": "conversion_mismatch",
+      "message": "GY/2024: originalTotal × exchangeRate = 5459.72, totalUSD = 5242",
+      "row": 1,
+      "relativeDelta": 0.0415
+    }
+  ],
+  "evidence": []
+}
