@@ -31,5 +31,11 @@
     "@types/topojson-client": "^3.1.5",
     "puppeteer": "^25.1.0",
     "typescript": "^5.0.0"
+  },
+  "allowScripts": {
+    "esbuild@0.27.7": true,
+    "esbuild@0.25.12": true,
+    "puppeteer@25.1.0": true,
+    "sharp@0.34.5": true
   }
 }
