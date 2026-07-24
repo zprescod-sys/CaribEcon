@@ -21,6 +21,40 @@ records the source release the value came from (informational), not a freeze.
 - Never mix source families within one series (e.g. don't append an IMF year onto a
   World-Bank-sourced series). Primary national series are left untouched on refresh.
 
+### Automated refresh (World Bank / IMF cron → pull request)
+
+`.github/workflows/data.yml` runs **weekly** (Mon 06:00 UTC; also `workflow_dispatch`) and,
+unlike the news cron, **opens a pull request instead of pushing to `main`** — the refreshed
+data is reviewed before it deploys (Vercel builds from `main`). Steps: `npm run data:refresh`
+→ `npm run data:drift` → `npm run data:validate` → `npm run build` → open/update the
+`automated/data-refresh` PR via `peter-evans/create-pull-request`.
+
+- **`scripts/refresh-data.mjs`** re-pulls every `comparable` record from the live WB WDI /
+  IMF WEO APIs and overwrites its series. `primary` records are never touched. A source that
+  returns nothing (or fails after retries) keeps the existing series — never wiped to empty.
+  The year frontier is **dynamic**: `START_YEAR = 2015`, `END_YEAR = current calendar year`,
+  so new published years appear automatically (WB stays at its actual frontier; IMF adds
+  projection years). Codes, units, and the 19-country ISO3 map live in
+  **`scripts/lib/sources.mjs`** (shared with the drift check so they can't diverge).
+- **`type`/`vintage` heuristics** (documented, because the DataMapper API exposes neither):
+  IMF `type` by frontier — `year ≤ END_YEAR−2` = actual, `= END_YEAR−1` = estimate,
+  `≥ END_YEAR` = projection; IMF `vintage` by run month → WEO release (Apr–Sep → `YYYY-04`,
+  Oct–Dec → `YYYY-10`, Jan–Mar → prior `YYYY-10`). WB points are `actual` with `vintage`
+  from the series' `lastupdated`.
+- **`scripts/check-primary-drift.mjs`** cross-checks each hand-keyed `primary` record that
+  has a direct WB/IMF equivalent against the live comparable value and writes
+  `audit/primary-drift.{md,json}` — a **flag-only** to-do list (never mutates the data) of
+  national figures that have drifted beyond threshold (>1pp for %-unit, >5% relative for
+  levels) and should be re-checked by hand. Derived (`fiscal_balance`) and primary-only
+  series (revenue/expenditure, `monetary_base`, debt levels, etc.) have no clean
+  cross-reference and are listed as "not cross-checkable" rather than falsely flagged.
+- **`scripts/validate-data.mjs`** enforces the schema (19 countries, dynamic year bound,
+  tier/type/vintage rules + the debt cross-check) and exits non-zero on any error, so a bad
+  refresh fails the workflow instead of proposing a corrupt dataset.
+- **Merge safety:** `data/almanac-data.json` is `merge=local-data` in `.gitattributes` — on a
+  conflict the local (human-edited) copy wins, protecting hand-keyed primary edits; the
+  comparable spine self-heals on the next weekly run.
+
 ## Record shape
 
 ```json

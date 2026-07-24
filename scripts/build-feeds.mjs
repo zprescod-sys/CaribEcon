@@ -175,13 +175,18 @@ const writeJSON = (path, data) => fs.writeFileSync(path, JSON.stringify(data, nu
 // ── News ─────────────────────────────────────────────────────────────────────
 async function buildNews({ auditOnly = false } = {}) {
   const feeds = readJSON('./data/feeds.json', []);
+  // Fail fast on editorial-data mistakes before spending time and requests fetching
+  // every feed. These rows are merged again after the full archive is assessed.
+  const existingReview = readJSON('./data/news_unclassified.json', []);
+  validateNewsReviewInbox(existingReview);
   const fetched = [];
-  const reviewCandidates = [];
+  const fetchedReviewContext = new Map();
 
   for (const feed of feeds) {
     try {
       const xml = await fetchFeed(feed.url, feed.insecureTLS);
       const parsed = await parser.parseString(xml);
+      const businessFeed = /(?:category\/business|feed\/business|[?&]c=business)/i.test(feed.url);
       let added = 0, skipped = 0;
       for (const item of (parsed.items ?? [])) {
         const url = (item.link || item.guid || '').trim();
@@ -199,21 +204,10 @@ async function buildNews({ auditOnly = false } = {}) {
           date, country: feed.country, url, ...(tags.length ? { tags } : {}),
         };
         fetched.push(record);
-
-        // Business-specific feeds are useful context, but never sufficient by
-        // themselves: getNewsReviewDecision still requires credible edge vocabulary.
-        const businessFeed = /(?:category\/business|feed\/business|[?&]c=business)/i.test(feed.url);
-        const review = getNewsReviewDecision(title, tags, { businessFeed });
-        if (review.candidate) {
-          reviewCandidates.push({
-            ...record,
-            approved: false,
-            category: '',
-            suggestedCategory: review.suggestedCategory,
-            confidence: review.confidence,
-            reason: review.reason,
-          });
-        }
+        const previousContext = fetchedReviewContext.get(record.id);
+        fetchedReviewContext.set(record.id, {
+          businessFeed: Boolean(previousContext?.businessFeed || businessFeed),
+        });
         added++;
       }
       log(`  ✓ ${feed.source} (${feed.country}) — ${added} items${skipped ? `, ${skipped} skipped` : ''}`);
@@ -224,11 +218,38 @@ async function buildNews({ auditOnly = false } = {}) {
 
   const cutoff = new Date(Date.now() - NEWS_WINDOW_DAYS * 864e5).toISOString().slice(0, 10);
 
+  // Assess the union, not only the newest RSS window. This is the migration safety
+  // property: when policy changes, an older medium story reaches review before it can
+  // disappear from the public archive.
+  const existing = readJSON('./data/news.json', []);
+  const byId = new Map();
+  for (const it of existing) byId.set(it.id ?? newsId(it.source, it.url), it);
+  let net = 0;
+  for (const it of fetched) if (!byId.has(it.id)) { byId.set(it.id, it); net++; }
+  const inWindow = [...byId.values()].filter(it => it.date >= cutoff);
+
+  const reviewCandidates = [];
+  for (const record of inWindow) {
+    const review = getNewsReviewDecision(
+      record.title,
+      record.tags ?? [],
+      fetchedReviewContext.get(record.id) ?? {},
+    );
+    if (!review.candidate) continue;
+    reviewCandidates.push({
+      ...record,
+      approved: false,
+      category: '',
+      suggestedCategory: review.suggestedCategory,
+      confidence: review.confidence,
+      reason: review.reason,
+    });
+  }
+
   // Stage plausible rejected stories non-destructively. Refresh machine-owned feed
   // metadata and suggestions, but preserve the two editor-owned fields (category and
   // approval). Old unapproved rows age out with the news window; approved rows remain
   // until an editor removes them.
-  const existingReview = readJSON('./data/news_unclassified.json', []);
   const reviewById = new Map(existingReview.map(row => [row.id, row]));
   const fetchedIds = new Set(fetched.map(row => row.id));
   const currentCandidateIds = new Set(reviewCandidates.map(row => row.id));
@@ -261,21 +282,13 @@ async function buildNews({ auditOnly = false } = {}) {
   // rewrite the CI-owned public archive or touch deals/publications.
   if (auditOnly) return;
 
-  // Merge with the existing store (union by id — keep whichever copy we already had,
-  // so previously-captured items survive after they leave the source feed).
-  const existing = readJSON('./data/news.json', []);
-  const byId = new Map();
-  for (const it of existing) byId.set(it.id ?? newsId(it.source, it.url), it);
-  let net = 0;
-  for (const it of fetched) if (!byId.has(it.id)) { byId.set(it.id, it); net++; }
-
   // Keep the full financial/economic archive within the time window (so /news can
   // paginate all of it); window -> finance filter -> sort newest-first -> safety bound.
   // The finance filter is applied to the whole union so items saved before the filter
   // existed are cleaned out too.
   const byDateDesc = (a, b) => (a.date < b.date ? 1 : a.date > b.date ? -1 : 0);
-  const merged = [...byId.values()]
-    .filter(it => it.date >= cutoff && isFinancial(it.title, it.tags ?? []))
+  const merged = inWindow
+    .filter(it => isFinancial(it.title, it.tags ?? []))
     .sort(byDateDesc)
     .slice(0, NEWS_MAX);
 

@@ -9,8 +9,8 @@
     "tags": [
       "local news"
     ],
-    "approved": false,
-    "category": "",
+    "approved": true,
+    "category": "Macro",
     "suggestedCategory": "Corporate",
     "confidence": "low",
     "reason": "Recognized editorial edge-case vocabulary; suggested Corporate."
@@ -61,8 +61,8 @@
     "date": "2026-07-08",
     "country": "ALL",
     "url": "https://www.caribank.org/evaluations-resources/annual-report-evaluation-2025",
-    "approved": false,
-    "category": "",
+    "approved": true,
+    "category": "Macro",
     "suggestedCategory": "Corporate",
     "confidence": "low",
     "reason": "Recognized editorial edge-case vocabulary; suggested Corporate."
@@ -95,8 +95,8 @@
       "wastewater",
       "water and sewerage authority"
     ],
-    "approved": false,
-    "category": "",
+    "approved": true,
+    "category": "Corporate",
     "suggestedCategory": "Corporate",
     "confidence": "low",
     "reason": "Business-feed headline contains commercial vocabulary not covered by the public classifier."

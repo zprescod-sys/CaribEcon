@@ -1,0 +1,1774 @@
+{
+  "refreshedComparable": [
+    "TT/gdp_growth",
+    "TT/inflation",
+    "TT/fdi",
+    "GY/nominal_gdp",
+    "GY/real_gdp",
+    "GY/gdp_growth",
+    "GY/gdp_per_capita",
+    "GY/gross_govt_debt_pct_gdp",
+    "GY/population",
+    "GY/inflation",
+    "GY/fx_rate_usd",
+    "GY/unemployment",
+    "GY/labour_participation",
+    "GY/dependency_ratio",
+    "GY/fdi",
+    "BB/nominal_gdp",
+    "BB/real_gdp",
+    "BB/gdp_growth",
+    "BB/gdp_per_capita",
+    "BB/gross_govt_debt_pct_gdp",
+    "BB/population",
+    "BB/inflation",
+    "BB/fx_rate_usd",
+    "BB/unemployment",
+    "BB/labour_participation",
+    "BB/dependency_ratio",
+    "BB/fdi",
+    "JM/nominal_gdp",
+    "JM/real_gdp",
+    "JM/gdp_growth",
+    "JM/gdp_per_capita",
+    "JM/gross_govt_debt_pct_gdp",
+    "JM/population",
+    "JM/inflation",
+    "JM/fx_rate_usd",
+    "JM/unemployment",
+    "JM/labour_participation",
+    "JM/dependency_ratio",
+    "JM/fdi",
+    "BS/nominal_gdp",
+    "BS/real_gdp",
+    "BS/gdp_growth",
+    "BS/gdp_per_capita",
+    "BS/gross_govt_debt_pct_gdp",
+    "BS/population",
+    "BS/inflation",
+    "BS/fx_rate_usd",
+    "BS/unemployment",
+    "BS/labour_participation",
+    "BS/dependency_ratio",
+    "BS/fdi",
+    "BZ/nominal_gdp",
+    "BZ/real_gdp",
+    "BZ/gdp_growth",
+    "BZ/gdp_per_capita",
+    "BZ/gross_govt_debt_pct_gdp",
+    "BZ/population",
+    "BZ/inflation",
+    "BZ/fx_rate_usd",
+    "BZ/unemployment",
+    "BZ/labour_participation",
+    "BZ/dependency_ratio",
+    "BZ/fdi",
+    "SR/nominal_gdp",
+    "SR/real_gdp",
+    "SR/gdp_growth",
+    "SR/gdp_per_capita",
+    "SR/gross_govt_debt_pct_gdp",
+    "SR/population",
+    "SR/inflation",
+    "SR/fx_rate_usd",
+    "SR/unemployment",
+    "SR/labour_participation",
+    "SR/dependency_ratio",
+    "SR/fdi",
+    "GD/nominal_gdp",
+    "GD/real_gdp",
+    "GD/gdp_growth",
+    "GD/gdp_per_capita",
+    "GD/gross_govt_debt_pct_gdp",
+    "GD/population",
+    "GD/inflation",
+    "GD/fx_rate_usd",
+    "GD/dependency_ratio",
+    "GD/fdi",
+    "LC/nominal_gdp",
+    "LC/real_gdp",
+    "LC/gdp_growth",
+    "LC/gdp_per_capita",
+    "LC/gross_govt_debt_pct_gdp",
+    "LC/population",
+    "LC/inflation",
+    "LC/fx_rate_usd",
+    "LC/unemployment",
+    "LC/labour_participation",
+    "LC/dependency_ratio",
+    "LC/fdi",
+    "AG/nominal_gdp",
+    "AG/real_gdp",
+    "AG/gdp_growth",
+    "AG/gdp_per_capita",
+    "AG/gross_govt_debt_pct_gdp",
+    "AG/population",
+    "AG/inflation",
+    "AG/fx_rate_usd",
+    "AG/dependency_ratio",
+    "AG/fdi",
+    "KN/nominal_gdp",
+    "KN/real_gdp",
+    "KN/gdp_growth",
+    "KN/gdp_per_capita",
+    "KN/gross_govt_debt_pct_gdp",
+    "KN/population",
+    "KN/inflation",
+    "KN/fx_rate_usd",
+    "KN/dependency_ratio",
+    "KN/fdi",
+    "DM/nominal_gdp",
+    "DM/real_gdp",
+    "DM/gdp_growth",
+    "DM/gdp_per_capita",
+    "DM/gross_govt_debt_pct_gdp",
+    "DM/population",
+    "DM/inflation",
+    "DM/fx_rate_usd",
+    "DM/dependency_ratio",
+    "DM/fdi",
+    "VC/nominal_gdp",
+    "VC/real_gdp",
+    "VC/gdp_growth",
+    "VC/gdp_per_capita",
+    "VC/gross_govt_debt_pct_gdp",
+    "VC/population",
+    "VC/inflation",
+    "VC/fx_rate_usd",
+    "VC/unemployment",
+    "VC/labour_participation",
+    "VC/dependency_ratio",
+    "VC/fdi",
+    "TC/nominal_gdp",
+    "TC/real_gdp",
+    "TC/gdp_growth",
+    "TC/gdp_per_capita",
+    "TC/population",
+    "TC/fx_rate_usd",
+    "TC/dependency_ratio",
+    "TC/fdi",
+    "KY/nominal_gdp",
+    "KY/real_gdp",
+    "KY/gdp_growth",
+    "KY/gdp_per_capita",
+    "KY/population",
+    "KY/inflation",
+    "KY/fx_rate_usd",
+    "KY/dependency_ratio",
+    "KY/fdi",
+    "VG/population",
+    "VG/dependency_ratio",
+    "VG/fdi",
+    "BB/current_account",
+    "JM/current_account",
+    "BS/current_account",
+    "BZ/fiscal_balance",
+    "GD/current_account",
+    "AG/current_account",
+    "KN/fiscal_balance",
+    "DM/fiscal_balance",
+    "DM/current_account",
+    "VC/current_account",
+    "BZ/current_account",
+    "SR/fiscal_balance",
+    "SR/current_account",
+    "GD/fiscal_balance",
+    "LC/fiscal_balance",
+    "LC/current_account",
+    "AG/fiscal_balance",
+    "KN/current_account",
+    "VC/fiscal_balance"
+  ],
+  "valueChanges": [
+    {
+      "country": "TT",
+      "indicator": "fdi",
+      "year": 2025,
+      "from": null,
+      "to": -794.4
+    },
+    {
+      "country": "GY",
+      "indicator": "nominal_gdp",
+      "year": 2024,
+      "from": 5142175,
+      "to": 5142176
+    },
+    {
+      "country": "GY",
+      "indicator": "nominal_gdp",
+      "year": 2025,
+      "from": null,
+      "to": 5649824
+    },
+    {
+      "country": "GY",
+      "indicator": "real_gdp",
+      "year": 2024,
+      "from": 5652795,
+      "to": 5652793.5
+    },
+    {
+      "country": "GY",
+      "indicator": "real_gdp",
+      "year": 2025,
+      "from": null,
+      "to": 6745818.2
+    },
+    {
+      "country": "GY",
+      "indicator": "gdp_per_capita",
+      "year": 2024,
+      "from": 6187288,
+      "to": 6187290
+    },
+    {
+      "country": "GY",
+      "indicator": "gdp_per_capita",
+      "year": 2025,
+      "from": null,
+      "to": 6758276
+    },
+    {
+      "country": "GY",
+      "indicator": "population",
+      "year": 2025,
+      "from": null,
+      "to": 835986
+    },
+    {
+      "country": "GY",
+      "indicator": "fx_rate_usd",
+      "year": 2025,
+      "from": null,
+      "to": 208.5
+    },
+    {
+      "country": "GY",
+      "indicator": "dependency_ratio",
+      "year": 2025,
+      "from": null,
+      "to": 56.04
+    },
+    {
+      "country": "BB",
+      "indicator": "nominal_gdp",
+      "year": 2015,
+      "from": 11396.3,
+      "to": 11399.2
+    },
+    {
+      "country": "BB",
+      "indicator": "nominal_gdp",
+      "year": 2016,
+      "from": 11349.2,
+      "to": 11358.1
+    },
+    {
+      "country": "BB",
+      "indicator": "nominal_gdp",
+      "year": 2017,
+      "from": 11366.3,
+      "to": 11694.8
+    },
+    {
+      "country": "BB",
+      "indicator": "nominal_gdp",
+      "year": 2018,
+      "from": 12003.9,
+      "to": 12002.2
+    },
+    {
+      "country": "BB",
+      "indicator": "nominal_gdp",
+      "year": 2019,
+      "from": 12323.7,
+      "to": 12333.4
+    },
+    {
+      "country": "BB",
+      "indicator": "nominal_gdp",
+      "year": 2020,
+      "from": 10814.1,
+      "to": 10806.5
+    },
+    {
+      "country": "BB",
+      "indicator": "nominal_gdp",
+      "year": 2021,
+      "from": 11895.1,
+      "to": 11897.8
+    },
+    {
+      "country": "BB",
+      "indicator": "nominal_gdp",
+      "year": 2022,
+      "from": 13769.8,
+      "to": 13773.3
+    },
+    {
+      "country": "BB",
+      "indicator": "nominal_gdp",
+      "year": 2024,
+      "from": 14996.1,
+      "to": 15195.1
+    },
+    {
+      "country": "BB",
+      "indicator": "nominal_gdp",
+      "year": 2025,
+      "from": null,
+      "to": 16033.1
+    },
+    {
+      "country": "BB",
+      "indicator": "real_gdp",
+      "year": 2015,
+      "from": 13838.9,
+      "to": 13438.7
+    },
+    {
+      "country": "BB",
+      "indicator": "real_gdp",
+      "year": 2016,
+      "from": 14046,
+      "to": 13629
+    },
+    {
+      "country": "BB",
+      "indicator": "real_gdp",
+      "year": 2017,
+      "from": 14145.5,
+      "to": 13718.3
+    },
+    {
+      "country": "BB",
+      "indicator": "real_gdp",
+      "year": 2018,
+      "from": 13965,
+      "to": 13683.7
+    },
+    {
+      "country": "BB",
+      "indicator": "real_gdp",
+      "year": 2019,
+      "from": 13996.8,
+      "to": 13716.7
+    },
+    {
+      "country": "BB",
+      "indicator": "real_gdp",
+      "year": 2020,
+      "from": 11986.2,
+      "to": 11329.1
+    },
+    {
+      "country": "BB",
+      "indicator": "real_gdp",
+      "year": 2021,
+      "from": 11974.6,
+      "to": 12237.7
+    },
+    {
+      "country": "BB",
+      "indicator": "real_gdp",
+      "year": 2022,
+      "from": 14037.4,
+      "to": 14189.1
+    },
+    {
+      "country": "BB",
+      "indicator": "real_gdp",
+      "year": 2024,
+      "from": 14805.1,
+      "to": 14932.9
+    },
+    {
+      "country": "BB",
+      "indicator": "real_gdp",
+      "year": 2025,
+      "from": null,
+      "to": 15336.1
+    },
+    {
+      "country": "BB",
+      "indicator": "gdp_per_capita",
+      "year": 2015,
+      "from": 40848,
+      "to": 40859
+    },
+    {
+      "country": "BB",
+      "indicator": "gdp_per_capita",
+      "year": 2016,
+      "from": 40591,
+      "to": 40623
+    },
+    {
+      "country": "BB",
+      "indicator": "gdp_per_capita",
+      "year": 2017,
+      "from": 40569,
+      "to": 41742
+    },
+    {
+      "country": "BB",
+      "indicator": "gdp_per_capita",
+      "year": 2018,
+      "from": 42762,
+      "to": 42756
+    },
+    {
+      "country": "BB",
+      "indicator": "gdp_per_capita",
+      "year": 2019,
+      "from": 43824,
+      "to": 43859
+    },
+    {
+      "country": "BB",
+      "indicator": "gdp_per_capita",
+      "year": 2020,
+      "from": 38389,
+      "to": 38362
+    },
+    {
+      "country": "BB",
+      "indicator": "gdp_per_capita",
+      "year": 2021,
+      "from": 42159,
+      "to": 42169
+    },
+    {
+      "country": "BB",
+      "indicator": "gdp_per_capita",
+      "year": 2022,
+      "from": 48774,
+      "to": 48786
+    },
+    {
+      "country": "BB",
+      "indicator": "gdp_per_capita",
+      "year": 2024,
+      "from": 53090,
+      "to": 53794
+    },
+    {
+      "country": "BB",
+      "indicator": "gdp_per_capita",
+      "year": 2025,
+      "from": null,
+      "to": 56730
+    },
+    {
+      "country": "BB",
+      "indicator": "population",
+      "year": 2025,
+      "from": null,
+      "to": 282623
+    },
+    {
+      "country": "BB",
+      "indicator": "fx_rate_usd",
+      "year": 2025,
+      "from": null,
+      "to": 2
+    },
+    {
+      "country": "BB",
+      "indicator": "dependency_ratio",
+      "year": 2025,
+      "from": null,
+      "to": 51.86
+    },
+    {
+      "country": "JM",
+      "indicator": "nominal_gdp",
+      "year": 2023,
+      "from": 3301897,
+      "to": 3301896
+    },
+    {
+      "country": "JM",
+      "indicator": "nominal_gdp",
+      "year": 2024,
+      "from": 3443922,
+      "to": 3443927
+    },
+    {
+      "country": "JM",
+      "indicator": "nominal_gdp",
+      "year": 2025,
+      "from": null,
+      "to": 3612269
+    },
+    {
+      "country": "JM",
+      "indicator": "real_gdp",
+      "year": 2025,
+      "from": null,
+      "to": 2026264.3
+    },
+    {
+      "country": "JM",
+      "indicator": "gdp_per_capita",
+      "year": 2024,
+      "from": 1213001,
+      "to": 1213003
+    },
+    {
+      "country": "JM",
+      "indicator": "gdp_per_capita",
+      "year": 2025,
+      "from": null,
+      "to": 1273236
+    },
+    {
+      "country": "JM",
+      "indicator": "population",
+      "year": 2025,
+      "from": null,
+      "to": 2837077
+    },
+    {
+      "country": "JM",
+      "indicator": "fx_rate_usd",
+      "year": 2025,
+      "from": null,
+      "to": 159.0964
+    },
+    {
+      "country": "JM",
+      "indicator": "dependency_ratio",
+      "year": 2025,
+      "from": null,
+      "to": 36.73
+    },
+    {
+      "country": "BS",
+      "indicator": "population",
+      "year": 2025,
+      "from": null,
+      "to": 403033
+    },
+    {
+      "country": "BS",
+      "indicator": "fx_rate_usd",
+      "year": 2025,
+      "from": null,
+      "to": 1
+    },
+    {
+      "country": "BS",
+      "indicator": "dependency_ratio",
+      "year": 2025,
+      "from": null,
+      "to": 42.13
+    },
+    {
+      "country": "BZ",
+      "indicator": "nominal_gdp",
+      "year": 2025,
+      "from": null,
+      "to": 6653
+    },
+    {
+      "country": "BZ",
+      "indicator": "real_gdp",
+      "year": 2025,
+      "from": null,
+      "to": 5401.6
+    },
+    {
+      "country": "BZ",
+      "indicator": "gdp_per_capita",
+      "year": 2025,
+      "from": null,
+      "to": 15731
+    },
+    {
+      "country": "BZ",
+      "indicator": "population",
+      "year": 2025,
+      "from": null,
+      "to": 422924
+    },
+    {
+      "country": "BZ",
+      "indicator": "fx_rate_usd",
+      "year": 2025,
+      "from": null,
+      "to": 2
+    },
+    {
+      "country": "BZ",
+      "indicator": "dependency_ratio",
+      "year": 2025,
+      "from": null,
+      "to": 45.98
+    },
+    {
+      "country": "BZ",
+      "indicator": "fdi",
+      "year": 2023,
+      "from": 16,
+      "to": 16.9
+    },
+    {
+      "country": "BZ",
+      "indicator": "fdi",
+      "year": 2025,
+      "from": null,
+      "to": 0.2
+    },
+    {
+      "country": "SR",
+      "indicator": "nominal_gdp",
+      "year": 2025,
+      "from": null,
+      "to": 168552.3
+    },
+    {
+      "country": "SR",
+      "indicator": "real_gdp",
+      "year": 2025,
+      "from": null,
+      "to": 15988.7
+    },
+    {
+      "country": "SR",
+      "indicator": "gdp_per_capita",
+      "year": 2025,
+      "from": null,
+      "to": 263425
+    },
+    {
+      "country": "SR",
+      "indicator": "population",
+      "year": 2025,
+      "from": null,
+      "to": 639850
+    },
+    {
+      "country": "SR",
+      "indicator": "fx_rate_usd",
+      "year": 2025,
+      "from": null,
+      "to": 37.2602
+    },
+    {
+      "country": "SR",
+      "indicator": "dependency_ratio",
+      "year": 2025,
+      "from": null,
+      "to": 50.44
+    },
+    {
+      "country": "SR",
+      "indicator": "fdi",
+      "year": 2021,
+      "from": -132.7,
+      "to": 255.8
+    },
+    {
+      "country": "SR",
+      "indicator": "fdi",
+      "year": 2022,
+      "from": -9.3,
+      "to": 254.3
+    },
+    {
+      "country": "SR",
+      "indicator": "fdi",
+      "year": 2023,
+      "from": -53.1,
+      "to": 484.2
+    },
+    {
+      "country": "SR",
+      "indicator": "fdi",
+      "year": 2024,
+      "from": -37.6,
+      "to": 666.1
+    },
+    {
+      "country": "SR",
+      "indicator": "fdi",
+      "year": 2025,
+      "from": null,
+      "to": 2038.5
+    },
+    {
+      "country": "GD",
+      "indicator": "nominal_gdp",
+      "year": 2024,
+      "from": 3704.2,
+      "to": 3648.4
+    },
+    {
+      "country": "GD",
+      "indicator": "nominal_gdp",
+      "year": 2025,
+      "from": null,
+      "to": 3834.5
+    },
+    {
+      "country": "GD",
+      "indicator": "real_gdp",
+      "year": 2024,
+      "from": 2621.6,
+      "to": 2582.1
+    },
+    {
+      "country": "GD",
+      "indicator": "real_gdp",
+      "year": 2025,
+      "from": null,
+      "to": 2696.1
+    },
+    {
+      "country": "GD",
+      "indicator": "gdp_per_capita",
+      "year": 2024,
+      "from": 31604,
+      "to": 31128
+    },
+    {
+      "country": "GD",
+      "indicator": "gdp_per_capita",
+      "year": 2025,
+      "from": null,
+      "to": 32689
+    },
+    {
+      "country": "GD",
+      "indicator": "population",
+      "year": 2025,
+      "from": null,
+      "to": 117303
+    },
+    {
+      "country": "GD",
+      "indicator": "fx_rate_usd",
+      "year": 2025,
+      "from": null,
+      "to": 2.7
+    },
+    {
+      "country": "GD",
+      "indicator": "dependency_ratio",
+      "year": 2025,
+      "from": null,
+      "to": 46.28
+    },
+    {
+      "country": "GD",
+      "indicator": "fdi",
+      "year": 2025,
+      "from": null,
+      "to": 170.7
+    },
+    {
+      "country": "LC",
+      "indicator": "nominal_gdp",
+      "year": 2019,
+      "from": 5657.4,
+      "to": 5643.2
+    },
+    {
+      "country": "LC",
+      "indicator": "nominal_gdp",
+      "year": 2020,
+      "from": 4048,
+      "to": 4108.7
+    },
+    {
+      "country": "LC",
+      "indicator": "nominal_gdp",
+      "year": 2021,
+      "from": 5041.4,
+      "to": 5052
+    },
+    {
+      "country": "LC",
+      "indicator": "nominal_gdp",
+      "year": 2022,
+      "from": 6325.3,
+      "to": 6263.7
+    },
+    {
+      "country": "LC",
+      "indicator": "nominal_gdp",
+      "year": 2023,
+      "from": 6561.5,
+      "to": 6591.4
+    },
+    {
+      "country": "LC",
+      "indicator": "nominal_gdp",
+      "year": 2024,
+      "from": 6882.5,
+      "to": 7033.9
+    },
+    {
+      "country": "LC",
+      "indicator": "nominal_gdp",
+      "year": 2025,
+      "from": null,
+      "to": 7172.4
+    },
+    {
+      "country": "LC",
+      "indicator": "real_gdp",
+      "year": 2019,
+      "from": 5525.6,
+      "to": 5507.3
+    },
+    {
+      "country": "LC",
+      "indicator": "real_gdp",
+      "year": 2020,
+      "from": 4179.5,
+      "to": 4246.1
+    },
+    {
+      "country": "LC",
+      "indicator": "real_gdp",
+      "year": 2021,
+      "from": 4664.3,
+      "to": 4719.4
+    },
+    {
+      "country": "LC",
+      "indicator": "real_gdp",
+      "year": 2022,
+      "from": 5615.2,
+      "to": 5632.4
+    },
+    {
+      "country": "LC",
+      "indicator": "real_gdp",
+      "year": 2023,
+      "from": 5739.3,
+      "to": 5852.5
+    },
+    {
+      "country": "LC",
+      "indicator": "real_gdp",
+      "year": 2024,
+      "from": 5962.7,
+      "to": 6131.6
+    },
+    {
+      "country": "LC",
+      "indicator": "real_gdp",
+      "year": 2025,
+      "from": null,
+      "to": 6096.4
+    },
+    {
+      "country": "LC",
+      "indicator": "gdp_per_capita",
+      "year": 2019,
+      "from": 31844,
+      "to": 31764
+    },
+    {
+      "country": "LC",
+      "indicator": "gdp_per_capita",
+      "year": 2020,
+      "from": 22710,
+      "to": 23050
+    },
+    {
+      "country": "LC",
+      "indicator": "gdp_per_capita",
+      "year": 2021,
+      "from": 28240,
+      "to": 28299
+    },
+    {
+      "country": "LC",
+      "indicator": "gdp_per_capita",
+      "year": 2022,
+      "from": 35380,
+      "to": 35036
+    },
+    {
+      "country": "LC",
+      "indicator": "gdp_per_capita",
+      "year": 2023,
+      "from": 36598,
+      "to": 36765
+    },
+    {
+      "country": "LC",
+      "indicator": "gdp_per_capita",
+      "year": 2024,
+      "from": 38290,
+      "to": 39133
+    },
+    {
+      "country": "LC",
+      "indicator": "gdp_per_capita",
+      "year": 2025,
+      "from": null,
+      "to": 39814
+    },
+    {
+      "country": "LC",
+      "indicator": "population",
+      "year": 2025,
+      "from": null,
+      "to": 180149
+    },
+    {
+      "country": "LC",
+      "indicator": "fx_rate_usd",
+      "year": 2025,
+      "from": null,
+      "to": 2.7
+    },
+    {
+      "country": "LC",
+      "indicator": "dependency_ratio",
+      "year": 2025,
+      "from": null,
+      "to": 37.38
+    },
+    {
+      "country": "LC",
+      "indicator": "fdi",
+      "year": 2025,
+      "from": null,
+      "to": 194
+    },
+    {
+      "country": "AG",
+      "indicator": "nominal_gdp",
+      "year": 2022,
+      "from": 5039.7,
+      "to": 5014.2
+    },
+    {
+      "country": "AG",
+      "indicator": "nominal_gdp",
+      "year": 2023,
+      "from": 5415.6,
+      "to": 5546.1
+    },
+    {
+      "country": "AG",
+      "indicator": "nominal_gdp",
+      "year": 2024,
+      "from": 5960.6,
+      "to": 5838.4
+    },
+    {
+      "country": "AG",
+      "indicator": "nominal_gdp",
+      "year": 2025,
+      "from": null,
+      "to": 6313.1
+    },
+    {
+      "country": "AG",
+      "indicator": "real_gdp",
+      "year": 2022,
+      "from": 4432,
+      "to": 4407.2
+    },
+    {
+      "country": "AG",
+      "indicator": "real_gdp",
+      "year": 2023,
+      "from": 4539.6,
+      "to": 4577.6
+    },
+    {
+      "country": "AG",
+      "indicator": "real_gdp",
+      "year": 2024,
+      "from": 4705.5,
+      "to": 4693.8
+    },
+    {
+      "country": "AG",
+      "indicator": "real_gdp",
+      "year": 2025,
+      "from": null,
+      "to": 4928.4
+    },
+    {
+      "country": "AG",
+      "indicator": "gdp_per_capita",
+      "year": 2022,
+      "from": 54284,
+      "to": 54009
+    },
+    {
+      "country": "AG",
+      "indicator": "gdp_per_capita",
+      "year": 2023,
+      "from": 58035,
+      "to": 59433
+    },
+    {
+      "country": "AG",
+      "indicator": "gdp_per_capita",
+      "year": 2024,
+      "from": 63565,
+      "to": 62262
+    },
+    {
+      "country": "AG",
+      "indicator": "gdp_per_capita",
+      "year": 2025,
+      "from": null,
+      "to": 67012
+    },
+    {
+      "country": "AG",
+      "indicator": "population",
+      "year": 2025,
+      "from": null,
+      "to": 94209
+    },
+    {
+      "country": "AG",
+      "indicator": "fx_rate_usd",
+      "year": 2025,
+      "from": null,
+      "to": 2.7
+    },
+    {
+      "country": "AG",
+      "indicator": "dependency_ratio",
+      "year": 2025,
+      "from": null,
+      "to": 42.46
+    },
+    {
+      "country": "AG",
+      "indicator": "fdi",
+      "year": 2025,
+      "from": null,
+      "to": 282
+    },
+    {
+      "country": "KN",
+      "indicator": "nominal_gdp",
+      "year": 2025,
+      "from": null,
+      "to": 3195.5
+    },
+    {
+      "country": "KN",
+      "indicator": "real_gdp",
+      "year": 2025,
+      "from": null,
+      "to": 2368.8
+    },
+    {
+      "country": "KN",
+      "indicator": "gdp_per_capita",
+      "year": 2025,
+      "from": null,
+      "to": 68102
+    },
+    {
+      "country": "KN",
+      "indicator": "population",
+      "year": 2025,
+      "from": null,
+      "to": 46922
+    },
+    {
+      "country": "KN",
+      "indicator": "fx_rate_usd",
+      "year": 2025,
+      "from": null,
+      "to": 2.7
+    },
+    {
+      "country": "KN",
+      "indicator": "dependency_ratio",
+      "year": 2025,
+      "from": null,
+      "to": 42.98
+    },
+    {
+      "country": "KN",
+      "indicator": "fdi",
+      "year": 2025,
+      "from": null,
+      "to": 28.4
+    },
+    {
+      "country": "DM",
+      "indicator": "nominal_gdp",
+      "year": 2025,
+      "from": null,
+      "to": 1954.4
+    },
+    {
+      "country": "DM",
+      "indicator": "real_gdp",
+      "year": 2025,
+      "from": null,
+      "to": 1884.9
+    },
+    {
+      "country": "DM",
+      "indicator": "gdp_per_capita",
+      "year": 2025,
+      "from": null,
+      "to": 29670
+    },
+    {
+      "country": "DM",
+      "indicator": "population",
+      "year": 2025,
+      "from": null,
+      "to": 65871
+    },
+    {
+      "country": "DM",
+      "indicator": "fx_rate_usd",
+      "year": 2025,
+      "from": null,
+      "to": 2.7
+    },
+    {
+      "country": "DM",
+      "indicator": "dependency_ratio",
+      "year": 2025,
+      "from": null,
+      "to": 44.53
+    },
+    {
+      "country": "DM",
+      "indicator": "fdi",
+      "year": 2025,
+      "from": null,
+      "to": 49.5
+    },
+    {
+      "country": "VC",
+      "indicator": "nominal_gdp",
+      "year": 2025,
+      "from": null,
+      "to": 3389.1
+    },
+    {
+      "country": "VC",
+      "indicator": "real_gdp",
+      "year": 2025,
+      "from": null,
+      "to": 2745
+    },
+    {
+      "country": "VC",
+      "indicator": "gdp_per_capita",
+      "year": 2025,
+      "from": null,
+      "to": 33917
+    },
+    {
+      "country": "VC",
+      "indicator": "population",
+      "year": 2025,
+      "from": null,
+      "to": 99924
+    },
+    {
+      "country": "VC",
+      "indicator": "fx_rate_usd",
+      "year": 2025,
+      "from": null,
+      "to": 2.7
+    },
+    {
+      "country": "VC",
+      "indicator": "dependency_ratio",
+      "year": 2025,
+      "from": null,
+      "to": 49.52
+    },
+    {
+      "country": "VC",
+      "indicator": "fdi",
+      "year": 2025,
+      "from": null,
+      "to": 111.4
+    },
+    {
+      "country": "TC",
+      "indicator": "population",
+      "year": 2025,
+      "from": null,
+      "to": 46855
+    },
+    {
+      "country": "TC",
+      "indicator": "fx_rate_usd",
+      "year": 2025,
+      "from": null,
+      "to": 1
+    },
+    {
+      "country": "TC",
+      "indicator": "dependency_ratio",
+      "year": 2025,
+      "from": null,
+      "to": 38.22
+    },
+    {
+      "country": "KY",
+      "indicator": "nominal_gdp",
+      "year": 2022,
+      "from": 5550.1,
+      "to": 5544.6
+    },
+    {
+      "country": "KY",
+      "indicator": "nominal_gdp",
+      "year": 2023,
+      "from": 6034.3,
+      "to": 6090.4
+    },
+    {
+      "country": "KY",
+      "indicator": "nominal_gdp",
+      "year": 2024,
+      "from": null,
+      "to": 6471.1
+    },
+    {
+      "country": "KY",
+      "indicator": "real_gdp",
+      "year": 2022,
+      "from": 4774.4,
+      "to": 4769.3
+    },
+    {
+      "country": "KY",
+      "indicator": "real_gdp",
+      "year": 2023,
+      "from": 5052.1,
+      "to": 5046.1
+    },
+    {
+      "country": "KY",
+      "indicator": "real_gdp",
+      "year": 2024,
+      "from": null,
+      "to": 5235.6
+    },
+    {
+      "country": "KY",
+      "indicator": "gdp_growth",
+      "year": 2022,
+      "from": 5.78,
+      "to": 5.66
+    },
+    {
+      "country": "KY",
+      "indicator": "gdp_growth",
+      "year": 2023,
+      "from": 5.82,
+      "to": 5.8
+    },
+    {
+      "country": "KY",
+      "indicator": "gdp_growth",
+      "year": 2024,
+      "from": null,
+      "to": 3.76
+    },
+    {
+      "country": "KY",
+      "indicator": "gdp_per_capita",
+      "year": 2022,
+      "from": 77525,
+      "to": 77448
+    },
+    {
+      "country": "KY",
+      "indicator": "gdp_per_capita",
+      "year": 2023,
+      "from": 82619,
+      "to": 83387
+    },
+    {
+      "country": "KY",
+      "indicator": "gdp_per_capita",
+      "year": 2024,
+      "from": null,
+      "to": 86910
+    },
+    {
+      "country": "KY",
+      "indicator": "population",
+      "year": 2025,
+      "from": null,
+      "to": 75844
+    },
+    {
+      "country": "KY",
+      "indicator": "fx_rate_usd",
+      "year": 2025,
+      "from": null,
+      "to": 0.8333
+    },
+    {
+      "country": "KY",
+      "indicator": "dependency_ratio",
+      "year": 2025,
+      "from": null,
+      "to": 34.36
+    },
+    {
+      "country": "VG",
+      "indicator": "population",
+      "year": 2025,
+      "from": null,
+      "to": 39732
+    },
+    {
+      "country": "VG",
+      "indicator": "dependency_ratio",
+      "year": 2025,
+      "from": null,
+      "to": 31.91
+    },
+    {
+      "country": "BZ",
+      "indicator": "fiscal_balance",
+      "year": 2025,
+      "from": null,
+      "to": -66.5
+    },
+    {
+      "country": "KN",
+      "indicator": "fiscal_balance",
+      "year": 2025,
+      "from": null,
+      "to": -373.9
+    },
+    {
+      "country": "DM",
+      "indicator": "fiscal_balance",
+      "year": 2025,
+      "from": null,
+      "to": -25.4
+    },
+    {
+      "country": "SR",
+      "indicator": "fiscal_balance",
+      "year": 2025,
+      "from": null,
+      "to": -16181
+    },
+    {
+      "country": "GD",
+      "indicator": "fiscal_balance",
+      "year": 2024,
+      "from": 255.6,
+      "to": 251.7
+    },
+    {
+      "country": "GD",
+      "indicator": "fiscal_balance",
+      "year": 2025,
+      "from": null,
+      "to": -191.7
+    },
+    {
+      "country": "LC",
+      "indicator": "fiscal_balance",
+      "year": 2019,
+      "from": -164.1,
+      "to": -163.7
+    },
+    {
+      "country": "LC",
+      "indicator": "fiscal_balance",
+      "year": 2020,
+      "from": -465.5,
+      "to": -472.5
+    },
+    {
+      "country": "LC",
+      "indicator": "fiscal_balance",
+      "year": 2021,
+      "from": -272.2,
+      "to": -272.8
+    },
+    {
+      "country": "LC",
+      "indicator": "fiscal_balance",
+      "year": 2022,
+      "from": -158.1,
+      "to": -156.6
+    },
+    {
+      "country": "LC",
+      "indicator": "fiscal_balance",
+      "year": 2023,
+      "from": -210,
+      "to": -210.9
+    },
+    {
+      "country": "LC",
+      "indicator": "fiscal_balance",
+      "year": 2024,
+      "from": -123.9,
+      "to": -126.6
+    },
+    {
+      "country": "LC",
+      "indicator": "fiscal_balance",
+      "year": 2025,
+      "from": null,
+      "to": -208
+    },
+    {
+      "country": "AG",
+      "indicator": "fiscal_balance",
+      "year": 2022,
+      "from": -146.2,
+      "to": -145.4
+    },
+    {
+      "country": "AG",
+      "indicator": "fiscal_balance",
+      "year": 2023,
+      "from": -92.1,
+      "to": -94.3
+    },
+    {
+      "country": "AG",
+      "indicator": "fiscal_balance",
+      "year": 2024,
+      "from": 95.4,
+      "to": 93.4
+    },
+    {
+      "country": "AG",
+      "indicator": "fiscal_balance",
+      "year": 2025,
+      "from": null,
+      "to": 195.7
+    },
+    {
+      "country": "VC",
+      "indicator": "fiscal_balance",
+      "year": 2025,
+      "from": null,
+      "to": -416.9
+    }
+  ],
+  "confidenceChanges": [
+    "TT/gdp_growth: flagged->medium (refreshed & verified vs source)",
+    "TT/inflation: flagged->medium (refreshed & verified vs source)",
+    "GY/nominal_gdp: flagged->medium (refreshed & verified vs source)",
+    "GY/real_gdp: flagged->medium (refreshed & verified vs source)",
+    "GY/gdp_growth: flagged->medium (refreshed & verified vs source)",
+    "GY/gdp_per_capita: flagged->medium (refreshed & verified vs source)",
+    "GY/gross_govt_debt_pct_gdp: flagged->medium (refreshed & verified vs source)",
+    "GY/population: flagged->medium (refreshed & verified vs source)",
+    "GY/inflation: flagged->medium (refreshed & verified vs source)",
+    "GY/fx_rate_usd: flagged->medium (refreshed & verified vs source)",
+    "GY/unemployment: flagged->medium (refreshed & verified vs source)",
+    "GY/labour_participation: flagged->medium (refreshed & verified vs source)",
+    "GY/dependency_ratio: flagged->medium (refreshed & verified vs source)",
+    "GY/fdi: flagged->medium (refreshed & verified vs source)",
+    "BB/nominal_gdp: flagged->medium (refreshed & verified vs source)",
+    "BB/real_gdp: flagged->medium (refreshed & verified vs source)",
+    "BB/gdp_growth: flagged->medium (refreshed & verified vs source)",
+    "BB/gdp_per_capita: flagged->medium (refreshed & verified vs source)",
+    "BB/gross_govt_debt_pct_gdp: flagged->medium (refreshed & verified vs source)",
+    "BB/population: flagged->medium (refreshed & verified vs source)",
+    "BB/inflation: flagged->medium (refreshed & verified vs source)",
+    "BB/fx_rate_usd: flagged->medium (refreshed & verified vs source)",
+    "BB/unemployment: flagged->medium (refreshed & verified vs source)",
+    "BB/labour_participation: flagged->medium (refreshed & verified vs source)",
+    "BB/dependency_ratio: flagged->medium (refreshed & verified vs source)",
+    "BB/fdi: flagged->medium (refreshed & verified vs source)",
+    "JM/nominal_gdp: flagged->medium (refreshed & verified vs source)",
+    "JM/real_gdp: flagged->medium (refreshed & verified vs source)",
+    "JM/gdp_growth: flagged->medium (refreshed & verified vs source)",
+    "JM/gdp_per_capita: flagged->medium (refreshed & verified vs source)",
+    "JM/gross_govt_debt_pct_gdp: flagged->medium (refreshed & verified vs source)",
+    "JM/population: flagged->medium (refreshed & verified vs source)",
+    "JM/inflation: flagged->medium (refreshed & verified vs source)",
+    "JM/fx_rate_usd: flagged->medium (refreshed & verified vs source)",
+    "JM/unemployment: flagged->medium (refreshed & verified vs source)",
+    "JM/labour_participation: flagged->medium (refreshed & verified vs source)",
+    "JM/dependency_ratio: flagged->medium (refreshed & verified vs source)",
+    "JM/fdi: flagged->medium (refreshed & verified vs source)",
+    "BS/nominal_gdp: flagged->medium (refreshed & verified vs source)",
+    "BS/real_gdp: flagged->medium (refreshed & verified vs source)",
+    "BS/gdp_growth: flagged->medium (refreshed & verified vs source)",
+    "BS/gdp_per_capita: flagged->medium (refreshed & verified vs source)",
+    "BS/gross_govt_debt_pct_gdp: flagged->medium (refreshed & verified vs source)",
+    "BS/population: flagged->medium (refreshed & verified vs source)",
+    "BS/inflation: flagged->medium (refreshed & verified vs source)",
+    "BS/fx_rate_usd: flagged->medium (refreshed & verified vs source)",
+    "BS/unemployment: flagged->medium (refreshed & verified vs source)",
+    "BS/labour_participation: flagged->medium (refreshed & verified vs source)",
+    "BS/dependency_ratio: flagged->medium (refreshed & verified vs source)",
+    "BS/fdi: flagged->medium (refreshed & verified vs source)",
+    "BZ/nominal_gdp: flagged->medium (refreshed & verified vs source)",
+    "BZ/real_gdp: flagged->medium (refreshed & verified vs source)",
+    "BZ/gdp_growth: flagged->medium (refreshed & verified vs source)",
+    "BZ/gdp_per_capita: flagged->medium (refreshed & verified vs source)",
+    "BZ/gross_govt_debt_pct_gdp: flagged->medium (refreshed & verified vs source)",
+    "BZ/population: flagged->medium (refreshed & verified vs source)",
+    "BZ/inflation: flagged->medium (refreshed & verified vs source)",
+    "BZ/fx_rate_usd: flagged->medium (refreshed & verified vs source)",
+    "BZ/unemployment: flagged->medium (refreshed & verified vs source)",
+    "BZ/labour_participation: flagged->medium (refreshed & verified vs source)",
+    "BZ/dependency_ratio: flagged->medium (refreshed & verified vs source)",
+    "BZ/fdi: flagged->medium (refreshed & verified vs source)",
+    "SR/nominal_gdp: flagged->medium (refreshed & verified vs source)",
+    "SR/real_gdp: flagged->medium (refreshed & verified vs source)",
+    "SR/gdp_growth: flagged->medium (refreshed & verified vs source)",
+    "SR/gdp_per_capita: flagged->medium (refreshed & verified vs source)",
+    "SR/gross_govt_debt_pct_gdp: flagged->medium (refreshed & verified vs source)",
+    "SR/population: flagged->medium (refreshed & verified vs source)",
+    "SR/inflation: flagged->medium (refreshed & verified vs source)",
+    "SR/fx_rate_usd: flagged->medium (refreshed & verified vs source)",
+    "SR/unemployment: flagged->medium (refreshed & verified vs source)",
+    "SR/labour_participation: flagged->medium (refreshed & verified vs source)",
+    "SR/dependency_ratio: flagged->medium (refreshed & verified vs source)",
+    "SR/fdi: flagged->medium (refreshed & verified vs source)",
+    "GD/nominal_gdp: flagged->medium (refreshed & verified vs source)",
+    "GD/real_gdp: flagged->medium (refreshed & verified vs source)",
+    "GD/gdp_growth: flagged->medium (refreshed & verified vs source)",
+    "GD/gdp_per_capita: flagged->medium (refreshed & verified vs source)",
+    "GD/gross_govt_debt_pct_gdp: flagged->medium (refreshed & verified vs source)",
+    "GD/population: flagged->medium (refreshed & verified vs source)",
+    "GD/inflation: flagged->medium (refreshed & verified vs source)",
+    "GD/fx_rate_usd: flagged->medium (refreshed & verified vs source)",
+    "GD/dependency_ratio: flagged->medium (refreshed & verified vs source)",
+    "GD/fdi: flagged->medium (refreshed & verified vs source)",
+    "LC/nominal_gdp: flagged->medium (refreshed & verified vs source)",
+    "LC/real_gdp: flagged->medium (refreshed & verified vs source)",
+    "LC/gdp_growth: flagged->medium (refreshed & verified vs source)",
+    "LC/gdp_per_capita: flagged->medium (refreshed & verified vs source)",
+    "LC/gross_govt_debt_pct_gdp: flagged->medium (refreshed & verified vs source)",
+    "LC/population: flagged->medium (refreshed & verified vs source)",
+    "LC/inflation: flagged->medium (refreshed & verified vs source)",
+    "LC/fx_rate_usd: flagged->medium (refreshed & verified vs source)",
+    "LC/unemployment: flagged->medium (refreshed & verified vs source)",
+    "LC/labour_participation: flagged->medium (refreshed & verified vs source)",
+    "LC/dependency_ratio: flagged->medium (refreshed & verified vs source)",
+    "LC/fdi: flagged->medium (refreshed & verified vs source)",
+    "AG/nominal_gdp: flagged->medium (refreshed & verified vs source)",
+    "AG/real_gdp: flagged->medium (refreshed & verified vs source)",
+    "AG/gdp_growth: flagged->medium (refreshed & verified vs source)",
+    "AG/gdp_per_capita: flagged->medium (refreshed & verified vs source)",
+    "AG/gross_govt_debt_pct_gdp: flagged->medium (refreshed & verified vs source)",
+    "AG/population: flagged->medium (refreshed & verified vs source)",
+    "AG/inflation: flagged->medium (refreshed & verified vs source)",
+    "AG/fx_rate_usd: flagged->medium (refreshed & verified vs source)",
+    "AG/dependency_ratio: flagged->medium (refreshed & verified vs source)",
+    "AG/fdi: flagged->medium (refreshed & verified vs source)",
+    "KN/nominal_gdp: flagged->medium (refreshed & verified vs source)",
+    "KN/real_gdp: flagged->medium (refreshed & verified vs source)",
+    "KN/gdp_growth: flagged->medium (refreshed & verified vs source)",
+    "KN/gdp_per_capita: flagged->medium (refreshed & verified vs source)",
+    "KN/gross_govt_debt_pct_gdp: flagged->medium (refreshed & verified vs source)",
+    "KN/population: flagged->medium (refreshed & verified vs source)",
+    "KN/inflation: flagged->medium (refreshed & verified vs source)",
+    "KN/fx_rate_usd: flagged->medium (refreshed & verified vs source)",
+    "KN/dependency_ratio: flagged->medium (refreshed & verified vs source)",
+    "KN/fdi: flagged->medium (refreshed & verified vs source)",
+    "DM/nominal_gdp: flagged->medium (refreshed & verified vs source)",
+    "DM/real_gdp: flagged->medium (refreshed & verified vs source)",
+    "DM/gdp_growth: flagged->medium (refreshed & verified vs source)",
+    "DM/gdp_per_capita: flagged->medium (refreshed & verified vs source)",
+    "DM/gross_govt_debt_pct_gdp: flagged->medium (refreshed & verified vs source)",
+    "DM/population: flagged->medium (refreshed & verified vs source)",
+    "DM/inflation: flagged->medium (refreshed & verified vs source)",
+    "DM/fx_rate_usd: flagged->medium (refreshed & verified vs source)",
+    "DM/dependency_ratio: flagged->medium (refreshed & verified vs source)",
+    "DM/fdi: flagged->medium (refreshed & verified vs source)",
+    "VC/nominal_gdp: flagged->medium (refreshed & verified vs source)",
+    "VC/real_gdp: flagged->medium (refreshed & verified vs source)",
+    "VC/gdp_growth: flagged->medium (refreshed & verified vs source)",
+    "VC/gdp_per_capita: flagged->medium (refreshed & verified vs source)",
+    "VC/gross_govt_debt_pct_gdp: flagged->medium (refreshed & verified vs source)",
+    "VC/population: flagged->medium (refreshed & verified vs source)",
+    "VC/inflation: flagged->medium (refreshed & verified vs source)",
+    "VC/fx_rate_usd: flagged->medium (refreshed & verified vs source)",
+    "VC/unemployment: flagged->medium (refreshed & verified vs source)",
+    "VC/labour_participation: flagged->medium (refreshed & verified vs source)",
+    "VC/dependency_ratio: flagged->medium (refreshed & verified vs source)",
+    "VC/fdi: flagged->medium (refreshed & verified vs source)",
+    "TC/nominal_gdp: flagged->medium (refreshed & verified vs source)",
+    "TC/real_gdp: flagged->medium (refreshed & verified vs source)",
+    "TC/gdp_growth: flagged->medium (refreshed & verified vs source)",
+    "TC/gdp_per_capita: flagged->medium (refreshed & verified vs source)",
+    "TC/population: flagged->medium (refreshed & verified vs source)",
+    "TC/fx_rate_usd: flagged->medium (refreshed & verified vs source)",
+    "TC/dependency_ratio: flagged->medium (refreshed & verified vs source)",
+    "TC/fdi: flagged->medium (refreshed & verified vs source)",
+    "KY/nominal_gdp: flagged->medium (refreshed & verified vs source)",
+    "KY/real_gdp: flagged->medium (refreshed & verified vs source)",
+    "KY/gdp_growth: flagged->medium (refreshed & verified vs source)",
+    "KY/gdp_per_capita: flagged->medium (refreshed & verified vs source)",
+    "KY/population: flagged->medium (refreshed & verified vs source)",
+    "KY/inflation: flagged->medium (refreshed & verified vs source)",
+    "KY/fx_rate_usd: flagged->medium (refreshed & verified vs source)",
+    "KY/dependency_ratio: flagged->medium (refreshed & verified vs source)",
+    "KY/fdi: flagged->medium (refreshed & verified vs source)",
+    "VG/population: flagged->medium (refreshed & verified vs source)",
+    "VG/dependency_ratio: flagged->medium (refreshed & verified vs source)",
+    "VG/fdi: flagged->medium (refreshed & verified vs source)",
+    "BB/current_account: flagged->medium (refreshed & verified vs source)",
+    "JM/current_account: flagged->medium (refreshed & verified vs source)",
+    "BS/current_account: flagged->medium (refreshed & verified vs source)",
+    "BZ/fiscal_balance: flagged->medium (refreshed & verified vs source)",
+    "GD/current_account: flagged->medium (refreshed & verified vs source)",
+    "AG/current_account: flagged->medium (refreshed & verified vs source)",
+    "KN/fiscal_balance: flagged->medium (refreshed & verified vs source)",
+    "DM/fiscal_balance: flagged->medium (refreshed & verified vs source)",
+    "DM/current_account: flagged->medium (refreshed & verified vs source)",
+    "VC/current_account: flagged->medium (refreshed & verified vs source)",
+    "BZ/current_account: flagged->medium (refreshed & verified vs source)",
+    "SR/fiscal_balance: flagged->medium (refreshed & verified vs source)",
+    "SR/current_account: flagged->medium (refreshed & verified vs source)",
+    "GD/fiscal_balance: flagged->medium (refreshed & verified vs source)",
+    "LC/fiscal_balance: flagged->medium (refreshed & verified vs source)",
+    "LC/current_account: flagged->medium (refreshed & verified vs source)",
+    "AG/fiscal_balance: flagged->medium (refreshed & verified vs source)",
+    "KN/current_account: flagged->medium (refreshed & verified vs source)",
+    "VC/fiscal_balance: flagged->medium (refreshed & verified vs source)",
+    "TT/net_govt_debt: flagged->high (primary national source)",
+    "GY/net_govt_debt: flagged->high (primary national source)",
+    "BB/gross_govt_debt: medium->high (primary national source)",
+    "BB/capital_account: flagged->high (primary national source)",
+    "BB/monetary_base: flagged->high (primary national source)",
+    "BB/net_govt_debt: flagged->high (primary national source)",
+    "JM/gross_govt_debt: flagged->high (primary national source)",
+    "JM/net_govt_debt: flagged->high (primary national source)",
+    "JM/capital_account: flagged->high (primary national source)",
+    "JM/monetary_base: flagged->high (primary national source)",
+    "BS/primary_balance: flagged->high (primary national source)",
+    "BS/capital_account: flagged->high (primary national source)",
+    "BS/monetary_base: flagged->high (primary national source)",
+    "BS/net_govt_debt: flagged->high (primary national source)",
+    "BS/import_cover: flagged->high (primary national source)"
+  ],
+  "derivationNotesAdded": [
+    "BZ/fiscal_balance",
+    "KN/fiscal_balance",
+    "DM/fiscal_balance",
+    "SR/fiscal_balance",
+    "GD/fiscal_balance",
+    "LC/fiscal_balance",
+    "AG/fiscal_balance",
+    "VC/fiscal_balance"
+  ],
+  "newRecords": [
+    "HT/nominal_gdp (World Bank WDI, 11pts)",
+    "HT/real_gdp (World Bank WDI, 11pts)",
+    "HT/gdp_per_capita (World Bank WDI, 11pts)",
+    "HT/population (World Bank WDI, 11pts)",
+    "HT/fx_rate_usd (World Bank WDI, 11pts)",
+    "HT/unemployment (World Bank WDI, 11pts)",
+    "HT/labour_participation (World Bank WDI, 11pts)",
+    "HT/dependency_ratio (World Bank WDI, 11pts)",
+    "HT/fdi (World Bank WDI, 10pts)",
+    "HT/gdp_growth (IMF WEO, 11pts)",
+    "HT/inflation (IMF WEO, 11pts)",
+    "HT/gross_govt_debt_pct_gdp (IMF WEO)",
+    "HT/current_account (IMF WEO)",
+    "HT/fiscal_balance (IMF WEO)",
+    "AW/nominal_gdp (World Bank WDI, 10pts)",
+    "AW/real_gdp (World Bank WDI, 10pts)",
+    "AW/gdp_per_capita (World Bank WDI, 10pts)",
+    "AW/population (World Bank WDI, 11pts)",
+    "AW/fx_rate_usd (World Bank WDI, 11pts)",
+    "AW/dependency_ratio (World Bank WDI, 11pts)",
+    "AW/fdi (World Bank WDI, 10pts)",
+    "AW/gdp_growth (IMF WEO, 11pts)",
+    "AW/inflation (IMF WEO, 11pts)",
+    "AW/gross_govt_debt_pct_gdp (IMF WEO)",
+    "AW/current_account (IMF WEO)",
+    "AW/fiscal_balance (IMF WEO)",
+    "CW/nominal_gdp (World Bank WDI, 10pts)",
+    "CW/real_gdp (World Bank WDI, 10pts)",
+    "CW/gdp_per_capita (World Bank WDI, 10pts)",
+    "CW/population (World Bank WDI, 11pts)",
+    "CW/fx_rate_usd (World Bank WDI, 11pts)",
+    "CW/dependency_ratio (World Bank WDI, 11pts)",
+    "CW/fdi (World Bank WDI, 10pts)",
+    "CW/gdp_growth (World Bank WDI, 10pts)",
+    "CW/inflation (World Bank WDI, 5pts)"
+  ],
+  "identityChecks": [
+    {
+      "country": "GY",
+      "identity": "total_exp = current + capital",
+      "checked": 10,
+      "ok": 10,
+      "bad": 0
+    },
+    {
+      "country": "JM",
+      "identity": "total_exp = current + capital",
+      "checked": 5,
+      "ok": 5,
+      "bad": 0
+    }
+  ],
+  "summary": {
+    "records": 284,
+    "comparableRefreshed": 178,
+    "keptStale": 0,
+    "valuePointsChanged": 184,
+    "confidenceChanges": 192,
+    "newRecords": 35,
+    "countries": [
+      "AG",
+      "AW",
+      "BB",
+      "BS",
+      "BZ",
+      "CW",
+      "DM",
+      "GD",
+      "GY",
+      "HT",
+      "JM",
+      "KN",
+      "KY",
+      "LC",
+      "SR",
+      "TC",
+      "TT",
+      "VC",
+      "VG"
+    ],
+    "identityChecks": [
+      {
+        "country": "GY",
+        "identity": "total_exp = current + capital",
+        "checked": 10,
+        "ok": 10,
+        "bad": 0
+      },
+      {
+        "country": "JM",
+        "identity": "total_exp = current + capital",
+        "checked": 5,
+        "ok": 5,
+        "bad": 0
+      }
+    ]
+  }
+}
