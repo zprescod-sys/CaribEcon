@@ -72,15 +72,35 @@ Every page reads from one hub; no per-page hardcoded numbers.
 | Data                        | `src/pages/data.astro`, `src/components/data/*`           |
 | News / Publications / Deals | `src/pages/<page>.astro`, `src/components/<page>/*`       |
 
-## Current State (2026-07-17)
+## Current State (2026-07-23)
 
+- **Automated data pipeline is now World-Bank-only.** The weekly `data.yml` refresh was
+  failing: the IMF DataMapper API blocks GitHub-runner IPs behind a bot-WAF, and IMF terms
+  discourage bulk automated download. `gdp_growth`/`inflation` moved to World Bank WDI for
+  26 of 30 records (13 countries × 2 indicators); 4 inflation series (BB, SR, KN, AW) stayed
+  on IMF WEO — hand-maintained — because WB's coverage has real gaps for them (each
+  documented with a `seriesNote`). `scripts/refresh-data.mjs` and
+  `scripts/check-primary-drift.mjs` no longer call the IMF at all; `gross_govt_debt_pct_gdp`,
+  `fiscal_balance`, `current_account` (already IMF-only) join the hand-maintenance list.
+  Cadence changed weekly → monthly (`data.yml`, 1st of the month) — WB revises on a rolling
+  basis, not IMF's fixed twice-yearly cycle, so monthly beats a fixed bimonthly schedule at
+  no extra CI cost. Full sourcing rules in `data/SCHEMA.md`; see Session Log for detail
+  including two deviations from the original migration plan (data-verified, not assumed).
 - **Coverage expanded to 19 economies + full data health check.** Added **Haiti (HT), Aruba (AW), Curaçao (CW)** — now 17 of the 19 CDB Borrowing Member Countries plus Curaçao and Aruba (`almanac-data.json` = 284 records, 19 countries). HT/AW are in IMF WEO (full comparable spine); CW is not in WEO (World Bank spine only — debt%/current-account/fiscal absent, since CBCS reports them only union-level / current-budget, not comparably). A full source-verification health check (see `audit/claude/`) re-pulled every comparable WB/IMF series against live sources: fixed a Suriname FDI sign error (2021–24 were negative, source is positive), refreshed 184 stale points, re-mapped `confidence` (was 191 flagged defaults → now 68 primary=high / 216 verified-comparable=medium / 0 flagged), and documented all derived series (GY/JM accounting identities verified numerically). Frontend updated: `COUNTRY_NAMES`, 3 flag SVGs, `LineChart` colors, methodology map + CDB framing, "19 economies" copy, `build-feeds` country set. Open follow-ups: GY 2024 budget conversion is 4.2% off (needs source figure); Curaçao debt/CA/fiscal pending a properly-sourced CBCS/Article-IV series.
 - **Selective news editorial inbox.** `npm run news:audit` stages only plausible rejected feed items in `data/news_unclassified.json` without rewriting `news.json`. Editors assign a valid category and set `approved: true`; `npm run promote` validates, and `dataHub.ts` merges approved rows into the public feed with explicit category/group overrides.
 - **CaribEcon naming and interaction refresh.** Product naming is now CaribEcon throughout. Year in Focus is selection-aware and produces country/indicator/year context, value, regional rank, YoY change, country narratives for Guyana/T&T/Jamaica, statistical fallback copy, and point-level provenance. Deals derive their date range and separate transaction type from institutional status.
 - **Live news pipeline (RSS → hub, GitHub Actions).** `scripts/build-feeds.mjs` (`npm run feeds`) fetches the feeds in `data/feeds.json` (19 curated Caribbean outlets + regional), normalises to `NewsItem`, filters to **financial/economic** items (`FIN_RE` lexicon), and **merges** into `data/news.json` as a rolling 120-day archive (full set, not a top-N). Stable `id = slug(source)-sha1(url)`; output idempotent; failing feeds (403/TLS/non-RSS) skipped, not fatal. The `/news` page paginates the whole archive (client-side, 25/page) with country/keyword search; the home page shows the 20 most recent. `.github/workflows/feeds.yml` runs daily (`0 11 * * *`) and commits when changed → host auto-deploys. No Zapier/Sheet (a Zapier design was evaluated and dropped — billed per article). Bot-blocked feeds **removed** (see Session Log 2026-06-27).
 - **Publications & Deals are feed-driven (front-end + data).** Both pages now mirror the News page — keyword/country search + client-side pagination (25/page), via `PublicationsFeed.astro` / `DealsFeed.astro`. **Publications** stay editorial-in-the-loop: rows hand-entered into `data/pub_inbox.json` (human fills `summary`/`type`, sets `approved`), promoted into `publications.json` without clobbering curated records. **Deals** are mined from the news set by `buildDeals()` in `build-feeds.mjs` using a deliberately strict filter (a deal-action verb **and** a money figure, or a high-confidence standalone phrase), staged in `data/deals_inbox.json` with a `suggestedType`; a human fills `value`/`parties`, confirms the `DealType`, sets `approved`, and approved rows promote into `deals.json` non-destructively. Policy in `data/SCHEMA.md`.
 - **Data consolidated to one source of truth.** `almanac-data.json` (249 records, 2167 points, 24 indicators, 16 countries) drives every page via `dataHub.ts`; the legacy `indicators.json` was deleted. `indicator-meta.json` gates which indicators appear in selectors. `debt_to_gdp` was merged into `gross_govt_debt_pct_gdp` (IMF series canonical across countries; BB/BS primary divergence noted in `seriesNote`). Full detail in `data/SCHEMA.md`.
-- **Dataset refreshed to most-recent data, current to 2025.** Every comparable series is re-pulled in full from the current World Bank / IMF WEO (April 2026) release — historical values reflect the latest revisions, not the vintage they were first collected at. `gdp_growth` + `inflation` are now IMF WEO across all IMF-member countries (KY/TC/VG stay World Bank; TT growth stays primary MoF). `gross_govt_debt_pct_gdp`/`current_account`/`fiscal_balance` = IMF WEO; all other spine indicators = World Bank WDI. 2024 IMF points are estimates, 2025 projections. Primary national records (TT, GY/BB/JM/BS fiscal, KY ESO) left untouched. Collector/refresh/validator scripts in `.tmp/`; policy in `data/SCHEMA.md`.
+- **Dataset refreshed to most-recent data, current to 2025** (as of the 2026-06-18 refresh
+  described below; superseded for `gdp_growth`/`inflation` sourcing by the 2026-07-23
+  World-Bank-only migration above — see `data/SCHEMA.md` for current sourcing). Every
+  comparable series was re-pulled in full from the then-current World Bank / IMF WEO
+  (April 2026) release — historical values reflect the latest revisions, not the vintage
+  they were first collected at. `gross_govt_debt_pct_gdp`/`current_account`/`fiscal_balance`
+  = IMF WEO; all other spine indicators = World Bank WDI. 2024 IMF points are estimates,
+  2025 projections. Primary national records (TT, GY/BB/JM/BS fiscal, KY ESO) left
+  untouched. Collector/refresh/validator scripts in `.tmp/`; policy in `data/SCHEMA.md`.
 - **Home page rebuilt** from the imported Claude Design "CaribEcon v2" mock and aligned to `EDDESIGN.md` (cool petrol-and-gold tokens, hard edges): daily briefing + live key-indicators rail + "Guyana divergence" chart + Explore + recent news, click-to-repoint wired to the hub, content on a single `--paper` surface.
 
 ## Session Log (condensed)
