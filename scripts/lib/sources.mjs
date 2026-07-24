@@ -28,6 +28,20 @@ export const WB = {
   fdi:                  { code: 'BX.KLT.DINV.CD.WD',  div: 1e6, round: 1 },
 };
 
+// ---------------------------------------------------------------------------
+// IMF WEO helpers — RETAINED FOR MANUAL / LOCAL TOP-UPS ONLY.
+//
+// Nothing in CI calls these any more. The IMF DataMapper API sits behind a bot-WAF that
+// blocks GitHub-runner IPs (403 / dropped connections), and the IMF prohibits bulk
+// automated download without permission, so scripts/refresh-data.mjs and
+// scripts/check-primary-drift.mjs are World-Bank-only.
+//
+// The records still tagged `sourceOrg: "IMF WEO"` (general-government debt, fiscal
+// balance, current account, and four inflation series) are hand-maintained from the
+// April/October WEO releases. These helpers stay so that top-up can be run locally,
+// where the IMF endpoint is reachable.
+// ---------------------------------------------------------------------------
+
 // IMF WEO DataMapper indicators -> series code. current_account (BCA) is US$ bn,
 // stored as US$ mn (×1000). fiscal_balance is derived (GGXCNL_NGDP% × nominal GDP ÷ 100).
 export const IMF_CODE = {
