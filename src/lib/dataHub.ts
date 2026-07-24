@@ -4,7 +4,7 @@
 
 import type {
   DataHub, Country, IndicatorsData, BudgetsData,
-  NewsData, NewsReviewItem, PublicationsData, DealsData
+  NewsData, NewsItem, NewsReviewItem, PublicationsData, DealsData
 } from './types';
 
 import indicatorsRaw from '../../data/almanac-data.json';
@@ -58,9 +58,18 @@ const approvedNews = (newsReviewRaw as NewsReviewItem[])
     };
   });
 
+// A record classified by the LLM (or the heuristic fallback, at ingest) carries its own
+// stored `decision` — trust it rather than re-deriving from the heuristic. Only legacy
+// records with no stored decision (predating this field) fall through to the live
+// heuristic, exactly as every record did before this field existed.
+function isPublishable(item: NewsItem): boolean {
+  if (item.decision) return item.decision === 'publish';
+  return isDisplayableNews(item.title, item.tags);
+}
+
 const newsById = new Map(
   (newsRaw as NewsData)
-    .filter(n => isDisplayableNews(n.title, n.tags))
+    .filter(isPublishable)
     .map(item => [item.id, item]),
 );
 for (const item of approvedNews) newsById.set(item.id, item);

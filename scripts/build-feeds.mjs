@@ -17,14 +17,21 @@ import crypto from 'crypto';
 import Parser from 'rss-parser';
 import {
   isDisplayableNews,
+  classifyNews,
   getNewsReviewDecision,
   NEWS_CATEGORY_GROUPS,
 } from '../src/lib/newsRelevance.mjs';
+import { classifyHeadlinesLLM } from '../src/lib/newsClassifierLLM.mjs';
 
 // ── Config ───────────────────────────────────────────────────────────────────
 const NEWS_WINDOW_DAYS  = Number(process.env.NEWS_WINDOW_DAYS ?? 120);  // keep this much history in the archive
 const NEWS_MAX          = Number(process.env.NEWS_MAX ?? 2000);         // hard safety bound on total
 const FINANCE_FILTER    = process.env.FINANCE_FILTER !== '0';           // keep only financial/economic items
+// LLM classifier — see docs/news-llm-classifier-plan.md. Off if NEWS_LLM=0 or no key;
+// either way build-feeds.mjs falls back to the heuristic below, so the site never needs
+// a key to build. New items only: an item is classified once, ever, then keeps its
+// stored decision forever (see classifyNewItems / isPublishable in dataHub.ts).
+const NEWS_LLM_ENABLED  = process.env.NEWS_LLM !== '0' && Boolean(process.env.ANTHROPIC_API_KEY);
 // Promote-only: skip the news fetch so a local deal/publication approval never
 // rewrites data/news.json (which the daily CI cron owns) — avoids merge conflicts.
 // Run via `npm run promote`. The daily workflow runs the full `npm run feeds`.
@@ -64,53 +71,6 @@ function validateNewsReviewInbox(rows) {
 
 // The 19 country codes (mirror dataHub.ts) + ALL for pan-Caribbean.
 const COUNTRIES = new Set(['GY','TT','BB','JM','BS','BZ','SR','GD','LC','AG','KN','DM','VC','TC','KY','VG','HT','AW','CW','ALL']);
-
-// ── Deal detector ──────────────────────────────────────────────────────────────
-// Mine the (already finance-filtered) news set for genuine transactions and stage
-// them in data/deals_inbox.json. The filter is deliberately strict to keep noise
-// out: an item qualifies only if its title names a deal action AND a money/scale
-// figure, OR it contains a single high-confidence standalone phrase. Candidates are
-// editorial — a human fills value/parties/type and sets approved:true before they
-// promote to data/deals.json.
-const DEAL_VERB_RE = new RegExp('\\b(?:' + [
-  'acquir', 'acquisit', 'merger', 'buyout', 'takeover', 'divest', 'divestiture',
-  'privatiz', 'recapitaliz', 'refinanc', 'concession', 'tender offer',
-  'stake in', 'majority stake', 'equity stake', 'bond issue', 'bond issuance',
-].join('|') + ')', 'i');
-// A currency-tagged amount, or a number with a scale word (bn/mn/billion/million).
-const MONEY_RE = /(?:us\$|usd|ttd|gyd|jmd|bbd|bsd|xcd|\$)\s?\d|\b\d+(?:\.\d+)?\s?(?:bn|billion|mn|million|trillion)\b/i;
-// High-confidence phrases that stand alone (no money figure required).
-const DEAL_PHRASES = [
-  'final investment decision', 'joint venture', 'completes acquisition',
-  'completed acquisition', 'initial public offering', 'bond issuance',
-  'sovereign bond', 'rights issue', 'tender offer', 'takeover bid',
-  'completes takeover', 'completed takeover', 'takes control of',
-  'takes effective control', 'majority stake in', 'all-share deal',
-  'share exchange',
-];
-
-// A deal-verb hit + a share/equity signal also qualifies (covers all-stock M&A where no
-// cash value is stated in the headline — the MONEY_RE would miss these).
-const SHARE_SIGNAL_RE = /\b(?:shares?|stock|equity|all.?share|all.?stock)\b/i;
-
-function isDeal(title) {
-  const hay = String(title).toLowerCase();
-  const hasVerb = DEAL_VERB_RE.test(hay);
-  return (hasVerb && (MONEY_RE.test(hay) || SHARE_SIGNAL_RE.test(hay)))
-    || DEAL_PHRASES.some(p => hay.includes(p));
-}
-
-// Suggest a DealType (src/lib/types.ts) from the title; the human can correct it.
-function inferDealType(title) {
-  const t = String(title).toLowerCase();
-  if (/\bipo\b|initial public offering|rights issue|lists on/.test(t)) return 'IPO';
-  if (/bond|eurobond|sovereign|note issue/.test(t)) return 'Bond';
-  if (/joint venture|\bjv\b/.test(t)) return 'JV';
-  if (/concession|licen[cs]e/.test(t)) return 'Concession';
-  if (/acquir|acquisit|merger|buyout|takeover|stake|divest/.test(t)) return 'M&A';
-  if (/invest|fdi|final investment decision/.test(t)) return 'FDI';
-  return 'Other';
-}
 
 const REPORT = [];
 const log = (s) => { REPORT.push(s); console.log(s); };
@@ -172,6 +132,90 @@ function readJSON(path, fallback) {
 }
 const writeJSON = (path, data) => fs.writeFileSync(path, JSON.stringify(data, null, 2) + '\n');
 
+// ── Classification (new items only) ─────────────────────────────────────────────
+// Classifies brand-new items exactly once — LLM primary, heuristic fallback — and
+// writes the verdict directly onto each record in byId (mutates in place). An item
+// that already has a stored `decision` from a prior run is never passed in here, so
+// it's never reclassified: see the caller in buildNews().
+// Returns the raw LLM results (or [] if the LLM wasn't used) so the caller can also
+// stage completed deals — deal_status/deal_type are NOT persisted onto the news
+// record itself (only category/group/decision/confidence/reason/classifier are;
+// see docs/news-llm-classifier-plan.md § Plan step 1).
+async function classifyNewItems(newItems, byId, fetchedReviewContext) {
+  let llmResults = [];
+  if (NEWS_LLM_ENABLED) {
+    try {
+      llmResults = await classifyHeadlinesLLM(
+        newItems.map(({ id, title, source, country, tags }) => ({ id, title, source, country, tags })),
+      );
+      log(`  LLM classified ${llmResults.length} new item(s).`);
+    } catch (e) {
+      log(`  LLM classification failed (${e.message}) — falling back to the heuristic for ${newItems.length} new item(s).`);
+      llmResults = [];
+    }
+  }
+  const llmById = new Map(llmResults.map(r => [r.id, r]));
+
+  for (const item of newItems) {
+    const record = byId.get(item.id);
+    const llm = llmById.get(item.id);
+    if (llm) {
+      Object.assign(record, {
+        category: llm.category, group: llm.group, decision: llm.decision,
+        confidence: llm.confidence, reason: llm.reason, classifier: 'llm',
+      });
+      continue;
+    }
+    // Heuristic fallback: map isDisplayableNews/getNewsReviewDecision onto the same
+    // publish|review|drop shape (see the "Correction" note at the top of the plan doc).
+    const tags = item.tags ?? [];
+    if (isDisplayableNews(item.title, tags)) {
+      const { category, group, confidence } = classifyNews(item.title, tags);
+      Object.assign(record, { category, group, decision: 'publish', confidence, reason: 'Heuristic: displayable.', classifier: 'heuristic' });
+      continue;
+    }
+    const review = getNewsReviewDecision(item.title, tags, fetchedReviewContext.get(item.id) ?? {});
+    if (review.candidate) {
+      const category = review.suggestedCategory || null;
+      Object.assign(record, {
+        category, group: category ? (NEWS_CATEGORY_GROUPS[category] ?? null) : null,
+        decision: 'review', confidence: review.confidence, reason: review.reason, classifier: 'heuristic',
+      });
+    } else {
+      Object.assign(record, { category: null, group: null, decision: 'drop', confidence: 'low', reason: 'Heuristic: not relevant.', classifier: 'heuristic' });
+    }
+  }
+  return llmResults;
+}
+
+// ── Deals (staged from the LLM's deal_status, no longer regex-mined) ───────────
+// Only completed transactions are staged; pending/not_a_deal never reach the queue
+// (see src/lib/newsRubric.md § Deal status for the editorial judgment). A human
+// fills value/parties/type and sets approved:true; buildDeals() below promotes those
+// rows into data/deals.json without clobbering existing curated records.
+function stageDeals(llmResults, byId) {
+  const completed = llmResults.filter(r => r.deal_status === 'completed');
+  if (completed.length === 0) return;
+  const inbox = readJSON('./data/deals_inbox.json', []);
+  const byDealId = new Map(inbox.map(r => [r.id, r]));
+  let staged = 0;
+  for (const deal of completed) {
+    const record = byId.get(deal.id);
+    if (!record) continue;
+    const id = dealId(record.url);
+    if (byDealId.has(id)) continue;
+    byDealId.set(id, {
+      id, headline: record.title, parties: '', value: '',
+      date: record.date, country: record.country, type: '',
+      suggestedType: deal.deal_type || 'Other', url: record.url,
+      source: record.source, approved: false,
+    });
+    staged++;
+  }
+  writeJSON('./data/deals_inbox.json', [...byDealId.values()]);
+  log(`Deals: ${staged} new candidate(s) staged from LLM classification.`);
+}
+
 // ── News ─────────────────────────────────────────────────────────────────────
 async function buildNews({ auditOnly = false } = {}) {
   const feeds = readJSON('./data/feeds.json', []);
@@ -224,12 +268,39 @@ async function buildNews({ auditOnly = false } = {}) {
   const existing = readJSON('./data/news.json', []);
   const byId = new Map();
   for (const it of existing) byId.set(it.id ?? newsId(it.source, it.url), it);
-  let net = 0;
-  for (const it of fetched) if (!byId.has(it.id)) { byId.set(it.id, it); net++; }
+  const newItems = [];
+  for (const it of fetched) if (!byId.has(it.id)) { byId.set(it.id, it); newItems.push(it); }
+  // Classify brand-new items only — LLM primary, heuristic fallback; see
+  // classifyNewItems above. Existing records already carry a stored decision from a
+  // past run and are never reclassified here.
+  const llmResults = newItems.length > 0
+    ? await classifyNewItems(newItems, byId, fetchedReviewContext)
+    : [];
   const inWindow = [...byId.values()].filter(it => it.date >= cutoff);
 
+  // Route every item once: a stored `decision` (LLM or heuristic-fallback, from this
+  // run or a past one) is trusted outright and never recomputed. Only legacy records
+  // with no stored decision fall through to the live heuristic — the exact routing
+  // every record used before this field existed.
+  const mergedCandidates = [];
   const reviewCandidates = [];
   for (const record of inWindow) {
+    if (record.decision) {
+      if (record.decision === 'publish') mergedCandidates.push(record);
+      else if (record.decision === 'review') {
+        reviewCandidates.push({
+          ...record,
+          approved: false,
+          category: '',
+          suggestedCategory: record.category ?? '',
+          confidence: record.confidence,
+          reason: record.reason,
+        });
+      }
+      // 'drop' → excluded from both, same outcome as a heuristic rejection below.
+      continue;
+    }
+    if (isFinancial(record.title, record.tags ?? [])) mergedCandidates.push(record);
     const review = getNewsReviewDecision(
       record.title,
       record.tags ?? [],
@@ -282,18 +353,18 @@ async function buildNews({ auditOnly = false } = {}) {
   // rewrite the CI-owned public archive or touch deals/publications.
   if (auditOnly) return;
 
-  // Keep the full financial/economic archive within the time window (so /news can
-  // paginate all of it); window -> finance filter -> sort newest-first -> safety bound.
-  // The finance filter is applied to the whole union so items saved before the filter
-  // existed are cleaned out too.
+  stageDeals(llmResults, byId);
+
+  // mergedCandidates already combines stored-decision 'publish' records (LLM or
+  // heuristic-fallback) with legacy records that pass the live heuristic — see the
+  // routing loop above. Sort newest-first, safety-bound.
   const byDateDesc = (a, b) => (a.date < b.date ? 1 : a.date > b.date ? -1 : 0);
-  const merged = inWindow
-    .filter(it => isFinancial(it.title, it.tags ?? []))
+  const merged = mergedCandidates
     .sort(byDateDesc)
     .slice(0, NEWS_MAX);
 
   writeJSON('./data/news.json', merged);
-  log(`News: ${fetched.length} fetched, ${net} new this run, ${merged.length} in archive (financial-only, window ${NEWS_WINDOW_DAYS}d).`);
+  log(`News: ${fetched.length} fetched, ${newItems.length} new this run, ${merged.length} in archive.`);
 }
 
 // ── Publications (editorial-in-the-loop) ───────────────────────────────────────
@@ -318,43 +389,23 @@ async function buildPublications() {
   log(`Publications: ${promoted} promoted from inbox, ${byId.size} total.`);
 }
 
-// ── Deals (mined from news, editorial-in-the-loop) ─────────────────────────────
-// Scan the merged news set (already written + finance-filtered) for genuine
-// transactions and stage candidates in data/deals_inbox.json. A human fills
-// value/parties/type and sets approved:true, then approved rows promote to
-// data/deals.json without clobbering the curated headline records.
+// ── Deals promotion (editorial-in-the-loop) ─────────────────────────────────────
+// Discovery happens in stageDeals() above, during classification. This just promotes
+// approved data/deals_inbox.json rows into data/deals.json without clobbering the
+// curated records already there.
 async function buildDeals() {
-  const news = readJSON('./data/news.json', []);
   const inbox = readJSON('./data/deals_inbox.json', []);
-  const byUrl = new Map(inbox.map(r => [r.url, r]));
-  let discovered = 0;
-
-  for (const item of news) {
-    if (!isDeal(item.title) || byUrl.has(item.url)) continue;
-    // New inbox row: human fills value + parties, confirms type, sets approved:true.
-    const row = {
-      id: dealId(item.url), headline: item.title, parties: '', value: '',
-      date: item.date, country: item.country, type: '',
-      suggestedType: inferDealType(item.title), url: item.url,
-      source: item.source, approved: false,
-    };
-    byUrl.set(item.url, row); discovered++;
-  }
-  const newInbox = [...byUrl.values()];
-  writeJSON('./data/deals_inbox.json', newInbox);
-
-  // Promote approved rows into deals.json WITHOUT clobbering curated records.
   const deals = readJSON('./data/deals.json', []);
   const byId = new Map(deals.map(d => [d.id, d]));
   let promoted = 0;
-  for (const r of newInbox) {
+  for (const r of inbox) {
     if (r.approved === true && r.type && r.headline && !byId.has(r.id)) {
       const { approved, suggestedType, ...deal } = r;  // drop staging-only fields
       byId.set(r.id, deal); promoted++;
     }
   }
   writeJSON('./data/deals.json', [...byId.values()]);
-  log(`Deals: ${discovered} new candidates in inbox, ${promoted} promoted, ${byId.size} total.`);
+  log(`Deals: ${promoted} promoted, ${byId.size} total.`);
 }
 
 // ── Run ──────────────────────────────────────────────────────────────────────
@@ -371,7 +422,7 @@ if (AUDIT_ONLY) {
   await buildNews();
 }
 if (!AUDIT_ONLY) {
-  log('Mining deals from news…');
+  log('Promoting approved deals…');
   await buildDeals();
   log('Promoting approved publications…');
   await buildPublications();

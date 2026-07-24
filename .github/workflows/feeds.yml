@@ -33,6 +33,8 @@ jobs:
 
       - name: Fetch & merge feeds
         run: npm run feeds
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
 
       - name: Verify the site still builds with today's data
         run: npm run build
