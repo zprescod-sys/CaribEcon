@@ -738,7 +738,7 @@
     "source": "World Bank WDI — BX.KLT.DINV.CD.WD",
     "sourceOrg": "World Bank WDI",
     "sourceTier": "comparable",
-    "sourceUrl": "https://data.worldbank.org/indicator/BX.KLT.DINV.CD.WD?locations=TT",
+    "sourceUrl": "https://api.worldbank.org/v2/country/TTO/indicator/BX.KLT.DINV.CD.WD?format=json",
     "sourceRef": "pending",
     "confidence": "medium",
     "series": [
@@ -819,7 +819,7 @@
     "source": "World Bank WDI — FM.LBL.BMNY.CN",
     "sourceOrg": "World Bank WDI",
     "sourceTier": "comparable",
-    "sourceUrl": "https://data.worldbank.org/indicator/FM.LBL.BMNY.CN?locations=TT",
+    "sourceUrl": "https://api.worldbank.org/v2/country/TTO/indicator/FM.LBL.BMNY.CN?format=json",
     "sourceRef": "pending (Review App. 17 gives money supply M1-A/M2, not reserve money)",
     "confidence": "medium",
     "series": [
@@ -988,7 +988,7 @@
     "source": "World Bank WDI — BN.TRF.KOGT.CD",
     "sourceOrg": "World Bank WDI",
     "sourceTier": "comparable",
-    "sourceUrl": "https://data.worldbank.org/indicator/BN.TRF.KOGT.CD?locations=TT",
+    "sourceUrl": "https://api.worldbank.org/v2/country/TTO/indicator/BN.TRF.KOGT.CD?format=json",
     "sourceRef": "pending",
     "confidence": "medium",
     "series": [
@@ -1475,7 +1475,7 @@
     "source": "World Bank WDI — FI.RES.TOTL.CD / BM.GSR.GNFS.CD",
     "sourceOrg": "World Bank WDI",
     "sourceTier": "comparable",
-    "sourceUrl": "https://data.worldbank.org/indicator/FI.RES.TOTL.CD?locations=TT",
+    "sourceUrl": "https://api.worldbank.org/v2/country/TTO/indicator/FI.RES.TOTL.CD?format=json",
     "sourceRef": "Appendix 28 Net Foreign Reserves (level); months ratio from IMF Art. IV",
     "confidence": "medium",
     "series": [
