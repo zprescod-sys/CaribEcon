@@ -245,6 +245,10 @@ const newsRows = newsShown.map((n, i) => ({
   meta: `${n.source} · ${fmtDate(n.date)}`,
 }));
 
+// Escape "<" so feed-derived text cannot terminate the application/json script
+// element with a literal </script> sequence.
+const briefingsJSON = JSON.stringify(briefings).replace(/</g, '\\u003c');
+
 const explore = [
   { n: '01', href: '/data',         title: 'Chart Explorer',     desc: 'GDP, inflation, unemployment, FDI, debt — multi-country, multi-year.' },
   { n: '02', href: '/news',         title: 'Latest News',        desc: 'Caribbean economic and business news, filterable by country.' },
@@ -346,7 +350,7 @@ const explore = [
     </div>
   </div>
 
-  <script type="application/json" id="briefings-data" set:html={JSON.stringify(briefings)}></script>
+  <script type="application/json" id="briefings-data" set:html={briefingsJSON}></script>
 </Shell>
 
 <script>

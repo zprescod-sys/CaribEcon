@@ -3,7 +3,7 @@
    Country lists are derived from the data — never hardcoded. */
 
 import type {
-  DataHub, Country, IndicatorsData, BudgetsData,
+  Country, IndicatorsData, BudgetsData,
   NewsData, NewsItem, NewsReviewItem, PublicationsData, DealsData
 } from './types';
 
@@ -155,11 +155,6 @@ export function getSeries(country: string, indicator: string) {
   return indicators.find(s => s.country === country && s.indicator === indicator);
 }
 
-// Returns all series for a country (all indicators)
-export function getCountryIndicators(country: string) {
-  return indicators.filter(s => s.country === country);
-}
-
 // Returns the complete indicator series array for the chart
 export function getAllSeries() {
   return indicators;
@@ -208,16 +203,4 @@ export function getDeals(country?: string): DealsData {
     if (Array.isArray(d.country)) return d.country.includes(country);
     return d.country === country;
   });
-}
-
-// Full hub export for pages that need multiple domains
-export function getDataHub(): DataHub {
-  return {
-    countries: getCountries(),
-    indicators,
-    budgets,
-    news,
-    publications,
-    deals,
-  };
 }
