@@ -8,8 +8,8 @@ name: Refresh news feeds
 # allows a manual refresh from the Actions tab.
 on:
   schedule:
-    - cron: '0 11 * * *'   # 11:00 UTC ≈ 7am Caribbean
-    - cron: '0 23 * * *'   # 23:00 UTC ≈ 7pm Caribbean
+    - cron: '17 11 * * *'   # 11:17 UTC ≈ 7:17am Caribbean
+    - cron: '17 23 * * *'   # 23:17 UTC ≈ 7:17pm Caribbean
   workflow_dispatch:
 
 permissions:
@@ -22,6 +22,7 @@ concurrency:
 jobs:
   refresh:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
 

@@ -39,6 +39,8 @@ const NEWS_LLM_ENABLED  = process.env.NEWS_LLM !== '0' && Boolean(process.env.AN
 const PROMOTE_ONLY      = process.argv.includes('--promote-only') || process.env.PROMOTE_ONLY === '1';
 const AUDIT_ONLY        = process.argv.includes('--audit-only');
 const UA = 'Mozilla/5.0 (compatible; CaribbeanMacroAlmanac/1.0; +https://github.com/) feeds-bot';
+const FEED_TIMEOUT_MS   = 20_000;
+const FEED_CONCURRENCY  = 8;
 
 // Economic-relevance filter — the rule lives in src/lib/newsRelevance.mjs so ingest
 // (here) and render (src/lib/dataHub.ts) can never drift. Precision-first: an economic
@@ -75,7 +77,7 @@ const COUNTRIES = new Set(['GY','TT','BB','JM','BS','BZ','SR','GD','LC','AG','KN
 
 const REPORT = [];
 const log = (s) => { REPORT.push(s); console.log(s); };
-const parser = new Parser({ headers: { 'User-Agent': UA }, timeout: 20000 });
+const parser = new Parser();
 
 // ── Helpers ──────────────────────────────────────────────────────────────────
 const sleep = (ms) => new Promise(r => setTimeout(r, ms));
@@ -96,7 +98,7 @@ function toISODate(item) {
 
 // Fetch feed text with a browser UA + retry. For TLS-broken feeds (expired/incomplete
 // cert) flagged in feeds.json, relax verification just for that fetch.
-async function fetchFeed(url, insecureTLS, tries = 3) {
+export async function fetchFeed(url, insecureTLS, tries = 3, timeoutMs = FEED_TIMEOUT_MS) {
   const prev = process.env.NODE_TLS_REJECT_UNAUTHORIZED;
   if (insecureTLS) process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
   try {
@@ -105,11 +107,12 @@ async function fetchFeed(url, insecureTLS, tries = 3) {
       try {
         const res = await fetch(url, {
           headers: { 'User-Agent': UA, 'Accept': 'application/rss+xml, application/atom+xml, application/xml, text/xml, */*' },
+          signal: AbortSignal.timeout(timeoutMs),
         });
         if (res.ok) return await res.text();
         lastErr = new Error(`HTTP ${res.status}`);
       } catch (e) { lastErr = e; }
-      await sleep(500 * (i + 1));
+      if (i < tries - 1) await sleep(500 * (i + 1));
     }
     throw lastErr ?? new Error('unknown fetch error');
   } finally {
@@ -118,6 +121,24 @@ async function fetchFeed(url, insecureTLS, tries = 3) {
       else process.env.NODE_TLS_REJECT_UNAUTHORIZED = prev;
     }
   }
+}
+
+// Run at most `limit` async jobs at once while returning results in input order.
+// The stable result order matters because same-day news retains feed-file ordering.
+export async function mapWithConcurrency(items, limit, worker) {
+  if (!Number.isInteger(limit) || limit < 1) {
+    throw new RangeError('concurrency limit must be a positive integer');
+  }
+  const results = new Array(items.length);
+  let nextIndex = 0;
+  const workers = Array.from({ length: Math.min(limit, items.length) }, async () => {
+    while (nextIndex < items.length) {
+      const index = nextIndex++;
+      results[index] = await worker(items[index], index);
+    }
+  });
+  await Promise.all(workers);
+  return results;
 }
 
 // Missing file -> fallback (first run). Malformed file (e.g. a stray comma from a
@@ -227,10 +248,34 @@ async function buildNews({ auditOnly = false } = {}) {
   const fetched = [];
   const fetchedReviewContext = new Map();
 
-  for (const feed of feeds) {
+  // Fetch ordinary feeds concurrently, but never overlap them with an insecure-TLS
+  // fetch: NODE_TLS_REJECT_UNAUTHORIZED is process-wide and could otherwise weaken
+  // certificate verification for unrelated requests. Parse afterward in feeds.json
+  // order because rss-parser owns a stateful XML parser and output order should be stable.
+  const indexedFeeds = feeds.map((feed, index) => ({ feed, index }));
+  const secureFeeds = indexedFeeds.filter(({ feed }) => !feed.insecureTLS);
+  const insecureFeeds = indexedFeeds.filter(({ feed }) => feed.insecureTLS);
+  const fetchOne = async ({ feed, index }) => {
     try {
-      const xml = await fetchFeed(feed.url, feed.insecureTLS);
-      const parsed = await parser.parseString(xml);
+      return { index, xml: await fetchFeed(feed.url, feed.insecureTLS) };
+    } catch (error) {
+      return { index, error };
+    }
+  };
+  const outcomes = new Array(feeds.length);
+  for (const outcome of await mapWithConcurrency(secureFeeds, FEED_CONCURRENCY, fetchOne)) {
+    outcomes[outcome.index] = outcome;
+  }
+  for (const indexedFeed of insecureFeeds) {
+    const outcome = await fetchOne(indexedFeed);
+    outcomes[outcome.index] = outcome;
+  }
+
+  for (const [index, feed] of feeds.entries()) {
+    const outcome = outcomes[index];
+    try {
+      if (outcome.error) throw outcome.error;
+      const parsed = await parser.parseString(outcome.xml);
       const businessFeed = /(?:category\/business|feed\/business|[?&]c=business)/i.test(feed.url);
       let added = 0, skipped = 0;
       for (const item of (parsed.items ?? [])) {
