@@ -14,6 +14,7 @@
  */
 import fs from 'fs';
 import crypto from 'crypto';
+import { pathToFileURL } from 'node:url';
 import Parser from 'rss-parser';
 import {
   isDisplayableNews,
@@ -52,7 +53,7 @@ const NEWS_CATEGORIES = new Set(Object.keys(NEWS_CATEGORY_GROUPS));
 
 // Validate only editor-controlled fields. Unapproved rows may keep category blank;
 // approved rows must be complete enough for the data hub to publish safely.
-function validateNewsReviewInbox(rows) {
+export function validateNewsReviewInbox(rows) {
   const seen = new Set();
   for (const [index, row] of rows.entries()) {
     if (!row?.id || !row.title || !row.source || !row.date || !row.url || !row.country) {
@@ -336,10 +337,22 @@ async function buildNews({ auditOnly = false } = {}) {
       ...candidate,
       approved: existing.approved === true,
       category: existing.category ?? '',
+      // Triage-owned bookkeeping (NewsReviewItem in types.ts) — carried forward verbatim,
+      // exactly like approved/category above, so scripts/triage-inbox.mjs's work survives
+      // the next feed run instead of being overwritten by the freshly re-derived
+      // candidate. Conditional spreads (not `=== true` coercion) so a row that was never
+      // triaged doesn't pick up a noisy explicit `false` on every single cron run.
+      ...(existing.triaged !== undefined ? { triaged: existing.triaged } : {}),
+      ...(existing.escalated !== undefined ? { escalated: existing.escalated } : {}),
+      ...(existing.reviewNote !== undefined ? { reviewNote: existing.reviewNote } : {}),
     });
   }
   const reviewInbox = [...reviewById.values()]
-    .filter(row => row.approved === true || (
+    // approved rows are pinned (unchanged); escalated rows are pinned too — they are
+    // unresolved by definition, so letting one silently age out of the 120-day window (or
+    // fall out of the live candidate rule) before a human ever sees it would defeat the
+    // entire point of escalating.
+    .filter(row => row.approved === true || row.escalated === true || (
       row.date >= cutoff
       // If a still-live feed item no longer meets the selective rule, clean it out.
       && (!fetchedIds.has(row.id) || currentCandidateIds.has(row.id))
@@ -409,22 +422,31 @@ async function buildDeals() {
 }
 
 // ── Run ──────────────────────────────────────────────────────────────────────
-if (AUDIT_ONLY) {
-  log('News audit mode: refreshing selective review inbox only (news.json left untouched).');
-  await buildNews({ auditOnly: true });
-} else if (PROMOTE_ONLY) {
-  log('Promote-only mode: skipping news fetch (data/news.json left untouched).');
-  const reviewInbox = readJSON('./data/news_unclassified.json', []);
-  validateNewsReviewInbox(reviewInbox);
-  log(`News review inbox: ${reviewInbox.filter(row => row.approved === true).length} approved rows validated for data-hub merge.`);
-} else {
-  log('Fetching news feeds…');
-  await buildNews();
+// Guarded to only fire when this file is executed directly (`node scripts/build-feeds.mjs`
+// — how `npm run feeds` / `--promote-only` / `--audit-only` already invoke it), NOT when
+// another module does `import { validateNewsReviewInbox } from './build-feeds.mjs'` (see
+// scripts/triage-inbox.mjs). Without this guard, that import alone would trigger a full
+// feed fetch + LLM classification + write to news.json/deals_inbox.json as a side effect of
+// merely loading the module — exactly the bug this guard exists to prevent.
+const isMain = import.meta.url === pathToFileURL(process.argv[1] ?? '').href;
+if (isMain) {
+  if (AUDIT_ONLY) {
+    log('News audit mode: refreshing selective review inbox only (news.json left untouched).');
+    await buildNews({ auditOnly: true });
+  } else if (PROMOTE_ONLY) {
+    log('Promote-only mode: skipping news fetch (data/news.json left untouched).');
+    const reviewInbox = readJSON('./data/news_unclassified.json', []);
+    validateNewsReviewInbox(reviewInbox);
+    log(`News review inbox: ${reviewInbox.filter(row => row.approved === true).length} approved rows validated for data-hub merge.`);
+  } else {
+    log('Fetching news feeds…');
+    await buildNews();
+  }
+  if (!AUDIT_ONLY) {
+    log('Promoting approved deals…');
+    await buildDeals();
+    log('Promoting approved publications…');
+    await buildPublications();
+  }
+  log('Done.');
 }
-if (!AUDIT_ONLY) {
-  log('Promoting approved deals…');
-  await buildDeals();
-  log('Promoting approved publications…');
-  await buildPublications();
-}
-log('Done.');

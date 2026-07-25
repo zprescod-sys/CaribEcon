@@ -108,6 +108,18 @@ export interface NewsReviewItem extends NewsItem {
   suggestedCategory: string;  // pipeline suggestion; may be blank
   confidence: 'low' | 'medium' | 'high';
   reason: string;
+  // Triage-owned bookkeeping — written only by scripts/triage-inbox.mjs (via the
+  // triage-review-inbox subagent) or a human, never by the classifier. Preserved
+  // verbatim across cron re-derivation the same way approved/category already are (see
+  // the merge step in build-feeds.mjs's buildNews()) — any new field added here must be
+  // added to that preservation list too, or the next feed run silently erases it.
+  triaged?: boolean;    // true once a final approve/reject call has been made; stops the
+                        // row from resurfacing in `triage-inbox.mjs --list`.
+  escalated?: boolean;  // true if triage couldn't confidently decide. Stays paired with
+                        // triaged:false so the row keeps surfacing for a human, and is
+                        // pinned against eviction the same way approved rows are.
+  reviewNote?: string;  // triage's own short reasoning — distinct from `reason` above,
+                        // which is machine-owned and overwritten every cron run.
 }
 
 // ── Publications ───────────────────────────────────────────────────────────
