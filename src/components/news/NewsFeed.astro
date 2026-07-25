@@ -1,48 +1,36 @@
 ---
 // News feed — macro-category filter bar + keyword/country search + article list.
+// Only the first NEWS_PAGE_SIZE items (the `news` prop) render as static HTML, for a
+// fast first paint that works even before/without JS. Paging past 1, switching a
+// category tab, or searching all read from a background-fetched /news-index.json
+// covering the FULL archive instead (see the client-side script block below and
+// src/pages/news-index.json.ts) — search/pagination never miss older stories, they
+// just don't require the whole archive to be rendered up front.
 import type { NewsData } from '../../lib/types';
-import { getCountries, classifyNews, NEWS_GROUPS } from '../../lib/dataHub';
+import { NEWS_GROUPS } from '../../lib/dataHub';
+import { resolveCategoryGroup } from '../../lib/newsSearch';
 
 interface Props {
-  news: NewsData;
+  news: NewsData;     // first NEWS_PAGE_SIZE items — what actually gets rendered here
+  allNews: NewsData;  // full archive — only used to compute which tabs to show + the total count
 }
 
-const { news } = Astro.props;
-const countries = getCountries();
-
-// Code -> name map for search matching
-const countryNameMap: Record<string, string> = Object.fromEntries(
-  countries.map(c => [c.code, c.name])
-);
-
-function countryLabels(country: string | string[]) {
-  return (Array.isArray(country) ? country : [country]).map(code => (
-    code === 'ALL' ? 'Caribbean regional' : countryNameMap[code] ?? code
-  ));
-}
+const { news, allNews } = Astro.props;
 
 function formatDate(d: string) {
   return new Date(d).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
 }
 
-// Category + group (card chip / filter bar), in priority order: a human-approved
-// categoryOverride wins; then the stored classifier verdict (LLM or heuristic
-// fallback, written once at ingest — see src/lib/newsClassifierLLM.mjs); only a
-// legacy record with neither falls through to a fresh classifyNews() re-derivation.
-// Then order the group tabs "All" first, then only the groups that actually have
-// stories in this set — no empty tabs.
-const items = news.map(item => {
-  let category = item.categoryOverride ?? item.category;
-  let group = item.groupOverride ?? item.group;
-  if (category == null || group == null) {
-    const classified = classifyNews(item.title, item.tags);
-    category ??= classified.category;
-    group ??= classified.group;
-  }
-  return { item, category, group };
-});
-const presentGroups = NEWS_GROUPS.filter(g => items.some(i => i.group === g));
+const items = news.map(item => ({ item, ...resolveCategoryGroup(item) }));
+
+// Tabs are computed from the FULL archive, not just the rendered slice — otherwise a
+// group with no stories in the newest NEWS_PAGE_SIZE items (e.g. Finance, as of this
+// writing) would silently vanish from the tab bar even though it has real stories
+// further back in the archive.
+const allGroups = allNews.map(item => resolveCategoryGroup(item).group);
+const presentGroups = NEWS_GROUPS.filter(g => allGroups.includes(g));
 const groupTabs = ['All', ...presentGroups];
+const totalCount = allNews.length;
 ---
 
 <div class="news-section">
@@ -77,41 +65,31 @@ const groupTabs = ['All', ...presentGroups];
       <button class="search-clear" id="news-clear" type="button" aria-label="Clear search" hidden>x</button>
       <button class="search-submit mono" type="submit">Search</button>
     </form>
-    <span class="filter-hint mono" id="filter-hint"></span>
+    <span class="filter-hint mono" id="filter-hint">{totalCount} article{totalCount === 1 ? '' : 's'}</span>
   </div>
 
-  <!-- Feed -->
-  <div id="news-feed" class="news-list" aria-live="polite" aria-label="News articles">
-    {items.map(({ item, category, group }) => {
-      const country = Array.isArray(item.country) ? item.country.join(',') : item.country;
-      const searchText = [
-        item.title,
-        item.source,
-        item.date,
-        country,
-        category,
-        ...countryLabels(item.country),
-        ...(item.tags ?? []),
-      ].join(' ');
-      return (
-        <article class="news-item" data-country={country} data-group={group} data-search={searchText}>
-          <div class="news-tags">
-            <span class="news-cat mono">{category}</span>
-            {(Array.isArray(item.country) ? item.country : [item.country])
-              .filter(c => c !== 'ALL')
-              .map(c => <span class="badge">{c}</span>)
-            }
-          </div>
-          <a class="news-title" href={item.url} target="_blank" rel="noopener noreferrer">
-            {item.title}
-          </a>
-          <div class="news-meta">
-            <span class="mono news-source">{item.source}</span>
-            <time class="mono" datetime={item.date}>{formatDate(item.date)}</time>
-          </div>
-        </article>
-      );
-    })}
+  <!-- Feed: the first NEWS_PAGE_SIZE items, real static HTML. Everything past this
+       (page 2+, a non-"All" tab, or any search) gets rendered by the client script
+       from the fetched index instead, replacing these nodes entirely. -->
+  <div id="news-feed" class="news-list" aria-live="polite" aria-label="News articles" data-total={totalCount}>
+    {items.map(({ item, category }) => (
+      <article class="news-item">
+        <div class="news-tags">
+          <span class="news-cat mono">{category}</span>
+          {(Array.isArray(item.country) ? item.country : [item.country])
+            .filter(c => c !== 'ALL')
+            .map(c => <span class="badge">{c}</span>)
+          }
+        </div>
+        <a class="news-title" href={item.url} target="_blank" rel="noopener noreferrer">
+          {item.title}
+        </a>
+        <div class="news-meta">
+          <span class="mono news-source">{item.source}</span>
+          <time class="mono" datetime={item.date}>{formatDate(item.date)}</time>
+        </div>
+      </article>
+    ))}
   </div>
 
   <div id="news-empty" class="news-empty mono" hidden>
@@ -123,7 +101,8 @@ const groupTabs = ['All', ...presentGroups];
 </div>
 
 <script>
-  const PAGE_SIZE = 15;
+  import { NEWS_PAGE_SIZE, normalize, splitTerms, matchesTerms } from '../../lib/newsSearch';
+  import type { NewsIndexItem } from '../../lib/newsSearch';
 
   const searchForm  = document.getElementById('news-search-form') as HTMLFormElement | null;
   const searchInput = document.getElementById('news-search') as HTMLInputElement | null;
@@ -132,60 +111,119 @@ const groupTabs = ['All', ...presentGroups];
   const feed        = document.getElementById('news-feed') as HTMLElement | null;
   const emptyEl     = document.getElementById('news-empty') as HTMLElement | null;
   const pager       = document.getElementById('news-pager') as HTMLElement | null;
-  const groupTabs   = Array.from(document.querySelectorAll<HTMLButtonElement>('.group-tab'));
-  const items       = Array.from(document.querySelectorAll<HTMLElement>('.news-item'));
+  const groupTabEls = Array.from(document.querySelectorAll<HTMLButtonElement>('.group-tab'));
+  const totalInitial = Number(feed?.dataset.total ?? '0');
 
-  let filtered: HTMLElement[] = items;   // items matching the current group + search
-  let activeGroup = 'all';               // macro-category tab; 'all' shows everything
+  let activeGroup = 'all';       // macro-category tab; 'all' shows everything
   let query = '';
   let page = 1;
+  let interacted = false;        // becomes true on the user's first search/tab/page action
+  let currentFiltered: NewsIndexItem[] = [];
 
-  function normalize(value: string) {
-    return value
-      .toLowerCase()
-      .normalize('NFD')
-      .replace(/[\u0300-\u036f]/g, '')
-      .replace(/\bt\s*(?:&|and)\s*t\b/g, 'tt trinidad tobago')
-      .replace(/&/g, ' and ')
-      .replace(/[^a-z0-9]+/g, ' ')
-      .trim();
+  // Fetches the full archive once, kicked off immediately so it's normally already
+  // resolved by the time anyone actually interacts. Safe to call repeatedly — same
+  // promise every time, never re-fetches.
+  let indexPromise: Promise<NewsIndexItem[]> | null = null;
+  function loadIndex(): Promise<NewsIndexItem[]> {
+    if (!indexPromise) indexPromise = fetch('/news-index.json').then(r => r.json());
+    return indexPromise;
+  }
+  loadIndex();
+
+  function formatDate(d: string) {
+    return new Date(d).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
   }
 
-  // Recompute the matching set from the active group + search query, reset to page 1.
-  function applyFilter() {
-    const q = normalize(query);
-    const terms = q ? q.split(/\s+/).filter(term => term !== 'and') : [];
-    filtered = items.filter(item => {
-      if (activeGroup !== 'all' && item.dataset.group !== activeGroup) return false;
+  // Builds a card via real DOM APIs — never innerHTML. Headline/source text comes
+  // from external RSS feeds, so it must never be treated as trusted HTML.
+  function renderArticleEl(item: NewsIndexItem): HTMLElement {
+    const article = document.createElement('article');
+    article.className = 'news-item';
+
+    const tags = document.createElement('div');
+    tags.className = 'news-tags';
+    const cat = document.createElement('span');
+    cat.className = 'news-cat mono';
+    cat.textContent = item.category ?? '';
+    tags.appendChild(cat);
+    const codes = Array.isArray(item.country) ? item.country : [item.country];
+    for (const code of codes) {
+      if (code === 'ALL') continue;
+      const badge = document.createElement('span');
+      badge.className = 'badge';
+      badge.textContent = code;
+      tags.appendChild(badge);
+    }
+    article.appendChild(tags);
+
+    const titleLink = document.createElement('a');
+    titleLink.className = 'news-title';
+    titleLink.href = item.url;
+    titleLink.target = '_blank';
+    titleLink.rel = 'noopener noreferrer';
+    titleLink.textContent = item.title;
+    article.appendChild(titleLink);
+
+    const meta = document.createElement('div');
+    meta.className = 'news-meta';
+    const source = document.createElement('span');
+    source.className = 'mono news-source';
+    source.textContent = item.source;
+    meta.appendChild(source);
+    const time = document.createElement('time');
+    time.className = 'mono';
+    time.dateTime = item.date;
+    time.textContent = formatDate(item.date);
+    meta.appendChild(time);
+    article.appendChild(meta);
+
+    return article;
+  }
+
+  // Recomputes currentFiltered from the fetched index for the active group + query.
+  async function refilter() {
+    if (hint) hint.textContent = 'Loading full archive…';
+    const records = await loadIndex();
+    const terms = splitTerms(normalize(query));
+    currentFiltered = records.filter(item => {
+      if (activeGroup !== 'all' && item.group !== activeGroup) return false;
       if (terms.length === 0) return true;
-      const haystack = normalize(item.dataset.search ?? '');
-      return terms.every(term => haystack.includes(term));
+      return matchesTerms(item.searchText, terms);
     });
-    page = 1;
-    if (clearBtn) clearBtn.hidden = !q;
-    render();
   }
 
-  // Show only the current page's slice of the filtered set; rebuild the pager.
-  function render() {
-    const total = filtered.length;
-    const pages = Math.max(1, Math.ceil(total / PAGE_SIZE));
+  function paintPage() {
+    const total = currentFiltered.length;
+    const pages = Math.max(1, Math.ceil(total / NEWS_PAGE_SIZE));
     if (page > pages) page = pages;
-    const start = (page - 1) * PAGE_SIZE;
-    const shown = new Set(filtered.slice(start, start + PAGE_SIZE));
+    const start = (page - 1) * NEWS_PAGE_SIZE;
+    const shown = currentFiltered.slice(start, start + NEWS_PAGE_SIZE);
 
-    items.forEach(item => { item.hidden = !shown.has(item); });
+    if (feed) {
+      feed.innerHTML = '';
+      shown.forEach(item => feed.appendChild(renderArticleEl(item)));
+    }
     if (emptyEl) emptyEl.hidden = total > 0;
     if (hint) {
       hint.textContent = total
-        ? `${total} article${total === 1 ? '' : 's'}${pages > 1 ? ` \u00b7 page ${page} of ${pages}` : ''}`
+        ? `${total} article${total === 1 ? '' : 's'}${pages > 1 ? ` · page ${page} of ${pages}` : ''}`
         : '';
     }
     renderPager(pages);
   }
 
+  // The first-ever interaction (of any kind) has to populate currentFiltered before
+  // anything can be painted; later interactions that don't touch group/query (i.e.
+  // a bare page click) just reuse what's already there.
+  async function ensureFiltered() {
+    if (!interacted) {
+      interacted = true;
+      await refilter();
+    }
+  }
+
   // Build the page numbers to show: always first + last, plus a window around the
-  // current page, with gaps ("\u2026") collapsing the rest.
+  // current page, with gaps ("…") collapsing the rest.
   function pageWindow(pages: number, current: number): (number | 'gap')[] {
     const keep = new Set<number>([1, pages, current, current - 1, current + 1]);
     const nums = [...keep].filter(p => p >= 1 && p <= pages).sort((a, b) => a - b);
@@ -212,21 +250,32 @@ const groupTabs = ['All', ...presentGroups];
       if (opts.gap || opts.disabled) {
         b.disabled = true;
       } else {
-        b.addEventListener('click', () => {
+        b.addEventListener('click', async () => {
+          await ensureFiltered();
           page = opts.target!;
-          render();
+          paintPage();
           feed?.scrollIntoView({ behavior: 'smooth', block: 'start' });
         });
       }
       pager.appendChild(b);
     };
 
-    btn('\u2039', { target: page - 1, disabled: page === 1 });
+    btn('‹', { target: page - 1, disabled: page === 1 });
     for (const p of pageWindow(pages, page)) {
-      if (p === 'gap') btn('\u2026', { gap: true });
+      if (p === 'gap') btn('…', { gap: true });
       else btn(String(p), { target: p, active: p === page });
     }
-    btn('\u203a', { target: page + 1, disabled: page === pages });
+    btn('›', { target: page + 1, disabled: page === pages });
+  }
+
+  // Any query/group change always recomputes the filtered set (unlike a bare page
+  // click, which reuses it) and resets to page 1.
+  async function applyFilter() {
+    interacted = true;
+    page = 1;
+    await refilter();
+    if (clearBtn) clearBtn.hidden = !normalize(query);
+    paintPage();
   }
 
   searchInput?.addEventListener('input', () => { query = searchInput.value; applyFilter(); });
@@ -243,10 +292,10 @@ const groupTabs = ['All', ...presentGroups];
   });
 
   // Category tabs — switch the active group, keep any live search query applied.
-  groupTabs.forEach(tab => {
+  groupTabEls.forEach(tab => {
     tab.addEventListener('click', () => {
       activeGroup = tab.dataset.group ?? 'all';
-      groupTabs.forEach(t => {
+      groupTabEls.forEach(t => {
         const on = t === tab;
         t.classList.toggle('active', on);
         t.setAttribute('aria-selected', on ? 'true' : 'false');
@@ -255,13 +304,24 @@ const groupTabs = ['All', ...presentGroups];
     });
   });
 
-  render();   // initial paint
+  // The server-rendered NEWS_PAGE_SIZE articles above ARE the initial article-list
+  // paint — no article fetch/render needed yet. But the pager still needs to exist
+  // immediately (from the total baked into data-total), or a fresh visitor would have
+  // no "page 2" button to click at all until they'd already searched/tabbed once.
+  // Clicking any of these initial buttons still goes through ensureFiltered() above,
+  // which fetches + filters for real before painting.
+  const pagesInitial = Math.max(1, Math.ceil(totalInitial / NEWS_PAGE_SIZE));
+  if (hint) {
+    hint.textContent = `${totalInitial} article${totalInitial === 1 ? '' : 's'}` +
+      (pagesInitial > 1 ? ` · page 1 of ${pagesInitial}` : '');
+  }
+  renderPager(pagesInitial);
 </script>
 
 <style>
   .news-section { margin-top: var(--gap-md); }
 
-  /* Category filter tabs */
+  /* Category filter tabs (always server-rendered, never recreated by script) */
   .group-tabs {
     display: flex;
     flex-wrap: wrap;
@@ -375,7 +435,14 @@ const groupTabs = ['All', ...presentGroups];
     gap: 0;
   }
 
-  .news-item {
+  /* :global(...) below: the initial NEWS_PAGE_SIZE articles are server-rendered (and
+     would get this scoping automatically), but every article past that is built by
+     the client script via document.createElement — script-created elements never
+     receive Astro's scoped data-astro-cid-* attribute, so an un-escaped selector here
+     would silently fail to style them (and, previously, the pager buttons — see
+     below). :global() makes these rules match by class regardless of how the element
+     was created, so server-rendered and script-rendered cards look identical. */
+  :global(.news-item) {
     padding: 16px 0;
     border-bottom: 1px solid var(--line);
     display: flex;
@@ -383,16 +450,14 @@ const groupTabs = ['All', ...presentGroups];
     gap: 6px;
   }
 
-  .news-item[hidden] { display: none; }
-
-  .news-tags {
+  :global(.news-tags) {
     display: flex;
     align-items: center;
     gap: 8px;
     flex-wrap: wrap;
   }
 
-  .news-cat {
+  :global(.news-cat) {
     font-size: 10px;
     letter-spacing: 0.08em;
     text-transform: uppercase;
@@ -403,7 +468,7 @@ const groupTabs = ['All', ...presentGroups];
     line-height: 1;
   }
 
-  .news-title {
+  :global(.news-title) {
     font-size: 16px;
     font-weight: 500;
     color: var(--ink);
@@ -412,20 +477,21 @@ const groupTabs = ['All', ...presentGroups];
     text-decoration: none;
   }
 
-  .news-title:hover { text-decoration: underline; color: var(--teal); }
+  :global(.news-title:hover) { text-decoration: underline; color: var(--teal); }
 
-  .news-meta {
+  :global(.news-meta) {
     display: flex;
     align-items: center;
     gap: 10px;
     flex-wrap: wrap;
   }
 
-  .news-source { color: var(--ink-soft); }
+  :global(.news-source) { color: var(--ink-soft); }
 
   .news-empty { padding: 40px 0; color: var(--ink-faint); font-size: 12px; }
 
-  /* Pagination */
+  /* Pagination — always script-rendered, so :global() here fixes a pre-existing bug
+     (these buttons were likely unstyled even before this change). */
   .pager {
     display: flex;
     flex-wrap: wrap;
@@ -437,7 +503,7 @@ const groupTabs = ['All', ...presentGroups];
 
   .pager:empty { display: none; }
 
-  .page-btn {
+  :global(.page-btn) {
     min-width: 32px;
     border: var(--border);
     background: var(--card);
@@ -449,21 +515,21 @@ const groupTabs = ['All', ...presentGroups];
     cursor: pointer;
   }
 
-  .page-btn:hover:not(:disabled):not(.active) {
+  :global(.page-btn:hover:not(:disabled):not(.active)) {
     border-color: var(--teal);
     color: var(--ink);
   }
 
-  .page-btn.active {
+  :global(.page-btn.active) {
     background: var(--teal);
     color: #fff;
     border-color: var(--teal);
     cursor: default;
   }
 
-  .page-btn:disabled { cursor: default; }
+  :global(.page-btn:disabled) { cursor: default; }
 
-  .page-btn.gap {
+  :global(.page-btn.gap) {
     border: none;
     background: none;
     color: var(--ink-faint);

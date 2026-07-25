@@ -2,8 +2,14 @@
 import Shell    from '../layouts/Shell.astro';
 import NewsFeed from '../components/news/NewsFeed.astro';
 import { getNews } from '../lib/dataHub';
+import { NEWS_PAGE_SIZE } from '../lib/newsSearch';
 
-const news = getNews();
+// Only the first page's worth renders as static HTML (fast first paint, no JS
+// required to see real articles); paging past 1, tab-filtering, and search all read
+// from the full archive via a background-fetched news-index.json instead — see
+// src/components/news/NewsFeed.astro and src/pages/news-index.json.ts.
+const allNews = getNews();
+const news = allNews.slice(0, NEWS_PAGE_SIZE);
 ---
 
 <Shell
@@ -22,7 +28,7 @@ const news = getNews();
     </header>
 
     <section class="fade-up fade-up-2">
-      <NewsFeed news={news} />
+      <NewsFeed news={news} allNews={allNews} />
     </section>
 
     <div class="dataset-note card emphasis-teal fade-up">
