@@ -26,6 +26,9 @@
 
 ## Skill 1 — `tune-news-rubric`
 
+> **Built.** Live at `.claude/skills/tune-news-rubric/SKILL.md` — that file is now the
+> executable recipe; this section stays as the design rationale behind it.
+
 **Purpose.** Refine *how* the classifier decides `publish | review | drop` and assigns a category,
 by editing the rubric (the LLM system prompt) and/or the heuristic fallback, and locking each
 change in with a regression fixture so past decisions can't silently regress.

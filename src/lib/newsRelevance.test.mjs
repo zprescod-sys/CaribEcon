@@ -39,6 +39,14 @@ const DISPLAYABLE_CASES = [
   // Plainly off-topic, no signal anywhere.
   ['no economic signal at all', 'Community garden opens downtown', [], false],
   ['sport is dropped', 'Local team wins football championship', [], false],
+  // Documented bug (2026-07-24 live run): no enumerated sub-discipline word appears
+  // (no "football", "FC" isn't matched), so only a bare generic "sports" catch — or the
+  // "sports" tag the feed happened to attach — can drop it. See tune-news-rubric's Session
+  // Log worked example.
+  ['sports club result with no discipline word, caught via generic term', 'Slingerz FC cruise into CFU Club Shield Round of 16 with commanding win over SWA Sharks', ['sports', 'cfu club shield', 'slingerz fc', 'swa sharks'], false],
+  // The genuine tourism story the fix above must not collaterally kill: "cruise" as a
+  // travel-industry noun, no sport signal anywhere.
+  ['genuine cruise-tourism story survives', 'Royal Caribbean adds new Barbados cruise itinerary', [], true],
   ['entertainment is dropped', 'Trinidad Carnival 2026 dates announced', [], false],
   // Core economic stories must keep working.
   ['central bank rate story', 'Central bank raises interest rate to curb inflation', [], true],
@@ -70,6 +78,7 @@ const CLASSIFY_CASES = [
   ['off-topic title is Unclassified/low, never a confident chip', 'Best Friend Remembers Cody Gomes', 'Unclassified', 'low'],
   ['ESG report routes to Corporate', 'ANSA McAL releases 2025 sustainability and ESG reports', 'Corporate', 'high'],
   ['WIPO/patent routes to Corporate', 'Hosein signs WIPO agreement to boost local patent drafting capacity', 'Corporate', 'high'],
+  ['genuine cruise-tourism story still routes to Tourism', 'Royal Caribbean adds new Barbados cruise itinerary', 'Tourism', 'high'],
 ];
 
 test('classifyNews: category + confidence pinning', () => {

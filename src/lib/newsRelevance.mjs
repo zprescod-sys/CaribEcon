@@ -87,8 +87,11 @@ const STRONG_PHRASES = [
 // Terms too ambiguous to filter safely are intentionally omitted: "fire" (layoffs/fire-sale),
 // "crash" (market crash), "goal"/"final" (policy goals, final budget), "match" (matched funds).
 const EXCLUDE_RE = re([
-  // sport
-  'football\\w*', 'cricket\\w*', 'netball\\w*', 'basketball', 'volleyball', 'rugby', 'athletic\\w*',
+  // sport. Every named sub-discipline was enumerated individually (below), but the bare
+  // generic word was missing — a headline naming only a club/competition ("Slingerz FC
+  // cruise into CFU Club Shield Round of 16") slipped through with no discipline word to
+  // catch, rescued only by a stray "sports" tag if the feed happened to supply one.
+  '\\bsports?\\b', 'football\\w*', 'cricket\\w*', 'netball\\w*', 'basketball', 'volleyball', 'rugby', 'athletic\\w*',
   'sprint\\w*', 'olympic\\w*', 'commonwealth games', 'tournament\\w*', 'championship\\w*', '\\bleague\\b',
   'playoffs?', 'semifinal\\w*', 'quarterfinal\\w*', 'fixtures?\\b', 'strikers?\\b', 'midfielder\\w*',
   'batsm(?:a|e)n', 'bowler\\w*', 'wicket\\w*', 'innings', 'goalkeeper', 'coach\\w*', 'squad', 'medal\\w*',
