@@ -1,5 +1,75 @@
 [
   {
+    "id": "wic-news-cc1548a3",
+    "title": "InterCaribbean Airways Unveils ‘Spirit of St. Vincent and the Grenadines’ aircraft",
+    "source": "WIC News",
+    "date": "2026-07-25",
+    "country": "ALL",
+    "url": "https://wicnews.com/saint-vincent-grenadines/intercaribbean-airways-unveils-spirit-of-st-vincent-and-the-grenadines-aircraft",
+    "category": "Tourism",
+    "group": "Trade & Tourism",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Airlines aircraft branding and tourism promotion; Caribbean aviation and tourism sector.",
+    "classifier": "llm"
+  },
+  {
+    "id": "wic-news-2111dd6f",
+    "title": "From a Family Holiday to a US$90 Million Landmark: Dominica Cable Car Project",
+    "source": "WIC News",
+    "date": "2026-07-25",
+    "country": "ALL",
+    "url": "https://wicnews.com/dominica/from-a-family-holiday-to-a-us90-million-landmark-dominica-cable-car-project",
+    "category": "Infrastructure",
+    "group": "Investment",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Dominica cable-car project US$90M landmark investment; major infrastructure/FDI development.",
+    "classifier": "llm"
+  },
+  {
+    "id": "wic-news-0eaca097",
+    "title": "Grenada announces two monthly VAT-free shopping days under EC$18M relief package",
+    "source": "WIC News",
+    "date": "2026-07-25",
+    "country": "ALL",
+    "url": "https://wicnews.com/grenada/grenada-announces-two-monthly-vat-free-shopping-days-under-ec18m-relief-package",
+    "category": "Fiscal Policy",
+    "group": "Fiscal Policy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Grenada VAT-free shopping relief program EC$18M fiscal support; government fiscal stimulus.",
+    "classifier": "llm"
+  },
+  {
+    "id": "wic-news-eb66d0d1",
+    "title": "Sunrise Airways launches direct flight between Antigua and Barbados",
+    "source": "WIC News",
+    "date": "2026-07-25",
+    "country": "ALL",
+    "url": "https://wicnews.com/antigua-barbuda/sunrise-airways-launches-direct-flight-between-antigua-and-barbados",
+    "category": "Tourism",
+    "group": "Trade & Tourism",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "New direct flight Antigua–Barbados route; aviation and regional connectivity for tourism and trade.",
+    "classifier": "llm"
+  },
+  {
+    "id": "wic-news-18353c8a",
+    "title": "Dominica: 21 families in Vieille Case to receive new hurricane-resilient homes",
+    "source": "WIC News",
+    "date": "2026-07-25",
+    "country": "ALL",
+    "url": "https://wicnews.com/dominica/dominica-21-families-in-vieille-case-to-receive-new-hurricane-resilient-homes",
+    "category": "Infrastructure",
+    "group": "Investment",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Dominica hurricane-resilient housing program; climate resilience and public-sector development investment.",
+    "classifier": "llm"
+  },
+  {
     "id": "kaieteur-news-aebd6415",
     "title": "Slingerz FC cruise into CFU Club Shield Round of 16 with commanding win over SWA Sharks",
     "source": "Kaieteur News",
@@ -327,6 +397,941 @@
     "tags": [
       "all news"
     ]
+  },
+  {
+    "id": "kaieteur-news-11dddf1f",
+    "title": "Minister Ramson Jr. envision Guyana’s horseracing to be greatest in region",
+    "source": "Kaieteur News",
+    "date": "2026-07-24",
+    "country": "GY",
+    "url": "https://kaieteurnewsonline.com/2026/07/24/minister-ramson-jr-envision-guyanas-horseracing-to-be-greatest-in-region/",
+    "tags": [
+      "sports",
+      "dataman",
+      "guyana cup",
+      "guyana’s horseracing",
+      "minister ramson",
+      "rising sun turf club"
+    ],
+    "category": "Tourism",
+    "group": "Trade & Tourism",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Government vision for expanding horseracing sector; tourism/entertainment investment.",
+    "classifier": "llm"
+  },
+  {
+    "id": "kaieteur-news-71346e68",
+    "title": "AOAG re-elects Barclay as president, calls for continued voice in aviation policy",
+    "source": "Kaieteur News",
+    "date": "2026-07-24",
+    "country": "GY",
+    "url": "https://kaieteurnewsonline.com/2026/07/24/aoag-re-elects-barclay-as-president-calls-for-continued-voice-in-aviation-policy/",
+    "tags": [
+      "news",
+      "aviation operators' association",
+      "aviation policy",
+      "learie barclay"
+    ],
+    "category": "Government",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Aviation operators' association governance and policy voice; economic institution leadership.",
+    "classifier": "llm"
+  },
+  {
+    "id": "kaieteur-news-c6cb2d66",
+    "title": "Yhip Rebuts Peeping Tom, says institutions hold key to escaping resource curse",
+    "source": "Kaieteur News",
+    "date": "2026-07-24",
+    "country": "GY",
+    "url": "https://kaieteurnewsonline.com/2026/07/24/yhip-rebuts-peeping-tom-says-institutions-hold-key-to-escaping-resource-curse/",
+    "tags": [
+      "letters",
+      "guyana's economic development",
+      "peeping tom",
+      "resource curse",
+      "terence yhip"
+    ],
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Economic commentary on institutions, resource curse, and development strategy in Guyana.",
+    "classifier": "llm"
+  },
+  {
+    "id": "guyana-chronicle-f7c763db",
+    "title": "Playground enhancement programme continues with $255M for Amerindian villages",
+    "source": "Guyana Chronicle",
+    "date": "2026-07-24",
+    "country": "GY",
+    "url": "https://guyanachronicle.com/2026/07/24/playground-enhancement-programme-continues-with-255m-for-amerindian-villages-2/",
+    "tags": [
+      "news"
+    ],
+    "category": "Government",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Government capital expenditure programme: $255M playground enhancement for Amerindian villages.",
+    "classifier": "llm"
+  },
+  {
+    "id": "demerara-waves-3735383f",
+    "title": "Former top GUYSUCO official and literary figure, Ian McDonald dies",
+    "source": "Demerara Waves",
+    "date": "2026-07-24",
+    "country": "GY",
+    "url": "https://demerarawaves.com/2026/07/24/former-top-guysuco-official-and-literary-figure-ian-mcdonald-dies/",
+    "tags": [
+      "news"
+    ],
+    "category": "Corporate",
+    "group": "Finance",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Obituary of former GUYSUCO (sugar industry) official and literary figure; economic institution leadership figure.",
+    "classifier": "llm"
+  },
+  {
+    "id": "demerara-waves-c99aaef4",
+    "title": "Guyana says new US ‘forced labour tariff’ will not burden Guyanese exporters",
+    "source": "Demerara Waves",
+    "date": "2026-07-24",
+    "country": "GY",
+    "url": "https://demerarawaves.com/2026/07/24/guyana-says-new-us-forced-labour-tariff-will-not-burden-guyanese-exporters/",
+    "tags": [
+      "business",
+      "news",
+      "politics",
+      "trade"
+    ],
+    "category": "Trade",
+    "group": "Trade & Tourism",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Guyana's response to US forced-labour tariff policy; trade tariff impact on Caribbean exporter.",
+    "classifier": "llm"
+  },
+  {
+    "id": "cnc3-399f4815",
+    "title": "Guyana to host 2027 Carifta Games, Barbados to play host in 2028",
+    "source": "CNC3",
+    "date": "2026-07-24",
+    "country": "TT",
+    "url": "https://www.cnc3.co.tt/guyana-to-host-2027-carifta-games-barbados-to-play-host-in-2028/?utm_source=rss&utm_medium=rss&utm_campaign=guyana-to-host-2027-carifta-games-barbados-to-play-host-in-2028",
+    "category": "Tourism",
+    "group": "Trade & Tourism",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Caribbean Games hosting assignments; major tourism/infrastructure event investment for 2027 and 2028.",
+    "classifier": "llm"
+  },
+  {
+    "id": "cnc3-2953242a",
+    "title": "New US tariffs linked to claims of foreign forced labour dismay and anger trading partners",
+    "source": "CNC3",
+    "date": "2026-07-24",
+    "country": "TT",
+    "url": "https://www.cnc3.co.tt/new-us-tariffs-linked-to-claims-of-foreign-forced-labour-dismay-and-anger-trading-partners/?utm_source=rss&utm_medium=rss&utm_campaign=new-us-tariffs-linked-to-claims-of-foreign-forced-labour-dismay-and-anger-trading-partners",
+    "tags": [
+      "news"
+    ],
+    "category": "Trade",
+    "group": "Trade & Tourism",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "US forced-labour tariffs and trading-partner reaction; international trade policy with Caribbean economic impact.",
+    "classifier": "llm"
+  },
+  {
+    "id": "cnc3-ea062531",
+    "title": "TTADA seeks urgent talks with Tancoo over hybrid tax",
+    "source": "CNC3",
+    "date": "2026-07-24",
+    "country": "TT",
+    "url": "https://www.cnc3.co.tt/ttada-seeks-urgent-talks-with-tancoo-over-hybrid-tax/?utm_source=rss&utm_medium=rss&utm_campaign=ttada-seeks-urgent-talks-with-tancoo-over-hybrid-tax",
+    "tags": [
+      "news"
+    ],
+    "category": "Fiscal Policy",
+    "group": "Fiscal Policy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Taxi Association talks with government over hybrid tax policy; fiscal policy and labor/transport sector regulation.",
+    "classifier": "llm"
+  },
+  {
+    "id": "trinidad-express-1163792b",
+    "title": "Second TSTT  director resigns",
+    "source": "Trinidad Express",
+    "date": "2026-07-24",
+    "country": "TT",
+    "url": "https://trinidadexpress.com/business/local/second-tstt-director-resigns/article_78fd9570-1851-4a7f-81bc-698255a83e96.html",
+    "category": "Corporate",
+    "group": "Finance",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "TSTT director resignation; telecommunications company governance.",
+    "classifier": "llm"
+  },
+  {
+    "id": "ttt-news-52329a31",
+    "title": "MV Golden Carrier To Join the Inter-Island Cargo Seabridge At No Additional Cost",
+    "source": "TTT News",
+    "date": "2026-07-24",
+    "country": "TT",
+    "url": "https://www.ttt.live/mv-golden-carrier-to-join-the-inter-island-cargo-seabridge-at-no-additional-cost/?utm_source=rss&utm_medium=rss&utm_campaign=mv-golden-carrier-to-join-the-inter-island-cargo-seabridge-at-no-additional-cost",
+    "tags": [
+      "community",
+      "news",
+      "works and infrastructure"
+    ],
+    "category": "Infrastructure",
+    "group": "Investment",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "MV Golden Carrier joins inter-island cargo seabridge at no additional cost; maritime transport infrastructure and trade.",
+    "classifier": "llm"
+  },
+  {
+    "id": "ttt-news-3d7542fd",
+    "title": "T&T Strengthens Cyber Defences Through LAC4 Partnership",
+    "source": "TTT News",
+    "date": "2026-07-24",
+    "country": "TT",
+    "url": "https://www.ttt.live/tt-strengthens-cyber-defences-through-lac4-partnership/?utm_source=rss&utm_medium=rss&utm_campaign=tt-strengthens-cyber-defences-through-lac4-partnership",
+    "tags": [
+      "crime",
+      "news",
+      "technology"
+    ],
+    "category": "Technology",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "T&T cybersecurity partnership (LAC4) for digital defence; digital economy and government technology investment.",
+    "classifier": "llm"
+  },
+  {
+    "id": "ttt-news-f022f04b",
+    "title": "Minister of Housing Presents Letters Of Appointment To Sugar Industry Labour Welfare Committee",
+    "source": "TTT News",
+    "date": "2026-07-24",
+    "country": "TT",
+    "url": "https://www.ttt.live/minister-of-housing-presents-letters-of-appointment-to-sugar-industry-labour-welfare-committee/?utm_source=rss&utm_medium=rss&utm_campaign=minister-of-housing-presents-letters-of-appointment-to-sugar-industry-labour-welfare-committee",
+    "tags": [
+      "housing",
+      "news"
+    ],
+    "category": "Labor",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Sugar industry labour welfare committee appointments; sectoral labor governance.",
+    "classifier": "llm"
+  },
+  {
+    "id": "barbados-today-90671738",
+    "title": "BHTA targets $50K Adopt-A-School Futsal tournament expands to 24 teams",
+    "source": "Barbados Today",
+    "date": "2026-07-24",
+    "country": "BB",
+    "url": "https://barbadostoday.bb/2026/07/24/bhta-targets-50k-adopt-a-school-futsal-tournament-expands-to-24-teams/",
+    "tags": [
+      "local news",
+      "sports",
+      "youth"
+    ],
+    "category": "Tourism",
+    "group": "Trade & Tourism",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "BHTA Adopt-A-School futsal tournament expansion to 24 teams; tourism body sports-development investment.",
+    "classifier": "llm"
+  },
+  {
+    "id": "barbados-today-bbf06d42",
+    "title": "Symmonds defends price cap strategy amid global volatility",
+    "source": "Barbados Today",
+    "date": "2026-07-24",
+    "country": "BB",
+    "url": "https://barbadostoday.bb/2026/07/24/symmonds-defends-price-cap-strategy-amid-global-volatility/",
+    "tags": [
+      "business",
+      "economy",
+      "local news"
+    ],
+    "category": "Government",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Minister defends price-cap strategy amid inflation and commodity volatility; fiscal/macroeconomic policy.",
+    "classifier": "llm"
+  },
+  {
+    "id": "barbados-today-728667c4",
+    "title": "Biz community seeks bigger cushion from oil price shocks, inflation ease",
+    "source": "Barbados Today",
+    "date": "2026-07-24",
+    "country": "BB",
+    "url": "https://barbadostoday.bb/2026/07/24/biz-community-seeks-bigger-cushion-from-oil-price-shocks-inflation-ease/",
+    "tags": [
+      "business",
+      "economy",
+      "local news"
+    ],
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Business community calls for oil-shock and inflation buffers; macroeconomic policy and commodity exposure.",
+    "classifier": "llm"
+  },
+  {
+    "id": "nation-news-86165ac9",
+    "title": "Heat drives rush for ACs, fans",
+    "source": "Nation News",
+    "date": "2026-07-24",
+    "country": "BB",
+    "url": "https://nationnews.com/2026/07/24/heat-drives-rush-for-acs-fans/?utm_source=rss&utm_medium=rss&utm_campaign=heat-drives-rush-for-acs-fans",
+    "tags": [
+      "business",
+      "heat drives ac rush"
+    ],
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heat drives demand for air conditioning and fans; consumer demand and retail sales impact.",
+    "classifier": "llm"
+  },
+  {
+    "id": "nation-news-612363b4",
+    "title": "IDB Invest announces strategic partnership to support Caribbean growth",
+    "source": "Nation News",
+    "date": "2026-07-24",
+    "country": "BB",
+    "url": "https://nationnews.com/2026/07/24/idb-invest-announces-strategic-partnership-to-support-caribbean-growth/?utm_source=rss&utm_medium=rss&utm_campaign=idb-invest-announces-strategic-partnership-to-support-caribbean-growth",
+    "tags": [
+      "regional"
+    ],
+    "category": "Investment",
+    "group": "Investment",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "IDB Invest strategic partnership to support Caribbean growth; multilateral development finance for the region.",
+    "classifier": "llm"
+  },
+  {
+    "id": "jamaica-observer-652542f3",
+    "title": "Market Bag: Soup vendor Bulbie shops for staples as prices fluctuate",
+    "source": "Jamaica Observer",
+    "date": "2026-07-24",
+    "country": "JM",
+    "url": "https://www.jamaicaobserver.com/2026/07/24/market-bag-soup-vendor-bulbie-shops-staples-prices-fluctuate/",
+    "tags": [
+      "latest news",
+      "news",
+      "videos",
+      "coronation market",
+      "food prices",
+      "market bag"
+    ],
+    "category": "Inflation",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Food prices fluctuating in Jamaica's retail market, directly affecting consumer cost-of-living.",
+    "classifier": "llm"
+  },
+  {
+    "id": "jamaica-observer-936478fb",
+    "title": "$1.5-b pothole rescue",
+    "source": "Jamaica Observer",
+    "date": "2026-07-24",
+    "country": "JM",
+    "url": "https://www.jamaicaobserver.com/2026/07/24/1-5-b-pothole-rescue/",
+    "tags": [
+      "news"
+    ],
+    "category": "Infrastructure",
+    "group": "Investment",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Government road infrastructure investment (pothole remediation) with stated budget allocation.",
+    "classifier": "llm"
+  },
+  {
+    "id": "jamaica-observer-2ba134fa",
+    "title": "BPO’S US$220-M SLIDE",
+    "source": "Jamaica Observer",
+    "date": "2026-07-24",
+    "country": "JM",
+    "url": "https://www.jamaicaobserver.com/2026/07/24/bpos-us220-m-slide/",
+    "tags": [
+      "business",
+      "caribbean business report (cbr)"
+    ],
+    "category": "Corporate",
+    "group": "Finance",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Business Process Outsourcing sector decline of US$220M in Jamaica, major corporate/sectoral news.",
+    "classifier": "llm"
+  },
+  {
+    "id": "jamaica-gleaner-df2e9679",
+    "title": "Calabar promised water relief next week",
+    "source": "Jamaica Gleaner",
+    "date": "2026-07-24",
+    "country": "JM",
+    "url": "http://jamaica-gleaner.com/article/news/20260724/calabar-promised-water-relief-next-week",
+    "category": "Government",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Government water-service infrastructure promise to public, fiscal/infrastructure policy.",
+    "classifier": "llm"
+  },
+  {
+    "id": "jamaica-gleaner-4e1d2160",
+    "title": "US-based philanthropist looks to transform St James Parish Library",
+    "source": "Jamaica Gleaner",
+    "date": "2026-07-24",
+    "country": "JM",
+    "url": "http://jamaica-gleaner.com/article/news/20260724/us-based-philanthropist-looks-transform-st-james-parish-library",
+    "category": "Investment",
+    "group": "Investment",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "US philanthropist investment in public library infrastructure; cultural/educational development with investment component.",
+    "classifier": "llm"
+  },
+  {
+    "id": "the-star-jamaica-c9fa6800",
+    "title": "Former dancer builds beauty empire",
+    "source": "The Star (Jamaica)",
+    "date": "2026-07-24",
+    "country": "JM",
+    "url": "https://jamaica-star.com/article/news/20260724/former-dancer-builds-beauty-empire",
+    "category": "Corporate",
+    "group": "Finance",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Entrepreneur business-building in beauty sector; corporate/business development story.",
+    "classifier": "llm"
+  },
+  {
+    "id": "eyewitness-news-fbd0cae5",
+    "title": "Government reviewing impact of new U.S tariff on Bahamian exports",
+    "source": "Eyewitness News",
+    "date": "2026-07-24",
+    "country": "BS",
+    "url": "https://ewnews.com/government-reviewing-impact-of-new-u-s-tariff-on-bahamian-exports/?utm_source=rss&utm_medium=rss&utm_campaign=government-reviewing-impact-of-new-u-s-tariff-on-bahamian-exports",
+    "tags": [
+      "business",
+      "always a headline ahead",
+      "bahamas news",
+      "ewnews.com",
+      "eyewitness news online"
+    ],
+    "category": "Trade",
+    "group": "Trade & Tourism",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Government fiscal review of U.S. tariff impact on Bahamian exports; direct trade policy/tariff economic impact.",
+    "classifier": "llm"
+  },
+  {
+    "id": "eyewitness-news-165bba85",
+    "title": "Grand Bahama Shipyard strengthens skilled trades through education partnerships",
+    "source": "Eyewitness News",
+    "date": "2026-07-24",
+    "country": "BS",
+    "url": "https://ewnews.com/grand-bahama-shipyard-strengthens-skilled-trades-through-education-partnerships/?utm_source=rss&utm_medium=rss&utm_campaign=grand-bahama-shipyard-strengthens-skilled-trades-through-education-partnerships",
+    "tags": [
+      "local",
+      "always a headline ahead",
+      "bahamas",
+      "eyewitness news"
+    ],
+    "category": "Labor",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Shipyard skilled-trades education partnership; workforce development and training in critical sector.",
+    "classifier": "llm"
+  },
+  {
+    "id": "breaking-belize-news-a3d24b7e",
+    "title": "Ministry of Health and Wellness and Pan American Health Organization discuss Tobacco Control Bill",
+    "source": "Breaking Belize News",
+    "date": "2026-07-24",
+    "country": "BZ",
+    "url": "https://www.breakingbelizenews.com/2026/07/24/ministry-of-health-and-wellness-and-pan-american-health-organization-discuss-tobacco-control-bill/",
+    "tags": [
+      "community development",
+      "last news"
+    ],
+    "category": "Government",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Government health policy initiative (tobacco control regulation) via Ministry of Health and PAHO.",
+    "classifier": "llm"
+  },
+  {
+    "id": "breaking-belize-news-21b5ef0a",
+    "title": "Ministry of Tourism discusses diaspora nation-building at Belize Diaspora Summit 3.0",
+    "source": "Breaking Belize News",
+    "date": "2026-07-24",
+    "country": "BZ",
+    "url": "https://www.breakingbelizenews.com/2026/07/24/ministry-of-tourism-discusses-diaspora-nation-building-at-belize-diaspora-summit-3-0/",
+    "tags": [
+      "community development",
+      "last news"
+    ],
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Government tourism and diaspora nation-building economic strategy conference.",
+    "classifier": "llm"
+  },
+  {
+    "id": "breaking-belize-news-0e3afc20",
+    "title": "Cayo Central Youth in Agriculture camp wraps up with certificate ceremony",
+    "source": "Breaking Belize News",
+    "date": "2026-07-24",
+    "country": "BZ",
+    "url": "https://www.breakingbelizenews.com/2026/07/24/cayo-central-youth-in-agriculture-camp-wraps-up-with-certificate-ceremony/",
+    "tags": [
+      "community development",
+      "last news"
+    ],
+    "category": "Agriculture",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Youth agricultural training/workforce development program completion in Cayo Central.",
+    "classifier": "llm"
+  },
+  {
+    "id": "breaking-belize-news-8b12724b",
+    "title": "Belize Embassy in Cuba congratulates 9 Belizean medical graduates",
+    "source": "Breaking Belize News",
+    "date": "2026-07-24",
+    "country": "BZ",
+    "url": "https://www.breakingbelizenews.com/2026/07/24/belize-embassy-cuba-congratulates-9-belizean-medical-graduates/",
+    "tags": [
+      "community development",
+      "last news"
+    ],
+    "category": "Government",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Government recognition of education achievement (medical graduates); workforce/education development.",
+    "classifier": "llm"
+  },
+  {
+    "id": "breaking-belize-news-7a3ca54b",
+    "title": "National Emergency Management Organization completes 2nd Community Emergency Response Team training",
+    "source": "Breaking Belize News",
+    "date": "2026-07-24",
+    "country": "BZ",
+    "url": "https://www.breakingbelizenews.com/2026/07/24/national-emergency-management-organization-completes-2nd-community-emergency-response-team-training/",
+    "tags": [
+      "community development",
+      "last news"
+    ],
+    "category": "Government",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Emergency management institutional training (disaster preparedness); public-sector capacity building.",
+    "classifier": "llm"
+  },
+  {
+    "id": "starnieuws-cddf96d5",
+    "title": "Amatmohamed vraagt duidelijkheid over importverbod bestrijdingsmiddelen",
+    "source": "Starnieuws",
+    "date": "2026-07-24",
+    "country": "SR",
+    "url": "https://www.starnieuws.com/index.php/welcome/index/nieuwsitem/93100",
+    "category": "Government",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Agricultural chemical import ban policy query/clarification; agricultural regulation.",
+    "classifier": "llm"
+  },
+  {
+    "id": "starnieuws-c2d6532c",
+    "title": "Asabina eist duidelijkheid over massale vissterfte",
+    "source": "Starnieuws",
+    "date": "2026-07-24",
+    "country": "SR",
+    "url": "https://www.starnieuws.com/index.php/welcome/index/nieuwsitem/93099",
+    "category": "Climate",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Mass fish mortality (environmental/fisheries crisis); demand for government response on ecological disaster with sectoral impact.",
+    "classifier": "llm"
+  },
+  {
+    "id": "starnieuws-00ce939e",
+    "title": "OIS eist actie van president Simons na milieuramp in Saramacca",
+    "source": "Starnieuws",
+    "date": "2026-07-24",
+    "country": "SR",
+    "url": "https://www.starnieuws.com/index.php/welcome/index/nieuwsitem/93106",
+    "category": "Climate",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Environmental disaster (Saramacca); advocacy for government action on ecological incident affecting natural resources/economy.",
+    "classifier": "llm"
+  },
+  {
+    "id": "starnieuws-4239dadb",
+    "title": "Column: De goudsector zonder gezag, de les van Sarakreek",
+    "source": "Starnieuws",
+    "date": "2026-07-24",
+    "country": "SR",
+    "url": "https://www.starnieuws.com/index.php/welcome/index/nieuwsitem/93097",
+    "category": "Energy",
+    "group": "Energy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "gold mining sector governance and oversight in Suriname",
+    "classifier": "llm"
+  },
+  {
+    "id": "starnieuws-03a20a49",
+    "title": "Starnieuws gouddossier 1: Actie tegen Chinese werknemers Sarakreek slechts deel van thriller",
+    "source": "Starnieuws",
+    "date": "2026-07-24",
+    "country": "SR",
+    "url": "https://www.starnieuws.com/index.php/welcome/index/nieuwsitem/93101",
+    "category": "Energy",
+    "group": "Energy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "gold mining operations and labor/regulatory action in Suriname",
+    "classifier": "llm"
+  },
+  {
+    "id": "now-grenada-0d000a9a",
+    "title": "Empowering MSMEs for national growth",
+    "source": "NOW Grenada",
+    "date": "2026-07-24",
+    "country": "GD",
+    "url": "https://nowgrenada.com/2026/07/empowering-msmes-for-national-growth/",
+    "tags": [
+      "business",
+      "press release",
+      "andy williams",
+      "dickon mitchell",
+      "gcic",
+      "gidc"
+    ],
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "MSME economic development and national growth strategy in Grenada",
+    "classifier": "llm"
+  },
+  {
+    "id": "now-grenada-4f28aff6",
+    "title": "OECS–Morocco economic cooperation highlighted during promotion week",
+    "source": "NOW Grenada",
+    "date": "2026-07-24",
+    "country": "GD",
+    "url": "https://nowgrenada.com/2026/07/oecs-morocco-economic-cooperation-highlighted-during-promotion-week/",
+    "tags": [
+      "business",
+      "press release",
+      "amci",
+      "gcic",
+      "gidc",
+      "grenada chamber of industry and commerce"
+    ],
+    "category": "Trade",
+    "group": "Trade & Tourism",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "regional economic cooperation (OECS–Morocco) promotion",
+    "classifier": "llm"
+  },
+  {
+    "id": "now-grenada-03a06663",
+    "title": "Is Grenada’s insurance regulator doing enough to protect whole life policyholders?",
+    "source": "NOW Grenada",
+    "date": "2026-07-24",
+    "country": "GD",
+    "url": "https://nowgrenada.com/2026/07/is-grenadas-insurance-regulator-doing-enough-to-protect-whole-life-policyholders/",
+    "tags": [
+      "business",
+      "opinion/commentary",
+      "british american",
+      "garfin",
+      "grenada authority for the regulation of financial institutions",
+      "insurance"
+    ],
+    "category": "Banking",
+    "group": "Finance",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "insurance regulation and consumer protection in Grenada's financial sector",
+    "classifier": "llm"
+  },
+  {
+    "id": "st-lucia-times-49b4438d",
+    "title": "PARADISE INTERRUPTED | The story behind the statistic: Before we blame the farmer",
+    "source": "St. Lucia Times",
+    "date": "2026-07-24",
+    "country": "LC",
+    "url": "https://stluciatimes.com/182307/2026/07/paradise-interrupted-the-story-behind-the-statistic-before-we-blame-the-farmer/",
+    "tags": [
+      "agriculture & fisheries",
+      "headlines",
+      "opinions",
+      "farmers",
+      "food and agriculture organisation (fao)",
+      "ministry of agriculture and fisheries"
+    ],
+    "category": "Agriculture",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "agricultural sector analysis and farmer economic challenges in Saint Lucia",
+    "classifier": "llm"
+  },
+  {
+    "id": "antigua-news-room-4fb8534a",
+    "title": "China-Funded Barbuda Housing Project Moves Toward Construction",
+    "source": "Antigua News Room",
+    "date": "2026-07-24",
+    "country": "AG",
+    "url": "https://antiguanewsroom.com/china-funded-barbuda-housing-project-moves-toward-construction/",
+    "tags": [
+      "news"
+    ],
+    "category": "Infrastructure",
+    "group": "Investment",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "China-funded housing project in Barbuda moving to construction phase",
+    "classifier": "llm"
+  },
+  {
+    "id": "antigua-news-room-6ca5d663",
+    "title": "APUA Adjusts Water Distribution Schedule as Drought Strains Plants",
+    "source": "Antigua News Room",
+    "date": "2026-07-24",
+    "country": "AG",
+    "url": "https://antiguanewsroom.com/apua-adjusts-water-distribution-schedule-as-drought-strains-plants/",
+    "tags": [
+      "news"
+    ],
+    "category": "Climate",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "drought impact on water utility operations and supply management in Antigua",
+    "classifier": "llm"
+  },
+  {
+    "id": "antigua-news-room-0dd13f95",
+    "title": "Government Advances EC$100 Million Road Programme",
+    "source": "Antigua News Room",
+    "date": "2026-07-24",
+    "country": "AG",
+    "url": "https://antiguanewsroom.com/government-advances-ec100-million-road-programme/",
+    "tags": [
+      "news"
+    ],
+    "category": "Infrastructure",
+    "group": "Investment",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "EC$100 million road investment programme in Antigua & Barbuda",
+    "classifier": "llm"
+  },
+  {
+    "id": "antigua-observer-e985f3ab",
+    "title": "Wehner Accuses Gov’t of Helping Undermine A&B’s Passport",
+    "source": "Antigua Observer",
+    "date": "2026-07-24",
+    "country": "AG",
+    "url": "https://antiguaobserver.com/wehner-accuses-govt-of-helping-undermine-abs-passport/",
+    "tags": [
+      "the big stories"
+    ],
+    "category": "Fiscal Policy",
+    "group": "Fiscal Policy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Citizenship-by-Investment program credibility/passport integrity concerns, core fiscal revenue program",
+    "classifier": "llm"
+  },
+  {
+    "id": "antigua-observer-d7abb21b",
+    "title": "Arthur Nibbs Among First to Receive Barbuda Freehold Land Title",
+    "source": "Antigua Observer",
+    "date": "2026-07-24",
+    "country": "AG",
+    "url": "https://antiguaobserver.com/arthur-nibbs-among-first-to-receive-barbuda-freehold-land-title/",
+    "tags": [
+      "the big stories"
+    ],
+    "category": "Government",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "land titling program (Barbuda freehold) signals property rights/development policy",
+    "classifier": "llm"
+  },
+  {
+    "id": "iwitness-news-ac2b6845",
+    "title": "SVG-branded InterCaribbean aircraft a ‘flying ambassador’",
+    "source": "iWitness News",
+    "date": "2026-07-24",
+    "country": "VC",
+    "url": "https://www.iwnsvg.com/2026/07/24/svg-branded-intercaribbean-aircraft-a-flying-ambassador/",
+    "tags": [
+      "business",
+      "travel"
+    ],
+    "category": "Tourism",
+    "group": "Trade & Tourism",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "SVG-branded airline aircraft signals tourism/travel infrastructure and destination branding",
+    "classifier": "llm"
+  },
+  {
+    "id": "searchlight-svg-5c98769e",
+    "title": "Government  promises funding as free secondary schools registration takes effect",
+    "source": "Searchlight SVG",
+    "date": "2026-07-24",
+    "country": "VC",
+    "url": "https://www.searchlight.vc/front-page/2026/07/24/government-promises-funding-free-secondary-schools-registration-takes-effect/",
+    "tags": [
+      "front page"
+    ],
+    "category": "Fiscal Policy",
+    "group": "Fiscal Policy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Government funding commitment for free secondary-school registration; public expenditure and fiscal policy",
+    "classifier": "llm"
+  },
+  {
+    "id": "searchlight-svg-520e4d22",
+    "title": "GECCU disburses $thousands in  bursaries and scholarships",
+    "source": "Searchlight SVG",
+    "date": "2026-07-24",
+    "country": "VC",
+    "url": "https://www.searchlight.vc/news/2026/07/24/geccu-disburses-thousands-bursaries-scholarships/",
+    "tags": [
+      "news"
+    ],
+    "category": "Corporate",
+    "group": "Finance",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Credit union disbursing scholarship funds; financial-institution activity with economic relevance",
+    "classifier": "llm"
+  },
+  {
+    "id": "cayman-news-service-fd87c5b5",
+    "title": "Fledgling local egg sector struck by disease",
+    "source": "Cayman News Service",
+    "date": "2026-07-24",
+    "country": "KY",
+    "url": "https://caymannewsservice.com/2026/07/fledgling-local-egg-sector-struck-by-disease/",
+    "tags": [
+      "agriculture",
+      "business",
+      "department of agriculture",
+      "egg farming",
+      "infectious coryza",
+      "wilbur welcome"
+    ],
+    "category": "Agriculture",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Livestock disease outbreak in local egg-farming sector; agricultural-sector disruption",
+    "classifier": "llm"
+  },
+  {
+    "id": "cayman-news-service-141edbc8",
+    "title": "CPA approves 10-storey block on Boilers Road",
+    "source": "Cayman News Service",
+    "date": "2026-07-24",
+    "country": "KY",
+    "url": "https://caymannewsservice.com/2026/07/cpa-approves-10-storey-block-on-boilers-road/",
+    "tags": [
+      "development",
+      "local news",
+      "central planning authority",
+      "department of environment",
+      "featured",
+      "george town revitalisation project"
+    ],
+    "category": "Infrastructure",
+    "group": "Investment",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Planning approval for major commercial development; real-estate and construction investment",
+    "classifier": "llm"
+  },
+  {
+    "id": "cayman-compass-8bf94293",
+    "title": "The $32M question: Is Cayman getting value for its scholarship spending?",
+    "source": "Cayman Compass",
+    "date": "2026-07-24",
+    "country": "KY",
+    "url": "https://www.caymancompass.com/2026/07/24/the-32m-question-is-cayman-getting-value-for-its-scholarship-spending/",
+    "tags": [
+      "issues",
+      "local",
+      "anglin",
+      "cayman",
+      "foi",
+      "scholarships"
+    ],
+    "category": "Government",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Government scholarship spending audit; fiscal expenditure and cost-of-education policy",
+    "classifier": "llm"
+  },
+  {
+    "id": "bvi-news-efd8a8c2",
+    "title": "Gov’t accused of sidelining consumer protection reforms",
+    "source": "BVI News",
+    "date": "2026-07-24",
+    "country": "VG",
+    "url": "https://bvinews.com/govt-accused-of-sidelining-consumer-protection-reforms/",
+    "tags": [
+      "all news"
+    ],
+    "category": "Government",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Consumer-protection regulatory reform sidelined; economic policy / regulation news.",
+    "classifier": "llm"
   },
   {
     "id": "kaieteur-news-6c9dd82b",
@@ -703,6 +1708,150 @@
     ]
   },
   {
+    "id": "trinidad-express-95808215",
+    "title": "Bryden pi to relocate to new Chaguanas distribution hub",
+    "source": "Trinidad Express",
+    "date": "2026-07-23",
+    "country": "TT",
+    "url": "https://trinidadexpress.com/business/local/bryden-pi-to-relocate-to-new-chaguanas-distribution-hub/article_15a0e4cc-d969-442a-953c-829d285198aa.html",
+    "category": "Corporate",
+    "group": "Finance",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Bryden Pi logistics relocation to new distribution hub; corporate operations expansion.",
+    "classifier": "llm"
+  },
+  {
+    "id": "trinidad-express-90c035ef",
+    "title": "LJ Williams posts $336,000 loss in first quarter",
+    "source": "Trinidad Express",
+    "date": "2026-07-23",
+    "country": "TT",
+    "url": "https://trinidadexpress.com/business/local/lj-williams-posts-336-000-loss-in-first-quarter/article_b055b23e-1f7c-4f8f-9f83-c4074ff07d1e.html",
+    "category": "Corporate",
+    "group": "Finance",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "LJ Williams first-quarter financial loss; corporate earnings report.",
+    "classifier": "llm"
+  },
+  {
+    "id": "jamaica-gleaner-9efd1da2",
+    "title": "Region One schools urged not to block students from external exams",
+    "source": "Jamaica Gleaner",
+    "date": "2026-07-23",
+    "country": "JM",
+    "url": "http://jamaica-gleaner.com/article/news/20260723/region-one-schools-urged-not-block-students-external-exams",
+    "category": "Government",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Education policy directive on student exam access; government regulation of educational sector.",
+    "classifier": "llm"
+  },
+  {
+    "id": "jamaica-gleaner-a45593ed",
+    "title": "Meade defends hurricane cash delay",
+    "source": "Jamaica Gleaner",
+    "date": "2026-07-23",
+    "country": "JM",
+    "url": "http://jamaica-gleaner.com/article/news/20260723/meade-defends-hurricane-cash-delay",
+    "category": "Fiscal Policy",
+    "group": "Fiscal Policy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Government fiscal policy defending delay in post-disaster cash disbursement; fiscal/budget accountability.",
+    "classifier": "llm"
+  },
+  {
+    "id": "magnetic-media-6b67123e",
+    "title": "Government Outlines New Healthcare Vision as Interhealth Exit Accelerates Reform",
+    "source": "Magnetic Media",
+    "date": "2026-07-23",
+    "country": "TC",
+    "url": "https://magneticmediatv.com/2026/07/government-outlines-new-healthcare-vision-as-interhealth-exit-accelerates-reform/",
+    "tags": [
+      "government",
+      "news",
+      "tci news",
+      "#ihc",
+      "#kyleknowles",
+      "#magneticmedianews"
+    ],
+    "category": "Government",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Healthcare policy reform following private-provider exit; significant public-sector economic restructuring",
+    "classifier": "llm"
+  },
+  {
+    "id": "cayman-compass-f2021452",
+    "title": "Status pathway explored for Cuban-Caymanian descendants",
+    "source": "Cayman Compass",
+    "date": "2026-07-23",
+    "country": "KY",
+    "url": "https://www.caymancompass.com/2026/07/23/status-pathway-explored-for-cuban-caymanian-descendants/",
+    "tags": [
+      "local",
+      "world news",
+      "cuban",
+      "cuban-caymanians",
+      "immigration",
+      "rolston anglin"
+    ],
+    "category": "Government",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Immigration pathway proposal for descendant community; citizenship and migration policy",
+    "classifier": "llm"
+  },
+  {
+    "id": "cayman-compass-e40f63b9",
+    "title": "Captain Gary Hydes retires after 43 years with Cayman Airways",
+    "source": "Cayman Compass",
+    "date": "2026-07-23",
+    "country": "KY",
+    "url": "https://www.caymancompass.com/2026/07/23/captain-gary-hydes-retires-after-43-years-with-cayman-airways/",
+    "tags": [
+      "local",
+      "video",
+      "captain gary hydes",
+      "cayman airways limited",
+      "retirement",
+      "water cannon salute"
+    ],
+    "category": "Corporate",
+    "group": "Finance",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Long-serving aviation employee retirement; airline operational/HR milestone of economic institution",
+    "classifier": "llm"
+  },
+  {
+    "id": "cayman-compass-ee428ad0",
+    "title": "Government moves to protect Ironwood Forest while approving highway extension",
+    "source": "Cayman Compass",
+    "date": "2026-07-23",
+    "country": "KY",
+    "url": "https://www.caymancompass.com/2026/07/23/government-moves-to-protect-ironwood-forest-while-approving-highway-extension/",
+    "tags": [
+      "local",
+      "video",
+      "george town",
+      "ghost orchid",
+      "ironwood forest",
+      "katherine ebanks-wilks"
+    ],
+    "category": "Climate",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Environmental protection and infrastructure development; policy trade-offs with economic and resilience implications",
+    "classifier": "llm"
+  },
+  {
     "id": "kaieteur-news-153946ae",
     "title": "‘US$12.7M MV Ma Lisha still idle’ …embattled Edghill blames shifting soil, failed Port Kaituma wharf",
     "source": "Kaieteur News",
@@ -1056,6 +2205,76 @@
     "tags": [
       "local news"
     ]
+  },
+  {
+    "id": "trinidad-express-af0e1ef4",
+    "title": "Agro-processor calls for Tobago policy reform",
+    "source": "Trinidad Express",
+    "date": "2026-07-22",
+    "country": "TT",
+    "url": "https://trinidadexpress.com/business/local/agro-processor-calls-for-tobago-policy-reform/article_b165319b-236a-4ba6-b387-1289db73e530.html",
+    "category": "Agriculture",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Agro-processor call for Tobago policy reform; agricultural sector regulatory advocacy.",
+    "classifier": "llm"
+  },
+  {
+    "id": "trinidad-express-b4908e06",
+    "title": "Omoda and Jaecoo drive Into T&T",
+    "source": "Trinidad Express",
+    "date": "2026-07-22",
+    "country": "TT",
+    "url": "https://trinidadexpress.com/business/local/omoda-and-jaecoo-drive-into-t-t/article_d73d5ae1-d5fe-4d20-86e6-ecea47e05a8d.html",
+    "category": "Corporate",
+    "group": "Finance",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Omoda and Jaecoo automotive entry into T&T market; vehicle import/FDI.",
+    "classifier": "llm"
+  },
+  {
+    "id": "magnetic-media-ae1ed212",
+    "title": "Parnell Urges Premier to Step Aside, Proposes Bipartisan Board to Guide Healthcare Transition",
+    "source": "Magnetic Media",
+    "date": "2026-07-22",
+    "country": "TC",
+    "url": "https://magneticmediatv.com/2026/07/parnell-urges-premier-to-step-aside-proposes-bipartisan-board-to-guide-healthcare-transition/",
+    "tags": [
+      "government",
+      "news",
+      "tci news",
+      "#douglasparnell",
+      "#magneticmedianews",
+      "#tcihealthcaretransition"
+    ],
+    "category": "Government",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Political figure proposes healthcare governance overhaul; plausibly an economic policy shift, ambiguous whether substance warrants publication independent of politics",
+    "classifier": "llm"
+  },
+  {
+    "id": "cayman-compass-6d4e02c4",
+    "title": "Panama benefiting from Middle East conflict",
+    "source": "Cayman Compass",
+    "date": "2026-07-22",
+    "country": "KY",
+    "url": "https://www.caymancompass.com/2026/07/22/panama-benefiting-from-middle-east-conflict/",
+    "tags": [
+      "business",
+      "liquefied natural gas",
+      "panama",
+      "panama canal"
+    ],
+    "category": "Energy",
+    "group": "Energy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Panama Canal and Middle East-driven LNG traffic; energy/trade impact on regional hub.",
+    "classifier": "llm"
   },
   {
     "id": "guyana-chronicle-fc38433a",
@@ -1574,6 +2793,78 @@
     ]
   },
   {
+    "id": "amandala-95ebcada",
+    "title": "No visa-free travel to EU-Shengen area for Belize yet",
+    "source": "Amandala",
+    "date": "2026-07-21",
+    "country": "BZ",
+    "url": "https://amandala.com.bz/news/no-visa-free-travel-to-eu-shengen-area-for-belize-yet/",
+    "tags": [
+      "headline"
+    ],
+    "category": "Trade",
+    "group": "Trade & Tourism",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Belize visa/travel policy status versus EU-Schengen; international trade/diplomatic economic integration decision.",
+    "classifier": "llm"
+  },
+  {
+    "id": "searchlight-svg-48c9b03d",
+    "title": "Scrapping Registration, Tuition fees will hurt rural secondary schools most – Principal",
+    "source": "Searchlight SVG",
+    "date": "2026-07-21",
+    "country": "VC",
+    "url": "https://www.searchlight.vc/front-page/2026/07/21/scrapping-registration-tuition-fees-will-hurt-rural-secondary-schools-principal/",
+    "tags": [
+      "front page"
+    ],
+    "category": "Fiscal Policy",
+    "group": "Fiscal Policy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Government policy change removing tuition fees affects public education spending and fiscal priorities",
+    "classifier": "llm"
+  },
+  {
+    "id": "searchlight-svg-09f895be",
+    "title": "What local brands can learn from the 2026 World Cup",
+    "source": "Searchlight SVG",
+    "date": "2026-07-21",
+    "country": "VC",
+    "url": "https://www.searchlight.vc/business-buzz/2026/07/21/local-brands-can-learn-2026-world-cup/",
+    "tags": [
+      "business buzz"
+    ],
+    "category": "Corporate",
+    "group": "Finance",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Local business lessons from World Cup context; corporate strategy and brand positioning",
+    "classifier": "llm"
+  },
+  {
+    "id": "cayman-compass-d3c46100",
+    "title": "Mentoring Cayman celebrates another year of shaping Cayman’s future",
+    "source": "Cayman Compass",
+    "date": "2026-07-21",
+    "country": "KY",
+    "url": "https://www.caymancompass.com/2026/07/21/mentoring-cayman-celebrates-another-year-of-shaping-caymans-future/",
+    "tags": [
+      "press releases",
+      "cayman islands chamber of commerce",
+      "cayman islands ministry of education",
+      "jackie doak",
+      "mentoring cayman"
+    ],
+    "category": "Corporate",
+    "group": "Finance",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Chamber of Commerce executive appointments; governance of economic institution.",
+    "classifier": "llm"
+  },
+  {
     "id": "guyana-chronicle-3a2a1802",
     "title": "Wismar/Mackenzie bridge nearing completion",
     "source": "Guyana Chronicle",
@@ -1967,6 +3258,104 @@
     "url": "https://trinidadexpress.com/business/local/region-banking-more-on-renewable-energy/article_8575e4e3-cecf-49bb-b5ac-693d733a0992.html"
   },
   {
+    "id": "cayman-compass-a448a8cb",
+    "title": "Two-tier drivers’ licence fees spark concern over unintended consequences",
+    "source": "Cayman Compass",
+    "date": "2026-07-20",
+    "country": "KY",
+    "url": "https://www.caymancompass.com/2026/07/20/two-tier-licence-policy-will-drive-up-costs-and-increase-division-critics-warn/",
+    "tags": [
+      "featured local home page",
+      "local",
+      "video",
+      "cost of doing business",
+      "cost of living",
+      "driving license"
+    ],
+    "category": "Fiscal Policy",
+    "group": "Fiscal Policy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Two-tier driver's licence fee policy change with cost-of-living and business-cost implications.",
+    "classifier": "llm"
+  },
+  {
+    "id": "cayman-compass-fb95f419",
+    "title": "Cayman’s hiring trends show some positions up, some down",
+    "source": "Cayman Compass",
+    "date": "2026-07-20",
+    "country": "KY",
+    "url": "https://www.caymancompass.com/2026/07/20/automation-outsourcing-and-economic-growth-impacting-caymans-hiring-trends/",
+    "tags": [
+      "business",
+      "ai",
+      "cml recruitment",
+      "employment"
+    ],
+    "category": "Labor",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Cayman labour-market trends and hiring patterns across sectors.",
+    "classifier": "llm"
+  },
+  {
+    "id": "caribbean-dev-bank-4840eb97",
+    "title": "Health Sector Strengthening Project",
+    "source": "Caribbean Dev Bank",
+    "date": "2026-07-20",
+    "country": "ALL",
+    "url": "https://www.caribank.org/work-with-us/procurement/procurement-notices/health-sector-strengthening-project-2",
+    "category": "Infrastructure",
+    "group": "Investment",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "CDB health-sector strengthening project; public-health and infrastructure investment by multilateral.",
+    "classifier": "llm"
+  },
+  {
+    "id": "caribbean-dev-bank-088bc91e",
+    "title": "Health Sector Strengthening Project",
+    "source": "Caribbean Dev Bank",
+    "date": "2026-07-20",
+    "country": "ALL",
+    "url": "https://www.caribank.org/work-with-us/procurement/procurement-notices/health-sector-strengthening-project-1",
+    "category": "Infrastructure",
+    "group": "Investment",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "CDB health-sector strengthening project; multilateral health and infrastructure development.",
+    "classifier": "llm"
+  },
+  {
+    "id": "caribbean-dev-bank-8ea5a22a",
+    "title": "Health Sector Strengthening Project",
+    "source": "Caribbean Dev Bank",
+    "date": "2026-07-20",
+    "country": "ALL",
+    "url": "https://www.caribank.org/work-with-us/procurement/procurement-notices/health-sector-strengthening-project-0",
+    "category": "Infrastructure",
+    "group": "Investment",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "CDB health-sector strengthening project; multilateral development investment.",
+    "classifier": "llm"
+  },
+  {
+    "id": "caribbean-dev-bank-772b68ae",
+    "title": "Health Sector Strengthening Project",
+    "source": "Caribbean Dev Bank",
+    "date": "2026-07-20",
+    "country": "ALL",
+    "url": "https://www.caribank.org/work-with-us/procurement/procurement-notices/health-sector-strengthening-project",
+    "category": "Infrastructure",
+    "group": "Investment",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "CDB health-sector strengthening project; multilateral health investment.",
+    "classifier": "llm"
+  },
+  {
     "id": "kaieteur-news-d5fdff75",
     "title": "Mustapha’s family sitting on 7,614 acres of prime mining lands",
     "source": "Kaieteur News",
@@ -2124,6 +3513,20 @@
       "fuel",
       "gas"
     ]
+  },
+  {
+    "id": "trinidad-express-7d7ddd97",
+    "title": "‘IHOP, Applebee’s must buy local’",
+    "source": "Trinidad Express",
+    "date": "2026-07-19",
+    "country": "TT",
+    "url": "https://trinidadexpress.com/business/local/ihop-applebee-s-must-buy-local/article_b93274d9-382e-481b-bced-011871000e1e.html",
+    "category": "Government",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Restaurant chains (IHOP, Applebee's) local-procurement policy advocacy; domestic purchasing regulation debate.",
+    "classifier": "llm"
   },
   {
     "id": "kaieteur-news-75ea4108",
@@ -2498,6 +3901,57 @@
     "tags": [
       "local news"
     ]
+  },
+  {
+    "id": "trinidad-express-e648d20e",
+    "title": "Transparency call  over Govt MoUs",
+    "source": "Trinidad Express",
+    "date": "2026-07-18",
+    "country": "TT",
+    "url": "https://trinidadexpress.com/business/local/transparency-call-over-govt-mous/article_5c58e3df-52f9-4a2d-8e4d-4f873e1e5679.html",
+    "category": "Government",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Call for transparency in government Memoranda of Understanding; fiscal/policy governance.",
+    "classifier": "llm"
+  },
+  {
+    "id": "barbados-today-8d1d8c20",
+    "title": "FTC to launch online complaint tracking system",
+    "source": "Barbados Today",
+    "date": "2026-07-18",
+    "country": "BB",
+    "url": "https://barbadostoday.bb/2026/07/18/ftc-to-launch-online-complaint-tracking-system/",
+    "tags": [
+      "business",
+      "local news"
+    ],
+    "category": "Government",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "FTC launches online complaint-tracking system; consumer protection and regulatory modernization.",
+    "classifier": "llm"
+  },
+  {
+    "id": "barbados-today-dd94dd4a",
+    "title": "WeBiz Bajan launches to bring biz services into communities",
+    "source": "Barbados Today",
+    "date": "2026-07-18",
+    "country": "BB",
+    "url": "https://barbadostoday.bb/2026/07/18/webiz-bajan-launches-to-bring-biz-services-into-communities/",
+    "tags": [
+      "business",
+      "community",
+      "local news"
+    ],
+    "category": "Corporate",
+    "group": "Finance",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "WeBiz Bajan launches business-services platform; SME support and fintech/digital entrepreneurship.",
+    "classifier": "llm"
   },
   {
     "id": "kaieteur-news-867e44df",
@@ -3026,6 +4480,108 @@
     ]
   },
   {
+    "id": "barbados-today-ee6de17f",
+    "title": "Govt exploring sargassum-to-biofuel opportunities – Straughn",
+    "source": "Barbados Today",
+    "date": "2026-07-17",
+    "country": "BB",
+    "url": "https://barbadostoday.bb/2026/07/17/govt-exploring-sargassum-to-biofuel-opportunities-straughn/",
+    "tags": [
+      "business",
+      "environment",
+      "local news",
+      "politics",
+      "headline",
+      "headlines"
+    ],
+    "category": "Energy",
+    "group": "Energy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Government exploring sargassum-to-biofuel opportunities; renewable energy and climate-aligned fuel development.",
+    "classifier": "llm"
+  },
+  {
+    "id": "searchlight-svg-8a979f00",
+    "title": "OECS Commission extends deadline for regional MSME matching grants programme",
+    "source": "Searchlight SVG",
+    "date": "2026-07-17",
+    "country": "VC",
+    "url": "https://www.searchlight.vc/press-release/2026/07/17/oecs-commission-extends-deadline-regional-msme-matching-grants-programme/",
+    "tags": [
+      "press release"
+    ],
+    "category": "Investment",
+    "group": "Investment",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "OECS program deadline extension for small-business matching grants; regional SME financing",
+    "classifier": "llm"
+  },
+  {
+    "id": "cayman-compass-09048acf",
+    "title": "Cayman clamps down on criminal use of digital assets",
+    "source": "Cayman Compass",
+    "date": "2026-07-17",
+    "country": "KY",
+    "url": "https://www.caymancompass.com/2026/07/17/cayman-clamps-down-on-criminal-use-of-digital-assets/",
+    "tags": [
+      "business",
+      "finance",
+      "financial reporting authority",
+      "suspicious activity reports",
+      "virtual assets"
+    ],
+    "category": "Banking",
+    "group": "Finance",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Financial regulation: clampdown on criminal use of digital assets and virtual-asset reporting.",
+    "classifier": "llm"
+  },
+  {
+    "id": "cayman-compass-0eaaabaf",
+    "title": "Upstart realtors organisation agrees with having more Caymanian agents",
+    "source": "Cayman Compass",
+    "date": "2026-07-17",
+    "country": "KY",
+    "url": "https://www.caymancompass.com/2026/07/17/upstart-realtors-organisation-agrees-with-having-more-caymanian-agents/",
+    "tags": [
+      "business",
+      "featured local home page",
+      "cayman islands realtors organization",
+      "cireba",
+      "real estate"
+    ],
+    "category": "Corporate",
+    "group": "Finance",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Real-estate sector organization advocacy for local agent participation; industry governance and market access.",
+    "classifier": "llm"
+  },
+  {
+    "id": "cayman-compass-7a972f18",
+    "title": "Opposition wants answers on power charge increases",
+    "source": "Cayman Compass",
+    "date": "2026-07-17",
+    "country": "KY",
+    "url": "https://www.caymancompass.com/2026/07/17/opposition-wants-answers-on-power-charge-increases/",
+    "tags": [
+      "local",
+      "cost of living",
+      "cuc",
+      "electricity costs",
+      "urco"
+    ],
+    "category": "Infrastructure",
+    "group": "Investment",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Electricity cost increases and utility regulation; infrastructure / cost-of-living impact.",
+    "classifier": "llm"
+  },
+  {
     "id": "kaieteur-news-a32625de",
     "title": "New Canadian firm moves to acquire 64 km² of mineral claims in US$1.1M deal from local owner",
     "source": "Kaieteur News",
@@ -3514,6 +5070,96 @@
       "#investturksandcaicos",
       "#lavardotalbot"
     ]
+  },
+  {
+    "id": "trinidad-express-1e4e549a",
+    "title": "SM Jaleel eyes CAL water contract",
+    "source": "Trinidad Express",
+    "date": "2026-07-16",
+    "country": "TT",
+    "url": "https://trinidadexpress.com/business/local/sm-jaleel-eyes-cal-water-contract/article_0033ef6d-0fd2-4036-a2fc-514d282cbb32.html",
+    "category": "Corporate",
+    "group": "Finance",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "SM Jaleel pursuing CAL water contract; corporate business development/procurement.",
+    "classifier": "llm"
+  },
+  {
+    "id": "trinidad-express-7da18789",
+    "title": "72 extra domestic flights for vacation period",
+    "source": "Trinidad Express",
+    "date": "2026-07-16",
+    "country": "TT",
+    "url": "https://trinidadexpress.com/business/local/72-extra-domestic-flights-for-vacation-period/article_6f952a50-59fe-4bed-a16e-c82d9f8dd5eb.html",
+    "category": "Tourism",
+    "group": "Trade & Tourism",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Additional domestic flights during vacation period; airline capacity and tourism mobility.",
+    "classifier": "llm"
+  },
+  {
+    "id": "magnetic-media-494cefb9",
+    "title": "Ministry of Health Welcomes Appointment of New NHIB Chief Executive Officer and Highlights Progress of Organisational Transformation",
+    "source": "Magnetic Media",
+    "date": "2026-07-16",
+    "country": "TC",
+    "url": "https://magneticmediatv.com/2026/07/ministry-of-health-welcomes-appointment-of-new-nhib-chief-executive-officer-and-highlights-progress-of-organisational-transformation/",
+    "tags": [
+      "news",
+      "tci news",
+      "#magneticmedianews",
+      "#nhib",
+      "#ralphpatrick"
+    ],
+    "category": "Banking",
+    "group": "Finance",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Appointment of healthcare-insurance chief executive; leadership of financial institution",
+    "classifier": "llm"
+  },
+  {
+    "id": "cayman-compass-6b0666fd",
+    "title": "Cayman a top target for phishing scams",
+    "source": "Cayman Compass",
+    "date": "2026-07-16",
+    "country": "KY",
+    "url": "https://www.caymancompass.com/2026/07/16/cayman-a-top-target-for-phishing-scams/",
+    "tags": [
+      "local",
+      "cayman police",
+      "crime",
+      "cyber attacks",
+      "phishing"
+    ],
+    "category": "Banking",
+    "group": "Finance",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Cayman phishing-scam targeting; financial-crime threat to banking sector.",
+    "classifier": "llm"
+  },
+  {
+    "id": "cayman-compass-23299dfc",
+    "title": "From a single truck to a leading role in tackling waste",
+    "source": "Cayman Compass",
+    "date": "2026-07-16",
+    "country": "KY",
+    "url": "https://www.caymancompass.com/2026/07/16/from-a-single-truck-to-a-leading-role-in-tackling-waste/",
+    "tags": [
+      "local",
+      "island waste carriers",
+      "jason brown",
+      "waste management"
+    ],
+    "category": "Corporate",
+    "group": "Finance",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Waste-management company growth and sector leadership; corporate business narrative.",
+    "classifier": "llm"
   },
   {
     "id": "kaieteur-news-06396b04",
@@ -4124,6 +5770,70 @@
     ]
   },
   {
+    "id": "trinidad-express-fcf5a180",
+    "title": "T&T’s AI future: Opportunity or risk?",
+    "source": "Trinidad Express",
+    "date": "2026-07-15",
+    "country": "TT",
+    "url": "https://trinidadexpress.com/business/local/t-t-s-ai-future-opportunity-or-risk/article_efd0721e-4775-45da-95eb-96b4ce8b80ad.html",
+    "category": "Technology",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "T&T artificial intelligence policy and economic opportunity/risk discussion; digital economy strategy.",
+    "classifier": "llm"
+  },
+  {
+    "id": "trinidad-express-797ddf22",
+    "title": "How Aurora Bitayson built  a brand from family tradition",
+    "source": "Trinidad Express",
+    "date": "2026-07-15",
+    "country": "TT",
+    "url": "https://trinidadexpress.com/business/local/how-aurora-bitayson-built-a-brand-from-family-tradition/article_1a0c5ce3-a7b3-4ad2-acaa-154631c1676a.html",
+    "category": "Corporate",
+    "group": "Finance",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Profile of entrepreneur building brand from family tradition; business development and entrepreneurship.",
+    "classifier": "llm"
+  },
+  {
+    "id": "trinidad-express-87d46c97",
+    "title": "T&T must decide its data centre future",
+    "source": "Trinidad Express",
+    "date": "2026-07-15",
+    "country": "TT",
+    "url": "https://trinidadexpress.com/business/local/t-t-must-decide-its-data-centre-future/article_d905e45a-f206-4109-8156-4542838bcc53.html",
+    "category": "Technology",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "T&T data-centre policy and infrastructure strategy; digital economy and technology investment.",
+    "classifier": "llm"
+  },
+  {
+    "id": "cayman-compass-6137e8cd",
+    "title": "Cayman fund registrations continue to climb",
+    "source": "Cayman Compass",
+    "date": "2026-07-15",
+    "country": "KY",
+    "url": "https://www.caymancompass.com/2026/07/15/cayman-fund-registrations-continue-to-climb-2/",
+    "tags": [
+      "business",
+      "featured local home page",
+      "finance",
+      "cayman finance",
+      "cayman islands monetary authority (cima)",
+      "private funds"
+    ],
+    "category": "Banking",
+    "group": "Finance",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Cayman private-fund registrations growth; financial-services market and sector activity.",
+    "classifier": "llm"
+  },
+  {
     "id": "kaieteur-news-d6fec6a0",
     "title": "Govt. still silent on full 50% profits in Exxon deal… Guyana raked in US$1.2B from oil in 2nd quarter",
     "source": "Kaieteur News",
@@ -4718,6 +6428,20 @@
     "tags": [
       "local news"
     ]
+  },
+  {
+    "id": "trinidad-express-d7ad65d5",
+    "title": "Caricom backs pilot ferry service",
+    "source": "Trinidad Express",
+    "date": "2026-07-14",
+    "country": "TT",
+    "url": "https://trinidadexpress.com/business/local/caricom-backs-pilot-ferry-service/article_bde03b26-3749-4ffa-bd12-a667b12b3a5d.html",
+    "category": "Regional Developments",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "CARICOM backing pilot ferry service; regional transport and trade integration.",
+    "classifier": "llm"
   },
   {
     "id": "kaieteur-news-12cd9f54",
@@ -6347,6 +8071,54 @@
     "date": "2026-07-10",
     "country": "ALL",
     "url": "https://www.caribank.org/work-with-us/procurement/procurement-notices/enhancing-sustainability-and-resilience-agriculture-sector-commonwealth-dominica-project-4"
+  },
+  {
+    "id": "searchlight-svg-3ab4f932",
+    "title": "Martinique takes its seat in CARICOM for the first time as an Associate Member",
+    "source": "Searchlight SVG",
+    "date": "2026-07-10",
+    "country": "VC",
+    "url": "https://www.searchlight.vc/press-release/2026/07/10/martinique-takes-seat-caricom-first-time-associate-member/",
+    "tags": [
+      "press release"
+    ],
+    "category": "Regional Developments",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Martinique accession to CARICOM as Associate Member; regional trade and economic integration",
+    "classifier": "llm"
+  },
+  {
+    "id": "searchlight-svg-e1665ff9",
+    "title": "PAHO launches US$24 million appeal  to support health response following earthquakes in Venezuela",
+    "source": "Searchlight SVG",
+    "date": "2026-07-10",
+    "country": "VC",
+    "url": "https://www.searchlight.vc/press-release/2026/07/10/paho-launches-us24-million-appeal-support-health-response-following-earthquakes-venezuela/",
+    "tags": [
+      "press release"
+    ],
+    "category": "Climate",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "PAHO health-response appeal for earthquake disaster; disaster and humanitarian economic impact",
+    "classifier": "llm"
+  },
+  {
+    "id": "caribbean-dev-bank-3c9108a0",
+    "title": "Strengthening Flood Early Warning Systems in Suriname Project",
+    "source": "Caribbean Dev Bank",
+    "date": "2026-07-10",
+    "country": "ALL",
+    "url": "https://www.caribank.org/work-with-us/procurement/procurement-notices/strengthening-flood-early-warning-systems-suriname-project",
+    "category": "Infrastructure",
+    "group": "Investment",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "CDB early-warning and flood-resilience infrastructure project in Suriname; climate and disaster-risk investment.",
+    "classifier": "llm"
   },
   {
     "id": "kaieteur-news-7cf116b2",
@@ -8708,6 +10480,23 @@
     ]
   },
   {
+    "id": "cnc3-5901e9ce",
+    "title": "Young charges political victimsation in firings of 3 T&TEC senior execs",
+    "source": "CNC3",
+    "date": "2026-07-03",
+    "country": "TT",
+    "url": "https://www.cnc3.co.tt/young-charges-political-victimsation-in-firings-of-3-ttec-senior-execs/?utm_source=rss&utm_medium=rss&utm_campaign=young-charges-political-victimsation-in-firings-of-3-ttec-senior-execs",
+    "tags": [
+      "business"
+    ],
+    "category": "Corporate",
+    "group": "Finance",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Allegations of political dismissals at T&TEC (energy utility); state enterprise governance and labor impact.",
+    "classifier": "llm"
+  },
+  {
     "id": "kaieteur-news-ea40e81a",
     "title": "Hess, CNOOC made no investment in Stabroek Block for two years – financials",
     "source": "Kaieteur News",
@@ -10567,6 +12356,70 @@
     ]
   },
   {
+    "id": "cnc3-913f6865",
+    "title": "WASA launches $20M wastewater project in Beetham Gardens",
+    "source": "CNC3",
+    "date": "2026-06-18",
+    "country": "TT",
+    "url": "https://www.cnc3.co.tt/wasa-launches-20m-wastewater-project-in-beetham-gardens/?utm_source=rss&utm_medium=rss&utm_campaign=wasa-launches-20m-wastewater-project-in-beetham-gardens",
+    "tags": [
+      "business",
+      "news",
+      "beetham gardens",
+      "pipeline replacement",
+      "wastewater",
+      "water and sewerage authority"
+    ],
+    "category": "Infrastructure",
+    "group": "Investment",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "WASA $20M wastewater pipeline project in Beetham Gardens; public utility infrastructure investment.",
+    "classifier": "llm"
+  },
+  {
+    "id": "cnc3-e3355fe8",
+    "title": "No policy, no records: T&TEC probes controversial protected list",
+    "source": "CNC3",
+    "date": "2026-06-17",
+    "country": "TT",
+    "url": "https://www.cnc3.co.tt/no-policy-no-records-ttec-probes-controversial-protected-list/?utm_source=rss&utm_medium=rss&utm_campaign=no-policy-no-records-ttec-probes-controversial-protected-list",
+    "tags": [
+      "business",
+      "news",
+      "investigation",
+      "trinidad and tobago electricity commission (t&tec)"
+    ],
+    "category": "Government",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "T&TEC investigation into protected-list policy; energy utility governance and regulatory transparency.",
+    "classifier": "llm"
+  },
+  {
+    "id": "cnc3-ee3d2a9f",
+    "title": "Angostura aids Jamaica recovery through JSPCA partnership",
+    "source": "CNC3",
+    "date": "2026-06-11",
+    "country": "TT",
+    "url": "https://www.cnc3.co.tt/angostura-aids-jamaica-recovery-through-jspca-partnership/?utm_source=rss&utm_medium=rss&utm_campaign=angostura-aids-jamaica-recovery-through-jspca-partnership",
+    "tags": [
+      "business",
+      "news",
+      "angostura holdings limited",
+      "funding",
+      "hurricane melissa",
+      "jamaica"
+    ],
+    "category": "Corporate",
+    "group": "Finance",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Angostura Holdings funding Jamaica hurricane recovery through JSPCA partnership; corporate philanthropy and disaster relief.",
+    "classifier": "llm"
+  },
+  {
     "id": "ziz-online-ac1a606b",
     "title": "Saint Kitts and Nevis Invites the World to Connect, Collaborate and Invest in the Future of Global Africa at ACTIF 2026",
     "source": "ZIZ Online",
@@ -10589,6 +12442,26 @@
     ]
   },
   {
+    "id": "ziz-online-d79f7434",
+    "title": "National Biometric Passport Program Launches April 20",
+    "source": "ZIZ Online",
+    "date": "2026-04-15",
+    "country": "KN",
+    "url": "https://ziz.kn/national-biometric-passport-program-launches-april-20/",
+    "tags": [
+      "government",
+      "national",
+      "news",
+      "trending"
+    ],
+    "category": "Government",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "biometric passport program launch signals government investment and border/identity infrastructure modernization",
+    "classifier": "llm"
+  },
+  {
     "id": "ziz-online-23edc16b",
     "title": "PM Drew Announces Fuel Tax Cuts, Relief Measures",
     "source": "ZIZ Online",
@@ -10602,6 +12475,24 @@
     ]
   },
   {
+    "id": "ziz-online-dced211d",
+    "title": "Conaree Landfill Expands Recycling to Include Cardboard",
+    "source": "ZIZ Online",
+    "date": "2026-04-13",
+    "country": "KN",
+    "url": "https://ziz.kn/conaree-landfill-expands-recycling-to-include-cardboard/",
+    "tags": [
+      "national",
+      "news"
+    ],
+    "category": "Infrastructure",
+    "group": "Investment",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "landfill expansion and recycling program reflects waste-management infrastructure investment",
+    "classifier": "llm"
+  },
+  {
     "id": "ziz-online-b71f1c36",
     "title": "Fishing Industry Highest Revenue in a Decade",
     "source": "ZIZ Online",
@@ -10613,5 +12504,23 @@
       "national",
       "news"
     ]
+  },
+  {
+    "id": "ziz-online-b37b3fc1",
+    "title": "Government Announces 2026 Discounted VAT Rate Days",
+    "source": "ZIZ Online",
+    "date": "2026-04-12",
+    "country": "KN",
+    "url": "https://ziz.kn/government-announces-2026-discounted-vat-rate-days/",
+    "tags": [
+      "national",
+      "news"
+    ],
+    "category": "Fiscal Policy",
+    "group": "Fiscal Policy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "VAT rate policy announcement (2026 discounted days) is a fiscal/tax measure",
+    "classifier": "llm"
   }
 ]
