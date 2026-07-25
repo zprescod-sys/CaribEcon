@@ -13,7 +13,8 @@
     "reason": "Major fire displacement in Georgetown; if measured economic impact (housing, homelessness, recovery investment) is the core, then Climate/Infrastructure, but headline is bare incident report.",
     "classifier": "llm",
     "approved": false,
-    "suggestedCategory": "Climate"
+    "suggestedCategory": "Climate",
+    "triaged": true
   },
   {
     "id": "wic-news-affe48eb",
@@ -29,7 +30,8 @@
     "reason": "Environmental/canal cleanup; potential public health/utility impact but mechanism unclear.",
     "classifier": "llm",
     "approved": false,
-    "suggestedCategory": "Climate"
+    "suggestedCategory": "Climate",
+    "triaged": true
   },
   {
     "id": "kaieteur-news-12d92331",
@@ -53,7 +55,8 @@
     "reason": "Accident-investigation call with only a tangential regulatory angle; no stated economic mechanism or consequence.",
     "classifier": "llm",
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "kaieteur-news-b2218196",
@@ -77,7 +80,8 @@
     "reason": "International Maritime Organisation investigation call; no stated economic mechanism, only a tangential regulatory/accountability angle.",
     "classifier": "llm",
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "kaieteur-news-f4b10a10",
@@ -101,7 +105,8 @@
     "reason": "Safety/regulatory failure at ferry operator; touches maritime governance but lacks stated economic consequence or mechanism.",
     "classifier": "llm",
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "kaieteur-news-9ef92e32",
@@ -124,7 +129,8 @@
     "reason": "Proposal for coastal volunteer programme post-disaster; marginal economic substance without clear policy mechanism or scope.",
     "classifier": "llm",
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "guyana-chronicle-0480f9fc",
@@ -143,7 +149,8 @@
     "reason": "Salvage and recovery of maritime wreck; infrastructure/operational recovery, but thin economic substance without cost or impact detail.",
     "classifier": "llm",
     "approved": false,
-    "suggestedCategory": "Infrastructure"
+    "suggestedCategory": "Infrastructure",
+    "triaged": true
   },
   {
     "id": "guyana-chronicle-15fb6a94",
@@ -162,7 +169,8 @@
     "reason": "Government support pledge to disaster-affected families; social safety net topic but no specifics on fiscal mechanism or amount.",
     "classifier": "llm",
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "ttt-news-b4749138",
@@ -183,7 +191,8 @@
     "reason": "NALIS lecture on youth enterprise and ownership; economic opportunity discourse, insufficient substance without program detail.",
     "classifier": "llm",
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "barbados-today-c33822be",
@@ -204,7 +213,8 @@
     "reason": "Bank sponsorship of Crop Over festival; marginal tourism/corporate sponsorship, insufficient economic substance.",
     "classifier": "llm",
     "approved": false,
-    "suggestedCategory": "Tourism"
+    "suggestedCategory": "Tourism",
+    "triaged": true
   },
   {
     "id": "barbados-today-6cfafa4e",
@@ -226,7 +236,8 @@
     "reason": "Fishing cooperative seeking rescue vessel for safety; maritime/labor sector safety governance, thin economic substance.",
     "classifier": "llm",
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "barbados-today-d657bf93",
@@ -248,7 +259,8 @@
     "reason": "Barbados-Cuba collaboration on crime prevention; regional security cooperation, marginal economic substance.",
     "classifier": "llm",
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "barbados-today-9060b24f",
@@ -269,7 +281,8 @@
     "reason": "Elder-abuse reporting formalization; social-welfare governance, minimal economic substance.",
     "classifier": "llm",
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "jamaica-observer-98ab1c47",
@@ -293,7 +306,8 @@
     "reason": "Generic tech advice column about AI tools for small finance teams; no Caribbean economic nexus or specific entity.",
     "classifier": "llm",
     "approved": false,
-    "suggestedCategory": "Technology"
+    "suggestedCategory": "Technology",
+    "triaged": true
   },
   {
     "id": "jamaica-observer-1fe1a618",
@@ -316,7 +330,8 @@
     "reason": "Company requests partnership with municipal corporations; ambiguous whether this is concrete policy/contract news or general advocacy.",
     "classifier": "llm",
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "waterkant-dc7710a2",
@@ -337,7 +352,8 @@
     "reason": "tourism-system disruption (Entry Fee system), plausibly economic but thin on substance",
     "classifier": "llm",
     "approved": false,
-    "suggestedCategory": "Tourism"
+    "suggestedCategory": "Tourism",
+    "triaged": true
   },
   {
     "id": "kaieteur-news-a0442ed6",
@@ -360,7 +376,8 @@
     "reason": "Disaster response and rescue coordination, but marginal economic substance without stated fiscal or sectoral impact",
     "classifier": "llm",
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "kaieteur-news-60f2056f",
@@ -384,7 +401,8 @@
     "reason": "Government accountability on a maritime tragedy, but primarily a political/procedural call without direct economic mechanism",
     "classifier": "llm",
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "kaieteur-news-e2ebbd88",
@@ -408,7 +426,8 @@
     "reason": "Criminal investigation into maritime tragedy, but no stated economic mechanism or regulatory consequence yet",
     "classifier": "llm",
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "kaieteur-news-b2f8b97f",
@@ -432,7 +451,8 @@
     "reason": "Counselling service for disaster survivors; social support but marginal economic substance",
     "classifier": "llm",
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "kaieteur-news-35ebb2c7",
@@ -456,7 +476,8 @@
     "reason": "Municipal waiver of burial fees for disaster victims; fiscal gesture but marginal economic substance",
     "classifier": "llm",
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "kaieteur-news-e6d99475",
@@ -479,7 +500,8 @@
     "reason": "Letter on maritime administration oversight of tragedy; calls for investigation but no stated economic or regulatory mechanism yet",
     "classifier": "llm",
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "kaieteur-news-35861cf4",
@@ -500,7 +522,8 @@
     "reason": "Op-ed on governance failures exposed by maritime tragedy; economic-governance angle but opinion, not reporting",
     "classifier": "llm",
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "kaieteur-news-9686a43b",
@@ -524,7 +547,8 @@
     "reason": "Letter on preventability of maritime tragedy; governance concern but no stated economic consequence or sectoral impact",
     "classifier": "llm",
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "breaking-belize-news-d61ccc5f",
@@ -544,7 +568,10 @@
     "reason": "Diaspora summit may have economic development angle; merits editor judgment.",
     "classifier": "llm",
     "approved": false,
-    "suggestedCategory": "Regional Developments"
+    "suggestedCategory": "Regional Developments",
+    "triaged": false,
+    "escalated": true,
+    "reviewNote": "Diaspora summit — plausible investment-promotion/remittance economics, or just a community/cultural gathering; headline states neither. Attempted a WebFetch of the source (breakingbelizenews.com) to resolve; the site returned HTTP 403 (bot-blocked), so the ambiguity is unresolved, not confirmed either way. Per calibration guidance for this exact pattern: escalate rather than approve on a maybe."
   },
   {
     "id": "starnieuws-3cc42773",
@@ -560,7 +587,8 @@
     "reason": "Environmental disaster/government response; economic impact alleged but not specified.",
     "classifier": "llm",
     "approved": false,
-    "suggestedCategory": "Climate"
+    "suggestedCategory": "Climate",
+    "triaged": true
   },
   {
     "id": "waterkant-47662ae8",
@@ -582,7 +610,8 @@
     "reason": "Political criticism of foreign travel costs; policy/fiscal angle but opinion-framed.",
     "classifier": "llm",
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "st-kitts-nevis-observer-9e06a60e",
@@ -601,7 +630,8 @@
     "reason": "St. Lucia Commission of Inquiry into boat accident; potential fiscal/regulatory impact but thin without substance",
     "classifier": "llm",
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "st-kitts-nevis-observer-570a301e",
@@ -620,7 +650,8 @@
     "reason": "Guyana vessel salvage operation; maritime/infrastructure activity but accident-focused, not economic impact",
     "classifier": "llm",
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "bvi-news-ba2efe4a",
@@ -639,7 +670,8 @@
     "reason": "Citizenship-by-Investment programme intake; plausibly relevant to CBI revenue and FDI policy, but headline is bare intake figure with no economic context.",
     "classifier": "llm",
     "approved": false,
-    "suggestedCategory": "Fiscal Policy"
+    "suggestedCategory": "Fiscal Policy",
+    "triaged": true
   },
   {
     "id": "demerara-waves-f4c2e840",
@@ -663,7 +695,8 @@
     "reason": "Advocacy call on accountability and public-service pressure; governance concern but no stated economic mechanism or policy change",
     "classifier": "llm",
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "demerara-waves-83a16461",
@@ -687,7 +720,8 @@
     "reason": "Call for international maritime experts to investigate tragedy; regulatory angle but no stated economic consequence yet",
     "classifier": "llm",
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "jamaica-gleaner-48013773",
@@ -703,7 +737,8 @@
     "reason": "Hospital capacity/infrastructure issue with policy angle; merits editor review.",
     "classifier": "llm",
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "jamaica-observer-1cdb3180",
@@ -722,7 +757,8 @@
     "reason": "Political figure reference ('Tufton') with no stated economic policy or decision disclosed in headline alone.",
     "classifier": "llm",
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "kaieteur-news-2de51408",
@@ -738,7 +774,8 @@
     "category": "",
     "suggestedCategory": "Energy",
     "confidence": "low",
-    "reason": "Recognized editorial edge-case vocabulary; suggested Energy."
+    "reason": "Recognized editorial edge-case vocabulary; suggested Energy.",
+    "triaged": true
   },
   {
     "id": "kaieteur-news-41bdebc4",
@@ -755,11 +792,12 @@
       "longtail",
       "rystad energy"
     ],
-    "approved": false,
-    "category": "",
+    "approved": true,
+    "category": "Energy",
     "suggestedCategory": "Energy",
     "confidence": "low",
-    "reason": "Recognized editorial edge-case vocabulary; suggested Energy."
+    "reason": "Recognized editorial edge-case vocabulary; suggested Energy.",
+    "triaged": true
   },
   {
     "id": "now-grenada-171c4b9d",
@@ -783,7 +821,8 @@
     "reason": "Historic building demolition review call; governance angle but no stated economic mechanism.",
     "classifier": "llm",
     "approved": false,
-    "suggestedCategory": "Infrastructure"
+    "suggestedCategory": "Infrastructure",
+    "triaged": true
   },
   {
     "id": "cayman-news-service-f8951b58",
@@ -807,7 +846,8 @@
     "reason": "road infrastructure project; environmental dispute adds ambiguity on whether focus is infrastructure or environmental activism",
     "classifier": "llm",
     "approved": false,
-    "suggestedCategory": "Infrastructure"
+    "suggestedCategory": "Infrastructure",
+    "triaged": true
   },
   {
     "id": "kaieteur-news-c2dac7e4",
@@ -843,7 +883,8 @@
     "reason": "Inner-city development project; advertorial format suggests promotional rather than hard news.",
     "classifier": "llm",
     "approved": false,
-    "suggestedCategory": "Infrastructure"
+    "suggestedCategory": "Infrastructure",
+    "triaged": true
   },
   {
     "id": "kaieteur-news-5ce97ce4",
@@ -862,7 +903,8 @@
     "category": "",
     "suggestedCategory": "Energy",
     "confidence": "low",
-    "reason": "Recognized editorial edge-case vocabulary; suggested Energy."
+    "reason": "Recognized editorial edge-case vocabulary; suggested Energy.",
+    "triaged": true
   },
   {
     "id": "guyana-chronicle-d1200c33",
@@ -878,7 +920,8 @@
     "category": "",
     "suggestedCategory": "Corporate",
     "confidence": "low",
-    "reason": "Recognized editorial edge-case vocabulary; suggested Corporate."
+    "reason": "Recognized editorial edge-case vocabulary; suggested Corporate.",
+    "triaged": true
   },
   {
     "id": "trinidad-express-1e4e549a",
@@ -934,7 +977,8 @@
     "reason": "Profile of retired premier's farming and real-estate activities; marginal corporate/sector news; let editor decide.",
     "classifier": "llm",
     "approved": false,
-    "suggestedCategory": "Corporate"
+    "suggestedCategory": "Corporate",
+    "triaged": true
   },
   {
     "id": "jamaica-gleaner-fd2e77b6",
@@ -943,11 +987,12 @@
     "date": "2026-07-15",
     "country": "JM",
     "url": "http://jamaica-gleaner.com/article/business/20260715/govt-puts-silver-sands-villas-sale-harmony-cove-project-stays-dormant",
-    "approved": false,
-    "category": "",
+    "approved": true,
+    "category": "Investment",
     "suggestedCategory": "",
     "confidence": "low",
-    "reason": "Business-feed headline contains commercial vocabulary not covered by the public classifier."
+    "reason": "Business-feed headline contains commercial vocabulary not covered by the public classifier.",
+    "triaged": true
   },
   {
     "id": "breaking-belize-news-6ffa9582",
@@ -985,7 +1030,8 @@
     "category": "",
     "suggestedCategory": "Corporate",
     "confidence": "low",
-    "reason": "Recognized editorial edge-case vocabulary; suggested Corporate."
+    "reason": "Recognized editorial edge-case vocabulary; suggested Corporate.",
+    "triaged": true
   },
   {
     "id": "barbados-today-53a3006b",
@@ -1014,7 +1060,8 @@
     "category": "",
     "suggestedCategory": "Corporate",
     "confidence": "low",
-    "reason": "Recognized editorial edge-case vocabulary; suggested Corporate."
+    "reason": "Recognized editorial edge-case vocabulary; suggested Corporate.",
+    "triaged": true
   },
   {
     "id": "trinidad-express-4b76be66",
@@ -1066,7 +1113,8 @@
     "category": "",
     "suggestedCategory": "",
     "confidence": "low",
-    "reason": "Business-feed headline contains commercial vocabulary not covered by the public classifier."
+    "reason": "Business-feed headline contains commercial vocabulary not covered by the public classifier.",
+    "triaged": true
   },
   {
     "id": "cnc3-913f6865",
