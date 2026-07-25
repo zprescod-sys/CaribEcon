@@ -15,15 +15,18 @@
   {
     "id": "deal-1f35004c",
     "headline": "Dolla Financial completes acquisition of Evolve loan portfolio",
-    "parties": "",
+    "parties": "Dolla Financial Services Limited (acquirer); Evolve Loan Co Limited (seller)",
     "value": "",
     "date": "2026-07-04",
     "country": "JM",
-    "type": "",
+    "type": "M&A",
     "suggestedType": "M&A",
     "url": "https://www.jamaicaobserver.com/2026/07/04/dolla-financial-completes-acquisition-evolve-loan-portfolio/",
     "source": "Jamaica Observer",
-    "approved": false
+    "approved": false,
+    "triaged": false,
+    "escalated": true,
+    "reviewNote": "Completed M&A confirmed via Jamaica Observer (jamaicaobserver.com, effective June 30, 2026): Dolla Financial acquired Evolve Loan Co's lending portfolio (~1,800 customers). Parties and type verified from the source. Value NOT transcribable: the source states the acquired portfolio held ~$700m in loans, but explicitly says the purchase price was 'the gross nominal value of the portfolio minus agreed expected credit loss provisions' -- a formula, not a disclosed figure -- and never calls the price 'undisclosed' either. $700m is portfolio size, not price paid; writing it as deal value would misrepresent the transaction. Holding for human judgment on how to handle value."
   },
   {
     "id": "deal-bf57660d",
@@ -36,7 +39,9 @@
     "suggestedType": "M&A",
     "url": "http://jamaica-gleaner.com/article/business/20260714/st-lucian-company-buy-majority-stake-dolphin-cove",
     "source": "Jamaica Gleaner",
-    "approved": false
+    "approved": false,
+    "triaged": true,
+    "reviewNote": "Pending, not completed: Jamaica Gleaner reports World of Dolphins Inc. signed a share purchase agreement (July 9, 2026) to sell its majority stake in Dolphin Cove to Global Attractions Ltd (St Lucia), but completion is 'subject to conditions, including the refinancing and discharge of Dolphin Cove's existing credit facility with Sagicor Bank Jamaica.' Sale price also not disclosed. Reject as pending -- classifier mis-staged this as deal_status:completed; flagging for tune-news-rubric."
   },
   {
     "id": "deal-de9ce100",
@@ -49,20 +54,25 @@
     "suggestedType": "Bond",
     "url": "https://www.cnc3.co.tt/government-exempts-proposed-us800m-bond-issue-from-taxes-exchange-control/?utm_source=rss&utm_medium=rss&utm_campaign=government-exempts-proposed-us800m-bond-issue-from-taxes-exchange-control",
     "source": "CNC3",
-    "approved": false
+    "approved": false,
+    "triaged": true,
+    "reviewNote": "Headline states the US$800m bond issue is 'proposed' -- a tax/exchange-control exemption ahead of a proposed issuance, not a closed bond. Reject as pending. Classifier mis-staged as deal_status:completed despite 'proposed' in its own headline; same pending-vs-completed miss pattern as the calibration seed example -- flagging for tune-news-rubric."
   },
   {
     "id": "deal-d8d24625",
     "headline": "Image Plus to pay $620m for recent acquisitions",
-    "parties": "",
-    "value": "",
+    "parties": "Image Plus Consultants Ltd (trading as Apex Radiology), acquirer of Island Radiology and The Woman's Place",
+    "value": "$620m",
     "date": "2026-07-15",
     "country": "JM",
-    "type": "",
+    "type": "M&A",
     "suggestedType": "M&A",
     "url": "http://jamaica-gleaner.com/article/business/20260715/image-plus-pay-620m-recent-acquisitions",
     "source": "Jamaica Gleaner",
-    "approved": false
+    "approved": false,
+    "triaged": false,
+    "escalated": true,
+    "reviewNote": "First-run caution: completed M&A, fields drafted and verified against Jamaica Gleaner (jamaica-gleaner.com/article/business/20260715/image-plus-pay-620m-recent-acquisitions) -- IPCL/Apex Radiology paid $620 million for two completed acquisitions, Island Radiology and The Woman's Place. Note: the source states the figure as a bare '$620 million' with no J$/US$ prefix; transcribed verbatim rather than assumed as J$. Deduped: superseded near-duplicate deal-659b79b8 (same story, same date, same Gleaner outlet) rejected separately. Holding for first-batch human confirmation per calibration first-run-caution status. Set approved:true to publish."
   },
   {
     "id": "deal-a32625de",
@@ -75,7 +85,9 @@
     "suggestedType": "M&A",
     "url": "https://kaieteurnewsonline.com/2026/07/16/new-canadian-firm-moves-to-acquire-64-km%c2%b2-of-mineral-claims-in-us1-1m-deal-from-local-owner/",
     "source": "Kaieteur News",
-    "approved": false
+    "approved": false,
+    "triaged": true,
+    "reviewNote": "Pending, not completed: Kaieteur News reports Lexston Guyana Inc. (Canadian) signed only a Letter of Intent with seller Joseph Jardine for the mineral claims; completion is 'subject to... due diligence' and regulatory approvals, and the company itself states 'there is no assurance the acquisition will be completed.' Reject as pending. Classifier mis-staged as deal_status:completed; flagging for tune-news-rubric."
   },
   {
     "id": "deal-659b79b8",
@@ -88,7 +100,9 @@
     "suggestedType": "M&A",
     "url": "http://jamaica-gleaner.com/article/business/20260715/image-plus-pays-620m-recent-acquisitions",
     "source": "Jamaica Gleaner",
-    "approved": false
+    "approved": false,
+    "triaged": true,
+    "reviewNote": "Superseded near-duplicate of deal-d8d24625 -- same Image Plus/Apex Radiology $620m acquisition story, same date, same Gleaner outlet, near-identical headline ('pays' vs 'to pay'). Canonical row drafted and escalated for first-run confirmation; this row rejected to avoid double-counting."
   },
   {
     "id": "deal-a3f64c88",
@@ -101,7 +115,10 @@
     "suggestedType": "JV",
     "url": "https://guyanachronicle.com/2026/07/24/totaltec-aha-form-joint-venture-to-tackle-guyanas-skills-gap/",
     "source": "Guyana Chronicle",
-    "approved": false
+    "approved": false,
+    "triaged": false,
+    "escalated": true,
+    "reviewNote": "TotalTec/aHa JV (Guyana Chronicle) -- WebFetch failed twice (HTTP 307 on both the bare and www hostnames; likely bot-blocked/redirect). Headline alone ('to tackle Guyana's skills gap') reads as a possibly-operational training partnership, not a stated capital/equity JV -- can't confirm the ownership-vs-operational gate without the source. Escalating per the no-publish-from-information-poverty rule; matches the pattern already named in the 2026-07-25 calibration seed."
   },
   {
     "id": "deal-913f6865",
@@ -114,7 +131,9 @@
     "suggestedType": "FDI",
     "url": "https://www.cnc3.co.tt/wasa-launches-20m-wastewater-project-in-beetham-gardens/?utm_source=rss&utm_medium=rss&utm_campaign=wasa-launches-20m-wastewater-project-in-beetham-gardens",
     "source": "CNC3",
-    "approved": false
+    "approved": false,
+    "triaged": true,
+    "reviewNote": "Operational capex, not a capital transaction: WASA launching a $20M wastewater construction project is public-utility infrastructure spending, not an ownership/investment/financing event. Reject. Recurring pattern (see also deal-52329a31, deal-141edbc8) -- flagging for tune-news-rubric."
   },
   {
     "id": "deal-52329a31",
@@ -127,7 +146,9 @@
     "suggestedType": "FDI",
     "url": "https://www.ttt.live/mv-golden-carrier-to-join-the-inter-island-cargo-seabridge-at-no-additional-cost/?utm_source=rss&utm_medium=rss&utm_campaign=mv-golden-carrier-to-join-the-inter-island-cargo-seabridge-at-no-additional-cost",
     "source": "TTT News",
-    "approved": false
+    "approved": false,
+    "triaged": true,
+    "reviewNote": "Operational, not a capital transaction: a cargo vessel joining an inter-island seabridge route 'At No Additional Cost' is a service/route addition with explicitly zero cost -- no capital changing hands. Reject."
   },
   {
     "id": "deal-141edbc8",
@@ -140,6 +161,8 @@
     "suggestedType": "FDI",
     "url": "https://caymannewsservice.com/2026/07/cpa-approves-10-storey-block-on-boilers-road/",
     "source": "Cayman News Service",
-    "approved": false
+    "approved": false,
+    "triaged": true,
+    "reviewNote": "Regulatory/planning approval, not a capital transaction: CPA approving a 10-storey building on Boilers Road is a planning-permission decision, not an ownership/investment event (no developer, financing terms, or figure stated). Reject."
   }
 ]
