@@ -73,7 +73,7 @@ export function validateNewsReviewInbox(rows) {
 }
 
 // The 19 country codes (mirror dataHub.ts) + ALL for pan-Caribbean.
-const COUNTRIES = new Set(['GY','TT','BB','JM','BS','BZ','SR','GD','LC','AG','KN','DM','VC','TC','KY','VG','HT','AW','CW','ALL']);
+export const COUNTRIES = new Set(['GY','TT','BB','JM','BS','BZ','SR','GD','LC','AG','KN','DM','VC','TC','KY','VG','HT','AW','CW','ALL']);
 
 const REPORT = [];
 const log = (s) => { REPORT.push(s); console.log(s); };
@@ -447,6 +447,33 @@ async function buildPublications() {
   log(`Publications: ${promoted} promoted from inbox, ${byId.size} total.`);
 }
 
+// The DealType vocabulary — MUST stay in sync with `DealType` in src/lib/types.ts (a TS type,
+// not importable at runtime, hence this runtime mirror). Shared by buildDeals() below and
+// scripts/triage-deals.mjs so the two can never disagree on what a valid deal type is.
+export const DEAL_TYPES = new Set(['M&A', 'FDI', 'Bond', 'IPO', 'JV', 'Concession', 'Other']);
+
+// Guard for a deals_inbox row that is about to be promoted (approved:true) into the public
+// deals.json. Throws on a bad type/country or an empty parties/value — the same "bad approved
+// data fails the build loudly" contract dataHub.ts already enforces for approved news rows.
+// warrenb (the triage subagent) can never create such a row (scripts/triage-deals.mjs validates
+// its patches pre-write), so in practice this only ever fires on a bad HAND edit to the inbox —
+// exactly when a loud failure is wanted rather than a silently-rendered bad deal on the page.
+export function validateDealForPublish(row) {
+  if (!DEAL_TYPES.has(row.type)) {
+    throw new Error(`deal "${row.id}" has type "${row.type}", not one of DealType: ${[...DEAL_TYPES].join(', ')}.`);
+  }
+  const countries = Array.isArray(row.country) ? row.country : [row.country];
+  for (const c of countries) {
+    if (!COUNTRIES.has(c)) throw new Error(`deal "${row.id}" has country "${c}", not a known country code.`);
+  }
+  if (!row.parties || !String(row.parties).trim()) {
+    throw new Error(`deal "${row.id}" is approved but "parties" is empty — never publish a deal without a named actor.`);
+  }
+  if (!row.value || !String(row.value).trim()) {
+    throw new Error(`deal "${row.id}" is approved but "value" is empty — use a stated figure or "Undisclosed", never blank.`);
+  }
+}
+
 // ── Deals promotion (editorial-in-the-loop) ─────────────────────────────────────
 // Discovery happens in stageDeals() above, during classification. This just promotes
 // approved data/deals_inbox.json rows into data/deals.json without clobbering the
@@ -458,6 +485,7 @@ async function buildDeals() {
   let promoted = 0;
   for (const r of inbox) {
     if (r.approved === true && r.type && r.headline && !byId.has(r.id)) {
+      validateDealForPublish(r);                       // throws on bad type/country/empty parties|value
       const { approved, suggestedType, ...deal } = r;  // drop staging-only fields
       byId.set(r.id, deal); promoted++;
     }
