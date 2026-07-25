@@ -70,6 +70,202 @@
     "classifier": "llm"
   },
   {
+    "id": "kaieteur-news-fe2ca452",
+    "title": "Guyana hit with 12.5% Trump tariff in new U.S. trade crackdown",
+    "source": "Kaieteur News",
+    "date": "2026-07-25",
+    "country": "GY",
+    "url": "https://kaieteurnewsonline.com/2026/07/25/guyana-hit-with-12-5-trump-tariff-in-new-u-s-trade-crackdown/",
+    "tags": [
+      "news",
+      "trading partners",
+      "trump tariff",
+      "u.s. tariff"
+    ],
+    "category": "Trade",
+    "group": "Trade & Tourism",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "guyana-chronicle-27a5d6bd",
+    "title": "Minister Singh encourages Indigenous communities to use financial tools",
+    "source": "Guyana Chronicle",
+    "date": "2026-07-25",
+    "country": "GY",
+    "url": "https://guyanachronicle.com/2026/07/25/minister-singh-encourages-indigenous-communities-to-use-financial-tools/",
+    "tags": [
+      "news"
+    ],
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "cnc3-eb18fc8b",
+    "title": "US slaps T&T with 10% tariff. Named among 60 countries deemed to be importing goods produced with forced labour; Tancoo blames PNM for negative listing",
+    "source": "CNC3",
+    "date": "2026-07-25",
+    "country": "TT",
+    "url": "https://www.cnc3.co.tt/us-slaps-tt-with-10-tariff-named-among-60-countries-deemed-to-be-importing-goods-produced-with-forced-labour-tancoo-blames-pnm-for-negative-listing/?utm_source=rss&utm_medium=rss&utm_campaign=us-slaps-tt-with-10-tariff-named-among-60-countries-deemed-to-be-importing-goods-produced-with-forced-labour-tancoo-blames-pnm-for-negative-listing",
+    "tags": [
+      "news"
+    ],
+    "category": "Trade",
+    "group": "Trade & Tourism",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "cnc3-74299b6e",
+    "title": "Trump’s new tariffs anger key trading partners",
+    "source": "CNC3",
+    "date": "2026-07-25",
+    "country": "TT",
+    "url": "https://www.cnc3.co.tt/trumps-new-tariffs-anger-key-trading-partners/?utm_source=rss&utm_medium=rss&utm_campaign=trumps-new-tariffs-anger-key-trading-partners",
+    "tags": [
+      "news"
+    ],
+    "category": "Trade",
+    "group": "Trade & Tourism",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "ttt-news-7c7f0847",
+    "title": "Foreign Affairs Ministry : T&T Not Subject To 12.5% Tariff From US",
+    "source": "TTT News",
+    "date": "2026-07-25",
+    "country": "TT",
+    "url": "https://www.ttt.live/foreign-affairs-ministry-tt-not-subject-to-12-5-tariff-from-us/?utm_source=rss&utm_medium=rss&utm_campaign=foreign-affairs-ministry-tt-not-subject-to-12-5-tariff-from-us",
+    "tags": [
+      "foreign affairs",
+      "news"
+    ],
+    "category": "Trade",
+    "group": "Trade & Tourism",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "jamaica-gleaner-df13711c",
+    "title": "William Hunt | From pristine beaches to Caribbean energy powerhouse",
+    "source": "Jamaica Gleaner",
+    "date": "2026-07-25",
+    "country": "JM",
+    "url": "http://jamaica-gleaner.com/article/news/20260725/william-hunt-pristine-beaches-caribbean-energy-powerhouse",
+    "category": "Energy",
+    "group": "Energy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "jamaica-gleaner-a562f56a",
+    "title": "Zachary Li | A national rum push: How rum could one day rival bauxite",
+    "source": "Jamaica Gleaner",
+    "date": "2026-07-25",
+    "country": "JM",
+    "url": "http://jamaica-gleaner.com/article/news/20260725/zachary-li-national-rum-push-how-rum-could-one-day-rival-bauxite",
+    "category": "Investment",
+    "group": "Investment",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "waterkant-93f14d3e",
+    "title": "Als vluchtgevaarlijk aangemerkte ‘Bondia’ opgepakt op schuiladres",
+    "source": "Waterkant",
+    "date": "2026-07-25",
+    "country": "SR",
+    "url": "https://www.waterkant.net/suriname/2026/07/25/als-vluchtgevaarlijk-aangemerkte-bondia-opgepakt-op-schuiladres/#utm_source=rss&utm_medium=rss&utm_campaign=als-vluchtgevaarlijk-aangemerkte-bondia-opgepakt-op-schuiladres",
+    "tags": [
+      "justitie en politie",
+      "nieuws uit suriname",
+      "uitgelicht"
+    ],
+    "category": "Debt",
+    "group": "Fiscal Policy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "cayman-compass-10b62ce1",
+    "title": "400-pound green turtle rescued after falling into Rum Point pool",
+    "source": "Cayman Compass",
+    "date": "2026-07-25",
+    "country": "KY",
+    "url": "https://www.caymancompass.com/2026/07/25/400-pound-green-turtle-rescued-after-falling-into-rum-point-pool/",
+    "tags": [
+      "local",
+      "artificial lighting",
+      "green turtle",
+      "rum point",
+      "saved",
+      "swimming pool"
+    ],
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "cayman-compass-c6c696da",
+    "title": "Signal Business Incubator: Sara Mair-Doak, founder of Chef Sara’s Tings",
+    "source": "Cayman Compass",
+    "date": "2026-07-25",
+    "country": "KY",
+    "url": "https://www.caymancompass.com/2026/07/25/signal-business-incubator-sara-mair-doak-founder-of-chef-saras-tings/",
+    "tags": [
+      "business",
+      "signal business incubator"
+    ],
+    "category": "Corporate",
+    "group": "Finance",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "cayman-compass-fac44503",
+    "title": "New youth camp and UCCI programme drive local table tennis growth",
+    "source": "Cayman Compass",
+    "date": "2026-07-25",
+    "country": "KY",
+    "url": "https://www.caymancompass.com/2026/07/25/new-youth-camp-and-ucci-programme-drive-local-table-tennis-growth/",
+    "tags": [
+      "local",
+      "sports",
+      "cayman islands table tennis association",
+      "table tennis"
+    ],
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
     "id": "kaieteur-news-aebd6415",
     "title": "Slingerz FC cruise into CFU Club Shield Round of 16 with commanding win over SWA Sharks",
     "source": "Kaieteur News",
@@ -1332,6 +1528,215 @@
     "confidence": "high",
     "reason": "Consumer-protection regulatory reform sidelined; economic policy / regulation news.",
     "classifier": "llm"
+  },
+  {
+    "id": "ttt-news-b2009b64",
+    "title": "TTPS Warns Businesses Of Fraudulent Cheque Scheme Targeting High-Value Purchases",
+    "source": "TTT News",
+    "date": "2026-07-24",
+    "country": "TT",
+    "url": "https://www.ttt.live/ttps-warns-businesses-of-fraudulent-cheque-scheme-targeting-high-value-purchases/?utm_source=rss&utm_medium=rss&utm_campaign=ttps-warns-businesses-of-fraudulent-cheque-scheme-targeting-high-value-purchases",
+    "tags": [
+      "crime",
+      "news"
+    ],
+    "category": "Corporate",
+    "group": "Finance",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "ttt-news-f32466b5",
+    "title": "Experts Warn Pet Trade Is Putting Caribbean Parrots At Risk Of Extinction",
+    "source": "TTT News",
+    "date": "2026-07-24",
+    "country": "TT",
+    "url": "https://www.ttt.live/experts-warn-pet-trade-is-putting-caribbean-parrots-at-risk-of-extinction/?utm_source=rss&utm_medium=rss&utm_campaign=experts-warn-pet-trade-is-putting-caribbean-parrots-at-risk-of-extinction",
+    "tags": [
+      "community",
+      "news",
+      "regional"
+    ],
+    "category": "Trade",
+    "group": "Trade & Tourism",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "ttt-news-f0b61072",
+    "title": "CARPHA Launches Antimicrobial Resistance Regional Reference Laboratory in Jamaica",
+    "source": "TTT News",
+    "date": "2026-07-24",
+    "country": "TT",
+    "url": "https://www.ttt.live/carpha-launches-antimicrobial-resistance-regional-reference-laboratory-in-jamaica/?utm_source=rss&utm_medium=rss&utm_campaign=carpha-launches-antimicrobial-resistance-regional-reference-laboratory-in-jamaica",
+    "tags": [
+      "news"
+    ],
+    "category": "Labor",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "nation-news-03b83ede",
+    "title": "Pic-O-De-Crop Finals return to National Botanical Gardens",
+    "source": "Nation News",
+    "date": "2026-07-24",
+    "country": "BB",
+    "url": "https://nationnews.com/2026/07/24/pic-o-de-crop-finals-return-to-national-botanical-gardens/?utm_source=rss&utm_medium=rss&utm_campaign=pic-o-de-crop-finals-return-to-national-botanical-gardens",
+    "tags": [
+      "crop over",
+      "entertainment",
+      "pic o de crop"
+    ],
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "nation-news-c8912d68",
+    "title": "List of 2026 Pic-O-De-Crop finalists",
+    "source": "Nation News",
+    "date": "2026-07-24",
+    "country": "BB",
+    "url": "https://nationnews.com/2026/07/24/list-of-2026-pic-o-de-crop-finalists/?utm_source=rss&utm_medium=rss&utm_campaign=list-of-2026-pic-o-de-crop-finalists",
+    "tags": [
+      "entertainment",
+      "crop over",
+      "entertainment",
+      "finalists",
+      "pic o de crop"
+    ],
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "nation-news-1826ca01",
+    "title": "Minister praises tourism workers",
+    "source": "Nation News",
+    "date": "2026-07-24",
+    "country": "BB",
+    "url": "https://nationnews.com/2026/07/24/minister-praises-tourism-workers/?utm_source=rss&utm_medium=rss&utm_campaign=minister-praises-tourism-workers",
+    "tags": [
+      "news",
+      "minister of tourism",
+      "tourism"
+    ],
+    "category": "Tourism",
+    "group": "Trade & Tourism",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "jamaica-gleaner-6b11f28e",
+    "title": "Finance lessons from Garfield Sobers",
+    "source": "Jamaica Gleaner",
+    "date": "2026-07-24",
+    "country": "JM",
+    "url": "http://jamaica-gleaner.com/article/business/20260724/finance-lessons-garfield-sobers",
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "jamaica-gleaner-33017ed2",
+    "title": "IDB Invest lines up US$80m loan for JPS grid recovery",
+    "source": "Jamaica Gleaner",
+    "date": "2026-07-24",
+    "country": "JM",
+    "url": "http://jamaica-gleaner.com/article/business/20260724/idb-invest-lines-us80m-loan-jps-grid-recovery",
+    "category": "Banking",
+    "group": "Finance",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "jamaica-gleaner-20146cc8",
+    "title": "IAJ urges policyholders to review sums insured as average-clause disputes mount after Melissa",
+    "source": "Jamaica Gleaner",
+    "date": "2026-07-24",
+    "country": "JM",
+    "url": "http://jamaica-gleaner.com/article/business/20260724/iaj-urges-policyholders-review-sums-insured-average-clause-disputes-mount",
+    "category": "Banking",
+    "group": "Finance",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "jamaica-gleaner-354c1617",
+    "title": "UFC fighter Aljamain Sterling seeks US$1m to fund J’can rum venture",
+    "source": "Jamaica Gleaner",
+    "date": "2026-07-24",
+    "country": "JM",
+    "url": "http://jamaica-gleaner.com/article/business/20260724/ufc-fighter-aljamain-sterling-seeks-us1m-fund-jcan-rum-venture",
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "now-grenada-1f441674",
+    "title": "REOI: Procurement and Contract Management Officer",
+    "source": "NOW Grenada",
+    "date": "2026-07-24",
+    "country": "GD",
+    "url": "https://nowgrenada.com/2026/07/reoi-procurement-and-contract-management-officer/",
+    "tags": [
+      "advertisement",
+      "business",
+      "environment",
+      "vacancy",
+      "contract management",
+      "grenada geothermal drilling project"
+    ],
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "st-kitts-nevis-observer-74851397",
+    "title": "Great Britain:  Big Win For Scotch Whisky As US Tariffs Are Lifted",
+    "source": "St. Kitts-Nevis Observer",
+    "date": "2026-07-24",
+    "country": "KN",
+    "url": "https://www.thestkittsnevisobserver.com/great-britain-big-win-for-scotch-whisky-as-us-tariffs-are-lifted/",
+    "tags": [
+      "press releases",
+      "regional/international news"
+    ],
+    "category": "Trade",
+    "group": "Trade & Tourism",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
   },
   {
     "id": "kaieteur-news-6c9dd82b",

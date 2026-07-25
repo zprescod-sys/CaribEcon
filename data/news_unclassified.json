@@ -16,30 +16,6 @@
     "suggestedCategory": "Climate"
   },
   {
-    "id": "demerara-waves-8c03609f",
-    "title": "Transparency Institute wants International Maritime Organisation to investigate MV Barima tragedy",
-    "source": "Demerara Waves",
-    "date": "2026-07-24",
-    "country": "GY",
-    "url": "https://demerarawaves.com/2026/07/23/transparency-institute-wants-international-maritime-organisation-to-investigate-mv-barima-tragedy/",
-    "tags": [
-      "business",
-      "maritime",
-      "news",
-      "politics",
-      "impartial investigation",
-      "international maritime organisation (imo)"
-    ],
-    "category": "",
-    "group": "Macro",
-    "decision": "review",
-    "confidence": "medium",
-    "reason": "International Maritime Organisation investigation demand; regulatory/accountability angle, but no stated economic mechanism or consequence.",
-    "classifier": "llm",
-    "approved": false,
-    "suggestedCategory": "Government"
-  },
-  {
     "id": "wic-news-affe48eb",
     "title": "Thousands of dead fish found in St. Maarten canal; Govt explores alternative cleanup",
     "source": "WIC News",
@@ -189,87 +165,6 @@
     "suggestedCategory": "Government"
   },
   {
-    "id": "demerara-waves-a4eeb53b",
-    "title": "APNU wants parliamentary-approved terms of reference for MV Barima Commission of Inquiry",
-    "source": "Demerara Waves",
-    "date": "2026-07-24",
-    "country": "GY",
-    "url": "https://demerarawaves.com/2026/07/24/apnu-wants-parliamentary-approved-terms-of-reference-for-mv-barima-commission-of-inquiry/",
-    "tags": [
-      "maritime",
-      "news",
-      "politics"
-    ],
-    "category": "",
-    "group": "Macro",
-    "decision": "review",
-    "confidence": "medium",
-    "reason": "Parliamentary governance of inquiry terms; procedural/political with tangential accountability angle, not stated economic mechanism.",
-    "classifier": "llm",
-    "approved": false,
-    "suggestedCategory": "Government"
-  },
-  {
-    "id": "ttt-news-5af93e0f",
-    "title": "PAAC Rejects Former Health Minister’s Conditions For Appearing At Pharmaceuticals Inquiry",
-    "source": "TTT News",
-    "date": "2026-07-24",
-    "country": "TT",
-    "url": "https://www.ttt.live/paac-rejects-former-health-ministers-conditions-for-appearing-at-pharmaceuticals-inquiry/?utm_source=rss&utm_medium=rss&utm_campaign=paac-rejects-former-health-ministers-conditions-for-appearing-at-pharmaceuticals-inquiry",
-    "tags": [
-      "health",
-      "news"
-    ],
-    "category": "",
-    "group": "Macro",
-    "decision": "review",
-    "confidence": "low",
-    "reason": "Inquiry into pharmaceutical procurement; government accountability, marginal economic substance without stated findings or impact.",
-    "classifier": "llm",
-    "approved": false,
-    "suggestedCategory": "Government"
-  },
-  {
-    "id": "ttt-news-f32466b5",
-    "title": "Experts Warn Pet Trade Is Putting Caribbean Parrots At Risk Of Extinction",
-    "source": "TTT News",
-    "date": "2026-07-24",
-    "country": "TT",
-    "url": "https://www.ttt.live/experts-warn-pet-trade-is-putting-caribbean-parrots-at-risk-of-extinction/?utm_source=rss&utm_medium=rss&utm_campaign=experts-warn-pet-trade-is-putting-caribbean-parrots-at-risk-of-extinction",
-    "tags": [
-      "community",
-      "news",
-      "regional"
-    ],
-    "category": "",
-    "group": "Macro",
-    "decision": "review",
-    "confidence": "medium",
-    "reason": "Pet trade impact on Caribbean parrot species extinction risk; biodiversity loss in region, but no stated economic mechanism or measurable impact.",
-    "classifier": "llm",
-    "approved": false,
-    "suggestedCategory": "Climate"
-  },
-  {
-    "id": "ttt-news-f0b61072",
-    "title": "CARPHA Launches Antimicrobial Resistance Regional Reference Laboratory in Jamaica",
-    "source": "TTT News",
-    "date": "2026-07-24",
-    "country": "TT",
-    "url": "https://www.ttt.live/carpha-launches-antimicrobial-resistance-regional-reference-laboratory-in-jamaica/?utm_source=rss&utm_medium=rss&utm_campaign=carpha-launches-antimicrobial-resistance-regional-reference-laboratory-in-jamaica",
-    "tags": [
-      "news"
-    ],
-    "category": "",
-    "group": "Macro",
-    "decision": "review",
-    "confidence": "low",
-    "reason": "Regional laboratory facility launch by CARPHA; health infrastructure, marginal economic substance without capital or operational detail.",
-    "classifier": "llm",
-    "approved": false,
-    "suggestedCategory": "Government"
-  },
-  {
     "id": "ttt-news-b4749138",
     "title": "NALIS Emancipation Lecture Urges Young People To Pursue Ownership And Enterprise",
     "source": "TTT News",
@@ -377,48 +272,6 @@
     "suggestedCategory": "Government"
   },
   {
-    "id": "nation-news-1826ca01",
-    "title": "Minister praises tourism workers",
-    "source": "Nation News",
-    "date": "2026-07-24",
-    "country": "BB",
-    "url": "https://nationnews.com/2026/07/24/minister-praises-tourism-workers/?utm_source=rss&utm_medium=rss&utm_campaign=minister-praises-tourism-workers",
-    "tags": [
-      "news",
-      "minister of tourism",
-      "tourism"
-    ],
-    "category": "",
-    "group": "Trade & Tourism",
-    "decision": "review",
-    "confidence": "low",
-    "reason": "Minister praise for tourism workers; political statement about labor, insufficient economic substance.",
-    "classifier": "llm",
-    "approved": false,
-    "suggestedCategory": "Tourism"
-  },
-  {
-    "id": "nation-news-eec693eb",
-    "title": "SSA wants proper disposal of dead animals",
-    "source": "Nation News",
-    "date": "2026-07-24",
-    "country": "BB",
-    "url": "https://nationnews.com/2026/07/24/ssa-wants-proper-disposal-of-dead-animals/?utm_source=rss&utm_medium=rss&utm_campaign=ssa-wants-proper-disposal-of-dead-animals",
-    "tags": [
-      "news",
-      "public relations",
-      "sanitation service authority"
-    ],
-    "category": "",
-    "group": "Macro",
-    "decision": "review",
-    "confidence": "low",
-    "reason": "Sanitation authority call for proper dead-animal disposal; public health governance, minimal economic substance.",
-    "classifier": "llm",
-    "approved": false,
-    "suggestedCategory": "Government"
-  },
-  {
     "id": "jamaica-observer-98ab1c47",
     "title": "ChatGPT, Claude, or Copilot — which AI assistant does your small finance team actually need?",
     "source": "Jamaica Observer",
@@ -466,78 +319,6 @@
     "suggestedCategory": "Government"
   },
   {
-    "id": "jamaica-gleaner-175ea319",
-    "title": "FEELING FORSAKEN",
-    "source": "Jamaica Gleaner",
-    "date": "2026-07-24",
-    "country": "JM",
-    "url": "http://jamaica-gleaner.com/article/news/20260724/feeling-forsaken",
-    "category": "",
-    "group": null,
-    "decision": "review",
-    "confidence": "low",
-    "reason": "Headline alone is too vague to judge economic substance ('Feeling Forsaken').",
-    "classifier": "llm",
-    "approved": false,
-    "suggestedCategory": ""
-  },
-  {
-    "id": "the-star-jamaica-0f6867df",
-    "title": "Dressmakers divided over tighter school uniforms",
-    "source": "The Star (Jamaica)",
-    "date": "2026-07-24",
-    "country": "JM",
-    "url": "https://jamaica-star.com/article/news/20260724/dressmakers-divided-over-tighter-school-uniforms",
-    "category": "",
-    "group": "Macro",
-    "decision": "review",
-    "confidence": "medium",
-    "reason": "Labor dispute in dressmaking over school uniform sizing; marginal economic substance involving local workers/sector.",
-    "classifier": "llm",
-    "approved": false,
-    "suggestedCategory": "Labor"
-  },
-  {
-    "id": "the-star-jamaica-395aea4a",
-    "title": "Women’s Centre wants sex offenders’ registry public",
-    "source": "The Star (Jamaica)",
-    "date": "2026-07-24",
-    "country": "JM",
-    "url": "https://jamaica-star.com/article/news/20260724/women%E2%80%99s-centre-wants-sex-offenders%E2%80%99-registry-public",
-    "category": "",
-    "group": "Macro",
-    "decision": "review",
-    "confidence": "medium",
-    "reason": "Regulatory advocacy for sex-offender registry; governance/public-safety policy with marginal economic scope.",
-    "classifier": "llm",
-    "approved": false,
-    "suggestedCategory": "Government"
-  },
-  {
-    "id": "eyewitness-news-5a394062",
-    "title": "Conch diver dies after experiencing distress at sea off New Providence",
-    "source": "Eyewitness News",
-    "date": "2026-07-24",
-    "country": "BS",
-    "url": "https://ewnews.com/conch-diver-dies-after-experiencing-distress-at-sea-off-new-providence/?utm_source=rss&utm_medium=rss&utm_campaign=conch-diver-dies-after-experiencing-distress-at-sea-off-new-providence",
-    "tags": [
-      "local",
-      "always a headline ahead",
-      "bahamas",
-      "bahamas news",
-      "ewnews.com",
-      "eyewitness news online"
-    ],
-    "category": "",
-    "group": "Macro",
-    "decision": "review",
-    "confidence": "medium",
-    "reason": "Conch diver fatality; maritime/fisheries sector incident with economic implications but headline lacks stated sectoral impact.",
-    "classifier": "llm",
-    "approved": false,
-    "suggestedCategory": "Agriculture"
-  },
-  {
     "id": "waterkant-dc7710a2",
     "title": "Meerdere reizigers stranden door storing bij Entry Fee-systeem",
     "source": "Waterkant",
@@ -557,240 +338,6 @@
     "classifier": "llm",
     "approved": false,
     "suggestedCategory": "Tourism"
-  },
-  {
-    "id": "now-grenada-1f6a2cd2",
-    "title": "27 July deadline for applications to Pearl Allison Lake Scholarship Fund",
-    "source": "NOW Grenada",
-    "date": "2026-07-24",
-    "country": "GD",
-    "url": "https://nowgrenada.com/2026/07/27-july-deadline-for-applications-to-pearl-allison-lake-scholarship-fund/",
-    "tags": [
-      "education",
-      "press release",
-      "eastern caribbean telecommunications authority",
-      "ectel",
-      "pearl allison lake",
-      "scholarship"
-    ],
-    "category": "",
-    "group": "Macro",
-    "decision": "review",
-    "confidence": "medium",
-    "reason": "scholarship fund announcement; marginal educational/social program, let editor decide if it clears econ bar",
-    "classifier": "llm",
-    "approved": false,
-    "suggestedCategory": "Government"
-  },
-  {
-    "id": "now-grenada-ccf58ce5",
-    "title": "REOI: Consultancy Services for Environmental Health and Safety Officer (EHSO)",
-    "source": "NOW Grenada",
-    "date": "2026-07-24",
-    "country": "GD",
-    "url": "https://nowgrenada.com/2026/07/reoi-consultancy-services-for-environmental-health-and-safety-officer-ehso/",
-    "tags": [
-      "advertisement",
-      "business",
-      "environment",
-      "vacancy",
-      "environmental health and safety officer",
-      "grenada geothermal drilling project"
-    ],
-    "category": "",
-    "group": "Investment",
-    "decision": "review",
-    "confidence": "medium",
-    "reason": "geothermal project staffing; infrastructure project activity but thin on economic substance without project milestone",
-    "classifier": "llm",
-    "approved": false,
-    "suggestedCategory": "Infrastructure"
-  },
-  {
-    "id": "now-grenada-aa746805",
-    "title": "REOI: Consultancy Services for Project Civil Engineer",
-    "source": "NOW Grenada",
-    "date": "2026-07-24",
-    "country": "GD",
-    "url": "https://nowgrenada.com/2026/07/reoi-consultancy-services-for-project-civil-engineer/",
-    "tags": [
-      "advertisement",
-      "business",
-      "environment",
-      "vacancy",
-      "civil engineer",
-      "grenada geothermal drilling project"
-    ],
-    "category": "",
-    "group": "Investment",
-    "decision": "review",
-    "confidence": "medium",
-    "reason": "geothermal project staffing; infrastructure project activity but thin on economic substance without project milestone",
-    "classifier": "llm",
-    "approved": false,
-    "suggestedCategory": "Infrastructure"
-  },
-  {
-    "id": "now-grenada-a0465e7e",
-    "title": "REOI: Consultancy Services for Administrative Officer",
-    "source": "NOW Grenada",
-    "date": "2026-07-24",
-    "country": "GD",
-    "url": "https://nowgrenada.com/2026/07/reoi-consultancy-services-for-administrative-officer/",
-    "tags": [
-      "advertisement",
-      "business",
-      "environment",
-      "vacancy",
-      "administrative officer",
-      "grenada geothermal drilling project"
-    ],
-    "category": "",
-    "group": "Investment",
-    "decision": "review",
-    "confidence": "medium",
-    "reason": "geothermal project staffing; infrastructure project activity but thin on economic substance without project milestone",
-    "classifier": "llm",
-    "approved": false,
-    "suggestedCategory": "Infrastructure"
-  },
-  {
-    "id": "now-grenada-1f441674",
-    "title": "REOI: Procurement and Contract Management Officer",
-    "source": "NOW Grenada",
-    "date": "2026-07-24",
-    "country": "GD",
-    "url": "https://nowgrenada.com/2026/07/reoi-procurement-and-contract-management-officer/",
-    "tags": [
-      "advertisement",
-      "business",
-      "environment",
-      "vacancy",
-      "contract management",
-      "grenada geothermal drilling project"
-    ],
-    "category": "",
-    "group": "Investment",
-    "decision": "review",
-    "confidence": "medium",
-    "reason": "geothermal project staffing; infrastructure project activity but thin on economic substance without project milestone",
-    "classifier": "llm",
-    "approved": false,
-    "suggestedCategory": "Infrastructure"
-  },
-  {
-    "id": "antigua-news-room-be92bf61",
-    "title": "Antigua and Barbuda Monitoring Results of Under-16 Social Media Bans",
-    "source": "Antigua News Room",
-    "date": "2026-07-24",
-    "country": "AG",
-    "url": "https://antiguanewsroom.com/antigua-and-barbuda-monitoring-results-of-under-16-social-media-bans/",
-    "tags": [
-      "news"
-    ],
-    "category": "",
-    "group": "Macro",
-    "decision": "review",
-    "confidence": "medium",
-    "reason": "social media age restriction policy; tangential regulatory angle without clear economic mechanism",
-    "classifier": "llm",
-    "approved": false,
-    "suggestedCategory": "Government"
-  },
-  {
-    "id": "antigua-news-room-623a3069",
-    "title": "100 Days to Go -Antigua and Barbuda Begins Countdown to CHOGM 2026",
-    "source": "Antigua News Room",
-    "date": "2026-07-24",
-    "country": "AG",
-    "url": "https://antiguanewsroom.com/100-days-to-go-antigua-and-barbuda-begins-countdown-to-chogm-2026/",
-    "tags": [
-      "news"
-    ],
-    "category": "",
-    "group": "Macro",
-    "decision": "review",
-    "confidence": "medium",
-    "reason": "CHOGM 2026 countdown; government event planning with possible economic/infrastructure impact but thin on substance",
-    "classifier": "llm",
-    "approved": false,
-    "suggestedCategory": "Government"
-  },
-  {
-    "id": "iwitness-news-11d9ff8b",
-    "title": "Gonsalves neither supports nor opposes gratuity bill",
-    "source": "iWitness News",
-    "date": "2026-07-24",
-    "country": "VC",
-    "url": "https://www.iwnsvg.com/2026/07/24/gonsalves-neither-supports-nor-opposes-gratuity-bill/",
-    "tags": [
-      "politics"
-    ],
-    "category": "",
-    "group": "Fiscal Policy",
-    "decision": "review",
-    "confidence": "medium",
-    "reason": "gratuity bill (employee severance/compensation); fiscal/labor policy but thin without substance",
-    "classifier": "llm",
-    "approved": false,
-    "suggestedCategory": "Fiscal Policy"
-  },
-  {
-    "id": "searchlight-svg-38589713",
-    "title": "Parental Involvement in Tertiary Education: A Missing Link to Student Success",
-    "source": "Searchlight SVG",
-    "date": "2026-07-24",
-    "country": "VC",
-    "url": "https://www.searchlight.vc/features/2026/07/24/parental-involvement-tertiary-education-missing-link-student-success/",
-    "tags": [
-      "features"
-    ],
-    "category": "",
-    "group": "Macro",
-    "decision": "review",
-    "confidence": "medium",
-    "reason": "Education policy and student outcomes; borderline on economic education-sector impact",
-    "classifier": "llm",
-    "approved": false,
-    "suggestedCategory": "Government"
-  },
-  {
-    "id": "bvi-news-6f464bd6",
-    "title": "Premier defends rejection of recall law for elected officials",
-    "source": "BVI News",
-    "date": "2026-07-24",
-    "country": "VG",
-    "url": "https://bvinews.com/premier-defends-rejection-of-recall-law-for-elected-officials/",
-    "tags": [
-      "all news"
-    ],
-    "category": "",
-    "group": "Macro",
-    "decision": "review",
-    "confidence": "medium",
-    "reason": "Political debate over recall-law governance; plausibly has fiscal or institutional-reform angle but headline is ambiguous.",
-    "classifier": "llm",
-    "approved": false,
-    "suggestedCategory": "Government"
-  },
-  {
-    "id": "bvi-news-3c486eb4",
-    "title": "Turnbull criticises government’s handling of HOA affairs",
-    "source": "BVI News",
-    "date": "2026-07-24",
-    "country": "VG",
-    "url": "https://bvinews.com/turnbull-criticises-governments-handling-of-hoa-affairs/",
-    "tags": [
-      "all news"
-    ],
-    "category": "",
-    "group": "Macro",
-    "decision": "review",
-    "confidence": "low",
-    "reason": "Government criticism on HOA (housing) affairs; marginal economic angle if it involves housing policy, but headline is thin.",
-    "classifier": "llm",
-    "approved": false,
-    "suggestedCategory": "Government"
   },
   {
     "id": "kaieteur-news-a0442ed6",
@@ -1038,120 +585,6 @@
     "suggestedCategory": "Government"
   },
   {
-    "id": "cayman-news-service-239101b3",
-    "title": "Premier hedges on possible changes to NCA",
-    "source": "Cayman News Service",
-    "date": "2026-07-23",
-    "country": "KY",
-    "url": "https://caymannewsservice.com/2026/07/premier-hedges-on-possible-changes-to-nca/",
-    "tags": [
-      "development",
-      "land habitat",
-      "local news",
-      "science & nature",
-      "andré ebanks",
-      "cayman forward"
-    ],
-    "category": "",
-    "group": "Macro",
-    "decision": "review",
-    "confidence": "low",
-    "reason": "Possible regulatory changes to nature conservation; environmental policy ambiguously framed, unclear substance",
-    "classifier": "llm",
-    "approved": false,
-    "suggestedCategory": "Government"
-  },
-  {
-    "id": "bvi-news-d6e00dcd",
-    "title": "Premier criticised for advising residents to buy water tanks",
-    "source": "BVI News",
-    "date": "2026-07-23",
-    "country": "VG",
-    "url": "https://bvinews.com/premier-criticised-for-advising-residents-to-buy-water-tanks/",
-    "tags": [
-      "all news"
-    ],
-    "category": "",
-    "group": "Macro",
-    "decision": "review",
-    "confidence": "medium",
-    "reason": "Premier advising water-tank purchases; plausibly tied to water shortage or supply crisis with economic impact, but headline is thin on substance.",
-    "classifier": "llm",
-    "approved": false,
-    "suggestedCategory": "Macro"
-  },
-  {
-    "id": "the-star-jamaica-d1606916",
-    "title": "No hiding from the lens as cops expand body cam use",
-    "source": "The Star (Jamaica)",
-    "date": "2026-07-23",
-    "country": "JM",
-    "url": "https://jamaica-star.com/article/news/20260723/no-hiding-lens-cops-expand-body-cam-use",
-    "category": "",
-    "group": "Macro",
-    "decision": "review",
-    "confidence": "medium",
-    "reason": "Police body-camera expansion; governance/operational policy with no direct economic impact stated.",
-    "classifier": "llm",
-    "approved": false,
-    "suggestedCategory": "Government"
-  },
-  {
-    "id": "the-star-jamaica-e653f545",
-    "title": "Advocacy group brands Jamaica ‘anti-child’ society",
-    "source": "The Star (Jamaica)",
-    "date": "2026-07-23",
-    "country": "JM",
-    "url": "https://jamaica-star.com/article/news/20260723/advocacy-group-brands-jamaica-%E2%80%98anti-child%E2%80%99-society",
-    "category": "",
-    "group": "Macro",
-    "decision": "review",
-    "confidence": "medium",
-    "reason": "Advocacy group societal criticism framed as 'anti-child'; vague headline, unclear economic angle.",
-    "classifier": "llm",
-    "approved": false,
-    "suggestedCategory": "Government"
-  },
-  {
-    "id": "the-star-jamaica-c3106f27",
-    "title": "‘We need action’  CPFSA demands protection for Jamaica’s children",
-    "source": "The Star (Jamaica)",
-    "date": "2026-07-23",
-    "country": "JM",
-    "url": "https://jamaica-star.com/article/news/20260723/%E2%80%98we-need-action%E2%80%99-cpfsa-demands-protection-jamaica%E2%80%99s-children",
-    "category": "",
-    "group": "Macro",
-    "decision": "review",
-    "confidence": "medium",
-    "reason": "Child-protection advocacy demand; governance/policy push but vague on economic mechanism.",
-    "classifier": "llm",
-    "approved": false,
-    "suggestedCategory": "Government"
-  },
-  {
-    "id": "eyewitness-news-e388eb56",
-    "title": "DEPP disputes key environmental concerns as Gillam Bay petition surpasses 1,600 signatures",
-    "source": "Eyewitness News",
-    "date": "2026-07-23",
-    "country": "BS",
-    "url": "https://ewnews.com/depp-disputes-key-environmental-concerns-as-gillam-bay-petition-surpasses-1600-signatures/?utm_source=rss&utm_medium=rss&utm_campaign=depp-disputes-key-environmental-concerns-as-gillam-bay-petition-surpasses-1600-signatures",
-    "tags": [
-      "business",
-      "always a headline ahead",
-      "bahamas",
-      "ewnews.com",
-      "eyewitness news"
-    ],
-    "category": "",
-    "group": "Investment",
-    "decision": "review",
-    "confidence": "medium",
-    "reason": "Environmental project dispute with public petition; infrastructure/environmental policy with economic implications but controversy not fully defined.",
-    "classifier": "llm",
-    "approved": false,
-    "suggestedCategory": "Infrastructure"
-  },
-  {
     "id": "st-kitts-nevis-observer-9e06a60e",
     "title": "St. Lucia: Government to set up Commission of Inquiry into deadly boating accident",
     "source": "St. Kitts-Nevis Observer",
@@ -1207,30 +640,6 @@
     "classifier": "llm",
     "approved": false,
     "suggestedCategory": "Fiscal Policy"
-  },
-  {
-    "id": "demerara-waves-c2fda3d4",
-    "title": "MV Barima tragedy: three now in custody, PM confirms 2 GDF helicopters down for repairs",
-    "source": "Demerara Waves",
-    "date": "2026-07-22",
-    "country": "GY",
-    "url": "https://demerarawaves.com/2026/07/22/three-now-in-custody-for-mv-barima-tragedy-pm-confirms-2-gdf-helicopters-down/",
-    "tags": [
-      "aviation",
-      "news",
-      "captain and mate",
-      "confirmation",
-      "ferry tragedy",
-      "high court approval"
-    ],
-    "category": "",
-    "group": "Macro",
-    "decision": "review",
-    "confidence": "medium",
-    "reason": "Detention update and helicopter maintenance status; marginal infrastructure/operational note, insufficient economic substance.",
-    "classifier": "llm",
-    "approved": false,
-    "suggestedCategory": "Government"
   },
   {
     "id": "demerara-waves-f4c2e840",
@@ -1297,22 +706,6 @@
     "suggestedCategory": "Government"
   },
   {
-    "id": "jamaica-gleaner-ae9c6ad2",
-    "title": "Why bold, cautious CEOs are both getting AI wrong",
-    "source": "Jamaica Gleaner",
-    "date": "2026-07-22",
-    "country": "JM",
-    "url": "http://jamaica-gleaner.com/article/business/20260722/why-bold-cautious-ceos-are-both-getting-ai-wrong",
-    "category": "",
-    "group": "Macro",
-    "decision": "review",
-    "confidence": "medium",
-    "reason": "AI/technology management opinion; thin on economic substance.",
-    "classifier": "llm",
-    "approved": false,
-    "suggestedCategory": "Technology"
-  },
-  {
     "id": "jamaica-observer-1cdb3180",
     "title": "Tufton takes the high road",
     "source": "Jamaica Observer",
@@ -1327,54 +720,6 @@
     "decision": "review",
     "confidence": "low",
     "reason": "Political figure reference ('Tufton') with no stated economic policy or decision disclosed in headline alone.",
-    "classifier": "llm",
-    "approved": false,
-    "suggestedCategory": "Government"
-  },
-  {
-    "id": "cayman-compass-d7bdeb9f",
-    "title": "What the new UK foreign secretary could mean for Cayman",
-    "source": "Cayman Compass",
-    "date": "2026-07-22",
-    "country": "KY",
-    "url": "https://www.caymancompass.com/2026/07/22/what-the-new-uk-foreign-secretary-could-mean-for-cayman/",
-    "tags": [
-      "business",
-      "featured local home page",
-      "finance",
-      "video",
-      "andy burnham",
-      "beneficial ownership"
-    ],
-    "category": "",
-    "group": "Macro",
-    "decision": "review",
-    "confidence": "medium",
-    "reason": "UK foreign-office change with potential Cayman financial-regulation implications; plausible but requires context on what 'beneficial ownership' policy shift actually means.",
-    "classifier": "llm",
-    "approved": false,
-    "suggestedCategory": "Government"
-  },
-  {
-    "id": "cayman-compass-2788fe0c",
-    "title": "Cayman to host sports anti-doping workshop next year",
-    "source": "Cayman Compass",
-    "date": "2026-07-22",
-    "country": "KY",
-    "url": "https://www.caymancompass.com/2026/07/22/cayman-to-host-sports-anti-doping-workshop-next-year/",
-    "tags": [
-      "featured local home page",
-      "local",
-      "sports",
-      "anti-doping",
-      "isaac rankine",
-      "world anti-doping agency"
-    ],
-    "category": "",
-    "group": "Macro",
-    "decision": "review",
-    "confidence": "medium",
-    "reason": "Anti-doping workshop announcement by Cayman; marginal regulatory/governance news; let editor decide if it meets bar.",
     "classifier": "llm",
     "approved": false,
     "suggestedCategory": "Government"
@@ -1441,25 +786,6 @@
     "suggestedCategory": "Infrastructure"
   },
   {
-    "id": "searchlight-svg-68e0e187",
-    "title": "Rock says CKDO was blocked and offered no government help for its 2026 Summer programme",
-    "source": "Searchlight SVG",
-    "date": "2026-07-21",
-    "country": "VC",
-    "url": "https://www.searchlight.vc/front-page/2026/07/21/rock-says-ckdo-blocked-offered-no-government-help-2026-summer-programme/",
-    "tags": [
-      "front page"
-    ],
-    "category": "",
-    "group": "Macro",
-    "decision": "review",
-    "confidence": "medium",
-    "reason": "Youth-program funding denial; plausibly an economic government-spending decision, ambiguous whether substance merits publication",
-    "classifier": "llm",
-    "approved": false,
-    "suggestedCategory": "Government"
-  },
-  {
     "id": "cayman-news-service-f8951b58",
     "title": "Road to run through forest despite past protests",
     "source": "Cayman News Service",
@@ -1482,30 +808,6 @@
     "classifier": "llm",
     "approved": false,
     "suggestedCategory": "Infrastructure"
-  },
-  {
-    "id": "nature-isle-news-6af1ed8f",
-    "title": "Wang Yi meets with Foreign Minister of Dominica, Vince Henderson",
-    "source": "Nature Isle News",
-    "date": "2026-07-21",
-    "country": "DM",
-    "url": "https://natureisle.news/diplomacy/wang-yi-meets-with-foreign-minister-of-dominica-vince-henderson/",
-    "tags": [
-      "diplomacy",
-      "foreign policy",
-      "government",
-      "politics",
-      "public relations",
-      "regional/international"
-    ],
-    "category": "",
-    "group": "Macro",
-    "decision": "review",
-    "confidence": "medium",
-    "reason": "China-Dominica diplomatic meeting; regional/trade relationship but thin without substance",
-    "classifier": "llm",
-    "approved": false,
-    "suggestedCategory": "Regional Developments"
   },
   {
     "id": "kaieteur-news-c2dac7e4",
@@ -1563,76 +865,6 @@
     "reason": "Recognized editorial edge-case vocabulary; suggested Energy."
   },
   {
-    "id": "cayman-compass-cf5ecd40",
-    "title": "Invasive monk parakeets raise concerns",
-    "source": "Cayman Compass",
-    "date": "2026-07-18",
-    "country": "KY",
-    "url": "https://www.caymancompass.com/2026/07/18/invasive-monk-parakeets-raise-concerns/",
-    "tags": [
-      "featured local home page",
-      "local",
-      "monk parakeet",
-      "nesting",
-      "prohibited species regulations"
-    ],
-    "category": "",
-    "group": "Macro",
-    "decision": "review",
-    "confidence": "medium",
-    "reason": "Invasive species / environmental regulation; marginal economic relevance unless agricultural damage or control-program cost is stated.",
-    "classifier": "llm",
-    "approved": false,
-    "suggestedCategory": "Climate"
-  },
-  {
-    "id": "cayman-compass-7a7aa29a",
-    "title": "The tiny rock that shapes a maritime boundary",
-    "source": "Cayman Compass",
-    "date": "2026-07-18",
-    "country": "KY",
-    "url": "https://www.caymancompass.com/2026/07/18/the-tiny-rock-that-shapes-a-maritime-boundary/",
-    "tags": [
-      "local",
-      "boundary",
-      "cayman islands",
-      "jamaica",
-      "law of the sea"
-    ],
-    "category": "",
-    "group": "Macro",
-    "decision": "review",
-    "confidence": "medium",
-    "reason": "Maritime boundary dispute between Cayman and Jamaica; geopolitical but with potential economic/jurisdictional implications; marginal bar.",
-    "classifier": "llm",
-    "approved": false,
-    "suggestedCategory": "Government"
-  },
-  {
-    "id": "cayman-compass-5fff67c5",
-    "title": "50 years ago: Cayman Airways becomes national airline, Radio Cayman to launch",
-    "source": "Cayman Compass",
-    "date": "2026-07-18",
-    "country": "KY",
-    "url": "https://www.caymancompass.com/2026/07/18/50-years-ago-cayman-airways-becomes-national-airline-radio-cayman-to-launch/",
-    "tags": [
-      "local",
-      "50 years ago",
-      "cayman airways",
-      "editorial",
-      "olympics",
-      "radio cayman"
-    ],
-    "category": "",
-    "group": "Finance",
-    "decision": "review",
-    "confidence": "medium",
-    "reason": "Historical retrospective on founding of national airline and radio; marginal corporate/institutional history; let editor decide if it clears bar.",
-    "classifier": "llm",
-    "approved": false,
-    "suggestedCategory": "Corporate"
-  },
-  {
     "id": "guyana-chronicle-d1200c33",
     "title": "Vocational training can ‘Turn uncertainty into direction’ for Guyana’s youth – BIT CEO",
     "source": "Guyana Chronicle",
@@ -1647,49 +879,6 @@
     "suggestedCategory": "Corporate",
     "confidence": "low",
     "reason": "Recognized editorial edge-case vocabulary; suggested Corporate."
-  },
-  {
-    "id": "searchlight-svg-11f7e29a",
-    "title": "Venezuela suffers while denied its Riches",
-    "source": "Searchlight SVG",
-    "date": "2026-07-17",
-    "country": "VC",
-    "url": "https://www.searchlight.vc/editorial/2026/07/17/venezuela-suffers-denied-riches/",
-    "tags": [
-      "editorial"
-    ],
-    "category": "",
-    "group": "Macro",
-    "decision": "review",
-    "confidence": "medium",
-    "reason": "Venezuela fiscal/governance opinion; plausibly about resource curse and economic policy, but framed as opinion, not news",
-    "classifier": "llm",
-    "approved": false,
-    "suggestedCategory": "Government"
-  },
-  {
-    "id": "magnetic-media-16fd49be",
-    "title": "Six Unauthorised Structures Demolished During Multi-Agency Planning Enforcement Operation",
-    "source": "Magnetic Media",
-    "date": "2026-07-17",
-    "country": "TC",
-    "url": "https://magneticmediatv.com/2026/07/six-unauthorised-structures-demolished-during-multi-agency-planning-enforcement-operation/",
-    "tags": [
-      "news",
-      "tci news",
-      "#informalsettlementsunit",
-      "#isu",
-      "#magneticmedianews",
-      "#tciplanningdepartment"
-    ],
-    "category": "",
-    "group": "Macro",
-    "decision": "review",
-    "confidence": "medium",
-    "reason": "Enforcement of informal housing; urban planning/regulation with economic implication, borderline substance",
-    "classifier": "llm",
-    "approved": false,
-    "suggestedCategory": "Government"
   },
   {
     "id": "trinidad-express-1e4e549a",
@@ -1723,28 +912,6 @@
     "suggestedCategory": "Corporate",
     "confidence": "low",
     "reason": "Recognized editorial edge-case vocabulary; suggested Corporate."
-  },
-  {
-    "id": "barbados-today-8b26d5b5",
-    "title": "‘Ask Dealia’ app launches to help find deals, events",
-    "source": "Barbados Today",
-    "date": "2026-07-16",
-    "country": "BB",
-    "url": "https://barbadostoday.bb/2026/07/15/ask-dealia-app-launches-to-help-find-deals-events/",
-    "tags": [
-      "business",
-      "economy",
-      "local news",
-      "technology"
-    ],
-    "category": "",
-    "group": "Macro",
-    "decision": "review",
-    "confidence": "low",
-    "reason": "'Ask Dealia' app for event/deal discovery; consumer fintech app launch, marginal economic substance.",
-    "classifier": "llm",
-    "approved": false,
-    "suggestedCategory": "Technology"
   },
   {
     "id": "cayman-compass-e86b55fc",
