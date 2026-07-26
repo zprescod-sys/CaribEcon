@@ -141,8 +141,10 @@ const chartJSON = JSON.stringify({ series: rawSeries, baseYear });
       .attr('stroke-opacity', series.highlight ? 1 : 0.5)
       .attr('d', line);
 
-    const last = series.indexed[series.indexed.length - 1];
+    // Only Guyana gets an endpoint label — flat peers stay unlabeled so the
+    // chart reads as one clean divergence story, not a cluster of overlapping tags.
     if (series.highlight) {
+      const last = series.indexed[series.indexed.length - 1];
       // Gold endpoint marker — the signal accent (EDDESIGN.md).
       svg.append('circle')
         .attr('cx', xScale(last.year)!).attr('cy', yScale(last.value)).attr('r', 4)
@@ -153,12 +155,6 @@ const chartJSON = JSON.stringify({ series: rawSeries, baseYear });
         .attr('font-family', 'Bricolage Grotesque, sans-serif')
         .attr('font-size', '13').attr('font-weight', '700').attr('fill', '#0F231E')
         .text(series.name);
-    } else {
-      svg.append('text')
-        .attr('x', xScale(last.year)! + 8).attr('y', yScale(last.value) + 3)
-        .attr('font-family', 'JetBrains Mono, monospace')
-        .attr('font-size', '10').attr('fill', '#8A958F')
-        .text(series.country);
     }
   });
 </script>
