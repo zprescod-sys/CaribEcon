@@ -166,5 +166,57 @@
     "approved": false,
     "triaged": true,
     "reviewNote": "Regulatory/planning approval, not a capital transaction: CPA approving a 10-storey building on Boilers Road is a planning-permission decision, not an ownership/investment event (no developer, financing terms, or figure stated). Reject."
+  },
+  {
+    "id": "deal-ff287c11",
+    "headline": "CNC3 secures CPL and WCPL broadcast rights in Trinidad and Tobago",
+    "parties": "",
+    "value": "",
+    "date": "2026-07-25",
+    "country": "TT",
+    "type": "",
+    "suggestedType": "Other",
+    "url": "https://www.cnc3.co.tt/cnc3-secures-cpl-and-wcpl-broadcast-rights-in-trinidad-and-tobago/?utm_source=rss&utm_medium=rss&utm_campaign=cnc3-secures-cpl-and-wcpl-broadcast-rights-in-trinidad-and-tobago",
+    "source": "CNC3",
+    "approved": false
+  },
+  {
+    "id": "deal-65cbbf78",
+    "headline": "MegaMart Catherine Hall property goes on sale for US$15 million",
+    "parties": "",
+    "value": "",
+    "date": "2026-07-25",
+    "country": "JM",
+    "type": "",
+    "suggestedType": "Other",
+    "url": "https://www.jamaicaobserver.com/2026/07/25/megamart-catherine-hall-property-goes-sale-us15-million/",
+    "source": "Jamaica Observer",
+    "approved": false
+  },
+  {
+    "id": "deal-90f4eae0",
+    "headline": "Fleet of boats given new life for Grenadine communities",
+    "parties": "",
+    "value": "",
+    "date": "2026-07-26",
+    "country": "VC",
+    "type": "",
+    "suggestedType": "Other",
+    "url": "https://www.iwnsvg.com/2026/07/26/fleet-of-boats-given-new-life-for-grenadine-communities/",
+    "source": "iWitness News",
+    "approved": false
+  },
+  {
+    "id": "deal-1849724c",
+    "headline": "Three receive scholarships from the Agricultural Input Warehouse",
+    "parties": "",
+    "value": "",
+    "date": "2026-07-24",
+    "country": "VC",
+    "type": "",
+    "suggestedType": "Other",
+    "url": "https://www.searchlight.vc/news/2026/07/24/three-receive-scholarships-agricultural-input-warehouse/",
+    "source": "Searchlight SVG",
+    "approved": false
   }
 ]

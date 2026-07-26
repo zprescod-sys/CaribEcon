@@ -1,5 +1,427 @@
 [
   {
+    "id": "kaieteur-news-205221bc",
+    "title": "Resource curse debate misses key distinction on institutions",
+    "source": "Kaieteur News",
+    "date": "2026-07-26",
+    "country": "GY",
+    "url": "https://kaieteurnewsonline.com/2026/07/26/resource-curse-debate-misses-key-distinction-on-institutions/",
+    "tags": [
+      "letters",
+      "resource curse",
+      "roopnauth hardyal"
+    ],
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Economic analysis of resource-curse debate and institutional distinction in Guyana's context.",
+    "classifier": "llm"
+  },
+  {
+    "id": "kaieteur-news-e751a196",
+    "title": "After six years of pumping oil, Guyana’s debt increased sixfold",
+    "source": "Kaieteur News",
+    "date": "2026-07-26",
+    "country": "GY",
+    "url": "https://kaieteurnewsonline.com/2026/07/26/after-six-years-of-pumping-oil-guyanas-debt-increased-sixfold/",
+    "tags": [
+      "news",
+      "debt increase",
+      "glenn lall",
+      "gold price",
+      "pumping oil"
+    ],
+    "category": "Debt",
+    "group": "Fiscal Policy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Guyana's sovereign debt increased sixfold during oil-production period; macroeconomic fiscal consequence.",
+    "classifier": "llm"
+  },
+  {
+    "id": "kaieteur-news-75619b96",
+    "title": "Blackman-Waddell Summer Math Institute will offer gifted Guyanese students free access to world-class mathematics training",
+    "source": "Kaieteur News",
+    "date": "2026-07-26",
+    "country": "GY",
+    "url": "https://kaieteurnewsonline.com/2026/07/26/blackman-waddell-summer-math-institute-will-offer-gifted-guyanese-students-free-access-to-world-class-mathematics-training/",
+    "tags": [
+      "features / columnists",
+      "news",
+      "blackman-waddell summer math institute",
+      "computer lab",
+      "mathematics training",
+      "st. rose’s high school"
+    ],
+    "category": "Labor",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Free mathematics training program for gifted students; workforce development and education opportunity.",
+    "classifier": "llm"
+  },
+  {
+    "id": "guyana-chronicle-e6dd2e54",
+    "title": "Gov’t investments creating jobs, transforming hinterland communities – village leaders",
+    "source": "Guyana Chronicle",
+    "date": "2026-07-26",
+    "country": "GY",
+    "url": "https://guyanachronicle.com/2026/07/26/govt-investments-creating-jobs-transforming-hinterland-communities-village-leaders/",
+    "tags": [
+      "news"
+    ],
+    "category": "Government",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Government investments in hinterland job creation and community transformation.",
+    "classifier": "llm"
+  },
+  {
+    "id": "guyana-chronicle-1ce00b54",
+    "title": "Region Eight villages get direct $930M injection to maintain, enhance infrastructure",
+    "source": "Guyana Chronicle",
+    "date": "2026-07-26",
+    "country": "GY",
+    "url": "https://guyanachronicle.com/2026/07/26/31-village-leaders-receive-30m-maintenance-contract/",
+    "tags": [
+      "news"
+    ],
+    "category": "Infrastructure",
+    "group": "Investment",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Direct $930M public investment in regional infrastructure maintenance and enhancement.",
+    "classifier": "llm"
+  },
+  {
+    "id": "guyana-chronicle-a7598301",
+    "title": "Village projects in Santa Aratack creating employment",
+    "source": "Guyana Chronicle",
+    "date": "2026-07-26",
+    "country": "GY",
+    "url": "https://guyanachronicle.com/2026/07/26/village-projects-in-santa-aratack-creating-employment/",
+    "tags": [
+      "news"
+    ],
+    "category": "Labor",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Village projects generating employment in Santa Aratack.",
+    "classifier": "llm"
+  },
+  {
+    "id": "guyana-chronicle-ca8c14f4",
+    "title": "NTC 2026 ends with landmark investments for Guyana’s First Peoples",
+    "source": "Guyana Chronicle",
+    "date": "2026-07-26",
+    "country": "GY",
+    "url": "https://guyanachronicle.com/2026/07/26/ntc-2026-ends-with-landmark-investments-for-guyanas-first-peoples/",
+    "tags": [
+      "news"
+    ],
+    "category": "Investment",
+    "group": "Investment",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Investment commitment to support Guyana's First Peoples economic development at NTC 2026.",
+    "classifier": "llm"
+  },
+  {
+    "id": "guyana-chronicle-8a5f1ad5",
+    "title": "Guyana records 31% growth in mangrove coverage but pollution remains major threat — Mustapha",
+    "source": "Guyana Chronicle",
+    "date": "2026-07-26",
+    "country": "GY",
+    "url": "https://guyanachronicle.com/2026/07/26/guyana-records-31-growth-in-mangrove-coverage-but-pollution-remains-major-threat-mustapha/",
+    "tags": [
+      "news"
+    ],
+    "category": "Climate",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "31% mangrove-coverage growth and pollution threat assessment; environmental-resilience economic impact.",
+    "classifier": "llm"
+  },
+  {
+    "id": "cnc3-73bc2a30",
+    "title": "Business groups welcome lower US tariffs; analysts warn of global trade risks",
+    "source": "CNC3",
+    "date": "2026-07-26",
+    "country": "TT",
+    "url": "https://www.cnc3.co.tt/business-groups-welcome-lower-us-tariffs-analysts-warn-of-global-trade-risks/?utm_source=rss&utm_medium=rss&utm_campaign=business-groups-welcome-lower-us-tariffs-analysts-warn-of-global-trade-risks",
+    "tags": [
+      "news"
+    ],
+    "category": "Trade",
+    "group": "Trade & Tourism",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Caribbean business-sector response to US tariff policy and global trade-risk analysis.",
+    "classifier": "llm"
+  },
+  {
+    "id": "ttt-news-b11cfa92",
+    "title": "Health Minister : Workplace Breastfeeding Reform On The Way",
+    "source": "TTT News",
+    "date": "2026-07-26",
+    "country": "TT",
+    "url": "https://www.ttt.live/health-minister-workplace-breastfeeding-reform-on-the-way/?utm_source=rss&utm_medium=rss&utm_campaign=health-minister-workplace-breastfeeding-reform-on-the-way",
+    "tags": [
+      "health",
+      "news"
+    ],
+    "category": "Labor",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Workplace breastfeeding policy reform; labor-rights and workforce development regulation.",
+    "classifier": "llm"
+  },
+  {
+    "id": "jamaica-observer-6c030528",
+    "title": "140% spike in deportees to Jamaica last year",
+    "source": "Jamaica Observer",
+    "date": "2026-07-26",
+    "country": "JM",
+    "url": "https://www.jamaicaobserver.com/2026/07/26/140-spike-deportees-jamaica-last-year/",
+    "tags": [
+      "news"
+    ],
+    "category": "Labor",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Significant year-on-year increase (140%) in deportations to Jamaica; labor-market and remittance-sector impact.",
+    "classifier": "llm"
+  },
+  {
+    "id": "jamaica-gleaner-a8a4c3eb",
+    "title": "Hotel pipeline tops US$4.2b, but brand name projects face delays",
+    "source": "Jamaica Gleaner",
+    "date": "2026-07-26",
+    "country": "JM",
+    "url": "http://jamaica-gleaner.com/article/business/20260726/hotel-pipeline-tops-us42b-brand-name-projects-face-delays",
+    "category": "Investment",
+    "group": "Investment",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Hotel investment pipeline and project development delays in tourism sector",
+    "classifier": "llm"
+  },
+  {
+    "id": "jamaica-gleaner-515beb52",
+    "title": "Telematics: How smart vehicle data can slash crashes, save lives, and insurance costs",
+    "source": "Jamaica Gleaner",
+    "date": "2026-07-26",
+    "country": "JM",
+    "url": "http://jamaica-gleaner.com/article/business/20260726/telematics-how-smart-vehicle-data-can-slash-crashes-save-lives-and",
+    "category": "Technology",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Telematics technology adoption affecting insurance costs and vehicle safety; real economic mechanism",
+    "classifier": "llm"
+  },
+  {
+    "id": "starnieuws-899ba835",
+    "title": "Regering wil heel Suriname in 2030 voorzien van 24-uurs stroom",
+    "source": "Starnieuws",
+    "date": "2026-07-26",
+    "country": "SR",
+    "url": "https://www.starnieuws.com/index.php/welcome/index/nieuwsitem/93131",
+    "category": "Energy",
+    "group": "Energy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "National government plan for universal 24-hour electricity access; major energy infrastructure and macro policy target",
+    "classifier": "llm"
+  },
+  {
+    "id": "starnieuws-bdac33e4",
+    "title": "Gouddossier 3: Een jaar na de belofte: waar staat de goudsector?",
+    "source": "Starnieuws",
+    "date": "2026-07-26",
+    "country": "SR",
+    "url": "https://www.starnieuws.com/index.php/welcome/index/nieuwsitem/93129",
+    "category": "Energy",
+    "group": "Energy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Gold sector audit/investigation; major commodity sector reporting and government accountability",
+    "classifier": "llm"
+  },
+  {
+    "id": "starnieuws-be4360a6",
+    "title": "Uitbreiding vrij verkeer binnen CARICOM moet meer beroepsgroepen kansen bieden",
+    "source": "Starnieuws",
+    "date": "2026-07-26",
+    "country": "SR",
+    "url": "https://www.starnieuws.com/index.php/welcome/index/nieuwsitem/93126",
+    "category": "Regional Developments",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "CARICOM labour mobility expansion; regional integration affecting workforce and professional mobility",
+    "classifier": "llm"
+  },
+  {
+    "id": "waterkant-dc271f4a",
+    "title": "Amatmohamed bezorgd over plotseling hoge waterrekeningen",
+    "source": "Waterkant",
+    "date": "2026-07-26",
+    "country": "SR",
+    "url": "https://www.waterkant.net/suriname/2026/07/26/amatmohamed-bezorgd-over-plotseling-hoge-waterrekeningen/#utm_source=rss&utm_medium=rss&utm_campaign=amatmohamed-bezorgd-over-plotseling-hoge-waterrekeningen",
+    "tags": [
+      "maatschappij",
+      "nieuws uit suriname",
+      "uitgelicht"
+    ],
+    "category": "Energy",
+    "group": "Energy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Water utility billing concerns; public-service pricing and affordability issue affecting household/commercial costs",
+    "classifier": "llm"
+  },
+  {
+    "id": "waterkant-fe6266a7",
+    "title": "Ministerie van Financiën en Planning bespreekt samenwerking met Amerikaanse ambassade",
+    "source": "Waterkant",
+    "date": "2026-07-26",
+    "country": "SR",
+    "url": "https://www.waterkant.net/suriname/2026/07/26/ministerie-van-financien-en-planning-bespreekt-samenwerking-met-amerikaanse-ambassade/#utm_source=rss&utm_medium=rss&utm_campaign=ministerie-van-financien-en-planning-bespreekt-samenwerking-met-amerikaanse-ambassade",
+    "tags": [
+      "nieuws uit suriname",
+      "overheid"
+    ],
+    "category": "Fiscal Policy",
+    "group": "Fiscal Policy",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Finance ministry discussions on international cooperation; government economic relations and policy development",
+    "classifier": "llm"
+  },
+  {
+    "id": "waterkant-ed1d8720",
+    "title": "NH streeft ernaar dat elke Surinamer in 2030 beschikt over 1×24 uur stroom",
+    "source": "Waterkant",
+    "date": "2026-07-26",
+    "country": "SR",
+    "url": "https://www.waterkant.net/suriname/2026/07/26/nh-streeft-ernaar-dat-elke-surinamer-in-2030-beschikt-over-1x24-uur-stroom/#utm_source=rss&utm_medium=rss&utm_campaign=nh-streeft-ernaar-dat-elke-surinamer-in-2030-beschikt-over-1x24-uur-stroom",
+    "tags": [
+      "maatschappij",
+      "nieuws uit suriname",
+      "overheid",
+      "uitgelicht"
+    ],
+    "category": "Energy",
+    "group": "Energy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "National 24-hour electricity availability goal by 2030; major energy infrastructure and macro policy target",
+    "classifier": "llm"
+  },
+  {
+    "id": "st-kitts-nevis-observer-2e473df9",
+    "title": "Medicinal Cannabis Authority seeks banking solutions for emerging industry",
+    "source": "St. Kitts-Nevis Observer",
+    "date": "2026-07-26",
+    "country": "KN",
+    "url": "https://www.thestkittsnevisobserver.com/medicinal-cannabis-authority-seeks-banking-solutions-for-emerging-industry/",
+    "tags": [
+      "local news"
+    ],
+    "category": "Banking",
+    "group": "Finance",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Medicinal Cannabis Authority seeking banking solutions for emerging industry; financial inclusion in regulated sector.",
+    "classifier": "llm"
+  },
+  {
+    "id": "st-kitts-nevis-observer-b3ea0317",
+    "title": "Belize: CDB and Government of Belize unlocks greater educational opportunities through  new primary schools",
+    "source": "St. Kitts-Nevis Observer",
+    "date": "2026-07-26",
+    "country": "KN",
+    "url": "https://www.thestkittsnevisobserver.com/belize-cdb-and-government-of-belize-unlocks-greater-educational-opportunities-through-new-primary-schools/",
+    "tags": [
+      "regional"
+    ],
+    "category": "Infrastructure",
+    "group": "Investment",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "CDB and Government of Belize primary school construction, infrastructure investment for education.",
+    "classifier": "llm"
+  },
+  {
+    "id": "iwitness-news-9f5823e2",
+    "title": "MP restates ‘business government’ position at training workshop",
+    "source": "iWitness News",
+    "date": "2026-07-26",
+    "country": "VC",
+    "url": "https://www.iwnsvg.com/2026/07/26/mp-restates-business-government-position-at-training-workshop/",
+    "tags": [
+      "news"
+    ],
+    "category": "Government",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "MP reiterates 'business government' position at training; economic policy governance.",
+    "classifier": "llm"
+  },
+  {
+    "id": "iwitness-news-90f4eae0",
+    "title": "Fleet of boats given new life for Grenadine communities",
+    "source": "iWitness News",
+    "date": "2026-07-26",
+    "country": "VC",
+    "url": "https://www.iwnsvg.com/2026/07/26/fleet-of-boats-given-new-life-for-grenadine-communities/",
+    "tags": [
+      "sailing"
+    ],
+    "category": "Infrastructure",
+    "group": "Investment",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Boat fleet renewal for Grenadine communities; development infrastructure/assets for island transport.",
+    "classifier": "llm"
+  },
+  {
+    "id": "wic-news-3b1f4d23",
+    "title": "MV Golden Carrier to replace Blue Wave Harmony on Trinidad-Tobago seabridge",
+    "source": "WIC News",
+    "date": "2026-07-26",
+    "country": "ALL",
+    "url": "https://wicnews.com/trinidad-tobago/mv-golden-carrier-to-replace-blue-wave-harmony-on-trinidad-tobago-seabridge",
+    "category": "Trade",
+    "group": "Trade & Tourism",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Vessel replacement on inter-island seabridge; maritime trade/transportation infrastructure news",
+    "classifier": "llm"
+  },
+  {
+    "id": "wic-news-a070b050",
+    "title": "Bahamasair announces special direct flights for Cat Island Regatta",
+    "source": "WIC News",
+    "date": "2026-07-26",
+    "country": "ALL",
+    "url": "https://wicnews.com/bahamas/bahamasair-announces-special-direct-flights-for-cat-island-regatta",
+    "category": "Tourism",
+    "group": "Trade & Tourism",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Airline special routing for domestic tourism event; tourism/airlift news",
+    "classifier": "llm"
+  },
+  {
     "id": "wic-news-cc1548a3",
     "title": "InterCaribbean Airways Unveils ‘Spirit of St. Vincent and the Grenadines’ aircraft",
     "source": "WIC News",
@@ -266,19 +688,313 @@
     "classifier": "heuristic"
   },
   {
-    "id": "kaieteur-news-aebd6415",
-    "title": "Slingerz FC cruise into CFU Club Shield Round of 16 with commanding win over SWA Sharks",
-    "source": "Kaieteur News",
-    "date": "2026-07-24",
-    "country": "GY",
-    "url": "https://kaieteurnewsonline.com/2026/07/24/slingerz-fc-cruise-into-cfu-club-shield-round-of-16-with-commanding-win-over-swa-sharks/",
+    "id": "cnc3-ff287c11",
+    "title": "CNC3 secures CPL and WCPL broadcast rights in Trinidad and Tobago",
+    "source": "CNC3",
+    "date": "2026-07-25",
+    "country": "TT",
+    "url": "https://www.cnc3.co.tt/cnc3-secures-cpl-and-wcpl-broadcast-rights-in-trinidad-and-tobago/?utm_source=rss&utm_medium=rss&utm_campaign=cnc3-secures-cpl-and-wcpl-broadcast-rights-in-trinidad-and-tobago",
     "tags": [
-      "sports",
-      "cfu club shield",
-      "hasely crawford stadium",
-      "slingerz fc",
-      "swa sharks"
-    ]
+      "business",
+      "news",
+      "sports"
+    ],
+    "category": "Corporate",
+    "group": "Finance",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Media company secures broadcast rights for cricket leagues; corporate contract and sports-media business deal.",
+    "classifier": "llm"
+  },
+  {
+    "id": "ttt-news-ca5df642",
+    "title": "Point Lisas Apprenticeship Programme Recognised Under National Policy",
+    "source": "TTT News",
+    "date": "2026-07-25",
+    "country": "TT",
+    "url": "https://www.ttt.live/point-lisas-apprenticeship-programme-recognised-under-national-policy/?utm_source=rss&utm_medium=rss&utm_campaign=point-lisas-apprenticeship-programme-recognised-under-national-policy",
+    "tags": [
+      "labour",
+      "news"
+    ],
+    "category": "Labor",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Apprenticeship program recognized under national labor policy; workforce development.",
+    "classifier": "llm"
+  },
+  {
+    "id": "barbados-today-eb93457a",
+    "title": "Car watch: New inspection scheme coming",
+    "source": "Barbados Today",
+    "date": "2026-07-25",
+    "country": "BB",
+    "url": "https://barbadostoday.bb/2026/07/24/car-watch-new-inspection-scheme-coming/",
+    "tags": [
+      "local news",
+      "headline",
+      "headlines"
+    ],
+    "category": "Government",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "New motor-vehicle inspection regulatory scheme; government policy affecting automotive sector.",
+    "classifier": "llm"
+  },
+  {
+    "id": "nation-news-e00fc799",
+    "title": "Celebrating 70 Years of supporting Barbadian businesses",
+    "source": "Nation News",
+    "date": "2026-07-25",
+    "country": "BB",
+    "url": "https://nationnews.com/2026/07/25/celebrating-70-years-of-supporting-barbadian-businesses/?utm_source=rss&utm_medium=rss&utm_campaign=celebrating-70-years-of-supporting-barbadian-businesses",
+    "tags": [
+      "business"
+    ],
+    "category": "Corporate",
+    "group": "Finance",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Business organization milestone celebrating 70 years of supporting Barbadian enterprises.",
+    "classifier": "llm"
+  },
+  {
+    "id": "nation-news-e45949f5",
+    "title": "BARP set to bring abuse protocol",
+    "source": "Nation News",
+    "date": "2026-07-25",
+    "country": "BB",
+    "url": "https://nationnews.com/2026/07/25/barp-set-to-bring-abuse-protocol/?utm_source=rss&utm_medium=rss&utm_campaign=barp-set-to-bring-abuse-protocol",
+    "tags": [
+      "news",
+      "barbados association of retired persons"
+    ],
+    "category": "Government",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Retired persons association developing abuse protocol; regulatory/policy development for vulnerable labor sector.",
+    "classifier": "llm"
+  },
+  {
+    "id": "nation-news-32a52588",
+    "title": "Jordan wants more mentorship programmes",
+    "source": "Nation News",
+    "date": "2026-07-25",
+    "country": "BB",
+    "url": "https://nationnews.com/2026/07/25/jordan-wants-more-mentorship-programmes/?utm_source=rss&utm_medium=rss&utm_campaign=jordan-wants-more-mentorship-programmes",
+    "tags": [
+      "politics",
+      "ministry of labour",
+      "politics"
+    ],
+    "category": "Labor",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Labor ministry official calling for expanded mentorship programs; workforce development policy.",
+    "classifier": "llm"
+  },
+  {
+    "id": "jamaica-observer-65cbbf78",
+    "title": "MegaMart Catherine Hall property goes on sale for US$15 million",
+    "source": "Jamaica Observer",
+    "date": "2026-07-25",
+    "country": "JM",
+    "url": "https://www.jamaicaobserver.com/2026/07/25/megamart-catherine-hall-property-goes-sale-us15-million/",
+    "tags": [
+      "business",
+      "latest news",
+      "catherine hall",
+      "cost club limited",
+      "megamart",
+      "montego bay"
+    ],
+    "category": "Investment",
+    "group": "Investment",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Commercial property asset sale (Cost Club/MegaMart) for US$15 million; major real-estate transaction.",
+    "classifier": "llm"
+  },
+  {
+    "id": "jamaica-observer-1dcf0f32",
+    "title": "Jamaica’s adult prison population grew by 575 in 2025 – PIOJ",
+    "source": "Jamaica Observer",
+    "date": "2026-07-25",
+    "country": "JM",
+    "url": "https://www.jamaicaobserver.com/2026/07/25/jamaicas-adult-prison-population-grew-575-2025-pioj/",
+    "tags": [
+      "latest news",
+      "news",
+      "adult prison",
+      "pioj"
+    ],
+    "category": "Government",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Adult prison population growth of 575 in Jamaica; labor/incarceration-system economic and social impact.",
+    "classifier": "llm"
+  },
+  {
+    "id": "jamaica-observer-e671f55f",
+    "title": "TransJamaican Highway toll rates to increase from August 1",
+    "source": "Jamaica Observer",
+    "date": "2026-07-25",
+    "country": "JM",
+    "url": "https://www.jamaicaobserver.com/2026/07/24/transjamaican-highway-toll-rates-increase-august-1/",
+    "tags": [
+      "latest news",
+      "news",
+      "t-tags",
+      "toll rates",
+      "transjamaican highway"
+    ],
+    "category": "Infrastructure",
+    "group": "Investment",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Toll rate increase on major highway is infrastructure/fiscal policy affecting public finances and transportation costs",
+    "classifier": "llm"
+  },
+  {
+    "id": "jamaica-gleaner-5992ad99",
+    "title": "SDC opening doors to opportunity through  MoBay Women’s Empowerment Fair",
+    "source": "Jamaica Gleaner",
+    "date": "2026-07-25",
+    "country": "JM",
+    "url": "http://jamaica-gleaner.com/article/news/20260725/sdc-opening-doors-opportunity-through-mobay-womens-empowerment-fair",
+    "category": "Labor",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Women's economic empowerment initiative addressing workforce participation and opportunity",
+    "classifier": "llm"
+  },
+  {
+    "id": "breaking-belize-news-2c9fdd86",
+    "title": "Shrimp production projected to rise to 3.3 million pounds, surpassing $20 million in value",
+    "source": "Breaking Belize News",
+    "date": "2026-07-25",
+    "country": "BZ",
+    "url": "https://www.breakingbelizenews.com/2026/07/25/shrimp-production-projected-to-rise-to-3-3-million-pounds-surpassing-20-million-in-value/",
+    "tags": [
+      "community development",
+      "last news"
+    ],
+    "category": "Agriculture",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Shrimp sector production forecast and export value; major aquaculture commodity reporting",
+    "classifier": "llm"
+  },
+  {
+    "id": "starnieuws-bc46b556",
+    "title": "Een kritieke ecologische en humanitaire crisis in het binnenland van Suriname",
+    "source": "Starnieuws",
+    "date": "2026-07-25",
+    "country": "SR",
+    "url": "https://www.starnieuws.com/index.php/welcome/index/nieuwsitem/93116",
+    "category": "Climate",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Ecological and humanitarian crisis in Suriname interior; environmental/climate disaster with economic and regional development impact",
+    "classifier": "llm"
+  },
+  {
+    "id": "st-lucia-times-65c1b810",
+    "title": "How a young entrepreneur turned his grandmother’s recipe into a growing liqueur brand",
+    "source": "St. Lucia Times",
+    "date": "2026-07-25",
+    "country": "LC",
+    "url": "https://stluciatimes.com/182334/2026/07/how-a-young-entrepreneur-turned-his-grandmothers-recipe-into-a-growing-liqueur-brand/",
+    "tags": [
+      "business",
+      "headlines",
+      "human interest",
+      "ajan-i lansiquot",
+      "carnival",
+      "leona's liqueur"
+    ],
+    "category": "Corporate",
+    "group": "Finance",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Entrepreneur growing liqueur brand; business expansion and agribusiness (spirits production) development",
+    "classifier": "llm"
+  },
+  {
+    "id": "antigua-news-room-c0f503c3",
+    "title": "Senator Beazer Says Freehold Certificates Open New Era for Barbuda",
+    "source": "Antigua News Room",
+    "date": "2026-07-25",
+    "country": "AG",
+    "url": "https://antiguanewsroom.com/beazer-says-freehold-certificates-open-new-era-for-barbuda/",
+    "tags": [
+      "news"
+    ],
+    "category": "Government",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Freehold certificates in Barbuda represent property-rights reform with economic development implications.",
+    "classifier": "llm"
+  },
+  {
+    "id": "st-kitts-nevis-observer-570bc529",
+    "title": "Dominica hoping to maintain schedule of commissioning power plant by month end",
+    "source": "St. Kitts-Nevis Observer",
+    "date": "2026-07-25",
+    "country": "KN",
+    "url": "https://www.thestkittsnevisobserver.com/dominica-hoping-to-maintain-schedule-of-commissioning-power-plant-by-month-end/",
+    "tags": [
+      "regional"
+    ],
+    "category": "Energy",
+    "group": "Energy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Dominica power plant commissioning schedule; major energy-sector infrastructure development.",
+    "classifier": "llm"
+  },
+  {
+    "id": "st-kitts-nevis-observer-bde134f9",
+    "title": "PM welcomes new initiative to brand St. Vincent and the Grenadines",
+    "source": "St. Kitts-Nevis Observer",
+    "date": "2026-07-25",
+    "country": "KN",
+    "url": "https://www.thestkittsnevisobserver.com/pm-welcomes-new-initiative-to-brand-st-vincent-and-the-grenadines/",
+    "tags": [
+      "regional"
+    ],
+    "category": "Regional Developments",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "PM endorses branding initiative for St. Vincent and the Grenadines; national economic positioning and tourism strategy.",
+    "classifier": "llm"
+  },
+  {
+    "id": "st-kitts-nevis-observer-abe4f80e",
+    "title": "Guyana: Government tightens ferry safety procedures following MV Barima tragedy",
+    "source": "St. Kitts-Nevis Observer",
+    "date": "2026-07-25",
+    "country": "KN",
+    "url": "https://www.thestkittsnevisobserver.com/guyana-government-tightens-ferry-safety-procedures-following-mv-barima-tragedy/",
+    "tags": [
+      "regional"
+    ],
+    "category": "Government",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Ferry safety procedure tightening in response to disaster; transport-sector regulation and operational safety governance.",
+    "classifier": "llm"
   },
   {
     "id": "kaieteur-news-d4e684c1",
@@ -405,18 +1121,6 @@
       "news",
       "private security",
       "security guards"
-    ]
-  },
-  {
-    "id": "jamaica-observer-acca0939",
-    "title": "JRC urged to update Hall of Fame process as industry honours racing pioneers",
-    "source": "Jamaica Observer",
-    "date": "2026-07-24",
-    "country": "JM",
-    "url": "https://www.jamaicaobserver.com/2026/07/24/jrc-urged-update-hall-fame-process-industry-honours-racing-pioneers/",
-    "tags": [
-      "horse racing",
-      "sports"
     ]
   },
   {
@@ -1739,6 +2443,144 @@
     "classifier": "heuristic"
   },
   {
+    "id": "jamaica-observer-b2dde4ad",
+    "title": "Marriott all-inclusive coming to Montego Bay",
+    "source": "Jamaica Observer",
+    "date": "2026-07-24",
+    "country": "JM",
+    "url": "https://www.jamaicaobserver.com/2026/07/24/marriott-inclusive-coming-montego-bay/",
+    "tags": [
+      "business",
+      "latest news",
+      "jamaica",
+      "mariott",
+      "new"
+    ],
+    "category": "Investment",
+    "group": "Investment",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Major hotel brand investment in Jamaica; real FDI/tourism infrastructure development",
+    "classifier": "llm"
+  },
+  {
+    "id": "now-grenada-7863111b",
+    "title": "Successful GPPA men’s health clinic signals new era for men’s healthcare",
+    "source": "NOW Grenada",
+    "date": "2026-07-24",
+    "country": "GD",
+    "url": "https://nowgrenada.com/2026/07/successful-gppa-mens-health-clinic-signals-new-era-for-mens-healthcare/",
+    "tags": [
+      "health",
+      "press release",
+      "gppa",
+      "grenada planned parenthood association",
+      "jonathan noël",
+      "maria holder memorial trust"
+    ],
+    "category": "Government",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Public health service initiative; government healthcare program and institutional governance",
+    "classifier": "llm"
+  },
+  {
+    "id": "st-lucia-times-ce80589a",
+    "title": "Saint Lucia to host Windwards School Games over 8 days",
+    "source": "St. Lucia Times",
+    "date": "2026-07-24",
+    "country": "LC",
+    "url": "https://stluciatimes.com/182301/2026/07/saint-lucia-to-host-windwards-school-games-over-8-days/",
+    "tags": [
+      "headlines",
+      "sports",
+      "carifta",
+      "ministry of education saint lucia",
+      "saint lucia",
+      "sports"
+    ],
+    "category": "Government",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "National school sports games hosted; government education/youth policy and regional CARIFTA event participation",
+    "classifier": "llm"
+  },
+  {
+    "id": "st-lucia-times-44cb7872",
+    "title": "20 young ambassadors chosen to give children a stronger voice in national policies",
+    "source": "St. Lucia Times",
+    "date": "2026-07-24",
+    "country": "LC",
+    "url": "https://stluciatimes.com/182298/2026/07/20-young-ambassadors-chosen-to-give-children-a-stronger-voice-in-national-policies/",
+    "tags": [
+      "community",
+      "headlines",
+      "youth",
+      "child rights ambassadors",
+      "community",
+      "saint lucia"
+    ],
+    "category": "Government",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Youth ambassador program for policy input; government civic engagement and institutional development for stakeholder input",
+    "classifier": "llm"
+  },
+  {
+    "id": "iwitness-news-11d9ff8b",
+    "title": "Gonsalves neither supports nor opposes gratuity bill",
+    "source": "iWitness News",
+    "date": "2026-07-24",
+    "country": "VC",
+    "url": "https://www.iwnsvg.com/2026/07/24/gonsalves-neither-supports-nor-opposes-gratuity-bill/",
+    "tags": [
+      "politics"
+    ],
+    "category": "Government",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "PM position on gratuity bill (labor/pension benefit); economic policy governance.",
+    "classifier": "llm"
+  },
+  {
+    "id": "searchlight-svg-1849724c",
+    "title": "Three receive scholarships from the Agricultural Input Warehouse",
+    "source": "Searchlight SVG",
+    "date": "2026-07-24",
+    "country": "VC",
+    "url": "https://www.searchlight.vc/news/2026/07/24/three-receive-scholarships-agricultural-input-warehouse/",
+    "tags": [
+      "news"
+    ],
+    "category": "Corporate",
+    "group": "Finance",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Agricultural Input Warehouse awards scholarships; institutional corporate/agricultural engagement.",
+    "classifier": "llm"
+  },
+  {
+    "id": "searchlight-svg-a61dda37",
+    "title": "Alpha Studios seeking to  revitalise Theatre Arts in SVG",
+    "source": "Searchlight SVG",
+    "date": "2026-07-24",
+    "country": "VC",
+    "url": "https://www.searchlight.vc/press-release/2026/07/24/alpha-studios-seeking-revitalise-theatre-arts-svg/",
+    "tags": [
+      "press release"
+    ],
+    "category": "Corporate",
+    "group": "Finance",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Alpha Studios revitalizing theatre arts sector; cultural sector investment and institutional development.",
+    "classifier": "llm"
+  },
+  {
     "id": "kaieteur-news-6c9dd82b",
     "title": "Billions from oil, no safe passage for hinterland residents – MP Hastings on MV Barima tragedy",
     "source": "Kaieteur News",
@@ -2257,6 +3099,63 @@
     "classifier": "llm"
   },
   {
+    "id": "the-star-jamaica-d1606916",
+    "title": "No hiding from the lens as cops expand body cam use",
+    "source": "The Star (Jamaica)",
+    "date": "2026-07-23",
+    "country": "JM",
+    "url": "https://jamaica-star.com/article/news/20260723/no-hiding-lens-cops-expand-body-cam-use",
+    "category": "Government",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Police body-camera program; government policy and public-sector operational investment",
+    "classifier": "llm"
+  },
+  {
+    "id": "eyewitness-news-e388eb56",
+    "title": "DEPP disputes key environmental concerns as Gillam Bay petition surpasses 1,600 signatures",
+    "source": "Eyewitness News",
+    "date": "2026-07-23",
+    "country": "BS",
+    "url": "https://ewnews.com/depp-disputes-key-environmental-concerns-as-gillam-bay-petition-surpasses-1600-signatures/?utm_source=rss&utm_medium=rss&utm_campaign=depp-disputes-key-environmental-concerns-as-gillam-bay-petition-surpasses-1600-signatures",
+    "tags": [
+      "business",
+      "always a headline ahead",
+      "bahamas",
+      "ewnews.com",
+      "eyewitness news"
+    ],
+    "category": "Infrastructure",
+    "group": "Investment",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Major environmental and development project dispute; real infrastructure/environmental policy impact on Bahamas economy",
+    "classifier": "llm"
+  },
+  {
+    "id": "st-lucia-times-0ec00499",
+    "title": "Leon Hess student is new Junior Minister for Tourism",
+    "source": "St. Lucia Times",
+    "date": "2026-07-23",
+    "country": "LC",
+    "url": "https://stluciatimes.com/182281/2026/07/leon-hess-student-is-new-junior-minister-for-tourism/",
+    "tags": [
+      "headlines",
+      "tourism",
+      "caribbean tourism organisation youth congress",
+      "department of tourism",
+      "junior minister for tourism",
+      "leon hess comprehensive secondary school"
+    ],
+    "category": "Government",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Junior Minister for Tourism appointment signals institutional governance in economic sector.",
+    "classifier": "llm"
+  },
+  {
     "id": "kaieteur-news-153946ae",
     "title": "‘US$12.7M MV Ma Lisha still idle’ …embattled Edghill blames shifting soil, failed Port Kaituma wharf",
     "source": "Kaieteur News",
@@ -2679,6 +3578,20 @@
     "decision": "publish",
     "confidence": "high",
     "reason": "Panama Canal and Middle East-driven LNG traffic; energy/trade impact on regional hub.",
+    "classifier": "llm"
+  },
+  {
+    "id": "jamaica-gleaner-4afa97d8",
+    "title": "Confidence results reversed in second quarter of 2026",
+    "source": "Jamaica Gleaner",
+    "date": "2026-07-22",
+    "country": "JM",
+    "url": "http://jamaica-gleaner.com/article/business/20260722/confidence-results-reversed-second-quarter-2026",
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Business confidence index reversal; key macroeconomic sentiment indicator",
     "classifier": "llm"
   },
   {
@@ -3267,6 +4180,23 @@
     "decision": "publish",
     "confidence": "high",
     "reason": "Chamber of Commerce executive appointments; governance of economic institution.",
+    "classifier": "llm"
+  },
+  {
+    "id": "amandala-389d6d97",
+    "title": "Belize athletes compete at Central American and Caribbean Games",
+    "source": "Amandala",
+    "date": "2026-07-21",
+    "country": "BZ",
+    "url": "https://amandala.com.bz/news/belize-athletes-compete-at-central-american-and-caribbean-games/",
+    "tags": [
+      "headline"
+    ],
+    "category": "Government",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "National participation in regional sports games; government investment and international representation in Central American and Caribbean Games",
     "classifier": "llm"
   },
   {
@@ -3934,20 +4864,6 @@
     "classifier": "llm"
   },
   {
-    "id": "kaieteur-news-75ea4108",
-    "title": "2026 CASA Juniors: Guyana retain overall title, striking Gold and Silver in Team’s final",
-    "source": "Kaieteur News",
-    "date": "2026-07-18",
-    "country": "GY",
-    "url": "https://kaieteurnewsonline.com/2026/07/18/2026-casa-juniors-guyana-retain-overall-title-striking-gold-and-silver-in-teams-final/",
-    "tags": [
-      "sports",
-      "2026 casa juniors",
-      "british virgin islands",
-      "squash"
-    ]
-  },
-  {
     "id": "kaieteur-news-96175190",
     "title": "Economic policies cannot succeed in an institutional vacuum",
     "source": "Kaieteur News",
@@ -4605,17 +5521,6 @@
     ]
   },
   {
-    "id": "searchlight-svg-f76fd8cb",
-    "title": "Ryan and Maloney win gold",
-    "source": "Searchlight SVG",
-    "date": "2026-07-17",
-    "country": "VC",
-    "url": "https://www.searchlight.vc/sports/2026/07/17/ryan-maloney-win-gold/",
-    "tags": [
-      "sports"
-    ]
-  },
-  {
     "id": "searchlight-svg-159e3635",
     "title": "Beyond the Bacchanal what is the real economic impact of Vincy Mas?",
     "source": "Searchlight SVG",
@@ -5044,20 +5949,6 @@
     ]
   },
   {
-    "id": "kaieteur-news-49a9377c",
-    "title": "Banks DIH continues support of Guyana Cup horserace",
-    "source": "Kaieteur News",
-    "date": "2026-07-16",
-    "country": "GY",
-    "url": "https://kaieteurnewsonline.com/2026/07/16/banks-dih-continues-support-of-guyana-cup-horserace/",
-    "tags": [
-      "sports",
-      "banks dih",
-      "guyana cup horserace",
-      "horse racing"
-    ]
-  },
-  {
     "id": "kaieteur-news-ed1f7f3a",
     "title": "Govt. to link Cummings Lodge Housing Scheme to Aubrey Barker Highway",
     "source": "Kaieteur News",
@@ -5335,17 +6226,6 @@
     ]
   },
   {
-    "id": "nation-news-6ddff598",
-    "title": "$25m loan boost for CWI",
-    "source": "Nation News",
-    "date": "2026-07-16",
-    "country": "BB",
-    "url": "https://nationnews.com/2026/07/16/25m-loan-boost-for-cwi/?utm_source=rss&utm_medium=rss&utm_campaign=25m-loan-boost-for-cwi",
-    "tags": [
-      "sports"
-    ]
-  },
-  {
     "id": "jamaica-observer-9ed6e817",
     "title": "CIBC joins banks to cease isssuing, accepting $1-million cheques",
     "source": "Jamaica Observer",
@@ -5564,6 +6444,26 @@
     "decision": "publish",
     "confidence": "high",
     "reason": "Waste-management company growth and sector leadership; corporate business narrative.",
+    "classifier": "llm"
+  },
+  {
+    "id": "barbados-today-8b26d5b5",
+    "title": "‘Ask Dealia’ app launches to help find deals, events",
+    "source": "Barbados Today",
+    "date": "2026-07-16",
+    "country": "BB",
+    "url": "https://barbadostoday.bb/2026/07/15/ask-dealia-app-launches-to-help-find-deals-events/",
+    "tags": [
+      "business",
+      "economy",
+      "local news",
+      "technology"
+    ],
+    "category": "Technology",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Mobile application launch for deals and event discovery; digital-economy and consumer fintech service.",
     "classifier": "llm"
   },
   {
@@ -6284,21 +7184,6 @@
     ]
   },
   {
-    "id": "kaieteur-news-54ba9544",
-    "title": "Lowe, Fung-a-Fat strike Doubles’ gold for Guyana at 2026 CASA Juniors",
-    "source": "Kaieteur News",
-    "date": "2026-07-14",
-    "country": "GY",
-    "url": "https://kaieteurnewsonline.com/2026/07/14/lowe-fung-a-fat-strike-doubles-gold-for-guyana-at-2026-casa-juniors/",
-    "tags": [
-      "sports",
-      "2026 casa juniors",
-      "emily fung-a-fat",
-      "kaylee lowe",
-      "squash"
-    ]
-  },
-  {
     "id": "kaieteur-news-e6aa9596",
     "title": "PUC flags GWI’s unsustainable finances, $13.4B lost through water leaks",
     "source": "Kaieteur News",
@@ -6543,22 +7428,6 @@
       "cayman islands department of agriculture",
       "food security",
       "women farmers"
-    ]
-  },
-  {
-    "id": "cayman-compass-d2052875",
-    "title": "Breaking ground: Construction begins on Cayman Islands Aquatic Centre",
-    "source": "Cayman Compass",
-    "date": "2026-07-14",
-    "country": "KY",
-    "url": "https://www.caymancompass.com/2026/07/14/breaking-ground-construction-begins-on-cayman-islands-aquatic-centre/",
-    "tags": [
-      "featured local home page",
-      "local",
-      "sports",
-      "50m pool",
-      "cayman aquatics",
-      "jillian crooks"
     ]
   },
   {
@@ -7325,19 +8194,6 @@
     ]
   },
   {
-    "id": "barbados-today-af8bd896",
-    "title": "Minister gives nod to sports tourism push",
-    "source": "Barbados Today",
-    "date": "2026-07-13",
-    "country": "BB",
-    "url": "https://barbadostoday.bb/2026/07/13/minister-gives-nod-to-sports-tourism-push/",
-    "tags": [
-      "local news",
-      "press releases",
-      "sports"
-    ]
-  },
-  {
     "id": "kaieteur-news-af4c60d7",
     "title": "Sod turned for $528M East Ruimveldt Market rehabilitation",
     "source": "Kaieteur News",
@@ -7470,17 +8326,6 @@
     "tags": [
       "news",
       "instagram"
-    ]
-  },
-  {
-    "id": "cnc3-73bb3498",
-    "title": "De Gannes leaps to NACAC long jump gold",
-    "source": "CNC3",
-    "date": "2026-07-12",
-    "country": "TT",
-    "url": "https://www.cnc3.co.tt/de-gannes-leaps-to-nacac-long-jump-gold/?utm_source=rss&utm_medium=rss&utm_campaign=de-gannes-leaps-to-nacac-long-jump-gold",
-    "tags": [
-      "sports"
     ]
   },
   {
@@ -7642,22 +8487,6 @@
       "ali farm",
       "blackmailer",
       "ghk lall"
-    ]
-  },
-  {
-    "id": "jamaica-observer-522681bf",
-    "title": "Kadrian Goldson and Rojé Stona strike gold at Ed Murphey Classic",
-    "source": "Jamaica Observer",
-    "date": "2026-07-11",
-    "country": "JM",
-    "url": "https://www.jamaicaobserver.com/2026/07/10/kadrian-goldson-roje-stona-strike-gold-ed-murphey-clasic/",
-    "tags": [
-      "latest news",
-      "sports",
-      "ed murphey classic",
-      "kadrian goldson",
-      "memphis",
-      "roje stona"
     ]
   },
   {
@@ -8044,28 +8873,6 @@
     "tags": [
       "business",
       "caribbean business report (cbr)"
-    ]
-  },
-  {
-    "id": "jamaica-observer-616cd387",
-    "title": "Sunshine Girls head to Glasgow with gold in mind",
-    "source": "Jamaica Observer",
-    "date": "2026-07-10",
-    "country": "JM",
-    "url": "https://www.jamaicaobserver.com/2026/07/10/sunshine-girls-head-glasgow-gold-mind/",
-    "tags": [
-      "sports"
-    ]
-  },
-  {
-    "id": "jamaica-observer-1324036f",
-    "title": "Infrastructure investment fuels sporting success, says Samuda",
-    "source": "Jamaica Observer",
-    "date": "2026-07-10",
-    "country": "JM",
-    "url": "https://www.jamaicaobserver.com/2026/07/10/infrastructure-investment-fuels-sporting-success-says-samuda/",
-    "tags": [
-      "sports"
     ]
   },
   {
@@ -9160,17 +9967,6 @@
       "news",
       "forex",
       "us dollars"
-    ]
-  },
-  {
-    "id": "jamaica-observer-8b34f365",
-    "title": "Moore defies travel chaos to win world gold",
-    "source": "Jamaica Observer",
-    "date": "2026-07-08",
-    "country": "JM",
-    "url": "https://www.jamaicaobserver.com/2026/07/08/moore-defies-travel-chaos-win-world-gold/",
-    "tags": [
-      "sports"
     ]
   },
   {
@@ -11584,21 +12380,6 @@
     ]
   },
   {
-    "id": "jamaica-observer-626e6e1e",
-    "title": "Jamaica must leverage achievements of athletes to attract investments – PS",
-    "source": "Jamaica Observer",
-    "date": "2026-06-30",
-    "country": "JM",
-    "url": "https://www.jamaicaobserver.com/2026/06/29/jamaica-must-leverage-achievements-athletes-attract-investments-ps/",
-    "tags": [
-      "latest news",
-      "news",
-      "economy",
-      "jamaica",
-      "sports"
-    ]
-  },
-  {
     "id": "starnieuws-479ca6e4",
     "title": "Dalende olieprijs biedt verlichting, maar blijft cruciaal voor economieën Guyana, Trinidad en Suriname",
     "source": "Starnieuws",
@@ -12479,19 +13260,6 @@
       "essequibo",
       "procurement training",
       "small business bureau"
-    ]
-  },
-  {
-    "id": "kaieteur-news-47ed9ccf",
-    "title": "Mannol Oil back as powerplay sponsor One Guyana T10 Tapeball Blast",
-    "source": "Kaieteur News",
-    "date": "2026-06-24",
-    "country": "GY",
-    "url": "https://kaieteurnewsonline.com/2026/06/24/mannol-oil-back-as-powerplay-sponsor-one-guyana-t10-tapeball-blast/",
-    "tags": [
-      "sports",
-      "mannol oil",
-      "one guyana t10 tapeball blast"
     ]
   },
   {
