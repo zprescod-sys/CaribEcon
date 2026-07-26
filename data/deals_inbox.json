@@ -10,7 +10,9 @@
     "suggestedType": "FDI",
     "url": "https://kaieteurnewsonline.com/2026/06/27/petronas-eyes-final-investment-decision-in-suriname-after-8-discoveries-totalling-over-1-billion-barrels/",
     "source": "Kaieteur News",
-    "approved": true
+    "approved": false,
+    "triaged": true,
+    "reviewNote": "Pulled from deals.json 2026-07-25 — this headline is its own regression fixture in newsClassifier.fixtures.mjs expecting deal_status: pending (Petronas 'eyes final investment decision' is a pre-FID stage, not a closed deal). It was approved before the transcription-fidelity standard existed and its value was never a real figure (\"N/A\"). Needs a fresh WebFetch-verified pass (stated parties/value/type, or leave pending) before republishing, not a straight re-approve."
   },
   {
     "id": "deal-1f35004c",
