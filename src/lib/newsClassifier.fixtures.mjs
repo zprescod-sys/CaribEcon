@@ -34,6 +34,23 @@ export const NEWS_CLASSIFIER_FIXTURES = [
     source: 'Jamaica Gleaner', country: 'JM',
     expected: { decision: 'publish', category: 'Investment', deal_status: 'pending', deal_type: 'M&A' } },
 
+  // ── Added 2026-07-25 — deal_status misses found in a live warrenb triage run:
+  // pending transactions (LOI, "proposed" issuance) mis-staged as `completed`. See
+  // newsRubric.md § "Deal status" — "prospective verbs" and "a qualifier that labels the
+  // transaction controls" paragraphs added to fix this class of case.
+  { title: 'New Canadian firm moves to acquire 64 km² of mineral claims in US$1.1M deal from local owner',
+    source: 'Kaieteur News', country: 'GY',
+    // "moves to acquire" — a real step (an LOI), not a closed deal. Source itself states
+    // "no assurance the acquisition will be completed" (due diligence/regulatory pending).
+    // deal_type not asserted: M&A (asset purchase) vs FDI (new foreign capital into a
+    // resource project) is a genuinely defensible either-way call here, not a correctness bug.
+    expected: { decision: 'publish', deal_status: 'pending' } },
+  { title: 'Government exempts proposed US$800m bond issue from taxes, exchange control',
+    source: 'CNC3', country: 'TT',
+    // The exemption is a done government action, but "proposed" labels the bond issue
+    // itself as not yet closed — the deal status tracks the bond, not the exemption.
+    expected: { decision: 'publish', deal_status: 'pending', deal_type: 'Bond' } },
+
   // ── Added 2026-07-24 — real over-inclusion found in the first live production run ──
   { title: 'Transparency Institute wants International Maritime Organisation to investigate MV Barima tragedy',
     source: 'Kaieteur News', country: 'GY',

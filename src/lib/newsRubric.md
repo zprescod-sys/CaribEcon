@@ -183,14 +183,38 @@ deliberate here — it is now the only judgment deciding what reaches the Deals 
   listing, rights issue), `JV` (joint venture), `Concession` (concession or license award), or
   `Other` if none fit cleanly.
 - **`pending`** — plausibly a transaction, but only a proposal, intention, early discussion, MOU,
-  pending deal, regulatory approval stage, or non-operational financing stage — not yet closed.
-  Set `deal_type` the same way as above (still your best guess at the eventual type), or `null`
-  if you can't tell.
+  letter of intent, pending deal, regulatory approval stage, or non-operational financing stage —
+  not yet closed. This includes a headline with a prospective verb ("moves to acquire," "to buy")
+  even when it already reports a specific price — e.g. "New Canadian firm moves to acquire 64 km²
+  of mineral claims in US$1.1M deal from local owner" is `pending`: a firm "moving to acquire" is
+  at the letter-of-intent/early stage, and the US$1.1M figure states the deal's terms, not that it
+  closed. Set `deal_type` the same way as above (still your best guess at the eventual type), or
+  `null` if you can't tell.
 - **`not_a_deal`** — the headline is not describing a business transaction at all (the normal
   case for most headlines, including anything you decided to `drop`). Set `deal_type` to `null`.
 
 If genuinely unsure whether a transaction is `completed` vs `pending`, choose `pending` — same
 never-silently-lose-it bias as the publish/review/drop decision.
+
+**Prospective verbs describe a real step, not a closed deal.** "moves to acquire," "to buy,"
+"agrees to buy," "seeks to," "in talks to," or "plans to" report that a company genuinely took
+that step — the transaction itself hasn't closed yet. Contrast with "acquires," "completes
+acquisition of," "buys," "finalizes," which state the transaction as an accomplished fact. "St
+Lucian company **to buy** majority stake in Dolphin Cove" is `pending` (the buying hasn't
+happened); "Dolla Financial **completes acquisition of** Evolve loan portfolio" is `completed`.
+Don't let the `M&A`/`FDI` type vocabulary ("acquisition," "stake purchase") pull you toward
+`completed` on its own — that vocabulary names the *type* of deal, not its status. A specific
+dollar figure attached to the deal doesn't make it closed either — a reported *value* is not
+evidence of *status*. "New Canadian firm **moves to acquire** 64 km² of mineral claims **in
+US$1.1M deal** from local owner" is still `pending`: the figure states the deal's known terms,
+the verb states its status, and the verb wins.
+
+**A qualifier that labels the transaction controls, even inside an otherwise-completed sentence.**
+"Government exempts **proposed** US$800m bond issue from taxes" describes the tax exemption as a
+done fact, but "proposed" explicitly marks the bond issue itself as not yet closed — judge the
+status of the transaction the sentence is *about*, not the status of whatever action (a
+government approval, an exemption, a regulatory step) is being reported alongside it. This
+headline is `pending`; only the exemption itself is complete.
 
 **Ordinary operational news is not a deal.** A new flight route, a new store opening, a branch
 expansion, or a new service launch is routine business activity, not a capital transaction —
