@@ -209,5 +209,19 @@
     "type": "FDI",
     "url": "https://kaieteurnewsonline.com/2026/06/27/petronas-eyes-final-investment-decision-in-suriname-after-8-discoveries-totalling-over-1-billion-barrels/",
     "source": "Kaieteur News"
+  },
+  {
+    "id": "deal-d8d24625",
+    "headline": "Image Plus to pay $620m for recent acquisitions",
+    "parties": "Image Plus Consultants Ltd (trading as Apex Radiology), acquirer of Island Radiology and The Woman's Place",
+    "value": "$620m",
+    "date": "2026-07-15",
+    "country": "JM",
+    "type": "M&A",
+    "url": "http://jamaica-gleaner.com/article/business/20260715/image-plus-pay-620m-recent-acquisitions",
+    "source": "Jamaica Gleaner",
+    "triaged": true,
+    "escalated": false,
+    "reviewNote": "Approved by Zeke 2026-07-25 — first tested case for the warrenb pipeline. Parties/value/type as drafted and WebFetch-verified by warrenb."
   }
 ]

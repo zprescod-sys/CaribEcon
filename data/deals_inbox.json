@@ -69,10 +69,10 @@
     "suggestedType": "M&A",
     "url": "http://jamaica-gleaner.com/article/business/20260715/image-plus-pay-620m-recent-acquisitions",
     "source": "Jamaica Gleaner",
-    "approved": false,
-    "triaged": false,
-    "escalated": true,
-    "reviewNote": "First-run caution: completed M&A, fields drafted and verified against Jamaica Gleaner (jamaica-gleaner.com/article/business/20260715/image-plus-pay-620m-recent-acquisitions) -- IPCL/Apex Radiology paid $620 million for two completed acquisitions, Island Radiology and The Woman's Place. Note: the source states the figure as a bare '$620 million' with no J$/US$ prefix; transcribed verbatim rather than assumed as J$. Deduped: superseded near-duplicate deal-659b79b8 (same story, same date, same Gleaner outlet) rejected separately. Holding for first-batch human confirmation per calibration first-run-caution status. Set approved:true to publish."
+    "approved": true,
+    "triaged": true,
+    "escalated": false,
+    "reviewNote": "Approved by Zeke 2026-07-25 — first tested case for the warrenb pipeline. Parties/value/type as drafted and WebFetch-verified by warrenb."
   },
   {
     "id": "deal-a32625de",
