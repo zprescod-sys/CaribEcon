@@ -13,7 +13,8 @@
     "promote": "node scripts/build-feeds.mjs --promote-only",
     "data:refresh": "node scripts/refresh-data.mjs",
     "data:drift": "node scripts/check-primary-drift.mjs",
-    "data:validate": "node scripts/validate-data.mjs"
+    "data:validate": "node scripts/validate-data.mjs",
+    "links:check": "node scripts/check-links.mjs"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.114.0",

@@ -140,6 +140,31 @@ Bank spine only; debt%, current account and fiscal balance are absent, reported 
 union-level / current-budget by CBCS.
 MS (Montserrat) and AI (Anguilla) are out of scope (ECCB/UN only, no comparable spine).
 
+## Source links — durability rules
+
+Run **`npm run links:check`** (`scripts/check-links.mjs`) to walk every source URL
+in the data files. Exit code is 1 only on genuine rot, so it is CI-safe.
+
+- **Never trust a HEAD response for a failure verdict.** `api.worldbank.org`
+  answers HEAD with 404 and the identical URL with 200 on GET. The first run of
+  the checker reported four false broken links for exactly this reason; it now
+  re-checks any non-2xx with GET before calling it broken.
+- **`sourceLanding` / `sourceLandingTitle`** are set where `sourceUrl` is a deep
+  link into a *live* tool rather than a fixed publication. All 41 IMF records use
+  a DataMapper deep-link, which resolves fine but renders whatever the current
+  WEO release holds — a reader checking a figure later may not see the vintage it
+  was taken at. The fixed release (WEO April 2026) is named alongside so the
+  citation stays reproducible.
+- **imf.org runs a selective bot-WAF.** DataMapper deep-links answer 200 to an
+  automated client; the WEO publication pages answer 403 to GET while loading
+  normally in a browser. The checker reports those separately as EXPECTED so a
+  real 404 elsewhere is never buried. Note the WAF is fingerprint-sensitive —
+  Python's urllib is refused where Node's fetch is not, so a 403 from one tool is
+  not evidence the link is dead.
+- Prefer a **document URL over an agency landing page**. The Bahamas budget
+  formerly cited `bahamas.gov.bs/agencies/finance`, which is a department page,
+  not a document, and cannot support an audit.
+
 ## budgets.json — schema and integrity rules
 
 Hand-maintained. One entry per country per budget year. **Every amount must be

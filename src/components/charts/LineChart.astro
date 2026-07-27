@@ -161,8 +161,17 @@ const namesJSON = JSON.stringify(Object.fromEntries(getCountries().map(c => [c.c
         if (seen.has(s.source)) return false;
         seen.add(s.source); return true;
       });
+      /* Where a record carries a durable landing page as well as a deep link,
+         surface both. IMF DataMapper deep-links resolve fine but render the
+         CURRENT WEO release, so a reader checking later may not see the vintage
+         the figure was taken at; the fixed release is named alongside. */
       const links = uniq
-        .map(s => `<a href="${s.sourceUrl}" target="_blank" rel="noopener noreferrer">${s.source}</a>`)
+        .map(s => {
+          const main = `<a href="${s.sourceUrl}" target="_blank" rel="noopener noreferrer">${s.source}</a>`;
+          return s.sourceLanding
+            ? `${main} <span class="src-landing">(<a href="${s.sourceLanding}" target="_blank" rel="noopener noreferrer">${s.sourceLandingTitle ?? 'publication'}</a>)</span>`
+            : main;
+        })
         .join(' · ');
       sourceEl.innerHTML = `<span>Source${uniq.length > 1 ? 's' : ''}:</span> ${links}`;
     }

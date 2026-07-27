@@ -35,6 +35,13 @@ export interface IndicatorSeries {
   sourceOrg: string;        // e.g. "IMF"
   sourceTier: SourceTier;   // primary (national) | comparable (IMF/WB/UN)
   sourceUrl: string;
+  /* Durable, citable landing page, set where `sourceUrl` is a deep link into a
+     LIVE tool rather than a fixed publication. IMF DataMapper links resolve
+     fine, but they render whatever the current WEO release holds — so a reader
+     checking a figure later may not see the vintage it was taken at. Naming the
+     fixed release alongside makes the citation reproducible. */
+  sourceLanding?: string;
+  sourceLandingTitle?: string;
   sourceRef?: string;       // table/appendix/section cited — never a page number
   confidence: Confidence;   // high | medium | flagged
   seriesNote?: string;      // record-level note (e.g. source-divergence caveat)
