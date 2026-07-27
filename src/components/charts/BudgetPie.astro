@@ -19,14 +19,30 @@ const budgetJSON = JSON.stringify(budget);
 <div class="budget-pie-wrapper">
   <div class="budget-pie-header">
     <div>
-      <span class="eyebrow">Budget {budget.fiscalYear ?? budget.year}</span>
+      <span class="eyebrow">Budget {budget.fiscalYear}</span>
       <h3 class="budget-title">{displayName} — Budget Allocation</h3>
+      <p class="budget-denominator mono">
+        Denominator: {budget.currencySymbol}{budget.total.toLocaleString('en-US')}mn — {budget.denominator}
+      </p>
     </div>
     <div class="source-line">
       <span>Source:</span>
-      <a href={budget.sourceUrl} target="_blank" rel="noopener noreferrer">{budget.source}</a>
+      <a href={budget.sourceUrl} target="_blank" rel="noopener noreferrer">{budget.source} — {budget.sourceDocument}</a>
+      <span>· {budget.sourcePage}</span>
     </div>
   </div>
+
+  <!-- Basis + coverage: what the denominator measures and how complete the
+       segmentation is. Stated up front so a reader never has to infer it. -->
+  <details class="budget-basis">
+    <summary class="mono">Basis &amp; coverage</summary>
+    <p><strong>Basis.</strong> {budget.basis}</p>
+    <p><strong>Coverage.</strong> {budget.coverage}</p>
+    {budget.note && <p><strong>Note.</strong> {budget.note}</p>}
+    <p class="budget-basis-cur mono">
+      All figures in {budget.currency} millions, exactly as printed in the source. No currency conversion is applied.
+    </p>
+  </details>
 
   <div class="budget-layout">
     <!-- Donut chart -->
@@ -38,7 +54,7 @@ const budgetJSON = JSON.stringify(budget);
 
   <!-- Drill-down projects panel -->
   <div class="projects-panel" id={`projects-${budget.country}`}>
-    <p class="projects-prompt mono">Click a segment or legend row to pin its key projects</p>
+    <p class="projects-prompt mono">Click a segment or legend row to see its amount, share and source page</p>
   </div>
 </div>
 
@@ -49,14 +65,30 @@ const budgetJSON = JSON.stringify(budget);
   import * as d3 from 'd3';
   import type { BudgetEntry, BudgetCategory } from '../../lib/types';
 
-  type Slice = d3.PieArcDatum<BudgetCategory>;
+  /* A segment as drawn. `amount` is local-currency millions straight from the
+     source; `pct` is computed here from the segment sum, never stored — the
+     old data carried hand-written integer percentages that were the only real
+     input, which is what let unsourced splits masquerade as source figures. */
+  interface Segment extends BudgetCategory {
+    pct: number;
+    grouped?: BudgetCategory[];   // set on the display-only "other ministries" roll-up
+  }
+  type Slice = d3.PieArcDatum<Segment>;
 
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const DUR   = reduceMotion ? 0 : 200;  // interaction transitions
   const ENTER = reduceMotion ? 0 : 550;  // entrance sweep
 
-  // "1.8bn" / "412mn" — compact USD for legend and centre
-  const fmtUSD = (v: number) => v >= 1000 ? `${(v / 1000).toFixed(1)}bn` : `${Math.round(v)}mn`;
+  // Beyond this many segments a pie stops being readable; the smallest are
+  // rolled into one disclosed slice. The .xlsx export always carries every row.
+  const MAX_SLICES = 12;
+  const KEEP_SLICES = 10;
+
+  // "TT$59.7bn" / "TT$750mn" — local currency, never converted
+  const fmtLocal = (v: number, sym: string) =>
+    v >= 1000
+      ? `${sym}${(v / 1000).toLocaleString('en-US', { minimumFractionDigits: 1, maximumFractionDigits: 1 })}bn`
+      : `${sym}${Math.round(v).toLocaleString('en-US')}mn`;
 
   // Initialize every budget pie on this page
   document.querySelectorAll<HTMLElement>('.budget-pie-data').forEach(dataEl => {
@@ -79,8 +111,8 @@ const budgetJSON = JSON.stringify(budget);
       .append('g')
       .attr('transform', `translate(${radius},${radius})`);
 
-    const pie = d3.pie<BudgetCategory>()
-      .value(d => d.value)
+    const pie = d3.pie<Segment>()
+      .value(d => d.amount)
       .sort(null)
       .padAngle(0.015);
 
@@ -88,8 +120,31 @@ const budgetJSON = JSON.stringify(budget);
     const arc      = d3.arc<Slice>().innerRadius(inner).outerRadius(radius - 6).cornerRadius(3);
     const arcLift  = d3.arc<Slice>().innerRadius(inner).outerRadius(radius).cornerRadius(3);
 
-    const arcData = pie(budget.categories);
-    const totalM  = (budget.totalUSD / 1000).toFixed(1);
+    const sym = budget.currencySymbol;
+
+    /* Shares are computed against the sum of the segments, not the published
+       total, so the slices always add to exactly 100%. Where the two differ
+       (Jamaica, by 0.0075%, from the source's own rounding) the discrepancy is
+       disclosed in the basis panel rather than silently absorbed. */
+    const sorted   = [...budget.categories].sort((a, b) => b.amount - a.amount);
+    const segTotal = sorted.reduce((s, c) => s + c.amount, 0);
+
+    let display: BudgetCategory[] = sorted;
+    if (sorted.length > MAX_SLICES) {
+      const kept = sorted.slice(0, KEEP_SLICES);
+      const rest = sorted.slice(KEEP_SLICES);
+      display = [...kept, {
+        name: `Other ministries and departments (${rest.length})`,
+        slug: 'grouped-other',
+        amount: rest.reduce((s, c) => s + c.amount, 0),
+        sourcePage: 'see export',
+        note: 'Display grouping only — these are individually published line items, listed in full in the .xlsx export.',
+        grouped: rest,
+      } as BudgetCategory & { grouped: BudgetCategory[] }];
+    }
+
+    const segments: Segment[] = display.map(c => ({ ...c, pct: (c.amount / segTotal) * 100 }));
+    const arcData = pie(segments);
     let pinnedIndex: number | null = null;
 
     // ── Centre: category name / value / pct, defaulting to the total ──────
@@ -111,12 +166,12 @@ const budgetJSON = JSON.stringify(budget);
     function setCentre(d: Slice | null) {
       if (!d) {
         centreName.text('');
-        centreValue.text(`USD ${totalM}bn`);
+        centreValue.text(fmtLocal(budget.total, sym));
         centreSub.text('total budget');
       } else {
         const name = d.data.name;
         centreName.text(name.length > 20 ? `${name.slice(0, 19)}…` : name);
-        centreValue.text(`USD ${fmtUSD(d.data.value)}`);
+        centreValue.text(fmtLocal(d.data.amount, sym));
         centreSub.text(`${d.data.pct.toFixed(1)}% of budget`);
       }
     }
@@ -163,8 +218,8 @@ const budgetJSON = JSON.stringify(budget);
     legendEl.innerHTML = arcData.map((d, i) => `
       <button class="legend-row" data-index="${d.index}" role="listitem" type="button">
         <span class="legend-swatch" style="background:${COLORS[i % COLORS.length]}"></span>
-        <span class="legend-name">${d.data.name}</span>
-        <span class="legend-val mono">${fmtUSD(d.data.value)}</span>
+        <span class="legend-name">${d.data.name}${d.data.derived ? ' <span class="legend-flag mono">derived</span>' : ''}</span>
+        <span class="legend-val mono">${fmtLocal(d.data.amount, sym)}</span>
         <span class="legend-pct mono">${d.data.pct.toFixed(1)}%</span>
       </button>
     `).join('');
@@ -191,7 +246,7 @@ const budgetJSON = JSON.stringify(budget);
     function pin(i: number) {
       pinnedIndex = i;
       legendRows.forEach((r, j) => r.classList.toggle('pinned', j === i));
-      showProjects(arcData[i].data, COLORS[i % COLORS.length], panel!);
+      showProvenance(arcData[i].data, COLORS[i % COLORS.length], panel!, budget);
       restore();
     }
 
@@ -208,27 +263,41 @@ const budgetJSON = JSON.stringify(budget);
       row.addEventListener('click', () => pin(i));
     });
 
-    // Pre-fill the drill-down with the largest category (without pinning the
+    // Pre-fill the drill-down with the largest segment (without pinning the
     // centre, which keeps showing the total until the user clicks)
-    const largest = arcData.reduce((a, b) => (b.data.value > a.data.value ? b : a), arcData[0]);
-    showProjects(largest.data, COLORS[largest.index % COLORS.length], panel);
+    const largest = arcData.reduce((a, b) => (b.data.amount > a.data.amount ? b : a), arcData[0]);
+    showProvenance(largest.data, COLORS[largest.index % COLORS.length], panel, budget);
   });
 
-  function showProjects(cat: BudgetCategory, color: string, panel: HTMLElement) {
-    const projectItems = cat.projects.map(p => `
-      <div class="project-item">
-        <span class="project-name">${p.name}</span>
-        ${p.description ? `<span class="project-desc mono">${p.description}</span>` : ''}
-      </div>
-    `).join('');
+  /* Drill-down shows a segment's provenance: the amount as printed, its share,
+     and the page it came from — so any figure on screen can be checked against
+     the source document without leaving the page. */
+  function showProvenance(cat: Segment, color: string, panel: HTMLElement, budget: BudgetEntry) {
+    const sym = budget.currencySymbol;
+    const rows: string[] = [
+      `<div class="prov-row"><span class="prov-k mono">Amount</span><span class="prov-v">${sym}${cat.amount.toLocaleString('en-US')}mn</span></div>`,
+      `<div class="prov-row"><span class="prov-k mono">Share of total</span><span class="prov-v">${cat.pct.toFixed(2)}%</span></div>`,
+    ];
+
+    if (cat.grouped?.length) {
+      rows.push(`<div class="prov-row"><span class="prov-k mono">Composition</span><span class="prov-v">${cat.grouped.length} individually published line items, smallest ${sym}${Math.min(...cat.grouped.map(g => g.amount)).toLocaleString('en-US')}mn</span></div>`);
+    } else if (cat.derived) {
+      rows.push(`<div class="prov-row"><span class="prov-k mono">Provenance</span><span class="prov-v"><span class="prov-flag derived">Derived residual</span> not a published line item</span></div>`);
+    } else {
+      rows.push(`<div class="prov-row"><span class="prov-k mono">Source page</span><span class="prov-v"><span class="prov-flag">Transcribed</span> ${cat.sourcePage}</span></div>`);
+    }
+
+    if (cat.note) {
+      rows.push(`<div class="prov-row"><span class="prov-k mono">Note</span><span class="prov-v">${cat.note}</span></div>`);
+    }
 
     panel.innerHTML = `
       <div class="projects-category" style="border-left: 3px solid ${color}; padding-left: 12px;">
         <div class="projects-cat-header">
           <span class="eyebrow">${cat.name}</span>
-          <span class="mono cat-pct">${cat.pct.toFixed(1)}% · USD ${(cat.value / 1000).toFixed(1)}bn</span>
+          <span class="mono cat-pct">${cat.pct.toFixed(1)}% · ${fmtLocal(cat.amount, sym)}</span>
         </div>
-        <div class="project-list">${projectItems}</div>
+        <div class="prov-list">${rows.join('')}</div>
       </div>
     `;
 
@@ -338,6 +407,37 @@ const budgetJSON = JSON.stringify(budget);
   }
 
   /* ── Drill-down panel below the donut + legend ────────────────────────── */
+  /* ── Denominator + basis disclosure ─────────────────────────────────────── */
+  .budget-denominator {
+    font-size: 10px;
+    color: var(--ink-faint);
+    letter-spacing: 0.04em;
+    margin-top: 4px;
+  }
+
+  .budget-basis {
+    margin-top: 14px;
+    border: 1px solid var(--line);
+    padding: 10px 12px;
+    background-color: var(--paper);
+  }
+  .budget-basis summary {
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    cursor: pointer;
+  }
+  .budget-basis summary:focus-visible { outline: var(--focus-ring); outline-offset: 2px; }
+  .budget-basis p {
+    font-size: 12px;
+    color: var(--ink-soft);
+    line-height: 1.6;
+    margin-top: 8px;
+  }
+  .budget-basis strong { color: var(--ink); font-weight: 600; }
+  .budget-basis-cur { font-size: 10px; color: var(--ink-faint); }
+
   .projects-panel {
     margin-top: 20px;
     padding-top: 16px;
@@ -363,24 +463,53 @@ const budgetJSON = JSON.stringify(budget);
     font-size: 10px;
   }
 
-  :global(.project-item) {
-    padding: 8px 0;
+  /* ── Segment provenance rows ────────────────────────────────────────────── */
+  :global(.prov-row) {
+    padding: 7px 0;
     border-top: 1px solid var(--line);
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    gap: 12px;
+    align-items: baseline;
   }
-
-  :global(.project-name) {
-    font-size: 13px;
-    font-weight: 500;
-    color: var(--ink);
-  }
-
-  :global(.project-desc) {
-    font-size: 11px;
+  :global(.prov-k) {
+    font-size: 10px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
     color: var(--ink-faint);
+  }
+  :global(.prov-v) {
+    font-size: 13px;
+    color: var(--ink);
     line-height: 1.5;
+    font-variant-numeric: tabular-nums;
+  }
+  /* Transcribed = lifted verbatim from the cited page. Derived = computed here. */
+  :global(.prov-flag) {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 9px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    border: 1px solid var(--teal);
+    color: var(--teal);
+    padding: 1px 5px;
+    margin-right: 6px;
+  }
+  :global(.prov-flag.derived) { border-color: var(--gold); color: var(--gold); }
+
+  :global(.legend-flag) {
+    font-size: 8px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--gold);
+    border: 1px solid var(--gold);
+    padding: 0 3px;
+    margin-left: 5px;
+  }
+
+  @media (max-width: 640px) {
+    :global(.prov-row) { grid-template-columns: 1fr; gap: 2px; }
   }
 
   @media (max-width: 640px) {

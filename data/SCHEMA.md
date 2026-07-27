@@ -140,6 +140,61 @@ Bank spine only; debt%, current account and fiscal balance are absent, reported 
 union-level / current-budget by CBCS.
 MS (Montserrat) and AI (Anguilla) are out of scope (ECCB/UN only, no comparable spine).
 
+## budgets.json — schema and integrity rules
+
+Hand-maintained. One entry per country per budget year. **Every amount must be
+traceable to a page of an official budget document.**
+
+### Currency: local only, never converted
+
+Amounts are held in the country's own currency, in **millions**, exactly as
+printed in the source. No FX conversion is applied and no `exchangeRate` field
+exists. Converting would add a derived layer carrying its own provenance burden
+for no analytical gain — a budget pie is read one country at a time. (The former
+USD figures were also wrong: Guyana's conversion was 4.2% adrift with an
+unsourced rate.)
+
+### Entry fields
+
+`country` · `year` · `fiscalYear` (e.g. "FY2024/25 (Oct 2024 – Sep 2025)") ·
+`currency` (TTD/GYD/JMD) · `currencySymbol` (what the source prints) ·
+`total` (the denominator, local-currency millions) · `denominator` (what `total`
+measures) · `basis` (cash vs accrual, budget vs outturn, what is included) ·
+`coverage` (exhaustive partition, or major items plus a residual) ·
+`source` · `sourceDocument` (full title) · `sourceUrl` · `sourcePage` (page for
+`total`) · `vintage` · optional `note` (e.g. reconciliation differences).
+
+### Category fields
+
+`name` · `slug` · `amount` (local-currency millions, as printed) ·
+`sourcePage` · optional `derived` · optional `note`.
+
+### Rules
+
+- **No stored percentages.** Shares are computed at render time from `amount`.
+  Storing a percentage is what previously let unsourced round-number splits
+  masquerade as source figures — every `pct` was an integer, every vector summed
+  to exactly 100, and every value was reproducible as `pct × total`.
+- **`derived: true` is mandatory** on any segment not printed in the source —
+  in practice the residual where a document itemises only major allocations. The
+  UI badges these and the export labels them "Derived here — not a published
+  line item".
+- **Never publish a nested figure alongside its parent.** Guyana's Police Force
+  allocation sits inside the Security Sector total, and Drainage & Irrigation
+  inside Agriculture; both are documented in `note` and excluded from the
+  segment list rather than double-counted.
+- **State the denominator explicitly** where more than one is defensible.
+  Jamaica has three in the same document: J$1,341,100mn incl. amortisation
+  (used here), J$1,023,700mn excl. amortisation (used by the fiscal series), and
+  J$849,900mn non-debt expenditure.
+- **Disclose reconciliation gaps** rather than absorbing them. Jamaica's segments
+  sum to J$1,341,200mn against a stated J$1,341,100mn — the source's own
+  rounding, recorded in `note` and surfaced in the export.
+- A country with no sourceable per-segment breakdown is **omitted entirely**; the
+  Data-page dropdown derives from this file, so omission removes the pie. Never
+  estimate a split to fill a gap. BB, BS and KY are currently omitted for this
+  reason — see `docs/budget-sourcing-audit.md`.
+
 ## News, Deals & Publications feeds pipeline
 
 `data/news.json` is regenerated daily from RSS/Atom feeds by `scripts/build-feeds.mjs`

@@ -1,6 +1,16 @@
 # Budget-pie sourcing audit
 
-Status: **in progress** — opened 2026-07-26.
+Opened 2026-07-26.
+
+**Status: TT, GY and JM are live on sourced figures. BB, BS and KY are removed
+from the site** until their per-segment breakdowns can be sourced — the Data-page
+dropdown derives from `data/budgets.json`, so omitting an entry removes its pie.
+
+Shipped alongside: local-currency-only amounts (no FX layer), computed rather
+than stored percentages, `derived` flags on residuals, an explicit denominator +
+basis + coverage disclosure on each pie, and a per-country **audit table export**
+(`src/lib/budgetExport.ts`) carrying every published line item with its source
+page — including the rows the pie rolls up for legibility.
 
 ## Why this exists
 

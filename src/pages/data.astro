@@ -177,18 +177,27 @@ const snapshots: CountrySnapshotData[] = getCountries().flatMap(c => {
         <div>
           <span class="eyebrow">Budget Breakdown</span>
           <h2 class="section-heading">Budget Allocation</h2>
-          <p class="section-sub">Select a country, then click any segment to see key projects and initiatives.</p>
+          <p class="section-sub">
+            Select a country, then click any segment for its amount, share and source page.
+            Figures are in each country's own currency, transcribed from the official budget document.
+          </p>
         </div>
 
-        <label class="budget-select-label">
-          <span class="mono">Country</span>
-          <select id="budget-country-select" class="budget-select" aria-label="Select a country's budget">
-            {budgetEntries.map(b => (
-              <option value={b.code} selected={b.code === defaultBudgetCode}>{b.name}</option>
-            ))}
-          </select>
-        </label>
+        <div class="budget-controls">
+          <label class="budget-select-label">
+            <span class="mono">Country</span>
+            <select id="budget-country-select" class="budget-select" aria-label="Select a country's budget">
+              {budgetEntries.map(b => (
+                <option value={b.code} selected={b.code === defaultBudgetCode}>{b.name}</option>
+              ))}
+            </select>
+          </label>
+          <button id="budget-audit-btn" class="export-xlsx-btn mono" type="button">
+            Audit table .xlsx
+          </button>
+        </div>
       </div>
+      <span id="budget-audit-status" class="export-status mono" role="status" aria-live="polite"></span>
 
       <!-- One pie per country; only the selected one is shown. -->
       <div class="budget-stack">
@@ -312,6 +321,13 @@ const snapshots: CountrySnapshotData[] = getCountries().flatMap(c => {
     margin-bottom: 24px;
   }
   .budget-section-head .section-sub { margin-bottom: 0; }
+
+  .budget-controls {
+    display: flex;
+    align-items: flex-end;
+    gap: var(--gap-md);
+    flex-wrap: wrap;
+  }
 
   .budget-select-label {
     display: flex;
@@ -445,6 +461,34 @@ const snapshots: CountrySnapshotData[] = getCountries().flatMap(c => {
     panels.forEach(panel => {
       panel.hidden = panel.dataset.budgetCountry !== select.value;
     });
+  });
+
+  // Budget audit table — every published line item for the selected country,
+  // with its source page, so the pie can be checked against the document.
+  // SheetJS + the budget data load on click, not on page load.
+  const auditBtn    = document.getElementById('budget-audit-btn') as HTMLButtonElement | null;
+  const auditStatus = document.getElementById('budget-audit-status');
+
+  auditBtn?.addEventListener('click', async () => {
+    const code = select?.value;
+    if (!code) return;
+    const name = select!.selectedOptions[0]?.textContent?.trim() ?? code;
+    auditBtn.disabled = true;
+    if (auditStatus) auditStatus.textContent = 'Building audit table…';
+    try {
+      const [{ exportBudgetAudit }, budgets] = await Promise.all([
+        import('../lib/budgetExport'),
+        import('../../data/budgets.json'),
+      ]);
+      const entry = (budgets.default as any[]).find(b => b.country === code);
+      const ok = entry ? exportBudgetAudit(entry, name) : false;
+      if (auditStatus) auditStatus.textContent = ok ? `Downloaded ${name} audit table.` : 'No budget data for that country.';
+    } catch (err) {
+      console.error('Budget audit export failed', err);
+      if (auditStatus) auditStatus.textContent = 'Export failed — see console.';
+    } finally {
+      auditBtn.disabled = false;
+    }
   });
 
   // Per-country XLSX export. SheetJS + the dataset are dynamically imported

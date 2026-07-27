@@ -51,26 +51,38 @@ export interface BudgetProject {
   description?: string;
 }
 
+/* Budget figures are held in the country's OWN currency, exactly as printed in
+   the official document. No FX conversion is applied: converting would add a
+   derived layer with its own provenance burden (and its own error — the former
+   USD figures were 4.2% adrift for Guyana) for no analytical gain, since a pie
+   is read one country at a time. Every amount must be traceable to a page. */
 export interface BudgetCategory {
   name: string;
   slug: string;
-  value: number;        // USD millions
-  pct: number;          // percentage of total (0–100)
-  projects: BudgetProject[];
+  amount: number;         // local-currency MILLIONS, as printed in the source
+  sourcePage: string;     // page reference within sourceDocument
+  derived?: boolean;      // true = computed residual, not a printed line item
+  note?: string;
+  projects?: BudgetProject[];
 }
 
 export interface BudgetEntry {
   country: string;
   year: number;
-  fiscalYear?: string;  // e.g. "2024/25" for TT
-  totalUSD: number;     // total budget in USD millions
-  currency: string;     // original currency (GYD, TTD)
-  originalTotal: number;
-  exchangeRate: number; // USD per 1 local currency unit used for conversion
+  fiscalYear: string;     // "FY2024/25" (TT, JM) or "2024" (GY calendar year)
+  currency: string;       // TTD / GYD / JMD
+  currencySymbol: string; // "TT$" / "G$" / "J$" — what the source prints
+  total: number;          // denominator, local-currency millions
+  denominator: string;    // what `total` actually measures
+  basis: string;          // cash vs accrual, budget vs actual, what's included
+  coverage: string;       // exhaustive partition, or major items + residual
   categories: BudgetCategory[];
-  source: string;
+  source: string;         // publishing institution
+  sourceDocument: string; // document title
   sourceUrl: string;
+  sourcePage: string;     // page reference for `total`
   vintage: string;
+  note?: string;          // e.g. reconciliation differences from source rounding
 }
 
 export type BudgetsData = BudgetEntry[];
