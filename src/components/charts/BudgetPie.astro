@@ -84,11 +84,14 @@ const budgetJSON = JSON.stringify(budget);
   const MAX_SLICES = 12;
   const KEEP_SLICES = 10;
 
-  // "TT$59.7bn" / "TT$750mn" — local currency, never converted
-  const fmtLocal = (v: number, sym: string) =>
-    v >= 1000
-      ? `${sym}${(v / 1000).toLocaleString('en-US', { minimumFractionDigits: 1, maximumFractionDigits: 1 })}bn`
-      : `${sym}${Math.round(v).toLocaleString('en-US')}mn`;
+  /* "TT$59.7bn" / "TT$750mn" / "B$0.7mn" — local currency, never converted.
+     Small agencies (Bahamas runs down to B$0.74mn) keep a decimal so they don't
+     round to a misleading whole number. */
+  const fmtLocal = (v: number, sym: string) => {
+    if (v >= 1000) return `${sym}${(v / 1000).toLocaleString('en-US', { minimumFractionDigits: 1, maximumFractionDigits: 1 })}bn`;
+    if (v < 10)    return `${sym}${v.toFixed(1)}mn`;
+    return `${sym}${Math.round(v).toLocaleString('en-US')}mn`;
+  };
 
   // Initialize every budget pie on this page
   document.querySelectorAll<HTMLElement>('.budget-pie-data').forEach(dataEl => {
@@ -127,7 +130,7 @@ const budgetJSON = JSON.stringify(budget);
        (Jamaica, by 0.0075%, from the source's own rounding) the discrepancy is
        disclosed in the basis panel rather than silently absorbed. */
     const sorted   = [...budget.categories].sort((a, b) => b.amount - a.amount);
-    const segTotal = sorted.reduce((s, c) => s + c.amount, 0);
+    const segTotal = Number(sorted.reduce((s, c) => s + c.amount, 0).toFixed(6));
 
     let display: BudgetCategory[] = sorted;
     if (sorted.length > MAX_SLICES) {

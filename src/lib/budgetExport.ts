@@ -25,7 +25,9 @@ function fitColumns(ws: XLSX.WorkSheet, aoa: (string | number | null)[][]) {
 
 /** Builds the audit worksheet for one country's budget. */
 export function buildBudgetAuditSheet(budget: BudgetEntry, countryName: string) {
-  const segTotal = budget.categories.reduce((s, c) => s + c.amount, 0);
+  // Rounded to 6dp: amounts are dollars-in-millions, so naive summation leaves
+  // float noise (…158999999) that reads as false precision in an audit document.
+  const segTotal = Number(budget.categories.reduce((s, c) => s + c.amount, 0).toFixed(6));
   const aoa: (string | number | null)[][] = [];
 
   aoa.push([`CaribEcon — budget audit table — ${countryName}`]);
@@ -41,7 +43,7 @@ export function buildBudgetAuditSheet(budget: BudgetEntry, countryName: string) 
   if (budget.note) aoa.push(['Note', budget.note]);
   aoa.push(['Segments sum to', segTotal, segTotal === budget.total
     ? 'equals the published total exactly'
-    : `differs from the published total by ${segTotal - budget.total} (${((segTotal - budget.total) / budget.total * 100).toFixed(4)}%) — see Note`]);
+    : `differs from the published total by ${Number((segTotal - budget.total).toFixed(6))} (${((segTotal - budget.total) / budget.total * 100).toFixed(4)}%) — see Note`]);
   aoa.push([]);
 
   aoa.push([

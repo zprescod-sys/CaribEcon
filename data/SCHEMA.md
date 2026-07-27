@@ -192,8 +192,14 @@ measures) · `basis` (cash vs accrual, budget vs outturn, what is included) ·
   rounding, recorded in `note` and surfaced in the export.
 - A country with no sourceable per-segment breakdown is **omitted entirely**; the
   Data-page dropdown derives from this file, so omission removes the pie. Never
-  estimate a split to fill a gap. BB, BS and KY are currently omitted for this
-  reason — see `docs/budget-sourcing-audit.md`.
+  estimate a split to fill a gap. KY is currently omitted for this reason: the
+  Cayman Plan & Estimates budgets by output groups purchased, publishing neither
+  a ministry-total nor a functional classification, so any pie would require an
+  invented aggregation. See `docs/budget-sourcing-audit.md`.
+- **Reconcile every parse against the source's own stated total** before
+  publishing. Two Bahamas parsing errors (a column shift, and six agencies hidden
+  by a page watermark) were invisible in the output and caught only by the
+  footing check.
 
 ## News, Deals & Publications feeds pipeline
 

@@ -16,17 +16,75 @@
     "vintage": "2024-09",
     "note": "Printed folios run one lower than the PDF page index; references here are PDF page numbers. Named allocations are quoted under the heading “The major Fiscal 2025 allocations will be:”.",
     "categories": [
-      { "name": "Health", "slug": "health", "amount": 7571, "sourcePage": "PDF p.152" },
-      { "name": "Education and Training", "slug": "education", "amount": 7512, "sourcePage": "PDF p.152" },
-      { "name": "National Security", "slug": "national-security", "amount": 6113, "sourcePage": "PDF p.152" },
-      { "name": "Public Utilities", "slug": "public-utilities", "amount": 3221, "sourcePage": "PDF p.152" },
-      { "name": "Tobago House of Assembly", "slug": "tha", "amount": 2599, "sourcePage": "PDF p.148", "note": "Recurrent TT$2,376mn; Development Programme TT$205mn; URP TT$18mn; CEPEP TT$9.2mn." },
-      { "name": "Infrastructure", "slug": "infrastructure", "amount": 1862, "sourcePage": "PDF p.152" },
-      { "name": "Rural Development and Local Government", "slug": "rural-development", "amount": 1771, "sourcePage": "PDF p.152" },
-      { "name": "Transport", "slug": "transport", "amount": 1410, "sourcePage": "PDF p.152" },
-      { "name": "Agriculture", "slug": "agriculture", "amount": 1184, "sourcePage": "PDF p.152" },
-      { "name": "Housing", "slug": "housing", "amount": 750, "sourcePage": "PDF p.152" },
-      { "name": "All other expenditure", "slug": "other", "amount": 25748, "sourcePage": "derived", "derived": true, "note": "Residual = total expenditure less the ten named allocations. Comprises debt servicing, transfers and subsidies, and ministries not individually itemised in the Budget Statement. Not a published figure." }
+      {
+        "name": "Health",
+        "slug": "health",
+        "amount": 7571,
+        "sourcePage": "PDF p.152"
+      },
+      {
+        "name": "Education and Training",
+        "slug": "education",
+        "amount": 7512,
+        "sourcePage": "PDF p.152"
+      },
+      {
+        "name": "National Security",
+        "slug": "national-security",
+        "amount": 6113,
+        "sourcePage": "PDF p.152"
+      },
+      {
+        "name": "Public Utilities",
+        "slug": "public-utilities",
+        "amount": 3221,
+        "sourcePage": "PDF p.152"
+      },
+      {
+        "name": "Tobago House of Assembly",
+        "slug": "tha",
+        "amount": 2599,
+        "sourcePage": "PDF p.148",
+        "note": "Recurrent TT$2,376mn; Development Programme TT$205mn; URP TT$18mn; CEPEP TT$9.2mn."
+      },
+      {
+        "name": "Infrastructure",
+        "slug": "infrastructure",
+        "amount": 1862,
+        "sourcePage": "PDF p.152"
+      },
+      {
+        "name": "Rural Development and Local Government",
+        "slug": "rural-development",
+        "amount": 1771,
+        "sourcePage": "PDF p.152"
+      },
+      {
+        "name": "Transport",
+        "slug": "transport",
+        "amount": 1410,
+        "sourcePage": "PDF p.152"
+      },
+      {
+        "name": "Agriculture",
+        "slug": "agriculture",
+        "amount": 1184,
+        "sourcePage": "PDF p.152"
+      },
+      {
+        "name": "Housing",
+        "slug": "housing",
+        "amount": 750,
+        "sourcePage": "PDF p.152"
+      },
+      {
+        "name": "All other expenditure",
+        "slug": "other",
+        "amount": 25748,
+        "sourcePage": "derived",
+        "derived": true,
+        "note": "Residual = total expenditure less the ten named allocations. Comprises debt servicing, transfers and subsidies, and ministries not individually itemised in the Budget Statement. Not a published figure."
+      }
     ]
   },
   {
@@ -46,18 +104,83 @@
     "vintage": "2024-01",
     "note": "Printed folios are inconsistent in this document; references here are PDF page numbers. Two nested figures are deliberately EXCLUDED to avoid double-counting: the Guyana Police Force allocation (G$30,300mn, PDF p.28) sits inside the Security Sector total, and Drainage & Irrigation (G$72,300mn, PDF p.25) sits inside the Agriculture and Food Security total.",
     "categories": [
-      { "name": "Transport Infrastructure", "slug": "transport-infrastructure", "amount": 204100, "sourcePage": "PDF p.33" },
-      { "name": "Education", "slug": "education", "amount": 135200, "sourcePage": "PDF p.14" },
-      { "name": "Health", "slug": "health", "amount": 129800, "sourcePage": "PDF p.12" },
-      { "name": "Agriculture and Food Security", "slug": "agriculture", "amount": 97600, "sourcePage": "PDF p.23", "note": "Includes Drainage & Irrigation of G$72,300mn (PDF p.25), which is therefore not listed separately." },
-      { "name": "Security Sector", "slug": "security", "amount": 90600, "sourcePage": "PDF p.28", "note": "Includes the Guyana Police Force allocation of G$30,300mn, which is therefore not listed separately." },
-      { "name": "Housing", "slug": "housing", "amount": 78000, "sourcePage": "PDF p.15" },
-      { "name": "Human and Social Services", "slug": "social", "amount": 48300, "sourcePage": "PDF p.20" },
-      { "name": "Water and Sanitation", "slug": "water", "amount": 22500, "sourcePage": "PDF p.16" },
-      { "name": "Amerindian and Hinterland Development", "slug": "amerindian", "amount": 9000, "sourcePage": "PDF p.22" },
-      { "name": "Culture, Sports and the Arts", "slug": "culture-sport", "amount": 7300, "sourcePage": "PDF p.18", "note": "Culture and arts G$2,700mn plus sports G$4,600mn, quoted separately on the same page." },
-      { "name": "Justice Sector", "slug": "justice", "amount": 6800, "sourcePage": "PDF p.26" },
-      { "name": "All other expenditure", "slug": "other", "amount": 316800, "sourcePage": "derived", "derived": true, "note": "Residual = total budget less the eleven named sectors. Comprises debt service, public administration and agencies not itemised in “At A Glance”. Not a published figure." }
+      {
+        "name": "Transport Infrastructure",
+        "slug": "transport-infrastructure",
+        "amount": 204100,
+        "sourcePage": "PDF p.33"
+      },
+      {
+        "name": "Education",
+        "slug": "education",
+        "amount": 135200,
+        "sourcePage": "PDF p.14"
+      },
+      {
+        "name": "Health",
+        "slug": "health",
+        "amount": 129800,
+        "sourcePage": "PDF p.12"
+      },
+      {
+        "name": "Agriculture and Food Security",
+        "slug": "agriculture",
+        "amount": 97600,
+        "sourcePage": "PDF p.23",
+        "note": "Includes Drainage & Irrigation of G$72,300mn (PDF p.25), which is therefore not listed separately."
+      },
+      {
+        "name": "Security Sector",
+        "slug": "security",
+        "amount": 90600,
+        "sourcePage": "PDF p.28",
+        "note": "Includes the Guyana Police Force allocation of G$30,300mn, which is therefore not listed separately."
+      },
+      {
+        "name": "Housing",
+        "slug": "housing",
+        "amount": 78000,
+        "sourcePage": "PDF p.15"
+      },
+      {
+        "name": "Human and Social Services",
+        "slug": "social",
+        "amount": 48300,
+        "sourcePage": "PDF p.20"
+      },
+      {
+        "name": "Water and Sanitation",
+        "slug": "water",
+        "amount": 22500,
+        "sourcePage": "PDF p.16"
+      },
+      {
+        "name": "Amerindian and Hinterland Development",
+        "slug": "amerindian",
+        "amount": 9000,
+        "sourcePage": "PDF p.22"
+      },
+      {
+        "name": "Culture, Sports and the Arts",
+        "slug": "culture-sport",
+        "amount": 7300,
+        "sourcePage": "PDF p.18",
+        "note": "Culture and arts G$2,700mn plus sports G$4,600mn, quoted separately on the same page."
+      },
+      {
+        "name": "Justice Sector",
+        "slug": "justice",
+        "amount": 6800,
+        "sourcePage": "PDF p.26"
+      },
+      {
+        "name": "All other expenditure",
+        "slug": "other",
+        "amount": 316800,
+        "sourcePage": "derived",
+        "derived": true,
+        "note": "Residual = total budget less the eleven named sectors. Comprises debt service, public administration and agencies not itemised in “At A Glance”. Not a published figure."
+      }
     ]
   },
   {
@@ -77,33 +200,638 @@
     "vintage": "2024-03",
     "note": "Listed components sum to J$1,341,200mn against a stated total of J$1,341,100mn — a J$100mn difference arising from the source's own rounding, which the table discloses as “(Slight Variation Due to Rounding of Numbers)”. Shares are computed against the sum of components so the segments total exactly 100%.",
     "categories": [
-      { "name": "Public Debt Servicing", "slug": "debt-servicing", "amount": 491200, "sourcePage": "PDF p.20", "note": "Amortisation J$317,400mn plus interest J$173,800mn." },
-      { "name": "Finance and the Public Service", "slug": "finance", "amount": 187100, "sourcePage": "PDF p.21" },
-      { "name": "Education and Youth", "slug": "education", "amount": 166400, "sourcePage": "PDF p.21" },
-      { "name": "Health and Wellness", "slug": "health", "amount": 148000, "sourcePage": "PDF p.21" },
-      { "name": "National Security", "slug": "national-security", "amount": 137400, "sourcePage": "PDF p.21" },
-      { "name": "Economic Growth and Job Creation", "slug": "economic-growth", "amount": 39500, "sourcePage": "PDF p.21" },
-      { "name": "Science, Energy, Telecommunications and Transport", "slug": "science-energy", "amount": 27100, "sourcePage": "PDF p.21" },
-      { "name": "Local Government and Community Development", "slug": "local-government", "amount": 23000, "sourcePage": "PDF p.21" },
-      { "name": "Office of the Prime Minister", "slug": "opm", "amount": 22700, "sourcePage": "PDF p.21" },
-      { "name": "Labour and Social Security", "slug": "labour", "amount": 20100, "sourcePage": "PDF p.21" },
-      { "name": "Agriculture, Fisheries and Mining", "slug": "agriculture", "amount": 18000, "sourcePage": "PDF p.21" },
-      { "name": "Justice", "slug": "justice", "amount": 16300, "sourcePage": "PDF p.21" },
-      { "name": "Tourism", "slug": "tourism", "amount": 13800, "sourcePage": "PDF p.21" },
-      { "name": "Industry, Investment and Commerce", "slug": "industry", "amount": 7200, "sourcePage": "PDF p.21" },
-      { "name": "Foreign Affairs and Foreign Trade", "slug": "foreign-affairs", "amount": 6700, "sourcePage": "PDF p.21" },
-      { "name": "Culture, Gender, Entertainment and Sport", "slug": "culture-sport", "amount": 5900, "sourcePage": "PDF p.21" },
-      { "name": "Houses of Parliament", "slug": "parliament", "amount": 2500, "sourcePage": "PDF p.21" },
-      { "name": "Integrity Commission", "slug": "integrity-commission", "amount": 1900, "sourcePage": "PDF p.21" },
-      { "name": "Auditor General", "slug": "auditor-general", "amount": 1400, "sourcePage": "PDF p.21" },
-      { "name": "Legal and Constitutional Affairs", "slug": "legal-affairs", "amount": 1400, "sourcePage": "PDF p.21" },
-      { "name": "Independent Commission of Investigations", "slug": "indecom", "amount": 800, "sourcePage": "PDF p.21" },
-      { "name": "Office of the Cabinet", "slug": "cabinet", "amount": 700, "sourcePage": "PDF p.21" },
-      { "name": "Governor-General and Staff", "slug": "governor-general", "amount": 500, "sourcePage": "PDF p.21" },
-      { "name": "Office of the Services Commissions", "slug": "services-commissions", "amount": 500, "sourcePage": "PDF p.21" },
-      { "name": "Office of the Children’s Advocate", "slug": "childrens-advocate", "amount": 400, "sourcePage": "PDF p.21" },
-      { "name": "Office of the Public Defender", "slug": "public-defender", "amount": 400, "sourcePage": "PDF p.21" },
-      { "name": "Independent Fiscal Commission", "slug": "fiscal-commission", "amount": 300, "sourcePage": "PDF p.21" }
+      {
+        "name": "Public Debt Servicing",
+        "slug": "debt-servicing",
+        "amount": 491200,
+        "sourcePage": "PDF p.20",
+        "note": "Amortisation J$317,400mn plus interest J$173,800mn."
+      },
+      {
+        "name": "Finance and the Public Service",
+        "slug": "finance",
+        "amount": 187100,
+        "sourcePage": "PDF p.21"
+      },
+      {
+        "name": "Education and Youth",
+        "slug": "education",
+        "amount": 166400,
+        "sourcePage": "PDF p.21"
+      },
+      {
+        "name": "Health and Wellness",
+        "slug": "health",
+        "amount": 148000,
+        "sourcePage": "PDF p.21"
+      },
+      {
+        "name": "National Security",
+        "slug": "national-security",
+        "amount": 137400,
+        "sourcePage": "PDF p.21"
+      },
+      {
+        "name": "Economic Growth and Job Creation",
+        "slug": "economic-growth",
+        "amount": 39500,
+        "sourcePage": "PDF p.21"
+      },
+      {
+        "name": "Science, Energy, Telecommunications and Transport",
+        "slug": "science-energy",
+        "amount": 27100,
+        "sourcePage": "PDF p.21"
+      },
+      {
+        "name": "Local Government and Community Development",
+        "slug": "local-government",
+        "amount": 23000,
+        "sourcePage": "PDF p.21"
+      },
+      {
+        "name": "Office of the Prime Minister",
+        "slug": "opm",
+        "amount": 22700,
+        "sourcePage": "PDF p.21"
+      },
+      {
+        "name": "Labour and Social Security",
+        "slug": "labour",
+        "amount": 20100,
+        "sourcePage": "PDF p.21"
+      },
+      {
+        "name": "Agriculture, Fisheries and Mining",
+        "slug": "agriculture",
+        "amount": 18000,
+        "sourcePage": "PDF p.21"
+      },
+      {
+        "name": "Justice",
+        "slug": "justice",
+        "amount": 16300,
+        "sourcePage": "PDF p.21"
+      },
+      {
+        "name": "Tourism",
+        "slug": "tourism",
+        "amount": 13800,
+        "sourcePage": "PDF p.21"
+      },
+      {
+        "name": "Industry, Investment and Commerce",
+        "slug": "industry",
+        "amount": 7200,
+        "sourcePage": "PDF p.21"
+      },
+      {
+        "name": "Foreign Affairs and Foreign Trade",
+        "slug": "foreign-affairs",
+        "amount": 6700,
+        "sourcePage": "PDF p.21"
+      },
+      {
+        "name": "Culture, Gender, Entertainment and Sport",
+        "slug": "culture-sport",
+        "amount": 5900,
+        "sourcePage": "PDF p.21"
+      },
+      {
+        "name": "Houses of Parliament",
+        "slug": "parliament",
+        "amount": 2500,
+        "sourcePage": "PDF p.21"
+      },
+      {
+        "name": "Integrity Commission",
+        "slug": "integrity-commission",
+        "amount": 1900,
+        "sourcePage": "PDF p.21"
+      },
+      {
+        "name": "Auditor General",
+        "slug": "auditor-general",
+        "amount": 1400,
+        "sourcePage": "PDF p.21"
+      },
+      {
+        "name": "Legal and Constitutional Affairs",
+        "slug": "legal-affairs",
+        "amount": 1400,
+        "sourcePage": "PDF p.21"
+      },
+      {
+        "name": "Independent Commission of Investigations",
+        "slug": "indecom",
+        "amount": 800,
+        "sourcePage": "PDF p.21"
+      },
+      {
+        "name": "Office of the Cabinet",
+        "slug": "cabinet",
+        "amount": 700,
+        "sourcePage": "PDF p.21"
+      },
+      {
+        "name": "Governor-General and Staff",
+        "slug": "governor-general",
+        "amount": 500,
+        "sourcePage": "PDF p.21"
+      },
+      {
+        "name": "Office of the Services Commissions",
+        "slug": "services-commissions",
+        "amount": 500,
+        "sourcePage": "PDF p.21"
+      },
+      {
+        "name": "Office of the Children’s Advocate",
+        "slug": "childrens-advocate",
+        "amount": 400,
+        "sourcePage": "PDF p.21"
+      },
+      {
+        "name": "Office of the Public Defender",
+        "slug": "public-defender",
+        "amount": 400,
+        "sourcePage": "PDF p.21"
+      },
+      {
+        "name": "Independent Fiscal Commission",
+        "slug": "fiscal-commission",
+        "amount": 300,
+        "sourcePage": "PDF p.21"
+      }
+    ]
+  },
+  {
+    "country": "BB",
+    "year": 2024,
+    "fiscalYear": "FY2024/25 (Apr 2024 – Mar 2025)",
+    "currency": "BBD",
+    "currencySymbol": "Bds$",
+    "total": 4697.794159,
+    "denominator": "Total Expenditure, Approved Estimates 2024-2025",
+    "basis": "Cash basis; Approved Estimates as laid in Parliament, not outturn. Current revenue for the same year is estimated at Bds$3,724.4mn. Figures are the government's own functional (COFOG-style) classification of total expenditure.",
+    "coverage": "Exhaustive. The source's ten functional categories sum exactly to the stated total expenditure. No residual and no estimation.",
+    "source": "Government of Barbados / Barbados Parliament",
+    "sourceDocument": "Approved Barbados Estimates 2024-2025 — Memorandum of Estimates, Table 5: Estimates of Total Expenditure by Functional Classification 2024-2025",
+    "sourceUrl": "https://www.barbadosparliament.com/uploads/document/6dfdf70f9af4ecde4c4f861e56496a9d.pdf",
+    "sourcePage": "PDF p.26",
+    "vintage": "2024-03",
+    "note": "Amounts are printed in dollars in the source and are held here in millions. This is the functional classification published by the government itself — no crosswalk or reclassification has been applied.",
+    "categories": [
+      {
+        "name": "General Public Service",
+        "slug": "general-public-service",
+        "amount": 2015.255849,
+        "sourcePage": "PDF p.26"
+      },
+      {
+        "name": "Education",
+        "slug": "education",
+        "amount": 654.489598,
+        "sourcePage": "PDF p.26"
+      },
+      {
+        "name": "Social Security and Welfare",
+        "slug": "social-security-and-welfare",
+        "amount": 425.312754,
+        "sourcePage": "PDF p.26"
+      },
+      {
+        "name": "Economic Affairs",
+        "slug": "economic-affairs",
+        "amount": 399.743245,
+        "sourcePage": "PDF p.26"
+      },
+      {
+        "name": "Health",
+        "slug": "health",
+        "amount": 393.010403,
+        "sourcePage": "PDF p.26"
+      },
+      {
+        "name": "Public Order and Safety",
+        "slug": "public-order-and-safety",
+        "amount": 309.192534,
+        "sourcePage": "PDF p.26"
+      },
+      {
+        "name": "Housing & Community Amenities",
+        "slug": "housing-community-amenities",
+        "amount": 199.235468,
+        "sourcePage": "PDF p.26"
+      },
+      {
+        "name": "Environmental Protection",
+        "slug": "environmental-protection",
+        "amount": 101.324355,
+        "sourcePage": "PDF p.26"
+      },
+      {
+        "name": "Defence",
+        "slug": "defence",
+        "amount": 100.357279,
+        "sourcePage": "PDF p.26"
+      },
+      {
+        "name": "Recreation, Culture and Religion",
+        "slug": "recreation-culture-and-religion",
+        "amount": 99.872674,
+        "sourcePage": "PDF p.26"
+      }
+    ]
+  },
+  {
+    "country": "BS",
+    "year": 2024,
+    "fiscalYear": "FY2024/25 (Jul 2024 – Jun 2025)",
+    "currency": "BSD",
+    "currencySymbol": "B$",
+    "total": 3268.594695,
+    "denominator": "Recurrent Expenditure, Estimates 2024/2025",
+    "basis": "Cash basis; Draft Estimates as laid, not outturn. RECURRENT expenditure only — it excludes capital expenditure of B$344.5mn, so total expenditure for the year is B$3.61bn. Public Debt Servicing (interest and other charges) appears as its own agency, Head 26; per the source's memorandum, Public Debt Redemption is treated as a financing transaction under GFS methodology and is therefore not included.",
+    "coverage": "Exhaustive within recurrent expenditure. All 53 funded agencies sum exactly to the stated GRAND TOTAL. Four heads funded at zero for 2024/25 (The Senate, House of Assembly, Office of the Judiciary, Court of Appeal) are omitted.",
+    "source": "Commonwealth of The Bahamas, Ministry of Finance",
+    "sourceDocument": "FY2024/25 Draft Estimates of Revenue & Expenditure (May 2024) — Summary of Agencies, Recurrent Expenditure 2024/2025",
+    "sourceUrl": "https://bahamasbudget.gov.bs/media/filer_public/ef/51/ef51c022-a695-4063-b612-46dd8f62ae8e/budgetbook-2024-85x11in.pdf",
+    "sourcePage": "PDF p.72",
+    "vintage": "2024-05",
+    "note": "Amounts are printed in dollars in the source and are held here in millions. Values are the ESTIMATES 2024/2025 column (the fourth data column); the agency list is published at department level, so ministries and their departments appear as separate rows exactly as the source presents them.",
+    "categories": [
+      {
+        "name": "Public Debt Servicing - Interest and Other Charges",
+        "slug": "public-debt-servicing-interest-and-other-cha",
+        "amount": 676.72391,
+        "sourcePage": "PDF p.71",
+        "note": "Head 026"
+      },
+      {
+        "name": "Ministry of the Public Service",
+        "slug": "ministry-of-the-public-service",
+        "amount": 376.296048,
+        "sourcePage": "PDF p.71",
+        "note": "Head 005"
+      },
+      {
+        "name": "Ministry of Finance",
+        "slug": "ministry-of-finance",
+        "amount": 346.639187,
+        "sourcePage": "PDF p.71",
+        "note": "Head 021"
+      },
+      {
+        "name": "Ministry of Health and Wellness",
+        "slug": "ministry-of-health-and-wellness",
+        "amount": 332.747117,
+        "sourcePage": "PDF p.72",
+        "note": "Head 060"
+      },
+      {
+        "name": "Department of Education",
+        "slug": "department-of-education",
+        "amount": 209.432492,
+        "sourcePage": "PDF p.71",
+        "note": "Head 035"
+      },
+      {
+        "name": "Ministry of Tourism, Investments and Aviation",
+        "slug": "ministry-of-tourism-investments-and-aviation",
+        "amount": 131.376411,
+        "sourcePage": "PDF p.72",
+        "note": "Head 067"
+      },
+      {
+        "name": "The Royal Bahamas Police Force",
+        "slug": "the-royal-bahamas-police-force",
+        "amount": 126.644406,
+        "sourcePage": "PDF p.71",
+        "note": "Head 031"
+      },
+      {
+        "name": "Ministry of Education and Technical and Vocational Training",
+        "slug": "ministry-of-education-and-technical-and-voca",
+        "amount": 123.252555,
+        "sourcePage": "PDF p.71",
+        "note": "Head 038"
+      },
+      {
+        "name": "The Royal Bahamas Defence Force",
+        "slug": "the-royal-bahamas-defence-force",
+        "amount": 71.382034,
+        "sourcePage": "PDF p.71",
+        "note": "Head 032"
+      },
+      {
+        "name": "Treasury Department",
+        "slug": "treasury-department",
+        "amount": 64.573473,
+        "sourcePage": "PDF p.71",
+        "note": "Head 022"
+      },
+      {
+        "name": "Department of Environmental Health Services",
+        "slug": "department-of-environmental-health-services",
+        "amount": 60.732506,
+        "sourcePage": "PDF p.72",
+        "note": "Head 065"
+      },
+      {
+        "name": "Office of the Prime Minister",
+        "slug": "office-of-the-prime-minister",
+        "amount": 57.808386,
+        "sourcePage": "PDF p.71",
+        "note": "Head 014"
+      },
+      {
+        "name": "Department of Public Health",
+        "slug": "department-of-public-health",
+        "amount": 52.987374,
+        "sourcePage": "PDF p.72",
+        "note": "Head 066"
+      },
+      {
+        "name": "Ministry of Foreign Affairs",
+        "slug": "ministry-of-foreign-affairs",
+        "amount": 50.682286,
+        "sourcePage": "PDF p.71",
+        "note": "Head 013"
+      },
+      {
+        "name": "Department of Social Services",
+        "slug": "department-of-social-services",
+        "amount": 48.009263,
+        "sourcePage": "PDF p.72",
+        "note": "Head 044"
+      },
+      {
+        "name": "Office of the Attorney General and Ministry of Legal Affairs",
+        "slug": "office-of-the-attorney-general-and-ministry-",
+        "amount": 46.159981,
+        "sourcePage": "PDF p.71",
+        "note": "Head 007"
+      },
+      {
+        "name": "Customs Department",
+        "slug": "customs-department",
+        "amount": 41.654197,
+        "sourcePage": "PDF p.71",
+        "note": "Head 023"
+      },
+      {
+        "name": "Department of Information, Communications and Technology",
+        "slug": "department-of-information-communications-and",
+        "amount": 37.042795,
+        "sourcePage": "PDF p.72",
+        "note": "Head 073"
+      },
+      {
+        "name": "Ministry of Works and Family Island Affairs",
+        "slug": "ministry-of-works-and-family-island-affairs",
+        "amount": 36.183087,
+        "sourcePage": "PDF p.71",
+        "note": "Head 033"
+      },
+      {
+        "name": "Ministry of Immigration and National Insurance",
+        "slug": "ministry-of-immigration-and-national-insuran",
+        "amount": 35.016997,
+        "sourcePage": "PDF p.71",
+        "note": "Head 030"
+      },
+      {
+        "name": "Bahamas Department of Correctional Services",
+        "slug": "bahamas-department-of-correctional-services",
+        "amount": 34.366292,
+        "sourcePage": "PDF p.71",
+        "note": "Head 011"
+      },
+      {
+        "name": "Ministry of Agriculture and Marine Resources",
+        "slug": "ministry-of-agriculture-and-marine-resources",
+        "amount": 33.036741,
+        "sourcePage": "PDF p.72",
+        "note": "Head 056"
+      },
+      {
+        "name": "Department of Local Government",
+        "slug": "department-of-local-government",
+        "amount": 29.88101,
+        "sourcePage": "PDF p.71",
+        "note": "Head 018"
+      },
+      {
+        "name": "Ministry of Youth, Sports and Culture",
+        "slug": "ministry-of-youth-sports-and-culture",
+        "amount": 25.558309,
+        "sourcePage": "PDF p.72",
+        "note": "Head 047"
+      },
+      {
+        "name": "Ministry of National Security",
+        "slug": "ministry-of-national-security",
+        "amount": 20.542661,
+        "sourcePage": "PDF p.71",
+        "note": "Head 029"
+      },
+      {
+        "name": "Ministry For Grand Bahama",
+        "slug": "ministry-for-grand-bahama",
+        "amount": 19.211378,
+        "sourcePage": "PDF p.72",
+        "note": "Head 074"
+      },
+      {
+        "name": "Ministry of Social Services, Information and Broadcasting",
+        "slug": "ministry-of-social-services-information-and-",
+        "amount": 19.177404,
+        "sourcePage": "PDF p.72",
+        "note": "Head 043"
+      },
+      {
+        "name": "Department of Public Works",
+        "slug": "department-of-public-works",
+        "amount": 18.952262,
+        "sourcePage": "PDF p.71",
+        "note": "Head 034"
+      },
+      {
+        "name": "Ministry of the Environment and Natural Resources",
+        "slug": "ministry-of-the-environment-and-natural-reso",
+        "amount": 14.105617,
+        "sourcePage": "PDF p.72",
+        "note": "Head 072"
+      },
+      {
+        "name": "Ministry of Energy and Transport",
+        "slug": "ministry-of-energy-and-transport",
+        "amount": 13.870795,
+        "sourcePage": "PDF p.71",
+        "note": "Head 040"
+      },
+      {
+        "name": "Cabinet Office",
+        "slug": "cabinet-office",
+        "amount": 11.528476,
+        "sourcePage": "PDF p.71",
+        "note": "Head 006"
+      },
+      {
+        "name": "Ministry of Housing and Urban Renewal",
+        "slug": "ministry-of-housing-and-urban-renewal",
+        "amount": 10.824434,
+        "sourcePage": "PDF p.72",
+        "note": "Head 045"
+      },
+      {
+        "name": "Ministry of Disaster Risk Management",
+        "slug": "ministry-of-disaster-risk-management",
+        "amount": 10.538081,
+        "sourcePage": "PDF p.72",
+        "note": "Head 075"
+      },
+      {
+        "name": "Department of Inland Revenue",
+        "slug": "department-of-inland-revenue",
+        "amount": 10.100469,
+        "sourcePage": "PDF p.71",
+        "note": "Head 028"
+      },
+      {
+        "name": "Post Office Department",
+        "slug": "post-office-department",
+        "amount": 9.940381,
+        "sourcePage": "PDF p.72",
+        "note": "Head 051"
+      },
+      {
+        "name": "Port Department",
+        "slug": "port-department",
+        "amount": 9.37792,
+        "sourcePage": "PDF p.72",
+        "note": "Head 053"
+      },
+      {
+        "name": "Department of Road Traffic",
+        "slug": "department-of-road-traffic",
+        "amount": 7.455012,
+        "sourcePage": "PDF p.72",
+        "note": "Head 054"
+      },
+      {
+        "name": "Ministry of Economic Affairs",
+        "slug": "ministry-of-economic-affairs",
+        "amount": 5.933448,
+        "sourcePage": "PDF p.72",
+        "note": "Head 049"
+      },
+      {
+        "name": "Department of Agriculture",
+        "slug": "department-of-agriculture",
+        "amount": 5.81411,
+        "sourcePage": "PDF p.72",
+        "note": "Head 057"
+      },
+      {
+        "name": "Ministry of Labour and the Public Service",
+        "slug": "ministry-of-labour-and-the-public-service",
+        "amount": 5.013932,
+        "sourcePage": "PDF p.72",
+        "note": "Head 070"
+      },
+      {
+        "name": "Department of Labour",
+        "slug": "department-of-labour",
+        "amount": 4.034377,
+        "sourcePage": "PDF p.72",
+        "note": "Head 048"
+      },
+      {
+        "name": "Registrar General'S Department",
+        "slug": "registrar-general-s-department",
+        "amount": 3.483562,
+        "sourcePage": "PDF p.71",
+        "note": "Head 010"
+      },
+      {
+        "name": "Department of Meteorology",
+        "slug": "department-of-meteorology",
+        "amount": 2.675053,
+        "sourcePage": "PDF p.72",
+        "note": "Head 055"
+      },
+      {
+        "name": "Department of the Auditor General",
+        "slug": "department-of-the-auditor-general",
+        "amount": 2.642685,
+        "sourcePage": "PDF p.71",
+        "note": "Head 004"
+      },
+      {
+        "name": "Bahamas Information Services",
+        "slug": "bahamas-information-services",
+        "amount": 2.620652,
+        "sourcePage": "PDF p.71",
+        "note": "Head 016"
+      },
+      {
+        "name": "Department of Marine Resources",
+        "slug": "department-of-marine-resources",
+        "amount": 2.545631,
+        "sourcePage": "PDF p.72",
+        "note": "Head 058"
+      },
+      {
+        "name": "Department of Lands and Surveys",
+        "slug": "department-of-lands-and-surveys",
+        "amount": 2.325225,
+        "sourcePage": "PDF p.71",
+        "note": "Head 020"
+      },
+      {
+        "name": "Governor General and Staff",
+        "slug": "governor-general-and-staff",
+        "amount": 1.857299,
+        "sourcePage": "PDF p.71",
+        "note": "Head 001"
+      },
+      {
+        "name": "Parliamentary Registration Department",
+        "slug": "parliamentary-registration-department",
+        "amount": 1.503753,
+        "sourcePage": "PDF p.71",
+        "note": "Head 012"
+      },
+      {
+        "name": "Office of the Director of Public Prosecutions",
+        "slug": "office-of-the-director-of-public-prosecution",
+        "amount": 1.26328,
+        "sourcePage": "PDF p.72",
+        "note": "Head 076"
+      },
+      {
+        "name": "Government Printing Department",
+        "slug": "government-printing-department",
+        "amount": 1.233264,
+        "sourcePage": "PDF p.71",
+        "note": "Head 017"
+      },
+      {
+        "name": "Department of Physical Planning",
+        "slug": "department-of-physical-planning",
+        "amount": 1.099217,
+        "sourcePage": "PDF p.71",
+        "note": "Head 019"
+      },
+      {
+        "name": "Department of Archives",
+        "slug": "department-of-archives",
+        "amount": 0.73746,
+        "sourcePage": "PDF p.71",
+        "note": "Head 037"
+      }
     ]
   }
 ]

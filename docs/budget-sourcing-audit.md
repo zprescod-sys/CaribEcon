@@ -2,9 +2,17 @@
 
 Opened 2026-07-26.
 
-**Status: TT, GY and JM are live on sourced figures. BB, BS and KY are removed
-from the site** until their per-segment breakdowns can be sourced — the Data-page
-dropdown derives from `data/budgets.json`, so omitting an entry removes its pie.
+**Status: TT, GY, JM, BB and BS are live on sourced figures. Only KY remains
+removed** — the Data-page dropdown derives from `data/budgets.json`, so omitting
+an entry removes its pie.
+
+| | Basis | Segments | Reconciliation |
+|---|---|---|---|
+| **BB** | Functional (COFOG-style) classification | 10 | **exact** |
+| **BS** | Recurrent expenditure by agency | 53 | **exact** |
+| **TT** | Major allocations + residual | 11 | **exact** |
+| **GY** | Major sectors + residual | 12 | **exact** |
+| **JM** | Ministries + debt servicing | 27 | +0.0075% (source rounding) |
 
 Shipped alongside: local-currency-only amounts (no FX layer), computed rather
 than stored percentages, `derived` flags on residuals, an explicit denominator +
@@ -169,7 +177,7 @@ Table carries its own note: "(Slight Variation Due to Rounding of Numbers)".
 
 ---
 
-## KY — Cayman Islands — 2024 — ⏳ PARTIALLY SOURCED
+## KY — Cayman Islands — 2024 — ❌ NOT SOURCEABLE AS A PIE
 
 **2024 and 2025 Plan and Estimates**, Cayman Islands Government. 432pp.
 `https://parliament.ky/wp-content/uploads/2024/07/2024-25-Plan-and-Estimates.pdf`
@@ -183,41 +191,79 @@ Core Government 2024 (Table 3, PDF p.39, accrual basis):
 The hub's stored `originalTotal` of 1,194 CI$ mn matches **neither** figure and
 is unsourced.
 
-**Outstanding:** the P&E has no single ministry-summary table. Per-ministry
-`APPROPRIATION` blocks appear on ~48 separate pages (75–345) and must be parsed
-and mapped to their owning ministry, then reconciled to the CI$1,033.5m operating
-total. Note Cayman budgets on an **accrual** basis, unlike the cash-basis
-documents used for TT/GY/JM — the denominator note must say so.
+**Conclusion: cannot be published as a budget-allocation pie.** The P&E has no
+ministry-summary table and no functional classification. It budgets by *output
+groups purchased by each Minister*, plus separate schedules of Other Executive
+Expenses, Transfer Payments, Equity Investments and Executive Assets. Aggregating
+those into ministry totals would require an allocation methodology the document
+does not publish — and equity investments and executive assets are ownership
+transactions, not operating allocations, so they do not belong in the same pie.
+Constructing one would mean inventing the very thing this audit exists to remove.
+
+Cayman also budgets on an **accrual** basis, unlike the cash-basis documents used
+for the other five. Its clean published totals (2024 operating revenue
+CI$1,094.9m, operating expenses CI$1,033.5m, Table 3, PDF p.39) remain usable for
+the fiscal chart; they are not a segmentation.
 
 ---
 
-## BB — Barbados — ⏳ NOT YET SOURCED
+## BB — Barbados — ✅ SOURCED (cleanest of all)
 
-Hub currently claims: "Approved Estimates of Revenue and Expenditure 2024/25
-(Parliament); functional classification applied to Central Bank of Barbados Table
-F1 aggregate" — i.e. it already admits a **crosswalk transformation**, which is
-exactly the case most in need of a published audit trail.
+**Approved Barbados Estimates 2024-2025**, Memorandum of Estimates, **Table 5 —
+Estimates of Total Expenditure by Functional Classification 2024-2025**, PDF p.26.
+`https://www.barbadosparliament.com/uploads/document/6dfdf70f9af4ecde4c4f861e56496a9d.pdf`
+(782pp, 47.9MB; the URL the hub already cited is live.)
+
+**No crosswalk was ever needed.** The hub claimed it had applied a functional
+classification to a Central Bank Table F1 aggregate; the official Estimates
+publishes *both* a functional classification (Table 5) and a by-ministry table
+(Table 7). The government's own functional split is used verbatim.
+
+Ten COFOG-style categories summing **exactly** to the stated TOTAL EXPENDITURE of
+Bds$4,697,794,159 — exhaustive, no residual, no estimation:
+General Public Service 2,015.3 · Education 654.5 · Social Security and Welfare
+425.3 · Economic Affairs 399.7 · Health 393.0 · Public Order and Safety 309.2 ·
+Housing & Community Amenities 199.2 · Environmental Protection 101.3 · Defence
+100.4 · Recreation, Culture and Religion 99.9 (Bds$ mn).
+
+Current revenue for the same year: Bds$3,724.4mn.
+The hub's former total (2,683.7) was the Central Bank's narrower fiscal-year
+expenditure measure, a different denominator.
 
 ---
 
-## BS — The Bahamas — ⏳ NOT YET SOURCED
+## BS — The Bahamas — ✅ SOURCED
 
-Hub currently claims: "Budget Communication & Estimates of Expenditure FY2024/25
-(Ministry of Finance); Central Bank of The Bahamas QSD Aug-2024".
-Hub `sourceUrl` is a bare agency landing page (`bahamas.gov.bs/agencies/finance`),
-not a document — insufficient for audit.
+**FY2024/25 Draft Estimates of Revenue & Expenditure (May 2024)** — *Summary of
+Agencies, Recurrent Expenditure 2024/2025*, PDF pp.71–72.
+`https://bahamasbudget.gov.bs/media/filer_public/ef/51/ef51c022-a695-4063-b612-46dd8f62ae8e/budgetbook-2024-85x11in.pdf`
+(312pp. Replaces the old bare landing-page URL, which was not a document.)
+
+53 funded agencies summing **exactly** to the stated GRAND TOTAL of
+B$3,268,594,695. Four heads funded at zero for 2024/25 (The Senate, House of
+Assembly, Office of the Judiciary, Court of Appeal) are omitted.
+
+**Denominator is RECURRENT expenditure only** — it excludes capital expenditure of
+B$344.5mn, so total expenditure for the year is B$3.61bn. Per the source's own
+memorandum, Public Debt Redemption is treated as a financing transaction under GFS
+methodology and is excluded; Public Debt Servicing (interest and other charges)
+appears as its own agency, Head 26 (B$676.7mn, 20.7% — the largest single line).
+
+Values are the ESTIMATES 2024/2025 column (the fourth data column). Two parsing
+traps, both caught by reconciling against the stated GRAND TOTAL rather than
+trusting the parse: the Head number itself matches a naive numeric filter and
+shifts every row one column left, and the vertical page watermark interleaves
+stray letters that hide six agencies (066, 067, 073–076) from a line-start anchor
+— exactly the B$252,419,319 that was missing.
 
 ---
 
-## Next steps
+## Remaining
 
-1. Finish sourcing KY (parse the 48 APPROPRIATION pages), BB, BS.
-2. Restructure `data/budgets.json`: per-segment `localValue`, explicit
-   `denominator` + `denominatorBasis`, `sourceDocument`, `sourcePage`, FX rate
-   with its own source and date, and an explicit `residual` segment.
-3. Rebuild the pies off the sourced figures; label the residual honestly and
-   stop attributing derived splits to the source document as if transcribed.
-4. Ship the downloadable per-pie audit table (country, fiscal year, segment,
-   local-currency amount, share, denominator, source document, page).
-5. Drop `pct.toFixed(1)` in `BudgetPie.astro` — one-decimal precision on an
-   integer guess is false precision.
+- **KY** — only if a document other than the P&E publishes a ministry or
+  functional split. Not to be constructed from the P&E.
+- **Projects drill-down** — the old per-segment "key projects" lists were
+  scaffold-era and unverified, so they were dropped rather than carried forward.
+  The drill-down now shows provenance instead. Guyana's "At A Glance" does carry
+  genuinely sourced project-level figures (e.g. G$10.3bn for the new hospital,
+  PDF p.12) if the feature is wanted back on a sourced footing.
