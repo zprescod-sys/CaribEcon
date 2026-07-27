@@ -14,6 +14,19 @@ interface Props {
 const { budget, countryName } = Astro.props;
 const displayName = countryName ?? budget.country;
 const budgetJSON = JSON.stringify(budget);
+
+/* Coverage is stated inline rather than behind a disclosure, because it is the
+   one caveat a reader must not miss: whether the segments are the source's own
+   complete breakdown, or major items with the balance swept into a residual.
+   Derived from the data so it cannot drift from what the chart actually draws.
+   The full basis / coverage / note prose lives in the audit-table export. */
+const segSum   = Number(budget.categories.reduce((s, c) => s + c.amount, 0).toFixed(6));
+const residual = budget.categories.filter(c => c.derived);
+const namedN   = budget.categories.length - residual.length;
+const residualShare = residual.reduce((s, c) => s + c.amount, 0) / segSum * 100;
+const coverageLine = residual.length
+  ? `Major allocations only — ${namedN} named items cover ${(100 - residualShare).toFixed(1)}% of the total; the remaining ${residualShare.toFixed(1)}% is a derived residual, not a published line item.`
+  : `Exhaustive — all ${namedN} published line items, summing to the stated total.`;
 ---
 
 <div class="budget-pie-wrapper">
@@ -28,21 +41,12 @@ const budgetJSON = JSON.stringify(budget);
     <div class="source-line">
       <span>Source:</span>
       <a href={budget.sourceUrl} target="_blank" rel="noopener noreferrer">{budget.source} — {budget.sourceDocument}</a>
-      <span>· {budget.sourcePage}</span>
     </div>
   </div>
 
-  <!-- Basis + coverage: what the denominator measures and how complete the
-       segmentation is. Stated up front so a reader never has to infer it. -->
-  <details class="budget-basis">
-    <summary class="mono">Basis &amp; coverage</summary>
-    <p><strong>Basis.</strong> {budget.basis}</p>
-    <p><strong>Coverage.</strong> {budget.coverage}</p>
-    {budget.note && <p><strong>Note.</strong> {budget.note}</p>}
-    <p class="budget-basis-cur mono">
-      All figures in {budget.currency} millions, exactly as printed in the source. No currency conversion is applied.
-    </p>
-  </details>
+  <p class="budget-coverage mono">
+    {coverageLine} Figures in {budget.currency} millions as printed in the source; no currency conversion applied.
+  </p>
 
   <div class="budget-layout">
     <!-- Donut chart -->
@@ -418,28 +422,17 @@ const budgetJSON = JSON.stringify(budget);
     margin-top: 4px;
   }
 
-  .budget-basis {
-    margin-top: 14px;
-    border: 1px solid var(--line);
-    padding: 10px 12px;
-    background-color: var(--paper);
-  }
-  .budget-basis summary {
-    font-size: 10px;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--ink-soft);
-    cursor: pointer;
-  }
-  .budget-basis summary:focus-visible { outline: var(--focus-ring); outline-offset: 2px; }
-  .budget-basis p {
-    font-size: 12px;
-    color: var(--ink-soft);
+  /* Always visible — a collapsed disclosure would hide the caveat that matters
+     most (e.g. Trinidad's 43% residual, Bahamas being recurrent-only). */
+  .budget-coverage {
+    margin-top: 12px;
+    font-size: 11px;
     line-height: 1.6;
-    margin-top: 8px;
+    color: var(--ink-soft);
+    border-left: 2px solid var(--gold);
+    padding-left: 10px;
+    max-width: 92ch;
   }
-  .budget-basis strong { color: var(--ink); font-weight: 600; }
-  .budget-basis-cur { font-size: 10px; color: var(--ink-faint); }
 
   .projects-panel {
     margin-top: 20px;
