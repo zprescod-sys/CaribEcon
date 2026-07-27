@@ -1,62 +1,62 @@
 [
   {
-    "id": "imf-gy-art-iv-2024",
-    "title": "Guyana: 2024 Article IV Consultation — Staff Report",
+    "id": "imf-gy-art-iv-2023",
+    "title": "Guyana: 2023 Article IV Consultation — Staff Report",
     "body": "International Monetary Fund",
     "type": "Article IV",
-    "date": "2024-07-12",
+    "date": "2023-12-01",
     "country": "GY",
-    "summary": "The IMF finds Guyana's near-term outlook remains exceptionally strong, underpinned by rapid oil production growth, but flags medium-term risks including Dutch disease pressures, absorptive capacity constraints in public investment, and the need to diversify the non-oil economy.",
-    "url": "https://www.imf.org/en/Publications/CR/Issues/2024/07/12/Guyana-2024-Article-IV-Consultation-Press-Release-Staff-Report-and-Statement-by-the-Exec"
+    "summary": "The IMF finds that rapid oil production and public investment are transforming Guyana's economy, while warning that the pace of spending must remain consistent with absorptive capacity and macroeconomic stability. The report recommends a medium-term fiscal framework, continued financial-sector vigilance, and reforms that support diversification and inclusive growth.",
+    "url": "https://www.imf.org/en/publications/cr/issues/2023/12/01/guyana-2023-article-iv-consultation-press-release-and-staff-report-541920"
   },
   {
     "id": "imf-tt-art-iv-2024",
     "title": "Trinidad and Tobago: 2024 Article IV Consultation — Staff Report",
     "body": "International Monetary Fund",
     "type": "Article IV",
-    "date": "2024-03-15",
+    "date": "2024-06-05",
     "country": "TT",
-    "summary": "The IMF assesses T&T's economy as gradually recovering but constrained by declining hydrocarbon output. Staff recommend accelerating energy sector diversification, reducing fiscal reliance on petroleum revenues, and addressing structural impediments to private investment in the non-energy sector.",
-    "url": "https://www.imf.org/en/Publications/CR/Issues/2024/03/15/Trinidad-and-Tobago-2024-Article-IV-Consultation"
+    "summary": "The IMF assesses Trinidad and Tobago as undergoing a gradual recovery led by the non-energy sector, with low inflation and adequate international reserves. It recommends maintaining reform momentum, strengthening fiscal and foreign-exchange policy frameworks, and accelerating diversification and the low-carbon transition.",
+    "url": "https://www.imf.org/en/publications/cr/issues/2024/06/04/trinidad-and-tobago-2024-article-iv-consultation-press-release-staff-report-and-statement-549885"
   },
   {
-    "id": "wb-gy-country-report-2024",
-    "title": "Guyana Economic Update: Managing Rapid Oil Wealth",
+    "id": "wb-gy-mpo-2024-apr",
+    "title": "Macro Poverty Outlook for Guyana: April 2024",
     "body": "World Bank",
     "type": "Country Report",
-    "date": "2024-06-01",
+    "date": "2024-04-03",
     "country": "GY",
-    "summary": "The World Bank examines how Guyana can channel oil windfalls into inclusive growth. The report highlights strong performance in social spending and infrastructure but calls for urgent improvements in governance of the Natural Resource Fund, human capital development, and institutional capacity ahead of peak oil revenues.",
+    "summary": "The World Bank's country brief reviews Guyana's oil-led expansion, the government's investment programme, and the importance of managing petroleum resources for inclusive growth. It also highlights how limited recent poverty and equity data constrain the design and monitoring of poverty-reduction policy.",
     "url": "https://documents.worldbank.org/en/publication/documents-reports/documentdetail/099643304042437815"
   },
   {
-    "id": "wb-tt-country-report-2024",
-    "title": "Trinidad and Tobago Economic Update 2024",
+    "id": "wb-tt-mpo-2024-oct",
+    "title": "Macro Poverty Outlook for Trinidad and Tobago: October 2024",
     "body": "World Bank",
     "type": "Country Report",
-    "date": "2024-05-20",
+    "date": "2024-10-01",
     "country": "TT",
-    "summary": "World Bank analysis shows T&T faces a structural fiscal challenge as legacy oil and gas fields mature. The update recommends a medium-term fiscal consolidation plan, targeted subsidy reform, and investment in renewable energy and services sectors to build post-hydrocarbon economic resilience.",
+    "summary": "The World Bank's country brief reviews Trinidad and Tobago's post-pandemic recovery and the contrast between resilient non-energy activity and weakness in hydrocarbons. It places the near-term outlook in the context of fiscal pressures, exposure to energy prices, and the need for reforms that support more broad-based growth.",
     "url": "https://documents.worldbank.org/en/publication/documents-reports/documentdetail/099840110152410265"
   },
   {
     "id": "imf-weo-regional-2024-oct",
-    "title": "World Economic Outlook — October 2024: Western Hemisphere",
+    "title": "World Economic Outlook, October 2024: Policy Pivot, Rising Threats",
     "body": "International Monetary Fund",
     "type": "World Economic Outlook",
     "date": "2024-10-22",
     "country": "REGION",
-    "summary": "The October 2024 WEO projects Caribbean growth at a solid 4.2% in 2024, driven by Guyana's oil expansion and recovery in tourism-dependent islands. Risks include tighter global financial conditions, climate-related disruptions to tourism, and elevated public debt ratios across smaller island states.",
+    "summary": "The October 2024 WEO finds global growth stable but historically weak, with continued disinflation creating room for a monetary-policy pivot. It warns that geopolitical conflict, financial-market volatility, protectionism, and fiscal vulnerabilities leave risks tilted to the downside.",
     "url": "https://www.imf.org/en/Publications/WEO/Issues/2024/10/22/world-economic-outlook-october-2024"
   },
   {
     "id": "eclac-caribbean-2024",
-    "title": "Economic Survey of Latin America and the Caribbean 2024 — Caribbean Chapter",
+    "title": "Economic Survey of the Caribbean 2024",
     "body": "ECLAC / CEPAL",
     "type": "Regional Economic Outlook",
-    "date": "2024-08-08",
+    "date": "2025-12-26",
     "country": "REGION",
-    "summary": "ECLAC's regional survey highlights a bifurcation in Caribbean economic trajectories: resource-rich economies (Guyana) expanding rapidly, while tourism-dependent and commodity-importing states face slower growth and elevated debt. The chapter calls for regional coordination on debt restructuring mechanisms and climate adaptation financing.",
+    "summary": "ECLAC reviews Caribbean economic performance in 2023 and the first months of 2024 across growth, fiscal and debt conditions, monetary policy and prices, and the external sector. The study provides a subregional macroeconomic assessment rather than a single-country outlook.",
     "url": "https://www.cepal.org/en/publications/84511-economic-survey-caribbean-2024"
   },
   {
@@ -64,19 +64,199 @@
     "title": "Caribbean Development Bank Annual Report 2023",
     "body": "Caribbean Development Bank",
     "type": "Other",
-    "date": "2024-04-30",
+    "date": "2024-07-15",
     "country": "REGION",
-    "summary": "The CDB disbursed USD 428 million in 2023 across BMCs, with the largest allocations to infrastructure, climate resilience, and social development. The report highlights the Caribbean's growing engagement with green bonds and catalytic climate finance, and profiles the expanded Community Disaster Risk Insurance Facility (CDRIF).",
+    "summary": "CDB's annual report reviews its 2023 operations and financial performance alongside the Caribbean economic outlook. It covers development results across social, production, environmental, financial, and institutional resilience, as well as risk management and audited financial statements.",
     "url": "https://www.caribank.org/publications-and-resources/resource-library/annual-reports/cdb-annual-report-2023"
   },
   {
-    "id": "imf-gy-staff-concluding-2024",
-    "title": "Guyana: 2024 Article IV — Concluding Statement",
+    "id": "eclac-digital-trade-facilitation-2025",
+    "title": "Digital and Sustainable Trade Facilitation in Latin America and the Caribbean: Regional Report 2025",
+    "body": "ECLAC / CEPAL",
+    "type": "Development Report",
+    "date": "2026-07-23",
+    "country": "REGION",
+    "summary": "ECLAC reports that the region implemented 73% of the core measures in the 2025 UN Global Survey on Digital and Sustainable Trade Facilitation, slightly above the global average and 5.9 percentage points above 2023. Progress was led by paperless and cross-border digital trade measures, but greater subregional coordination remains a priority.",
+    "url": "https://www.cepal.org/es/node/90462"
+  },
+  {
+    "id": "imf-vc-art-iv-2026",
+    "title": "St. Vincent and the Grenadines: 2026 Article IV Consultation — Staff Report",
     "body": "International Monetary Fund",
-    "type": "Staff Report",
-    "date": "2024-05-28",
+    "type": "Article IV",
+    "date": "2026-07-17",
+    "country": "VC",
+    "summary": "The IMF finds that repeated external shocks have widened fiscal deficits and pushed public debt to unsustainable levels. The report focuses on restoring fiscal sustainability while addressing high living costs, weak growth, and financial-sector vulnerabilities.",
+    "url": "https://www.imf.org/en/publications/cr/issues/2026/07/17/st-vincent-and-the-grenadine-2026-article-iv-consultation-press-release-staff-report-staff-577801"
+  },
+  {
+    "id": "imf-bb-art-iv-2026",
+    "title": "Barbados: 2026 Article IV Consultation and Request for a Stand-By Arrangement — Staff Report",
+    "body": "International Monetary Fund",
+    "type": "Article IV",
+    "date": "2026-06-24",
+    "country": "BB",
+    "summary": "The IMF credits the BERT programme with strengthening macroeconomic stability, rebuilding reserves, and putting public debt on a downward path. It also reviews the authorities' request for a precautionary Stand-By Arrangement and the next phase of fiscal and climate-resilience reforms.",
+    "url": "https://www.imf.org/en/publications/cr/issues/2026/06/24/barbados-2026-article-iv-consultation-and-request-for-a-stand-by-arrangement-press-release-577225"
+  },
+  {
+    "id": "cdb-annual-report-2025",
+    "title": "CDB Annual Report 2025",
+    "body": "Caribbean Development Bank",
+    "type": "Other",
+    "date": "2026-06-05",
+    "country": "REGION",
+    "summary": "CDB reports US$464.6 million in project approvals during 2025 and reviews its investments in infrastructure, climate action, education, and private-sector development across its borrowing members. The report also covers the Bank's financial performance, resource mobilization, risk management, and audited statements.",
+    "url": "https://www.caribank.org/publications-and-resources/resource-library/annual-reports/cdb-annual-report-2025"
+  },
+  {
+    "id": "imf-tt-art-iv-2026",
+    "title": "Trinidad and Tobago: 2026 Article IV Consultation — Staff Report",
+    "body": "International Monetary Fund",
+    "type": "Article IV",
+    "date": "2026-06-05",
+    "country": "TT",
+    "summary": "The IMF finds a slow recovery supported by non-energy activity, low inflation, and a sound banking system, but notes weaker external and fiscal positions as energy revenues decline. It recommends fiscal consolidation, measures to stem capital outflows, and a gradual move toward greater exchange-rate flexibility.",
+    "url": "https://www.imf.org/en/publications/cr/issues/2026/06/05/trinidad-and-tobago-2026-article-iv-consultation-press-release-staff-report-and-statement-576599"
+  },
+  {
+    "id": "imf-ag-art-iv-2026",
+    "title": "Antigua and Barbuda: 2026 Article IV Consultation — Staff Report",
+    "body": "International Monetary Fund",
+    "type": "Article IV",
+    "date": "2026-05-12",
+    "country": "AG",
+    "summary": "The IMF reports continued economic expansion and easing inflation, alongside a decline in the public-debt ratio from its pandemic peak. Significant arrears, high financing needs, and weaker Citizenship-by-Investment revenue remain central fiscal risks.",
+    "url": "https://www.imf.org/en/publications/cr/issues/2026/05/12/antigua-and-barbuda-2026-article-iv-consultation-press-release-staff-report-and-statement-576012"
+  },
+  {
+    "id": "imf-kn-art-iv-2026",
+    "title": "St. Kitts and Nevis: 2026 Article IV Consultation — Staff Report",
+    "body": "International Monetary Fund",
+    "type": "Article IV",
+    "date": "2026-05-07",
+    "country": "KN",
+    "summary": "The IMF expects growth to recover in 2026, but warns that lower Citizenship-by-Investment revenue, large fiscal and current-account deficits, and reduced buffers constrain the policy response to shocks. It calls for continued fiscal consolidation, stronger fiscal rules, renewable-energy investment, and labour-market reforms.",
+    "url": "https://www.imf.org/en/publications/cr/issues/2026/05/07/st-575691"
+  },
+  {
+    "id": "cdb-caribbean-review-outlook-2025-2026",
+    "title": "Caribbean Economic Review and Outlook 2025–2026",
+    "body": "Caribbean Development Bank",
+    "type": "Regional Economic Outlook",
+    "date": "2026-04-22",
+    "country": "REGION",
+    "summary": "CDB estimates that regional growth excluding Guyana slowed to 0.6% in 2025 and projects a modest recovery to 1.1% in 2026. The report examines growth, inflation, fiscal and debt performance, external balances, financial stability, and the implementation deficits constraining long-run development.",
+    "url": "https://www.caribank.org/publications-and-resources/resource-library/economic-reviews/caribbean-economic-review-and-outlook-2025-2026"
+  },
+  {
+    "id": "imf-reo-western-hemisphere-2026-apr",
+    "title": "Regional Economic Outlook for the Western Hemisphere, April 2026",
+    "body": "International Monetary Fund",
+    "type": "Regional Economic Outlook",
+    "date": "2026-04-17",
+    "country": "REGION",
+    "summary": "The IMF assesses the Western Hemisphere's exposure to the 2026 energy and food-price shock, distinguishing gains for large oil exporters from the pressures facing import-dependent economies with high debt or limited reserves. It argues for targeted support to vulnerable households while preserving scarce fiscal space.",
+    "url": "https://www.imf.org/en/publications/reo/wh/issues/2026/04/17/regional-economic-outlook-western-hemisphere-april-2026"
+  },
+  {
+    "id": "wb-lac-economic-update-2026-apr",
+    "title": "Slow Growth in Latin America and the Caribbean amid Global Uncertainty and Weak Investment",
+    "body": "World Bank",
+    "type": "Regional Economic Outlook",
+    "date": "2026-04-08",
+    "country": "REGION",
+    "summary": "The World Bank projects Latin America and the Caribbean to grow 2.1% in 2026 as high borrowing costs, weak external demand, and uncertainty weigh on investment and job creation. It argues that skills, finance, trade integration, and institutional capacity are prerequisites for productivity-enhancing industrial policy.",
+    "url": "https://www.worldbank.org/en/region/lac/publication/perspectivas-economicas-america-latina-caribe"
+  },
+  {
+    "id": "imf-bs-art-iv-2025",
+    "title": "The Bahamas: 2025 Article IV Consultation — Staff Report",
+    "body": "International Monetary Fund",
+    "type": "Article IV",
+    "date": "2026-02-06",
+    "country": "BS",
+    "summary": "The IMF finds that tourism and construction have supported a solid recovery and improving fiscal balances, while public debt remains elevated. Priorities include additional fiscal measures, stronger public-sector and financial reporting, electricity reform, and greater resilience to natural disasters.",
+    "url": "https://www.imf.org/en/publications/cr/issues/2026/02/06/the-bahamas-2025-article-iv-consultation-press-release-and-staff-report-573751"
+  },
+  {
+    "id": "imf-sr-art-iv-2025",
+    "title": "Suriname: 2025 Article IV Consultation — Staff Report",
+    "body": "International Monetary Fund",
+    "type": "Article IV",
+    "date": "2026-02-11",
+    "country": "SR",
+    "summary": "The IMF says Suriname must rebuild fiscal and monetary discipline while preparing institutions to manage a prospective oil boom. It warns that policy slippages in 2025 raised inflation and weakened the currency, despite strong gold prices and an improved medium-term resource outlook.",
+    "url": "https://www.imf.org/en/publications/cr/issues/2026/02/11/suriname-2025-article-iv-consultation-press-release-staff-report-and-statement-by-the-573924"
+  },
+  {
+    "id": "imf-gd-art-iv-2025",
+    "title": "Grenada: 2025 Article IV Consultation — Staff Report",
+    "body": "International Monetary Fund",
+    "type": "Article IV",
+    "date": "2026-01-21",
+    "country": "GD",
+    "summary": "The IMF finds Grenada's economy resilient after Hurricane Beryl, supported by reconstruction, investment, and tourism. Savings from Citizenship-by-Investment revenue and contingent financing have preserved fiscal space, though natural disasters, external demand, and large current-account deficits remain key risks.",
+    "url": "https://www.imf.org/en/publications/cr/issues/2026/01/20/grenada-2025-article-iv-consultation-press-release-and-staff-report-573325"
+  },
+  {
+    "id": "imf-bz-art-iv-2025",
+    "title": "Belize: 2025 Article IV Consultation — Staff Report",
+    "body": "International Monetary Fund",
+    "type": "Article IV",
+    "date": "2025-09-15",
+    "country": "BZ",
+    "summary": "The IMF expects growth to settle near 2% as tourism reaches capacity constraints and commodity prices ease. It calls for additional fiscal consolidation, better access to finance, structural reforms, and stronger resilience to natural disasters to keep debt declining.",
+    "url": "https://www.imf.org/en/publications/cr/issues/2025/09/15/belize-2025-article-iv-consultation-press-release-staff-report-and-statement-by-the-570371"
+  },
+  {
+    "id": "imf-jm-art-iv-2025",
+    "title": "Jamaica: 2025 Article IV Consultation — Staff Report",
+    "body": "International Monetary Fund",
+    "type": "Article IV",
+    "date": "2025-06-25",
+    "country": "JM",
+    "summary": "The IMF credits Jamaica's fiscal, monetary, and institutional reforms with increasing resilience to shocks, but identifies low productivity and persistent supply-side constraints as barriers to faster growth. Recommended reforms include a clearer debt anchor, stronger monetary transmission, deeper foreign-exchange markets, and continued financial-stability work.",
+    "url": "https://www.imf.org/en/publications/cr/issues/2025/06/25/jamaica-2025-article-iv-consultation-press-release-and-staff-report-567997"
+  },
+  {
+    "id": "imf-dm-art-iv-2025",
+    "title": "Dominica: 2025 Article IV Consultation — Staff Report",
+    "body": "International Monetary Fund",
+    "type": "Article IV",
+    "date": "2025-06-12",
+    "country": "DM",
+    "summary": "The IMF projects continued growth from tourism and development investment, but warns that public debt remains high and disaster risks are substantial. It recommends stronger fiscal consolidation, better financial-sector oversight, and institutional reforms to improve policy execution and resilient growth.",
+    "url": "https://www.imf.org/en/publications/cr/issues/2025/06/12/dominica-2025-article-iv-consultation-press-release-and-staff-report-567677"
+  },
+  {
+    "id": "imf-gy-art-iv-2025",
+    "title": "Guyana: 2025 Article IV Consultation — Staff Report",
+    "body": "International Monetary Fund",
+    "type": "Article IV",
+    "date": "2025-05-07",
     "country": "GY",
-    "summary": "IMF staff's preliminary findings ahead of the full Article IV: Guyana's growth remains the fastest in the world for the third consecutive year, but sustaining it requires strengthening the Natural Resource Fund framework, expanding non-oil tax administration, and managing the pace of public investment to avoid implementation bottlenecks.",
-    "url": "https://www.imf.org/en/News/Articles/2024/05/28/mcs052824-guyana-staff-concluding-statement-2024-article-iv-consultation"
+    "summary": "The IMF describes an exceptionally strong outlook driven by rapidly expanding oil production, robust non-oil activity, and major public investment. It stresses that a medium-term fiscal framework, strong governance of resource wealth, and close monitoring of inflation and absorptive capacity are essential for inclusive and stable growth.",
+    "url": "https://www.imf.org/en/publications/cr/issues/2025/05/07/guyana-2025-article-iv-consultation-press-release-staff-report-and-statement-by-the-566712"
+  },
+  {
+    "id": "imf-lc-art-iv-2024",
+    "title": "St. Lucia: 2024 Article IV Consultation — Staff Report",
+    "body": "International Monetary Fund",
+    "type": "Article IV",
+    "date": "2025-03-13",
+    "country": "LC",
+    "summary": "The IMF finds that tourism, construction, and manufacturing completed St. Lucia's post-pandemic recovery, but expects growth to slow as major projects mature. High debt rollover needs, investment delays, climate exposure, and limited fiscal space remain the principal risks.",
+    "url": "https://www.imf.org/en/publications/cr/issues/2025/03/13/st-lucia-2024-article-iv-consultation-press-release-staff-report-and-statement-by-the-565180"
+  },
+  {
+    "id": "imf-ht-art-iv-2024",
+    "title": "Haiti: 2024 Article IV Consultation — Staff Report",
+    "body": "International Monetary Fund",
+    "type": "Article IV",
+    "date": "2024-12-10",
+    "country": "HT",
+    "summary": "The IMF assesses Haiti's outlook as exceptionally uncertain amid overlapping security, humanitarian, social, and economic crises. The report prioritizes zero monetary financing of the budget, stronger revenue and expenditure controls, protection of social spending, and more timely and transparent economic data.",
+    "url": "https://www.imf.org/en/publications/cr/issues/2024/12/10/haiti-2024-article-iv-consultation-press-release-staff-report-and-statement-by-the-559329"
   }
 ]

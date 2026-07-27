@@ -3,7 +3,7 @@
  * Walks every source URL in the data files and reports which no longer resolve,
  * so link rot is caught rather than discovered by a reader clicking a citation.
  *
- * Two things this deliberately does NOT treat as failures:
+ * Two things this deliberately does NOT treat as broken links:
  *
  *  - **imf.org 403.** Parts of imf.org sit behind an Akamai bot-WAF. It is
  *    selective, not blanket: DataMapper deep-links answer 200, while the WEO
@@ -14,8 +14,13 @@
  *  - **api.worldbank.org** endpoints are machine APIs and are checked normally;
  *    they are the bulk of the list and should always return 200.
  *
- * Exit code is 1 only when a link fails for a reason other than the known IMF
- * WAF, so this is safe to wire into CI.
+ *  - **Publisher blocks and temporary server failures.** A challenge response,
+ *    timeout, TLS error, or 5xx response does not prove that a reader-facing URL
+ *    is broken. Those are reported as UNVERIFIED so they remain visible without
+ *    creating false link-rot failures.
+ *
+ * Exit code is 1 only for definitive link-rot responses (404 or 410), so this is
+ * safe to wire into CI.
  */
 
 import { readFileSync } from 'node:fs';
@@ -45,6 +50,20 @@ function collect() {
   try {
     for (const p of read('publications.json')) add(p.link ?? p.url, `publication`);
   } catch { /* optional file */ }
+  try {
+    for (const p of read('pub_inbox.json')) add(p.link ?? p.url, `publication inbox`);
+  } catch { /* optional file */ }
+  try {
+    for (const n of read('news.json')) add(n.url, `news ${n.id ?? n.title}`);
+  } catch { /* optional file */ }
+  try {
+    for (const n of read('news_unclassified.json')) {
+      if (n.approved === true) add(n.url, `approved news ${n.id ?? n.title}`);
+    }
+  } catch { /* optional file */ }
+  try {
+    for (const d of read('deals.json')) add(d.url, `deal ${d.id ?? d.title}`);
+  } catch { /* optional file */ }
 
   return urls;
 }
@@ -71,8 +90,20 @@ async function check(url) {
   }
 }
 
-/** Selective WAF on parts of imf.org; a 403 there is expected, not link rot. */
-const isExpectedBlock = (url, status) => url.includes('imf.org') && status === 403;
+/** Known publisher challenge responses; these URLs still load in a browser. */
+function isExpectedBlock(url, status) {
+  const host = new URL(url).hostname.replace(/^www\./, '');
+  return (
+    (host.endsWith('imf.org') && status === 403) ||
+    (host === 'guyanachronicle.com' && status === 307) ||
+    (host === 'rfhl.com' && status === 307) ||
+    (host === 'caymancompass.com' && status === 403) ||
+    (host === 'breakingbelizenews.com' && status === 403)
+  );
+}
+
+/** Only explicit "not found" responses establish link rot. */
+const isDefinitivelyBroken = (status) => status === 404 || status === 410;
 
 async function main() {
   const urls = collect();
@@ -93,11 +124,25 @@ async function main() {
 
   const ok       = results.filter(r => r.ok);
   const expected = results.filter(r => !r.ok && isExpectedBlock(r.url, r.status));
-  const broken   = results.filter(r => !r.ok && !isExpectedBlock(r.url, r.status));
+  const broken   = results.filter(r => !r.ok && isDefinitivelyBroken(r.status));
+  const unverified = results.filter(
+    r => !r.ok && !isExpectedBlock(r.url, r.status) && !isDefinitivelyBroken(r.status),
+  );
 
   console.log(`  OK            ${ok.length}`);
-  console.log(`  EXPECTED 403  ${expected.length}  (imf.org bot-WAF — fine in a browser)`);
+  console.log(`  BLOCKED       ${expected.length}  (known publisher challenge — fine in a browser)`);
+  console.log(`  UNVERIFIED    ${unverified.length}  (temporary/server/TLS response; not proven broken)`);
   console.log(`  BROKEN        ${broken.length}\n`);
+
+  if (unverified.length) {
+    console.log('UNVERIFIED LINKS:');
+    for (const r of unverified.sort((x, y) => String(x.status).localeCompare(String(y.status)))) {
+      console.log(`  ${String(r.status).padStart(7)}  ${r.url}`);
+      console.log(`           used by: ${r.where.slice(0, 4).join(', ')}${r.where.length > 4 ? ` +${r.where.length - 4} more` : ''}`);
+      if (r.detail) console.log(`           ${r.detail}`);
+    }
+    console.log('');
+  }
 
   if (broken.length) {
     console.log('BROKEN LINKS:');
