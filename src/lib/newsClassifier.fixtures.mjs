@@ -51,6 +51,26 @@ export const NEWS_CLASSIFIER_FIXTURES = [
     // itself as not yet closed — the deal status tracks the bond, not the exemption.
     expected: { decision: 'publish', deal_status: 'pending', deal_type: 'Bond' } },
 
+  // ── Added 2026-07-27 — development-finance lending was invisible to the Deals page.
+  // "IDB Invest approves US$500m financing for ANSA McAL" (2026-07-22, Trinidad Express) sat in
+  // news.json without ever reaching Deals: the rubric's `pending` bullet swept up "regulatory
+  // approval stage / non-operational financing stage", and DealType had no slot for a credit
+  // facility. Fixed by the `Debt` type + newsRubric.md § "whose approval closes the deal".
+  { title: 'IDB Invest approves US$500m financing  for ANSA McAL',
+    source: 'Trinidad Express', country: 'TT',
+    // The lender approving its own facility IS the closing — not a third party clearing
+    // someone else's deal. Contrast the "proposed US$800m bond issue" fixture above.
+    expected: { decision: 'publish', deal_status: 'completed', deal_type: 'Debt' } },
+  { title: 'ANSA McAL secures US$500M financing partnership with IDB Invest',
+    source: 'CNC3', country: 'TT',
+    // Same facility from the borrower's side. "secures" is a completed verb.
+    expected: { decision: 'publish', deal_status: 'completed', deal_type: 'Debt' } },
+  { title: 'CDB approves US$2m grant for school rehabilitation in Dominica',
+    source: 'Dominica News Online', country: 'DM',
+    // The guard on the widened lending rule: a grant is never repaid and buys no stake, so
+    // capital moves but not for ownership or return. Must NOT become a Debt deal.
+    expected: { deal_status: 'not_a_deal', deal_type: null } },
+
   // ── Added 2026-07-24 — real over-inclusion found in the first live production run ──
   { title: 'Transparency Institute wants International Maritime Organisation to investigate MV Barima tragedy',
     source: 'Kaieteur News', country: 'GY',

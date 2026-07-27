@@ -38,6 +38,10 @@ const NEWS_LLM_ENABLED  = process.env.NEWS_LLM !== '0' && Boolean(process.env.AN
 // Run via `npm run promote`. The daily workflow runs the full `npm run feeds`.
 const PROMOTE_ONLY      = process.argv.includes('--promote-only') || process.env.PROMOTE_ONLY === '1';
 const AUDIT_ONLY        = process.argv.includes('--audit-only');
+// Backfill-only: deal-judge stored news records that never got a verdict, and stage the
+// completed ones. Like --promote-only it skips the feed fetch, so the only change it makes
+// to news.json is adding deal_status/deal_type. Run via `npm run deals:backfill`.
+const BACKFILL_DEALS    = process.argv.includes('--backfill-deals');
 const UA = 'Mozilla/5.0 (compatible; CaribbeanMacroAlmanac/1.0; +https://github.com/) feeds-bot';
 const FEED_TIMEOUT_MS   = 20_000;
 const FEED_CONCURRENCY  = 8;
@@ -160,9 +164,12 @@ const writeJSON = (path, data) => fs.writeFileSync(path, JSON.stringify(data, nu
 // that already has a stored `decision` from a prior run is never passed in here, so
 // it's never reclassified: see the caller in buildNews().
 // Returns the raw LLM results (or [] if the LLM wasn't used) so the caller can also
-// stage completed deals — deal_status/deal_type are NOT persisted onto the news
-// record itself (only category/group/decision/confidence/reason/classifier are;
-// see docs/news-llm-classifier-plan.md § Plan step 1).
+// stage completed deals. deal_status/deal_type ARE persisted onto the news record
+// (reversing the original design in docs/news-llm-classifier-plan.md § Plan step 1):
+// the stored verdict is what makes backfillDeals() below idempotent, and it's what
+// lets a later rubric fix find the headlines a past run mis-judged. The heuristic
+// fallback has no deal detector, so heuristic-classified records are deliberately
+// left with NO deal_status — that's what marks them as still owing a judgment.
 async function classifyNewItems(newItems, byId, fetchedReviewContext) {
   let llmResults = [];
   if (NEWS_LLM_ENABLED) {
@@ -185,6 +192,7 @@ async function classifyNewItems(newItems, byId, fetchedReviewContext) {
       Object.assign(record, {
         category: llm.category, group: llm.group, decision: llm.decision,
         confidence: llm.confidence, reason: llm.reason, classifier: 'llm',
+        deal_status: llm.deal_status, deal_type: llm.deal_type,
       });
       continue;
     }
@@ -236,6 +244,46 @@ function stageDeals(llmResults, byId) {
   }
   writeJSON('./data/deals_inbox.json', [...byDealId.values()]);
   log(`Deals: ${staged} new candidate(s) staged from LLM classification.`);
+}
+
+// ── Deals backfill (one-off catch-up over the stored archive) ──────────────────
+// Deal-judges news records that carry NO stored deal_status — the ~850 items ingested
+// before the LLM classifier went live 2026-07-23, plus anything a heuristic-fallback run
+// classified while the API was down. Without this they could never reach the Deals page:
+// classifyNewItems only ever sees brand-new items, so a record already in news.json was
+// unreachable. Deliberately judgment-only: `decision`/`category`/`confidence`/`reason`
+// are left exactly as they are, so this never relitigates what appears on /news.
+// Idempotent — a record that gets a stored deal_status here is skipped on the next run.
+// Run via `npm run deals:backfill` (needs ANTHROPIC_API_KEY; no feed fetch).
+async function backfillDeals() {
+  if (!NEWS_LLM_ENABLED) {
+    console.error('FATAL: deals backfill needs the LLM (set ANTHROPIC_API_KEY, and NEWS_LLM must not be 0).');
+    process.exit(1);
+  }
+  const news = readJSON('./data/news.json', []);
+  const byId = new Map(news.map(r => [r.id, r]));
+  const unjudged = news.filter(r => !r.deal_status);
+  log(`Deals backfill: ${unjudged.length} of ${news.length} record(s) have no stored deal verdict.`);
+  if (unjudged.length === 0) return;
+
+  // Same classifier, same rubric, same chunking as the ingest path — only the input set
+  // differs. Throws on failure rather than falling back: the heuristic has no deal
+  // detector, so a silent fallback would mark records judged without judging them.
+  const results = await classifyHeadlinesLLM(
+    unjudged.map(({ id, title, source, country, tags }) => ({ id, title, source, country, tags })),
+  );
+  const counts = { completed: 0, pending: 0, not_a_deal: 0 };
+  for (const r of results) {
+    const record = byId.get(r.id);
+    if (!record) continue;
+    // Only the deal fields — the news verdict on these records stays untouched.
+    record.deal_status = r.deal_status;
+    record.deal_type = r.deal_type;
+    counts[r.deal_status] = (counts[r.deal_status] ?? 0) + 1;
+  }
+  writeJSON('./data/news.json', news);
+  log(`Deals backfill: judged ${results.length} — ${counts.completed} completed, ${counts.pending} pending, ${counts.not_a_deal} not a deal.`);
+  stageDeals(results, byId);
 }
 
 // ── News ─────────────────────────────────────────────────────────────────────
@@ -450,7 +498,7 @@ async function buildPublications() {
 // The DealType vocabulary — MUST stay in sync with `DealType` in src/lib/types.ts (a TS type,
 // not importable at runtime, hence this runtime mirror). Shared by buildDeals() below and
 // scripts/triage-deals.mjs so the two can never disagree on what a valid deal type is.
-export const DEAL_TYPES = new Set(['M&A', 'FDI', 'Bond', 'IPO', 'JV', 'Concession', 'Other']);
+export const DEAL_TYPES = new Set(['M&A', 'FDI', 'Debt', 'Bond', 'IPO', 'JV', 'Concession', 'Other']);
 
 // Guard for a deals_inbox row that is about to be promoted (approved:true) into the public
 // deals.json. Throws on a bad type/country or an empty parties/value — the same "bad approved
@@ -503,7 +551,10 @@ async function buildDeals() {
 // merely loading the module — exactly the bug this guard exists to prevent.
 const isMain = import.meta.url === pathToFileURL(process.argv[1] ?? '').href;
 if (isMain) {
-  if (AUDIT_ONLY) {
+  if (BACKFILL_DEALS) {
+    log('Deals backfill mode: deal-judging stored news records (no feed fetch).');
+    await backfillDeals();
+  } else if (AUDIT_ONLY) {
     log('News audit mode: refreshing selective review inbox only (news.json left untouched).');
     await buildNews({ auditOnly: true });
   } else if (PROMOTE_ONLY) {
@@ -515,7 +566,9 @@ if (isMain) {
     log('Fetching news feeds…');
     await buildNews();
   }
-  if (!AUDIT_ONLY) {
+  // Backfill only discovers and stages — promoting is a separate, human-gated step
+  // (`npm run promote`), so it deliberately doesn't publish anything on its way out.
+  if (!AUDIT_ONLY && !BACKFILL_DEALS) {
     log('Promoting approved deals…');
     await buildDeals();
     log('Promoting approved publications…');

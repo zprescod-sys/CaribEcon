@@ -14,6 +14,7 @@
     "feeds": "node scripts/build-feeds.mjs",
     "news:audit": "node scripts/build-feeds.mjs --audit-only",
     "promote": "node scripts/build-feeds.mjs --promote-only",
+    "deals:backfill": "node scripts/build-feeds.mjs --backfill-deals",
     "data:refresh": "node scripts/refresh-data.mjs",
     "data:drift": "node scripts/check-primary-drift.mjs",
     "data:validate": "node scripts/validate-data.mjs",

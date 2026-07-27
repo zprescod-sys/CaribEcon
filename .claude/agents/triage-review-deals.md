@@ -97,10 +97,19 @@ is clearly wrong, **escalate with a `reviewNote`** rather than editing it.
 The qualifier is **not the size of the figure** — it is whether capital is changing hands *for
 ownership or return*.
 
-- **In** — acquisition or stake purchase, FDI project commitment, bond/note issuance, IPO/rights
-  issue, a capital JV, a concession/licence award.
+- **In** — acquisition or stake purchase, FDI project commitment, a loan/credit facility or
+  financing package extended to a named borrower (including development-finance lending from IDB
+  Invest, IFC, CDB, the World Bank or CAF — type `Debt`), bond/note issuance, IPO/rights issue,
+  a capital JV, a concession/licence award.
 - **Out** — a utility launching a construction project, a ministry program budget, a service/route
   rollout, a planning-permission approval — operational spending, even with a large dollar figure.
+  Also **out**: a **grant**, donation, programme disbursement, or technical-assistance award. A
+  grant is not repaid and buys no stake, so no capital changes hands for ownership or return —
+  this is the line that keeps the widened lending rule from swallowing routine DFI aid.
+
+On a DFI facility, note that the *lender's own approval of its financing* is the closing event
+(`completed`), unlike a regulator approving somebody else's deal. `Debt` covers a bilateral loan
+or facility; `Bond` stays reserved for a security sold to investors.
 
 This is the line `src/lib/newsRubric.md` § "Deal status" draws; apply it more strictly than the
 classifier did.

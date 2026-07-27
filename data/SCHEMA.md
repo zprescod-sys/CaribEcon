@@ -287,13 +287,29 @@ hand-maintained — edits are overwritten on the next run.
   `data/feeds.json` (news) or reinstate an inbox-discovery loop in `build-feeds.mjs`.
 
 **Deals are mined from news (editorial-in-the-loop).** There is no reliable M&A/FDI RSS
-source, so `buildDeals()` scans the merged `data/news.json` for genuine transactions using
-a deliberately strict filter — a title must name a deal action (`DEAL_VERB_RE`) **and** a
-money/scale figure (`MONEY_RE`), **or** contain a high-confidence standalone phrase
-(`DEAL_PHRASES`). Candidates are staged in `data/deals_inbox.json` (`approved: false`,
-empty `value`/`parties`/`type`, plus a `suggestedType`). A human fills `value`/`parties`,
-confirms a valid `DealType`, and sets `approved: true`; the next run promotes approved rows
+source, so deals are detected out of the merged `data/news.json`. Since 2026-07-23 the
+detector is the LLM classifier's own `deal_status` / `deal_type` judgment, not a regex —
+the old `DEAL_VERB_RE`/`MONEY_RE`/`DEAL_PHRASES` filter is gone. Editorial rules for what
+counts live in `src/lib/newsRubric.md` § "Deal status"; only `deal_status: "completed"`
+items are staged. Candidates land in `data/deals_inbox.json` (`approved: false`, empty
+`value`/`parties`/`type`, plus a `suggestedType`). A human — in practice the `warrenb`
+triage subagent, acting as a stricter second judge — fills `value`/`parties`, confirms a
+valid `DealType`, and sets `approved: true`; `npm run promote` then promotes approved rows
 into `data/deals.json` **without overwriting** existing curated records.
+
+`DealType` = `M&A | FDI | Debt | Bond | IPO | JV | Concession | Other`. **`Debt`** (added
+2026-07-27) is a loan, credit facility, or financing package extended to a named borrower,
+including development-finance lending from IDB Invest / IFC / CDB / the World Bank / CAF;
+**`Bond`** stays reserved for a security sold to investors. A DFI **grant** or programme
+disbursement is *not* a deal — the gate is whether capital moves for ownership or return.
+The vocabulary lives in three hand-synced copies (`src/lib/types.ts`,
+`scripts/build-feeds.mjs`, `src/lib/newsClassifierLLM.mjs`); all three must change together.
+
+The classifier judges each item **once, at ingest**, and the verdict is stored on the news
+record. Records that predate the classifier (or were classified by the heuristic fallback
+during an API outage) carry no `deal_status` and are invisible to the Deals page until
+`npm run deals:backfill` judges them — a one-off catch-up that adds only `deal_status` /
+`deal_type` and never revisits the `decision`/`category` that drive the News page.
 
 **Publications stay editorial-in-the-loop.** The auto-discovery IMF feeds were removed, so
 new rows are hand-entered into `data/pub_inbox.json` as staging rows (`approved: false`,

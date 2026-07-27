@@ -56,7 +56,8 @@ regex-based deal detector for the Deals & Investment page (see the dedicated sec
 - `src/lib/dataHub.ts` runs at Vercel **build** but **never calls the API** — it reads the
   verdict already stored in `news.json`. So the key only ever exists on the GitHub runner.
 - The key lives **only** as a GitHub Actions secret and reaches the shipped site as *zero
-  bytes* — `news.json` carries `{category, group, decision}`, never the key.
+  bytes* — `news.json` carries `{category, group, decision, deal_status, deal_type}`, never
+  the key.
 
 ## Plan
 
@@ -214,6 +215,19 @@ with that judgment.
 `deal_status` and `deal_type` are evaluated on every item as part of the same classification call
 (no separate pass, no separate API call) — but only `deal_status: "completed"` items are staged
 into the deals queue.
+
+> **Superseded 2026-07-27 — the verdict is now stored on the news record.** As originally built,
+> `deal_status`/`deal_type` were deliberately *not* persisted onto the `news.json` record: only
+> `category`/`group`/`decision`/`confidence`/`reason`/`classifier` were, and the deal verdict was
+> consumed in-flight by `stageDeals()` and then discarded. That turned out to have two costs.
+> Because `classifyNewItems` only ever sees brand-new items, (a) every record ingested before the
+> classifier went live on 2026-07-23 could never be deal-judged at all — 1059 stored records with
+> no verdict, which is how "IDB Invest approves US$500m financing for ANSA McAL" sat in the
+> archive unreachable — and (b) a later rubric fix could never find the headlines an earlier run
+> mis-judged. Both fields are now written onto the record, which makes `backfillDeals()`
+> (`npm run deals:backfill`) idempotent: "has no stored `deal_status`" is exactly the set still
+> owing a judgment. The heuristic fallback still sets no deal fields, so a no-key run leaves its
+> records correctly marked as unjudged rather than silently judged.
 
 ### Queue file — reuse `data/deals_inbox.json`, existing schema, no new file
 
