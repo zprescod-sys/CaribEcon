@@ -97,9 +97,10 @@ const namesJSON = JSON.stringify(countryNames);
     <span id="fiscal-source-ref"></span>
   </p>
 
-  <!-- Per-country accounting basis. Scope differences between these documents are
-       material — Cayman reports on an accrual basis while the rest are cash — so
-       the basis is stated per country rather than as one generic footer. -->
+  <!-- Per-country accounting basis and scope. These documents differ materially
+       in what they count, so the basis is stated per country rather than as one
+       generic footer. Where a source does not declare its accounting basis, this
+       says so rather than assuming the usual cash convention. -->
   <details class="fiscal-basis">
     <summary class="mono">Accounting basis &amp; scope</summary>
     <dl class="fiscal-basis-list">
@@ -129,11 +130,13 @@ const namesJSON = JSON.stringify(countryNames);
   const raw: { rev: IndicatorSeries[]; exp: IndicatorSeries[] } = JSON.parse(dataEl.dataset.fiscal ?? '{}');
   const NAMES: Record<string, string> = JSON.parse(dataEl.dataset.names ?? '{}');
 
-  /* Accounting basis per country. Scope differences here are material — Cayman
-     is accrual while the rest are cash, and what counts as "revenue" varies
-     (Jamaica includes grants; Guyana includes NRF withdrawals and carbon-credit
-     inflows). Attribution itself is NOT held here: it is read from the series
-     records so the citation can never drift from the data it describes. */
+  /* Accounting basis and scope per country. What counts as "revenue" varies
+     materially — TT, BB and JM include grants; Guyana adds NRF withdrawals and
+     carbon-credit inflows; Barbados books expenditure together with net lending.
+     Only Cayman's accounting basis could be verified from a source document, so
+     the rest say "not stated" rather than assuming the usual cash convention.
+     Attribution itself is NOT held here: it is read from the series records so
+     the citation can never drift from the data it describes. */
   interface FiscalBasis {
     fy: string; basis: string; measure: string;
     revenue: string; expenditure: string; note?: string;
@@ -141,43 +144,43 @@ const namesJSON = JSON.stringify(countryNames);
   const FISCAL_BASIS: Record<string, FiscalBasis> = {
     TT: {
       fy: 'October – September. FY2025 = Oct 2024 – Sep 2025.',
-      basis: 'Cash basis.',
-      measure: 'Actuals for closed years; the latest year is a projection, flagged on the chart.',
-      revenue: 'Total Revenue and Grants, per the cited appendix — grants are included.',
-      expenditure: 'Total Expenditure, per the cited appendix. The appendix does not itemise amortisation separately, so its treatment is not asserted here.',
+      basis: 'Not stated in the cited appendix.',
+      measure: 'Actuals for closed years; the latest year is a projection.',
+      revenue: 'Total Revenue and Grants — grants are included.',
+      expenditure: 'Total Expenditure.',
     },
     GY: {
       fy: 'Calendar year.',
-      basis: 'Cash basis.',
+      basis: 'Not stated in the cited annexe.',
       measure: 'Derived — revenue is the sum of two published lines, not a single printed total.',
-      revenue: 'Current Revenue plus Capital Receipts. Current revenue includes Natural Resource Fund withdrawals from 2022 and carbon-credit inflows from 2023, so the series is not comparable with pre-2022 years on a like-for-like basis.',
-      expenditure: 'Total expenditure; cross-checked against the published overall balance, which holds within rounding.',
+      revenue: 'Current Revenue plus Capital Receipts. Current revenue includes Natural Resource Fund withdrawals from 2022 and carbon-credit inflows from 2023, so the series is not like-for-like with pre-2022 years.',
+      expenditure: 'Total expenditure, cross-checked against the published overall balance, which holds within rounding.',
     },
     BB: {
       fy: 'April – March.',
-      basis: 'Cash basis.',
+      basis: 'Not stated in the cited table. Barbados prepares its budget Estimates on an accrual basis, so this Central Bank series and the budget pie on this page need not share a basis.',
       measure: 'Actuals for closed years; the latest year is a Central Bank estimate.',
       revenue: 'Total Revenues and Grants — grants are included.',
       expenditure: 'Total Expenditure and Net Lending — a broader aggregate than expenditure alone. Revenue minus expenditure reproduces the published fiscal balance in every year.',
     },
     JM: {
       fy: 'April – March. FY2024/25 = Apr 2024 – Mar 2025.',
-      basis: 'Cash basis.',
+      basis: 'Not stated in the cited table.',
       measure: 'Actuals for closed years; the latest year is an estimate.',
-      revenue: 'Revenue AND GRANTS — grants are included.',
-      expenditure: 'Expenditure including interest, excluding amortisation. The FY2024/25 figure of J$1,023,725mn agrees with total expenditure of J$1,341,100mn less amortisation of J$317,400mn to within J$25mn (0.0025%) — the two come from different documents and the Citizens’ Guide quotes to the nearest J$0.1bn, so they reconcile within rounding rather than exactly.',
+      revenue: 'Revenue and Grants — grants are included.',
+      expenditure: 'Expenditure excluding amortisation. The FY2024/25 figure of J$1,023,725mn agrees with total expenditure of J$1,341,100mn less amortisation of J$317,400mn to within J$25mn (0.0025%) — the two come from different documents and the Citizens’ Guide quotes to the nearest J$0.1bn, so they reconcile within rounding rather than exactly.',
       note: 'The budget pie on this page uses a different, wider denominator (J$1,341,100mn, including amortisation). Three denominators are defensible for Jamaica; each chart states the one it uses.',
     },
     BS: {
       fy: 'July – June. FY2024/25 = Jul 2024 – Jun 2025.',
-      basis: 'Cash basis.',
+      basis: 'Not stated in the cited table.',
       measure: 'Actuals for closed years; the latest year is an estimate.',
-      revenue: 'Total revenue.',
-      expenditure: 'Total expenditure including debt servicing (interest and other charges). Per the Ministry of Finance memorandum, Public Debt Redemption is treated as a financing transaction under GFS methodology and is excluded.',
+      revenue: 'Total revenue, per the cited table.',
+      expenditure: 'Total expenditure, per the cited table.',
     },
     KY: {
       fy: 'Calendar year.',
-      basis: 'ACCRUAL basis — unlike every other country on this chart, which report on a cash basis. Levels and balances are therefore not constructed the same way.',
+      basis: 'Accrual. The Cayman Islands Government prepares its budget and financial statements on an accrual basis (Plan & Estimates 2024 and 2025, PDF pp.14 and 38). This is the only country on the chart whose basis is stated in its source.',
       measure: 'Actuals as reported by the Treasury via the Economics and Statistics Office.',
       revenue: 'Total revenue, per the cited table.',
       expenditure: 'Total expenditure. Revenue minus expenditure reproduces the published net lending/borrowing in every year.',

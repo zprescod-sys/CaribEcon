@@ -373,14 +373,14 @@
     "currencySymbol": "Bds$",
     "total": 4697.794159,
     "denominator": "Total Expenditure, Approved Estimates 2024-2025",
-    "basis": "Cash basis; Approved Estimates as laid in Parliament, not outturn. Current revenue for the same year is estimated at Bds$3,724.4mn. Figures are the government's own functional (COFOG-style) classification of total expenditure.",
+    "basis": "Accrual basis. The Estimates of Revenue and Expenditure have been prepared on an accrual basis since financial year 2007-2008, comprising both cash and non-cash transactions (PDF p.17). Approved Estimates as laid in Parliament, not outturn. Current revenue for the year is estimated at Bds$3,724.4mn on the accrual basis, or Bds$3,543.3mn on the cash basis (PDF p.25).",
     "coverage": "Exhaustive. The source's ten functional categories sum exactly to the stated total expenditure. No residual and no estimation.",
     "source": "Government of Barbados / Barbados Parliament",
     "sourceDocument": "Approved Barbados Estimates 2024-2025 — Memorandum of Estimates, Table 5: Estimates of Total Expenditure by Functional Classification 2024-2025",
     "sourceUrl": "https://www.barbadosparliament.com/uploads/document/6dfdf70f9af4ecde4c4f861e56496a9d.pdf",
     "sourcePage": "PDF p.26",
     "vintage": "2024-03",
-    "note": "Amounts are printed in dollars in the source and are held here in millions. This is the functional classification published by the government itself — no crosswalk or reclassification has been applied.",
+    "note": "Amounts are printed in dollars in the source and are held here in millions. This is the functional classification published by the government itself — no crosswalk or reclassification has been applied. The document states two other totals for the same year: a narrative total expenditure of Bds$4,667.7mn and a cash-basis total of Bds$4,613.0mn (PDF p.25). The Bds$4,697.8mn used here is the figure carried consistently by the statistical tables — Table 5 (functional), Table 6 (by account code) and Table 7 (by ministry) — and the document does not reconcile it to the narrative figure.",
     "categories": [
       {
         "name": "General Public Service",
