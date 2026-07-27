@@ -93,9 +93,27 @@ const namesJSON = JSON.stringify(countryNames);
 
   <p class="source-line" id="fiscal-source">
     <span>Source:</span>
-    <span id="fiscal-source-text">Primary national source (Ministry of Finance / Central Bank).</span>
-    <span>Local currency values. Cross-country comparisons not applicable.</span>
+    <a id="fiscal-source-link" href="#" target="_blank" rel="noopener noreferrer"></a>
+    <span id="fiscal-source-ref"></span>
   </p>
+
+  <!-- Per-country accounting basis. Scope differences between these documents are
+       material — Cayman reports on an accrual basis while the rest are cash — so
+       the basis is stated per country rather than as one generic footer. -->
+  <details class="fiscal-basis">
+    <summary class="mono">Accounting basis &amp; scope</summary>
+    <dl class="fiscal-basis-list">
+      <div><dt class="mono">Fiscal year</dt><dd id="fb-fy"></dd></div>
+      <div><dt class="mono">Basis</dt><dd id="fb-basis"></dd></div>
+      <div><dt class="mono">Measure</dt><dd id="fb-measure"></dd></div>
+      <div><dt class="mono">Revenue scope</dt><dd id="fb-revenue"></dd></div>
+      <div><dt class="mono">Expenditure scope</dt><dd id="fb-expenditure"></dd></div>
+      <div id="fb-note-row"><dt class="mono">Note</dt><dd id="fb-note"></dd></div>
+    </dl>
+    <p class="fiscal-basis-foot mono">
+      Local-currency values on each country's own national basis. Levels are NOT comparable across countries.
+    </p>
+  </details>
 
 </div>
 
@@ -111,13 +129,59 @@ const namesJSON = JSON.stringify(countryNames);
   const raw: { rev: IndicatorSeries[]; exp: IndicatorSeries[] } = JSON.parse(dataEl.dataset.fiscal ?? '{}');
   const NAMES: Record<string, string> = JSON.parse(dataEl.dataset.names ?? '{}');
 
-  const SOURCE_ORGS: Record<string, string> = {
-    TT: 'T&T Ministry of Finance — Review of the Economy',
-    GY: 'Guyana Ministry of Finance — National Budget',
-    BB: 'Barbados Ministry of Finance',
-    JM: 'Jamaica Ministry of Finance & Public Service',
-    BS: 'Bahamas Ministry of Finance',
-    KY: 'Cayman Islands Ministry of Finance',
+  /* Accounting basis per country. Scope differences here are material — Cayman
+     is accrual while the rest are cash, and what counts as "revenue" varies
+     (Jamaica includes grants; Guyana includes NRF withdrawals and carbon-credit
+     inflows). Attribution itself is NOT held here: it is read from the series
+     records so the citation can never drift from the data it describes. */
+  interface FiscalBasis {
+    fy: string; basis: string; measure: string;
+    revenue: string; expenditure: string; note?: string;
+  }
+  const FISCAL_BASIS: Record<string, FiscalBasis> = {
+    TT: {
+      fy: 'October – September. FY2025 = Oct 2024 – Sep 2025.',
+      basis: 'Cash basis.',
+      measure: 'Actuals for closed years; the latest year is a projection, flagged on the chart.',
+      revenue: 'Total revenue including capital revenue.',
+      expenditure: 'Total expenditure including interest. Amortisation is a financing item below the line and is excluded.',
+    },
+    GY: {
+      fy: 'Calendar year.',
+      basis: 'Cash basis.',
+      measure: 'Derived — revenue is the sum of two published lines, not a single printed total.',
+      revenue: 'Current Revenue plus Capital Receipts. Current revenue includes Natural Resource Fund withdrawals from 2022 and carbon-credit inflows from 2023, so the series is not comparable with pre-2022 years on a like-for-like basis.',
+      expenditure: 'Total expenditure; cross-checked against the published overall balance, which holds within rounding.',
+    },
+    BB: {
+      fy: 'April – March.',
+      basis: 'Cash basis.',
+      measure: 'Actuals for closed years; the latest year is a Central Bank estimate.',
+      revenue: 'Total revenue.',
+      expenditure: 'Total expenditure. Revenue minus expenditure reproduces the published fiscal balance in every year.',
+    },
+    JM: {
+      fy: 'April – March. FY2024/25 = Apr 2024 – Mar 2025.',
+      basis: 'Cash basis.',
+      measure: 'Actuals for closed years; the latest year is an estimate.',
+      revenue: 'Revenue AND GRANTS — grants are included.',
+      expenditure: 'Expenditure including interest, excluding amortisation. Verified numerically: the FY2024/25 figure of J$1,023,725mn equals total expenditure of J$1,341,100mn less amortisation of J$317,400mn.',
+      note: 'The budget pie on this page uses a different, wider denominator (J$1,341,100mn, including amortisation). Three denominators are defensible for Jamaica; each chart states the one it uses.',
+    },
+    BS: {
+      fy: 'July – June. FY2024/25 = Jul 2024 – Jun 2025.',
+      basis: 'Cash basis.',
+      measure: 'Actuals for closed years; the latest year is an estimate.',
+      revenue: 'Total revenue.',
+      expenditure: 'Total expenditure including debt servicing (interest and other charges). Per the Ministry of Finance memorandum, Public Debt Redemption is treated as a financing transaction under GFS methodology and is excluded.',
+    },
+    KY: {
+      fy: 'Calendar year.',
+      basis: 'ACCRUAL basis — unlike every other country on this chart, which report on a cash basis. Levels and balances are therefore not constructed the same way.',
+      measure: 'Actuals as reported by the Treasury via the Economics and Statistics Office.',
+      revenue: 'Total revenue (core government).',
+      expenditure: 'Total expenditure. Revenue minus expenditure reproduces the published net lending/borrowing in every year.',
+    },
   };
 
   const countrySel    = document.getElementById('fiscal-country-select') as HTMLSelectElement;
@@ -126,7 +190,12 @@ const namesJSON = JSON.stringify(countryNames);
   const mainTitleEl   = document.getElementById('fiscal-main-title')!;
   const mainMetaEl    = document.getElementById('fiscal-main-meta')!;
   const balMetaEl     = document.getElementById('fiscal-bal-meta')!;
-  const sourceTextEl  = document.getElementById('fiscal-source-text')!;
+  const sourceLinkEl  = document.getElementById('fiscal-source-link')!;
+  const sourceRefEl   = document.getElementById('fiscal-source-ref')!;
+  const setText = (id: string, v: string) => {
+    const el = document.getElementById(id);
+    if (el) el.textContent = v;
+  };
 
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const D = (ms: number) => reduceMotion ? 0 : ms;
@@ -372,7 +441,31 @@ const namesJSON = JSON.stringify(countryNames);
     mainTitleEl.textContent = `Revenue & Expenditure — ${name}`;
     mainMetaEl.textContent  = `${unit} · PRIMARY NATIONAL SOURCE`;
     balMetaEl.textContent   = `${unit} · SURPLUS / DEFICIT`;
-    sourceTextEl.textContent = SOURCE_ORGS[code] ?? 'Primary national source.';
+    /* Attribution comes from the series records themselves, so it always names
+       the document the numbers actually came from. (It previously came from a
+       hardcoded map that credited e.g. "Guyana Ministry of Finance" for figures
+       taken from the Bank of Guyana's statistical annexe.) */
+    const cite = rev.source === exp.source
+      ? rev.source
+      : `${rev.source} (revenue); ${exp.source} (expenditure)`;
+    sourceLinkEl.textContent = cite;
+    if (rev.sourceUrl) {
+      sourceLinkEl.setAttribute('href', rev.sourceUrl);
+    } else {
+      sourceLinkEl.removeAttribute('href');
+    }
+    const refs = [...new Set([rev.sourceRef, exp.sourceRef].filter(Boolean))].join('; ');
+    sourceRefEl.textContent = refs ? `· ${refs}` : '';
+
+    const fb = FISCAL_BASIS[code];
+    setText('fb-fy',          fb?.fy          ?? 'Not documented.');
+    setText('fb-basis',       fb?.basis       ?? 'Not documented.');
+    setText('fb-measure',     fb?.measure     ?? 'Not documented.');
+    setText('fb-revenue',     fb?.revenue     ?? 'Not documented.');
+    setText('fb-expenditure', fb?.expenditure ?? 'Not documented.');
+    const noteRow = document.getElementById('fb-note-row');
+    if (noteRow) noteRow.hidden = !fb?.note;
+    if (fb?.note) setText('fb-note', fb.note);
 
     updateStats(rows, unit);
     renderRevExp(rows, unit, revExpEl);
@@ -549,6 +642,50 @@ const namesJSON = JSON.stringify(countryNames);
   }
 
   /* ── Source line ── */
+  /* ── Per-country accounting basis disclosure ────────────────────────────── */
+  .fiscal-basis {
+    margin-top: 12px;
+    border: 1px solid var(--line);
+    padding: 10px 12px;
+    background-color: var(--card);
+  }
+  .fiscal-basis summary {
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    cursor: pointer;
+  }
+  .fiscal-basis summary:focus-visible { outline: var(--focus-ring); outline-offset: 2px; }
+  .fiscal-basis-list { margin-top: 10px; }
+  .fiscal-basis-list > div {
+    display: grid;
+    grid-template-columns: 130px 1fr;
+    gap: 12px;
+    padding: 7px 0;
+    border-top: 1px solid var(--line);
+  }
+  .fiscal-basis-list > div[hidden] { display: none; }
+  .fiscal-basis-list dt {
+    font-size: 10px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+  .fiscal-basis-list dd {
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    line-height: 1.6;
+  }
+  .fiscal-basis-foot {
+    margin-top: 10px;
+    font-size: 10px;
+    color: var(--ink-faint);
+  }
+  @media (max-width: 640px) {
+    .fiscal-basis-list > div { grid-template-columns: 1fr; gap: 2px; }
+  }
+
   .source-line {
     display: flex;
     flex-wrap: wrap;
