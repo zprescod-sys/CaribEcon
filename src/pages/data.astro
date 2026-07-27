@@ -56,13 +56,31 @@ const countryNames = Object.fromEntries(getCountries().map(c => [c.code, c.name]
 // Lead indicator first; the rest render as supporting rows.
 const SNAPSHOT_INDICATORS = ['gdp_growth', 'inflation', 'gross_govt_debt_pct_gdp', 'fdi'];
 
-// Compact number: thousands get separators; percentages keep one decimal,
-// currency amounts round to whole numbers
-const fmtNum = (v: number, decimal = true) =>
-  Math.abs(v) >= 1000 ? Math.round(v).toLocaleString('en-US')
-  : decimal ? v.toFixed(1) : String(Math.round(v));
+// Newest observation year anywhere in the hub — the reference point for judging
+// whether a card's "latest available" figure is materially out of date.
+const LATEST_DATA_YEAR = Math.max(
+  ...allSeries.flatMap(s => s.series.filter(p => p.value !== null).map(p => p.year)),
+);
+// A card is flagged stale when its observation predates the hub's newest year by
+// two or more years (e.g. Cayman CPI, whose World Bank series ends at 2016).
+const STALE_AFTER_YEARS = 2;
 
-// Latest point + delta vs the prior year for one country/indicator
+/* Compact number for card display. Thousands get separators; percentages keep
+   one decimal; currency amounts round to whole units — except sub-unit values,
+   which would round to a misleading "0". Belize's 2025 net FDI is US$0.2mn: a
+   real, very small observation, not a zero. Below 1 we therefore keep a decimal,
+   and below 0.05 — where even one decimal rounds to zero — we show a bound. */
+const fmtNum = (v: number, decimal = true) => {
+  const abs = Math.abs(v);
+  if (abs >= 1000) return Math.round(v).toLocaleString('en-US');
+  if (decimal) return v.toFixed(1);
+  if (v === 0) return '0';                      // a genuine zero observation
+  if (abs < 0.05) return `${v < 0 ? '−' : ''}<0.1`;
+  if (abs < 1) return v.toFixed(1);
+  return String(Math.round(v));
+};
+
+// Latest point + delta vs the prior observation for one country/indicator
 function snapshotRow(country: string, indicator: string): SnapshotRow | null {
   const s = getSeries(country, indicator);
   if (!s) return null;
@@ -85,6 +103,8 @@ function snapshotRow(country: string, indicator: string): SnapshotRow | null {
     deltaDir:   delta === null ? null : delta >= 0 ? 'pos' : 'neg',
     vsYear:     prev?.year ?? null,
     flag:       last.type !== 'actual' ? (last.type as 'estimate' | 'projection') : null,
+    stale:      last.year <= LATEST_DATA_YEAR - STALE_AFTER_YEARS,
+    sourceOrg:  s.sourceOrg,
   };
 }
 

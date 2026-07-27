@@ -8,11 +8,13 @@ export interface SnapshotRow {
   label: string;            // "Real GDP Growth"
   value: string;            // "43.8%" or "1,834"
   unitSuffix: string;       // "" for %, "USD mn" for FDI
-  year: number;
+  year: number;             // observation year of `value` — always rendered
   delta: string | null;     // "+0.3pp" / "−112"
   deltaDir: 'pos' | 'neg' | null;
   vsYear: number | null;
   flag: 'estimate' | 'projection' | null;
+  stale?: boolean;          // observation materially predates the hub's newest year
+  sourceOrg?: string;       // attribution for the year badge's tooltip
 }
 
 export interface CountrySnapshotData {
@@ -70,21 +72,30 @@ function iconFor(label: string): string {
                aria-hidden="true" set:html={iconFor(m.label)} />
         </div>
 
-        <div class="metric-value">
-          {m.value}{m.unitSuffix && <span class="metric-unit mono"> {m.unitSuffix}</span>}
+        <div class="metric-value-row">
+          <div class="metric-value">
+            {m.value}{m.unitSuffix && <span class="metric-unit mono"> {m.unitSuffix}</span>}
+          </div>
+          {/* Observation year, always explicit. Cards show each indicator's own
+              latest available year, which differs between indicators and
+              countries, so the number is never shown without its year. */}
+          <span
+            class={`metric-year mono ${m.stale ? 'stale' : ''}`}
+            title={`${m.label}: ${m.year} observation${m.flag ? ` (${m.flag})` : ''}${m.sourceOrg ? ` · ${m.sourceOrg}` : ''}${m.stale ? ' · no more recent figure published' : ''}`}
+          >{m.year}</span>
         </div>
 
-        <div class="metric-foot">
-          {m.delta ? (
-            <span class={`metric-trend mono ${m.deltaDir}`}>
-              <span class="metric-arrow">{arrow(m.deltaDir)}</span> {m.delta}
-              {m.vsYear && <span class="metric-vs">vs {m.vsYear}</span>}
-            </span>
-          ) : (
-            <span class="metric-trend mono none">{m.year}</span>
-          )}
-          {m.flag && <span class="metric-type-flag mono">{m.flag}</span>}
-        </div>
+        {(m.delta || m.flag) && (
+          <div class="metric-foot">
+            {m.delta && (
+              <span class={`metric-trend mono ${m.deltaDir}`}>
+                <span class="metric-arrow">{arrow(m.deltaDir)}</span> {m.delta}
+                {m.vsYear && <span class="metric-vs">vs {m.vsYear}</span>}
+              </span>
+            )}
+            {m.flag && <span class="metric-type-flag mono">{m.flag}</span>}
+          </div>
+        )}
       </div>
     ))}
   </div>
@@ -177,6 +188,14 @@ function iconFor(label: string): string {
   }
   .metric-icon { width: 16px; height: 16px; color: var(--ink-faint); flex-shrink: 0; }
 
+  /* Value and its year badge sit on one baseline-aligned row */
+  .metric-value-row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
   .metric-value {
     font-family: var(--font-display);
     font-size: 26px;
@@ -186,6 +205,28 @@ function iconFor(label: string): string {
     font-variant-numeric: tabular-nums;
   }
   .metric-card.lead .metric-value { font-size: 38px; }
+
+  /* Observation-year badge — hard-edged, quiet, but always present so a
+     "latest available" figure can never be mistaken for a current-year one. */
+  .metric-year {
+    flex-shrink: 0;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    font-variant-numeric: tabular-nums;
+    color: var(--ink-soft);
+    background-color: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 0;
+    padding: 2px 6px;
+    cursor: help;
+  }
+  /* Materially out-of-date observation (>= 2 years behind the hub's newest
+     data) — reads as a warning rather than neutral metadata. */
+  .metric-year.stale {
+    color: var(--neg);
+    border-color: var(--neg);
+  }
 
   .metric-unit {
     font-size: 10px;
