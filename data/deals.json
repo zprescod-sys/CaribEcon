@@ -215,7 +215,7 @@
   },
   {
     "id": "deal-0038c474",
-    "headline": "IDB Invest approves US$500m financing  for ANSA McAL",
+    "headline": "IDB Invest approves US$500m financing for ANSA McAL",
     "parties": "IDB Invest and Japan International Cooperation Agency (JICA) (lenders); ANSA McAL Group (borrower)",
     "value": "Up to US$500m",
     "date": "2026-07-22",
@@ -226,5 +226,33 @@
     "triaged": true,
     "escalated": false,
     "reviewNote": "Approved by Zeke 2026-07-27 — first Debt-type deal, and the case that motivated the DFI-lending change. Parties/value/type drafted and WebFetch-verified by warrenb against the Trinidad Express source (2026-07-22): IDB Invest 'has approved financing of up to US$500 million' to the ANSA McAL Group, agreement signed. Lender's own approval is the closing event, so completed, not pending; bilateral facility to a named borrower, so Debt not Bond. Value is the source's qualified ceiling; the source separately notes an initial commitment of US$200m (US$150m IDB Invest + US$50m JICA) — the ceiling was chosen deliberately as the figure the headline reports. CNC3's 2026-07-20 report of the same transaction (deal-5daff50f) rejected as a duplicate."
+  },
+  {
+    "id": "deal-1f35004c",
+    "headline": "Dolla Financial completes acquisition of Evolve loan portfolio",
+    "parties": "Dolla Financial Services Limited (acquirer); Evolve Loan Co Limited (seller)",
+    "value": "Undisclosed",
+    "date": "2026-07-04",
+    "country": "JM",
+    "type": "M&A",
+    "url": "https://www.jamaicaobserver.com/2026/07/04/dolla-financial-completes-acquisition-evolve-loan-portfolio/",
+    "source": "Jamaica Observer",
+    "triaged": true,
+    "escalated": false,
+    "reviewNote": "Approved by Zeke 2026-07-27. Completed M&A verified via Jamaica Observer (effective 30 June 2026): Dolla Financial acquired Evolve Loan Co's lending portfolio (~1,800 customers); parties and type transcribed from the source. Value recorded as 'Undisclosed' by human editorial decision: the source gives no purchase price, only a formula ('the gross nominal value of the portfolio minus agreed expected credit loss provisions'). The ~$700m figure in the article is the portfolio's loan book, NOT the price paid, and was deliberately not used as the deal value."
+  },
+  {
+    "id": "deal-0b8c9f28",
+    "headline": "West Indian Traders becomes fifth SME Market listing",
+    "parties": "West Indian Traders Ltd (WIT)",
+    "value": "Undisclosed",
+    "date": "2026-07-22",
+    "country": "TT",
+    "type": "IPO",
+    "url": "https://trinidadexpress.com/business/local/west-indian-traders-becomes-fifth-sme-market-listing/article_e7d054a9-9d59-4372-b803-c1de7b0d0ad7.html",
+    "source": "Trinidad Express",
+    "triaged": true,
+    "escalated": false,
+    "reviewNote": "Approved by Zeke 2026-07-27. Completed listing verified via Trinidad Express (re-fetched 2026-07-27): 'The listing of West Indian Traders Ltd (WIT) on Monday brought the number of companies on the market to five' — TTSE SME Market listing has happened. Value recorded as 'Undisclosed' by human editorial decision: the article's $10.125m is the offer TARGET ('is seeking to raise'), not the amount raised — it never reports the subscription outcome — and it writes a bare '$' it never qualifies as TT$. Publishing either the target as a raise, or an inferred TT$, would have been inference rather than transcription."
   }
 ]
