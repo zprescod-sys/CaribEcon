@@ -1,5 +1,456 @@
 [
   {
+    "id": "kaieteur-news-ef584521",
+    "title": "Canadian firm eyes acquisition of company controlling Quartzstone Gold Project",
+    "source": "Kaieteur News",
+    "date": "2026-07-27",
+    "country": "GY",
+    "url": "https://kaieteurnewsonline.com/2026/07/27/canadian-firm-eyes-acquisition-of-company-controlling-quartzstone-gold-project/",
+    "tags": [
+      "news",
+      "canadian mining company",
+      "fortuna mining corp.",
+      "quartzstone gold project"
+    ],
+    "category": "Energy",
+    "group": "Energy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Mining sector acquisition in Guyana; FDI in gold mining operations",
+    "classifier": "llm"
+  },
+  {
+    "id": "kaieteur-news-527555c1",
+    "title": "Government retenders Orealla Secondary School project after terminating original $198M contract",
+    "source": "Kaieteur News",
+    "date": "2026-07-27",
+    "country": "GY",
+    "url": "https://kaieteurnewsonline.com/2026/07/27/government-retenders-orealla-secondary-school-project-after-terminating-original-198m-contract/",
+    "tags": [
+      "news",
+      "ministry of education",
+      "orealla secondary school",
+      "terminating"
+    ],
+    "category": "Infrastructure",
+    "group": "Investment",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Government contract termination and retender for school project; public procurement and fiscal management",
+    "classifier": "llm"
+  },
+  {
+    "id": "guyana-chronicle-f4ce898e",
+    "title": "Parliament to consider $54.9B supplementary budget today",
+    "source": "Guyana Chronicle",
+    "date": "2026-07-27",
+    "country": "GY",
+    "url": "https://guyanachronicle.com/2026/07/27/parliament-to-consider-54-9b-supplementary-budget-today/",
+    "tags": [
+      "news"
+    ],
+    "category": "Fiscal Policy",
+    "group": "Fiscal Policy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Parliament budget consideration; core fiscal policy and government spending",
+    "classifier": "llm"
+  },
+  {
+    "id": "guyana-chronicle-e06a3629",
+    "title": "Renewable energy savings to lower electricity costs in hinterland communities – PM",
+    "source": "Guyana Chronicle",
+    "date": "2026-07-27",
+    "country": "GY",
+    "url": "https://guyanachronicle.com/2026/07/27/renewable-energy-savings-to-lower-electricity-costs-in-hinterland-communities-pm/",
+    "tags": [
+      "news"
+    ],
+    "category": "Energy",
+    "group": "Energy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Renewable energy investment lowering hinterland electricity costs; energy infrastructure and consumer impact",
+    "classifier": "llm"
+  },
+  {
+    "id": "jamaica-gleaner-70523d37",
+    "title": "Christie’s blueprint for an AI-ready SBA",
+    "source": "Jamaica Gleaner",
+    "date": "2026-07-27",
+    "country": "JM",
+    "url": "http://jamaica-gleaner.com/index%2Ephp/article/news/20260727/christies-blueprint-ai-ready-sba",
+    "category": "Technology",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "AI readiness and digital transformation in small-business administration is a national economic policy initiative",
+    "classifier": "llm"
+  },
+  {
+    "id": "eyewitness-news-da9e5f20",
+    "title": "Millions invested, but digital payments progress remains limited, says Consultant",
+    "source": "Eyewitness News",
+    "date": "2026-07-27",
+    "country": "BS",
+    "url": "https://ewnews.com/millions-invested-but-digital-payments-progress-remains-limited-says-consultant/?utm_source=rss&utm_medium=rss&utm_campaign=millions-invested-but-digital-payments-progress-remains-limited-says-consultant",
+    "tags": [
+      "business",
+      "always a headline ahead",
+      "bahamas news",
+      "ewnews.com",
+      "eyewitness news online"
+    ],
+    "category": "Banking",
+    "group": "Finance",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "digital payment adoption and financial-inclusion progress in The Bahamas; monetary/fintech sector development",
+    "classifier": "llm"
+  },
+  {
+    "id": "eyewitness-news-fcd60f7d",
+    "title": "Sygnus Investment Bahamas launches receivables purchase platform backed by US$10 million IDB Invest facility to support business liquidity.",
+    "source": "Eyewitness News",
+    "date": "2026-07-27",
+    "country": "BS",
+    "url": "https://ewnews.com/sygnus-investment-bahamas-launches-receivables-purchase-platform-backed-by-us10-million-idb-invest-facility-to-support-business-liquidity/?utm_source=rss&utm_medium=rss&utm_campaign=sygnus-investment-bahamas-launches-receivables-purchase-platform-backed-by-us10-million-idb-invest-facility-to-support-business-liquidity",
+    "tags": [
+      "business",
+      "always a headline ahead",
+      "bahamas",
+      "bahamas news",
+      "ewnews.com",
+      "eyewitness news"
+    ],
+    "category": "Investment",
+    "group": "Investment",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "FDI facility and business liquidity platform backed by IDB Invest; investment/financing transaction",
+    "classifier": "llm"
+  },
+  {
+    "id": "starnieuws-fc6dc917",
+    "title": "De nieuwe grabbelton; Oil & gas in Suriname",
+    "source": "Starnieuws",
+    "date": "2026-07-27",
+    "country": "SR",
+    "url": "https://www.starnieuws.com/index.php/welcome/index/nieuwsitem/93145",
+    "category": "Energy",
+    "group": "Energy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "oil and gas sector governance and revenue distribution in Suriname",
+    "classifier": "llm"
+  },
+  {
+    "id": "starnieuws-9fa13834",
+    "title": "Caribische belastingdiensten zoeken antwoord op digitale economie",
+    "source": "Starnieuws",
+    "date": "2026-07-27",
+    "country": "SR",
+    "url": "https://www.starnieuws.com/index.php/welcome/index/nieuwsitem/93146",
+    "category": "Technology",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Caribbean tax authorities adapting to digital economy; regional fiscal policy and digital commerce",
+    "classifier": "llm"
+  },
+  {
+    "id": "starnieuws-a6e94405",
+    "title": "SLM-vlucht naar Amsterdam geannuleerd na technisch mankement",
+    "source": "Starnieuws",
+    "date": "2026-07-27",
+    "country": "SR",
+    "url": "https://www.starnieuws.com/index.php/welcome/index/nieuwsitem/93148",
+    "category": "Tourism",
+    "group": "Trade & Tourism",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "airline flight cancellation due to technical fault; air transport and tourism connectivity disruption",
+    "classifier": "llm"
+  },
+  {
+    "id": "waterkant-4f5f2e02",
+    "title": "Simons keert tevreden terug uit Engeland na gesprekken met Bank of America",
+    "source": "Waterkant",
+    "date": "2026-07-27",
+    "country": "SR",
+    "url": "https://www.waterkant.net/suriname/2026/07/27/simons-keert-tevreden-terug-uit-engeland-na-gesprekken-met-bank-of-america/#utm_source=rss&utm_medium=rss&utm_campaign=simons-keert-tevreden-terug-uit-engeland-na-gesprekken-met-bank-of-america",
+    "tags": [
+      "economie",
+      "nieuws uit suriname",
+      "overheid",
+      "uitgelicht"
+    ],
+    "category": "Fiscal Policy",
+    "group": "Fiscal Policy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "finance minister meeting with Bank of America; sovereign debt, bond, or investment discussions affecting Suriname's external financing",
+    "classifier": "llm"
+  },
+  {
+    "id": "waterkant-8bffb955",
+    "title": "Technisch probleem houdt SLM-vlucht van Paramaribo naar Amsterdam aan de grond",
+    "source": "Waterkant",
+    "date": "2026-07-27",
+    "country": "SR",
+    "url": "https://www.waterkant.net/suriname/2026/07/27/technisch-probleem-houdt-slm-vlucht-van-paramaribo-naar-amsterdam-aan-de-grond/#utm_source=rss&utm_medium=rss&utm_campaign=technisch-probleem-houdt-slm-vlucht-van-paramaribo-naar-amsterdam-aan-de-grond",
+    "tags": [
+      "nieuws uit suriname",
+      "toerisme",
+      "uitgelicht"
+    ],
+    "category": "Tourism",
+    "group": "Trade & Tourism",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "airline operational disruption affecting international connectivity; air-transport and tourism sector impact",
+    "classifier": "llm"
+  },
+  {
+    "id": "antigua-news-room-aa4ddb04",
+    "title": "Antigua and Barbuda Named Among Caribbean’s Best Retirement Destinations for Americans",
+    "source": "Antigua News Room",
+    "date": "2026-07-27",
+    "country": "AG",
+    "url": "https://antiguanewsroom.com/antigua-and-barbuda-named-among-caribbeans-best-retirement-destinations-for-americans/",
+    "tags": [
+      "news"
+    ],
+    "category": "Tourism",
+    "group": "Trade & Tourism",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Antigua and Barbuda retirement-destination ranking for US citizens; tourism/expatriate-residence economic positioning",
+    "classifier": "llm"
+  },
+  {
+    "id": "antigua-news-room-6172fa3c",
+    "title": "Antigua and Barbuda ‘Better Positioned’ to Host CARIFESTA in 2029",
+    "source": "Antigua News Room",
+    "date": "2026-07-27",
+    "country": "AG",
+    "url": "https://antiguanewsroom.com/antigua-and-barbuda-better-positioned-to-host-carifesta-in-2029/",
+    "tags": [
+      "news"
+    ],
+    "category": "Tourism",
+    "group": "Trade & Tourism",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Antigua bidding to host CARIFESTA 2029; major cultural/tourism event with economic hosting and hospitality impact",
+    "classifier": "llm"
+  },
+  {
+    "id": "antigua-news-room-b644705a",
+    "title": "Antigua and Barbuda Developing National Cybersecurity Team to Protect Banks, Telecoms and Utilities",
+    "source": "Antigua News Room",
+    "date": "2026-07-27",
+    "country": "AG",
+    "url": "https://antiguanewsroom.com/antigua-and-barbuda-developing-national-cybersecurity-team-to-protect-banks-telecoms-and-utilities/",
+    "tags": [
+      "news"
+    ],
+    "category": "Technology",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "cybersecurity infrastructure development for financial and utility sectors; digital economy and financial resilience",
+    "classifier": "llm"
+  },
+  {
+    "id": "antigua-news-room-6b188ab5",
+    "title": "Antigua and Barbuda-Flagged Cargo Ship Remains Grounded in Canada After Refloating Effort Fails",
+    "source": "Antigua News Room",
+    "date": "2026-07-27",
+    "country": "AG",
+    "url": "https://antiguanewsroom.com/antigua-and-barbuda-flagged-cargo-ship-remains-grounded-in-canada-after-refloating-effort-fails/",
+    "tags": [
+      "news"
+    ],
+    "category": "Trade",
+    "group": "Trade & Tourism",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Antigua-flagged cargo vessel operational/insurance/maritime issue; shipping and trade logistics impact",
+    "classifier": "llm"
+  },
+  {
+    "id": "antigua-news-room-332c350e",
+    "title": "Antigua and Barbuda Authorities Identify Cyberfraud Suspects as Prosecutions Near",
+    "source": "Antigua News Room",
+    "date": "2026-07-27",
+    "country": "AG",
+    "url": "https://antiguanewsroom.com/antigua-and-barbuda-authorities-identify-cyberfraud-suspects-as-prosecutions-near/",
+    "tags": [
+      "news"
+    ],
+    "category": "Government",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "cyberfraud prosecution by authorities; financial crime enforcement in Antigua",
+    "classifier": "llm"
+  },
+  {
+    "id": "antigua-observer-4cb49483",
+    "title": "Senator Raises Alarm Over US Visa Revocations",
+    "source": "Antigua Observer",
+    "date": "2026-07-27",
+    "country": "AG",
+    "url": "https://antiguaobserver.com/senator-raises-alarm-over-us-visa-revocations/",
+    "tags": [
+      "the big stories"
+    ],
+    "category": "Government",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "US visa revocation pattern affecting Antigua; migration/diplomatic issue with economic impact on tourism and investment climate",
+    "classifier": "llm"
+  },
+  {
+    "id": "antigua-observer-a9e0f6f8",
+    "title": "Farmers Stop Planting, Waiting on Rain as El Niño Looms",
+    "source": "Antigua Observer",
+    "date": "2026-07-27",
+    "country": "AG",
+    "url": "https://antiguaobserver.com/farmers-stop-planting-waiting-on-rain-as-el-nino-looms/",
+    "tags": [
+      "the big stories"
+    ],
+    "category": "Agriculture",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "El Niño drought reducing agricultural planting; climate-driven commodity supply impact on farming sector",
+    "classifier": "llm"
+  },
+  {
+    "id": "antigua-observer-e0318397",
+    "title": "Senate Clash Erupts Over What Constitutes Government Wastage",
+    "source": "Antigua Observer",
+    "date": "2026-07-27",
+    "country": "AG",
+    "url": "https://antiguaobserver.com/senate-clash-erupts-over-what-constitutes-government-wastage/",
+    "tags": [
+      "the big stories"
+    ],
+    "category": "Fiscal Policy",
+    "group": "Fiscal Policy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "senate debate on government wastage and fiscal accountability; public expenditure oversight and fiscal governance",
+    "classifier": "llm"
+  },
+  {
+    "id": "st-kitts-nevis-observer-343d7c6b",
+    "title": "Accreditation key to strengthening healthcare and national development",
+    "source": "St. Kitts-Nevis Observer",
+    "date": "2026-07-27",
+    "country": "KN",
+    "url": "https://www.thestkittsnevisobserver.com/accreditation-key-to-strengthening-healthcare-and-national-development/",
+    "tags": [
+      "local news"
+    ],
+    "category": "Government",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "healthcare accreditation strengthening national development; health-sector regulation and economic development policy",
+    "classifier": "llm"
+  },
+  {
+    "id": "st-kitts-nevis-observer-4d99d821",
+    "title": "MRI Centre at JNF “95% complete”",
+    "source": "St. Kitts-Nevis Observer",
+    "date": "2026-07-27",
+    "country": "KN",
+    "url": "https://www.thestkittsnevisobserver.com/mri-centre-at-jnf-95-complete/",
+    "tags": [
+      "local news"
+    ],
+    "category": "Infrastructure",
+    "group": "Investment",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Healthcare infrastructure project (MRI Centre) near completion in Jamaica",
+    "classifier": "llm"
+  },
+  {
+    "id": "cayman-compass-8e451a10",
+    "title": "Government preserving more than 100 fruit varieties",
+    "source": "Cayman Compass",
+    "date": "2026-07-27",
+    "country": "KY",
+    "url": "https://www.caymancompass.com/2026/07/27/government-preserving-more-than-100-fruit-varieties/",
+    "tags": [
+      "local",
+      "cayman islands department of agriculture",
+      "claudette mckenzie-bowen",
+      "demoy nash",
+      "germplasm"
+    ],
+    "category": "Agriculture",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Government agricultural preservation program preserving fruit genetic diversity",
+    "classifier": "llm"
+  },
+  {
+    "id": "bvi-news-d4a924c8",
+    "title": "Premier admits failures after $2.5M investment loss",
+    "source": "BVI News",
+    "date": "2026-07-27",
+    "country": "VG",
+    "url": "https://bvinews.com/premier-admits-failures-after-2-5m-investment-loss/",
+    "tags": [
+      "all news"
+    ],
+    "category": "Government",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Government admits major investment loss ($2.5M), fiscal accountability issue",
+    "classifier": "llm"
+  },
+  {
+    "id": "bvi-news-868c8d29",
+    "title": "Premier denies financial protocols breached for shorter runway expansion",
+    "source": "BVI News",
+    "date": "2026-07-27",
+    "country": "VG",
+    "url": "https://bvinews.com/premier-denies-financial-protocols-breached-for-shorter-runway-expansion/",
+    "tags": [
+      "all news"
+    ],
+    "category": "Fiscal Policy",
+    "group": "Fiscal Policy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Airport expansion project; government finance and procurement protocols governance",
+    "classifier": "llm"
+  },
+  {
+    "id": "wic-news-b70cc1c5",
+    "title": "St. Kitts and Nevis records lower crime rates in latest mid-year report",
+    "source": "WIC News",
+    "date": "2026-07-27",
+    "country": "ALL",
+    "url": "https://wicnews.com/saint-kitts-nevis/st-kitts-and-nevis-records-lower-crime-rates-in-latest-mid-year-report",
+    "category": "Government",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Crime statistics report showing lower crime rates in Caribbean economy",
+    "classifier": "llm"
+  },
+  {
     "id": "kaieteur-news-205221bc",
     "title": "Resource curse debate misses key distinction on institutions",
     "source": "Kaieteur News",
@@ -3956,6 +4407,28 @@
     "classifier": "llm"
   },
   {
+    "id": "cayman-compass-2788fe0c",
+    "title": "Cayman to host sports anti-doping workshop next year",
+    "source": "Cayman Compass",
+    "date": "2026-07-22",
+    "country": "KY",
+    "url": "https://www.caymancompass.com/2026/07/22/cayman-to-host-sports-anti-doping-workshop-next-year/",
+    "tags": [
+      "featured local home page",
+      "local",
+      "sports",
+      "anti-doping",
+      "isaac rankine",
+      "world anti-doping agency"
+    ],
+    "category": "Government",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Cayman hosting anti-doping regulatory workshop for sports sector governance",
+    "classifier": "llm"
+  },
+  {
     "id": "guyana-chronicle-fc38433a",
     "title": "MV Barima tragedy…Vessel located, search and rescue operation remains in effect",
     "source": "Guyana Chronicle",
@@ -4558,6 +5031,23 @@
     "decision": "publish",
     "confidence": "medium",
     "reason": "National participation in regional sports games; government investment and international representation in Central American and Caribbean Games",
+    "classifier": "llm"
+  },
+  {
+    "id": "amandala-e7787137",
+    "title": "Belize launches 2026-2030 Definitive Stamp Collection – “Celebrating Belize”,",
+    "source": "Amandala",
+    "date": "2026-07-21",
+    "country": "BZ",
+    "url": "https://amandala.com.bz/news/belize-launches-2026-2030-definitive-stamp-collection-celebrating-belize/",
+    "tags": [
+      "headline"
+    ],
+    "category": "Government",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Belize stamp/commemorative collection launch; government cultural and commercial merchandise initiative",
     "classifier": "llm"
   },
   {
