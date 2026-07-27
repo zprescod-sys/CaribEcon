@@ -179,12 +179,17 @@ deliberate here — it is now the only judgment deciding what reaches the Deals 
 - **`completed`** — the transaction is reported as closed, finalized, acquired/sold, financially
   closed, commissioned, or operational. Set `deal_type` to the single best-fitting type:
   `M&A` (acquisition, merger, takeover, buyout, divestiture, stake purchase), `FDI` (new foreign
-  direct investment, project investment), `Bond` (bond/eurobond/note issuance), `IPO` (public
+  direct investment, project investment), `Debt` (a loan, credit facility, or financing package
+  extended to a named borrower — including development-finance lending from IDB Invest, IFC, CDB,
+  the World Bank, CAF or a commercial bank), `Bond` (bond/eurobond/note issuance), `IPO` (public
   listing, rights issue), `JV` (joint venture), `Concession` (concession or license award), or
-  `Other` if none fit cleanly.
+  `Other` if none fit cleanly. `Debt` vs `Bond`: a bilateral loan or facility is `Debt`; a
+  security sold to investors is `Bond`.
 - **`pending`** — plausibly a transaction, but only a proposal, intention, early discussion, MOU,
-  letter of intent, pending deal, regulatory approval stage, or non-operational financing stage —
-  not yet closed. This includes a headline with a prospective verb ("moves to acquire," "to buy")
+  letter of intent, pending deal, or an approval by an outside authority that the deal still has
+  to clear — not yet closed. (A *lender's own* approval of its financing is the opposite case;
+  see "whose approval closes the deal" below.) This includes a headline with a prospective verb
+  ("moves to acquire," "to buy")
   even when it already reports a specific price — e.g. "New Canadian firm moves to acquire 64 km²
   of mineral claims in US$1.1M deal from local owner" is `pending`: a firm "moving to acquire" is
   at the letter-of-intent/early stage, and the US$1.1M figure states the deal's terms, not that it
@@ -216,12 +221,33 @@ status of the transaction the sentence is *about*, not the status of whatever ac
 government approval, an exemption, a regulatory step) is being reported alongside it. This
 headline is `pending`; only the exemption itself is complete.
 
+**Whose approval closes the deal?** When the *lender itself* approves a specific financing
+package for a named borrower — "IDB Invest **approves** US$500m financing for ANSA McAL" — that
+approval **is** the transaction closing, because the party whose consent was outstanding has now
+given it. That is `completed`/`Debt`. Contrast a **third party** approving somebody else's
+transaction — a regulator clearing a merger, a government granting a tax exemption on a
+"proposed" bond — where the transaction itself still hasn't happened; that stays `pending`. Ask
+who had to say yes for money to move: if the headline's approver is the one providing the money,
+the deal is done. The same goes for a borrower-side verb: "secures financing," "signs a US$500m
+facility," "closes a loan" are all `completed`/`Debt`.
+
 **Ordinary operational news is not a deal.** A new flight route, a new store opening, a branch
 expansion, or a new service launch is routine business activity, not a capital transaction —
 `deal_status` is `not_a_deal` even when the news itself is legitimately `publish`-worthy (as
 tourism, trade, or corporate news). Reserve `completed`/`pending` for an actual
 ownership/investment/financing event: money or equity changing hands, a stake being acquired, a
-bond or share being issued, a concession being awarded.
+bond or share being issued, a loan or credit facility being extended to a named borrower, a
+concession being awarded.
+
+The test is whether capital moves **for ownership or for return**. That is why a loan counts —
+the lender expects repayment with interest — while these do not, no matter how large the figure:
+
+- A **grant**, donation, programme disbursement, or technical-assistance award — capital moves
+  but nothing is owned and nothing is repaid. "CDB grants US$2m for school rehabilitation" is
+  `not_a_deal`.
+- A **budget allocation or ministry programme** — "Government invests $18 million in
+  cost-of-living relief measures" is fiscal spending, not a transaction.
+- **Construction or service capex** by the operator itself — a utility launching a works project.
 
 ## Output
 
@@ -246,7 +272,10 @@ output, not a sports medal"), not generic.
 
 | Title                                                                                | decision | category      | reason                                       | deal_status | deal_type |
 | ------------------------------------------------------------------------------------ | -------- | ------------- | --------------------------------------------- | ----------- | --------- |
-| "US Development Finance Agency eyes investment opportunities in Antigua and Barbuda" | publish  | Investment    | inbound FDI into a Caribbean economy          | not_a_deal  | null      |
+| "US Development Finance Agency eyes investment opportunities in Antigua and Barbuda" | publish  | Investment    | "eyes opportunities" — exploratory, no transaction yet | not_a_deal  | null      |
+| "IDB Invest approves US$500m financing for ANSA McAL"                                | publish  | Banking       | the lender approving its own facility IS the closing | completed   | Debt      |
+| "ANSA McAL secures US$500M financing partnership with IDB Invest"                    | publish  | Banking       | same facility from the borrower's side; "secures" = closed | completed   | Debt      |
+| "CDB approves US$2m grant for school rehabilitation in Dominica"                     | publish  | Infrastructure | a grant is not repaid and buys no stake — capital moves but not for ownership or return | not_a_deal | null      |
 | "Oil firms face stricter scrutiny as Guyana strengthens local-content monitoring"    | publish  | Energy        | energy-sector governance in Guyana            | not_a_deal  | null      |
 | "Economists call for Govt accountability of HSF drawdowns"                           | publish  | Fiscal Policy | sovereign-wealth-fund (HSF) fiscal oversight  | not_a_deal  | null      |
 | "PM Browne says country faces tough choice over Citizenship by Investment"           | publish  | Fiscal Policy | CBI is a core FDI/revenue program             | not_a_deal  | null      |

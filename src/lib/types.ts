@@ -168,7 +168,10 @@ export type PublicationsData = Publication[];
 
 // ── Deals & Investment ─────────────────────────────────────────────────────
 
-export type DealType = 'M&A' | 'FDI' | 'Bond' | 'IPO' | 'JV' | 'Concession' | 'Other';
+// `Debt` = a loan, credit facility, or financing package extended to a named borrower
+// (e.g. an IDB Invest / IFC / CDB facility). `Bond` stays reserved for a securities issuance —
+// a bilateral facility is not a bond. Runtime mirror: DEAL_TYPES in scripts/build-feeds.mjs.
+export type DealType = 'M&A' | 'FDI' | 'Debt' | 'Bond' | 'IPO' | 'JV' | 'Concession' | 'Other';
 
 export interface Deal {
   id: string;

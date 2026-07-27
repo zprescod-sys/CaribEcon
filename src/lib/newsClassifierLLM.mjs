@@ -28,7 +28,10 @@ const CHUNK_SIZE = 100;
 const TOKENS_PER_ITEM = 100;
 const TOKENS_BUFFER = 500;
 
-const DEAL_TYPES = ['M&A', 'FDI', 'Bond', 'IPO', 'JV', 'Concession', 'Other'];
+// Third copy of the DealType vocabulary (see the sync note in scripts/build-feeds.mjs). This one
+// feeds the structured-output enum below, so a type missing here is a type the model is
+// mechanically incapable of returning, no matter what the rubric says.
+const DEAL_TYPES = ['M&A', 'FDI', 'Debt', 'Bond', 'IPO', 'JV', 'Concession', 'Other'];
 
 // The category enum is built from NEWS_CATEGORY_GROUPS' own keys, not hand-copied from the
 // rubric text — so the model is mechanically incapable of returning a category this codebase
