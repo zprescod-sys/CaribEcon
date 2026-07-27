@@ -115,6 +115,40 @@ Every page reads from one hub; no per-page hardcoded numbers.
 
 ## Session Log (condensed)
 
+- **2026-07-27** — Development-finance lending made a first-class deal type (branch
+  `feature/deals-dfi-financing`). **Trigger:** "IDB Invest approves US$500m financing for ANSA
+  McAL" was in `news.json` from 2026-07-22 but could never reach the Deals page. **Two
+  independent root causes**, both fixed. (1) **No backfill path** — the LLM classifier went live
+  2026-07-23 and `classifyNewItems` only ever judges *brand-new* items, so all **1059** stored
+  records carried no deal verdict and nothing could re-examine them. (2) **No rule for lender
+  financing** — the rubric's `pending` bullet swept up "regulatory approval stage / non-operational
+  financing stage", and `DealType` had no slot for a credit facility (`Bond` is a securities
+  issuance, not a bilateral facility). **New `Debt` type** added to all three hand-synced
+  vocabulary copies (`types.ts`, `build-feeds.mjs`, `newsClassifierLLM.mjs`); `triage-deals.mjs`
+  imports `DEAL_TYPES` and the DealsFeed badge is generic, so both picked it up free. **Rubric**
+  gained a "whose approval closes the deal" rule — a *lender's own* approval of its facility IS
+  the closing, unlike a third party clearing someone else's deal — and the ownership gate was
+  widened to admit lending while explicitly excluding **grants / programme disbursements** (capital
+  must move for ownership or return). warrenb's gate updated to match. **New
+  `npm run deals:backfill`** (`--backfill-deals`): deal-judges stored records with no verdict and
+  stages the completed ones, no feed fetch. `deal_status`/`deal_type` are **now persisted on the
+  news record**, reversing the original design — that's what makes the backfill idempotent and lets
+  future rubric fixes find past mis-judgments (noted as superseded in
+  `docs/news-llm-classifier-plan.md`). **Results:** backfill judged 1059 records (27 completed,
+  53 pending) and staged 22 new candidates; re-run judges 0 with zero file churn; `news.json` diff
+  is deal-fields-only (0 changes to `decision`/`category`, so `/news` is unaffected). Fixtures
+  17/17 against the live classifier (3 new + 14 pre-existing, no regressions). warrenb triaged the
+  26-row queue: 23 rejected, 3 escalated, 0 auto-published (first-run caution still ACTIVE). The
+  ANSA facility (`deal-0038c474`, Trinidad Express canonical; the CNC3 report rejected as a
+  duplicate) was drafted, WebFetch-verified, then human-approved — **the first `Debt` deal on the
+  page**, `Up to US$500m`, IDB Invest + JICA as lenders. Also corrected SCHEMA.md's deals
+  paragraph, which still described the regex miner retired on 2026-07-23. **Open:** warrenb flagged
+  4 classifier mis-staging patterns for `tune-news-rubric` — a `Debt`-specific pending miss
+  ("lines up"/"proposed" DFI loans, e.g. the JPS US$80m loan whose IDB board vote is 7 Aug),
+  bulk operational news staged `completed` post-backfill, caribank.org procurement notices, and an
+  asking price read as a closed price. Two escalations await a human: the Dominica Cable Car row
+  (also has `country: ALL` when the project is in DM) and the West Indian Traders SME listing
+  (source gives an offer target, not the amount raised, and an unqualified `$`).
 - **2026-07-23** — World Bank/IMF source migration (`docs/worldbank-imf-migration-plan.md`,
   branch `feature/worldbank-imf`; done in 6 commits, one per plan part, walked through
   step-by-step in chat rather than auto-approved). **Root cause:** the weekly `data.yml`

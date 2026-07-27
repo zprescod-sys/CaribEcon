@@ -212,5 +212,19 @@
     "triaged": true,
     "escalated": false,
     "reviewNote": "Approved by Zeke 2026-07-25 — first tested case for the warrenb pipeline. Parties/value/type as drafted and WebFetch-verified by warrenb."
+  },
+  {
+    "id": "deal-0038c474",
+    "headline": "IDB Invest approves US$500m financing  for ANSA McAL",
+    "parties": "IDB Invest and Japan International Cooperation Agency (JICA) (lenders); ANSA McAL Group (borrower)",
+    "value": "Up to US$500m",
+    "date": "2026-07-22",
+    "country": "TT",
+    "type": "Debt",
+    "url": "https://trinidadexpress.com/business/local/idb-invest-approves-us-500m-financing-for-ansa-mcal/article_2c87916d-a8c1-4c1b-bd0b-7763460dcb33.html",
+    "source": "Trinidad Express",
+    "triaged": true,
+    "escalated": false,
+    "reviewNote": "Approved by Zeke 2026-07-27 — first Debt-type deal, and the case that motivated the DFI-lending change. Parties/value/type drafted and WebFetch-verified by warrenb against the Trinidad Express source (2026-07-22): IDB Invest 'has approved financing of up to US$500 million' to the ANSA McAL Group, agreement signed. Lender's own approval is the closing event, so completed, not pending; bilateral facility to a named borrower, so Debt not Bond. Value is the source's qualified ceiling; the source separately notes an initial commitment of US$200m (US$150m IDB Invest + US$50m JICA) — the ceiling was chosen deliberately as the figure the headline reports. CNC3's 2026-07-20 report of the same transaction (deal-5daff50f) rejected as a duplicate."
   }
 ]

@@ -178,7 +178,9 @@
     "suggestedType": "Other",
     "url": "https://www.cnc3.co.tt/cnc3-secures-cpl-and-wcpl-broadcast-rights-in-trinidad-and-tobago/?utm_source=rss&utm_medium=rss&utm_campaign=cnc3-secures-cpl-and-wcpl-broadcast-rights-in-trinidad-and-tobago",
     "source": "CNC3",
-    "approved": false
+    "approved": false,
+    "triaged": true,
+    "reviewNote": "Not a capital transaction. A broadcast-rights licence for CPL/WCPL coverage is ordinary commercial contracting for content — no capital changing hands for ownership or return, and no stake, financing or concession award in the gate's sense. No value stated either."
   },
   {
     "id": "deal-65cbbf78",
@@ -191,7 +193,9 @@
     "suggestedType": "Other",
     "url": "https://www.jamaicaobserver.com/2026/07/25/megamart-catherine-hall-property-goes-sale-us15-million/",
     "source": "Jamaica Observer",
-    "approved": false
+    "approved": false,
+    "triaged": true,
+    "reviewNote": "Not completed. 'Goes on sale for US$15 million' reports an asset listed for sale, i.e. an asking price, not a transaction that closed. Classifier miss (staged completed)."
   },
   {
     "id": "deal-90f4eae0",
@@ -204,7 +208,9 @@
     "suggestedType": "Other",
     "url": "https://www.iwnsvg.com/2026/07/26/fleet-of-boats-given-new-life-for-grenadine-communities/",
     "source": "iWitness News",
-    "approved": false
+    "approved": false,
+    "triaged": true,
+    "reviewNote": "Not a capital transaction — refurbished community boats for Grenadine communities, no ownership or financing event."
   },
   {
     "id": "deal-1849724c",
@@ -217,7 +223,9 @@
     "suggestedType": "Other",
     "url": "https://www.searchlight.vc/news/2026/07/24/three-receive-scholarships-agricultural-input-warehouse/",
     "source": "Searchlight SVG",
-    "approved": false
+    "approved": false,
+    "triaged": true,
+    "reviewNote": "Not a deal — scholarship awards. A grant/award buys no stake and is not repaid, per the gate's grant carve-out."
   },
   {
     "id": "deal-2111dd6f",
@@ -226,11 +234,14 @@
     "value": "",
     "date": "2026-07-25",
     "country": "ALL",
-    "type": "",
+    "type": "FDI",
     "suggestedType": "FDI",
     "url": "https://wicnews.com/dominica/from-a-family-holiday-to-a-us90-million-landmark-dominica-cable-car-project",
     "source": "WIC News",
-    "approved": false
+    "approved": false,
+    "triaged": false,
+    "escalated": true,
+    "reviewNote": "Genuine Dominica FDI story but not publishable by transcription. WIC News feature states ABL Holdings is building the project, that private 'investors made the majority of US$90 million investment', that the cost 'is expected to reach over US$100 million by the time it completes', and that the Government of Dominica took a percentage ownership stake by contributing CBI shares rather than cash. Three blockers: (1) no discrete closing event — the piece is a retrospective on a project 'now in its final stage'; (2) value not cleanly transcribable ('majority of US$90 million', moving to 'over US$100 million'); (3) country field is 'ALL' but the project is in Dominica — machine-owned, not editable here, so flagging instead. Human call on whether to publish as FDI (parties would be 'ABL Holdings; Government of Dominica') and on the country fix."
   },
   {
     "id": "deal-33017ed2",
@@ -243,33 +254,41 @@
     "suggestedType": "Debt",
     "url": "http://jamaica-gleaner.com/article/business/20260724/idb-invest-lines-us80m-loan-jps-grid-recovery",
     "source": "Jamaica Gleaner",
-    "approved": false
+    "approved": false,
+    "triaged": true,
+    "reviewNote": "Pending, not completed. Jamaica Gleaner source states 'The IDB board will decide on approving the loan on August 7' and calls it 'the proposed transaction ... a corporate loan of up to US$80 million to JPS'. The lender's approval has NOT yet happened, so the completed-on-lender-approval rule does not apply. Classifier miss (staged completed) — flag for tune-news-rubric: a DFI loan headline with 'lines up' / 'proposed' must resolve to pending."
   },
   {
     "id": "deal-0b8c9f28",
     "headline": "West Indian Traders becomes  fifth SME Market listing",
-    "parties": "",
+    "parties": "West Indian Traders Ltd (WIT)",
     "value": "",
     "date": "2026-07-22",
     "country": "TT",
-    "type": "",
+    "type": "IPO",
     "suggestedType": "IPO",
     "url": "https://trinidadexpress.com/business/local/west-indian-traders-becomes-fifth-sme-market-listing/article_e7d054a9-9d59-4372-b803-c1de7b0d0ad7.html",
     "source": "Trinidad Express",
-    "approved": false
+    "approved": false,
+    "triaged": false,
+    "escalated": true,
+    "reviewNote": "Completed listing, but value not safely transcribable. Trinidad Express states 'The listing of West Indian Traders Ltd (WIT) on Monday brought the number of companies on the market to five' (TTSE SME Market — listing has happened), and that 'WIT Ltd is offering 5,062,500 ordinary shares at $2 each' and 'is seeking to raise $10.125 million through an initial public offering'. Two reasons value left blank: the article gives the offer target, not the amount actually raised, and it writes a bare '$' that it never qualifies as TT$ — writing 'TT$10.125m' would be inference, not transcription. If you can confirm the currency and that the offer was taken up, set value (e.g. 'TT$10.125m (IPO offer: 5,062,500 shares at $2)') and approved:true."
   },
   {
     "id": "deal-0038c474",
     "headline": "IDB Invest approves US$500m financing  for ANSA McAL",
-    "parties": "",
-    "value": "",
+    "parties": "IDB Invest and Japan International Cooperation Agency (JICA) (lenders); ANSA McAL Group (borrower)",
+    "value": "Up to US$500m",
     "date": "2026-07-22",
     "country": "TT",
-    "type": "",
+    "type": "Debt",
     "suggestedType": "Debt",
     "url": "https://trinidadexpress.com/business/local/idb-invest-approves-us-500m-financing-for-ansa-mcal/article_2c87916d-a8c1-4c1b-bd0b-7763460dcb33.html",
     "source": "Trinidad Express",
-    "approved": false
+    "approved": true,
+    "triaged": true,
+    "escalated": false,
+    "reviewNote": "Approved by Zeke 2026-07-27 — first Debt-type deal, and the case that motivated the DFI-lending change. Parties/value/type drafted and WebFetch-verified by warrenb against the Trinidad Express source (2026-07-22): IDB Invest 'has approved financing of up to US$500 million' to the ANSA McAL Group, agreement signed. Lender's own approval is the closing event, so completed, not pending; bilateral facility to a named borrower, so Debt not Bond. Value is the source's qualified ceiling; the source separately notes an initial commitment of US$200m (US$150m IDB Invest + US$50m JICA) — the ceiling was chosen deliberately as the figure the headline reports. CNC3's 2026-07-20 report of the same transaction (deal-5daff50f) rejected as a duplicate."
   },
   {
     "id": "deal-5daff50f",
@@ -282,7 +301,9 @@
     "suggestedType": "Debt",
     "url": "https://www.cnc3.co.tt/ansa-mcal-secures-us500m-financing-partnership-with-idb-invest/?utm_source=rss&utm_medium=rss&utm_campaign=ansa-mcal-secures-us500m-financing-partnership-with-idb-invest",
     "source": "CNC3",
-    "approved": false
+    "approved": false,
+    "triaged": true,
+    "reviewNote": "Duplicate of deal-0038c474 (same IDB Invest / JICA — ANSA McAL up-to-US$500m facility). Trinidad Express row kept as canonical: it is the later report and explicitly notes the signing of the agreement alongside the approval. Content of both sources agrees on parties, amount and status."
   },
   {
     "id": "deal-a2b89c4c",
@@ -295,7 +316,9 @@
     "suggestedType": "FDI",
     "url": "https://www.jamaicaobserver.com/2026/07/13/jcan-patty-maker-us-opens-new-us17-m-facility-boost-production-amid-growing-demand/",
     "source": "Jamaica Observer",
-    "approved": false
+    "approved": false,
+    "triaged": true,
+    "reviewNote": "Operational, not a transaction — a company opening its own new production facility is own-account capex, not capital changing hands with a counterparty for ownership or return. Also note the facility is in the US, not in a covered Caribbean economy, despite the JM country tag."
   },
   {
     "id": "deal-af4c60d7",
@@ -308,7 +331,9 @@
     "suggestedType": "FDI",
     "url": "https://kaieteurnewsonline.com/2026/07/12/sod-turned-for-528m-east-ruimveldt-market-rehabilitation/",
     "source": "Kaieteur News",
-    "approved": false
+    "approved": false,
+    "triaged": true,
+    "reviewNote": "Operational — a sod-turning/groundbreaking for a government market rehabilitation is construction capex, not a capital transaction. (Same story as deal-4feadd3a; both rejected on their own merits.)"
   },
   {
     "id": "deal-dbcd92f5",
@@ -321,7 +346,9 @@
     "suggestedType": "FDI",
     "url": "https://kaieteurnewsonline.com/2026/07/12/43-room-rooster-international-hotel-opens-on-essequibo-coast/",
     "source": "Kaieteur News",
-    "approved": false
+    "approved": false,
+    "triaged": true,
+    "reviewNote": "Operational — a hotel opening its doors is a business launch, not a capital transaction; no investment amount, financing or ownership change reported."
   },
   {
     "id": "deal-4feadd3a",
@@ -334,7 +361,9 @@
     "suggestedType": "FDI",
     "url": "https://guyanachronicle.com/2026/07/12/sod-turned-for-528-3m-east-ruimveldt-market-construction/",
     "source": "Guyana Chronicle",
-    "approved": false
+    "approved": false,
+    "triaged": true,
+    "reviewNote": "Duplicate of deal-af4c60d7 (same $528M East Ruimveldt Market sod-turning) and an operational construction project in any case, not a capital transaction."
   },
   {
     "id": "deal-1ea02722",
@@ -347,7 +376,9 @@
     "suggestedType": "FDI",
     "url": "https://demerarawaves.com/2026/07/12/pregnant-cows-from-brazil-to-expand-guyanas-cattle-production/",
     "source": "Demerara Waves",
-    "approved": false
+    "approved": false,
+    "triaged": true,
+    "reviewNote": "Not a capital transaction — an import of breeding cattle under an agricultural development programme; no ownership stake, financing or investment commitment reported."
   },
   {
     "id": "deal-e0631915",
@@ -360,7 +391,9 @@
     "suggestedType": "FDI",
     "url": "https://www.caribank.org/work-with-us/procurement/procurement-notices/enhancing-sustainability-and-resilience-agriculture-sector-commonwealth-dominica-project-4",
     "source": "Caribbean Dev Bank",
-    "approved": false
+    "approved": false,
+    "triaged": true,
+    "reviewNote": "Not a deal — a CDB procurement notice for a donor-funded programme (consultancy/works tender), not a capital transaction. Programme disbursements and technical assistance are explicitly out per the gate."
   },
   {
     "id": "deal-3c9108a0",
@@ -373,7 +406,9 @@
     "suggestedType": "FDI",
     "url": "https://www.caribank.org/work-with-us/procurement/procurement-notices/strengthening-flood-early-warning-systems-suriname-project",
     "source": "Caribbean Dev Bank",
-    "approved": false
+    "approved": false,
+    "triaged": true,
+    "reviewNote": "Not a deal — a CDB procurement notice for a programme, same as deal-e0631915. Recurring staging pattern: caribank.org procurement notices are being judged as completed deals."
   },
   {
     "id": "deal-b7142412",
@@ -386,7 +421,9 @@
     "suggestedType": "Other",
     "url": "https://kaieteurnewsonline.com/2026/07/09/georgetown-tt-chambers-sign-deal-to-tackle-trade-barriers/",
     "source": "Kaieteur News",
-    "approved": false
+    "approved": false,
+    "triaged": true,
+    "reviewNote": "Not a capital transaction — a cooperation agreement between two chambers of commerce on trade barriers. No capital, stake or financing. (Same story as deal-683820b9.)"
   },
   {
     "id": "deal-683820b9",
@@ -399,7 +436,9 @@
     "suggestedType": "Other",
     "url": "https://www.cnc3.co.tt/tt-chamber-georgetown-chamber-sign-trade-agreement/?utm_source=rss&utm_medium=rss&utm_campaign=tt-chamber-georgetown-chamber-sign-trade-agreement",
     "source": "CNC3",
-    "approved": false
+    "approved": false,
+    "triaged": true,
+    "reviewNote": "Duplicate of deal-b7142412 (same Georgetown/T&T chambers trade agreement) and not a capital transaction in any case."
   },
   {
     "id": "deal-cdf992dd",
@@ -412,7 +451,9 @@
     "suggestedType": "Other",
     "url": "https://www.cnc3.co.tt/hosein-signs-wipo-agreement-to-boost-local-patent-drafting-capacity/?utm_source=rss&utm_medium=rss&utm_campaign=hosein-signs-wipo-agreement-to-boost-local-patent-drafting-capacity",
     "source": "CNC3",
-    "approved": false
+    "approved": false,
+    "triaged": true,
+    "reviewNote": "Not a deal — a technical-assistance/cooperation agreement with WIPO on patent-drafting capacity. Technical assistance is explicitly out per the gate."
   },
   {
     "id": "deal-6124ff71",
@@ -425,7 +466,9 @@
     "suggestedType": "FDI",
     "url": "https://kaieteurnewsonline.com/2026/07/08/gas-to-energy-transmission-network-reaches-99-completion/",
     "source": "Kaieteur News",
-    "approved": false
+    "approved": false,
+    "triaged": true,
+    "reviewNote": "Not a transaction — a construction-progress update on a state energy project. Operational capex, no capital changing hands for ownership or return."
   },
   {
     "id": "deal-45139a21",
@@ -438,7 +481,9 @@
     "suggestedType": "Other",
     "url": "https://wicnews.com/antigua-barbuda/sunrise-airways-launches-direct-antigua-barbados-flights-with-introductory-fares",
     "source": "WIC News",
-    "approved": false
+    "approved": false,
+    "triaged": true,
+    "reviewNote": "Operational — a new airline route launch is routine business activity, explicitly not a deal per the gate."
   },
   {
     "id": "deal-53074759",
@@ -451,7 +496,9 @@
     "suggestedType": "Other",
     "url": "https://wicnews.com/guyana/caribbean-airlines-launches-daily-non-stop-guyana-toronto-flights-with-special-summer-fares",
     "source": "WIC News",
-    "approved": false
+    "approved": false,
+    "triaged": true,
+    "reviewNote": "Operational — a new airline route launch, same as deal-45139a21."
   },
   {
     "id": "deal-300f4667",
@@ -464,7 +511,9 @@
     "suggestedType": "FDI",
     "url": "https://www.starnieuws.com/index.php/welcome/index/nieuwsitem/92857",
     "source": "Starnieuws",
-    "approved": false
+    "approved": false,
+    "triaged": true,
+    "reviewNote": "Grant, not a deal. Starnieuws states the project 'volledig wordt gefinancierd door het China Aid-programma' (fully financed by the China Aid programme) — an agricultural technical-assistance and training project run with Jiangxi Ganliang Co. for Suriname's Ministry of Agriculture (LVV). Nothing is owned and nothing is repaid, so the SRD 245m is out per the gate's grant carve-out despite the 'investeert' framing in the headline."
   },
   {
     "id": "deal-5119ab5a",
@@ -477,7 +526,9 @@
     "suggestedType": "FDI",
     "url": "https://kaieteurnewsonline.com/2026/07/03/epa-clears-aranka-gold-project-using-chinese-developed-leaching-reagent/",
     "source": "Kaieteur News",
-    "approved": false
+    "approved": false,
+    "triaged": true,
+    "reviewNote": "Third-party regulatory approval (EPA environmental clearance), not a transaction — the deal itself, if any, still has to happen. Contrast the lender's-own-approval case. Classifier miss (staged completed)."
   },
   {
     "id": "deal-6e5031fb",
@@ -490,7 +541,9 @@
     "suggestedType": "Debt",
     "url": "https://antiguanewsroom.com/sir-lester-bird-medical-centre-chinese-loan-fully-repaid-within-past-six-months/",
     "source": "Antigua News Room",
-    "approved": false
+    "approved": false,
+    "triaged": true,
+    "reviewNote": "Not a new capital transaction — the repayment/retirement of an existing loan is debt servicing, not a financing being extended. Debt covers a facility extended to a named borrower; a payoff is the opposite end of one already recorded."
   },
   {
     "id": "deal-dd17bd76",
@@ -503,6 +556,8 @@
     "suggestedType": "FDI",
     "url": "https://www.starnieuws.com/index.php/welcome/index/nieuwsitem/92584",
     "source": "Starnieuws",
-    "approved": false
+    "approved": false,
+    "triaged": true,
+    "reviewNote": "Not a transaction — a gas discovery announcement (exploration result). No capital changing hands, no stake, no financing event."
   }
 ]
