@@ -23,8 +23,8 @@ const namesJSON = JSON.stringify(Object.fromEntries(getCountries().map(c => [c.c
       <h3 class="chart-heading" id="chart-heading">—</h3>
       <p class="chart-subheading mono" id="chart-subheading">Select an indicator</p>
     </div>
-    <button class="btn export-btn mono" id="csv-export-btn" aria-label="Export current chart data as CSV">
-      Export CSV
+    <button class="btn export-btn mono" id="xlsx-export-btn" aria-label="Export current chart data as .xlsx">
+      Export .xlsx
     </button>
   </div>
 
@@ -47,7 +47,6 @@ const namesJSON = JSON.stringify(Object.fromEntries(getCountries().map(c => [c.c
 
 <script>
   import * as d3 from 'd3';
-  import { downloadCSV } from './csvExport';
   import type { IndicatorSeries, IndicatorPoint } from '../../lib/types';
 
   const SERIES_COLORS: Record<string, string> = {
@@ -551,8 +550,9 @@ const namesJSON = JSON.stringify(Object.fromEntries(getCountries().map(c => [c.c
     }
   });
 
-  // CSV export
-  document.getElementById('csv-export-btn')?.addEventListener('click', () => {
+  // XLSX export — SheetJS is dynamically imported on demand so it doesn't
+  // weigh down the initial page load (same pattern as the per-country export).
+  document.getElementById('xlsx-export-btn')?.addEventListener('click', async () => {
     const filtered = allSeries.filter(
       s => s.indicator === currentIndicator && activeCountries.includes(s.country)
     );
@@ -571,7 +571,8 @@ const namesJSON = JSON.stringify(Object.fromEntries(getCountries().map(c => [c.c
           vintage: d.vintage,
         }))
     );
-    downloadCSV(rows, `caribecon-${currentIndicator}`);
+    const { downloadChartXLSX } = await import('./chartExport');
+    downloadChartXLSX(rows, `caribecon-${currentIndicator}`);
   });
 
   // Redraw on resize so the chart stays crisp at any width
