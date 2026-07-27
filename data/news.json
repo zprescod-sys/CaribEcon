@@ -422,6 +422,271 @@
     "classifier": "llm"
   },
   {
+    "id": "ttt-news-f25fb0b6",
+    "title": "Fruit Festival Promotes Local Produce And Small Businesses",
+    "source": "TTT News",
+    "date": "2026-07-26",
+    "country": "TT",
+    "url": "https://www.ttt.live/fruit-festival-promotes-local-produce-and-small-businesses/?utm_source=rss&utm_medium=rss&utm_campaign=fruit-festival-promotes-local-produce-and-small-businesses",
+    "tags": [
+      "agriculture",
+      "business and finance",
+      "news"
+    ],
+    "category": "Agriculture",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Local produce festival promoting small agricultural businesses.",
+    "classifier": "llm"
+  },
+  {
+    "id": "ttt-news-86375a03",
+    "title": "West Indies Cricket And Courts Launch Partnership",
+    "source": "TTT News",
+    "date": "2026-07-26",
+    "country": "TT",
+    "url": "https://www.ttt.live/west-indies-cricket-and-courts-launch-partnership/?utm_source=rss&utm_medium=rss&utm_campaign=west-indies-cricket-and-courts-launch-partnership",
+    "tags": [
+      "cricket",
+      "sports",
+      "west indies"
+    ],
+    "category": "Corporate",
+    "group": "Finance",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "West Indies Cricket and Courts announce institutional partnership; governance of economic/sports entity.",
+    "classifier": "llm"
+  },
+  {
+    "id": "jamaica-observer-77cee7e8",
+    "title": "Former PwC partner Don Christian named chairman of different Capital",
+    "source": "Jamaica Observer",
+    "date": "2026-07-26",
+    "country": "JM",
+    "url": "https://www.jamaicaobserver.com/2026/07/26/former-pwc-partner-don-christian-named-chairman-different-capital/",
+    "tags": [
+      "business",
+      "latest news",
+      "chairman",
+      "different capital",
+      "don christian",
+      "pwc"
+    ],
+    "category": "Corporate",
+    "group": "Finance",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Executive appointment to financial services company chairmanship; corporate governance.",
+    "classifier": "llm"
+  },
+  {
+    "id": "jamaica-observer-20046244",
+    "title": "Reoffending prisoners readmitted to prison up to four times, says PIOJ survey",
+    "source": "Jamaica Observer",
+    "date": "2026-07-26",
+    "country": "JM",
+    "url": "https://www.jamaicaobserver.com/2026/07/26/reoffending-prisoners-readmitted-prison-four-times-says-pioj-survey/",
+    "tags": [
+      "latest news",
+      "news",
+      "pioj",
+      "prionsers"
+    ],
+    "category": "Labor",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Survey of prison reoffending and readmission rates; workforce and criminal-justice labor outcomes.",
+    "classifier": "llm"
+  },
+  {
+    "id": "jamaica-observer-29f4dd06",
+    "title": "Tipsters to Crime Stop pocket $10.3 million in 2025, says PIOJ",
+    "source": "Jamaica Observer",
+    "date": "2026-07-26",
+    "country": "JM",
+    "url": "https://www.jamaicaobserver.com/2026/07/26/tipsters-crime-stop-pocket-10-3-million-2025-says-pioj/",
+    "tags": [
+      "latest news",
+      "news",
+      "crime stop",
+      "pioj",
+      "tipsters"
+    ],
+    "category": "Government",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Crime-prevention tipster compensation program disbursement; government fiscal/public expenditure.",
+    "classifier": "llm"
+  },
+  {
+    "id": "jamaica-observer-80a69d89",
+    "title": "New buses boosts JUTC earnings by $200 million in 2025, says PIOJ",
+    "source": "Jamaica Observer",
+    "date": "2026-07-26",
+    "country": "JM",
+    "url": "https://www.jamaicaobserver.com/2026/07/26/new-buses-boosts-jutc-earnings-200-million-2025-says-pioj/",
+    "tags": [
+      "latest news",
+      "news",
+      "jutc",
+      "pioj"
+    ],
+    "category": "Corporate",
+    "group": "Finance",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Public transit company operational revenue increase from fleet expansion.",
+    "classifier": "llm"
+  },
+  {
+    "id": "jamaica-observer-f8211881",
+    "title": "Jamaican woman wanted by FBI in US$32 million COVID relief funds scam returned to the US",
+    "source": "Jamaica Observer",
+    "date": "2026-07-26",
+    "country": "JM",
+    "url": "https://www.jamaicaobserver.com/2026/07/26/jamaican-woman-wanted-fbi-us32-million-covid-relief-funds-scam-returned-us/",
+    "tags": [
+      "latest news",
+      "news",
+      "covid fraud scheme",
+      "elaine escoe",
+      "fbi"
+    ],
+    "category": "Government",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Fraud prosecution and asset recovery in COVID relief funds; fiscal crime and government accountability.",
+    "classifier": "llm"
+  },
+  {
+    "id": "jamaica-observer-8a74b3d7",
+    "title": "Chinese top list of foreign nationals granted work permits in Jamaica in 2025",
+    "source": "Jamaica Observer",
+    "date": "2026-07-26",
+    "country": "JM",
+    "url": "https://www.jamaicaobserver.com/2026/07/26/chinese-top-list-foreign-nationals-granted-work-permits-jamaica-2025/",
+    "tags": [
+      "latest news",
+      "news",
+      "chinese",
+      "work permits"
+    ],
+    "category": "Labor",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Work-permit grant data by nationality; labor-market composition and migration.",
+    "classifier": "llm"
+  },
+  {
+    "id": "jamaica-gleaner-01210868",
+    "title": "Yaneek Page | A $370 billion question: Who is Jamaica building?",
+    "source": "Jamaica Gleaner",
+    "date": "2026-07-26",
+    "country": "JM",
+    "url": "http://jamaica-gleaner.com/article/business/20260726/yaneek-page-370-billion-question-who-jamaica-building",
+    "category": "Fiscal Policy",
+    "group": "Fiscal Policy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Commentary on Jamaica's fiscal spending and national budget allocation ($370 billion).",
+    "classifier": "llm"
+  },
+  {
+    "id": "starnieuws-1d5e4dbe",
+    "title": "Simons bij terugkeer uit Engeland: 'Internationale steun cruciaal voor nieuwe economische fase'",
+    "source": "Starnieuws",
+    "date": "2026-07-26",
+    "country": "SR",
+    "url": "https://www.starnieuws.com/index.php/welcome/index/nieuwsitem/93143",
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Senior official signals new economic phase and international support for Suriname's economy.",
+    "classifier": "llm"
+  },
+  {
+    "id": "waterkant-1ae82141",
+    "title": "ICT-team ingezet voor modernisering Surinaamse consulaire dienstverlening in Nederland",
+    "source": "Waterkant",
+    "date": "2026-07-26",
+    "country": "SR",
+    "url": "https://www.waterkant.net/suriname/2026/07/26/ict-team-ingezet-voor-modernisering-surinaamse-consulaire-dienstverlening-in-nederland/#utm_source=rss&utm_medium=rss&utm_campaign=ict-team-ingezet-voor-modernisering-surinaamse-consulaire-dienstverlening-in-nederland",
+    "tags": [
+      "nieuws uit suriname",
+      "overheid",
+      "uitgelicht"
+    ],
+    "category": "Government",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Government modernizes consular service delivery using ICT; government/public-sector institutional improvement.",
+    "classifier": "llm"
+  },
+  {
+    "id": "st-lucia-times-1bf1158a",
+    "title": "Guyana appoints experts to investigate ferry tragedy",
+    "source": "St. Lucia Times",
+    "date": "2026-07-26",
+    "country": "LC",
+    "url": "https://stluciatimes.com/182343/2026/07/guyana-appoints-experts-to-investigate-ferry-tragedy/",
+    "tags": [
+      "headlines",
+      "region",
+      "ferry sinking",
+      "georgetown",
+      "guyana",
+      "irfaan ali"
+    ],
+    "category": "Government",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Government appoints experts to investigate ferry disaster; official accountability/regulatory response.",
+    "classifier": "llm"
+  },
+  {
+    "id": "st-kitts-nevis-observer-86b72fac",
+    "title": "Guyana: President to announce international Commission of Inquiry into ferry disaster",
+    "source": "St. Kitts-Nevis Observer",
+    "date": "2026-07-26",
+    "country": "KN",
+    "url": "https://www.thestkittsnevisobserver.com/guyana-president-to-announce-international-commission-of-inquiry-into-ferry-disaster/",
+    "tags": [
+      "regional"
+    ],
+    "category": "Government",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "President announces international Commission of Inquiry into ferry disaster; official governance response to major incident.",
+    "classifier": "llm"
+  },
+  {
+    "id": "iwitness-news-07b5103a",
+    "title": "How autonomous AI can transform SVG’s future economy",
+    "source": "iWitness News",
+    "date": "2026-07-26",
+    "country": "VC",
+    "url": "https://www.iwnsvg.com/2026/07/26/how-autonomous-ai-can-transform-svgs-future-economy/",
+    "tags": [
+      "opinion"
+    ],
+    "category": "Technology",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Opinion on how AI can transform SVG's economy; economic analysis of a key technology sector.",
+    "classifier": "llm"
+  },
+  {
     "id": "wic-news-cc1548a3",
     "title": "InterCaribbean Airways Unveils ‘Spirit of St. Vincent and the Grenadines’ aircraft",
     "source": "WIC News",
@@ -994,6 +1259,20 @@
     "decision": "publish",
     "confidence": "high",
     "reason": "Ferry safety procedure tightening in response to disaster; transport-sector regulation and operational safety governance.",
+    "classifier": "llm"
+  },
+  {
+    "id": "jamaica-gleaner-f0453848",
+    "title": "Víctor Gómez Loque | The Dominican Republic should join CARICOM",
+    "source": "Jamaica Gleaner",
+    "date": "2026-07-25",
+    "country": "JM",
+    "url": "http://jamaica-gleaner.com/article/news/20260725/victor-gomez-loque-dominican-republic-should-join-caricom",
+    "category": "Regional Developments",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Opinion on Dominican Republic joining CARICOM carries regional trade/integration implications.",
     "classifier": "llm"
   },
   {
@@ -2581,6 +2860,23 @@
     "classifier": "llm"
   },
   {
+    "id": "iwitness-news-79f18b92",
+    "title": "When are the poor going to stop being poor?",
+    "source": "iWitness News",
+    "date": "2026-07-24",
+    "country": "VC",
+    "url": "https://www.iwnsvg.com/2026/07/24/when-are-the-poor-going-to-stop-being-poor/",
+    "tags": [
+      "news"
+    ],
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Headline asks about poverty persistence; economic/social development analysis relevant to the region.",
+    "classifier": "llm"
+  },
+  {
     "id": "kaieteur-news-6c9dd82b",
     "title": "Billions from oil, no safe passage for hinterland residents – MP Hastings on MV Barima tragedy",
     "source": "Kaieteur News",
@@ -3156,6 +3452,28 @@
     "classifier": "llm"
   },
   {
+    "id": "magnetic-media-6f1ca602",
+    "title": "Planning for Tomorrow: Why Sustainable Communities Begin with Good Planning",
+    "source": "Magnetic Media",
+    "date": "2026-07-23",
+    "country": "TC",
+    "url": "https://magneticmediatv.com/2026/07/planning-for-tomorrow-why-sustainable-communities-begin-with-good-planning/",
+    "tags": [
+      "news",
+      "tci news",
+      "#informalsettementsunit",
+      "#isu",
+      "#magneticmedianews",
+      "#sustainablecommunities"
+    ],
+    "category": "Infrastructure",
+    "group": "Investment",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Sustainable communities planning relates to urban development and infrastructure policy, core to economic growth.",
+    "classifier": "llm"
+  },
+  {
     "id": "kaieteur-news-153946ae",
     "title": "‘US$12.7M MV Ma Lisha still idle’ …embattled Edghill blames shifting soil, failed Port Kaituma wharf",
     "source": "Kaieteur News",
@@ -3592,6 +3910,49 @@
     "decision": "publish",
     "confidence": "high",
     "reason": "Business confidence index reversal; key macroeconomic sentiment indicator",
+    "classifier": "llm"
+  },
+  {
+    "id": "magnetic-media-d5561324",
+    "title": "Turks and Caicos Islands Students Excel at Cycle 13 WizdomCRM Regional AI Game National Awards Ceremony",
+    "source": "Magnetic Media",
+    "date": "2026-07-22",
+    "country": "TC",
+    "url": "https://magneticmediatv.com/2026/07/turks-and-caicos-islands-students-excel-at-cycle-13-wizdomcrm-regional-ai-game-national-awards-ceremony/",
+    "tags": [
+      "education",
+      "news",
+      "tci news",
+      "#magneticmedianews",
+      "#wizdomcrmregionalaigamenationalawards"
+    ],
+    "category": "Technology",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Students excel in regional AI competition; youth technology education and digital economy development in TCI.",
+    "classifier": "llm"
+  },
+  {
+    "id": "cayman-compass-d7bdeb9f",
+    "title": "What the new UK foreign secretary could mean for Cayman",
+    "source": "Cayman Compass",
+    "date": "2026-07-22",
+    "country": "KY",
+    "url": "https://www.caymancompass.com/2026/07/22/what-the-new-uk-foreign-secretary-could-mean-for-cayman/",
+    "tags": [
+      "business",
+      "featured local home page",
+      "finance",
+      "video",
+      "andy burnham",
+      "beneficial ownership"
+    ],
+    "category": "Government",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "UK Foreign Office leadership change and its implications for Cayman's beneficial-ownership regulation and financial governance is a material economic-policy story.",
     "classifier": "llm"
   },
   {
@@ -5275,6 +5636,28 @@
     "classifier": "llm"
   },
   {
+    "id": "cayman-compass-5fff67c5",
+    "title": "50 years ago: Cayman Airways becomes national airline, Radio Cayman to launch",
+    "source": "Cayman Compass",
+    "date": "2026-07-18",
+    "country": "KY",
+    "url": "https://www.caymancompass.com/2026/07/18/50-years-ago-cayman-airways-becomes-national-airline-radio-cayman-to-launch/",
+    "tags": [
+      "local",
+      "50 years ago",
+      "cayman airways",
+      "editorial",
+      "olympics",
+      "radio cayman"
+    ],
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "50-year historical retrospective on Cayman Airways becoming the national carrier and Radio Cayman's launch are foundational economic and infrastructure developments in Cayman's history.",
+    "classifier": "llm"
+  },
+  {
     "id": "kaieteur-news-867e44df",
     "title": "Gold declarations hit US$955M by mid-2026",
     "source": "Kaieteur News",
@@ -5889,6 +6272,23 @@
     "decision": "publish",
     "confidence": "high",
     "reason": "Electricity cost increases and utility regulation; infrastructure / cost-of-living impact.",
+    "classifier": "llm"
+  },
+  {
+    "id": "searchlight-svg-11f7e29a",
+    "title": "Venezuela suffers while denied its Riches",
+    "source": "Searchlight SVG",
+    "date": "2026-07-17",
+    "country": "VC",
+    "url": "https://www.searchlight.vc/editorial/2026/07/17/venezuela-suffers-denied-riches/",
+    "tags": [
+      "editorial"
+    ],
+    "category": "Energy",
+    "group": "Energy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Editorial on Venezuela's resource wealth and economic deprivation due to political mismanagement; energy/macro economic analysis.",
     "classifier": "llm"
   },
   {
