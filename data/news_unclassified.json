@@ -10,7 +10,7 @@
     "group": "Macro",
     "decision": "review",
     "confidence": "medium",
-    "reason": "US visa revocation of Caribbean entertainers; plausibly related to sanctions or immigration policy but headline lacks economic substance or mechanism",
+    "reason": "US visa revocation of entertainers; border/immigration policy with potential cultural/labor implications but thin economic nexus.",
     "classifier": "llm",
     "approved": false,
     "suggestedCategory": "Government"
@@ -34,7 +34,7 @@
     "group": "Macro",
     "decision": "review",
     "confidence": "medium",
-    "reason": "Commission of inquiry into ferry disaster; tangential regulatory angle without stated economic mechanism or impact",
+    "reason": "Commission of inquiry into a maritime disaster; potential governance/accountability angle but headline does not state an economic mechanism.",
     "classifier": "llm",
     "approved": false,
     "suggestedCategory": "Government"
@@ -58,30 +58,7 @@
     "group": "Macro",
     "decision": "review",
     "confidence": "medium",
-    "reason": "Political/governance pressure story tied to ferry tragedy; no direct economic mechanism stated",
-    "classifier": "llm",
-    "approved": false,
-    "suggestedCategory": "Government"
-  },
-  {
-    "id": "kaieteur-news-41191e1e",
-    "title": "Should Minister Edghill resign?",
-    "source": "Kaieteur News",
-    "date": "2026-07-27",
-    "country": "GY",
-    "url": "https://kaieteurnewsonline.com/2026/07/27/should-minister-edghill-resign/",
-    "tags": [
-      "features / columnists",
-      "peeping tom",
-      "edghill",
-      "mv barima",
-      "resign"
-    ],
-    "category": "",
-    "group": "Macro",
-    "decision": "review",
-    "confidence": "medium",
-    "reason": "Opinion piece on minister resignation tied to ferry disaster; political call without stated economic consequence",
+    "reason": "Resignation call following a maritime tragedy; governance accountability angle but no stated economic consequence.",
     "classifier": "llm",
     "approved": false,
     "suggestedCategory": "Government"
@@ -104,7 +81,7 @@
     "group": "Macro",
     "decision": "review",
     "confidence": "medium",
-    "reason": "Government contract bidding for dormitory project; marginal procurement news",
+    "reason": "Government procurement (contractor bidding for dormitory work); marginal public-investment news but thin on substance.",
     "classifier": "llm",
     "approved": false,
     "suggestedCategory": "Government"
@@ -128,7 +105,7 @@
     "group": "Macro",
     "decision": "review",
     "confidence": "medium",
-    "reason": "Letter questioning government management of ferry; accountability angle without clear economic mechanism",
+    "reason": "Letter questioning government mismanagement contributing to tragedy; potential governance angle but no stated economic mechanism or sector impact.",
     "classifier": "llm",
     "approved": false,
     "suggestedCategory": "Government"
@@ -151,29 +128,7 @@
     "group": "Macro",
     "decision": "review",
     "confidence": "medium",
-    "reason": "NDIA outstanding payments and contractor accountability; thin fiscal/procurement substance",
-    "classifier": "llm",
-    "approved": false,
-    "suggestedCategory": "Government"
-  },
-  {
-    "id": "kaieteur-news-a187f8db",
-    "title": "The MV Barima tragedy and ensuring a safe and reliable public service",
-    "source": "Kaieteur News",
-    "date": "2026-07-27",
-    "country": "GY",
-    "url": "https://kaieteurnewsonline.com/2026/07/27/the-mv-barima-tragedy-and-ensuring-a-safe-and-reliable-public-service/",
-    "tags": [
-      "letters",
-      "mv barima",
-      "public service",
-      "tragedy"
-    ],
-    "category": "",
-    "group": "Macro",
-    "decision": "review",
-    "confidence": "medium",
-    "reason": "Ferry tragedy and public-service reliability; governance concern without economic mechanism",
+    "reason": "Letter about NDIA contractor payments owed; fiscal/government accountability angle but not clearly about policy or sector-wide impact.",
     "classifier": "llm",
     "approved": false,
     "suggestedCategory": "Government"
@@ -197,7 +152,7 @@
     "group": "Macro",
     "decision": "review",
     "confidence": "medium",
-    "reason": "Editorial on ferry inquiry process and parliament oversight; governance framing without economic substance",
+    "reason": "Editorial on commission of inquiry process and parliamentary oversight; governance angle but no explicit economic substance.",
     "classifier": "llm",
     "approved": false,
     "suggestedCategory": "Government"
@@ -216,69 +171,7 @@
     "group": "Macro",
     "decision": "review",
     "confidence": "medium",
-    "reason": "Investigation appointment for ferry disaster; regulatory/accountability angle without economic mechanism",
-    "classifier": "llm",
-    "approved": false,
-    "suggestedCategory": "Government"
-  },
-  {
-    "id": "guyana-chronicle-3f39cbea",
-    "title": "Amerindian communities outperform international agencies in project delivery – VP Jagdeo",
-    "source": "Guyana Chronicle",
-    "date": "2026-07-27",
-    "country": "GY",
-    "url": "https://guyanachronicle.com/2026/07/27/amerindian-communities-outperform-international-agencies-in-project-delivery-vp-jagdeo/",
-    "tags": [
-      "news"
-    ],
-    "category": "",
-    "group": "Investment",
-    "decision": "review",
-    "confidence": "medium",
-    "reason": "Indigenous community project delivery performance; governance claim but thin substance",
-    "classifier": "llm",
-    "approved": false,
-    "suggestedCategory": "Infrastructure"
-  },
-  {
-    "id": "guyana-chronicle-5e44f22a",
-    "title": "Hinterland communities taking lead in infrastructural projects — Edghill",
-    "source": "Guyana Chronicle",
-    "date": "2026-07-27",
-    "country": "GY",
-    "url": "https://guyanachronicle.com/2026/07/27/hinterland-communities-taking-lead-in-infrastructural-projects-edghill/",
-    "tags": [
-      "news"
-    ],
-    "category": "",
-    "group": "Investment",
-    "decision": "review",
-    "confidence": "medium",
-    "reason": "Infrastructure project delivery claim in hinterland; operational announcement without cost/substance detail",
-    "classifier": "llm",
-    "approved": false,
-    "suggestedCategory": "Infrastructure"
-  },
-  {
-    "id": "demerara-waves-4a8adcbf",
-    "title": "No more bodies in two days from sunken MV Barima",
-    "source": "Demerara Waves",
-    "date": "2026-07-27",
-    "country": "GY",
-    "url": "https://demerarawaves.com/2026/07/26/no-more-bodies-from-sunken-ferry-mv-barima-in-two-days/",
-    "tags": [
-      "accountability",
-      "maritime",
-      "news",
-      "transportation",
-      "facebook video",
-      "french military divers"
-    ],
-    "category": "",
-    "group": "Macro",
-    "decision": "review",
-    "confidence": "medium",
-    "reason": "Ferry recovery body update; accountability and maritime governance signal but no economic mechanism stated",
+    "reason": "International and regional experts investigating ferry tragedy; governance accountability angle but no stated economic consequence or mechanism.",
     "classifier": "llm",
     "approved": false,
     "suggestedCategory": "Government"
@@ -302,7 +195,7 @@
     "group": "Macro",
     "decision": "review",
     "confidence": "medium",
-    "reason": "Inquiry commission independence concern; transparency/governance debate without economic substance",
+    "reason": "Commentary on COI commissioners' independence and political ties; governance/transparency angle but not clearly about economic mechanism.",
     "classifier": "llm",
     "approved": false,
     "suggestedCategory": "Government"
@@ -374,7 +267,7 @@
     "group": "Macro",
     "decision": "review",
     "confidence": "medium",
-    "reason": "border dispute and ecological damage on Marowijne River; environmental/infrastructure issue with regional tension but no stated economic impact on sector or commerce",
+    "reason": "Headline mentions border-agreement delay and ecological disaster on Marowijne River; climate/environmental damage but no stated economic impact quantified or linked to sector.",
     "classifier": "llm",
     "approved": false,
     "suggestedCategory": "Climate"
@@ -394,8 +287,8 @@
     "category": "",
     "group": "Macro",
     "decision": "review",
-    "confidence": "low",
-    "reason": "political statement on economic reform pace; ambiguously economic opinion rather than reporting an economic decision or result",
+    "confidence": "medium",
+    "reason": "Political/policy quote on economic progress; plausibly macro-policy discussion but ambiguous without fuller context.",
     "classifier": "llm",
     "approved": false,
     "suggestedCategory": "Macro"
@@ -414,10 +307,10 @@
     "group": "Macro",
     "decision": "review",
     "confidence": "medium",
-    "reason": "summer program partnership expansion; education/training initiative but plausibly tied to workforce development and human capital",
+    "reason": "University summer-programme partnership expansion; education/training initiative plausibly relevant but thin without detail on scope or investment.",
     "classifier": "llm",
     "approved": false,
-    "suggestedCategory": "Technology"
+    "suggestedCategory": "Government"
   },
   {
     "id": "st-kitts-nevis-observer-51417994",
@@ -487,7 +380,115 @@
     "group": "Macro",
     "decision": "review",
     "confidence": "medium",
-    "reason": "Inquiry into ferry disaster; relevant only if headline emphasizes economic impact or maritime safety accountability; currently appears to be accident investigation",
+    "reason": "Disaster inquiry launched; accident investigation without stated economic mechanism, only tangential regulatory angle.",
+    "classifier": "llm",
+    "approved": false,
+    "suggestedCategory": "Government"
+  },
+  {
+    "id": "the-star-jamaica-d9e1deaf",
+    "title": "Aspiring cop turns to entrepreneurship",
+    "source": "The Star (Jamaica)",
+    "date": "2026-07-27",
+    "country": "JM",
+    "url": "https://jamaica-star.com/article/news/20260727/aspiring-cop-turns-entrepreneurship",
+    "category": "",
+    "group": "Macro",
+    "decision": "review",
+    "confidence": "medium",
+    "reason": "Individual career transition could signal labor-market shift but thin on substance without sector context.",
+    "classifier": "llm",
+    "approved": false,
+    "suggestedCategory": "Labor"
+  },
+  {
+    "id": "the-star-jamaica-588d0b01",
+    "title": "Nurse student targets male health crisis",
+    "source": "The Star (Jamaica)",
+    "date": "2026-07-27",
+    "country": "JM",
+    "url": "https://jamaica-star.com/article/news/20260727/nurse-student-targets-male-health-crisis-0",
+    "category": "",
+    "group": "Macro",
+    "decision": "review",
+    "confidence": "medium",
+    "reason": "Health-sector initiative; plausibly policy-relevant but needs more substance on economic or healthcare-system impact.",
+    "classifier": "llm",
+    "approved": false,
+    "suggestedCategory": "Government"
+  },
+  {
+    "id": "waterkant-c2bb346d",
+    "title": "Reyme: “Wij moeten niet als ‘wilde koeien’ rondrijden in het verkeer”",
+    "source": "Waterkant",
+    "date": "2026-07-27",
+    "country": "SR",
+    "url": "https://www.waterkant.net/suriname/2026/07/27/reyme-wij-moeten-niet-als-wilde-koeien-rondrijden-in-het-verkeer/#utm_source=rss&utm_medium=rss&utm_campaign=reyme-wij-moeten-niet-als-wilde-koeien-rondrijden-in-het-verkeer",
+    "tags": [
+      "justitie en politie",
+      "nieuws uit suriname",
+      "overheid",
+      "uitgelicht"
+    ],
+    "category": "",
+    "group": "Macro",
+    "decision": "review",
+    "confidence": "medium",
+    "reason": "Road-safety policy statement; transportation regulation angle but marginal economic substance.",
+    "classifier": "llm",
+    "approved": false,
+    "suggestedCategory": "Government"
+  },
+  {
+    "id": "antigua-observer-125a3965",
+    "title": "Absence of Fathers Fuels Youth Crime",
+    "source": "Antigua Observer",
+    "date": "2026-07-27",
+    "country": "AG",
+    "url": "https://antiguaobserver.com/absence-of-fathers-fuels-youth-crime/",
+    "tags": [
+      "the big stories"
+    ],
+    "category": "",
+    "group": "Macro",
+    "decision": "review",
+    "confidence": "medium",
+    "reason": "Social-policy analysis linking parental absence to youth crime; plausibly government/labor policy angle but thin on economic substance.",
+    "classifier": "llm",
+    "approved": false,
+    "suggestedCategory": "Government"
+  },
+  {
+    "id": "antigua-observer-b28f3c4a",
+    "title": "Freedom-of-Movement Concerns Raised",
+    "source": "Antigua Observer",
+    "date": "2026-07-27",
+    "country": "AG",
+    "url": "https://antiguaobserver.com/freedom-of-movement-concerns-raised/",
+    "tags": [
+      "the big stories"
+    ],
+    "category": "",
+    "group": "Macro",
+    "decision": "review",
+    "confidence": "medium",
+    "reason": "Policy concern on freedom of movement; governance/regulatory angle but ambiguous economic substance.",
+    "classifier": "llm",
+    "approved": false,
+    "suggestedCategory": "Government"
+  },
+  {
+    "id": "wic-news-6d0bd2d9",
+    "title": "Operation Iceberg exposes alleged human trafficking network in Trinidad and Tobago",
+    "source": "WIC News",
+    "date": "2026-07-27",
+    "country": "ALL",
+    "url": "https://wicnews.com/trinidad-tobago/operation-iceberg-exposes-alleged-human-trafficking-network-in-trinidad-and-tobago",
+    "category": "",
+    "group": "Macro",
+    "decision": "review",
+    "confidence": "medium",
+    "reason": "Human-trafficking network investigation; crime but with labor/exploitation regulation angle and potential fiscal impact.",
     "classifier": "llm",
     "approved": false,
     "suggestedCategory": "Government"
@@ -779,7 +780,7 @@
     "group": "Macro",
     "decision": "review",
     "confidence": "medium",
-    "reason": "Commission of inquiry announcement; regulatory/governance response without economic mechanism",
+    "reason": "Appointment of non-Guyanese commission to investigate tragedy; governance accountability but no stated economic consequence.",
     "classifier": "llm",
     "approved": false,
     "suggestedCategory": "Government"
@@ -804,26 +805,6 @@
     "suggestedCategory": "Government"
   },
   {
-    "id": "barbados-today-3b9fa2c6",
-    "title": "China offers annual training for 1 000 Barbadians",
-    "source": "Barbados Today",
-    "date": "2026-07-26",
-    "country": "BB",
-    "url": "https://barbadostoday.bb/2026/07/26/china-offers-annual-training-for-1-000-barbadians/",
-    "tags": [
-      "education",
-      "local news"
-    ],
-    "category": "",
-    "group": "Macro",
-    "decision": "review",
-    "confidence": "medium",
-    "reason": "Government training offer from China; international development and workforce development signal but thin",
-    "classifier": "llm",
-    "approved": false,
-    "suggestedCategory": "Government"
-  },
-  {
     "id": "barbados-today-9cd83937",
     "title": "Guyana appoints experts to investigate ferry tragedy",
     "source": "Barbados Today",
@@ -838,7 +819,7 @@
     "group": "Macro",
     "decision": "review",
     "confidence": "medium",
-    "reason": "Regional news on Guyana ferry inquiry; governance response without economic mechanism",
+    "reason": "Regional news: Guyana's appointment of experts to investigate ferry tragedy; governance but no stated economic substance.",
     "classifier": "llm",
     "approved": false,
     "suggestedCategory": "Government"
@@ -860,68 +841,10 @@
     "group": "Macro",
     "decision": "review",
     "confidence": "medium",
-    "reason": "Opposition policy call on salary deductions; government regulation signal but unclear substance",
+    "reason": "Opposition party political statement on legal process regarding salary deductions; political process with a fiscal angle but thin substance.",
     "classifier": "llm",
     "approved": false,
     "suggestedCategory": "Government"
-  },
-  {
-    "id": "nation-news-e5828840",
-    "title": "T&T experts to assess ship",
-    "source": "Nation News",
-    "date": "2026-07-26",
-    "country": "BB",
-    "url": "https://nationnews.com/2026/07/26/tt-experts-to-assess-ship/?utm_source=rss&utm_medium=rss&utm_campaign=tt-experts-to-assess-ship",
-    "tags": [
-      "news",
-      "mv christina debora"
-    ],
-    "category": "",
-    "group": "Macro",
-    "decision": "review",
-    "confidence": "medium",
-    "reason": "T&T expertise assessment of vessel; regulatory/maritime signal but thin substance",
-    "classifier": "llm",
-    "approved": false,
-    "suggestedCategory": "Government"
-  },
-  {
-    "id": "nation-news-a388a243",
-    "title": "CG ups support for blood collection",
-    "source": "Nation News",
-    "date": "2026-07-26",
-    "country": "BB",
-    "url": "https://nationnews.com/2026/07/26/cg-ups-support-for-blood-collection/?utm_source=rss&utm_medium=rss&utm_campaign=cg-ups-support-for-blood-collection",
-    "tags": [
-      "health",
-      "lifestyle",
-      "cg united insurance",
-      "donating blood"
-    ],
-    "category": "",
-    "group": "Finance",
-    "decision": "review",
-    "confidence": "medium",
-    "reason": "Insurance company blood-donation support initiative; thin CSR/corporate news",
-    "classifier": "llm",
-    "approved": false,
-    "suggestedCategory": "Banking"
-  },
-  {
-    "id": "jamaica-gleaner-052a61c8",
-    "title": "She saved US$80,000 for her daughter’s future - THEN IT WAS GONE",
-    "source": "Jamaica Gleaner",
-    "date": "2026-07-26",
-    "country": "JM",
-    "url": "http://jamaica-gleaner.com/article/news/20260726/she-saved-us80000-her-daughters-future-then-it-was-gone",
-    "category": "",
-    "group": "Finance",
-    "decision": "review",
-    "confidence": "medium",
-    "reason": "savings-account theft or fraud story; ambiguous whether this is personal crime or a substantive banking-system issue",
-    "classifier": "llm",
-    "approved": false,
-    "suggestedCategory": "Banking"
   },
   {
     "id": "eyewitness-news-6489a7af",
@@ -941,6 +864,41 @@
     "classifier": "llm",
     "approved": false,
     "suggestedCategory": "Trade"
+  },
+  {
+    "id": "starnieuws-1be657b1",
+    "title": "Het belang van een onafhankelijke Nationale Ombudsman",
+    "source": "Starnieuws",
+    "date": "2026-07-26",
+    "country": "SR",
+    "url": "https://www.starnieuws.com/index.php/welcome/index/nieuwsitem/93136",
+    "category": "",
+    "group": "Macro",
+    "decision": "review",
+    "confidence": "medium",
+    "reason": "Opinion on institutional independence (ombudsman); governance angle but primarily opinion, not reporting on economic policy change.",
+    "classifier": "llm",
+    "approved": false,
+    "suggestedCategory": "Government"
+  },
+  {
+    "id": "antigua-news-room-eed16510",
+    "title": "BREAKING: Antigua and Barbuda Junior Carnival Postponed to Wednesday Due to Severe Weather",
+    "source": "Antigua News Room",
+    "date": "2026-07-26",
+    "country": "AG",
+    "url": "https://antiguanewsroom.com/breaking-antigua-and-barbuda-junior-carnival-postponed-to-wednesday-due-to-severe-weather/",
+    "tags": [
+      "news"
+    ],
+    "category": "",
+    "group": "Macro",
+    "decision": "review",
+    "confidence": "medium",
+    "reason": "Carnival event postponed due to severe weather; weather disruption of economic activity but marginal scale.",
+    "classifier": "llm",
+    "approved": false,
+    "suggestedCategory": "Climate"
   },
   {
     "id": "wic-news-aad04566",
@@ -1095,34 +1053,10 @@
     "group": "Macro",
     "decision": "review",
     "confidence": "medium",
-    "reason": "Public health advisory on foodborne illness risk; tangential to economy unless measuring sector impact or trade disruption",
+    "reason": "Public health risk from US lettuce contamination affecting Cayman; plausible health/food-security impact.",
     "classifier": "llm",
     "approved": false,
-    "suggestedCategory": "Macro"
-  },
-  {
-    "id": "demerara-waves-94cf85f6",
-    "title": "APNU, WIN reject Ali’s unilateral inquiry into MV Barima ferry disaster",
-    "source": "Demerara Waves",
-    "date": "2026-07-25",
-    "country": "GY",
-    "url": "https://demerarawaves.com/2026/07/25/apnu-win-reject-alis-unilateral-inquiry-into-mv-barima-ferry-disaster/",
-    "tags": [
-      "maritime",
-      "news",
-      "politics",
-      "a partnership for national unity (apnu)",
-      "commission of inquiry (coi)",
-      "mv barima ferry disaster"
-    ],
-    "category": "",
-    "group": "Macro",
-    "decision": "review",
-    "confidence": "medium",
-    "reason": "Political opposition to inquiry; governance process story without economic substance",
-    "classifier": "llm",
-    "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Climate"
   },
   {
     "id": "demerara-waves-29bae62d",
@@ -1143,7 +1077,7 @@
     "group": "Macro",
     "decision": "review",
     "confidence": "medium",
-    "reason": "Announced commission of inquiry; governance response without economic mechanism stated",
+    "reason": "Announcement of independent inquiry commission; governance accountability angle but no stated economic mechanism.",
     "classifier": "llm",
     "approved": false,
     "suggestedCategory": "Government"
@@ -1167,30 +1101,10 @@
     "group": "Finance",
     "decision": "review",
     "confidence": "low",
-    "reason": "Businessman death; if significant economic actor/company, merits editor review for corporate/market impact",
+    "reason": "Businessman death notice; person is identified as 'businessman' suggesting economic role but no company/sector context.",
     "classifier": "llm",
     "approved": false,
     "suggestedCategory": "Corporate"
-  },
-  {
-    "id": "iwitness-news-806e3d29",
-    "title": "Cuba is the Caribbean’s Gaza",
-    "source": "iWitness News",
-    "date": "2026-07-25",
-    "country": "VC",
-    "url": "https://www.iwnsvg.com/2026/07/25/cuba-is-the-caribbeans-gaza/",
-    "tags": [
-      "opinion",
-      "plain talk"
-    ],
-    "category": "",
-    "group": "Macro",
-    "decision": "review",
-    "confidence": "low",
-    "reason": "Political/economic opinion comparing Caribbean region to Gaza; plausibly economic commentary but ambiguous substantive content",
-    "classifier": "llm",
-    "approved": false,
-    "suggestedCategory": "Macro"
   },
   {
     "id": "wic-news-affe48eb",
@@ -1566,7 +1480,7 @@
     "group": "Finance",
     "decision": "review",
     "confidence": "medium",
-    "reason": "dressmakers' business concern over school-uniform specifications; plausibly a sector-supply story but thin on economic substance",
+    "reason": "Supply-chain/production issue for school uniforms; marginal economic substance.",
     "classifier": "llm",
     "approved": false,
     "suggestedCategory": "Corporate"
@@ -1582,7 +1496,7 @@
     "group": "Macro",
     "decision": "review",
     "confidence": "medium",
-    "reason": "policy advocacy on sex-offender registry; governance/regulation related but not itself economic substance",
+    "reason": "Policy advocacy for sex-offenders registry; governance/regulatory angle but plausibly on the edge of economic relevance.",
     "classifier": "llm",
     "approved": false,
     "suggestedCategory": "Government"
@@ -1669,25 +1583,124 @@
     "suggestedCategory": "Government"
   },
   {
-    "id": "demerara-waves-a4eeb53b",
-    "title": "APNU wants parliamentary terms for MV Barima tragedy inquiry commission",
-    "source": "Demerara Waves",
+    "id": "st-lucia-times-7d2724cf",
+    "title": "Govt says Minister Frederick on vacation leave",
+    "source": "St. Lucia Times",
     "date": "2026-07-24",
-    "country": "GY",
-    "url": "https://demerarawaves.com/2026/07/24/apnu-wants-parliamentary-approved-terms-of-reference-for-mv-barima-commission-of-inquiry/",
+    "country": "LC",
+    "url": "https://stluciatimes.com/182311/2026/07/govt-says-minister-frederick-on-vacation-leave/",
     "tags": [
-      "maritime",
-      "news",
-      "politics",
-      "a partnership for national unity (apnu)",
-      "apnu mp saiku andrews",
-      "apnu mp sherwin benjamin"
+      "headlines",
+      "politics & government",
+      "government of saint lucia",
+      "prime minister philip j pierre",
+      "richard frederick",
+      "saint lucia"
     ],
     "category": "",
     "group": "Macro",
     "decision": "review",
     "confidence": "medium",
-    "reason": "Opposition demand on inquiry parliamentary terms; governance/process debate without economic content",
+    "reason": "Government minister vacation notice; plausibly about government institutional news but marginal economic substance.",
+    "classifier": "llm",
+    "approved": false,
+    "suggestedCategory": "Government"
+  },
+  {
+    "id": "searchlight-svg-9b518d14",
+    "title": "Fire the  COP says Jomo Thomas",
+    "source": "Searchlight SVG",
+    "date": "2026-07-24",
+    "country": "VC",
+    "url": "https://www.searchlight.vc/front-page/2026/07/24/fire-cop-says-jomo-thomas/",
+    "tags": [
+      "front page"
+    ],
+    "category": "",
+    "group": "Macro",
+    "decision": "review",
+    "confidence": "medium",
+    "reason": "Call for police leadership removal; governance/institutional critique but unclear if economic substance or purely political.",
+    "classifier": "llm",
+    "approved": false,
+    "suggestedCategory": "Government"
+  },
+  {
+    "id": "searchlight-svg-2898903c",
+    "title": "Barrouallie woman wants Mental Health policy review after brother’s attack",
+    "source": "Searchlight SVG",
+    "date": "2026-07-24",
+    "country": "VC",
+    "url": "https://www.searchlight.vc/front-page/2026/07/24/barrouallie-woman-wants-mental-health-policy-review-brothers-attack/",
+    "tags": [
+      "front page"
+    ],
+    "category": "",
+    "group": "Macro",
+    "decision": "review",
+    "confidence": "medium",
+    "reason": "Mental-health policy advocacy after crime; government/health-sector policy angle but marginal economic substance.",
+    "classifier": "llm",
+    "approved": false,
+    "suggestedCategory": "Government"
+  },
+  {
+    "id": "searchlight-svg-38589713",
+    "title": "Parental Involvement in Tertiary Education: A Missing Link to Student Success",
+    "source": "Searchlight SVG",
+    "date": "2026-07-24",
+    "country": "VC",
+    "url": "https://www.searchlight.vc/features/2026/07/24/parental-involvement-tertiary-education-missing-link-student-success/",
+    "tags": [
+      "features"
+    ],
+    "category": "",
+    "group": "Macro",
+    "decision": "review",
+    "confidence": "medium",
+    "reason": "Education policy essay on parental involvement in tertiary education; governance/education angle but opinion-essay format, not reporting.",
+    "classifier": "llm",
+    "approved": false,
+    "suggestedCategory": "Government"
+  },
+  {
+    "id": "cayman-compass-ce6f54f9",
+    "title": "New visa limits students’ stay in the US",
+    "source": "Cayman Compass",
+    "date": "2026-07-24",
+    "country": "KY",
+    "url": "https://www.caymancompass.com/2026/07/24/new-visa-limits-students-stay-in-the-us/",
+    "tags": [
+      "local",
+      "world news",
+      "student visa",
+      "united states",
+      "visa"
+    ],
+    "category": "",
+    "group": "Macro",
+    "decision": "review",
+    "confidence": "medium",
+    "reason": "US visa policy change affecting student flows; plausible economic/labour mobility impact.",
+    "classifier": "llm",
+    "approved": false,
+    "suggestedCategory": "Government"
+  },
+  {
+    "id": "bvi-news-6f464bd6",
+    "title": "Premier defends rejection of recall law for elected officials",
+    "source": "BVI News",
+    "date": "2026-07-24",
+    "country": "VG",
+    "url": "https://bvinews.com/premier-defends-rejection-of-recall-law-for-elected-officials/",
+    "tags": [
+      "all news"
+    ],
+    "category": "",
+    "group": "Macro",
+    "decision": "review",
+    "confidence": "medium",
+    "reason": "Electoral/governance process (recall law) with institutional implications; political but governance-adjacent.",
     "classifier": "llm",
     "approved": false,
     "suggestedCategory": "Government"
@@ -2029,7 +2042,7 @@
     "group": "Macro",
     "decision": "review",
     "confidence": "medium",
-    "reason": "Forced labour allegation tied to US tariffs; plausible trade/sanctions mechanism but headline vague on economic substance",
+    "reason": "Reference to forced labour and tariff enforcement suggests trade/labour policy but substance unclear.",
     "classifier": "llm",
     "approved": false,
     "suggestedCategory": "Government"
@@ -2052,8 +2065,8 @@
     "category": "",
     "group": "Macro",
     "decision": "review",
-    "confidence": "low",
-    "reason": "Premier comment on possible NCA regulatory changes; plausible policy but vague on substantive economic outcome",
+    "confidence": "medium",
+    "reason": "Premier hedging on National Conservation Act changes; environmental regulation but substance unclear.",
     "classifier": "llm",
     "approved": false,
     "suggestedCategory": "Government"
@@ -2073,6 +2086,38 @@
     "decision": "review",
     "confidence": "medium",
     "reason": "Premier's advice to residents to buy water tanks signals a water-supply or infrastructure concern with possible fiscal/policy implications, but the headline lacks detail on the economic mechanism or impact.",
+    "classifier": "llm",
+    "approved": false,
+    "suggestedCategory": "Government"
+  },
+  {
+    "id": "the-star-jamaica-e653f545",
+    "title": "Advocacy group brands Jamaica ‘anti-child’ society",
+    "source": "The Star (Jamaica)",
+    "date": "2026-07-23",
+    "country": "JM",
+    "url": "https://jamaica-star.com/article/news/20260723/advocacy-group-brands-jamaica-%E2%80%98anti-child%E2%80%99-society",
+    "category": "",
+    "group": "Macro",
+    "decision": "review",
+    "confidence": "medium",
+    "reason": "Policy/governance advocacy on child protection; plausibly about government institutions but thin on economic substance.",
+    "classifier": "llm",
+    "approved": false,
+    "suggestedCategory": "Government"
+  },
+  {
+    "id": "the-star-jamaica-c3106f27",
+    "title": "‘We need action’  CPFSA demands protection for Jamaica’s children",
+    "source": "The Star (Jamaica)",
+    "date": "2026-07-23",
+    "country": "JM",
+    "url": "https://jamaica-star.com/article/news/20260723/%E2%80%98we-need-action%E2%80%99-cpfsa-demands-protection-jamaica%E2%80%99s-children",
+    "category": "",
+    "group": "Macro",
+    "decision": "review",
+    "confidence": "medium",
+    "reason": "Child-protection policy demand; governance angle but unclear economic substance.",
     "classifier": "llm",
     "approved": false,
     "suggestedCategory": "Government"
@@ -2163,6 +2208,30 @@
     "approved": false,
     "suggestedCategory": "Government",
     "triaged": true
+  },
+  {
+    "id": "nature-isle-news-92031706",
+    "title": "Sir Garry’s funeral confirmed to take place on July 29",
+    "source": "Nature Isle News",
+    "date": "2026-07-22",
+    "country": "DM",
+    "url": "https://natureisle.news/condolences/sir-garrys-funeral-confirmed-to-take-place-on-july-29/",
+    "tags": [
+      "condolences",
+      "funeral",
+      "government",
+      "health",
+      "politics",
+      "public relations"
+    ],
+    "category": "",
+    "group": "Macro",
+    "decision": "review",
+    "confidence": "medium",
+    "reason": "State funeral notice for likely senior official (Sir Garry); governance/institutional event but primarily ceremonial without economic detail.",
+    "classifier": "llm",
+    "approved": false,
+    "suggestedCategory": "Government"
   },
   {
     "id": "kaieteur-news-2de51408",
@@ -2267,10 +2336,53 @@
     "group": "Macro",
     "decision": "review",
     "confidence": "medium",
-    "reason": "Youth organization funding/government support dispute; plausible government spending but vague on economic substance",
+    "reason": "Organization alleges funding blockage for youth programme; plausible fiscal/government policy angle but thin.",
     "classifier": "llm",
     "approved": false,
     "suggestedCategory": "Government"
+  },
+  {
+    "id": "searchlight-svg-4c5f5bbe",
+    "title": "Chickenpox outbreak HMP",
+    "source": "Searchlight SVG",
+    "date": "2026-07-21",
+    "country": "VC",
+    "url": "https://www.searchlight.vc/front-page/2026/07/21/chickenpox-outbreak-hmp/",
+    "tags": [
+      "front page"
+    ],
+    "category": "",
+    "group": "Macro",
+    "decision": "review",
+    "confidence": "medium",
+    "reason": "Disease outbreak in correctional facility; public-health/government institutional event but unclear if measurable economic impact or routine health report.",
+    "classifier": "llm",
+    "approved": false,
+    "suggestedCategory": "Government"
+  },
+  {
+    "id": "nature-isle-news-013be612",
+    "title": "Multiple dead, others injured after West Coast boat collision",
+    "source": "Nature Isle News",
+    "date": "2026-07-20",
+    "country": "DM",
+    "url": "https://natureisle.news/accident/multiple-dead-others-injured-after-west-coast-boat-collision/",
+    "tags": [
+      "accident",
+      "disaster",
+      "government",
+      "health",
+      "opposition",
+      "police"
+    ],
+    "category": "",
+    "group": "Macro",
+    "decision": "review",
+    "confidence": "medium",
+    "reason": "Boat-collision disaster with fatalities; accident report; unclear if economic impact (maritime commerce, infrastructure) is measured or if purely a tragedy report.",
+    "classifier": "llm",
+    "approved": false,
+    "suggestedCategory": "Climate"
   },
   {
     "id": "kaieteur-news-c2dac7e4",
@@ -2330,27 +2442,51 @@
     "triaged": true
   },
   {
-    "id": "cayman-compass-7a7aa29a",
-    "title": "The tiny rock that shapes a maritime boundary",
+    "id": "cayman-compass-cf5ecd40",
+    "title": "Invasive monk parakeets raise concerns",
     "source": "Cayman Compass",
     "date": "2026-07-18",
     "country": "KY",
-    "url": "https://www.caymancompass.com/2026/07/18/the-tiny-rock-that-shapes-a-maritime-boundary/",
+    "url": "https://www.caymancompass.com/2026/07/18/invasive-monk-parakeets-raise-concerns/",
     "tags": [
+      "featured local home page",
       "local",
-      "boundary",
-      "cayman islands",
-      "jamaica",
-      "law of the sea"
+      "monk parakeet",
+      "nesting",
+      "prohibited species regulations"
     ],
     "category": "",
     "group": "Macro",
     "decision": "review",
     "confidence": "medium",
-    "reason": "Maritime boundary dispute; plausibly relevant to jurisdiction over EEZ resources but headline is abstract and lacks economic mechanism",
+    "reason": "Invasive species and regulation; environmental concern with potential agricultural/ecosystem impact unclear.",
     "classifier": "llm",
     "approved": false,
     "suggestedCategory": "Government"
+  },
+  {
+    "id": "cayman-compass-9bc6f433",
+    "title": "Letter: Recognising excellence in healthcare",
+    "source": "Cayman Compass",
+    "date": "2026-07-18",
+    "country": "KY",
+    "url": "https://www.caymancompass.com/2026/07/18/letter-recognising-excellence-in-healthcare/",
+    "tags": [
+      "local",
+      "dr. adithi nagaraju",
+      "dr. binoy chattuparambil",
+      "health city camana bay",
+      "health city cayman islands",
+      "letter to the editor"
+    ],
+    "category": "",
+    "group": "Finance",
+    "decision": "review",
+    "confidence": "medium",
+    "reason": "Letter recognizing healthcare excellence at private facility; institution governance but thin economic substance.",
+    "classifier": "llm",
+    "approved": false,
+    "suggestedCategory": "Corporate"
   },
   {
     "id": "guyana-chronicle-d1200c33",
@@ -2382,8 +2518,8 @@
     "category": "",
     "group": "Macro",
     "decision": "review",
-    "confidence": "low",
-    "reason": "Public library digital skills program; marginal government/social service initiative; editor discretion on economic relevance",
+    "confidence": "medium",
+    "reason": "Digital skills training programme for seniors; plausible workforce/tech development but thin.",
     "classifier": "llm",
     "approved": false,
     "suggestedCategory": "Technology"
@@ -2404,13 +2540,13 @@
       "#tciplanningdepartment"
     ],
     "category": "",
-    "group": "Macro",
+    "group": "Investment",
     "decision": "review",
-    "confidence": "low",
-    "reason": "Planning enforcement/demolition of informal structures; marginal infrastructure/real-estate governance; editor discretion on economic relevance",
+    "confidence": "medium",
+    "reason": "Planning enforcement on informal structures; plausible infrastructure/urban development but thin.",
     "classifier": "llm",
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Infrastructure"
   },
   {
     "id": "searchlight-svg-1a64eb76",
@@ -2454,6 +2590,25 @@
     "classifier": "llm",
     "approved": false,
     "suggestedCategory": "Banking"
+  },
+  {
+    "id": "searchlight-svg-a6acac4f",
+    "title": "Seven receive RoseGold  scholarships for new academic year",
+    "source": "Searchlight SVG",
+    "date": "2026-07-17",
+    "country": "VC",
+    "url": "https://www.searchlight.vc/press-release/2026/07/17/seven-receive-rosegold-scholarships-new-academic-year/",
+    "tags": [
+      "press release"
+    ],
+    "category": "",
+    "group": "Macro",
+    "decision": "review",
+    "confidence": "medium",
+    "reason": "Scholarship programme may indicate education or workforce investment; substance unclear.",
+    "classifier": "llm",
+    "approved": false,
+    "suggestedCategory": "Government"
   },
   {
     "id": "trinidad-express-1e4e549a",
@@ -2596,6 +2751,25 @@
     "triaged": true
   },
   {
+    "id": "searchlight-svg-6d470c67",
+    "title": "CARICOM, BACCHANAL AND THE CCJ",
+    "source": "Searchlight SVG",
+    "date": "2026-07-10",
+    "country": "VC",
+    "url": "https://www.searchlight.vc/editorial/2026/07/10/caricom-bacchanal-ccj/",
+    "tags": [
+      "editorial"
+    ],
+    "category": "",
+    "group": "Macro",
+    "decision": "review",
+    "confidence": "low",
+    "reason": "CARICOM/CCJ reference suggests regional governance; substance unclear.",
+    "classifier": "llm",
+    "approved": false,
+    "suggestedCategory": "Regional Developments"
+  },
+  {
     "id": "trinidad-express-4b76be66",
     "title": "ExxonMobil backs T&T in deepwater exploration",
     "source": "Trinidad Express",
@@ -2649,6 +2823,25 @@
     "triaged": true
   },
   {
+    "id": "searchlight-svg-af0c9d7f",
+    "title": "Communication in Tertiary Education and Beyond: Why are so many students struggling?",
+    "source": "Searchlight SVG",
+    "date": "2026-06-23",
+    "country": "VC",
+    "url": "https://www.searchlight.vc/features/2026/06/23/communication-tertiary-education-beyond-many-students-struggling/",
+    "tags": [
+      "features"
+    ],
+    "category": "",
+    "group": "Macro",
+    "decision": "review",
+    "confidence": "medium",
+    "reason": "Education/student communication skills may signal workforce development concern; substance thin.",
+    "classifier": "llm",
+    "approved": false,
+    "suggestedCategory": "Labor"
+  },
+  {
     "id": "cnc3-913f6865",
     "title": "WASA launches $20M wastewater project in Beetham Gardens",
     "source": "CNC3",
@@ -2683,7 +2876,7 @@
     "group": "Trade & Tourism",
     "decision": "review",
     "confidence": "medium",
-    "reason": "Chef feature tied to FIFA 2026 World Cup tourism; plausible tourism/hospitality angle but thin on substantive economic content",
+    "reason": "Chef preparing for FIFA 2026 tourism event; plausible tourism/events economic angle but thin.",
     "classifier": "llm",
     "approved": false,
     "suggestedCategory": "Tourism"

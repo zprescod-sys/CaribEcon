@@ -451,6 +451,102 @@
     "classifier": "llm"
   },
   {
+    "id": "guyana-chronicle-3f39cbea",
+    "title": "Amerindian communities outperform international agencies in project delivery – VP Jagdeo",
+    "source": "Guyana Chronicle",
+    "date": "2026-07-27",
+    "country": "GY",
+    "url": "https://guyanachronicle.com/2026/07/27/amerindian-communities-outperform-international-agencies-in-project-delivery-vp-jagdeo/",
+    "tags": [
+      "news"
+    ],
+    "category": "Government",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "VP statement on Amerindian community performance in project delivery; government infrastructure and development policy.",
+    "classifier": "llm"
+  },
+  {
+    "id": "guyana-chronicle-5e44f22a",
+    "title": "Hinterland communities taking lead in infrastructural projects — Edghill",
+    "source": "Guyana Chronicle",
+    "date": "2026-07-27",
+    "country": "GY",
+    "url": "https://guyanachronicle.com/2026/07/27/hinterland-communities-taking-lead-in-infrastructural-projects-edghill/",
+    "tags": [
+      "news"
+    ],
+    "category": "Infrastructure",
+    "group": "Investment",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Government statement on infrastructural projects in Hinterland communities; public investment and development.",
+    "classifier": "llm"
+  },
+  {
+    "id": "jamaica-gleaner-48cc6dd1",
+    "title": "‘AI not the problem’  - Artificial intelligence expert warns CXC preparing students for ‘a world that no longer exists’",
+    "source": "Jamaica Gleaner",
+    "date": "2026-07-27",
+    "country": "JM",
+    "url": "http://jamaica-gleaner.com/article/news/20260727/ai-not-problem-artificial-intelligence-expert-warns-cxc-preparing-students",
+    "category": "Technology",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "AI expert commentary on education and workforce readiness; technology and labor-market relevance.",
+    "classifier": "llm"
+  },
+  {
+    "id": "jamaica-gleaner-e391dcb6",
+    "title": "Christie’s blueprint for an AI-ready SBA",
+    "source": "Jamaica Gleaner",
+    "date": "2026-07-27",
+    "country": "JM",
+    "url": "http://jamaica-gleaner.com/article/news/20260727/christies-blueprint-ai-ready-sba",
+    "category": "Technology",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Microenterprise (SBA) strategy incorporating AI readiness; technology and economic development.",
+    "classifier": "llm"
+  },
+  {
+    "id": "bvi-news-ddeee862",
+    "title": "Gov’t to probe claims JVD excluded from Crown Lands Board",
+    "source": "BVI News",
+    "date": "2026-07-27",
+    "country": "VG",
+    "url": "https://bvinews.com/govt-to-probe-claims-jvd-excluded-from-crown-lands-board/",
+    "tags": [
+      "all news"
+    ],
+    "category": "Government",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Government probe into governance of Crown Lands Board, public-sector institutional oversight.",
+    "classifier": "llm"
+  },
+  {
+    "id": "bvi-news-ddd2194e",
+    "title": "Penn calls for tougher laws to fight derelict dumping",
+    "source": "BVI News",
+    "date": "2026-07-27",
+    "country": "VG",
+    "url": "https://bvinews.com/penn-calls-for-tougher-laws-to-fight-derelict-dumping/",
+    "tags": [
+      "all news"
+    ],
+    "category": "Government",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Environmental/waste regulation and legal framework strengthening, governance mechanism.",
+    "classifier": "llm"
+  },
+  {
     "id": "kaieteur-news-205221bc",
     "title": "Resource curse debate misses key distinction on institutions",
     "source": "Kaieteur News",
@@ -1135,6 +1231,24 @@
     "decision": "publish",
     "confidence": "high",
     "reason": "Opinion on how AI can transform SVG's economy; economic analysis of a key technology sector.",
+    "classifier": "llm"
+  },
+  {
+    "id": "barbados-today-3b9fa2c6",
+    "title": "China offers annual training for 1 000 Barbadians",
+    "source": "Barbados Today",
+    "date": "2026-07-26",
+    "country": "BB",
+    "url": "https://barbadostoday.bb/2026/07/26/china-offers-annual-training-for-1-000-barbadians/",
+    "tags": [
+      "education",
+      "local news"
+    ],
+    "category": "Technology",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "International training program for Barbadians; foreign aid and workforce development.",
     "classifier": "llm"
   },
   {
@@ -5051,6 +5165,27 @@
     "classifier": "llm"
   },
   {
+    "id": "magnetic-media-91381546",
+    "title": "Pres Ali declares three days of national mourning following MV Barima tragedy July 21, 2026",
+    "source": "Magnetic Media",
+    "date": "2026-07-21",
+    "country": "TC",
+    "url": "https://magneticmediatv.com/2026/07/pres-ali-declares-three-days-of-national-mourning-following-mv-barima-tragedy-july-21-2026/",
+    "tags": [
+      "caribbean news",
+      "news",
+      "#guyanatragedy",
+      "#magneticmedianews",
+      "#mvbarima"
+    ],
+    "category": "Government",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "National tragedy involving ship; government declares official mourning—economic/social impact narrative.",
+    "classifier": "llm"
+  },
+  {
     "id": "guyana-chronicle-3a2a1802",
     "title": "Wismar/Mackenzie bridge nearing completion",
     "source": "Guyana Chronicle",
@@ -6145,6 +6280,27 @@
     "decision": "publish",
     "confidence": "high",
     "reason": "50-year historical retrospective on Cayman Airways becoming the national carrier and Radio Cayman's launch are foundational economic and infrastructure developments in Cayman's history.",
+    "classifier": "llm"
+  },
+  {
+    "id": "cayman-compass-7a7aa29a",
+    "title": "The tiny rock that shapes a maritime boundary",
+    "source": "Cayman Compass",
+    "date": "2026-07-18",
+    "country": "KY",
+    "url": "https://www.caymancompass.com/2026/07/18/the-tiny-rock-that-shapes-a-maritime-boundary/",
+    "tags": [
+      "local",
+      "boundary",
+      "cayman islands",
+      "jamaica",
+      "law of the sea"
+    ],
+    "category": "Government",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Maritime boundary law and governance affecting Cayman Islands territorial definition.",
     "classifier": "llm"
   },
   {
