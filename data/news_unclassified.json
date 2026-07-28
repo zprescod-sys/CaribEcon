@@ -18,42 +18,6 @@
     "suggestedCategory": "Government"
   },
   {
-    "id": "wic-news-196a9721",
-    "title": "Guyana launches independent inquiry into deadly MV Barima Ferry tragedy",
-    "source": "WIC News",
-    "date": "2026-07-28",
-    "country": "ALL",
-    "url": "https://wicnews.com/guyana/guyana-launches-independent-inquiry-into-deadly-mv-barima-ferry-tragedy",
-    "category": "",
-    "group": "Macro",
-    "decision": "review",
-    "confidence": "medium",
-    "reason": "Ferry disaster investigation launched; investigation call alone with no stated economic mechanism; only tangential regulatory angle",
-    "classifier": "llm",
-    "deal_status": "not_a_deal",
-    "deal_type": null,
-    "approved": false,
-    "suggestedCategory": "Government"
-  },
-  {
-    "id": "wic-news-6d0bd2d9",
-    "title": "Operation Iceberg exposes alleged human trafficking network in Trinidad and Tobago",
-    "source": "WIC News",
-    "date": "2026-07-28",
-    "country": "ALL",
-    "url": "https://wicnews.com/trinidad-tobago/operation-iceberg-exposes-alleged-human-trafficking-network-in-trinidad-and-tobago",
-    "category": "",
-    "group": "Macro",
-    "decision": "review",
-    "confidence": "medium",
-    "reason": "Human trafficking network exposure; law-enforcement action with possible immigration/labor implications but unclear economic mechanism stated",
-    "classifier": "llm",
-    "deal_status": "not_a_deal",
-    "deal_type": null,
-    "approved": false,
-    "suggestedCategory": "Government"
-  },
-  {
     "id": "kaieteur-news-95f3c94c",
     "title": "Pres. Ali names 5-member COI to investigate MV Barima disaster",
     "source": "Kaieteur News",
@@ -229,32 +193,6 @@
     "suggestedCategory": "Government"
   },
   {
-    "id": "demerara-waves-9c64078c",
-    "title": "Two MV Barima inquiry commissioners’ ties to ruling parties in sister CARICOM states should cause no worry – former MARAD chief",
-    "source": "Demerara Waves",
-    "date": "2026-07-27",
-    "country": "GY",
-    "url": "https://demerarawaves.com/2026/07/26/two-mv-barima-inquiry-commissioners-ties-to-ruling-parties-in-sister-caricom-states-should-cause-no-worry-former-marad-chief/",
-    "tags": [
-      "accountability",
-      "business",
-      "maritime",
-      "news",
-      "politics",
-      "transparency"
-    ],
-    "category": "",
-    "group": "Macro",
-    "decision": "review",
-    "confidence": "medium",
-    "reason": "Inquiry commission independence and governance; substance hinges on institutional credibility for economic findings",
-    "classifier": "llm",
-    "deal_status": "not_a_deal",
-    "deal_type": null,
-    "approved": false,
-    "suggestedCategory": "Government"
-  },
-  {
     "id": "jamaica-observer-d0ae83b2",
     "title": "Cabinet yet to receive BOJ Governor shortlist",
     "source": "Jamaica Observer",
@@ -346,63 +284,6 @@
     "decision": "review",
     "confidence": "medium",
     "reason": "University summer-programme partnership expansion; education/training initiative plausibly relevant but thin without detail on scope or investment.",
-    "classifier": "llm",
-    "approved": false,
-    "suggestedCategory": "Government"
-  },
-  {
-    "id": "st-kitts-nevis-observer-51417994",
-    "title": "U.S. relocation agreement  cost SKN nothing, says PM",
-    "source": "St. Kitts-Nevis Observer",
-    "date": "2026-07-27",
-    "country": "KN",
-    "url": "https://www.thestkittsnevisobserver.com/u-s-relocation-agreement-cost-skn-nothing-says-pm/",
-    "tags": [
-      "local news"
-    ],
-    "category": "",
-    "group": "Investment",
-    "decision": "review",
-    "confidence": "medium",
-    "reason": "US relocation agreement and its cost to St. Kitts & Nevis; infrastructure/government project but headline is ambiguous on economic scope",
-    "classifier": "llm",
-    "approved": false,
-    "suggestedCategory": "Infrastructure"
-  },
-  {
-    "id": "st-kitts-nevis-observer-5259bf06",
-    "title": "US group strongly criticizes Guyana Government for operating 87-year-old ferry in Guyana’s worst maritime disaster",
-    "source": "St. Kitts-Nevis Observer",
-    "date": "2026-07-27",
-    "country": "KN",
-    "url": "https://www.thestkittsnevisobserver.com/us-group-strongly-criticizes-guyana-government-for-operating-87-year-old-ferry-in-guyanas-worst-maritime-disaster/",
-    "tags": [
-      "regional/international news"
-    ],
-    "category": "",
-    "group": "Macro",
-    "decision": "review",
-    "confidence": "medium",
-    "reason": "Maritime disaster with government criticism; unclear if substantive economic/regulatory mechanism or primarily accident/tragedy coverage",
-    "classifier": "llm",
-    "approved": false,
-    "suggestedCategory": "Government"
-  },
-  {
-    "id": "st-kitts-nevis-observer-85f70c8d",
-    "title": "Guyana: President names five-member Commission of Inquiry into MV Barima disaster",
-    "source": "St. Kitts-Nevis Observer",
-    "date": "2026-07-27",
-    "country": "KN",
-    "url": "https://www.thestkittsnevisobserver.com/guyana-president-names-five-member-commission-of-inquiry-into-mv-barima-disaster/",
-    "tags": [
-      "regional"
-    ],
-    "category": "",
-    "group": "Macro",
-    "decision": "review",
-    "confidence": "medium",
-    "reason": "Commission of Inquiry into maritime disaster; unclear if economic/regulatory substance or procedural response to tragedy",
     "classifier": "llm",
     "approved": false,
     "suggestedCategory": "Government"
@@ -513,29 +394,6 @@
     "suggestedCategory": "Government"
   },
   {
-    "id": "ttt-news-e5dbf61d",
-    "title": "Youth Parliamentarians Debate Artificial Intelligence Legislation",
-    "source": "TTT News",
-    "date": "2026-07-27",
-    "country": "TT",
-    "url": "https://www.ttt.live/youth-parliamentarians-debate-artificial-intelligence-legislation/?utm_source=rss&utm_medium=rss&utm_campaign=youth-parliamentarians-debate-artificial-intelligence-legislation",
-    "tags": [
-      "education",
-      "news",
-      "politics"
-    ],
-    "category": "",
-    "group": "Macro",
-    "decision": "review",
-    "confidence": "medium",
-    "reason": "Youth debate on AI legislation; technology policy substance but unclear if economic or purely educational",
-    "classifier": "llm",
-    "deal_status": "not_a_deal",
-    "deal_type": null,
-    "approved": false,
-    "suggestedCategory": "Technology"
-  },
-  {
     "id": "barbados-today-a0b75780",
     "title": "Atkins: Tennis needs corporate boost",
     "source": "Barbados Today",
@@ -559,30 +417,6 @@
     "suggestedCategory": "Corporate"
   },
   {
-    "id": "jamaica-observer-e38c7a52",
-    "title": "Public Advisory: Fraudulent Website Alert",
-    "source": "Jamaica Observer",
-    "date": "2026-07-27",
-    "country": "JM",
-    "url": "https://www.jamaicaobserver.com/2026/07/27/public-advisory-fraudulent-website-alert-20260727-2225-011597/",
-    "tags": [
-      "latest news",
-      "news",
-      "fake website",
-      "lisa hanna"
-    ],
-    "category": "",
-    "group": "Macro",
-    "decision": "review",
-    "confidence": "medium",
-    "reason": "Cybersecurity alert on fraudulent website; technology/economic crime substance but thin reporting",
-    "classifier": "llm",
-    "deal_status": "not_a_deal",
-    "deal_type": null,
-    "approved": false,
-    "suggestedCategory": "Technology"
-  },
-  {
     "id": "jamaica-gleaner-090dc4c2",
     "title": "COVID relief fraudster caught in Ja, extradited to US",
     "source": "Jamaica Gleaner",
@@ -599,30 +433,6 @@
     "deal_type": null,
     "approved": false,
     "suggestedCategory": "Government"
-  },
-  {
-    "id": "breaking-belize-news-81f6abfd",
-    "title": "Police investigate break-in at Atlantic Bank’s Ladyville branch",
-    "source": "Breaking Belize News",
-    "date": "2026-07-27",
-    "country": "BZ",
-    "url": "https://www.breakingbelizenews.com/2026/07/27/police-investigate-break-in-at-atlantic-banks-ladyville-branch/",
-    "tags": [
-      "crime",
-      "headlines",
-      "last news",
-      "police news"
-    ],
-    "category": "",
-    "group": "Finance",
-    "decision": "review",
-    "confidence": "medium",
-    "reason": "Break-in at bank branch; security incident at financial institution but no stated loss or systemic impact",
-    "classifier": "llm",
-    "deal_status": "not_a_deal",
-    "deal_type": null,
-    "approved": false,
-    "suggestedCategory": "Banking"
   },
   {
     "id": "breaking-belize-news-a603d95a",
@@ -645,76 +455,6 @@
     "deal_type": null,
     "approved": false,
     "suggestedCategory": "Agriculture"
-  },
-  {
-    "id": "starnieuws-b5538852",
-    "title": "Zoekactie naar slachtoffers MV Barima loopt vast; 30 mensen nog vermist",
-    "source": "Starnieuws",
-    "date": "2026-07-27",
-    "country": "SR",
-    "url": "https://www.starnieuws.com/index.php/welcome/index/nieuwsitem/93149",
-    "category": "",
-    "group": "Macro",
-    "decision": "review",
-    "confidence": "medium",
-    "reason": "Maritime disaster (MV Barima); accident with potential maritime/regulatory angle but no stated economic mechanism or liability",
-    "classifier": "llm",
-    "deal_status": "not_a_deal",
-    "deal_type": null,
-    "approved": false,
-    "suggestedCategory": "Regional Developments"
-  },
-  {
-    "id": "st-lucia-times-4729be62",
-    "title": "Blind Welfare Association seeks better access to jobs, safety and inclusion",
-    "source": "St. Lucia Times",
-    "date": "2026-07-27",
-    "country": "LC",
-    "url": "https://stluciatimes.com/182355/2026/07/blind-welfare-association-seeks-better-access-to-jobs-safety-and-inclusion/",
-    "tags": [
-      "community",
-      "headlines",
-      "anthony avril",
-      "communication",
-      "disabilities",
-      "saint lucia"
-    ],
-    "category": "",
-    "group": "Macro",
-    "decision": "review",
-    "confidence": "medium",
-    "reason": "Blind welfare advocacy for job access and workplace inclusion; labor/social policy with economic opportunity angle but thin mechanism",
-    "classifier": "llm",
-    "deal_status": "not_a_deal",
-    "deal_type": null,
-    "approved": false,
-    "suggestedCategory": "Labor"
-  },
-  {
-    "id": "st-lucia-times-73285109",
-    "title": "Three children, three crashes: A troubling toll on Saint Lucia’s roads",
-    "source": "St. Lucia Times",
-    "date": "2026-07-27",
-    "country": "LC",
-    "url": "https://stluciatimes.com/182347/2026/07/three-children-three-crashes-a-troubling-toll-on-saint-lucias-roads/",
-    "tags": [
-      "accident",
-      "death",
-      "headlines",
-      "tragedy",
-      "death",
-      "fatal accident"
-    ],
-    "category": "",
-    "group": "Macro",
-    "decision": "review",
-    "confidence": "medium",
-    "reason": "Road safety concern (three child crash victims); infrastructure/public safety issue with economic cost but no stated policy response",
-    "classifier": "llm",
-    "deal_status": "not_a_deal",
-    "deal_type": null,
-    "approved": false,
-    "suggestedCategory": "Government"
   },
   {
     "id": "antigua-news-room-ececcf88",
@@ -1069,32 +809,6 @@
     "suggestedCategory": "Government"
   },
   {
-    "id": "demerara-waves-f2a16c34",
-    "title": "President names non-Guyanese five-member commission to probe MV Barima tragedy",
-    "source": "Demerara Waves",
-    "date": "2026-07-26",
-    "country": "GY",
-    "url": "https://demerarawaves.com/2026/07/26/president-names-non-guyanese-five-member-commission-to-probe-mv-barima-tragedy/",
-    "tags": [
-      "business",
-      "maritime",
-      "news",
-      "belize",
-      "commissions of inquiry act",
-      "five-member commission of inquiry"
-    ],
-    "category": "",
-    "group": "Macro",
-    "decision": "review",
-    "confidence": "medium",
-    "reason": "Commission of inquiry appointed; governance of disaster accountability with possible maritime/fiscal implications",
-    "classifier": "llm",
-    "deal_status": "not_a_deal",
-    "deal_type": null,
-    "approved": false,
-    "suggestedCategory": "Government"
-  },
-  {
     "id": "cnc3-94b332b4",
     "title": "Two Trinidadians named to Guyana ferry disaster probe",
     "source": "CNC3",
@@ -1210,27 +924,6 @@
     "classifier": "llm",
     "approved": false,
     "suggestedCategory": "Climate"
-  },
-  {
-    "id": "amandala-2c003852",
-    "title": "Stalled investigation on trafficking of Haitian minors",
-    "source": "Amandala",
-    "date": "2026-07-26",
-    "country": "BZ",
-    "url": "https://amandala.com.bz/news/stalled-investigation-on-trafficking-of-haitian-minors/",
-    "tags": [
-      "headline"
-    ],
-    "category": "",
-    "group": "Macro",
-    "decision": "review",
-    "confidence": "medium",
-    "reason": "Human trafficking investigation stalled; governance/justice issue with labor/criminal angle but investigation status unclear",
-    "classifier": "llm",
-    "deal_status": "not_a_deal",
-    "deal_type": null,
-    "approved": false,
-    "suggestedCategory": "Government"
   },
   {
     "id": "wic-news-aad04566",
@@ -1366,84 +1059,6 @@
     "classifier": "llm",
     "approved": false,
     "suggestedCategory": "Agriculture"
-  },
-  {
-    "id": "demerara-waves-29bae62d",
-    "title": "President to announce “independent” commission of inquiry into MV Barima ferry tragedy",
-    "source": "Demerara Waves",
-    "date": "2026-07-25",
-    "country": "GY",
-    "url": "https://demerarawaves.com/2026/07/25/president-to-announce-independent-commission-of-inquiry-into-mv-barima-ferry-tragedy/",
-    "tags": [
-      "news",
-      "politics",
-      "address to the nation",
-      "commission of inquiry (coi)",
-      "independent",
-      "mv barima tragedy"
-    ],
-    "category": "",
-    "group": "Macro",
-    "decision": "review",
-    "confidence": "medium",
-    "reason": "Announcement of commission of inquiry; governance substance but economic impact unclear",
-    "classifier": "llm",
-    "deal_status": "not_a_deal",
-    "deal_type": null,
-    "approved": false,
-    "suggestedCategory": "Government"
-  },
-  {
-    "id": "nature-isle-news-8fd80044",
-    "title": "Businessman Valentine Poponne has died",
-    "source": "Nature Isle News",
-    "date": "2026-07-25",
-    "country": "DM",
-    "url": "https://natureisle.news/business/businessman-valentine-poponne-has-died/",
-    "tags": [
-      "breaking news",
-      "business",
-      "condolences",
-      "death",
-      "government",
-      "health"
-    ],
-    "category": "",
-    "group": "Finance",
-    "decision": "review",
-    "confidence": "medium",
-    "reason": "Businessman death announced; corporate/institutional change if significant business leader, but limited detail",
-    "classifier": "llm",
-    "deal_status": "not_a_deal",
-    "deal_type": null,
-    "approved": false,
-    "suggestedCategory": "Corporate"
-  },
-  {
-    "id": "demerara-waves-94cf85f6",
-    "title": "APNU, WIN reject Ali’s unilateral inquiry into MV Barima ferry disaster",
-    "source": "Demerara Waves",
-    "date": "2026-07-25",
-    "country": "GY",
-    "url": "https://demerarawaves.com/2026/07/25/apnu-win-reject-alis-unilateral-inquiry-into-mv-barima-ferry-disaster/",
-    "tags": [
-      "maritime",
-      "news",
-      "politics",
-      "a partnership for national unity (apnu)",
-      "commission of inquiry (coi)",
-      "mv barima ferry disaster"
-    ],
-    "category": "",
-    "group": "Macro",
-    "decision": "review",
-    "confidence": "medium",
-    "reason": "Political opposition to inquiry terms; substance depends on whether governance dispute affects economic accountability",
-    "classifier": "llm",
-    "deal_status": "not_a_deal",
-    "deal_type": null,
-    "approved": false,
-    "suggestedCategory": "Government"
   },
   {
     "id": "wic-news-affe48eb",
@@ -1809,24 +1424,6 @@
     "suggestedCategory": "Government"
   },
   {
-    "id": "the-star-jamaica-0f6867df",
-    "title": "Dressmakers divided over tighter school uniforms",
-    "source": "The Star (Jamaica)",
-    "date": "2026-07-24",
-    "country": "JM",
-    "url": "https://jamaica-star.com/article/news/20260724/dressmakers-divided-over-tighter-school-uniforms",
-    "category": "",
-    "group": "Finance",
-    "decision": "review",
-    "confidence": "medium",
-    "reason": "Dressmakers' business concerns re: school uniform sizing; marginal economic substance",
-    "classifier": "llm",
-    "deal_status": "not_a_deal",
-    "deal_type": null,
-    "approved": false,
-    "suggestedCategory": "Corporate"
-  },
-  {
     "id": "the-star-jamaica-395aea4a",
     "title": "Women’s Centre wants sex offenders’ registry public",
     "source": "The Star (Jamaica)",
@@ -1964,32 +1561,6 @@
     "decision": "review",
     "confidence": "medium",
     "reason": "Recall law governance; plausibly political institution-building but unclear if substantive economic consequence",
-    "classifier": "llm",
-    "deal_status": "not_a_deal",
-    "deal_type": null,
-    "approved": false,
-    "suggestedCategory": "Government"
-  },
-  {
-    "id": "demerara-waves-a4eeb53b",
-    "title": "APNU wants parliamentary terms for MV Barima tragedy inquiry commission",
-    "source": "Demerara Waves",
-    "date": "2026-07-24",
-    "country": "GY",
-    "url": "https://demerarawaves.com/2026/07/24/apnu-wants-parliamentary-approved-terms-of-reference-for-mv-barima-commission-of-inquiry/",
-    "tags": [
-      "maritime",
-      "news",
-      "politics",
-      "a partnership for national unity (apnu)",
-      "apnu mp saiku andrews",
-      "apnu mp sherwin benjamin"
-    ],
-    "category": "",
-    "group": "Macro",
-    "decision": "review",
-    "confidence": "medium",
-    "reason": "Political position on inquiry terms; governance substance but economic impact unclear",
     "classifier": "llm",
     "deal_status": "not_a_deal",
     "deal_type": null,
@@ -2341,56 +1912,6 @@
     "triaged": true
   },
   {
-    "id": "magnetic-media-82832105",
-    "title": "Caught in the Net, Not Accused of Wrongdoing",
-    "source": "Magnetic Media",
-    "date": "2026-07-23",
-    "country": "TC",
-    "url": "https://magneticmediatv.com/2026/07/caught-in-the-net-not-accused-of-wrongdoing/",
-    "tags": [
-      "bahamas news",
-      "news",
-      "#forcedlabour",
-      "#magneticmedianews",
-      "#nassauguardian.",
-      "#ustariffs"
-    ],
-    "category": "",
-    "group": "Macro",
-    "decision": "review",
-    "confidence": "medium",
-    "reason": "Reference to forced labour and tariff enforcement suggests trade/labour policy but substance unclear.",
-    "classifier": "llm",
-    "approved": false,
-    "suggestedCategory": "Government"
-  },
-  {
-    "id": "cayman-news-service-239101b3",
-    "title": "Premier hedges on possible changes to NCA",
-    "source": "Cayman News Service",
-    "date": "2026-07-23",
-    "country": "KY",
-    "url": "https://caymannewsservice.com/2026/07/premier-hedges-on-possible-changes-to-nca/",
-    "tags": [
-      "development",
-      "land habitat",
-      "local news",
-      "science & nature",
-      "andré ebanks",
-      "cayman forward"
-    ],
-    "category": "",
-    "group": "Macro",
-    "decision": "review",
-    "confidence": "medium",
-    "reason": "Environmental regulation discussion; unclear if substantive policy change or routine deliberation.",
-    "classifier": "llm",
-    "deal_status": "not_a_deal",
-    "deal_type": null,
-    "approved": false,
-    "suggestedCategory": "Government"
-  },
-  {
     "id": "bvi-news-d6e00dcd",
     "title": "Premier criticised for advising residents to buy water tanks",
     "source": "BVI News",
@@ -2662,27 +2183,6 @@
     "suggestedCategory": "Climate"
   },
   {
-    "id": "ziz-online-bf7abc2e",
-    "title": "Deadly Guyana Ferry Disaster Under Investigation",
-    "source": "ZIZ Online",
-    "date": "2026-07-21",
-    "country": "KN",
-    "url": "https://zizonline.com/deadly-guyana-ferry-disaster-under-investigation/",
-    "tags": [
-      "regional"
-    ],
-    "category": "",
-    "group": "Macro",
-    "decision": "review",
-    "confidence": "medium",
-    "reason": "Guyana ferry disaster investigation; maritime/transport incident with potential regulatory and economic impact but no specifics stated",
-    "classifier": "llm",
-    "deal_status": "not_a_deal",
-    "deal_type": null,
-    "approved": false,
-    "suggestedCategory": "Regional Developments"
-  },
-  {
     "id": "nature-isle-news-6af1ed8f",
     "title": "Wang Yi meets with Foreign Minister of Dominica, Vince Henderson",
     "source": "Nature Isle News",
@@ -2707,49 +2207,6 @@
     "deal_type": null,
     "approved": false,
     "suggestedCategory": "Government"
-  },
-  {
-    "id": "ziz-online-98803d58",
-    "title": "Medical International Scholarships for Two Nevsians",
-    "source": "ZIZ Online",
-    "date": "2026-07-20",
-    "country": "KN",
-    "url": "https://zizonline.com/medical-international-scholarships-for-two-nevsians/",
-    "tags": [
-      "international"
-    ],
-    "category": "",
-    "group": "Macro",
-    "decision": "review",
-    "confidence": "medium",
-    "reason": "Medical scholarships for two citizens; workforce development/human capital but thin economic substance for regional publication",
-    "classifier": "llm",
-    "deal_status": "not_a_deal",
-    "deal_type": null,
-    "approved": false,
-    "suggestedCategory": "Labor"
-  },
-  {
-    "id": "cayman-compass-0b55f8a3",
-    "title": "Progress and pullbacks",
-    "source": "Cayman Compass",
-    "date": "2026-07-20",
-    "country": "KY",
-    "url": "https://www.caymancompass.com/2026/07/20/progress-and-pullbacks/",
-    "tags": [
-      "sponsored content",
-      "bias investors"
-    ],
-    "category": "",
-    "group": "Investment",
-    "decision": "review",
-    "confidence": "medium",
-    "reason": "Sponsored investment content; unclear if substantive economic news or paid promotion",
-    "classifier": "llm",
-    "deal_status": "not_a_deal",
-    "deal_type": null,
-    "approved": false,
-    "suggestedCategory": "Investment"
   },
   {
     "id": "kaieteur-news-c2dac7e4",
@@ -2851,30 +2308,6 @@
     "triaged": true
   },
   {
-    "id": "magnetic-media-16fd49be",
-    "title": "Six Unauthorised Structures Demolished During Multi-Agency Planning Enforcement Operation",
-    "source": "Magnetic Media",
-    "date": "2026-07-17",
-    "country": "TC",
-    "url": "https://magneticmediatv.com/2026/07/six-unauthorised-structures-demolished-during-multi-agency-planning-enforcement-operation/",
-    "tags": [
-      "news",
-      "tci news",
-      "#informalsettlementsunit",
-      "#isu",
-      "#magneticmedianews",
-      "#tciplanningdepartment"
-    ],
-    "category": "",
-    "group": "Investment",
-    "decision": "review",
-    "confidence": "medium",
-    "reason": "Planning enforcement on informal structures; plausible infrastructure/urban development but thin.",
-    "classifier": "llm",
-    "approved": false,
-    "suggestedCategory": "Infrastructure"
-  },
-  {
     "id": "searchlight-svg-1a64eb76",
     "title": "Vincentian police is stand-out graduate at Regional Training Centre in Barbados",
     "source": "Searchlight SVG",
@@ -2973,27 +2406,6 @@
     "approved": false,
     "suggestedCategory": "Corporate",
     "triaged": true
-  },
-  {
-    "id": "ziz-online-38f821d8",
-    "title": "Smoke Sparks Brief Alarm on Makana Ferry",
-    "source": "ZIZ Online",
-    "date": "2026-07-16",
-    "country": "KN",
-    "url": "https://zizonline.com/smoke-sparks-brief-alarm-on-makana-ferry/",
-    "tags": [
-      "national"
-    ],
-    "category": "",
-    "group": "Investment",
-    "decision": "review",
-    "confidence": "medium",
-    "reason": "Ferry incident (smoke alarm); transport infrastructure safety incident but no stated economic impact or consequence",
-    "classifier": "llm",
-    "deal_status": "not_a_deal",
-    "deal_type": null,
-    "approved": false,
-    "suggestedCategory": "Infrastructure"
   },
   {
     "id": "jamaica-gleaner-fd2e77b6",

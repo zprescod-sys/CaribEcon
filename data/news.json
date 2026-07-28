@@ -21,6 +21,350 @@
     "deal_type": null
   },
   {
+    "id": "kaieteur-news-d37da33d",
+    "title": "Govt. passes $55B supplementary budget amid parliamentary protest by Opposition",
+    "source": "Kaieteur News",
+    "date": "2026-07-28",
+    "country": "GY",
+    "url": "https://kaieteurnewsonline.com/2026/07/28/govt-passes-55b-supplementary-budget-amid-parliamentary-protest-by-opposition/",
+    "tags": [
+      "news",
+      "ashni singh",
+      "opposition",
+      "protest",
+      "resignation",
+      "supplementary budget"
+    ],
+    "category": "Fiscal Policy",
+    "group": "Fiscal Policy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "kaieteur-news-67578787",
+    "title": "Development Bank Bill rushed through Parliament without debate",
+    "source": "Kaieteur News",
+    "date": "2026-07-28",
+    "country": "GY",
+    "url": "https://kaieteurnewsonline.com/2026/07/28/development-bank-bill-rushed-through-parliament-without-debate/",
+    "tags": [
+      "news",
+      "debate",
+      "development bank bill",
+      "national assembly",
+      "parliament"
+    ],
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "kaieteur-news-0e3412ad",
+    "title": "Oil price dives as US and Iran pause attacks",
+    "source": "Kaieteur News",
+    "date": "2026-07-28",
+    "country": "GY",
+    "url": "https://kaieteurnewsonline.com/2026/07/28/oil-price-dives-as-us-and-iran-pause-attacks/",
+    "tags": [
+      "news",
+      "bombing",
+      "oil price",
+      "us and iran",
+      "war"
+    ],
+    "category": "Energy",
+    "group": "Energy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "kaieteur-news-bdd82316",
+    "title": "The debt burden",
+    "source": "Kaieteur News",
+    "date": "2026-07-28",
+    "country": "GY",
+    "url": "https://kaieteurnewsonline.com/2026/07/28/the-debt-burden/",
+    "tags": [
+      "editorial",
+      "news",
+      "debt burden",
+      "economic transformations"
+    ],
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "guyana-chronicle-c3e9402b",
+    "title": "Development Bank Bill passed, paving way for new wave of opportunities",
+    "source": "Guyana Chronicle",
+    "date": "2026-07-28",
+    "country": "GY",
+    "url": "https://guyanachronicle.com/2026/07/28/development-bank-bill-passed-paving-way-for-new-wave-of-opportunities-2/",
+    "tags": [
+      "news"
+    ],
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "jamaica-observer-ba722a2e",
+    "title": "JAMAICA GOLD",
+    "source": "Jamaica Observer",
+    "date": "2026-07-28",
+    "country": "JM",
+    "url": "https://www.jamaicaobserver.com/2026/07/28/jamaica-gold/",
+    "tags": [
+      "news"
+    ],
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "jamaica-observer-82a742f3",
+    "title": "BVI probes US$2.5-million Delta Capital investment",
+    "source": "Jamaica Observer",
+    "date": "2026-07-28",
+    "country": "JM",
+    "url": "https://www.jamaicaobserver.com/2026/07/27/bvi-probes-us2-5-million-delta-capital-investment/",
+    "tags": [
+      "business",
+      "latest news",
+      "british virgin islands",
+      "delta capital",
+      "investment"
+    ],
+    "category": "Investment",
+    "group": "Investment",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "jamaica-gleaner-a7f111a6",
+    "title": "Stocks are drifting on Wall Street and crude oil prices drop 6%",
+    "source": "Jamaica Gleaner",
+    "date": "2026-07-28",
+    "country": "JM",
+    "url": "http://jamaica-gleaner.com/article/business/20260728/stocks-are-drifting-wall-street-and-crude-oil-prices-drop-6",
+    "category": "Energy",
+    "group": "Energy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "the-star-jamaica-53273eaf",
+    "title": "Jamaica and Canada celebrate 60 years of farm work ties",
+    "source": "The Star (Jamaica)",
+    "date": "2026-07-28",
+    "country": "JM",
+    "url": "https://jamaica-star.com/article/news/20260728/jamaica-and-canada-celebrate-60-years-farm-work-ties",
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "starnieuws-ce2f6476",
+    "title": "Olieprijzen dalen door pauze in Amerikaanse aanvallen op Iran",
+    "source": "Starnieuws",
+    "date": "2026-07-28",
+    "country": "SR",
+    "url": "https://www.starnieuws.com/index.php/welcome/index/nieuwsitem/93154",
+    "category": "Energy",
+    "group": "Energy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "antigua-news-room-a3031906",
+    "title": "JOB VACANCY: Heavy-Duty Superintendent",
+    "source": "Antigua News Room",
+    "date": "2026-07-28",
+    "country": "AG",
+    "url": "https://antiguanewsroom.com/job-vacancy-heavy-duty-superintendent/",
+    "tags": [
+      "news"
+    ],
+    "category": "Labor",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "antigua-news-room-9303cc53",
+    "title": "APUA Says Electricity Restored to All Feeders and Communities",
+    "source": "Antigua News Room",
+    "date": "2026-07-28",
+    "country": "AG",
+    "url": "https://antiguanewsroom.com/apua-says-electricity-restored-to-all-feeders-and-communities/",
+    "tags": [
+      "news"
+    ],
+    "category": "Energy",
+    "group": "Energy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "antigua-news-room-b90edeb5",
+    "title": "7.1-magnitude earthquake strikes southern Japan, damaging buildings and bridges, and knocking out power to thousands of homes",
+    "source": "Antigua News Room",
+    "date": "2026-07-28",
+    "country": "AG",
+    "url": "https://antiguanewsroom.com/7-1-magnitude-earthquake-strikes-southern-japan-damaging-buildings-and-bridges-and-knocking-out-power-to-thousands-of-homes/",
+    "tags": [
+      "news"
+    ],
+    "category": "Infrastructure",
+    "group": "Investment",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "antigua-news-room-a7e4e2be",
+    "title": "APUA: Several Communities Still Without Electricity Amid Ongoing Grid Repairs",
+    "source": "Antigua News Room",
+    "date": "2026-07-28",
+    "country": "AG",
+    "url": "https://antiguanewsroom.com/apua-several-communities-still-without-electricity-amid-ongoing-grid-repairs/",
+    "tags": [
+      "news"
+    ],
+    "category": "Energy",
+    "group": "Energy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "antigua-observer-56f2abc0",
+    "title": "Creatives Network to Strengthen Tourism",
+    "source": "Antigua Observer",
+    "date": "2026-07-28",
+    "country": "AG",
+    "url": "https://antiguaobserver.com/creatives-network-to-strengthen-tourism/",
+    "tags": [
+      "the big stories"
+    ],
+    "category": "Tourism",
+    "group": "Trade & Tourism",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "nature-isle-news-b1bc6892",
+    "title": "A pharmacist, a retired educator, and a businessman among three new UWP candidates declared",
+    "source": "Nature Isle News",
+    "date": "2026-07-28",
+    "country": "DM",
+    "url": "https://natureisle.news/election/a-pharmacist-a-retired-educator-and-a-businessman-among-three-new-uwp-candidates-declared/",
+    "tags": [
+      "business",
+      "election",
+      "government",
+      "health",
+      "opposition",
+      "parliament"
+    ],
+    "category": "Corporate",
+    "group": "Finance",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "cayman-compass-d75d0826",
+    "title": "Boilers Road 10-storey apartment block approved",
+    "source": "Cayman Compass",
+    "date": "2026-07-28",
+    "country": "KY",
+    "url": "https://www.caymancompass.com/2026/07/28/boilers-road-10-storey-apartment-block-approved/",
+    "tags": [
+      "local",
+      "real estate",
+      "eduardo bernal",
+      "legoland real estate",
+      "planning",
+      "the eldemire"
+    ],
+    "category": "Infrastructure",
+    "group": "Investment",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "bvi-news-8ce7d302",
+    "title": "Rosan wants COI into Bank of Asia, Delta Capital investments",
+    "source": "BVI News",
+    "date": "2026-07-28",
+    "country": "VG",
+    "url": "https://bvinews.com/rosan-wants-coi-into-bank-of-asia-delta-capital-investments/",
+    "tags": [
+      "all news"
+    ],
+    "category": "Banking",
+    "group": "Finance",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "bvi-news-7fa6f29b",
+    "title": "Premier rejects claim he has lost control of public finances",
+    "source": "BVI News",
+    "date": "2026-07-28",
+    "country": "VG",
+    "url": "https://bvinews.com/premier-rejects-claim-he-has-lost-control-of-public-finances/",
+    "tags": [
+      "all news"
+    ],
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
     "id": "kaieteur-news-ef584521",
     "title": "Canadian firm eyes acquisition of company controlling Quartzstone Gold Project",
     "source": "Kaieteur News",
@@ -1183,6 +1527,114 @@
     "classifier": "llm",
     "deal_status": "completed",
     "deal_type": "Other"
+  },
+  {
+    "id": "starnieuws-587b41d7",
+    "title": "Investeren in kinderen is investeren in de toekomst van ons land",
+    "source": "Starnieuws",
+    "date": "2026-07-27",
+    "country": "SR",
+    "url": "https://www.starnieuws.com/index.php/welcome/index/nieuwsitem/93137",
+    "category": "Investment",
+    "group": "Investment",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "st-lucia-times-4729be62",
+    "title": "Blind Welfare Association seeks better access to jobs, safety and inclusion",
+    "source": "St. Lucia Times",
+    "date": "2026-07-27",
+    "country": "LC",
+    "url": "https://stluciatimes.com/182355/2026/07/blind-welfare-association-seeks-better-access-to-jobs-safety-and-inclusion/",
+    "tags": [
+      "community",
+      "headlines",
+      "anthony avril",
+      "communication",
+      "disabilities",
+      "saint lucia"
+    ],
+    "category": "Labor",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "st-kitts-nevis-observer-20051bd7",
+    "title": "Great Britain:  Fourth Company Director Disqualified For Role In £13.9 Million Barclays ‘Scam’",
+    "source": "St. Kitts-Nevis Observer",
+    "date": "2026-07-27",
+    "country": "KN",
+    "url": "https://www.thestkittsnevisobserver.com/great-britain-fourth-company-director-disqualified-for-role-in-13-9-million-barclays-scam/",
+    "tags": [
+      "press releases",
+      "regional/international news"
+    ],
+    "category": "Corporate",
+    "group": "Finance",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "st-kitts-nevis-observer-73ffc639",
+    "title": "United States:  Gov. Beshear Visits Eastern Kentucky To Honor 4-Year Anniversary Of Floods, Celebrate New Housing",
+    "source": "St. Kitts-Nevis Observer",
+    "date": "2026-07-27",
+    "country": "KN",
+    "url": "https://www.thestkittsnevisobserver.com/united-states-gov-beshear-visits-eastern-kentucky-to-honor-4-year-anniversary-of-floods-celebrate-new-housing/",
+    "tags": [
+      "press releases",
+      "regional/international news"
+    ],
+    "category": "Infrastructure",
+    "group": "Investment",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "st-kitts-nevis-observer-255e8dfb",
+    "title": "United States:  Department Of War And L3Harris Secure Landmark Deals To Expand Propulsion Production For PAC-3 MSE And THAAD",
+    "source": "St. Kitts-Nevis Observer",
+    "date": "2026-07-27",
+    "country": "KN",
+    "url": "https://www.thestkittsnevisobserver.com/united-states-department-of-war-and-l3harris-secure-landmark-deals-to-expand-propulsion-production-for-pac-3-mse-and-thaad/",
+    "tags": [
+      "press releases",
+      "regional/international news"
+    ],
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "st-kitts-nevis-observer-1f00f1c7",
+    "title": "As CBI falls, St. Kitts and Nevis must not chase away real investment, Destiny",
+    "source": "St. Kitts-Nevis Observer",
+    "date": "2026-07-27",
+    "country": "KN",
+    "url": "https://www.thestkittsnevisobserver.com/as-cbi-falls-st-kitts-and-nevis-must-not-chase-away-real-investment-destiny/",
+    "tags": [
+      "editorial",
+      "featured"
+    ],
+    "category": "Investment",
+    "group": "Investment",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
   },
   {
     "id": "kaieteur-news-205221bc",
