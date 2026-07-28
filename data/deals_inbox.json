@@ -585,5 +585,44 @@
     "url": "https://bvinews.com/premier-admits-failures-after-2-5m-investment-loss/",
     "source": "BVI News",
     "approved": false
+  },
+  {
+    "id": "deal-8344f49d",
+    "headline": "MV Golden Carrier Completes Successful Loaded Sea Trial",
+    "parties": "",
+    "value": "",
+    "date": "2026-07-27",
+    "country": "TT",
+    "type": "",
+    "suggestedType": "FDI",
+    "url": "https://www.ttt.live/mv-golden-carrier-completes-successful-loaded-sea-trial/?utm_source=rss&utm_medium=rss&utm_campaign=mv-golden-carrier-completes-successful-loaded-sea-trial",
+    "source": "TTT News",
+    "approved": false
+  },
+  {
+    "id": "deal-3ebb716f",
+    "headline": "National stadium ‘on track’ for 2027 handover",
+    "parties": "",
+    "value": "",
+    "date": "2026-07-27",
+    "country": "BB",
+    "type": "",
+    "suggestedType": "Other",
+    "url": "https://barbadostoday.bb/2026/07/27/national-stadium-on-track-for-2027-handover/",
+    "source": "Barbados Today",
+    "approved": false
+  },
+  {
+    "id": "deal-1dca2403",
+    "headline": "Ministry breaks ground on long-awaited $3.5M pool",
+    "parties": "",
+    "value": "",
+    "date": "2026-07-27",
+    "country": "KY",
+    "type": "",
+    "suggestedType": "Other",
+    "url": "https://caymannewsservice.com/2026/07/ministry-breaks-ground-on-long-awaited-3-5m-pool/",
+    "source": "Cayman News Service",
+    "approved": false
   }
 ]
