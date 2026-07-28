@@ -3,6 +3,7 @@
 // Props: title (page title), description (meta), activePage (for future use)
 import TopBar from '../components/shell/TopBar.astro';
 import Nav    from '../components/shell/Nav.astro';
+import Analytics from '@vercel/analytics/astro'
 
 interface Props {
   title: string;
@@ -53,6 +54,11 @@ const fullTitle = title === 'Home'
         <span class="mono">Data: IMF · World Bank · UNCTAD · national sources</span>
       </div>
     </footer>
+
+    {/* Vercel Web Analytics — renders a custom element plus its hydration script, so it
+        must sit in <body>; the parser relocates custom elements out of <head>. No-ops
+        locally, only reports from a Vercel deploy. Astro strips this comment from output. */}
+    <Analytics />
   </body>
 </html>
 
