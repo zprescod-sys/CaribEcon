@@ -574,6 +574,200 @@
     "deal_type": null
   },
   {
+    "id": "kaieteur-news-c0148a92",
+    "title": "Oil price rises after Iran says it stops ships in Hormuz",
+    "source": "Kaieteur News",
+    "date": "2026-08-01",
+    "country": "GY",
+    "url": "https://kaieteurnewsonline.com/2026/08/01/oil-price-rises-after-iran-says-it-stops-ships-in-hormuz/",
+    "tags": [
+      "news",
+      "global energy supplies",
+      "iran war",
+      "oil price",
+      "strait of hormuz"
+    ],
+    "category": "Energy",
+    "group": "Energy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "barbados-today-17a79848",
+    "title": "Agriculture camp aims to grow young farmers",
+    "source": "Barbados Today",
+    "date": "2026-08-01",
+    "country": "BB",
+    "url": "https://barbadostoday.bb/2026/08/01/agriculture-camp-aims-to-grow-young-farmers/",
+    "tags": [
+      "agriculture",
+      "community",
+      "local news",
+      "youth"
+    ],
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "starnieuws-f9b9b31d",
+    "title": "Caricom-voorzitter Pierre: Emancipatie is pas voltooid met economische vrijheid en rechtvaardigheid",
+    "source": "Starnieuws",
+    "date": "2026-08-01",
+    "country": "SR",
+    "url": "https://www.starnieuws.com/index.php/welcome/index/nieuwsitem/93221",
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "starnieuws-559e84b6",
+    "title": "Infantino schrapt omstreden World Cup-investeringplan na felle kritiek van UEFA en bonden",
+    "source": "Starnieuws",
+    "date": "2026-08-01",
+    "country": "SR",
+    "url": "https://www.starnieuws.com/index.php/welcome/index/nieuwsitem/93222",
+    "category": "Debt",
+    "group": "Fiscal Policy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "st-lucia-times-6acd0428",
+    "title": "Pierre: Emancipation unfinished without economic freedom",
+    "source": "St. Lucia Times",
+    "date": "2026-08-01",
+    "country": "LC",
+    "url": "https://stluciatimes.com/182511/2026/08/pierre-emancipation-unfinished-without-economic-freedom/",
+    "tags": [
+      "headlines",
+      "politics & government",
+      "caribbean news",
+      "caricom",
+      "economic freedom",
+      "emancipation day"
+    ],
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "antigua-news-room-aeec7509",
+    "title": "U.S. will make visa bond program permanent, affecting Antigua and other countries",
+    "source": "Antigua News Room",
+    "date": "2026-08-01",
+    "country": "AG",
+    "url": "https://antiguanewsroom.com/u-s-will-make-visa-bond-program-permanent-affecting-antigua-and-other-countries/",
+    "tags": [
+      "news"
+    ],
+    "category": "Debt",
+    "group": "Fiscal Policy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "antigua-news-room-a3005d34",
+    "title": "PM Browne Warns of ‘Economic Recolonization’ in Emancipation Day Address",
+    "source": "Antigua News Room",
+    "date": "2026-08-01",
+    "country": "AG",
+    "url": "https://antiguanewsroom.com/pm-browne-warns-of-economic-recolonization-in-emancipation-day-address/",
+    "tags": [
+      "news"
+    ],
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "antigua-news-room-6d301e00",
+    "title": "CARICOM Chair Says Economic Freedom Key to Completing Emancipation’s Unfinished Work",
+    "source": "Antigua News Room",
+    "date": "2026-08-01",
+    "country": "AG",
+    "url": "https://antiguanewsroom.com/caricom-chair-says-economic-freedom-key-to-completing-emancipations-unfinished-work/",
+    "tags": [
+      "news"
+    ],
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "antigua-news-room-cd485c76",
+    "title": "Veteran Engineer Girvan Piggott Appointed Antigua and Barbuda’s New Director of Energy",
+    "source": "Antigua News Room",
+    "date": "2026-08-01",
+    "country": "AG",
+    "url": "https://antiguanewsroom.com/veteran-engineer-girvan-piggott-appointed-antigua-and-barbudas-new-director-of-energy/",
+    "tags": [
+      "news"
+    ],
+    "category": "Energy",
+    "group": "Energy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "antigua-news-room-e932c28e",
+    "title": "Caribbean Airlines Cargo Flight Declares Emergency, Lands Safely in Jamaica",
+    "source": "Antigua News Room",
+    "date": "2026-08-01",
+    "country": "AG",
+    "url": "https://antiguanewsroom.com/caribbean-airlines-cargo-flight-declares-emergency-lands-safely-in-jamaica/",
+    "tags": [
+      "news"
+    ],
+    "category": "Trade",
+    "group": "Trade & Tourism",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "iwitness-news-995763b5",
+    "title": "Emancipation’s promise and Britain’s debt",
+    "source": "iWitness News",
+    "date": "2026-08-01",
+    "country": "VC",
+    "url": "https://www.iwnsvg.com/2026/08/01/emancipations-promise-and-britains-bebt/",
+    "tags": [
+      "opinion",
+      "outside view"
+    ],
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
     "id": "wic-news-82626b9d",
     "title": "Passenger slams Caribbean Airlines over 'poor' in-flight meal on Toronto-Guyana flight",
     "source": "WIC News",
@@ -2365,6 +2559,145 @@
     "deal_type": null
   },
   {
+    "id": "jamaica-observer-be58092f",
+    "title": "Oil giants report blowout profits on war, warn high gas prices could persist",
+    "source": "Jamaica Observer",
+    "date": "2026-07-31",
+    "country": "JM",
+    "url": "https://www.jamaicaobserver.com/2026/07/31/oil-giants-report-blowout-profits-war-warn-high-gas-prices-persist/",
+    "tags": [
+      "business",
+      "international news",
+      "latest news",
+      "chevron",
+      "exxonmobil",
+      "oil prices"
+    ],
+    "category": "Energy",
+    "group": "Energy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "jamaica-gleaner-d3a2652d",
+    "title": "Microsoft beats Wall Street expectations with US$90b in revenue",
+    "source": "Jamaica Gleaner",
+    "date": "2026-07-31",
+    "country": "JM",
+    "url": "http://jamaica-gleaner.com/article/business/20260731/microsoft-beats-wall-street-expectations-us90b-revenue",
+    "category": "Fiscal Policy",
+    "group": "Fiscal Policy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "the-star-jamaica-90b5c238",
+    "title": "Haunted by history  Flat Bridge surrounded by stories of spirits",
+    "source": "The Star (Jamaica)",
+    "date": "2026-07-31",
+    "country": "JM",
+    "url": "https://jamaica-star.com/article/news/20260731/haunted-history-flat-bridge-surrounded-stories-spirits",
+    "category": "Infrastructure",
+    "group": "Investment",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "the-star-jamaica-7f995ebe",
+    "title": "Mermaid mystery at Flat Bridge Diver insists she saw River Mumma in Rio Cobre",
+    "source": "The Star (Jamaica)",
+    "date": "2026-07-31",
+    "country": "JM",
+    "url": "https://jamaica-star.com/article/news/20260731/mermaid-mystery-flat-bridge-diver-insists-she-saw-river-mumma-rio-cobre",
+    "category": "Infrastructure",
+    "group": "Investment",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "st-lucia-times-49f8834e",
+    "title": "Saint Lucia loses respected business leader Evaristus Jn Marie",
+    "source": "St. Lucia Times",
+    "date": "2026-07-31",
+    "country": "LC",
+    "url": "https://stluciatimes.com/182500/2026/07/saint-lucia-loses-respected-business-leader-evaristus-jn-marie/",
+    "tags": [
+      "death",
+      "headlines",
+      "bank of saint lucia",
+      "claudius francis",
+      "death",
+      "evaristus jn marie"
+    ],
+    "category": "Corporate",
+    "group": "Finance",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "st-kitts-nevis-observer-374c5233",
+    "title": "United States:  CEO Of Skincare Company Pleads Guilty To FDCA Charges And Mail Fraud",
+    "source": "St. Kitts-Nevis Observer",
+    "date": "2026-07-31",
+    "country": "KN",
+    "url": "https://www.thestkittsnevisobserver.com/united-states-ceo-of-skincare-company-pleads-guilty-to-fdca-charges-and-mail-fraud/",
+    "tags": [
+      "press releases",
+      "regional/international news"
+    ],
+    "category": "Corporate",
+    "group": "Finance",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "st-kitts-nevis-observer-83bb8105",
+    "title": "United States:  Under Secretary Rogers Hosts Digital NEXT Delegation With FTC Chairman Ferguson And Elon Musk And Announces New Tech Industry Partnership To Advance Digital Freedom",
+    "source": "St. Kitts-Nevis Observer",
+    "date": "2026-07-31",
+    "country": "KN",
+    "url": "https://www.thestkittsnevisobserver.com/united-states-under-secretary-rogers-hosts-digital-next-delegation-with-ftc-chairman-ferguson-and-elon-musk-and-announces-new-tech-industry-partnership-to-advance-digital-freedom/",
+    "tags": [
+      "press releases",
+      "regional/international news"
+    ],
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "st-kitts-nevis-observer-ffe19d0f",
+    "title": "Nevis Premier urges energy conservation as fuel surcharge returns",
+    "source": "St. Kitts-Nevis Observer",
+    "date": "2026-07-31",
+    "country": "KN",
+    "url": "https://www.thestkittsnevisobserver.com/nevis-premier-urges-energy-conservation-as-fuel-surcharge-returns/",
+    "tags": [
+      "local news"
+    ],
+    "category": "Energy",
+    "group": "Energy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
     "id": "kaieteur-news-45315806",
     "title": "Canadian firm pockets US$2.2B on Guyana gold field, country gets nothing",
     "source": "Kaieteur News",
@@ -3909,6 +4242,41 @@
     "classifier": "llm",
     "deal_status": "not_a_deal",
     "deal_type": null
+  },
+  {
+    "id": "st-kitts-nevis-observer-3c79f52b",
+    "title": "Oualie Rhythms Claims 2026 National Bank Panorama Crown at Culturama 52",
+    "source": "St. Kitts-Nevis Observer",
+    "date": "2026-07-30",
+    "country": "KN",
+    "url": "https://www.thestkittsnevisobserver.com/oualie-rhythms-claims-2026-national-bank-panorama-crown-at-culturama-52/",
+    "tags": [
+      "local news"
+    ],
+    "category": "Banking",
+    "group": "Finance",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "st-kitts-nevis-observer-727c2490",
+    "title": "Great Britain:  Major £8.4Bn Investment Advances UK Nuclear Deterrent And Backs British Industry",
+    "source": "St. Kitts-Nevis Observer",
+    "date": "2026-07-30",
+    "country": "KN",
+    "url": "https://www.thestkittsnevisobserver.com/great-britain-major-8-4bn-investment-advances-uk-nuclear-deterrent-and-backs-british-industry/",
+    "tags": [
+      "press releases",
+      "regional/international news"
+    ],
+    "category": "Investment",
+    "group": "Investment",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
   },
   {
     "id": "jamaica-observer-7b5c905d",
