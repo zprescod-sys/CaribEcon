@@ -7,100 +7,104 @@
   },
   "summary": {
     "primaryRecords": 68,
-    "crossChecked": 11,
+    "crossChecked": 8,
     "flagged": 3,
-    "notCrossCheckable": 57
+    "notCrossCheckable": 60,
+    "skipped": 0
   },
   "flagged": [
     {
       "country": "TT",
-      "indicator": "gross_govt_debt_pct_gdp",
+      "indicator": "unemployment",
       "unit": "%",
-      "source": "T&T Ministry of Finance — Review of the Economy 2025",
+      "source": "T&T Ministry of Finance — Review of the Economy 2025 (CSO)",
       "sourceUrl": "https://www.finance.gov.tt/category/economic-review/",
       "years": [
         {
-          "year": 2022,
-          "stored": 74.7,
-          "comparable": 69.9,
-          "delta": 4.799999999999997,
-          "kind": "pp"
-        },
-        {
-          "year": 2023,
-          "stored": 81.1,
-          "comparable": 78.2,
-          "delta": 2.8999999999999915,
+          "year": 2020,
+          "stored": 5.6,
+          "comparable": 4.21,
+          "delta": 1.3899999999999997,
           "kind": "pp"
         },
         {
           "year": 2024,
-          "stored": 83.4,
-          "comparable": 81.8,
-          "delta": 1.6000000000000085,
+          "stored": 5,
+          "comparable": 3.32,
+          "delta": 1.6800000000000002,
           "kind": "pp"
         }
       ]
     },
     {
       "country": "TT",
-      "indicator": "current_account",
-      "unit": "US$ mn",
-      "source": "T&T Ministry of Finance — Review of the Economy 2025 (CBTT)",
+      "indicator": "labour_participation",
+      "unit": "%",
+      "source": "T&T Ministry of Finance — Review of the Economy 2025 (CSO)",
       "sourceUrl": "https://www.finance.gov.tt/category/economic-review/",
       "years": [
         {
+          "year": 2019,
+          "stored": 57.4,
+          "comparable": 60.69,
+          "delta": -3.289999999999999,
+          "kind": "pp"
+        },
+        {
+          "year": 2020,
+          "stored": 55.9,
+          "comparable": 58.64,
+          "delta": -2.740000000000002,
+          "kind": "pp"
+        },
+        {
+          "year": 2021,
+          "stored": 54.8,
+          "comparable": 57.63,
+          "delta": -2.8300000000000054,
+          "kind": "pp"
+        },
+        {
+          "year": 2022,
+          "stored": 55,
+          "comparable": 58.35,
+          "delta": -3.3500000000000014,
+          "kind": "pp"
+        },
+        {
+          "year": 2023,
+          "stored": 55.6,
+          "comparable": 59.27,
+          "delta": -3.6700000000000017,
+          "kind": "pp"
+        },
+        {
           "year": 2024,
-          "stored": 1232.9,
-          "comparable": 645,
-          "delta": 587.9000000000001,
-          "kind": "rel",
-          "rel": 0.9114728682170544
+          "stored": 55.1,
+          "comparable": 58.15,
+          "delta": -3.049999999999997,
+          "kind": "pp"
         }
       ]
     },
     {
-      "country": "GY",
-      "indicator": "current_account",
-      "unit": "US$ mn",
-      "source": "Bank of Guyana — Annual Report 2024 (Statistical Annexe)",
-      "sourceUrl": "https://bankofguyana.org.gy/bog/images/research/Reports/ANNREP2024.pdf",
+      "country": "TT",
+      "indicator": "dependency_ratio",
+      "unit": "%",
+      "source": "T&T Ministry of Finance — Review of the Economy 2025 (CSO)",
+      "sourceUrl": "https://www.finance.gov.tt/category/economic-review/",
       "years": [
         {
-          "year": 2015,
-          "stored": -177.4,
-          "comparable": -147,
-          "delta": -30.400000000000006,
-          "kind": "rel",
-          "rel": 0.20680272108843542
-        },
-        {
-          "year": 2016,
-          "stored": 27.6,
-          "comparable": 65,
-          "delta": -37.4,
-          "kind": "rel",
-          "rel": 0.5753846153846154
-        },
-        {
-          "year": 2017,
-          "stored": -290.5,
-          "comparable": -232,
-          "delta": -58.5,
-          "kind": "rel",
-          "rel": 0.2521551724137931
-        },
-        {
-          "year": 2019,
-          "stored": -2823.7,
-          "comparable": -3558,
-          "delta": 734.3000000000002,
-          "kind": "rel",
-          "rel": 0.20637998875772912
+          "year": 2024,
+          "stored": 42,
+          "comparable": 43.14,
+          "delta": -1.1400000000000006,
+          "kind": "pp"
         }
       ]
     }
   ],
+  "skipped": [],
   "notCrossCheckable": [
     "BB · capital_account",
     "BB · fiscal_balance",
@@ -125,6 +129,7 @@
     "BS · net_govt_debt",
     "BS · primary_balance",
     "GY · capital_account",
+    "GY · current_account",
     "GY · fiscal_balance",
     "GY · govt_capital_expenditure",
     "GY · govt_current_expenditure",
@@ -151,12 +156,14 @@
     "KY · govt_current_expenditure",
     "KY · govt_revenue_total",
     "KY · govt_total_expenditure",
+    "TT · current_account",
     "TT · fiscal_balance",
     "TT · govt_capital_expenditure",
     "TT · govt_current_expenditure",
     "TT · govt_revenue_total",
     "TT · govt_total_expenditure",
     "TT · gross_govt_debt",
+    "TT · gross_govt_debt_pct_gdp",
     "TT · net_govt_debt",
     "TT · primary_balance"
   ]

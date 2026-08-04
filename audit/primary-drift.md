@@ -1,42 +1,43 @@
 # Primary-source drift report
 
-Cross-checks hand-keyed **primary** records against live World Bank / IMF data (frontier 2015–2026).
+Cross-checks hand-keyed **primary** records against live World Bank WDI data (frontier 2015–2026).
 These values are **not** changed automatically — this is a to-do list of national figures worth re-checking by hand.
 
-- Primary records: **68** · cross-checked: **11** · **flagged: 3** · not cross-checkable: 57
+- Primary records: **68** · cross-checked: **8** · **flagged: 3** · not cross-checkable: 60
 - Thresholds: >1pp for %-unit indicators, >5% relative for levels.
 
-## ⚠ Flagged — primary value diverges from World Bank / IMF
+## ⚠ Flagged — primary value diverges from World Bank
 
-### TT · gross_govt_debt_pct_gdp (%)
-Source: T&T Ministry of Finance — Review of the Economy 2025 — https://www.finance.gov.tt/category/economic-review/
+### TT · unemployment (%)
+Source: T&T Ministry of Finance — Review of the Economy 2025 (CSO) — https://www.finance.gov.tt/category/economic-review/
 
-| Year | Stored (primary) | Comparable (WB/IMF) | Δ |
+| Year | Stored (primary) | Comparable (World Bank) | Δ |
 | ---- | ---- | ---- | ---- |
-| 2022 | 74.7 | 69.9 | +4.8 pp |
-| 2023 | 81.1 | 78.2 | +2.9 pp |
-| 2024 | 83.4 | 81.8 | +1.6 pp |
+| 2020 | 5.6 | 4.21 | +1.39 pp |
+| 2024 | 5 | 3.32 | +1.68 pp |
 
-### TT · current_account (US$ mn)
-Source: T&T Ministry of Finance — Review of the Economy 2025 (CBTT) — https://www.finance.gov.tt/category/economic-review/
+### TT · labour_participation (%)
+Source: T&T Ministry of Finance — Review of the Economy 2025 (CSO) — https://www.finance.gov.tt/category/economic-review/
 
-| Year | Stored (primary) | Comparable (WB/IMF) | Δ |
+| Year | Stored (primary) | Comparable (World Bank) | Δ |
 | ---- | ---- | ---- | ---- |
-| 2024 | 1,232.9 | 645 | +587.9 (91.1%) |
+| 2019 | 57.4 | 60.69 | -3.29 pp |
+| 2020 | 55.9 | 58.64 | -2.74 pp |
+| 2021 | 54.8 | 57.63 | -2.83 pp |
+| 2022 | 55 | 58.35 | -3.35 pp |
+| 2023 | 55.6 | 59.27 | -3.67 pp |
+| 2024 | 55.1 | 58.15 | -3.05 pp |
 
-### GY · current_account (US$ mn)
-Source: Bank of Guyana — Annual Report 2024 (Statistical Annexe) — https://bankofguyana.org.gy/bog/images/research/Reports/ANNREP2024.pdf
+### TT · dependency_ratio (%)
+Source: T&T Ministry of Finance — Review of the Economy 2025 (CSO) — https://www.finance.gov.tt/category/economic-review/
 
-| Year | Stored (primary) | Comparable (WB/IMF) | Δ |
+| Year | Stored (primary) | Comparable (World Bank) | Δ |
 | ---- | ---- | ---- | ---- |
-| 2015 | -177.4 | -147 | -30.4 (20.7%) |
-| 2016 | 27.6 | 65 | -37.4 (57.5%) |
-| 2017 | -290.5 | -232 | -58.5 (25.2%) |
-| 2019 | -2,823.7 | -3,558 | +734.3 (20.6%) |
+| 2024 | 42 | 43.14 | -1.14 pp |
 
 ## Not cross-checkable (no comparable equivalent)
 
-These primary series have no clean World Bank / IMF counterpart, so they can only be verified against the national source manually:
+These primary series have no clean World Bank counterpart, so they can only be verified against the national source manually. (Debt-ratio and current-account series previously cross-checked against IMF WEO are included here: the pipeline no longer fetches the IMF, so they are confirmed by hand against the national source.)
 
 - BB · capital_account
 - BB · fiscal_balance
@@ -61,6 +62,7 @@ These primary series have no clean World Bank / IMF counterpart, so they can onl
 - BS · net_govt_debt
 - BS · primary_balance
 - GY · capital_account
+- GY · current_account
 - GY · fiscal_balance
 - GY · govt_capital_expenditure
 - GY · govt_current_expenditure
@@ -87,12 +89,14 @@ These primary series have no clean World Bank / IMF counterpart, so they can onl
 - KY · govt_current_expenditure
 - KY · govt_revenue_total
 - KY · govt_total_expenditure
+- TT · current_account
 - TT · fiscal_balance
 - TT · govt_capital_expenditure
 - TT · govt_current_expenditure
 - TT · govt_revenue_total
 - TT · govt_total_expenditure
 - TT · gross_govt_debt
+- TT · gross_govt_debt_pct_gdp
 - TT · net_govt_debt
 - TT · primary_balance
 
