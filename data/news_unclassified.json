@@ -22,7 +22,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "kaieteur-news-17295b7b",
@@ -48,7 +49,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "kaieteur-news-6901fc0b",
@@ -62,7 +64,7 @@
       "diplomacy",
       "imf report"
     ],
-    "category": "",
+    "category": "Macro",
     "group": "Macro",
     "decision": "review",
     "confidence": "low",
@@ -70,8 +72,9 @@
     "classifier": "llm",
     "deal_status": "not_a_deal",
     "deal_type": null,
-    "approved": false,
-    "suggestedCategory": "Macro"
+    "approved": true,
+    "suggestedCategory": "Macro",
+    "triaged": true
   },
   {
     "id": "guyana-chronicle-afe63cde",
@@ -92,7 +95,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Macro"
+    "suggestedCategory": "Macro",
+    "triaged": true
   },
   {
     "id": "guyana-chronicle-ddc5faa7",
@@ -113,7 +117,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "demerara-waves-b67f951c",
@@ -139,7 +144,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "ttt-news-7b0ec295",
@@ -160,7 +166,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Labor"
+    "suggestedCategory": "Labor",
+    "triaged": true
   },
   {
     "id": "jamaica-observer-a5e4218b",
@@ -181,7 +188,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Trade"
+    "suggestedCategory": "Trade",
+    "triaged": true
   },
   {
     "id": "jamaica-observer-5e6e93be",
@@ -193,7 +201,7 @@
     "tags": [
       "news"
     ],
-    "category": "",
+    "category": "Agriculture",
     "group": "Macro",
     "decision": "review",
     "confidence": "low",
@@ -201,8 +209,9 @@
     "classifier": "llm",
     "deal_status": "not_a_deal",
     "deal_type": null,
-    "approved": false,
-    "suggestedCategory": "Government"
+    "approved": true,
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "jamaica-gleaner-d60470c4",
@@ -220,7 +229,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "the-star-jamaica-cf5f6a92",
@@ -238,7 +248,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "starnieuws-ed222121",
@@ -256,7 +267,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Macro"
+    "suggestedCategory": "Macro",
+    "triaged": true
   },
   {
     "id": "antigua-news-room-b951b435",
@@ -277,7 +289,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Trade"
+    "suggestedCategory": "Trade",
+    "triaged": true
   },
   {
     "id": "searchlight-svg-1c69aa2d",
@@ -289,7 +302,7 @@
     "tags": [
       "front page"
     ],
-    "category": "",
+    "category": "Infrastructure",
     "group": "Investment",
     "decision": "review",
     "confidence": "medium",
@@ -297,8 +310,9 @@
     "classifier": "llm",
     "deal_status": "not_a_deal",
     "deal_type": null,
-    "approved": false,
-    "suggestedCategory": "Infrastructure"
+    "approved": true,
+    "suggestedCategory": "Infrastructure",
+    "triaged": true
   },
   {
     "id": "searchlight-svg-ebb1f93c",
@@ -319,7 +333,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "searchlight-svg-abf81a2a",
@@ -340,7 +355,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Trade"
+    "suggestedCategory": "Trade",
+    "triaged": true
   },
   {
     "id": "searchlight-svg-9dc20524",
@@ -352,7 +368,7 @@
     "tags": [
       "press release"
     ],
-    "category": "",
+    "category": "Technology",
     "group": "Macro",
     "decision": "review",
     "confidence": "medium",
@@ -360,8 +376,9 @@
     "classifier": "llm",
     "deal_status": "not_a_deal",
     "deal_type": null,
-    "approved": false,
-    "suggestedCategory": "Technology"
+    "approved": true,
+    "suggestedCategory": "Technology",
+    "triaged": true
   },
   {
     "id": "cayman-compass-5edde978",
@@ -385,7 +402,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Tourism"
+    "suggestedCategory": "Tourism",
+    "triaged": true
   },
   {
     "id": "kaieteur-news-08002484",
@@ -406,7 +424,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "kaieteur-news-902b2b16",
@@ -432,7 +451,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "guyana-chronicle-c16cf2bc",
@@ -453,7 +473,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Corporate"
+    "suggestedCategory": "Corporate",
+    "triaged": true
   },
   {
     "id": "the-star-jamaica-846f0832",
@@ -471,7 +492,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "st-kitts-nevis-observer-bf7c6560",
@@ -492,7 +514,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "cayman-compass-3464df40",
@@ -518,7 +541,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "kaieteur-news-27ad47b0",
@@ -541,7 +565,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "guyana-chronicle-e9c4af4d",
@@ -562,7 +587,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Corporate"
+    "suggestedCategory": "Corporate",
+    "triaged": true
   },
   {
     "id": "jamaica-observer-5799e901",
@@ -587,7 +613,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Tourism"
+    "suggestedCategory": "Tourism",
+    "triaged": true
   },
   {
     "id": "the-star-jamaica-a19159bb",
@@ -605,7 +632,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "the-star-jamaica-91c60f1b",
@@ -623,7 +651,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Labor"
+    "suggestedCategory": "Labor",
+    "triaged": true
   },
   {
     "id": "breaking-belize-news-ea55487c",
@@ -646,7 +675,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "breaking-belize-news-92d0eef3",
@@ -668,7 +698,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Trade"
+    "suggestedCategory": "Trade",
+    "triaged": true
   },
   {
     "id": "starnieuws-4bd33cee",
@@ -686,7 +717,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "waterkant-457bb3ca",
@@ -710,7 +742,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Infrastructure"
+    "suggestedCategory": "Infrastructure",
+    "triaged": true
   },
   {
     "id": "waterkant-926721cb",
@@ -733,7 +766,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Infrastructure"
+    "suggestedCategory": "Infrastructure",
+    "triaged": true
   },
   {
     "id": "jamaica-observer-66cd3b32",
@@ -754,7 +788,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Agriculture"
+    "suggestedCategory": "Agriculture",
+    "triaged": true
   },
   {
     "id": "st-lucia-times-7c54e728",
@@ -780,7 +815,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "kaieteur-news-cbb78edb",
@@ -805,7 +841,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "kaieteur-news-04ec48a0",
@@ -829,7 +866,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Technology"
+    "suggestedCategory": "Technology",
+    "triaged": true
   },
   {
     "id": "jamaica-observer-da82dffe",
@@ -850,7 +888,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "jamaica-observer-31d7cb73",
@@ -871,7 +910,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "starnieuws-35f88782",
@@ -889,7 +929,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Regional Developments"
+    "suggestedCategory": "Regional Developments",
+    "triaged": true
   },
   {
     "id": "waterkant-255b94d1",
@@ -912,7 +953,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "kaieteur-news-bd8f97e2",
@@ -938,7 +980,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "guyana-chronicle-e7352acb",
@@ -959,7 +1002,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "guyana-chronicle-44026c82",
@@ -980,7 +1024,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Corporate"
+    "suggestedCategory": "Corporate",
+    "triaged": true
   },
   {
     "id": "trinidad-express-979f76d7",
@@ -989,7 +1034,7 @@
     "date": "2026-08-02",
     "country": "TT",
     "url": "https://trinidadexpress.com/business/local/businesses-fear-political-fallout/article_bdaad703-a9eb-4b79-b66f-28d561ea9523.html",
-    "category": "",
+    "category": "Fiscal Policy",
     "group": "Macro",
     "decision": "review",
     "confidence": "low",
@@ -997,8 +1042,9 @@
     "classifier": "llm",
     "deal_status": "not_a_deal",
     "deal_type": null,
-    "approved": false,
-    "suggestedCategory": "Macro"
+    "approved": true,
+    "suggestedCategory": "Macro",
+    "triaged": true
   },
   {
     "id": "jamaica-observer-fe2b135d",
@@ -1019,7 +1065,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "jamaica-observer-2a7549a9",
@@ -1044,7 +1091,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "jamaica-observer-a67b061e",
@@ -1069,7 +1117,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "breaking-belize-news-75d1432c",
@@ -1090,7 +1139,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Tourism"
+    "suggestedCategory": "Tourism",
+    "triaged": true
   },
   {
     "id": "ziz-online-2d4f47f8",
@@ -1111,7 +1161,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Regional Developments"
+    "suggestedCategory": "Regional Developments",
+    "triaged": true
   },
   {
     "id": "ziz-online-c3bdf3ff",
@@ -1133,7 +1184,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Labor"
+    "suggestedCategory": "Labor",
+    "triaged": true
   },
   {
     "id": "antigua-news-room-87ffd525",
@@ -1154,7 +1206,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "st-kitts-nevis-observer-7b15fd31",
@@ -1175,7 +1228,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "nation-news-1025f262",
@@ -1197,7 +1251,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Labor"
+    "suggestedCategory": "Labor",
+    "triaged": true
   },
   {
     "id": "jamaica-observer-2cc28ab2",
@@ -1218,7 +1273,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Corporate"
+    "suggestedCategory": "Corporate",
+    "triaged": true
   },
   {
     "id": "barbados-today-bb0d307e",
@@ -1240,7 +1296,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "waterkant-8b9d0962",
@@ -1264,7 +1321,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Climate"
+    "suggestedCategory": "Climate",
+    "triaged": true
   },
   {
     "id": "jamaica-gleaner-6c050b9d",
@@ -1282,7 +1340,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Climate"
+    "suggestedCategory": "Climate",
+    "triaged": true
   },
   {
     "id": "breaking-belize-news-f964d434",
@@ -1305,7 +1364,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "antigua-news-room-7375685d",
@@ -1326,7 +1386,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "cayman-compass-09f9509a",
@@ -1350,7 +1411,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Fiscal Policy"
+    "suggestedCategory": "Fiscal Policy",
+    "triaged": true
   },
   {
     "id": "jamaica-gleaner-f4c7430e",
@@ -1368,7 +1430,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "st-lucia-times-5495d8bd",
@@ -1394,7 +1457,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "cayman-compass-60c84b41",
@@ -1420,7 +1484,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Climate"
+    "suggestedCategory": "Climate",
+    "triaged": true
   },
   {
     "id": "kaieteur-news-fce63b68",
@@ -1446,7 +1511,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "kaieteur-news-7ab68427",
@@ -1471,7 +1537,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "kaieteur-news-cc910bf3",
@@ -1496,7 +1563,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "guyana-chronicle-812f6837",
@@ -1517,7 +1585,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "guyana-chronicle-d6b027a9",
@@ -1538,7 +1607,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "nation-news-a4f58c8b",
@@ -1562,7 +1632,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "wic-news-a69addee",
@@ -1580,7 +1651,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Macro"
+    "suggestedCategory": "Macro",
+    "triaged": true
   },
   {
     "id": "wic-news-19e8d038",
@@ -1598,7 +1670,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Climate"
+    "suggestedCategory": "Climate",
+    "triaged": true
   },
   {
     "id": "barbados-today-aaf271cd",
@@ -1620,7 +1693,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "barbados-today-e483220e",
@@ -1642,7 +1716,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "breaking-belize-news-f5ea6c78",
@@ -1664,7 +1739,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "starnieuws-7d952dbf",
@@ -1682,7 +1758,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "jamaica-gleaner-849ebb45",
@@ -1698,7 +1775,8 @@
     "reason": "Recognized editorial edge-case vocabulary; suggested Corporate.",
     "classifier": "heuristic",
     "approved": false,
-    "suggestedCategory": "Corporate"
+    "suggestedCategory": "Corporate",
+    "triaged": true
   },
   {
     "id": "jamaica-observer-859664df",
@@ -1720,7 +1798,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Climate"
+    "suggestedCategory": "Climate",
+    "triaged": true
   },
   {
     "id": "ziz-online-4c4c932f",
@@ -1741,7 +1820,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Macro"
+    "suggestedCategory": "Macro",
+    "triaged": true
   },
   {
     "id": "bvi-news-ba379ef4",
@@ -1762,7 +1842,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "st-kitts-nevis-observer-23ab2ee4",
@@ -1783,7 +1864,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "searchlight-svg-70825a6c",
@@ -1804,7 +1886,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "searchlight-svg-9615ee0c",
@@ -1825,7 +1908,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "jamaica-observer-c127d858",
@@ -1850,7 +1934,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Infrastructure"
+    "suggestedCategory": "Infrastructure",
+    "triaged": true
   },
   {
     "id": "kaieteur-news-edb5e78f",
@@ -1874,7 +1959,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "guyana-chronicle-2601929b",
@@ -1895,7 +1981,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "jamaica-observer-18e268ff",
@@ -1916,7 +2003,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Tourism"
+    "suggestedCategory": "Tourism",
+    "triaged": true
   },
   {
     "id": "jamaica-gleaner-ccdcda94",
@@ -1925,7 +2013,7 @@
     "date": "2026-07-30",
     "country": "JM",
     "url": "http://jamaica-gleaner.com/article/news/20260730/j368m-boost-community-spaces",
-    "category": "",
+    "category": "Infrastructure",
     "group": "Macro",
     "decision": "review",
     "confidence": "medium",
@@ -1933,8 +2021,9 @@
     "classifier": "llm",
     "deal_status": "not_a_deal",
     "deal_type": null,
-    "approved": false,
-    "suggestedCategory": "Government"
+    "approved": true,
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "eyewitness-news-3800a052",
@@ -1957,7 +2046,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "waterkant-d5e801b2",
@@ -1980,7 +2070,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "guyana-chronicle-fad0dc84",
@@ -2001,7 +2092,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "barbados-today-095a9845",
@@ -2024,7 +2116,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Tourism"
+    "suggestedCategory": "Tourism",
+    "triaged": true
   },
   {
     "id": "jamaica-observer-b9b489e1",
@@ -2045,7 +2138,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "jamaica-observer-a327ca46",
@@ -2070,7 +2164,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "eyewitness-news-6fce7ca8",
@@ -2093,7 +2188,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "eyewitness-news-ed33f831",
@@ -2116,7 +2212,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Labor"
+    "suggestedCategory": "Labor",
+    "triaged": true
   },
   {
     "id": "breaking-belize-news-0cb5abb0",
@@ -2138,7 +2235,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Agriculture"
+    "suggestedCategory": "Agriculture",
+    "triaged": true
   },
   {
     "id": "starnieuws-c7c71d92",
@@ -2156,7 +2254,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "st-lucia-times-6d0fd3c2",
@@ -2182,7 +2281,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Infrastructure"
+    "suggestedCategory": "Infrastructure",
+    "triaged": true
   },
   {
     "id": "antigua-news-room-8270f1eb",
@@ -2203,7 +2303,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Labor"
+    "suggestedCategory": "Labor",
+    "triaged": true
   },
   {
     "id": "st-kitts-nevis-observer-aa12171e",
@@ -2224,7 +2325,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "antigua-news-room-5fdb7233",
@@ -2245,7 +2347,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Corporate"
+    "suggestedCategory": "Corporate",
+    "triaged": true
   },
   {
     "id": "ziz-online-1f62961b",
@@ -2268,7 +2371,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "the-star-jamaica-7a5772a9",
@@ -2286,7 +2390,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Infrastructure"
+    "suggestedCategory": "Infrastructure",
+    "triaged": true
   },
   {
     "id": "kaieteur-news-cc8cf311",
@@ -2310,7 +2415,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "guyana-chronicle-5afbaef5",
@@ -2331,7 +2437,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "jamaica-observer-fdfca231",
@@ -2352,7 +2459,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Labor"
+    "suggestedCategory": "Labor",
+    "triaged": true
   },
   {
     "id": "jamaica-observer-7cb1cf21",
@@ -2376,7 +2484,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Climate"
+    "suggestedCategory": "Climate",
+    "triaged": true
   },
   {
     "id": "jamaica-observer-a9e5acc0",
@@ -2397,7 +2506,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Fiscal Policy"
+    "suggestedCategory": "Fiscal Policy",
+    "triaged": true
   },
   {
     "id": "jamaica-observer-fbe6aa84",
@@ -2418,7 +2528,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "jamaica-gleaner-760a9822",
@@ -2436,7 +2547,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Technology"
+    "suggestedCategory": "Technology",
+    "triaged": true
   },
   {
     "id": "eyewitness-news-498e95f0",
@@ -2461,7 +2573,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Energy"
+    "suggestedCategory": "Energy",
+    "triaged": true
   },
   {
     "id": "eyewitness-news-e303d477",
@@ -2484,7 +2597,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "starnieuws-d1d1d3ec",
@@ -2502,7 +2616,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "starnieuws-a4d78ca0",
@@ -2520,7 +2635,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "waterkant-cb3c065e",
@@ -2544,7 +2660,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "waterkant-f61064f5",
@@ -2567,7 +2684,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Climate"
+    "suggestedCategory": "Climate",
+    "triaged": true
   },
   {
     "id": "waterkant-542f92ae",
@@ -2590,7 +2708,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "antigua-news-room-f582cbfc",
@@ -2611,7 +2730,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "antigua-observer-9d0be6cd",
@@ -2632,7 +2752,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "antigua-observer-13d44e70",
@@ -2653,7 +2774,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "antigua-observer-7574b5d2",
@@ -2674,7 +2796,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Infrastructure"
+    "suggestedCategory": "Infrastructure",
+    "triaged": true
   },
   {
     "id": "antigua-observer-4c9f5c76",
@@ -2686,7 +2809,7 @@
     "tags": [
       "the big stories"
     ],
-    "category": "",
+    "category": "Banking",
     "group": "Macro",
     "decision": "review",
     "confidence": "medium",
@@ -2694,8 +2817,9 @@
     "classifier": "llm",
     "deal_status": "not_a_deal",
     "deal_type": null,
-    "approved": false,
-    "suggestedCategory": "Government"
+    "approved": true,
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "antigua-observer-ba697d12",
@@ -2716,7 +2840,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Infrastructure"
+    "suggestedCategory": "Infrastructure",
+    "triaged": true
   },
   {
     "id": "kaieteur-news-554d451b",
@@ -2740,7 +2865,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "ttt-news-4ea1ebe1",
@@ -2763,7 +2889,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "ttt-news-08d863c8",
@@ -2785,7 +2912,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "ttt-news-0f16ebcb",
@@ -2806,7 +2934,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Investment"
+    "suggestedCategory": "Investment",
+    "triaged": true
   },
   {
     "id": "barbados-today-78608ceb",
@@ -2829,7 +2958,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Tourism"
+    "suggestedCategory": "Tourism",
+    "triaged": true
   },
   {
     "id": "jamaica-observer-4982b73a",
@@ -2854,7 +2984,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Infrastructure"
+    "suggestedCategory": "Infrastructure",
+    "triaged": true
   },
   {
     "id": "jamaica-observer-ca6347be",
@@ -2880,7 +3011,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "starnieuws-ebb5d7ca",
@@ -2898,7 +3030,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "ziz-online-78a8de06",
@@ -2919,7 +3052,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "breaking-belize-news-853aca85",
@@ -2941,7 +3075,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "breaking-belize-news-c64be689",
@@ -2963,7 +3098,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Labor"
+    "suggestedCategory": "Labor",
+    "triaged": true
   },
   {
     "id": "antigua-news-room-c30cee02",
@@ -2984,7 +3120,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Macro"
+    "suggestedCategory": "Macro",
+    "triaged": true
   },
   {
     "id": "st-kitts-nevis-observer-5da12c6b",
@@ -3005,7 +3142,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "demerara-waves-e3cabaa1",
@@ -3031,7 +3169,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "demerara-waves-e29b7f86",
@@ -3057,7 +3196,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "wic-news-ca9c4915",
@@ -3075,7 +3215,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "kaieteur-news-9e75eb51",
@@ -3101,7 +3242,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "kaieteur-news-21c3dab7",
@@ -3126,7 +3268,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Labor"
+    "suggestedCategory": "Labor",
+    "triaged": true
   },
   {
     "id": "kaieteur-news-5eb75eb9",
@@ -3152,7 +3295,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "kaieteur-news-bbb59f67",
@@ -3177,7 +3321,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "kaieteur-news-93d8523c",
@@ -3201,7 +3346,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "kaieteur-news-94054d46",
@@ -3223,7 +3369,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "guyana-chronicle-a60018da",
@@ -3244,7 +3391,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "jamaica-gleaner-20d1c408",
@@ -3262,7 +3410,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "starnieuws-000c3199",
@@ -3280,7 +3429,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "starnieuws-6310a9a9",
@@ -3298,7 +3448,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Infrastructure"
+    "suggestedCategory": "Infrastructure",
+    "triaged": true
   },
   {
     "id": "starnieuws-ca8386b8",
@@ -3307,7 +3458,7 @@
     "date": "2026-07-28",
     "country": "SR",
     "url": "https://www.starnieuws.com/index.php/welcome/index/nieuwsitem/93151",
-    "category": "",
+    "category": "Energy",
     "group": "Macro",
     "decision": "review",
     "confidence": "low",
@@ -3315,8 +3466,9 @@
     "classifier": "llm",
     "deal_status": "not_a_deal",
     "deal_type": null,
-    "approved": false,
-    "suggestedCategory": "Government"
+    "approved": true,
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "antigua-news-room-841cd086",
@@ -3337,7 +3489,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "ttt-news-1dbb146e",
@@ -3359,7 +3512,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "barbados-today-f1115af5",
@@ -3382,7 +3536,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "jamaica-observer-88a23095",
@@ -3407,7 +3562,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "the-star-jamaica-16501238",
@@ -3425,7 +3581,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Technology"
+    "suggestedCategory": "Technology",
+    "triaged": true
   },
   {
     "id": "starnieuws-7ca013fd",
@@ -3443,7 +3600,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "antigua-observer-9e81d700",
@@ -3464,7 +3622,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Regional Developments"
+    "suggestedCategory": "Regional Developments",
+    "triaged": true
   },
   {
     "id": "st-kitts-nevis-observer-898c68ec",
@@ -3485,7 +3644,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "cayman-news-service-30ff3a32",
@@ -3511,7 +3671,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "jamaica-observer-000937c3",
@@ -3532,7 +3693,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "starnieuws-f5151605",
@@ -3550,7 +3712,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Labor"
+    "suggestedCategory": "Labor",
+    "triaged": true
   },
   {
     "id": "st-lucia-times-cfb8022a",
@@ -3576,7 +3739,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "the-star-jamaica-618f6875",
@@ -3594,7 +3758,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Climate"
+    "suggestedCategory": "Climate",
+    "triaged": true
   },
   {
     "id": "the-star-jamaica-a00f61a8",
@@ -3612,7 +3777,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Climate"
+    "suggestedCategory": "Climate",
+    "triaged": true
   },
   {
     "id": "nation-news-c294d31a",
@@ -3636,7 +3802,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "st-kitts-nevis-observer-a7f73f86",
@@ -3657,7 +3824,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "jamaica-observer-ced7d1a3",
@@ -3678,7 +3846,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "nature-isle-news-53260f19",
@@ -3704,7 +3873,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "demerara-waves-eb57f6c5",
@@ -3730,7 +3900,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "demerara-waves-0bc4f9be",
@@ -3756,7 +3927,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "searchlight-svg-a81bff56",
@@ -3777,7 +3949,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Corporate"
+    "suggestedCategory": "Corporate",
+    "triaged": true
   },
   {
     "id": "kaieteur-news-95f3c94c",
@@ -3803,7 +3976,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "kaieteur-news-07695a01",
@@ -3829,7 +4003,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "kaieteur-news-733bb3b4",
@@ -3854,7 +4029,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "kaieteur-news-cb17fc5e",
@@ -3880,7 +4056,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "kaieteur-news-28d96947",
@@ -3896,7 +4073,7 @@
       "payments owed",
       "sheikh ally"
     ],
-    "category": "",
+    "category": "Fiscal Policy",
     "group": "Fiscal Policy",
     "decision": "review",
     "confidence": "medium",
@@ -3904,8 +4081,9 @@
     "classifier": "llm",
     "deal_status": "not_a_deal",
     "deal_type": null,
-    "approved": false,
-    "suggestedCategory": "Fiscal Policy"
+    "approved": true,
+    "suggestedCategory": "Fiscal Policy",
+    "triaged": true
   },
   {
     "id": "kaieteur-news-edfe022f",
@@ -3931,7 +4109,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "guyana-chronicle-80dd2942",
@@ -3952,7 +4131,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "jamaica-observer-d0ae83b2",
@@ -3969,14 +4149,15 @@
       "boj",
       "fayval williams"
     ],
-    "category": "",
+    "category": "Banking",
     "group": "Finance",
     "decision": "review",
     "confidence": "medium",
     "reason": "Central bank governor appointment process; monetary institution governance but procedural stage only",
     "classifier": "llm",
-    "approved": false,
-    "suggestedCategory": "Banking"
+    "approved": true,
+    "suggestedCategory": "Banking",
+    "triaged": true
   },
   {
     "id": "jamaica-gleaner-e31ee240",
@@ -3992,7 +4173,8 @@
     "reason": "Education curriculum and AI readiness; workforce development angle but opinion-framed",
     "classifier": "llm",
     "approved": false,
-    "suggestedCategory": "Technology"
+    "suggestedCategory": "Technology",
+    "triaged": true
   },
   {
     "id": "jamaica-gleaner-03d1a844",
@@ -4008,7 +4190,8 @@
     "reason": "Nursing profession leadership succession; healthcare workforce governance but thin substance",
     "classifier": "llm",
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "waterkant-04f02c1a",
@@ -4029,7 +4212,8 @@
     "reason": "Political/policy quote on economic progress; plausibly macro-policy discussion but ambiguous without fuller context.",
     "classifier": "llm",
     "approved": false,
-    "suggestedCategory": "Macro"
+    "suggestedCategory": "Macro",
+    "triaged": true
   },
   {
     "id": "antigua-news-room-7b6777bb",
@@ -4048,7 +4232,8 @@
     "reason": "University summer-programme partnership expansion; education/training initiative plausibly relevant but thin without detail on scope or investment.",
     "classifier": "llm",
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "waterkant-c2bb346d",
@@ -4070,7 +4255,8 @@
     "reason": "Road-safety policy statement; transportation regulation angle but marginal economic substance.",
     "classifier": "llm",
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "antigua-observer-125a3965",
@@ -4089,7 +4275,8 @@
     "reason": "Social-policy analysis linking parental absence to youth crime; plausibly government/labor policy angle but thin on economic substance.",
     "classifier": "llm",
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "antigua-observer-b28f3c4a",
@@ -4108,7 +4295,8 @@
     "reason": "Policy concern on freedom of movement; governance/regulatory angle but ambiguous economic substance.",
     "classifier": "llm",
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "kaieteur-news-a187f8db",
@@ -4132,7 +4320,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "guyana-chronicle-c7c6bde2",
@@ -4153,7 +4342,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "barbados-today-a0b75780",
@@ -4176,7 +4366,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Corporate"
+    "suggestedCategory": "Corporate",
+    "triaged": true
   },
   {
     "id": "jamaica-gleaner-090dc4c2",
@@ -4185,7 +4376,7 @@
     "date": "2026-07-27",
     "country": "JM",
     "url": "http://jamaica-gleaner.com/article/news/20260727/covid-relief-fraudster-caught-ja-extradited-us",
-    "category": "",
+    "category": "Fiscal Policy",
     "group": "Macro",
     "decision": "review",
     "confidence": "medium",
@@ -4193,8 +4384,9 @@
     "classifier": "llm",
     "deal_status": "not_a_deal",
     "deal_type": null,
-    "approved": false,
-    "suggestedCategory": "Government"
+    "approved": true,
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "breaking-belize-news-a603d95a",
@@ -4216,7 +4408,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Agriculture"
+    "suggestedCategory": "Agriculture",
+    "triaged": true
   },
   {
     "id": "antigua-news-room-ececcf88",
@@ -4237,7 +4430,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Tourism"
+    "suggestedCategory": "Tourism",
+    "triaged": true
   },
   {
     "id": "antigua-news-room-9dd57c24",
@@ -4258,7 +4452,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Labor"
+    "suggestedCategory": "Labor",
+    "triaged": true
   },
   {
     "id": "antigua-news-room-fe251769",
@@ -4279,7 +4474,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "antigua-news-room-f598a879",
@@ -4300,7 +4496,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Labor"
+    "suggestedCategory": "Labor",
+    "triaged": true
   },
   {
     "id": "demerara-waves-9c64078c",
@@ -4326,7 +4523,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "breaking-belize-news-81f6abfd",
@@ -4350,7 +4548,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Banking"
+    "suggestedCategory": "Banking",
+    "triaged": true
   },
   {
     "id": "starnieuws-b5538852",
@@ -4368,7 +4567,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "st-kitts-nevis-observer-b9b377a0",
@@ -4381,7 +4581,7 @@
       "press releases",
       "regional/international news"
     ],
-    "category": "",
+    "category": "Fiscal Policy",
     "group": "Macro",
     "decision": "review",
     "confidence": "medium",
@@ -4389,8 +4589,9 @@
     "classifier": "llm",
     "deal_status": "not_a_deal",
     "deal_type": null,
-    "approved": false,
-    "suggestedCategory": "Government"
+    "approved": true,
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "the-star-jamaica-b301689b",
@@ -4408,7 +4609,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Agriculture"
+    "suggestedCategory": "Agriculture",
+    "triaged": true
   },
   {
     "id": "cayman-compass-53328ea6",
@@ -4430,7 +4632,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Investment"
+    "suggestedCategory": "Investment",
+    "triaged": true
   },
   {
     "id": "kaieteur-news-6219cf4a",
@@ -4453,7 +4656,8 @@
     "reason": "Political commentary on maritime disaster accountability; regulatory/policy angle but primarily about political process.",
     "classifier": "llm",
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "kaieteur-news-ee36b476",
@@ -4473,7 +4677,8 @@
     "reason": "Safety-standards enforcement; potential regulatory angle but headline too thin to confirm economic substance.",
     "classifier": "llm",
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "kaieteur-news-6fcc5cd2",
@@ -4496,7 +4701,8 @@
     "reason": "Maritime-sector governance: investigation into ferry disaster is a regulatory response, but headline reports only the procedural step, not an economic mechanism or measurable sector consequence.",
     "classifier": "llm",
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "kaieteur-news-b4318207",
@@ -4519,7 +4725,8 @@
     "reason": "Ferry tragedy impact with a tangential transport-cost angle (airfare subsidy request), but no stated economic mechanism or measurable sector consequence.",
     "classifier": "llm",
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "kaieteur-news-f08a78f4",
@@ -4543,7 +4750,8 @@
     "reason": "NGO calls for parliamentary inquiry into maritime disaster; accountability angle but primarily a procedural/investigative call without stated economic mechanism.",
     "classifier": "llm",
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "kaieteur-news-1062ad81",
@@ -4566,7 +4774,8 @@
     "reason": "Opposition scrutiny of vessel rehabilitation; touches procurement/government project but primarily political questioning without stated economic consequence.",
     "classifier": "llm",
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "jamaica-observer-05213a9e",
@@ -4585,7 +4794,8 @@
     "reason": "'Underperformance' cycle; potential policy/labor angle but headline too thin to confirm economic substance.",
     "classifier": "llm",
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "starnieuws-ae404948",
@@ -4601,7 +4811,8 @@
     "reason": "Teachers advocate for education program; education policy with labor/skill-development angle but marginal economic substance.",
     "classifier": "llm",
     "approved": false,
-    "suggestedCategory": "Labor"
+    "suggestedCategory": "Labor",
+    "triaged": true
   },
   {
     "id": "starnieuws-1bae1b56",
@@ -4617,7 +4828,8 @@
     "reason": "Mangrove conservation call; environmental/climate issue with potential ecosystem-service and economic resilience angle but advocacy-framed.",
     "classifier": "llm",
     "approved": false,
-    "suggestedCategory": "Climate"
+    "suggestedCategory": "Climate",
+    "triaged": true
   },
   {
     "id": "waterkant-3b32d774",
@@ -4638,7 +4850,8 @@
     "reason": "Equipment donation to small organisation; marginal corporate social responsibility; thin economic substance",
     "classifier": "llm",
     "approved": false,
-    "suggestedCategory": "Corporate"
+    "suggestedCategory": "Corporate",
+    "triaged": true
   },
   {
     "id": "kaieteur-news-9ebaa47a",
@@ -4660,7 +4873,8 @@
     "reason": "Political blame over maritime disaster; touches accountability but primarily political rhetoric.",
     "classifier": "llm",
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "guyana-chronicle-85553e4d",
@@ -4679,7 +4893,8 @@
     "reason": "Maritime disaster investigation announcement; regulatory/governance angle but headline reports only procedural step, not measurable economic impact.",
     "classifier": "llm",
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "guyana-chronicle-091582cc",
@@ -4698,7 +4913,8 @@
     "reason": "Shipping-sector association endorsement of inquiry; industry-governance angle but primarily supporting a procedural call, not an economic consequence or mechanism.",
     "classifier": "llm",
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "cnc3-94b332b4",
@@ -4717,7 +4933,8 @@
     "reason": "Appointment to maritime disaster inquiry; governance/procedural angle but headline reports only personnel assignment, not economic mechanism or consequence.",
     "classifier": "llm",
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "barbados-today-9cd83937",
@@ -4737,7 +4954,8 @@
     "reason": "Regional news: Guyana's appointment of experts to investigate ferry tragedy; governance but no stated economic substance.",
     "classifier": "llm",
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "nation-news-c4fa6f5d",
@@ -4759,7 +4977,8 @@
     "reason": "Opposition party political statement on legal process regarding salary deductions; political process with a fiscal angle but thin substance.",
     "classifier": "llm",
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "eyewitness-news-6489a7af",
@@ -4771,7 +4990,7 @@
     "tags": [
       "letters to the editor"
     ],
-    "category": "",
+    "category": "Trade",
     "group": "Trade & Tourism",
     "decision": "review",
     "confidence": "medium",
@@ -4779,8 +4998,9 @@
     "classifier": "llm",
     "deal_status": "not_a_deal",
     "deal_type": null,
-    "approved": false,
-    "suggestedCategory": "Trade"
+    "approved": true,
+    "suggestedCategory": "Trade",
+    "triaged": true
   },
   {
     "id": "starnieuws-1be657b1",
@@ -4796,7 +5016,8 @@
     "reason": "Opinion on institutional independence (ombudsman); governance angle but primarily opinion, not reporting on economic policy change.",
     "classifier": "llm",
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "antigua-news-room-eed16510",
@@ -4815,7 +5036,8 @@
     "reason": "Carnival event postponed due to severe weather; weather disruption of economic activity but marginal scale.",
     "classifier": "llm",
     "approved": false,
-    "suggestedCategory": "Climate"
+    "suggestedCategory": "Climate",
+    "triaged": true
   },
   {
     "id": "wic-news-aad04566",
@@ -4851,7 +5073,8 @@
     "reason": "Cultural heritage festival encouragement; plausibly tourism-relevant but no measurable economic activity or investment stated.",
     "classifier": "llm",
     "approved": false,
-    "suggestedCategory": "Tourism"
+    "suggestedCategory": "Tourism",
+    "triaged": true
   },
   {
     "id": "ttt-news-367a2703",
@@ -4871,7 +5094,8 @@
     "reason": "Mangrove conservation effort mentioned; environmental initiative but no stated economic impact or sector consequence.",
     "classifier": "llm",
     "approved": false,
-    "suggestedCategory": "Climate"
+    "suggestedCategory": "Climate",
+    "triaged": true
   },
   {
     "id": "breaking-belize-news-24a726a5",
@@ -4891,7 +5115,8 @@
     "reason": "Road safety opinion; infrastructure/policy angle but opinion column without specific economic mechanism",
     "classifier": "llm",
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "waterkant-c3395b41",
@@ -4912,7 +5137,8 @@
     "reason": "Political commentary on cost-of-living challenges; economic policy angle but primarily opinion framing, not reporting on mechanism",
     "classifier": "llm",
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "antigua-news-room-d03e1bc4",
@@ -4924,14 +5150,15 @@
     "tags": [
       "news"
     ],
-    "category": "",
+    "category": "Banking",
     "group": "Macro",
     "decision": "review",
     "confidence": "medium",
     "reason": "Safe-deposit box auctions and insider-dealing risk touch financial regulation, but headline is thin on economic detail.",
     "classifier": "llm",
-    "approved": false,
-    "suggestedCategory": "Government"
+    "approved": true,
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "antigua-news-room-a28bffa5",
@@ -4950,7 +5177,8 @@
     "reason": "Schools invited to CARICOM agriculture competition; plausibly youth agricultural engagement but borderline on economic substance.",
     "classifier": "llm",
     "approved": false,
-    "suggestedCategory": "Agriculture"
+    "suggestedCategory": "Agriculture",
+    "triaged": true
   },
   {
     "id": "iwitness-news-806e3d29",
@@ -4972,7 +5200,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Macro"
+    "suggestedCategory": "Macro",
+    "triaged": true
   },
   {
     "id": "cayman-compass-02bf7c72",
@@ -4997,7 +5226,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Climate"
+    "suggestedCategory": "Climate",
+    "triaged": true
   },
   {
     "id": "wic-news-affe48eb",
@@ -5360,7 +5590,8 @@
     "reason": "Advocacy for international maritime regulatory investigation; governance angle but no stated economic mechanism or material sector impact.",
     "classifier": "llm",
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "the-star-jamaica-395aea4a",
@@ -5378,7 +5609,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "now-grenada-1f6a2cd2",
@@ -5402,7 +5634,8 @@
     "reason": "Scholarship fund application deadline; education financing but institutional/administrative notice, marginal economic substance.",
     "classifier": "llm",
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "antigua-observer-33f054d1",
@@ -5421,7 +5654,8 @@
     "reason": "Government explores Spanish-language teacher hires; education/labor policy development but thin economic substance.",
     "classifier": "llm",
     "approved": false,
-    "suggestedCategory": "Labor"
+    "suggestedCategory": "Labor",
+    "triaged": true
   },
   {
     "id": "antigua-observer-8dea5776",
@@ -5440,7 +5674,8 @@
     "reason": "Educational institution uses prize funds to enhance department; education investment/institutional news with marginal economic angle.",
     "classifier": "llm",
     "approved": false,
-    "suggestedCategory": "Corporate"
+    "suggestedCategory": "Corporate",
+    "triaged": true
   },
   {
     "id": "bvi-news-3c486eb4",
@@ -5459,7 +5694,8 @@
     "reason": "Criticism of government's handling of HOA (likely Homeowners Association) affairs; may carry housing-policy substance but the headline is too vague to confirm.",
     "classifier": "llm",
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "st-lucia-times-7d2724cf",
@@ -5483,7 +5719,8 @@
     "reason": "Government minister vacation notice; plausibly about government institutional news but marginal economic substance.",
     "classifier": "llm",
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "bvi-news-6f464bd6",
@@ -5504,7 +5741,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "eyewitness-news-5a394062",
@@ -5530,7 +5768,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Labor"
+    "suggestedCategory": "Labor",
+    "triaged": true
   },
   {
     "id": "demerara-waves-a4eeb53b",
@@ -5556,7 +5795,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "the-star-jamaica-0f6867df",
@@ -5574,7 +5814,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Labor"
+    "suggestedCategory": "Labor",
+    "triaged": true
   },
   {
     "id": "searchlight-svg-2898903c",
@@ -5595,7 +5836,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "kaieteur-news-a0442ed6",
@@ -5932,7 +6174,8 @@
     "reason": "Premier's advice to residents to buy water tanks signals a water-supply or infrastructure concern with possible fiscal/policy implications, but the headline lacks detail on the economic mechanism or impact.",
     "classifier": "llm",
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "the-star-jamaica-e653f545",
@@ -5950,7 +6193,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "the-star-jamaica-c3106f27",
@@ -5966,7 +6210,8 @@
     "reason": "Child-protection policy demand; governance angle but unclear economic substance.",
     "classifier": "llm",
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "cayman-news-service-239101b3",
@@ -5992,7 +6237,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "demerara-waves-f4c2e840",
@@ -6104,7 +6350,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "kaieteur-news-2de51408",
@@ -6214,7 +6461,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "searchlight-svg-4c5f5bbe",
@@ -6235,7 +6483,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Climate"
+    "suggestedCategory": "Climate",
+    "triaged": true
   },
   {
     "id": "nature-isle-news-6af1ed8f",
@@ -6261,7 +6510,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "kaieteur-news-c2dac7e4",
@@ -6343,7 +6593,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Climate"
+    "suggestedCategory": "Climate",
+    "triaged": true
   },
   {
     "id": "guyana-chronicle-d1200c33",
@@ -6379,7 +6630,8 @@
     "reason": "Police graduate from Regional Training Centre; workforce development at a regional institution, but headline is vague on economic substance.",
     "classifier": "llm",
     "approved": false,
-    "suggestedCategory": "Labor"
+    "suggestedCategory": "Labor",
+    "triaged": true
   },
   {
     "id": "cayman-compass-2e976a36",
@@ -6403,7 +6655,8 @@
     "reason": "Supermarket food-safety alert regarding foodborne parasite; carries supply-chain and public-health substance but focuses on reassurance rather than a measurable economic impact.",
     "classifier": "llm",
     "approved": false,
-    "suggestedCategory": "Banking"
+    "suggestedCategory": "Banking",
+    "triaged": true
   },
   {
     "id": "trinidad-express-1e4e549a",
@@ -6564,7 +6817,8 @@
     "deal_status": "not_a_deal",
     "deal_type": null,
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "trinidad-express-4b76be66",
@@ -6658,7 +6912,8 @@
     "reason": "Security and human well-being focus may touch policy/regulation, but headline lacks economic substance.",
     "classifier": "llm",
     "approved": false,
-    "suggestedCategory": "Government"
+    "suggestedCategory": "Government",
+    "triaged": true
   },
   {
     "id": "ziz-online-226364f6",
@@ -6679,6 +6934,7 @@
     "reason": "Education leaders visiting project sites may imply development activity, but headline is vague on economic content.",
     "classifier": "llm",
     "approved": false,
-    "suggestedCategory": "Infrastructure"
+    "suggestedCategory": "Infrastructure",
+    "triaged": true
   }
 ]
