@@ -819,5 +819,44 @@
     "url": "https://www.breakingbelizenews.com/2026/08/04/btl-board-approves-80-million-speednet-purchase-one-day-after-chambers-halt-call/",
     "source": "Breaking Belize News",
     "approved": false
+  },
+  {
+    "id": "deal-52d30d77",
+    "headline": "Grenada terminates  energy contract with  Global Petroleum Group",
+    "parties": "",
+    "value": "",
+    "date": "2026-08-05",
+    "country": "TT",
+    "type": "",
+    "suggestedType": "Other",
+    "url": "https://trinidadexpress.com/business/local/grenada-terminates-energy-contract-with-global-petroleum-group/article_7c81d4be-7a2c-435c-b8d0-ffd3e853a687.html",
+    "source": "Trinidad Express",
+    "approved": false
+  },
+  {
+    "id": "deal-e3155987",
+    "headline": "Regency Petroleum to build $300m gas station near Kingston’s airport",
+    "parties": "",
+    "value": "",
+    "date": "2026-08-05",
+    "country": "JM",
+    "type": "",
+    "suggestedType": "FDI",
+    "url": "http://jamaica-gleaner.com/article/business/20260805/regency-petroleum-build-300m-gas-station-near-kingstons-airport",
+    "source": "Jamaica Gleaner",
+    "approved": false
+  },
+  {
+    "id": "deal-79584b65",
+    "headline": "VM Investments upsizes bond offer to $4.8b",
+    "parties": "",
+    "value": "",
+    "date": "2026-08-05",
+    "country": "JM",
+    "type": "",
+    "suggestedType": "Bond",
+    "url": "http://jamaica-gleaner.com/article/business/20260805/vm-investments-upsizes-bond-offer-48b",
+    "source": "Jamaica Gleaner",
+    "approved": false
   }
 ]
