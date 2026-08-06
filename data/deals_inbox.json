@@ -858,5 +858,83 @@
     "url": "http://jamaica-gleaner.com/article/business/20260805/vm-investments-upsizes-bond-offer-48b",
     "source": "Jamaica Gleaner",
     "approved": false
+  },
+  {
+    "id": "deal-392a5c8d",
+    "headline": "Over River Bridge set to reopen before new school year",
+    "parties": "",
+    "value": "",
+    "date": "2026-08-05",
+    "country": "JM",
+    "type": "",
+    "suggestedType": "Other",
+    "url": "https://www.jamaicaobserver.com/2026/08/05/river-bridge-set-reopen-new-school-year/",
+    "source": "Jamaica Observer",
+    "approved": false
+  },
+  {
+    "id": "deal-e108acb2",
+    "headline": "Jamaica secures 400,000 winter seats from Canada as several airline services expand",
+    "parties": "",
+    "value": "",
+    "date": "2026-08-05",
+    "country": "JM",
+    "type": "",
+    "suggestedType": "FDI",
+    "url": "https://www.jamaicaobserver.com/2026/08/05/jamaica-secures-400000-winter-seats-canada-several-airline-services-expand/",
+    "source": "Jamaica Observer",
+    "approved": false
+  },
+  {
+    "id": "deal-bcdcb036",
+    "headline": "Anticipation builds for start of World Under-20",
+    "parties": "",
+    "value": "",
+    "date": "2026-08-05",
+    "country": "JM",
+    "type": "",
+    "suggestedType": "Other",
+    "url": "https://www.jamaicaobserver.com/2026/08/04/anticipation-builds-start-world-20/",
+    "source": "Jamaica Observer",
+    "approved": false
+  },
+  {
+    "id": "deal-aee6a4aa",
+    "headline": "Hakrinbank verkoopt 18% belang in DSB via openbare inschrijving",
+    "parties": "",
+    "value": "",
+    "date": "2026-08-05",
+    "country": "SR",
+    "type": "",
+    "suggestedType": "M&A",
+    "url": "https://www.starnieuws.com/index.php/welcome/index/nieuwsitem/93281",
+    "source": "Starnieuws",
+    "approved": false
+  },
+  {
+    "id": "deal-bee475f7",
+    "headline": "Hakrinbank verkoopt 6.775.859 aandelen in DSB via openbare digitale inschrijving",
+    "parties": "",
+    "value": "",
+    "date": "2026-08-05",
+    "country": "SR",
+    "type": "",
+    "suggestedType": "M&A",
+    "url": "https://www.waterkant.net/suriname/2026/08/05/hakrinbank-verkoopt-6-775-859-aandelen-in-dsb-via-openbare-digitale-inschrijving/#utm_source=rss&utm_medium=rss&utm_campaign=hakrinbank-verkoopt-6-775-859-aandelen-in-dsb-via-openbare-digitale-inschrijving",
+    "source": "Waterkant",
+    "approved": false
+  },
+  {
+    "id": "deal-6df63c0a",
+    "headline": "Transforming Lives in Jamaica",
+    "parties": "",
+    "value": "",
+    "date": "2020-03-26",
+    "country": "ALL",
+    "type": "",
+    "suggestedType": "FDI",
+    "url": "https://www.caribank.org/transforming-lives-jamaica",
+    "source": "Caribbean Dev Bank",
+    "approved": false
   }
 ]
