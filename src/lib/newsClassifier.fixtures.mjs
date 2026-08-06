@@ -74,9 +74,32 @@ export const NEWS_CLASSIFIER_FIXTURES = [
   // ── Added 2026-07-24 — real over-inclusion found in the first live production run ──
   { title: 'Transparency Institute wants International Maritime Organisation to investigate MV Barima tragedy',
     source: 'Kaieteur News', country: 'GY',
-    // Was wrongly `publish/Government` — a bare accident-investigation call with no stated
-    // economic mechanism. See newsRubric.md's "Accident/tragedy" bullet under What is NOT relevant.
-    expected: { decision: 'review', deal_status: 'not_a_deal' } },
+    // Was wrongly `publish/Government`, then wrongly `review` (see 2026-08-04 note below) — a
+    // bare accident-investigation call with no economic mechanism at all belongs in `drop`.
+    expected: { decision: 'drop', deal_status: 'not_a_deal' } },
+
+  // ── Added 2026-08-04 — triage-review-inbox (`ian`) cleared 57 near-identical MV Barima
+  // "accountability process" headlines in one run (COI swearing-in, protests, memorial/relief
+  // gestures, court-process narration, blame commentary) — all correctly routed to `review` by
+  // the classifier's own reasoning ("no stated economic mechanism"), then rejected 57/57 by the
+  // human editor. That's not genuine ambiguity, it's an under-confident `review` on a shape the
+  // classifier already recognizes as economically empty — recalibrated to `drop`. See
+  // newsRubric.md's "Accident/disaster accountability process" bullet. These two are negative
+  // controls proving the recalibration doesn't swallow the genuine economic-mechanism cases:
+  { title: 'President Ali urges full truth as members of MV Barima tragedy CoI sworn in',
+    source: 'Guyana Chronicle', country: 'GY',
+    // Same shape as the fixture above — inquiry ceremony, no economic mechanism.
+    expected: { decision: 'drop', deal_status: 'not_a_deal' } },
+  { title: 'APNU questions safety of sunken MV Barima amidst tender documents for sweeping rehabilitation',
+    source: 'Kaieteur News', country: 'GY',
+    // Must NOT collapse into the drop pattern above: this one references an actual
+    // rehabilitation tender, a plausible-but-unconfirmed mechanism — stays `review`.
+    expected: { decision: 'review' } },
+  { title: 'MV Barima salvage too urgent for lengthy tender process – Mahipaul urges Govt. to invoke emergency procurement powers',
+    source: 'Kaieteur News', country: 'GY',
+    // Must NOT collapse into the drop pattern either: emergency procurement powers is a
+    // confirmed fiscal/regulatory mechanism — already correctly `publish` on the live site.
+    expected: { decision: 'publish', category: 'Infrastructure', deal_status: 'not_a_deal' } },
   { title: 'Reyme slaat alarm over vervuiling Marowijnerivier',
     source: 'Starnieuws', country: 'SR',
     // Was wrongly `publish/Climate` — an environmental alarm with no stated economic impact.

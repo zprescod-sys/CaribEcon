@@ -76,6 +76,15 @@ a major company — are relevant, because these are the people directing the eco
 - **Human interest** — obituaries, tributes, weddings, graduations, community features
 - **Weather / disasters / accidents** — unless the headline is about *measurable economic impact*
   on a sector (e.g. "hurricane cuts banana exports 30%")
+- **Accident/disaster accountability process, with no economic mechanism at all** — a Commission
+  of Inquiry being sworn in, composed, staffed, or having its independence questioned; protest or
+  advocacy calls for an inquiry; memorial, relief, or support gestures (counselling, burial-fee
+  waivers, donations, a president's initiative to "support families"); court-process narration
+  (charges filed, a prosecutor's schedule, bail) with no economic ruling; opinion or blame
+  commentary. This shape recurs heavily around a single disaster — dozens of near-identical
+  headlines over weeks — and each one already states "no economic mechanism" in its own right;
+  route straight to `drop` rather than spending a `review` on every one. Contrast the review-tier
+  case just below, where an economic mechanism is plausibly implied, not absent.
 - **Health / medical, religion, lifestyle, horoscopes** — unless hospital investment, healthcare financing, medical tourism, or material fiscal impact
 - **Job-vacancy listings** — a single "Now hiring" post is not labor-market news
 - **Pure politics** — party rivalry, personalities, process — *unless* it carries real fiscal/
@@ -115,11 +124,14 @@ Send to the editor when the story is plausibly economic but you shouldn't decide
   corroborating economic action, result, or actor.
 - **Local physical-market / small-project items** — a market rehabilitation, a small grant — real
   but marginal; let the editor decide if it clears the bar.
-- **Accident/tragedy stories with only a tangential regulatory or accountability angle** — a call
-  to investigate an accident, or a body's response to a tragedy, is not itself economic just
-  because the investigating body oversees an economic sector. Only `publish` if the headline
-  states an actual economic mechanism or consequence (a fine, a rate change, a measured sector
-  loss); a bare investigation call is `review`, not `publish`.
+- **Accident/tragedy stories with a *plausibly implied but unconfirmed* economic mechanism** — the
+  headline references a process that could resolve into a fiscal/regulatory/commercial action (a
+  tender, a rehabilitation contract, a procurement debate) but pairs it with political or
+  accountability framing that leaves it unclear whether the economic thread is real news or
+  incidental. Only `publish` if the headline states an actual, confirmed economic mechanism or
+  consequence (a fine, a rate change, an invoked procurement power, a measured sector loss). A
+  bare accountability/process story with **no** economic thread at all is `drop`, not `review` —
+  see "Accident/disaster accountability process" above.
 
 ## Geographic relevance
 
@@ -290,6 +302,9 @@ output, not a sports medal"), not generic.
 | "Petronas eyes final investment decision in Suriname after 8 discoveries"            | publish  | Energy        | major energy FDI decision pending             | pending     | FDI       |
 | "Dolla Financial completes acquisition of Evolve loan portfolio"                     | publish  | Banking       | closed acquisition in financial services      | completed   | M&A       |
 | "St Lucian company to buy majority stake in Dolphin Cove"                            | publish  | Investment    | proposed majority-stake purchase, not closed  | pending     | M&A       |
-| "Transparency Institute wants IMO to investigate MV Barima tragedy"                  | review   | Government    | accident-investigation call; no stated economic mechanism, only a tangential regulatory angle | not_a_deal | null |
+| "Transparency Institute wants IMO to investigate MV Barima tragedy"                  | drop     | null          | bare accountability/investigation call, no economic mechanism at all | not_a_deal | null |
+| "President Ali urges full truth as members of MV Barima tragedy CoI sworn in"        | drop     | null          | inquiry swearing-in ceremony; no economic mechanism           | not_a_deal | null |
+| "APNU questions safety of sunken MV Barima amidst tender documents for sweeping rehabilitation" | review | Infrastructure | political criticism, but references an actual rehabilitation tender — plausible mechanism, unconfirmed scope | not_a_deal | null |
+| "'MV Barima salvage too urgent for lengthy tender process' – Mahipaul urges Govt. to invoke emergency procurement powers" | publish | Infrastructure | invoked emergency procurement powers is a confirmed fiscal/regulatory mechanism | not_a_deal | null |
 | "Reyme slaat alarm over vervuiling Marowijnerivier" (pollution alarm, Marowijne River) | drop    | null          | environmental alarm with no stated economic impact (no sector loss cited) | not_a_deal | null |
 | "Sunrise Airways launches new Antigua-Barbados route"                                | publish  | Tourism       | new route is legitimate tourism/trade news    | not_a_deal  | null (operational service launch, not a capital transaction) |
