@@ -936,5 +936,31 @@
     "url": "https://www.caribank.org/transforming-lives-jamaica",
     "source": "Caribbean Dev Bank",
     "approved": false
+  },
+  {
+    "id": "deal-6030e465",
+    "headline": "Public-sector wage deal sealed",
+    "parties": "",
+    "value": "",
+    "date": "2026-08-06",
+    "country": "JM",
+    "type": "",
+    "suggestedType": "Other",
+    "url": "http://jamaica-gleaner.com/article/news/20260806/public-sector-wage-deal-sealed",
+    "source": "Jamaica Gleaner",
+    "approved": false
+  },
+  {
+    "id": "deal-7fc10f3f",
+    "headline": "Mourant deal demonstrates investor interest in law firms",
+    "parties": "",
+    "value": "",
+    "date": "2026-08-06",
+    "country": "KY",
+    "type": "",
+    "suggestedType": "M&A",
+    "url": "https://www.caymancompass.com/2026/08/06/mourant-deal-demonstrates-investor-interest-in-offshore-magic-circle/",
+    "source": "Cayman Compass",
+    "approved": false
   }
 ]
