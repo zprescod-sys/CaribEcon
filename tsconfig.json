@@ -1,5 +1,9 @@
 {
   "extends": "astro/tsconfigs/strict",
+  // excel-addin/ is a separate npm project with its own tsconfig, deps, and webpack build —
+  // it is not part of the Astro site. Without this exclude, `astro check` walks its dist/
+  // bundle and the minified single-line output exhausts the TS compiler's heap (SIGABRT).
+  "exclude": ["excel-addin", "dist", "node_modules"],
   "compilerOptions": {
     "strictNullChecks": true,
     "baseUrl": ".",
