@@ -3,12 +3,10 @@
    Country lists are derived from the data — never hardcoded. */
 
 import type {
-  Country, IndicatorsData, BudgetsData,
+  BudgetsData,
   NewsData, NewsItem, NewsReviewItem, PublicationsData, DealsData
 } from './types';
 
-import indicatorsRaw from '../../data/almanac-data.json';
-import indicatorMetaRaw from '../../data/indicator-meta.json';
 import budgetsRaw    from '../../data/budgets.json';
 import newsRaw       from '../../data/news.json';
 import newsReviewRaw from '../../data/news_unclassified.json';
@@ -19,20 +17,16 @@ import { isDisplayableNews, NEWS_CATEGORY_GROUPS } from './newsRelevance.mjs';
 // Re-export so pages/components have one import surface for news classification.
 export { classifyNews, NEWS_GROUPS } from './newsRelevance.mjs';
 
-const indicators  = indicatorsRaw  as IndicatorsData;
+/* Indicator series, country list, and indicator presentation policy live in
+   ./indicators.ts — split out so consumers needing only indicator data (notably
+   api/indicator.ts) can skip the editorial JSON imported below. Re-exported here
+   so pages keep one import surface and nothing about their imports changes. */
+export {
+  getCountries, getIndicatorMeta, getFeaturedIndicators,
+  getSeries, getAllSeries, getIndicatorAllCountries,
+} from './indicators';
+export type { IndicatorMeta } from './indicators';
 
-// Presentation policy per indicator slug (chartGroup / defaultChart / order).
-// Lives in data/indicator-meta.json, NOT on the data records — see SCHEMA.md.
-type IndicatorMetaEntry = { chartGroup: string; defaultChart: boolean; order: number };
-const indicatorMeta = indicatorMetaRaw as Record<string, IndicatorMetaEntry>;
-
-// Guard: warn at build time if the data and the meta file have drifted apart —
-// the exact failure mode (two stores diverging) this hub is meant to prevent.
-for (const slug of new Set(indicators.map(s => s.indicator))) {
-  if (!(slug in indicatorMeta)) {
-    console.warn(`[dataHub] indicator "${slug}" is in the data but missing from indicator-meta.json`);
-  }
-}
 const budgets     = budgetsRaw     as BudgetsData;
 
 // Base archive stays machine-owned and precision-filtered. Approved editorial inbox
@@ -77,93 +71,6 @@ const news = [...newsById.values()]
   .sort((a, b) => (a.date < b.date ? 1 : a.date > b.date ? -1 : 0));
 const publications = publicationsRaw as PublicationsData;
 const deals       = dealsRaw       as DealsData;
-
-// Derive country list from the indicators data — adding a new country's data
-// automatically surfaces it in all country selectors without any code change.
-const COUNTRY_NAMES: Record<string, string> = {
-  GY: 'Guyana',
-  TT: 'Trinidad & Tobago',
-  BB: 'Barbados',
-  JM: 'Jamaica',
-  BS: 'Bahamas',
-  BZ: 'Belize',
-  SR: 'Suriname',
-  GD: 'Grenada',
-  LC: 'Saint Lucia',
-  AG: 'Antigua & Barbuda',
-  KN: 'Saint Kitts & Nevis',
-  DM: 'Dominica',
-  VC: 'Saint Vincent & the Grenadines',
-  TC: 'Turks & Caicos',
-  KY: 'Cayman Islands',
-  VG: 'British Virgin Islands',
-  HT: 'Haiti',
-  AW: 'Aruba',
-  CW: 'Curaçao',
-};
-
-// Flags are local SVG assets (public/flags/<code>.svg), not emoji — emoji flags
-// don't render on Windows (Segoe UI Emoji omits the glyphs), so they're
-// unreliable cross-browser. SVGs render identically everywhere.
-function flagSrc(code: string): string {
-  return `/flags/${code.toLowerCase()}.svg`;
-}
-
-export function getCountries(): Country[] {
-  const codes = [...new Set(indicators.map(s => s.country))].sort();
-  return codes.map(code => ({
-    code,
-    name: COUNTRY_NAMES[code] ?? code,
-    flag: flagSrc(code),
-  }));
-}
-
-export interface IndicatorMeta {
-  slug: string;
-  label: string;        // derived from the data records
-  unit: string;         // derived from the data records
-  chartGroup: string;   // from indicator-meta.json
-  defaultChart: boolean;
-  order: number;
-}
-
-// All indicators, label/unit derived from the data and merged with the
-// presentation policy in indicator-meta.json, sorted by display order.
-export function getIndicatorMeta(): IndicatorMeta[] {
-  const seen = new Map<string, { label: string; unit: string }>();
-  for (const s of indicators) {
-    if (!seen.has(s.indicator)) {
-      seen.set(s.indicator, { label: s.indicatorLabel, unit: s.unit });
-    }
-  }
-  return [...seen.entries()]
-    .map(([slug, meta]) => {
-      const m = indicatorMeta[slug] ?? { chartGroup: 'other', defaultChart: false, order: 999 };
-      return { slug, ...meta, ...m };
-    })
-    .sort((a, b) => a.order - b.order);
-}
-
-// The subset shown in public chart selectors (defaultChart: true). These are the
-// cross-country-comparable indicators; local-currency levels are export-only.
-export function getFeaturedIndicators(): IndicatorMeta[] {
-  return getIndicatorMeta().filter(m => m.defaultChart);
-}
-
-// Returns series for a specific country + indicator combo
-export function getSeries(country: string, indicator: string) {
-  return indicators.find(s => s.country === country && s.indicator === indicator);
-}
-
-// Returns the complete indicator series array for the chart
-export function getAllSeries() {
-  return indicators;
-}
-
-// Returns all series for an indicator across all countries
-export function getIndicatorAllCountries(indicator: string) {
-  return indicators.filter(s => s.indicator === indicator);
-}
 
 // Returns budget entry for country + year
 export function getBudget(country: string, year: number) {

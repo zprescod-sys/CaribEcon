@@ -1,8 +1,14 @@
 /* Gate 1 read-only API — the one live endpoint behind CE.GDP / CE.GDPGROWTH / CE.INDICATOR.
    Deployed as a standalone Vercel Serverless Function (top-level /api), separate from the
    static Astro build, so the public site's output: 'static' stays untouched. Deterministic
-   lookup only — no LLM calls belong here; that's the agent pipeline's job in later gates. */
-import { getSeries } from '../src/lib/dataHub';
+   lookup only — no LLM calls belong here; that's the agent pipeline's job in later gates.
+
+   Imports ./indicators, not ./dataHub: dataHub pulls in news/publications/deals/budgets at
+   module scope (~1.9MB of JSON, and news.json grows with every daily cron run) and runs the
+   news merge on import. This endpoint needs none of it, and a cold start should not parse a
+   news archive to return one number. indicators.ts is the same data, same accessors, minus
+   the editorial domains — dataHub re-exports it, so pages are unaffected. */
+import { getSeries } from '../src/lib/indicators';
 
 function json(body: unknown, status: number, cache = false): Response {
   return new Response(JSON.stringify(body), {
