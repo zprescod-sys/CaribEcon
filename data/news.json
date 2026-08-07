@@ -47,6 +47,407 @@
     "deal_type": null
   },
   {
+    "id": "kaieteur-news-bce5d9ad",
+    "title": "ExxonMobil confirms US$55B investment in Guyana recovered",
+    "source": "Kaieteur News",
+    "date": "2026-08-07",
+    "country": "GY",
+    "url": "https://kaieteurnewsonline.com/2026/08/07/exxonmobil-confirms-us55b-investment-in-guyana-recovered/",
+    "tags": [
+      "news",
+      "azruddin mohamed",
+      "cost recovery",
+      "exxonmobil",
+      "guyana oil",
+      "oil drilling"
+    ],
+    "category": "Investment",
+    "group": "Investment",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "kaieteur-news-62050c87",
+    "title": "Bicycle bandits rob pensioner at gunpoint",
+    "source": "Kaieteur News",
+    "date": "2026-08-07",
+    "country": "GY",
+    "url": "https://kaieteurnewsonline.com/2026/08/07/bicycle-bandits-rob-pensioner-at-gunpoint/",
+    "tags": [
+      "news",
+      "bicycle bandits",
+      "gunpoint",
+      "rob"
+    ],
+    "category": "Labor",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "kaieteur-news-d73c9dab",
+    "title": "Canadian firm engaging govt’ on mining licence for 5.4M ounce gold project",
+    "source": "Kaieteur News",
+    "date": "2026-08-07",
+    "country": "GY",
+    "url": "https://kaieteurnewsonline.com/2026/08/07/canadian-firm-engaging-govt-on-mining-licence-for-5-4m-ounce-gold-project/",
+    "tags": [
+      "news",
+      "gold mining",
+      "guyana gold",
+      "mining licence",
+      "toroparu gold project"
+    ],
+    "category": "Investment",
+    "group": "Investment",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "kaieteur-news-4dff50da",
+    "title": "Pegasus Suites rebrands as Atlantic Suites Hotel",
+    "source": "Kaieteur News",
+    "date": "2026-08-07",
+    "country": "GY",
+    "url": "https://kaieteurnewsonline.com/2026/08/07/pegasus-suites-rebrands-as-atlantic-suites-hotel/",
+    "tags": [
+      "news",
+      "atlantic suites hotel",
+      "pegasus hotel",
+      "pegasus suites",
+      "rebrands"
+    ],
+    "category": "Tourism",
+    "group": "Trade & Tourism",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "guyana-chronicle-747f4a75",
+    "title": "Region One residents welcome cabinet outreach, laud government’s investments",
+    "source": "Guyana Chronicle",
+    "date": "2026-08-07",
+    "country": "GY",
+    "url": "https://guyanachronicle.com/2026/08/07/region-one-residents-welcome-cabinet-outreach-laud-governments-investments/",
+    "tags": [
+      "news"
+    ],
+    "category": "Investment",
+    "group": "Investment",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "guyana-chronicle-eb64b818",
+    "title": "President Ali urges Enmore youth to tap Guyana Development Bank opportunities",
+    "source": "Guyana Chronicle",
+    "date": "2026-08-07",
+    "country": "GY",
+    "url": "https://guyanachronicle.com/2026/08/07/president-ali-urges-enmore-youth-to-tap-guyana-development-bank-opportunities/",
+    "tags": [
+      "news"
+    ],
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "guyana-chronicle-30577276",
+    "title": "Pegasus Suites rebrands as Atlantic Suites Hotel in new Hyatt affiliation",
+    "source": "Guyana Chronicle",
+    "date": "2026-08-07",
+    "country": "GY",
+    "url": "https://guyanachronicle.com/2026/08/07/pegasus-suites-rebrands-as-atlantic-suites-hotel-in-new-hyatt-affiliation/",
+    "tags": [
+      "news"
+    ],
+    "category": "Tourism",
+    "group": "Trade & Tourism",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "jamaica-gleaner-022e06c4",
+    "title": "KingAlarm enters real estate development with 10-project pipeline",
+    "source": "Jamaica Gleaner",
+    "date": "2026-08-07",
+    "country": "JM",
+    "url": "http://jamaica-gleaner.com/article/business/20260807/kingalarm-enters-real-estate-development-10-project-pipeline",
+    "category": "Infrastructure",
+    "group": "Investment",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "jamaica-gleaner-73665b49",
+    "title": "IronRock returns to profit, after paying out most of Melissa claims",
+    "source": "Jamaica Gleaner",
+    "date": "2026-08-07",
+    "country": "JM",
+    "url": "http://jamaica-gleaner.com/article/business/20260807/ironrock-returns-profit-after-paying-out-most-melissa-claims",
+    "category": "Corporate",
+    "group": "Finance",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "jamaica-gleaner-4389da71",
+    "title": "US dollar weakens sharply against Japanese yen after market interventions",
+    "source": "Jamaica Gleaner",
+    "date": "2026-08-07",
+    "country": "JM",
+    "url": "http://jamaica-gleaner.com/article/business/20260807/us-dollar-weakens-sharply-against-japanese-yen-after-market-interventions",
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "starnieuws-127c10a0",
+    "title": "Column: Banken zetten met hogere ATM-tarieven digitale economie op achterstand",
+    "source": "Starnieuws",
+    "date": "2026-08-07",
+    "country": "SR",
+    "url": "https://www.starnieuws.com/index.php/welcome/index/nieuwsitem/93295",
+    "category": "Banking",
+    "group": "Finance",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "antigua-news-room-ed33e721",
+    "title": "LETTER: Should Teachers battling cancer receive salary cuts?",
+    "source": "Antigua News Room",
+    "date": "2026-08-07",
+    "country": "AG",
+    "url": "https://antiguanewsroom.com/letter-should-teachers-battling-cancer-receive-salary-cuts/",
+    "tags": [
+      "news"
+    ],
+    "category": "Labor",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "antigua-news-room-412d4f29",
+    "title": "El Niño threatens jobs and incomes for many workers in the Caribbean, ILO warns",
+    "source": "Antigua News Room",
+    "date": "2026-08-07",
+    "country": "AG",
+    "url": "https://antiguanewsroom.com/el-nino-threatens-jobs-and-incomes-for-many-workers-in-latin-america-and-the-caribbean-ilo-warns/",
+    "tags": [
+      "news"
+    ],
+    "category": "Labor",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "searchlight-svg-09d22e5f",
+    "title": "OECS boosts Sea Moss  industry with high impact training in SVG",
+    "source": "Searchlight SVG",
+    "date": "2026-08-07",
+    "country": "VC",
+    "url": "https://www.searchlight.vc/press-release/2026/08/07/oecs-boosts-sea-moss-industry-high-impact-training-svg/",
+    "tags": [
+      "press release"
+    ],
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "searchlight-svg-8216393a",
+    "title": "El Niño threatens jobs, incomes for many in Latin America, Caribbean",
+    "source": "Searchlight SVG",
+    "date": "2026-08-07",
+    "country": "VC",
+    "url": "https://www.searchlight.vc/press-release/2026/08/07/el-nino-threatens-jobs-incomes-many-latin-america-caribbean/",
+    "tags": [
+      "press release"
+    ],
+    "category": "Labor",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "cayman-compass-f5d25682",
+    "title": "Customs director reveals how officers screen travellers",
+    "source": "Cayman Compass",
+    "date": "2026-08-07",
+    "country": "KY",
+    "url": "https://www.caymancompass.com/2026/08/07/customs-director-reveals-how-officers-screen-travellers/",
+    "tags": [
+      "local",
+      "airport security",
+      "cayman islands",
+      "cayman tourism",
+      "customs and border control (cbc)"
+    ],
+    "category": "Trade",
+    "group": "Trade & Tourism",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "bvi-news-c03d3d07",
+    "title": "Gov’t preparing new water policy to assist farmers",
+    "source": "BVI News",
+    "date": "2026-08-07",
+    "country": "VG",
+    "url": "https://bvinews.com/govt-preparing-new-water-policy-to-assist-farmers/",
+    "tags": [
+      "all news"
+    ],
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "bvi-news-719e5cd3",
+    "title": "Cline calls for answers after $2.5M investment loss",
+    "source": "BVI News",
+    "date": "2026-08-07",
+    "country": "VG",
+    "url": "https://bvinews.com/cline-calls-for-answers-after-2-5m-investment-loss/",
+    "tags": [
+      "all news"
+    ],
+    "category": "Investment",
+    "group": "Investment",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "bvi-news-6c7a207c",
+    "title": "Skelton Cline accuses RiteWay for cannibalising BVI market",
+    "source": "BVI News",
+    "date": "2026-08-07",
+    "country": "VG",
+    "url": "https://bvinews.com/skelton-cline-accuses-riteway-for-cannibalising-bvi-market/",
+    "tags": [
+      "all news"
+    ],
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "wic-news-ef194269",
+    "title": "Property Prices Across the Eastern Caribbean Stuck in a Six-Year Slump",
+    "source": "WIC News",
+    "date": "2026-08-07",
+    "country": "ALL",
+    "url": "https://wicnews.com/caribbean/property-prices-across-the-eastern-caribbean-stuck-in-a-six-year-slump",
+    "category": "Inflation",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "wic-news-4817f765",
+    "title": "Caribbean Airlines carries nearly 67,000 passengers on Trinidad-Tobago airbridge in July",
+    "source": "WIC News",
+    "date": "2026-08-07",
+    "country": "ALL",
+    "url": "https://wicnews.com/trinidad-tobago/caribbean-airlines-carries-nearly-67000-passengers-on-trinidad-tobago-airbridge-in-july",
+    "category": "Tourism",
+    "group": "Trade & Tourism",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "wic-news-e94846cf",
+    "title": "Dominica’s Opposition Leader praises 2026-27 budget, calls for unity beyond politics",
+    "source": "WIC News",
+    "date": "2026-08-07",
+    "country": "ALL",
+    "url": "https://wicnews.com/dominica/dominicas-opposition-leader-praises-2026-27-budget-calls-for-unity-beyond-politics",
+    "category": "Fiscal Policy",
+    "group": "Fiscal Policy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "wic-news-c3c84956",
+    "title": "Jamaica: Massive fire erupts at business near Oxford Terrace in St Andrew",
+    "source": "WIC News",
+    "date": "2026-08-07",
+    "country": "ALL",
+    "url": "https://wicnews.com/jamaica/jamaica-massive-fire-erupts-at-business-near-oxford-terrace-in-st-andrew",
+    "category": "Corporate",
+    "group": "Finance",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "wic-news-f35b9272",
+    "title": "Port of Spain, Trinidad listed among Caribbean’s most dangerous cities",
+    "source": "WIC News",
+    "date": "2026-08-07",
+    "country": "ALL",
+    "url": "https://wicnews.com/trinidad-tobago/port-of-spain-trinidad-listed-among-caribbeans-most-dangerous-cities",
+    "category": "Trade",
+    "group": "Trade & Tourism",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
     "id": "antigua-news-room-3555322f",
     "title": "Antigua Nominated for Caribbean’s Best Cruise Destination at World Cruise Awards",
     "source": "Antigua News Room",
@@ -1636,6 +2037,43 @@
     "classifier": "llm",
     "deal_status": "not_a_deal",
     "deal_type": null
+  },
+  {
+    "id": "jamaica-observer-34511a7f",
+    "title": "Trump signs order targeting ‘birth tourism’",
+    "source": "Jamaica Observer",
+    "date": "2026-08-06",
+    "country": "JM",
+    "url": "https://www.jamaicaobserver.com/2026/08/06/trump-signs-order-targeting-birth-tourism/",
+    "tags": [
+      "international news",
+      "latest news",
+      "birth tourism",
+      "donald trump"
+    ],
+    "category": "Tourism",
+    "group": "Trade & Tourism",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "ziz-online-03798374",
+    "title": "PM Drew Meets Investors On Major Development Proposal",
+    "source": "ZIZ Online",
+    "date": "2026-08-06",
+    "country": "KN",
+    "url": "https://zizonline.com/pm-drew-meets-investors-on-major-development-proposal/",
+    "tags": [
+      "national"
+    ],
+    "category": "Investment",
+    "group": "Investment",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
   },
   {
     "id": "wic-news-54b4be5d",
@@ -5123,6 +5561,66 @@
     "classifier": "llm",
     "deal_status": "not_a_deal",
     "deal_type": null
+  },
+  {
+    "id": "jamaica-observer-b1f07b82",
+    "title": "Businessman to use $258.5m Super Lotto winnings to change family’s life",
+    "source": "Jamaica Observer",
+    "date": "2026-08-04",
+    "country": "JM",
+    "url": "https://www.jamaicaobserver.com/2026/08/04/businessman-use-258-5m-super-lotto-winnings-change-familys-life/",
+    "tags": [
+      "latest news",
+      "news",
+      "buisnessman",
+      "lotto",
+      "super lotto jackpot"
+    ],
+    "category": "Corporate",
+    "group": "Finance",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "searchlight-svg-9a1601bf",
+    "title": "THE BANANA ART AND HOW IT BEGAN",
+    "source": "Searchlight SVG",
+    "date": "2026-08-04",
+    "country": "VC",
+    "url": "https://www.searchlight.vc/our-readers-opinions/2026/08/04/banana-art-began/",
+    "tags": [
+      "our readers' opinions"
+    ],
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "cayman-compass-01e2bc2e",
+    "title": "FIFA scraps controversial plan to commercialise World Cup amid backlash",
+    "source": "Cayman Compass",
+    "date": "2026-08-04",
+    "country": "KY",
+    "url": "https://www.caymancompass.com/2026/08/04/fifa-scraps-controversial-plan-to-commercialise-world-cup-amid-backlash/",
+    "tags": [
+      "featured local home page",
+      "local",
+      "cifa",
+      "concacaf",
+      "fifa",
+      "world cup"
+    ],
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
   },
   {
     "id": "kaieteur-news-9f44b1cd",
