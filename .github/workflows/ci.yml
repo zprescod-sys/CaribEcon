@@ -22,7 +22,11 @@ jobs:
           node-version: 24
 
       - run: npm ci
-      - run: npm audit --audit-level=high
+      # --omit=dev: gate on what actually ships to production, not on devDependency tooling
+      # (e.g. the vercel CLI bundles many @vercel/* builder packages — Python, Rust, Remix,
+      # Gatsby, etc. — whose own transitive deps carry advisories no matter which vercel
+      # version is pinned; none of that code runs in production or even in this CI job).
+      - run: npm audit --audit-level=high --omit=dev
       - run: npm run test
       - run: npm run check
       - run: npm run build
