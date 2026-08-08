@@ -11,10 +11,16 @@
    Pages must keep importing from dataHub.ts, which re-exports all of this — one
    import surface, exactly as before. Nothing here is page-facing on its own. */
 
-import type { Country, IndicatorsData } from './types';
+/* Explicit .js specifier and JSON import attributes are required, not stylistic: this
+   module is in api/indicator.ts's import graph, and Vercel type-checks and runs functions
+   under moduleResolution/module "nodenext" (the repo is "type": "module"). Extensionless
+   specifiers and bare JSON imports are errors there — they compiled locally under Astro's
+   bundler resolution but failed at runtime in production with ERR_MODULE_NOT_FOUND.
+   Vite/Astro accept this stricter form too, so it satisfies both pipelines. */
+import type { Country, IndicatorsData } from './types.js';
 
-import indicatorsRaw from '../../data/almanac-data.json';
-import indicatorMetaRaw from '../../data/indicator-meta.json';
+import indicatorsRaw from '../../data/almanac-data.json' with { type: 'json' };
+import indicatorMetaRaw from '../../data/indicator-meta.json' with { type: 'json' };
 
 const indicators = indicatorsRaw as IndicatorsData;
 

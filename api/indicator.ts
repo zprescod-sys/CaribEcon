@@ -8,7 +8,7 @@
    news merge on import. This endpoint needs none of it, and a cold start should not parse a
    news archive to return one number. indicators.ts is the same data, same accessors, minus
    the editorial domains — dataHub re-exports it, so pages are unaffected. */
-import { getSeries } from '../src/lib/indicators';
+import { getSeries } from '../src/lib/indicators.js';
 
 function json(body: unknown, status: number, cache = false): Response {
   return new Response(JSON.stringify(body), {
