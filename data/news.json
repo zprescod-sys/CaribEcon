@@ -359,6 +359,403 @@
     "classifier": "heuristic"
   },
   {
+    "id": "kaieteur-news-f589ffca",
+    "title": "Fujian Association of Guyana donates $3.26M to CDC for MV Barima tragedy relief efforts",
+    "source": "Kaieteur News",
+    "date": "2026-08-08",
+    "country": "GY",
+    "url": "https://kaieteurnewsonline.com/2026/08/08/fujian-association-of-guyana-donates-3-26m-to-cdc-for-mv-barima-tragedy-relief-efforts/",
+    "tags": [
+      "news",
+      "cdc",
+      "fujian association",
+      "mv barima tragedy",
+      "relief efforts"
+    ],
+    "category": "Government",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Donation for disaster relief; measurable charitable/fiscal response to MV Barima tragedy",
+    "classifier": "llm",
+    "deal_status": "not_a_deal",
+    "deal_type": null
+  },
+  {
+    "id": "guyana-chronicle-bda31d80",
+    "title": "Ramraj pledges urgent action to restore normal loads on Supenaam–Parika ferry",
+    "source": "Guyana Chronicle",
+    "date": "2026-08-08",
+    "country": "GY",
+    "url": "https://guyanachronicle.com/2026/08/08/ramraj-pledges-urgent-action-to-restore-normal-loads-on-supenaam-parika-ferry/",
+    "tags": [
+      "news"
+    ],
+    "category": "Infrastructure",
+    "group": "Investment",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Ferry service restoration; infrastructure/transport operation affecting regional connectivity",
+    "classifier": "llm",
+    "deal_status": "not_a_deal",
+    "deal_type": null
+  },
+  {
+    "id": "demerara-waves-744bc917",
+    "title": "US gov’t invests in Guyana’s bauxite away from China reliance",
+    "source": "Demerara Waves",
+    "date": "2026-08-08",
+    "country": "GY",
+    "url": "https://demerarawaves.com/2026/08/08/us-govt-invests-in-guyanas-bauxite-sector-to-eliminate-reliance-on-bauxite-from-china/",
+    "tags": [
+      "business",
+      "natural resources",
+      "news",
+      "politics",
+      "security",
+      "trade"
+    ],
+    "category": "Energy",
+    "group": "Energy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "US investment in bauxite mining to reduce China reliance; foreign direct investment and geopolitical trade implication",
+    "classifier": "llm",
+    "deal_status": "pending",
+    "deal_type": "FDI"
+  },
+  {
+    "id": "demerara-waves-31c92545",
+    "title": "OPINION: Paying a water bill and buying bottled water: the paradox of GWI’s new venture",
+    "source": "Demerara Waves",
+    "date": "2026-08-08",
+    "country": "GY",
+    "url": "https://demerarawaves.com/2026/08/08/opinion-paying-a-water-bill-and-buying-bottled-water-the-paradox-of-gwis-new-venture/",
+    "tags": [
+      "opinion",
+      "bottled water initiative",
+      "caps",
+      "development models",
+      "external dependency",
+      "guyana water incorporated (gwi)"
+    ],
+    "category": "Corporate",
+    "group": "Finance",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Utility bottled water initiative and subsidy paradox; public utility commercial strategy and pricing policy",
+    "classifier": "llm",
+    "deal_status": "not_a_deal",
+    "deal_type": null
+  },
+  {
+    "id": "ttt-news-65edfe67",
+    "title": "Drought, Water Shortages And Heat: Government Mobilises Agencies Ahead Of Expected El Niño Effects",
+    "source": "TTT News",
+    "date": "2026-08-08",
+    "country": "TT",
+    "url": "https://www.ttt.live/drought-water-shortages-and-heat-government-mobilises-agencies-ahead-of-expected-el-nino-effects/?utm_source=rss&utm_medium=rss&utm_campaign=drought-water-shortages-and-heat-government-mobilises-agencies-ahead-of-expected-el-nino-effects",
+    "tags": [
+      "community",
+      "government",
+      "news",
+      "public utilities"
+    ],
+    "category": "Climate",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Drought and water shortage; government mobilization for El Niño climate impact on utilities and agriculture",
+    "classifier": "llm",
+    "deal_status": "not_a_deal",
+    "deal_type": null
+  },
+  {
+    "id": "barbados-today-f6338fe7",
+    "title": "Siblings win global zero-waste fashion award",
+    "source": "Barbados Today",
+    "date": "2026-08-08",
+    "country": "BB",
+    "url": "https://barbadostoday.bb/2026/08/08/siblings-win-global-zero-waste-fashion-award/",
+    "tags": [
+      "arts & culture",
+      "entertainment",
+      "local news",
+      "youth"
+    ],
+    "category": "Corporate",
+    "group": "Finance",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Global award for sustainable fashion entrepreneurship; youth ESG/business achievement",
+    "classifier": "llm",
+    "deal_status": "not_a_deal",
+    "deal_type": null
+  },
+  {
+    "id": "barbados-today-eaebac7d",
+    "title": "NHC looks to youth to fill construction skills gap",
+    "source": "Barbados Today",
+    "date": "2026-08-08",
+    "country": "BB",
+    "url": "https://barbadostoday.bb/2026/08/08/nhc-looks-to-youth-to-fill-construction-skills-gap/",
+    "tags": [
+      "business",
+      "education",
+      "local news",
+      "youth",
+      "headline",
+      "headlines"
+    ],
+    "category": "Labor",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Construction sector workforce development; skills gap and youth employment initiative",
+    "classifier": "llm",
+    "deal_status": "not_a_deal",
+    "deal_type": null
+  },
+  {
+    "id": "nation-news-87935c7b",
+    "title": "Bahamas to review work permit process",
+    "source": "Nation News",
+    "date": "2026-08-08",
+    "country": "BB",
+    "url": "https://nationnews.com/2026/08/08/bahamas-to-review-work-permit-process/?utm_source=rss&utm_medium=rss&utm_campaign=bahamas-to-review-work-permit-process",
+    "tags": [
+      "regional",
+      "bahamas immigration review",
+      "fred mitchell"
+    ],
+    "category": "Government",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Bahamas work-permit process review; labor/immigration regulatory reform affecting FDI and workforce",
+    "classifier": "llm",
+    "deal_status": "not_a_deal",
+    "deal_type": null
+  },
+  {
+    "id": "jamaica-observer-81e11dc4",
+    "title": "Three alleged exotic dancers from Dom Rep charged with work permit breaches",
+    "source": "Jamaica Observer",
+    "date": "2026-08-08",
+    "country": "JM",
+    "url": "https://www.jamaicaobserver.com/2026/08/08/three-alleged-exotic-dancers-dom-rep-charged-work-permit-breaches/",
+    "tags": [
+      "news"
+    ],
+    "category": "Labor",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Work-permit violation enforcement; labor compliance and immigration policy",
+    "classifier": "llm",
+    "deal_status": "not_a_deal",
+    "deal_type": null
+  },
+  {
+    "id": "jamaica-observer-dc9d2f67",
+    "title": "Kingston Container Terminal employees arrested as police probe $1 billion cocaine bust",
+    "source": "Jamaica Observer",
+    "date": "2026-08-08",
+    "country": "JM",
+    "url": "https://www.jamaicaobserver.com/2026/08/07/kingston-container-terminal-employees-arrested-police-probe-1-billion-cocaine-bust/",
+    "tags": [
+      "latest news",
+      "news",
+      "bust",
+      "cocaine",
+      "kingston freeport terminal",
+      "major"
+    ],
+    "category": "Corporate",
+    "group": "Finance",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Kingston Container Terminal employee arrests in major drug smuggling; operational disruption and institutional governance at critical trade infrastructure",
+    "classifier": "llm",
+    "deal_status": "not_a_deal",
+    "deal_type": null
+  },
+  {
+    "id": "jamaica-observer-14652eb0",
+    "title": "WISTA Jamaica to donate hurricane relief supplies to Carisbrook Infant and Primary School",
+    "source": "Jamaica Observer",
+    "date": "2026-08-08",
+    "country": "JM",
+    "url": "https://www.jamaicaobserver.com/2026/08/08/wista-jamaica-donate-hurricane-relief-supplies-carisbrook-infant-primary-school/",
+    "tags": [
+      "latest news",
+      "news",
+      "carisbrook infant and primary school",
+      "st elizabeth",
+      "women’s international shipping and trading association"
+    ],
+    "category": "Government",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Hurricane relief supplies donation by trade association; measurable response to disaster impact",
+    "classifier": "llm",
+    "deal_status": "not_a_deal",
+    "deal_type": null
+  },
+  {
+    "id": "jamaica-observer-35d6918e",
+    "title": "SRC STEM Summer Attachment Programme draws strong participation from rural teachers",
+    "source": "Jamaica Observer",
+    "date": "2026-08-08",
+    "country": "JM",
+    "url": "https://www.jamaicaobserver.com/2026/08/08/src-stem-summer-attachment-programme-draws-strong-participation-rural-teachers/",
+    "tags": [
+      "latest news",
+      "news",
+      "rural",
+      "scientific research council’s",
+      "summer"
+    ],
+    "category": "Labor",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "STEM summer attachment program for rural teachers; workforce development and education initiative",
+    "classifier": "llm",
+    "deal_status": "not_a_deal",
+    "deal_type": null
+  },
+  {
+    "id": "eyewitness-news-eba6b4ee",
+    "title": "BPL Turns to Egypt for Equipment in Push to Ease Power Woes",
+    "source": "Eyewitness News",
+    "date": "2026-08-08",
+    "country": "BS",
+    "url": "https://ewnews.com/bpl-turns-to-egypt-for-equipment-in-push-to-ease-power-woes/?utm_source=rss&utm_medium=rss&utm_campaign=bpl-turns-to-egypt-for-equipment-in-push-to-ease-power-woes",
+    "tags": [
+      "local",
+      "newscasts",
+      "videos"
+    ],
+    "category": "Energy",
+    "group": "Energy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "BPL addressing power infrastructure shortfalls; Bahamian energy-sector governance",
+    "classifier": "llm",
+    "deal_status": "not_a_deal",
+    "deal_type": null
+  },
+  {
+    "id": "breaking-belize-news-7d232580",
+    "title": "Halo BPO sweetens the deal: $10 an hour plus commission for home based sales agents",
+    "source": "Breaking Belize News",
+    "date": "2026-08-08",
+    "country": "BZ",
+    "url": "https://www.breakingbelizenews.com/2026/08/08/halo-bpo-sweetens-the-deal-10-an-hour-plus-commission-for-home-based-sales-agents/",
+    "tags": [
+      "headlines"
+    ],
+    "category": "Labor",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "BPO wage and commission structure for home-based agents; labor-market development",
+    "classifier": "llm",
+    "deal_status": "not_a_deal",
+    "deal_type": null
+  },
+  {
+    "id": "starnieuws-ac2023a2",
+    "title": "Bedrijfsleven wil aanpassing economische wetsontwerpen vóór verdere behandeling",
+    "source": "Starnieuws",
+    "date": "2026-08-08",
+    "country": "SR",
+    "url": "https://www.starnieuws.com/index.php/welcome/index/nieuwsitem/93322",
+    "category": "Government",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Business sector requests amendment to economic legislation; corporate/regulatory governance in Suriname",
+    "classifier": "llm",
+    "deal_status": "not_a_deal",
+    "deal_type": null
+  },
+  {
+    "id": "starnieuws-3c7a688b",
+    "title": "Aantal agrarische bedrijven  met 41 procent gegroeid",
+    "source": "Starnieuws",
+    "date": "2026-08-08",
+    "country": "SR",
+    "url": "https://www.starnieuws.com/index.php/welcome/index/nieuwsitem/93324",
+    "category": "Agriculture",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Agricultural enterprises grown 41 percent; sector-development news in Suriname",
+    "classifier": "llm",
+    "deal_status": "not_a_deal",
+    "deal_type": null
+  },
+  {
+    "id": "antigua-news-room-185b94c8",
+    "title": "LIAT Air Disruptions Spill Into Weekend, Flights Adjusted Through Tuesday",
+    "source": "Antigua News Room",
+    "date": "2026-08-08",
+    "country": "AG",
+    "url": "https://antiguanewsroom.com/liat-air-disruptions-spill-into-weekend-flights-adjusted-through-tuesday/",
+    "tags": [
+      "news"
+    ],
+    "category": "Trade",
+    "group": "Trade & Tourism",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "LIAT flight disruptions affecting regional connectivity; airline operations news",
+    "classifier": "llm",
+    "deal_status": "not_a_deal",
+    "deal_type": null
+  },
+  {
+    "id": "st-kitts-nevis-observer-7394e99d",
+    "title": "Antigua: LIAT launches new programme coinciding with second anniversary",
+    "source": "St. Kitts-Nevis Observer",
+    "date": "2026-08-08",
+    "country": "KN",
+    "url": "https://www.thestkittsnevisobserver.com/antigua-liat-launches-new-programme-coinciding-with-second-anniversary/",
+    "tags": [
+      "regional"
+    ],
+    "category": "Tourism",
+    "group": "Trade & Tourism",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "LIAT airline programme launch affects regional air transport and tourism connectivity",
+    "classifier": "llm",
+    "deal_status": "not_a_deal",
+    "deal_type": null
+  },
+  {
+    "id": "st-kitts-nevis-observer-9ed2f58b",
+    "title": "Demerara Distillers Breaks Ground on US$14 Million Expansion in St. Kitts",
+    "source": "St. Kitts-Nevis Observer",
+    "date": "2026-08-08",
+    "country": "KN",
+    "url": "https://www.thestkittsnevisobserver.com/demerara-distillers-breaks-ground-on-us14-million-expansion-in-st-kitts/",
+    "tags": [
+      "local news"
+    ],
+    "category": "Investment",
+    "group": "Investment",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "US$14M distillery expansion by Demerara Distillers is FDI/corporate investment in St. Kitts",
+    "classifier": "llm",
+    "deal_status": "pending",
+    "deal_type": "FDI"
+  },
+  {
     "id": "demerara-waves-e7c5cf64",
     "title": "High Court orders govt, Austrian company to secure unfinished Ogle hospital’s equipment",
     "source": "Demerara Waves",
@@ -1886,6 +2283,130 @@
     "confidence": "high",
     "reason": "Heuristic: displayable.",
     "classifier": "heuristic"
+  },
+  {
+    "id": "trinidad-express-c589aed1",
+    "title": "OCM records $10.3m  half-year pre-tax profit",
+    "source": "Trinidad Express",
+    "date": "2026-08-07",
+    "country": "TT",
+    "url": "https://trinidadexpress.com/business/local/ocm-records-10-3m-half-year-pre-tax-profit/article_2daa092e-346b-4ad8-9697-d91c64642a78.html",
+    "category": "Corporate",
+    "group": "Finance",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "OCM half-year profit earnings; corporate financial results",
+    "classifier": "llm",
+    "deal_status": "not_a_deal",
+    "deal_type": null
+  },
+  {
+    "id": "nation-news-f9305e99",
+    "title": "Walters: Revamp work permit system",
+    "source": "Nation News",
+    "date": "2026-08-07",
+    "country": "BB",
+    "url": "https://nationnews.com/2026/08/07/walters-revamp-work-permit-system/?utm_source=rss&utm_medium=rss&utm_campaign=walters-revamp-work-permit-system",
+    "tags": [
+      "politics",
+      "democratic labour party (dlp)",
+      "protection of wages bill"
+    ],
+    "category": "Fiscal Policy",
+    "group": "Fiscal Policy",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Opposition work-permit reform proposal; labor/wage regulation policy debate",
+    "classifier": "llm",
+    "deal_status": "not_a_deal",
+    "deal_type": null
+  },
+  {
+    "id": "st-lucia-times-9db6a3e3",
+    "title": "CPL to support regional students ahead of new school year",
+    "source": "St. Lucia Times",
+    "date": "2026-08-07",
+    "country": "LC",
+    "url": "https://stluciatimes.com/182747/2026/08/cpl-to-support-regional-students-ahead-of-new-school-year/",
+    "tags": [
+      "community",
+      "headlines",
+      "sports",
+      "caribbean",
+      "cricket",
+      "daren sammy"
+    ],
+    "category": "Corporate",
+    "group": "Finance",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "CPL institutional support for regional students; corporate social responsibility / education investment",
+    "classifier": "llm",
+    "deal_status": "not_a_deal",
+    "deal_type": null
+  },
+  {
+    "id": "st-lucia-times-8d66441e",
+    "title": "Daren Sammy Foundation grants $70,000 in scholarships",
+    "source": "St. Lucia Times",
+    "date": "2026-08-07",
+    "country": "LC",
+    "url": "https://stluciatimes.com/182727/2026/08/daren-sammy-foundation-grants-70000-in-scholarships/",
+    "tags": [
+      "headlines",
+      "youth",
+      "daren sammy foundation",
+      "make a difference program",
+      "republic bank",
+      "scholarships"
+    ],
+    "category": "Corporate",
+    "group": "Finance",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Foundation awards scholarships; corporate education investment / social responsibility",
+    "classifier": "llm",
+    "deal_status": "not_a_deal",
+    "deal_type": null
+  },
+  {
+    "id": "st-kitts-nevis-observer-2e52fa9e",
+    "title": "Prime Minister Drew Meets Demerara Distillers, BK Group Ahead of Groundbreaking Ceremony",
+    "source": "St. Kitts-Nevis Observer",
+    "date": "2026-08-07",
+    "country": "KN",
+    "url": "https://www.thestkittsnevisobserver.com/prime-minister-drew-meets-demerara-distillers-bk-group-ahead-of-groundbreaking-ceremony/",
+    "tags": [
+      "local news"
+    ],
+    "category": "Investment",
+    "group": "Investment",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "PM meeting with Demerara Distillers and BK Group ahead of US$14M groundbreaking signals economic investment commitment",
+    "classifier": "llm",
+    "deal_status": "pending",
+    "deal_type": "FDI"
+  },
+  {
+    "id": "bvi-news-7c1f8c38",
+    "title": "ONDE brings a new era of Italian waterfront dining to BVI",
+    "source": "BVI News",
+    "date": "2026-08-07",
+    "country": "VG",
+    "url": "https://bvinews.com/onde-brings-a-new-era-of-italian-waterfront-dining-to-bvi/",
+    "tags": [
+      "all news",
+      "press releases"
+    ],
+    "category": "Corporate",
+    "group": "Finance",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "New restaurant/hospitality business launch signals tourism/hospitality sector investment and expansion",
+    "classifier": "llm",
+    "deal_status": "not_a_deal",
+    "deal_type": null
   },
   {
     "id": "antigua-news-room-3555322f",
@@ -3559,6 +4080,38 @@
     "decision": "publish",
     "confidence": "high",
     "reason": "Airline operational disruption affecting transport services—trade and connectivity impact",
+    "classifier": "llm",
+    "deal_status": "not_a_deal",
+    "deal_type": null
+  },
+  {
+    "id": "trinidad-express-5a535908",
+    "title": "GML records $14.8m six-month loss",
+    "source": "Trinidad Express",
+    "date": "2026-08-06",
+    "country": "TT",
+    "url": "https://trinidadexpress.com/business/local/gml-records-14-8m-six-month-loss/article_1b3fa403-e6ac-44db-b5cf-5af4b7b767b7.html",
+    "category": "Corporate",
+    "group": "Finance",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "GML six-month loss; corporate financial results",
+    "classifier": "llm",
+    "deal_status": "not_a_deal",
+    "deal_type": null
+  },
+  {
+    "id": "trinidad-express-9a609af5",
+    "title": "Euromoney names Scotia T&T’s Best Bank",
+    "source": "Trinidad Express",
+    "date": "2026-08-06",
+    "country": "TT",
+    "url": "https://trinidadexpress.com/business/local/euromoney-names-scotia-t-t-s-best-bank/article_fc75de6d-00d3-4a8c-a5bc-461521a836bf.html",
+    "category": "Banking",
+    "group": "Finance",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Bank awarded best-in-region designation; banking sector recognition and competitive positioning",
     "classifier": "llm",
     "deal_status": "not_a_deal",
     "deal_type": null
@@ -34499,255 +35052,6 @@
     "tags": [
       "news"
     ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "st-kitts-nevis-observer-18b9059e",
-    "title": "Great Britain:  Boaters Benefit From £5.2 Million Investment In Anglian Waterways",
-    "source": "St. Kitts-Nevis Observer",
-    "date": "2026-06-22",
-    "country": "KN",
-    "url": "https://www.thestkittsnevisobserver.com/great-britain-boaters-benefit-from-5-2-million-investment-in-anglian-waterways/",
-    "tags": [
-      "press releases",
-      "regional/international news"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "iwitness-news-79ba17ab",
-    "title": "Balancing mass tourism volume with sustainability in SVG",
-    "source": "iWitness News",
-    "date": "2026-06-22",
-    "country": "VC",
-    "url": "https://www.iwnsvg.com/2026/06/22/balancing-mass-tourism-volume-with-sustainability-in-svg/",
-    "tags": [
-      "opinion"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "cnc3-8b1d806e",
-    "title": "HDC scraps $3.4B housing procurement programme",
-    "source": "CNC3",
-    "date": "2026-06-18",
-    "country": "TT",
-    "url": "https://www.cnc3.co.tt/hdc-scraps-3-4b-housing-procurement-programme/?utm_source=rss&utm_medium=rss&utm_campaign=hdc-scraps-3-4b-housing-procurement-programme",
-    "tags": [
-      "business",
-      "news",
-      "housing development corporation"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "cnc3-913f6865",
-    "title": "WASA launches $20M wastewater project in Beetham Gardens",
-    "source": "CNC3",
-    "date": "2026-06-18",
-    "country": "TT",
-    "url": "https://www.cnc3.co.tt/wasa-launches-20m-wastewater-project-in-beetham-gardens/?utm_source=rss&utm_medium=rss&utm_campaign=wasa-launches-20m-wastewater-project-in-beetham-gardens",
-    "tags": [
-      "business",
-      "news",
-      "beetham gardens",
-      "pipeline replacement",
-      "wastewater",
-      "water and sewerage authority"
-    ],
-    "category": "Infrastructure",
-    "group": "Investment",
-    "decision": "publish",
-    "confidence": "high",
-    "reason": "WASA $20M wastewater pipeline project in Beetham Gardens; public utility infrastructure investment.",
-    "classifier": "llm",
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "cnc3-e3355fe8",
-    "title": "No policy, no records: T&TEC probes controversial protected list",
-    "source": "CNC3",
-    "date": "2026-06-17",
-    "country": "TT",
-    "url": "https://www.cnc3.co.tt/no-policy-no-records-ttec-probes-controversial-protected-list/?utm_source=rss&utm_medium=rss&utm_campaign=no-policy-no-records-ttec-probes-controversial-protected-list",
-    "tags": [
-      "business",
-      "news",
-      "investigation",
-      "trinidad and tobago electricity commission (t&tec)"
-    ],
-    "category": "Government",
-    "group": "Macro",
-    "decision": "publish",
-    "confidence": "high",
-    "reason": "T&TEC investigation into protected-list policy; energy utility governance and regulatory transparency.",
-    "classifier": "llm",
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "cnc3-ee3d2a9f",
-    "title": "Angostura aids Jamaica recovery through JSPCA partnership",
-    "source": "CNC3",
-    "date": "2026-06-11",
-    "country": "TT",
-    "url": "https://www.cnc3.co.tt/angostura-aids-jamaica-recovery-through-jspca-partnership/?utm_source=rss&utm_medium=rss&utm_campaign=angostura-aids-jamaica-recovery-through-jspca-partnership",
-    "tags": [
-      "business",
-      "news",
-      "angostura holdings limited",
-      "funding",
-      "hurricane melissa",
-      "jamaica"
-    ],
-    "category": "Corporate",
-    "group": "Finance",
-    "decision": "publish",
-    "confidence": "high",
-    "reason": "Angostura Holdings funding Jamaica hurricane recovery through JSPCA partnership; corporate philanthropy and disaster relief.",
-    "classifier": "llm",
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "searchlight-svg-c15f06de",
-    "title": "Vincentian Chef whetting taste buds for FIFA 2026 World Cup fans",
-    "source": "Searchlight SVG",
-    "date": "2026-06-05",
-    "country": "VC",
-    "url": "https://www.searchlight.vc/features/2026/06/05/vincentian-chef-whetting-taste-buds-fifa-2026-world-cup-fans/",
-    "tags": [
-      "features"
-    ],
-    "category": "Tourism",
-    "group": "Trade & Tourism",
-    "decision": "publish",
-    "confidence": "medium",
-    "reason": "Caribbean chef preparing for FIFA World Cup hospitality; tourism and hospitality sector interest",
-    "classifier": "llm",
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "ziz-online-ac1a606b",
-    "title": "Saint Kitts and Nevis Invites the World to Connect, Collaborate and Invest in the Future of Global Africa at ACTIF 2026",
-    "source": "ZIZ Online",
-    "date": "2026-06-02",
-    "country": "KN",
-    "url": "https://ziz.kn/saint-kitts-and-nevis-invites-the-world-to-connect-collaborate-and-invest-in-the-future-of-global-africa-at-actif-2026/",
-    "tags": [
-      "national"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "t-t-newsday-e6e473de",
-    "title": "Daily News Limited – Newsday – Notice to Creditors 2026",
-    "source": "T&T Newsday",
-    "date": "2026-04-24",
-    "country": "TT",
-    "url": "https://newsday.co.tt/2026/04/24/daily-news-limited-newsday-notice-to-creditors-2026/",
-    "tags": [
-      "news"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "ziz-online-d79f7434",
-    "title": "National Biometric Passport Program Launches April 20",
-    "source": "ZIZ Online",
-    "date": "2026-04-15",
-    "country": "KN",
-    "url": "https://ziz.kn/national-biometric-passport-program-launches-april-20/",
-    "tags": [
-      "government",
-      "national",
-      "news",
-      "trending"
-    ],
-    "category": "Government",
-    "group": "Macro",
-    "decision": "publish",
-    "confidence": "high",
-    "reason": "biometric passport program launch signals government investment and border/identity infrastructure modernization",
-    "classifier": "llm",
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "ziz-online-23edc16b",
-    "title": "PM Drew Announces Fuel Tax Cuts, Relief Measures",
-    "source": "ZIZ Online",
-    "date": "2026-04-14",
-    "country": "KN",
-    "url": "https://ziz.kn/pm-drew-announces-fuel-tax-cuts-relief-measures/",
-    "tags": [
-      "national",
-      "news",
-      "trending"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "ziz-online-dced211d",
-    "title": "Conaree Landfill Expands Recycling to Include Cardboard",
-    "source": "ZIZ Online",
-    "date": "2026-04-13",
-    "country": "KN",
-    "url": "https://ziz.kn/conaree-landfill-expands-recycling-to-include-cardboard/",
-    "tags": [
-      "national",
-      "news"
-    ],
-    "category": "Infrastructure",
-    "group": "Investment",
-    "decision": "publish",
-    "confidence": "medium",
-    "reason": "landfill expansion and recycling program reflects waste-management infrastructure investment",
-    "classifier": "llm",
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "ziz-online-b71f1c36",
-    "title": "Fishing Industry Highest Revenue in a Decade",
-    "source": "ZIZ Online",
-    "date": "2026-04-12",
-    "country": "KN",
-    "url": "https://ziz.kn/fishing-industry-highest-revenue-in-a-decade/",
-    "tags": [
-      "agriculture",
-      "national",
-      "news"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "ziz-online-b37b3fc1",
-    "title": "Government Announces 2026 Discounted VAT Rate Days",
-    "source": "ZIZ Online",
-    "date": "2026-04-12",
-    "country": "KN",
-    "url": "https://ziz.kn/government-announces-2026-discounted-vat-rate-days/",
-    "tags": [
-      "national",
-      "news"
-    ],
-    "category": "Fiscal Policy",
-    "group": "Fiscal Policy",
-    "decision": "publish",
-    "confidence": "high",
-    "reason": "VAT rate policy announcement (2026 discounted days) is a fiscal/tax measure",
-    "classifier": "llm",
     "deal_status": "not_a_deal",
     "deal_type": null
   }
