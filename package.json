@@ -8,6 +8,7 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
+    "build:addin": "npm --prefix excel-addin run build && rm -rf public/addin && mkdir -p public/addin && cp -R excel-addin/dist/. public/addin/",
     "preview": "astro preview",
     "check": "astro check",
     "test": "node --test src/lib/*.test.mjs",

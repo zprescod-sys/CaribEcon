@@ -8,8 +8,14 @@ const webpack = require("webpack");
 
 // Where the add-in's OWN files (taskpane.html, functions.js, icons) are served from.
 // Rewritten into manifest.xml on a production build.
+//
+// The /addin/ path, not the site root: `npm run build:addin` (root package.json) copies this
+// dist/ into the Astro site's public/addin/, which Astro publishes verbatim. Keeping the
+// add-in on its own path means its bundle never collides with a site route, and the built
+// manifest is itself served at caribecon.org/addin/manifest.xml for sideloading.
+// Every asset reference inside taskpane.html is relative, so the subpath needs no other change.
 const urlDev = "https://localhost:3000/";
-const urlProd = "https://caribecon.org/";
+const urlProd = "https://caribecon.org/addin/";
 
 // Where the DATA API lives — a separate concern from the two URLs above. Baked into
 // functions.js at build time via DefinePlugin, so switching environments never means
@@ -18,6 +24,10 @@ const urlProd = "https://caribecon.org/";
 // Must be https: Excel loads the add-in over https, so an http API (plain `vercel dev`
 // on localhost) is blocked as mixed content.
 const apiBase = process.env.CARIBECON_API_BASE || "https://caribecon.org";
+
+// Shared token for the research endpoint. Empty by default: with no token the Ask tab hides
+// itself rather than shipping a build that 401s on every question.
+const researchToken = process.env.CARIBECON_RESEARCH_TOKEN || "";
 
 /* global require, module, process */
 
@@ -29,11 +39,16 @@ async function getHttpsOptions() {
 module.exports = async (env, options) => {
   const dev = options.mode === "development";
   const config = {
-    devtool: "source-map",
+    // Dev only. A production build's output is committed to the site's public/addin/, and the
+    // polyfill's map alone is 1.2MB of generated noise in git for a bundle nobody debugs
+    // minified — debug in `npm run dev-server`, where the maps are still emitted.
+    devtool: dev ? "source-map" : false,
     entry: {
       polyfill: ["core-js/stable", "regenerator-runtime/runtime"],
       taskpane: ["./src/taskpane/taskpane.js", "./src/taskpane/taskpane.html"],
-      commands: "./src/commands/commands.js",
+      // No `commands` entry: the ribbon's only control is ShowTaskpane, and the generator's
+      // commands.js called Office.context.mailbox — an Outlook-only API that throws in a
+      // Workbook host. Add one back here if a real ExecuteFunction command is ever needed.
       functions: "./src/functions/functions.js",
     },
     output: {
@@ -70,6 +85,12 @@ module.exports = async (env, options) => {
       // custom-function runtime; this bakes the literal URL into the bundle.
       new webpack.DefinePlugin({
         "process.env.CARIBECON_API_BASE": JSON.stringify(apiBase),
+        // Gate on /api/research, which spends tokens (unlike the free deterministic lookups).
+        // This IS readable in the published bundle — it deters casual scripted abuse and pairs
+        // with the endpoint's rate limit; it is not a secret and must never guard anything
+        // that writes or costs more than a capped read. Set CARIBECON_RESEARCH_TOKEN in the
+        // build environment to the same value configured on the Vercel project.
+        "process.env.CARIBECON_RESEARCH_TOKEN": JSON.stringify(researchToken),
       }),
       new CustomFunctionsMetadataPlugin({
         output: "functions.json",
@@ -78,7 +99,10 @@ module.exports = async (env, options) => {
       new HtmlWebpackPlugin({
         filename: "taskpane.html",
         template: "./src/taskpane/taskpane.html",
-        chunks: ["polyfill", "taskpane", "functions", "commands"],
+        // functions.js is loaded by the task pane page too: with the shared runtime declared in
+        // manifest.xml this is the one runtime, so the pane and the custom functions share a
+        // single module instance — and therefore a single loaded snapshot.
+        chunks: ["polyfill", "taskpane", "functions"],
       }),
       new CopyWebpackPlugin({
         patterns: [

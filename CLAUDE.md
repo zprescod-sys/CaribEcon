@@ -47,6 +47,25 @@ Every page reads from one hub; no per-page hardcoded numbers.
 - Any live API keys stay server-side (Vercel Function).
 - Regenerable / scratch output lives in `/data/` or `/.tmp/`.
 
+### Public API (`/api/*`)
+
+Standalone Vercel Functions in the top-level `api/`, deliberately outside the Astro build so the site stays `output: 'static'`. They must import `src/lib/indicators.ts` — **never `dataHub.ts`**, which pulls the editorial domains (~1.9 MB) in at module scope, and which is not nodenext-clean so it throws `ERR_MODULE_NOT_FOUND` in a deployed function. Both use explicit `.js` specifiers and JSON import attributes for the same reason.
+
+| Endpoint | Purpose |
+| -------- | ------- |
+| `GET /api/indicator?country=&indicator=&year=` | One sourced value + provenance. Deterministic, unauthenticated, edge-cached. |
+| `GET /api/snapshot` | The whole hub (~20 KB gzipped) in one payload, so a client never fetches numbers one at a time. |
+| `POST /api/research` | Grounded Q&A over the hub via Claude tool-use. Spends tokens, so it is token-gated + rate-limited. Needs `ANTHROPIC_API_KEY` and `CARIBECON_RESEARCH_TOKEN` set on the Vercel project. |
+
+### Excel add-in (`excel-addin/`)
+
+A separate npm project (own `package.json`, webpack, deps) — not part of the Astro build. Ships seven read-only `CE.*` custom functions plus a task pane (browse & insert, function reference, Ask).
+
+- **Custom functions must never be `async`.** Excel shows `#BUSY!` for as long as a returned Promise is pending, so they return a value synchronously off the loaded snapshot and a Promise only on a cold runtime. See the header comment in `src/functions/functions.js`.
+- The manifest declares a **shared runtime**, so the task pane and the custom functions are one JS context and share one loaded snapshot via `src/shared/hub.js`.
+- API host and research token are injected at build time by webpack `DefinePlugin` — never hardcoded, never committed.
+- **Publishing:** `npm run build:addin` builds it and copies the output to `public/addin/`, which is committed and served at `caribecon.org/addin/`. Re-run it after any add-in source change, or the deployed add-in silently keeps serving the old bundle. `public/addin` is excluded in `tsconfig.json` — its minified output otherwise exhausts the TS compiler's heap during `astro check`.
+
 ## Coding Philosophy
 
 - Working code first; clear over clever; readable by a non-expert (a short comment on every non-trivial function).
@@ -67,3 +86,5 @@ Every page reads from one hub; no per-page hardcoded numbers.
 | Home                        | `src/pages/index.astro`, `src/components/home/*`          |
 | Data                        | `src/pages/data.astro`, `src/components/data/*`           |
 | News / Publications / Deals | `src/pages/<page>.astro`, `src/components/<page>/*`       |
+| Public API                  | `api/indicator.ts`, `api/snapshot.ts`, `api/research.ts` |
+| Excel add-in                | `excel-addin/src/{functions,taskpane,shared}/*`, `excel-addin/manifest.xml` |

@@ -1,54 +1,93 @@
-<!-- Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT License. -->
-<!-- This file shows how to design a first-run page that provides a welcome screen to the user about the features of the add-in. -->
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Contoso Task Pane Add-in</title>
+    <title>CaribEcon</title>
 
     <!-- Office JavaScript API -->
     <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
 
-    <!-- For more information on Fluent UI, visit https://developer.microsoft.com/fluentui#/. -->
-    <link rel="stylesheet" href="https://res-1.cdn.office.net/files/fabric-cdn-prod_20230815.002/office-ui-fabric-core/11.1.0/css/fabric.min.css"/>
+    <!-- Same families as caribecon.org (see EDDESIGN.md). Fallbacks are system stacks, so a
+         blocked font request costs polish, not function. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" />
 
-    <!-- Template styles -->
     <link href="taskpane.css" rel="stylesheet" type="text/css" />
 </head>
 
-<body class="ms-font-m ms-welcome ms-Fabric">
-    <header class="ms-welcome__header ms-bgColor-neutralLighter">
-        <img width="90" height="90" src="../../assets/logo-filled.png" alt="Contoso" title="Contoso" />
-        <h1 class="ms-font-su">Welcome</h1>
+<body>
+    <header class="topbar">
+        <span class="wordmark">CaribEcon</span>
+        <span class="topbar__meta" id="hub-version"></span>
     </header>
-    <section id="sideload-msg" class="ms-welcome__main">
-        <h2 class="ms-font-xl">Please <a target="_blank" href="https://learn.microsoft.com/office/dev/add-ins/testing/test-debug-office-add-ins#sideload-an-office-add-in-for-testing">sideload</a> your add-in to see app body.</h2>
-    </section>
-    <main id="app-body" class="ms-welcome__main" style="display: none;">
-        <h2 class="ms-font-xl"> Discover what Office Add-ins can do for you today! </h2>
-        <ul class="ms-List ms-welcome__features">
-            <li class="ms-ListItem">
-                <i class="ms-Icon ms-Icon--Ribbon ms-font-xl"></i>
-                <span class="ms-font-m">Achieve more with Office integration</span>
-            </li>
-            <li class="ms-ListItem">
-                <i class="ms-Icon ms-Icon--Unlock ms-font-xl"></i>
-                <span class="ms-font-m">Unlock features and functionality</span>
-            </li>
-            <li class="ms-ListItem">
-                <i class="ms-Icon ms-Icon--Design ms-font-xl"></i>
-                <span class="ms-font-m">Create and visualize like a pro</span>
-            </li>
-        </ul>
-        <p class="ms-font-l">Modify the source files, then click <b>Run</b>.</p>
-        <div role="button" id="run" class="ms-welcome__action ms-Button ms-Button--hero ms-font-xl">
-            <span class="ms-Button-label">Run</span>
+
+    <nav class="tabs" role="tablist">
+        <button class="tab is-active" type="button" role="tab" data-panel="browse">Browse</button>
+        <button class="tab" type="button" role="tab" data-panel="ask" id="tab-ask" hidden>Ask</button>
+        <button class="tab" type="button" role="tab" data-panel="reference">Functions</button>
+    </nav>
+
+    <p class="status" id="status">Loading the CaribEcon hub…</p>
+
+    <!-- ── Browse & insert ────────────────────────────────────────────────────────────── -->
+    <main class="panel" id="panel-browse" hidden>
+        <div class="field">
+            <label class="eyebrow" for="country">Economy</label>
+            <select id="country"></select>
         </div>
-        <p><label id="item-subject"></label></p>
+
+        <div class="field">
+            <label class="eyebrow" for="indicator">Indicator</label>
+            <select id="indicator"></select>
+            <p class="hint" id="indicator-hint"></p>
+        </div>
+
+        <div class="field">
+            <span class="eyebrow">Years</span>
+            <div class="range">
+                <select id="year-from" aria-label="First year"></select>
+                <span class="range__dash">–</span>
+                <select id="year-to" aria-label="Last year"></select>
+            </div>
+        </div>
+
+        <section class="preview" id="preview" aria-live="polite"></section>
+
+        <div class="actions">
+            <button class="btn btn--primary" type="button" id="insert-values">Insert values</button>
+            <button class="btn" type="button" id="insert-formulas">Insert as live formulas</button>
+        </div>
+        <p class="hint" id="insert-note">Writes at the selected cell, with its source and vintage.</p>
+    </main>
+
+    <!-- ── Ask (grounded research) ────────────────────────────────────────────────────── -->
+    <main class="panel" id="panel-ask" hidden>
+        <label class="eyebrow" for="question">Research question</label>
+        <textarea id="question" rows="3" placeholder="How fast did Guyana grow in 2024 compared with Trinidad?"></textarea>
+        <p class="hint">Answered only from the CaribEcon hub. Gaps in coverage are reported, never filled in.</p>
+
+        <div class="actions">
+            <button class="btn btn--primary" type="button" id="ask">Ask</button>
+        </div>
+
+        <section class="answer" id="answer" aria-live="polite"></section>
+    </main>
+
+    <!-- ── Function reference ─────────────────────────────────────────────────────────── -->
+    <main class="panel" id="panel-reference" hidden>
+        <p class="lede">Seven functions, all read-only, all sourced from the CaribEcon hub.</p>
+        <div id="fn-list"></div>
+
+        <h2 class="section-title">Indicator slugs</h2>
+        <p class="hint">Coverage is uneven — the count is how many of the 19 economies carry each series.</p>
+        <div id="slug-list"></div>
+
+        <h2 class="section-title">Economy codes</h2>
+        <div id="code-list"></div>
     </main>
 </body>
 

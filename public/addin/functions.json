@@ -1,0 +1,178 @@
+{
+    "allowCustomDataForDataTypeAny": true,
+    "functions": [
+        {
+            "description": "Nominal GDP for a Caribbean economy in a given year, sourced from the CaribEcon hub.",
+            "id": "GDP",
+            "name": "GDP",
+            "parameters": [
+                {
+                    "description": "ISO-ish 2-letter code, e.g. \"GY\".",
+                    "name": "country",
+                    "type": "string"
+                },
+                {
+                    "description": "Calendar year, e.g. 2024.",
+                    "name": "year",
+                    "type": "number"
+                }
+            ],
+            "result": {
+                "type": "number"
+            }
+        },
+        {
+            "description": "GDP growth rate (%) for a Caribbean economy in a given year, sourced from the CaribEcon hub.",
+            "id": "GDPGROWTH",
+            "name": "GDPGROWTH",
+            "parameters": [
+                {
+                    "description": "ISO-ish 2-letter code, e.g. \"GY\".",
+                    "name": "country",
+                    "type": "string"
+                },
+                {
+                    "description": "Calendar year, e.g. 2024.",
+                    "name": "year",
+                    "type": "number"
+                }
+            ],
+            "result": {
+                "type": "number"
+            }
+        },
+        {
+            "description": "Any stored CaribEcon indicator, by slug, for a Caribbean economy in a given year.\nReturns stored values only — no forecasting, no cross-record calculation.",
+            "id": "INDICATOR",
+            "name": "INDICATOR",
+            "parameters": [
+                {
+                    "description": "ISO-ish 2-letter code, e.g. \"GY\".",
+                    "name": "country",
+                    "type": "string"
+                },
+                {
+                    "description": "CaribEcon indicator slug, e.g. \"inflation\".",
+                    "name": "indicatorSlug",
+                    "type": "string"
+                },
+                {
+                    "description": "Calendar year, e.g. 2024.",
+                    "name": "year",
+                    "type": "number"
+                }
+            ],
+            "result": {
+                "type": "number"
+            }
+        },
+        {
+            "description": "A whole time series for one country and indicator, spilled as two columns: year, value.\nYears with no sourced value are omitted rather than returned as zero.",
+            "id": "SERIES",
+            "name": "SERIES",
+            "parameters": [
+                {
+                    "description": "ISO-ish 2-letter code, e.g. \"GY\".",
+                    "name": "country",
+                    "type": "string"
+                },
+                {
+                    "description": "CaribEcon indicator slug, e.g. \"gdp_growth\".",
+                    "name": "indicatorSlug",
+                    "type": "string"
+                },
+                {
+                    "description": "First year to include. Omit for the earliest available.",
+                    "name": "startYear",
+                    "optional": true,
+                    "type": "number"
+                },
+                {
+                    "description": "Last year to include. Omit for the latest available.",
+                    "name": "endYear",
+                    "optional": true,
+                    "type": "number"
+                }
+            ],
+            "result": {
+                "dimensionality": "matrix",
+                "type": "number"
+            }
+        },
+        {
+            "description": "The citation for a stored CaribEcon value — the dataset and series it came from.",
+            "id": "SOURCE",
+            "name": "SOURCE",
+            "parameters": [
+                {
+                    "description": "ISO-ish 2-letter code, e.g. \"GY\".",
+                    "name": "country",
+                    "type": "string"
+                },
+                {
+                    "description": "CaribEcon indicator slug, e.g. \"nominal_gdp\".",
+                    "name": "indicatorSlug",
+                    "type": "string"
+                },
+                {
+                    "description": "Calendar year, e.g. 2024.",
+                    "name": "year",
+                    "type": "number"
+                }
+            ],
+            "result": {
+                "type": "string"
+            }
+        },
+        {
+            "description": "The data vintage for a stored CaribEcon value — which release the figure was taken from.",
+            "id": "VINTAGE",
+            "name": "VINTAGE",
+            "parameters": [
+                {
+                    "description": "ISO-ish 2-letter code, e.g. \"GY\".",
+                    "name": "country",
+                    "type": "string"
+                },
+                {
+                    "description": "CaribEcon indicator slug, e.g. \"nominal_gdp\".",
+                    "name": "indicatorSlug",
+                    "type": "string"
+                },
+                {
+                    "description": "Calendar year, e.g. 2024.",
+                    "name": "year",
+                    "type": "number"
+                }
+            ],
+            "result": {
+                "type": "string"
+            }
+        },
+        {
+            "description": "The unit a stored CaribEcon value is expressed in. Local-currency levels differ by country,\nso this is not safe to assume from the indicator alone.",
+            "id": "UNIT",
+            "name": "UNIT",
+            "parameters": [
+                {
+                    "description": "ISO-ish 2-letter code, e.g. \"GY\".",
+                    "name": "country",
+                    "type": "string"
+                },
+                {
+                    "description": "CaribEcon indicator slug, e.g. \"nominal_gdp\".",
+                    "name": "indicatorSlug",
+                    "type": "string"
+                },
+                {
+                    "description": "Calendar year, e.g. 2024.",
+                    "name": "year",
+                    "type": "number"
+                }
+            ],
+            "result": {
+                "type": "string"
+            }
+        }
+    ]
+}

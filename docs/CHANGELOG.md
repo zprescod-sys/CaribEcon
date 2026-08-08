@@ -7,6 +7,61 @@ obvious from the current code.
 
 Most recent first.
 
+## Excel add-in: `#BUSY!` eliminated, real task pane, research endpoint (2026-08-08)
+
+**The `#BUSY!` problem.** Excel renders `#BUSY!` in a cell for exactly as long as a custom
+function's returned Promise is pending. Every `CE.*` call was one HTTPS round-trip to
+`/api/indicator` (~300–430 ms measured against production), with no client cache, no batching and
+no in-flight dedup — so a cell flashed `#BUSY!` on first entry, on fill-down, on every recalc and
+on every workbook reopen, and a 20×10 grid was 200 requests throttled into waves.
+
+The fix was not caching or batching. **The entire indicator dataset is 2,742 points across 284
+series and compresses to ~20 KB** — smaller than a web font — so there was never a reason to fetch
+it one number at a time. New `GET /api/snapshot` serves the whole hub as one lean payload
+(positional point tuples, provenance retained); the add-in fetches it once at module evaluation,
+which under the shared runtime is when the workbook opens. Two consequences:
+
+- The exported custom functions **stopped being `async`**. An `async` function always returns a
+  Promise, so even an instant cache hit flashed `#BUSY!`. They now return a value synchronously
+  off the loaded snapshot, and a Promise only on a cold runtime. This is the whole fix, and it is
+  why nothing in `functions.js` may be made `async` again.
+- Verified against the built (minified) bundle: a 200-cell grid costs **0 requests** beyond the
+  single snapshot fetch, down from 200. If `/api/snapshot` fails, every function falls back to the
+  old per-call `/api/indicator` path, so the worst case is the previous behaviour, not a break.
+
+**New functions, free once the data was local.** `CE.SERIES` spills a whole time series as two
+columns (null years omitted, never zero-filled); `CE.SOURCE` / `CE.VINTAGE` / `CE.UNIT` expose
+provenance that the old `lookup()` was discarding — it returned `data.value` and threw away the
+other 11 fields the API sends. Country codes and slugs are now case-insensitive.
+
+**Latent deployment blocker, found and fixed.** A production-built manifest pointed at
+`caribecon.org/functions.js`, `/functions.json`, `/taskpane.html` and `/assets/icon-*.png` — all
+404. `excel-addin/dist/` is gitignored and was never published anywhere, so a sideloaded
+production manifest was dead on arrival. Invisible in development because `npm run start`
+sideloads the *source* manifest against localhost:3000. Now `npm run build:addin` publishes to
+`public/addin/` (committed) and the manifest rewrites to `caribecon.org/addin/`. `public/addin` had
+to be added to `tsconfig.json`'s exclude for the same heap reason `excel-addin` already was.
+
+**Task pane** replaced the untouched Contoso boilerplate (it was still titled "Contoso Task Pane
+Add-in", with a `run()` that filled the selection yellow): browse & insert with a provenance
+footer, two insert modes (static values, or live `CE.*` formulas), and a function/slug reference
+that surfaces the genuinely uneven coverage. `src/shared/hub.js` holds the snapshot on `globalThis`
+so the pane and the functions — separate webpack entries, one runtime — share a single fetch.
+Also deleted `commands.js`, which called `Office.context.mailbox` (Outlook-only) in a Workbook host.
+
+**`POST /api/research`** — grounded Q&A over the hub via Claude tool-use (`list_countries`,
+`list_indicators`, `get_series`, `compare_countries`). Citations are recorded from what the tools
+actually served, not from the model's prose, so a citation cannot be hallucinated. Verified that it
+refuses correctly: asked for Curaçao unemployment (not carried) and Jamaica 2031 (beyond coverage)
+it reports the gap and lists what *is* available rather than guessing — the behaviour CariBench
+exists to measure. Indicators only for now: news search would mean importing `dataHub.ts`, which is
+not nodenext-clean and would throw `ERR_MODULE_NOT_FOUND` in a deployed function (the failure
+`f9a654e` fixed); news needs the same lean split `indicators.ts` already has first.
+
+Token-gated via `CARIBECON_RESEARCH_TOKEN`, fail-closed (503 when unset), best-effort per-instance
+rate limiting. **The token is readable in the published bundle** — it deters casual scripted abuse
+and pairs with the rate limit; it is not authentication and must never guard anything that writes.
+
 ## Current State (as of 2026-07-23)
 
 - **Automated data pipeline is now World-Bank-only.** The weekly `data.yml` refresh was
