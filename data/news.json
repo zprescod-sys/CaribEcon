@@ -1,5 +1,364 @@
 [
   {
+    "id": "kaieteur-news-8d834d1b",
+    "title": "‘No new oil projects until Guyana gets full 50% profits’ – APNU tells Govt.",
+    "source": "Kaieteur News",
+    "date": "2026-08-08",
+    "country": "GY",
+    "url": "https://kaieteurnewsonline.com/2026/08/08/no-new-oil-projects-until-guyana-gets-full-50-profits-apnu-tells-govt/",
+    "tags": [
+      "news",
+      "apnu",
+      "cost recovery",
+      "exxonmobil",
+      "guyana oil",
+      "oil profits"
+    ],
+    "category": "Energy",
+    "group": "Energy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "kaieteur-news-3bfd28e2",
+    "title": "Guyana’s oil helps cushion impacts from Middle East disruption – Exxon",
+    "source": "Kaieteur News",
+    "date": "2026-08-08",
+    "country": "GY",
+    "url": "https://kaieteurnewsonline.com/2026/08/08/guyanas-oil-helps-cushion-impacts-from-middle-east-disruption-exxon/",
+    "tags": [
+      "news",
+      "exxonmobil",
+      "guyana oil",
+      "oil production",
+      "oil profits",
+      "second quarter"
+    ],
+    "category": "Energy",
+    "group": "Energy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "kaieteur-news-30bd5000",
+    "title": "Part of World Bank loan to finance design, supervision of National Reference Lab",
+    "source": "Kaieteur News",
+    "date": "2026-08-08",
+    "country": "GY",
+    "url": "https://kaieteurnewsonline.com/2026/08/08/part-of-world-bank-loan-to-finance-design-supervision-of-national-reference-lab/",
+    "tags": [
+      "news",
+      "finance design",
+      "loan",
+      "national reference lab",
+      "world bank"
+    ],
+    "category": "Banking",
+    "group": "Finance",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "kaieteur-news-8b7d6959",
+    "title": "APNU urges government to scrap “ill-conceived” decision to turn GWI into bottled water company",
+    "source": "Kaieteur News",
+    "date": "2026-08-08",
+    "country": "GY",
+    "url": "https://kaieteurnewsonline.com/2026/08/08/apnu-urges-government-to-scrap-ill-conceived-decision-to-turn-gwi-into-bottled-water-company/",
+    "tags": [
+      "news",
+      "bottled water",
+      "gwi",
+      "high operating costs",
+      "unreliable electricity"
+    ],
+    "category": "Corporate",
+    "group": "Finance",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "kaieteur-news-736d8833",
+    "title": "Guyana drives 19.7% growth for ANSA McAL in first half of 2026",
+    "source": "Kaieteur News",
+    "date": "2026-08-08",
+    "country": "GY",
+    "url": "https://kaieteurnewsonline.com/2026/08/08/guyana-drives-19-7-growth-for-ansa-mcal-in-first-half-of-2026/",
+    "tags": [
+      "news",
+      "ansa mcal",
+      "market confidence",
+      "revenue"
+    ],
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "guyana-chronicle-3189e740",
+    "title": "2,000 house lots being created with new St. Cuthbert’s Mission housing scheme",
+    "source": "Guyana Chronicle",
+    "date": "2026-08-08",
+    "country": "GY",
+    "url": "https://guyanachronicle.com/2026/08/08/2000-house-lots-being-created-with-new-st-cuthberts-mission-housing-scheme/",
+    "tags": [
+      "news"
+    ],
+    "category": "Infrastructure",
+    "group": "Investment",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "guyana-chronicle-1c907ea7",
+    "title": "Housing Ministry warns against encroachment on public reserves",
+    "source": "Guyana Chronicle",
+    "date": "2026-08-08",
+    "country": "GY",
+    "url": "https://guyanachronicle.com/2026/08/08/housing-ministry-warns-against-encroachment-on-public-reserves/",
+    "tags": [
+      "news"
+    ],
+    "category": "Infrastructure",
+    "group": "Investment",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "guyana-chronicle-ffe46f84",
+    "title": "Gov’t to create designated spaces for neighbourhood businesses",
+    "source": "Guyana Chronicle",
+    "date": "2026-08-08",
+    "country": "GY",
+    "url": "https://guyanachronicle.com/2026/08/08/govt-to-create-designated-spaces-for-neighbourhood-businesses/",
+    "tags": [
+      "news"
+    ],
+    "category": "Corporate",
+    "group": "Finance",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "guyana-chronicle-b3a5c021",
+    "title": "Electrification project progressing at Great Diamond Housing Scheme",
+    "source": "Guyana Chronicle",
+    "date": "2026-08-08",
+    "country": "GY",
+    "url": "https://guyanachronicle.com/2026/08/08/electrification-project-progressing-at-great-diamond-housing-scheme/",
+    "tags": [
+      "news"
+    ],
+    "category": "Infrastructure",
+    "group": "Investment",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "ttt-news-88bd5c1d",
+    "title": "NGC Chairman Accuses Former Government Of ‘Crippling’ T&T’s Downstream Energy Sector",
+    "source": "TTT News",
+    "date": "2026-08-08",
+    "country": "TT",
+    "url": "https://www.ttt.live/ngc-chairman-accuses-former-government-of-crippling-tts-downstream-energy-sector/?utm_source=rss&utm_medium=rss&utm_campaign=ngc-chairman-accuses-former-government-of-crippling-tts-downstream-energy-sector",
+    "tags": [
+      "energy",
+      "news"
+    ],
+    "category": "Energy",
+    "group": "Energy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "ttt-news-84f2d678",
+    "title": "NGC Chairman Slams Brechin Castle Solar Project Over Missing Battery Storage",
+    "source": "TTT News",
+    "date": "2026-08-08",
+    "country": "TT",
+    "url": "https://www.ttt.live/ngc-chairman-slams-brechin-castle-solar-project-over-missing-battery-storage/?utm_source=rss&utm_medium=rss&utm_campaign=ngc-chairman-slams-brechin-castle-solar-project-over-missing-battery-storage",
+    "tags": [
+      "energy",
+      "news"
+    ],
+    "category": "Energy",
+    "group": "Energy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "barbados-today-4f10c7ae",
+    "title": "Corporate tax windfall raises urgency for faster reforms",
+    "source": "Barbados Today",
+    "date": "2026-08-08",
+    "country": "BB",
+    "url": "https://barbadostoday.bb/2026/08/07/corporate-tax-windfall-raises-urgency-for-faster-reforms/",
+    "tags": [
+      "business",
+      "economy",
+      "local news",
+      "headline",
+      "headlines"
+    ],
+    "category": "Fiscal Policy",
+    "group": "Fiscal Policy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "barbados-today-05185cfa",
+    "title": "Underage drinking concerns raised at Crop Over events",
+    "source": "Barbados Today",
+    "date": "2026-08-08",
+    "country": "BB",
+    "url": "https://barbadostoday.bb/2026/08/07/underage-drinking-concerns-raised-at-crop-over-events/",
+    "tags": [
+      "crop over",
+      "local news",
+      "youth"
+    ],
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "barbados-today-5b901834",
+    "title": "NHC looks to youth to fill construction skills gap",
+    "source": "Barbados Today",
+    "date": "2026-08-08",
+    "country": "BB",
+    "url": "https://barbadostoday.bb/2026/08/07/nhc-looks-to-youth-to-fill-construction-skills-gap/",
+    "tags": [
+      "business",
+      "education",
+      "local news",
+      "youth",
+      "headline",
+      "headlines"
+    ],
+    "category": "Infrastructure",
+    "group": "Investment",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "jamaica-observer-ad6bc3ea",
+    "title": "Potential investors wary as tourism GCT increase looms",
+    "source": "Jamaica Observer",
+    "date": "2026-08-08",
+    "country": "JM",
+    "url": "https://www.jamaicaobserver.com/2026/08/08/potential-investors-wary-tourism-gct-increase-looms/",
+    "tags": [
+      "news"
+    ],
+    "category": "Investment",
+    "group": "Investment",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "jamaica-gleaner-2b91c3ab",
+    "title": "Brazil pushing for poultry, pork access - South American nation eyes Jamaican market",
+    "source": "Jamaica Gleaner",
+    "date": "2026-08-08",
+    "country": "JM",
+    "url": "http://jamaica-gleaner.com/article/news/20260808/brazil-pushing-poultry-pork-access-south-american-nation-eyes-jamaican-market",
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "st-kitts-nevis-observer-6dd65a93",
+    "title": "Guyana: Duck-rice integration to boost farmers’ income, cut production costs",
+    "source": "St. Kitts-Nevis Observer",
+    "date": "2026-08-08",
+    "country": "KN",
+    "url": "https://www.thestkittsnevisobserver.com/guyana-duck-rice-integration-to-boost-farmers-income-cut-production-costs/",
+    "tags": [
+      "regional"
+    ],
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "st-kitts-nevis-observer-026e12a7",
+    "title": "United States:  Department Of War Announces An $85.5 Million Agreement With Strategic Bauxite USA To Secure The Critical Refractory Grade Bauxite Supply Chain",
+    "source": "St. Kitts-Nevis Observer",
+    "date": "2026-08-08",
+    "country": "KN",
+    "url": "https://www.thestkittsnevisobserver.com/united-states-department-of-war-announces-an-85-5-million-agreement-with-strategic-bauxite-usa-to-secure-the-critical-refractory-grade-bauxite-supply-chain/",
+    "tags": [
+      "press releases",
+      "regional/international news"
+    ],
+    "category": "Investment",
+    "group": "Investment",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "cayman-compass-13e3d3d9",
+    "title": "Opinion: Cayman’s small but mighty financial services industry",
+    "source": "Cayman Compass",
+    "date": "2026-08-08",
+    "country": "KY",
+    "url": "https://www.caymancompass.com/2026/08/08/opinion-caymans-small-but-mighty-financial-services-industry/",
+    "tags": [
+      "columns",
+      "opinion",
+      "cayman finance",
+      "cayman financial services",
+      "steve mcintosh"
+    ],
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
     "id": "demerara-waves-e7c5cf64",
     "title": "High Court orders govt, Austrian company to secure unfinished Ogle hospital’s equipment",
     "source": "Demerara Waves",
@@ -1457,6 +1816,76 @@
     "classifier": "llm",
     "deal_status": "not_a_deal",
     "deal_type": null
+  },
+  {
+    "id": "breaking-belize-news-5176c1f7",
+    "title": "Minister of Agriculture visits farmers in the Belize District",
+    "source": "Breaking Belize News",
+    "date": "2026-08-07",
+    "country": "BZ",
+    "url": "https://www.breakingbelizenews.com/2026/08/07/minister-of-agriculture-visits-farmers-in-the-belize-district/",
+    "tags": [
+      "agriculture",
+      "government",
+      "last news"
+    ],
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "antigua-news-room-7849d9ed",
+    "title": "Traffic Advisory Issued for CHOGM Security Exercise at V.C. Bird International Airport",
+    "source": "Antigua News Room",
+    "date": "2026-08-07",
+    "country": "AG",
+    "url": "https://antiguanewsroom.com/traffic-advisory-issued-for-chogm-security-exercise-at-v-c-bird-international-airport/",
+    "tags": [
+      "news"
+    ],
+    "category": "Tourism",
+    "group": "Trade & Tourism",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "antigua-news-room-2d135f56",
+    "title": "How Cashback Rewards Can Stretch Your Real Money Slots Bankroll Further",
+    "source": "Antigua News Room",
+    "date": "2026-08-07",
+    "country": "AG",
+    "url": "https://antiguanewsroom.com/how-cashback-rewards-can-stretch-your-real-money-slots-bankroll-further/",
+    "tags": [
+      "announcements"
+    ],
+    "category": "Banking",
+    "group": "Finance",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "ziz-online-102df036",
+    "title": "Trump Administration Refunds Billions In Tariffs",
+    "source": "ZIZ Online",
+    "date": "2026-08-07",
+    "country": "KN",
+    "url": "https://zizonline.com/trump-administration-refunds-billions-in-tariffs/",
+    "tags": [
+      "international"
+    ],
+    "category": "Trade",
+    "group": "Trade & Tourism",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
   },
   {
     "id": "antigua-news-room-3555322f",
