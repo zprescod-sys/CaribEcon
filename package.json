@@ -36,8 +36,7 @@
     "@types/d3": "^7.4.3",
     "@types/topojson-client": "^3.1.5",
     "puppeteer": "^25.4.0",
-    "typescript": "^5.0.0",
-    "vercel": "^58.7.1"
+    "typescript": "^5.0.0"
   },
   "allowScripts": {
     "esbuild@0.28.1": true,
