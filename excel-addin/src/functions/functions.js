@@ -3,14 +3,14 @@
 /* Gate 1 — v1 read-only functions, all backed by /api/indicator (see api/indicator.ts).
    Deterministic lookups only; no LLM in this path.
 
-   Points at the isolated caribecon-gate1-proof deployment rather than this branch's own
-   preview URL: the economic-dashboard Vercel project has SSO/Vercel Authentication enabled
-   for everything except its custom domain (deploymentType: "all_except_custom_domains"), so
-   *.vercel.app preview URLs redirect to a Vercel login wall before this code ever runs —
-   Excel's fetch() has no Vercel session, so that redirect would break it. Production on the
-   custom domain (caribecon.org) is exempt, so once this branch is merged, switch this to
-   https://caribecon.org/api/indicator — no bypass token, no protection-setting changes. */
-const API_BASE = 'https://caribecon-gate1-proof.vercel.app';
+   The API host is injected at build time by webpack's DefinePlugin (see webpack.config.js),
+   never hardcoded here — so switching environments is a build flag, not a source edit, and
+   a build can't accidentally ship a localhost or throwaway-deployment URL. Override with:
+     CARIBECON_API_BASE=https://my-preview.vercel.app npm run build:dev
+   Note: only *.vercel.app preview URLs sit behind this project's Vercel SSO wall, which
+   Excel's fetch() cannot pass; the custom domain is exempt, which is why the default is
+   caribecon.org. */
+const API_BASE = process.env.CARIBECON_API_BASE;
 
 async function lookup(country, indicator, year) {
   const url = `${API_BASE}/api/indicator?country=${encodeURIComponent(country)}&indicator=${encodeURIComponent(indicator)}&year=${year}`;
