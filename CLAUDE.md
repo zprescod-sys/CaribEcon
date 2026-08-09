@@ -7,6 +7,37 @@ Read at the start of every session to re-ground. This file is the project's orie
 - QA workflow → `docs/SCREENSHOT_WORKFLOW.md`.
 - **Project history → `docs/CHANGELOG.md`** — read on demand, not every session: the *why* behind past migrations, rebuilds, and fixes.
 
+## Active build — Ask CaribEcon (buildathon MVP)
+
+**The plan being followed is `plans/CaribEcon_AskCaribEcon_Refined_Build_Prompt.md`** (`plans/` is
+gitignored — local only). It supersedes `plans/CaribEcon_Build_Worflow.pdf` as the working
+sequence; the PDF still holds the lane/gate/pitch framing. Read the plan before touching add-in
+or `api/` code, and follow its phase order (§18) rather than jumping ahead.
+
+Ask CaribEcon is a **bounded, source-grounded retrieval and synthesis layer** over the Data Hub
+and News Hub, embedded in the existing Excel add-in — not a general chatbot, not yet a research
+agent. Three question types only: `indicator`, `comparison`, `news`.
+
+Standing constraints that outlive any single session:
+
+- **`api/research.ts` is frozen** for the duration of the buildathon. The new `/api/ask` path
+  lives beside it, and a task-pane flag (`ASK_CARIBECON_MODE=agentic|legacy`) must switch back to
+  it without a code edit.
+- **The existing add-in workflow is the foundation, and it stays.** Browse, the structured
+  input → table output flow, and all seven `CE.*` functions are kept as-is. Ask CaribEcon extends
+  that surface; it does not replace or destabilise it.
+- **Citations stay deterministic** — populated only from real retrieval results, never from model
+  prose. No model ever composes a URL or a figure.
+- **News is metadata evidence only** (headline / source / date / link). Never imply an article
+  body was read; hedge contextual claims; never infer causality from co-occurrence.
+- Task-pane visual work follows `EDDESIGN.md`, same as the site.
+- Provider keys stay server-side; the Excel bundle never carries one.
+
+**CariBench is shelved** as of 2026-08-09 and is explicitly out of scope here (plan §22). The
+spec, the draft question set, the gold records, and both spike runs are committed on
+`feature/caribench`; `CARIBENCH.md` §0 records why it stopped and what must be settled before it
+resumes. Do not restart benchmark runs as part of this build.
+
 ## What This Is
 
 A multi-page Caribbean macroeconomic research tool with the register of a research institute, not a landing page. Separate pages share one shell and one data hub: 19 economies, 24 macro indicators, budgets, news, publications, deals, and a deferred client-facing chart builder (Analysis).
