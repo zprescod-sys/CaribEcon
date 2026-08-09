@@ -410,6 +410,374 @@
     "deal_type": null
   },
   {
+    "id": "kaieteur-news-cf5e6b14",
+    "title": "‘Oil is not the curse, leadership is’ – Glenn Lall",
+    "source": "Kaieteur News",
+    "date": "2026-08-09",
+    "country": "GY",
+    "url": "https://kaieteurnewsonline.com/2026/08/09/oil-is-not-the-curse-leadership-is-glenn-lall/",
+    "tags": [
+      "news",
+      "bad leadership",
+      "exxonmobil",
+      "oil curse",
+      "oil tax",
+      "tax giveaway"
+    ],
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Oil governance and tax policy commentary on Guyana's resource management and leadership.",
+    "classifier": "llm",
+    "deal_status": "not_a_deal",
+    "deal_type": null
+  },
+  {
+    "id": "kaieteur-news-2385647b",
+    "title": "Our Water Wealth Must Not Drown Private Enterprise",
+    "source": "Kaieteur News",
+    "date": "2026-08-09",
+    "country": "GY",
+    "url": "https://kaieteurnewsonline.com/2026/08/09/our-water-wealth-must-not-drown-private-enterprise/",
+    "tags": [
+      "features / columnists",
+      "news",
+      "guyana development bank",
+      "gwi",
+      "karen abrams",
+      "water wealth"
+    ],
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Opinion on water resources and private-enterprise development in Guyana; economic policy commentary.",
+    "classifier": "llm",
+    "deal_status": "not_a_deal",
+    "deal_type": null
+  },
+  {
+    "id": "guyana-chronicle-83dc0c3b",
+    "title": "PSC working to help businesses become ‘bankable’ ahead of Guyana Development Bank",
+    "source": "Guyana Chronicle",
+    "date": "2026-08-09",
+    "country": "GY",
+    "url": "https://guyanachronicle.com/2026/08/09/psc-working-to-help-businesses-become-bankable-ahead-of-guyana-development-bank/",
+    "tags": [
+      "news"
+    ],
+    "category": "Banking",
+    "group": "Finance",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Private Sector Commission program to improve bankability ahead of Guyana Development Bank launch; financial-sector news.",
+    "classifier": "llm",
+    "deal_status": "not_a_deal",
+    "deal_type": null
+  },
+  {
+    "id": "guyana-chronicle-dd8fc9ee",
+    "title": "New social housing programme to prioritise persons with disabilities, single parents — President Ali announces",
+    "source": "Guyana Chronicle",
+    "date": "2026-08-09",
+    "country": "GY",
+    "url": "https://guyanachronicle.com/2026/08/09/new-social-housing-programme-to-prioritise-persons-with-disabilities-single-parents-president-ali-announces/",
+    "tags": [
+      "news"
+    ],
+    "category": "Fiscal Policy",
+    "group": "Fiscal Policy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "President announces social housing program targeting persons with disabilities and single parents; government spending and social policy.",
+    "classifier": "llm",
+    "deal_status": "not_a_deal",
+    "deal_type": null
+  },
+  {
+    "id": "guyana-chronicle-ffe4ce87",
+    "title": "Over 53,000 transactions completed at Gov’t Service Centres — President Ali",
+    "source": "Guyana Chronicle",
+    "date": "2026-08-09",
+    "country": "GY",
+    "url": "https://guyanachronicle.com/2026/08/09/over-53000-transactions-completed-at-govt-service-centres-president-ali/",
+    "tags": [
+      "news"
+    ],
+    "category": "Government",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Government service-delivery statistics (53,000 transactions); government operational efficiency.",
+    "classifier": "llm",
+    "deal_status": "not_a_deal",
+    "deal_type": null
+  },
+  {
+    "id": "demerara-waves-05d32b92",
+    "title": "US Deputy Secretary of State to hold energy, minerals talks with Ali",
+    "source": "Demerara Waves",
+    "date": "2026-08-09",
+    "country": "GY",
+    "url": "https://demerarawaves.com/2026/08/09/us-deputy-secretary-of-state-to-hold-energy-minerals-talks-with-pres-ali-in-guyana/",
+    "tags": [
+      "business",
+      "caribbean",
+      "energy",
+      "news",
+      "politics",
+      "bauxite mine"
+    ],
+    "category": "Energy",
+    "group": "Energy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "US Deputy Secretary of State energy and minerals talks with Guyana President; major energy-sector diplomacy.",
+    "classifier": "llm",
+    "deal_status": "not_a_deal",
+    "deal_type": null
+  },
+  {
+    "id": "jamaica-observer-4f2d13ea",
+    "title": "Bartlett declares ‘the Age of Resilience’ in Canada, urges world to finance tourism’s future before the next crisis",
+    "source": "Jamaica Observer",
+    "date": "2026-08-09",
+    "country": "JM",
+    "url": "https://www.jamaicaobserver.com/2026/08/09/bartlett-declares-age-resilience-canada-urges-world-finance-tourisms-future-next-crisis/",
+    "tags": [
+      "latest news",
+      "news",
+      "canadian",
+      "edmund bartlett",
+      "tourism"
+    ],
+    "category": "Tourism",
+    "group": "Trade & Tourism",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Jamaica's tourism minister calls for financing and resilience investment ahead of next global crisis; regional tourism policy.",
+    "classifier": "llm",
+    "deal_status": "not_a_deal",
+    "deal_type": null
+  },
+  {
+    "id": "jamaica-observer-09ce85c3",
+    "title": "Omar McFarlane named CEO of Pure National Limited",
+    "source": "Jamaica Observer",
+    "date": "2026-08-09",
+    "country": "JM",
+    "url": "https://www.jamaicaobserver.com/2026/08/09/omar-mcfarlane-named-ceo-pure-national-limited-20260809-1457-360125/",
+    "tags": [
+      "latest news",
+      "news",
+      "ceo",
+      "omar mcfarlene",
+      "pure national limited"
+    ],
+    "category": "Corporate",
+    "group": "Finance",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "CEO appointment at Pure National Limited; corporate leadership news.",
+    "classifier": "llm",
+    "deal_status": "not_a_deal",
+    "deal_type": null
+  },
+  {
+    "id": "jamaica-observer-69ccab4f",
+    "title": "Omar McFarlane named CEO of Pure National Limited",
+    "source": "Jamaica Observer",
+    "date": "2026-08-09",
+    "country": "JM",
+    "url": "https://www.jamaicaobserver.com/2026/08/09/omar-mcfarlane-named-ceo-pure-national-limited/",
+    "tags": [
+      "latest news",
+      "news",
+      "ceo",
+      "omar mcfarlane",
+      "pure national limited"
+    ],
+    "category": "Corporate",
+    "group": "Finance",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "CEO appointment at Pure National Limited; corporate leadership news.",
+    "classifier": "llm",
+    "deal_status": "not_a_deal",
+    "deal_type": null
+  },
+  {
+    "id": "starnieuws-1ec24d7f",
+    "title": "Wereldbank heeft gelijk; maar Suriname staat voor een grotere uitdaging",
+    "source": "Starnieuws",
+    "date": "2026-08-09",
+    "country": "SR",
+    "url": "https://www.starnieuws.com/index.php/welcome/index/nieuwsitem/93312",
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "World Bank economic assessment of Suriname's growth and fiscal challenges; macroeconomic policy and development outlook.",
+    "classifier": "llm",
+    "deal_status": "not_a_deal",
+    "deal_type": null
+  },
+  {
+    "id": "starnieuws-8590db9f",
+    "title": "Elf jaar na vonnis: Inheemse gronden blijven onbeschermd in Suriname",
+    "source": "Starnieuws",
+    "date": "2026-08-09",
+    "country": "SR",
+    "url": "https://www.starnieuws.com/index.php/welcome/index/nieuwsitem/93332",
+    "category": "Government",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Indigenous land rights court ruling and implementation gap in Suriname; legal/regulatory governance of resource rights.",
+    "classifier": "llm",
+    "deal_status": "not_a_deal",
+    "deal_type": null
+  },
+  {
+    "id": "waterkant-a73c82e2",
+    "title": "Monorath: burgers kunnen binnenkort veilig klachten indienen over politieoptreden",
+    "source": "Waterkant",
+    "date": "2026-08-09",
+    "country": "SR",
+    "url": "https://www.waterkant.net/suriname/2026/08/09/monorath-burgers-kunnen-binnenkort-veilig-klachten-indienen-over-politieoptreden/#utm_source=rss&utm_medium=rss&utm_campaign=monorath-burgers-kunnen-binnenkort-veilig-klachten-indienen-over-politieoptreden",
+    "tags": [
+      "justitie en politie",
+      "nieuws uit suriname",
+      "uitgelicht"
+    ],
+    "category": "Government",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Police accountability mechanism; regulatory/governance measure for law-enforcement oversight.",
+    "classifier": "llm",
+    "deal_status": "not_a_deal",
+    "deal_type": null
+  },
+  {
+    "id": "waterkant-7fa88c87",
+    "title": "IKSur: ‘Inheemse grondverdedigers worden als criminelen behandeld, rechten al bijna 11 jaar genegeerd’",
+    "source": "Waterkant",
+    "date": "2026-08-09",
+    "country": "SR",
+    "url": "https://www.waterkant.net/suriname/2026/08/09/iksur-inheemse-grondverdedigers-worden-als-criminelen-behandeld-rechten-al-bijna-11-jaar-genegeerd/#utm_source=rss&utm_medium=rss&utm_campaign=iksur-inheemse-grondverdedigers-worden-als-criminelen-behandeld-rechten-al-bijna-11-jaar-genegeerd",
+    "tags": [
+      "maatschappij",
+      "nieuws uit suriname",
+      "overheid",
+      "uitgelicht"
+    ],
+    "category": "Government",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Indigenous land-rights enforcement and governance; long-running court ruling on resource rights in Suriname.",
+    "classifier": "llm",
+    "deal_status": "not_a_deal",
+    "deal_type": null
+  },
+  {
+    "id": "waterkant-70e9c414",
+    "title": "Mulokot waarschuwt regering-Simons: ‘Maak van 5-kilometerwet geen uitstel van echte grondenrechten’",
+    "source": "Waterkant",
+    "date": "2026-08-09",
+    "country": "SR",
+    "url": "https://www.waterkant.net/suriname/2026/08/09/mulokot-waarschuwt-regering-simons-maak-van-5-kilometerwet-geen-uitstel-van-echte-grondenrechten/#utm_source=rss&utm_medium=rss&utm_campaign=mulokot-waarschuwt-regering-simons-maak-van-5-kilometerwet-geen-uitstel-van-echte-grondenrechten",
+    "tags": [
+      "binnenland",
+      "natuur",
+      "nieuws uit suriname",
+      "uitgelicht"
+    ],
+    "category": "Government",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Indigenous-rights advocate warns government on land-rights implementation; legal/governance mechanism for resource access and protection.",
+    "classifier": "llm",
+    "deal_status": "not_a_deal",
+    "deal_type": null
+  },
+  {
+    "id": "antigua-news-room-16d9428c",
+    "title": "Government Plans More Surveillance Cameras as Gun Violence Raises Alarm",
+    "source": "Antigua News Room",
+    "date": "2026-08-09",
+    "country": "AG",
+    "url": "https://antiguanewsroom.com/government-plans-more-surveillance-cameras-as-gun-violence-raises-alarm/",
+    "tags": [
+      "news"
+    ],
+    "category": "Government",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Public infrastructure investment (surveillance cameras) in response to crime; government expenditure on public safety.",
+    "classifier": "llm",
+    "deal_status": "not_a_deal",
+    "deal_type": null
+  },
+  {
+    "id": "antigua-news-room-24aa3279",
+    "title": "VIDEO: PM warns Caribbean Must Adjust to Tougher US Immigration Rules and Visa Bonds",
+    "source": "Antigua News Room",
+    "date": "2026-08-09",
+    "country": "AG",
+    "url": "https://antiguanewsroom.com/video-pm-warns-caribbean-must-adjust-to-tougher-us-immigration-rules-and-visa-bonds/",
+    "tags": [
+      "news"
+    ],
+    "category": "Government",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "US immigration policy change (visa bonds) affecting Caribbean diaspora and policy response; international economic/fiscal linkage.",
+    "classifier": "llm",
+    "deal_status": "not_a_deal",
+    "deal_type": null
+  },
+  {
+    "id": "antigua-news-room-de22446a",
+    "title": "PM Browne Says Police Are Investigating Stolen and Altered Cheques at Public Works",
+    "source": "Antigua News Room",
+    "date": "2026-08-09",
+    "country": "AG",
+    "url": "https://antiguanewsroom.com/pm-browne-says-police-are-investigating-stolen-and-altered-cheques-at-public-works/",
+    "tags": [
+      "news"
+    ],
+    "category": "Government",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Public-procurement fraud investigation (altered cheques); government audit and fraud enforcement.",
+    "classifier": "llm",
+    "deal_status": "not_a_deal",
+    "deal_type": null
+  },
+  {
+    "id": "wic-news-cd25411e",
+    "title": "Trinidad and Tobago to launch India-based UPI Payment System",
+    "source": "WIC News",
+    "date": "2026-08-09",
+    "country": "ALL",
+    "url": "https://wicnews.com/trinidad-tobago/trinidad-and-tobago-to-launch-india-based-upi-payment-system",
+    "category": "Technology",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "payment-system infrastructure launch; fintech/digital-economy policy and investment",
+    "classifier": "llm",
+    "deal_status": "pending",
+    "deal_type": "Other"
+  },
+  {
     "id": "kaieteur-news-8d834d1b",
     "title": "‘No new oil projects until Guyana gets full 50% profits’ – APNU tells Govt.",
     "source": "Kaieteur News",
@@ -1260,6 +1628,77 @@
     "decision": "publish",
     "confidence": "high",
     "reason": "Football association disburses EC$128,200 prize money and raises league winner award; sports federation financial decision",
+    "classifier": "llm",
+    "deal_status": "not_a_deal",
+    "deal_type": null
+  },
+  {
+    "id": "jamaica-gleaner-870841de",
+    "title": "Port under probe - Billion-dollar cocaine bust triggers lockdown at wharf in Kingston",
+    "source": "Jamaica Gleaner",
+    "date": "2026-08-08",
+    "country": "JM",
+    "url": "http://jamaica-gleaner.com/article/news/20260808/port-under-probe-billion-dollar-cocaine-bust-triggers-lockdown-wharf-kingston",
+    "category": "Trade",
+    "group": "Trade & Tourism",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Billion-dollar cocaine seizure and port lockdown; trade/customs enforcement affecting port operations.",
+    "classifier": "llm",
+    "deal_status": "not_a_deal",
+    "deal_type": null
+  },
+  {
+    "id": "jamaica-gleaner-4b6aa60e",
+    "title": "IC bolsters arsenal in corruption fight",
+    "source": "Jamaica Gleaner",
+    "date": "2026-08-08",
+    "country": "JM",
+    "url": "http://jamaica-gleaner.com/article/news/20260808/ic-bolsters-arsenal-corruption-fight",
+    "category": "Government",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Integrity Commission anti-corruption enforcement; economic governance and regulatory action.",
+    "classifier": "llm",
+    "deal_status": "not_a_deal",
+    "deal_type": null
+  },
+  {
+    "id": "jamaica-gleaner-3e96d206",
+    "title": "MoBay rolls out red carpet for historic Special Olympics Caribbean Beach Games",
+    "source": "Jamaica Gleaner",
+    "date": "2026-08-08",
+    "country": "JM",
+    "url": "http://jamaica-gleaner.com/article/news/20260808/mobay-rolls-out-red-carpet-historic-special-olympics-caribbean-beach-games",
+    "category": "Tourism",
+    "group": "Trade & Tourism",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Montego Bay hosts Special Olympics Caribbean Beach Games; major tourism and events investment.",
+    "classifier": "llm",
+    "deal_status": "not_a_deal",
+    "deal_type": null
+  },
+  {
+    "id": "cayman-compass-223f4c18",
+    "title": "Seafarers Way in George Town to get shaded walkways and fencing",
+    "source": "Cayman Compass",
+    "date": "2026-08-08",
+    "country": "KY",
+    "url": "https://www.caymancompass.com/2026/08/08/seafarers-way-in-george-town-to-get-shaded-walkways-and-fencing/",
+    "tags": [
+      "local",
+      "central planning authority",
+      "cpa",
+      "planning",
+      "seafarers way"
+    ],
+    "category": "Infrastructure",
+    "group": "Investment",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "public infrastructure project (walkways and fencing) approved and planned",
     "classifier": "llm",
     "deal_status": "not_a_deal",
     "deal_type": null
@@ -2957,6 +3396,52 @@
     "decision": "publish",
     "confidence": "high",
     "reason": "Product safety alert from Bureau of Standards; regulatory consumer protection action",
+    "classifier": "llm",
+    "deal_status": "not_a_deal",
+    "deal_type": null
+  },
+  {
+    "id": "cayman-news-service-83de2fa5",
+    "title": "Cayman Forwards or Cayman Backwards?",
+    "source": "Cayman News Service",
+    "date": "2026-08-07",
+    "country": "KY",
+    "url": "https://caymannewsservice.com/2026/08/cayman-forwards-or-cayman-backwards/",
+    "tags": [
+      "development",
+      "viewpoint",
+      "cayman forward",
+      "central planning authority",
+      "national conservation council",
+      "national development plan"
+    ],
+    "category": "Government",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "National development plan and central planning governance; economic policy and national economic strategy.",
+    "classifier": "llm",
+    "deal_status": "not_a_deal",
+    "deal_type": null
+  },
+  {
+    "id": "cayman-compass-2f3c98e6",
+    "title": "Cayman talent celebrated at Maples’ annual internship luncheon",
+    "source": "Cayman Compass",
+    "date": "2026-08-07",
+    "country": "KY",
+    "url": "https://www.caymancompass.com/2026/08/07/cayman-talent-celebrated-at-maples-annual-internship-luncheon/",
+    "tags": [
+      "press releases",
+      "maples group",
+      "rolston anglin",
+      "summer internship"
+    ],
+    "category": "Corporate",
+    "group": "Finance",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "governance of major economic institution (Maples Group) and talent development",
     "classifier": "llm",
     "deal_status": "not_a_deal",
     "deal_type": null
@@ -6530,6 +7015,30 @@
     "decision": "publish",
     "confidence": "medium",
     "reason": "Jamaica-Ghana bilateral engagement on reparations policy, international economic relations",
+    "classifier": "llm",
+    "deal_status": "not_a_deal",
+    "deal_type": null
+  },
+  {
+    "id": "cayman-compass-861ff6e8",
+    "title": "Camana Bay’s Union restaurant awarded AAA Four Diamond status",
+    "source": "Cayman Compass",
+    "date": "2026-08-05",
+    "country": "KY",
+    "url": "https://www.caymancompass.com/2026/08/05/camana-bays-union-restaurant-awarded-aaa-four-diamond-status/",
+    "tags": [
+      "dining",
+      "featured local home page",
+      "local",
+      "camana bay",
+      "paul slijper",
+      "tania slijper"
+    ],
+    "category": "Corporate",
+    "group": "Finance",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "major AAA hospitality award demonstrates significant corporate achievement and market positioning",
     "classifier": "llm",
     "deal_status": "not_a_deal",
     "deal_type": null
@@ -34855,366 +35364,6 @@
       "politics",
       "headline",
       "headlines"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "jamaica-observer-69579005",
-    "title": "Market Bag: Onion up to $400, lettuce at $600 as food prices rise",
-    "source": "Jamaica Observer",
-    "date": "2026-06-27",
-    "country": "JM",
-    "url": "https://www.jamaicaobserver.com/2026/06/26/market-bag-onion-400-lettuce-600-food-prices-rise/",
-    "tags": [
-      "latest news",
-      "news",
-      "food prices",
-      "market bag",
-      "shopping"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "antigua-news-room-701e8f51",
-    "title": "Antigua and Barbuda Signs Updated OECD Tax Information-Sharing Agreement",
-    "source": "Antigua News Room",
-    "date": "2026-06-27",
-    "country": "AG",
-    "url": "https://antiguanewsroom.com/antigua-and-barbuda-signs-updated-oecd-tax-information-sharing-agreement/",
-    "tags": [
-      "news"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "antigua-news-room-43bd88d8",
-    "title": "Jeannette Bowery Wins 2025 WOW Factor Award for Sales and Marketing",
-    "source": "Antigua News Room",
-    "date": "2026-06-27",
-    "country": "AG",
-    "url": "https://antiguanewsroom.com/jeannette-bowery-wins-2025-wow-factor-award-for-sales-and-marketing/",
-    "tags": [
-      "featured"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "antigua-news-room-f4c60590",
-    "title": "Karen Wong Honoured with 2025 WOW Factor Award for Hospitality and Tourism",
-    "source": "Antigua News Room",
-    "date": "2026-06-27",
-    "country": "AG",
-    "url": "https://antiguanewsroom.com/karen-wong-honoured-with-2025-wow-factor-award-for-hospitality-and-tourism/",
-    "tags": [
-      "news"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "cnc3-e0260824",
-    "title": "Ameen, PoS Mayor war over salary shortfall",
-    "source": "CNC3",
-    "date": "2026-06-27",
-    "country": "TT",
-    "url": "https://www.cnc3.co.tt/ameen-pos-mayor-war-over-salary-shortfall/?utm_source=rss&utm_medium=rss&utm_campaign=ameen-pos-mayor-war-over-salary-shortfall",
-    "tags": [
-      "news"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "barbados-today-79534159",
-    "title": "Lawyer weighs in on birth tourism debate",
-    "source": "Barbados Today",
-    "date": "2026-06-27",
-    "country": "BB",
-    "url": "https://barbadostoday.bb/2026/06/27/lawyer-weighs-in-on-birth-tourism-debate/",
-    "tags": [
-      "local news",
-      "news"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "barbados-today-a1fdf4b9",
-    "title": "A landmark victory for the credit union movement",
-    "source": "Barbados Today",
-    "date": "2026-06-27",
-    "country": "BB",
-    "url": "https://barbadostoday.bb/2026/06/27/a-landmark-victory-for-the-credit-union-movement/",
-    "tags": [
-      "editorial",
-      "local news"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "barbados-today-3f63c53a",
-    "title": "FOD calls for urgent infrastructure fixes after tourist falls into manhole’",
-    "source": "Barbados Today",
-    "date": "2026-06-27",
-    "country": "BB",
-    "url": "https://barbadostoday.bb/2026/06/27/fod-calls-for-urgent-infrastructure-fixes-after-tourist-falls-into-manhole/",
-    "tags": [
-      "local news",
-      "politics",
-      "tourism"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "starnieuws-b46e60e6",
-    "title": "DSB ziet sterke groei in digitaal bankieren",
-    "source": "Starnieuws",
-    "date": "2026-06-27",
-    "country": "SR",
-    "url": "https://www.starnieuws.com/index.php/welcome/index/nieuwsitem/92679",
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "breaking-belize-news-71d71198",
-    "title": "International News: World Cup scores early economic boost for host cities, Bank of America says",
-    "source": "Breaking Belize News",
-    "date": "2026-06-27",
-    "country": "BZ",
-    "url": "https://www.breakingbelizenews.com/2026/06/27/international-news-world-cup-scores-early-economic-boost-for-host-cities-bank-of-america-says/",
-    "tags": [
-      "last news",
-      "world news"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "breaking-belize-news-f6f7f753",
-    "title": "SAIB celebrates inaugural tourism grant recipients with over $1.1 million for sustainable tourism",
-    "source": "Breaking Belize News",
-    "date": "2026-06-27",
-    "country": "BZ",
-    "url": "https://www.breakingbelizenews.com/2026/06/27/saib-celebrates-inaugural-tourism-grant-recipients-with-over-1-1-million-for-sustainable-tourism/",
-    "tags": [
-      "headlines"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "antigua-news-room-8c33aff7",
-    "title": "Celia Samuel Elected President of Antigua and Barbuda Chamber of Commerce",
-    "source": "Antigua News Room",
-    "date": "2026-06-27",
-    "country": "AG",
-    "url": "https://antiguanewsroom.com/celia-samuel-elected-president-of-antigua-and-barbuda-chamber-of-commerce/",
-    "tags": [
-      "featured"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "jamaica-observer-47a36987",
-    "title": "United looks to Jamaica oil licence as funding pressure mounts",
-    "source": "Jamaica Observer",
-    "date": "2026-06-26",
-    "country": "JM",
-    "url": "https://www.jamaicaobserver.com/2026/06/26/united-looks-jamaica-oil-licence-funding-pressure-mounts/",
-    "tags": [
-      "business",
-      "caribbean business report (cbr)"
-    ],
-    "deal_status": "pending",
-    "deal_type": "FDI"
-  },
-  {
-    "id": "jamaica-observer-f88d487f",
-    "title": "Forex: $157.77 to one US dollar",
-    "source": "Jamaica Observer",
-    "date": "2026-06-26",
-    "country": "JM",
-    "url": "https://www.jamaicaobserver.com/2026/06/26/forex-157-77-one-us-dollar/",
-    "tags": [
-      "latest news",
-      "news",
-      "forex",
-      "us"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "breaking-belize-news-a4b3f27e",
-    "title": "Thirty-one tourism entrepreneurs to benefit from Sustainable & Inclusive Belize program",
-    "source": "Breaking Belize News",
-    "date": "2026-06-26",
-    "country": "BZ",
-    "url": "https://www.breakingbelizenews.com/2026/06/26/thirty-one-tourism-entrepreneurs-to-benefit-from-sustainable-inclusive-belize-program/",
-    "tags": [
-      "community development",
-      "last news"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "starnieuws-5304ac91",
-    "title": "Afonsoea wil begroting opschonen: Stop met geld reserveren voor posten die niet worden gebruikt",
-    "source": "Starnieuws",
-    "date": "2026-06-26",
-    "country": "SR",
-    "url": "https://www.starnieuws.com/index.php/welcome/index/nieuwsitem/92650",
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "now-grenada-43d3f949",
-    "title": "Banked – But by whom?",
-    "source": "NOW Grenada",
-    "date": "2026-06-26",
-    "country": "GD",
-    "url": "https://nowgrenada.com/2026/06/banked-but-by-whom/",
-    "tags": [
-      "business",
-      "opinion/commentary",
-      "travel/tourism",
-      "caribbean community",
-      "caribbean development bank",
-      "caricom"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "st-lucia-times-5c836ef1",
-    "title": "Project targets abandoned seamoss farms, pilots alternative cultivation system",
-    "source": "St. Lucia Times",
-    "date": "2026-06-26",
-    "country": "LC",
-    "url": "https://stluciatimes.com/181312/2026/06/project-targets-abandoned-seamoss-farms-pilots-alternative-cultivation-system/",
-    "tags": [
-      "agriculture & fisheries",
-      "business",
-      "environment",
-      "headlines",
-      "saint lucia",
-      "saint lucia national conservation fund (sluncf)"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "st-kitts-nevis-observer-ba2c3d72",
-    "title": "TTSEC warns of new investment scams",
-    "source": "St. Kitts-Nevis Observer",
-    "date": "2026-06-26",
-    "country": "KN",
-    "url": "https://www.thestkittsnevisobserver.com/ttsec-warns-of-new-investment-scams/",
-    "tags": [
-      "regional"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "magnetic-media-0fa541cc",
-    "title": "Turks and Caicos Islands Expands US Reach with New United Airlines Denver Route",
-    "source": "Magnetic Media",
-    "date": "2026-06-26",
-    "country": "TC",
-    "url": "https://magneticmediatv.com/2026/06/turks-and-caicos-islands-expands-us-reach-with-new-united-airlines-denver-route/",
-    "tags": [
-      "news",
-      "tci news",
-      "tourism",
-      "#magneticmedianews",
-      "#newtcitodenverroute",
-      "#tciaa"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "cayman-news-service-f13c428b",
-    "title": "The hidden price of a 5-cent promise",
-    "source": "Cayman News Service",
-    "date": "2026-06-26",
-    "country": "KY",
-    "url": "https://caymannewsservice.com/2026/06/the-hidden-price-of-a-5-cent-promise/",
-    "tags": [
-      "business",
-      "energy",
-      "science & nature",
-      "utilities",
-      "viewpoint",
-      "cuc"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "the-star-jamaica-26614ca5",
-    "title": "Minimum wage raised",
-    "source": "The Star (Jamaica)",
-    "date": "2026-06-25",
-    "country": "JM",
-    "url": "https://jamaica-star.com/article/news/20260625/minimum-wage-raised",
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "kaieteur-news-a4efb4ee",
-    "title": "Guyana should fiercely guard against secrecy in oil and gas sector – Trinidadian Energy Strategist",
-    "source": "Kaieteur News",
-    "date": "2026-06-24",
-    "country": "GY",
-    "url": "https://kaieteurnewsonline.com/2026/06/24/guyana-should-fiercely-guard-against-secrecy-in-oil-and-gas-sector-trinidadian-energy-strategist/",
-    "tags": [
-      "news",
-      "anthony paul",
-      "energy strategist",
-      "gte",
-      "oil and gas sector",
-      "secrecy"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "kaieteur-news-984814f6",
-    "title": "Opposition Leader demands thorough investigation of alleged tax and labour law breaches by GTE contractor",
-    "source": "Kaieteur News",
-    "date": "2026-06-24",
-    "country": "GY",
-    "url": "https://kaieteurnewsonline.com/2026/06/24/opposition-leader-demands-thorough-investigation-of-alleged-tax-and-labour-law-breaches-by-gte-contractor/",
-    "tags": [
-      "news",
-      "investigation",
-      "lindsayca",
-      "opposition leader",
-      "tax and labour law breaches"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "barbados-today-15def843",
-    "title": "State housing company says eligibility expanded, not prices",
-    "source": "Barbados Today",
-    "date": "2026-06-24",
-    "country": "BB",
-    "url": "https://barbadostoday.bb/2026/06/24/state-housing-company-says-eligibility-expanded-not-prices/",
-    "tags": [
-      "housing",
-      "local news"
     ],
     "deal_status": "not_a_deal",
     "deal_type": null
