@@ -11,7 +11,7 @@
     "build:addin": "npm --prefix excel-addin run build && rm -rf public/addin && mkdir -p public/addin && cp -R excel-addin/dist/. public/addin/",
     "preview": "astro preview",
     "check": "astro check",
-    "test": "tsx --test src/lib/*.test.mjs",
+    "test": "tsx --test src/lib/*.test.mjs api/*.test.mjs",
     "feeds": "node scripts/build-feeds.mjs",
     "news:audit": "node scripts/build-feeds.mjs --audit-only",
     "promote": "node scripts/build-feeds.mjs --promote-only",
