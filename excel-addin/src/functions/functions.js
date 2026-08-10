@@ -51,7 +51,10 @@ const ready = loadHub(API_BASE);
 function requireCountry(country) {
   const c = normCountry(country);
   if (!c) {
-    throw new CustomFunctions.Error(CustomFunctions.ErrorCode.invalidValue, 'Country code is required, e.g. "GY".');
+    throw new CustomFunctions.Error(
+      CustomFunctions.ErrorCode.invalidValue,
+      'Country code is required, e.g. "GY".',
+    );
   }
   return c;
 }
@@ -59,7 +62,10 @@ function requireCountry(country) {
 function requireSlug(slug) {
   const s = normSlug(slug);
   if (!s) {
-    throw new CustomFunctions.Error(CustomFunctions.ErrorCode.invalidValue, 'Indicator slug is required, e.g. "inflation".');
+    throw new CustomFunctions.Error(
+      CustomFunctions.ErrorCode.invalidValue,
+      'Indicator slug is required, e.g. "inflation".',
+    );
   }
   return s;
 }
@@ -67,7 +73,10 @@ function requireSlug(slug) {
 function requireYear(year) {
   const n = Number(year);
   if (!Number.isInteger(n)) {
-    throw new CustomFunctions.Error(CustomFunctions.ErrorCode.invalidValue, 'Year must be a whole number, e.g. 2024.');
+    throw new CustomFunctions.Error(
+      CustomFunctions.ErrorCode.invalidValue,
+      'Year must be a whole number, e.g. 2024.',
+    );
   }
   return n;
 }
@@ -114,7 +123,10 @@ async function fetchPoint(country, slug, year) {
   }
 
   if (res.status === 400) {
-    throw new CustomFunctions.Error(CustomFunctions.ErrorCode.invalidValue, 'Bad country, indicator, or year.');
+    throw new CustomFunctions.Error(
+      CustomFunctions.ErrorCode.invalidValue,
+      'Bad country, indicator, or year.',
+    );
   }
   if (!res.ok) {
     throw notAvailable(`No sourced value for ${country}/${slug}/${year}.`);
@@ -192,7 +204,10 @@ export function series(country, indicatorSlug, startYear, endYear) {
   const to = endYear === null || endYear === undefined ? Infinity : requireYear(endYear);
 
   if (from > to) {
-    throw new CustomFunctions.Error(CustomFunctions.ErrorCode.invalidValue, 'startYear must not be after endYear.');
+    throw new CustomFunctions.Error(
+      CustomFunctions.ErrorCode.invalidValue,
+      'startYear must not be after endYear.',
+    );
   }
 
   return withHub(
@@ -223,7 +238,11 @@ async function fetchSeriesFallback(country, slug, from, to) {
   for (let y = first; y <= last; y++) years.push(y);
 
   const results = await Promise.all(
-    years.map(y => fetchPoint(country, slug, y).then(d => [y, d.value]).catch(() => null)),
+    years.map(y =>
+      fetchPoint(country, slug, y)
+        .then(d => [y, d.value])
+        .catch(() => null),
+    ),
   );
 
   const rows = results.filter(Boolean);

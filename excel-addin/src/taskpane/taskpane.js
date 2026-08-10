@@ -52,7 +52,10 @@ Office.onReady(async info => {
 
   const data = await loadHub(API_BASE);
   if (!data) {
-    setStatus('Could not reach the CaribEcon hub. Check your connection and reopen the pane.', true);
+    setStatus(
+      'Could not reach the CaribEcon hub. Check your connection and reopen the pane.',
+      true,
+    );
     return;
   }
 
@@ -244,7 +247,8 @@ function renderPreview() {
 // Every figure carries where it came from — this is the pane's version of that contract.
 function provenanceHtml(series, rows) {
   const vintages = [...new Set(rows.map(p => p[P_VINTAGE]))].sort();
-  const vintage = vintages.length > 1 ? `${vintages[0]}–${vintages[vintages.length - 1]}` : vintages[0];
+  const vintage =
+    vintages.length > 1 ? `${vintages[0]}–${vintages[vintages.length - 1]}` : vintages[0];
   const url = safeUrl(series.url);
   const org = url
     ? `<a href="${esc(url)}" target="_blank" rel="noopener">${esc(series.org)}</a>`
@@ -332,7 +336,11 @@ async function writeValues(ctx) {
   footer.format.font.size = 9;
   footer.format.font.color = '#4C5A54';
 
-  styleBlock(block, anchor.getOffsetRange(2, 0).getResizedRange(0, 1), anchor.getResizedRange(0, 1));
+  styleBlock(
+    block,
+    anchor.getOffsetRange(2, 0).getResizedRange(0, 1),
+    anchor.getResizedRange(0, 1),
+  );
 }
 
 /* Live formulas instead of values — the same block, but it re-resolves from the hub and shows
@@ -369,7 +377,11 @@ async function writeFormulas(ctx) {
   footer.format.font.size = 9;
   footer.format.font.color = '#4C5A54';
 
-  styleBlock(headRange, anchor.getOffsetRange(2, 0).getResizedRange(0, 1), anchor.getResizedRange(0, 1));
+  styleBlock(
+    headRange,
+    anchor.getOffsetRange(2, 0).getResizedRange(0, 1),
+    anchor.getResizedRange(0, 1),
+  );
 }
 
 // ── Deep Dive ──────────────────────────────────────────────────────────────────────────────
@@ -414,7 +426,8 @@ function fillDeepDiveIndicators() {
   // gdp_growth pre-selected when the economy carries it, so Generate produces something with
   // zero extra clicks — Deep Dive is meant to be one step further than Browse, not a colder start.
   if (available.some(i => i.slug === 'gdp_growth')) {
-    for (const option of el('dd-indicators').options) option.selected = option.value === 'gdp_growth';
+    for (const option of el('dd-indicators').options)
+      option.selected = option.value === 'gdp_growth';
   }
 
   el('dd-indicator-hint').textContent =
@@ -441,7 +454,9 @@ function fillDeepDiveYears() {
 }
 
 function selectedDeepDiveIndicators() {
-  return [...el('dd-indicators').selectedOptions].map(o => o.value).slice(0, DEEPDIVE_MAX_INDICATORS);
+  return [...el('dd-indicators').selectedOptions]
+    .map(o => o.value)
+    .slice(0, DEEPDIVE_MAX_INDICATORS);
 }
 
 async function generateDeepDive() {
@@ -491,7 +506,8 @@ function renderDeepDivePreview(body) {
   const entries = Object.entries(body.indicators);
 
   if (!entries.length) {
-    out.innerHTML = `<p class="empty">No sourced data for this selection.</p>` + missesHtml(body.misses);
+    out.innerHTML =
+      `<p class="empty">No sourced data for this selection.</p>` + missesHtml(body.misses);
     return;
   }
 
@@ -608,7 +624,11 @@ function writeDeepDiveBlock(anchor, { evidence, periodAverage }) {
   footer.format.font.size = 9;
   footer.format.font.color = '#4C5A54';
 
-  styleBlock(block, anchor.getOffsetRange(2, 0).getResizedRange(0, 1), anchor.getResizedRange(0, 1));
+  styleBlock(
+    block,
+    anchor.getOffsetRange(2, 0).getResizedRange(0, 1),
+    anchor.getResizedRange(0, 1),
+  );
 
   return anchor.getOffsetRange(grid.length + 1, 0);
 }
@@ -656,7 +676,10 @@ async function ask() {
 function renderMarkdown(text) {
   return esc(text)
     .split(/\n{2,}/)
-    .map(block => `<p>${block.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>').replace(/\n/g, '<br />')}</p>`)
+    .map(
+      block =>
+        `<p>${block.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>').replace(/\n/g, '<br />')}</p>`,
+    )
     .join('');
 }
 
@@ -726,11 +749,36 @@ async function insertAnswer(question, body) {
 const FUNCTIONS = [
   ['GDP', 'country, year', 'Nominal GDP in local-currency units.', '=CE.GDP("GY", 2024)'],
   ['GDPGROWTH', 'country, year', 'Real GDP growth, percent.', '=CE.GDPGROWTH("TT", 2024)'],
-  ['INDICATOR', 'country, slug, year', 'Any stored indicator, by slug.', '=CE.INDICATOR("BB", "inflation", 2024)'],
-  ['SERIES', 'country, slug, [from], [to]', 'A whole time series — spills as year and value columns.', '=CE.SERIES("GY", "gdp_growth", 2015, 2025)'],
-  ['SOURCE', 'country, slug, year', 'The citation behind a value.', '=CE.SOURCE("GY", "nominal_gdp", 2024)'],
-  ['VINTAGE', 'country, slug, year', 'Which data release the figure came from.', '=CE.VINTAGE("GY", "nominal_gdp", 2024)'],
-  ['UNIT', 'country, slug, year', 'The unit a value is expressed in.', '=CE.UNIT("GY", "nominal_gdp", 2024)'],
+  [
+    'INDICATOR',
+    'country, slug, year',
+    'Any stored indicator, by slug.',
+    '=CE.INDICATOR("BB", "inflation", 2024)',
+  ],
+  [
+    'SERIES',
+    'country, slug, [from], [to]',
+    'A whole time series — spills as year and value columns.',
+    '=CE.SERIES("GY", "gdp_growth", 2015, 2025)',
+  ],
+  [
+    'SOURCE',
+    'country, slug, year',
+    'The citation behind a value.',
+    '=CE.SOURCE("GY", "nominal_gdp", 2024)',
+  ],
+  [
+    'VINTAGE',
+    'country, slug, year',
+    'Which data release the figure came from.',
+    '=CE.VINTAGE("GY", "nominal_gdp", 2024)',
+  ],
+  [
+    'UNIT',
+    'country, slug, year',
+    'The unit a value is expressed in.',
+    '=CE.UNIT("GY", "nominal_gdp", 2024)',
+  ],
 ];
 
 function renderReference() {
