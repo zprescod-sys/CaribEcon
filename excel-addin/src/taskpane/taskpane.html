@@ -27,6 +27,7 @@
 
     <nav class="tabs" role="tablist">
         <button class="tab is-active" type="button" role="tab" data-panel="browse">Browse</button>
+        <button class="tab" type="button" role="tab" data-panel="deepdive">Deep Dive</button>
         <button class="tab" type="button" role="tab" data-panel="ask" id="tab-ask" hidden>Ask</button>
         <button class="tab" type="button" role="tab" data-panel="reference">Functions</button>
     </nav>
@@ -62,6 +63,40 @@
             <button class="btn" type="button" id="insert-formulas">Insert as live formulas</button>
         </div>
         <p class="hint" id="insert-note">Writes at the selected cell, with its source and vintage.</p>
+    </main>
+
+    <!-- ── Deep Dive (structured, multi-indicator, one country) ───────────────────────── -->
+    <main class="panel" id="panel-deepdive" hidden>
+        <div class="field">
+            <label class="eyebrow" for="dd-country">Economy</label>
+            <select id="dd-country"></select>
+        </div>
+
+        <div class="field">
+            <label class="eyebrow" for="dd-indicators">Indicators</label>
+            <select id="dd-indicators" multiple size="6"></select>
+            <p class="hint" id="dd-indicator-hint"></p>
+        </div>
+
+        <div class="field">
+            <span class="eyebrow">Years</span>
+            <div class="range">
+                <input class="input" type="number" id="dd-year-from" aria-label="First year" />
+                <span class="range__dash">–</span>
+                <input class="input" type="number" id="dd-year-to" aria-label="Last year" />
+            </div>
+        </div>
+
+        <div class="actions">
+            <button class="btn btn--primary" type="button" id="dd-generate">Generate</button>
+        </div>
+
+        <section class="preview" id="dd-preview" aria-live="polite"></section>
+
+        <div class="actions" id="dd-insert-actions" hidden>
+            <button class="btn btn--primary" type="button" id="dd-insert">Insert table</button>
+        </div>
+        <p class="hint" id="dd-insert-note"></p>
     </main>
 
     <!-- ── Ask (grounded research) ────────────────────────────────────────────────────── -->
