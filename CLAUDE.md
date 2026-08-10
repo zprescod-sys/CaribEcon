@@ -7,33 +7,47 @@ Read at the start of every session to re-ground. This file is the project's orie
 - QA workflow → `docs/SCREENSHOT_WORKFLOW.md`.
 - **Project history → `docs/CHANGELOG.md`** — read on demand, not every session: the *why* behind past migrations, rebuilds, and fixes.
 
-## Active build — Ask CaribEcon (buildathon MVP)
+## Active build — CaribEcon Excel buildathon
 
-**The plan being followed is `plans/CaribEcon_AskCaribEcon_Refined_Build_Prompt.md`** (`plans/` is
-gitignored — local only). It supersedes `plans/CaribEcon_Build_Worflow.pdf` as the working
-sequence; the PDF still holds the lane/gate/pitch framing. Read the plan before touching add-in
-or `api/` code, and follow its phase order (§18) rather than jumping ahead.
+**The canonical engineering plan is
+`plans/CaribEcon_AskCaribEcon_Refined_Build_Prompt.md`** (`plans/` is gitignored and local
+only). Its filename is retained, but it is now the plan for the whole Excel add-in: the existing
+Browse and custom-function surface, Single Country Deep Dive, Country Comparison, structured
+charts/output, and bounded Ask CaribEcon. Read it before touching `excel-addin/`, `api/`, or the
+server-side AI modules.
 
-Ask CaribEcon is a **bounded, source-grounded retrieval and synthesis layer** over the Data Hub
-and News Hub, embedded in the existing Excel add-in — not a general chatbot, not yet a research
-agent. Three question types only: `indicator`, `comparison`, `news`.
+Nebius and MiniMax are shared, server-side AI infrastructure for natural-language interpretation,
+optional bounded planning, and evidence-grounded explanation. They do not own facts, citations,
+calculations, workbook coordinates, tables, or charts. The controlled Data Hub and News Hub remain
+the source of truth; deterministic code retrieves, calculates, validates, and renders.
 
 Standing constraints that outlive any single session:
 
 - **`api/research.ts` is frozen** for the duration of the buildathon. The new `/api/ask` path
-  lives beside it, and a task-pane flag (`ASK_CARIBECON_MODE=agentic|legacy`) must switch back to
-  it without a code edit.
+  lives beside it. `ASK_CARIBECON_MODE=ask|legacy` is an explicit task-pane rollback switch;
+  `ASK_RETRIEVER_MODE=deterministic|agentic` controls only the new endpoint's retrieval mode.
+  Do not silently fall back to `/api/research` within a request.
 - **The existing add-in workflow is the foundation, and it stays.** Browse, the structured
-  input → table output flow, and all seven `CE.*` functions are kept as-is. Ask CaribEcon extends
-  that surface; it does not replace or destabilise it.
+  input → table output flow, and all seven `CE.*` functions are kept as-is and require no model
+  call. AI is an optional capability for natural-language workflows; it does not replace or
+  destabilise the deterministic surface.
 - **Citations stay deterministic** — populated only from real retrieval results, never from model
   prose. No model ever composes a URL or a figure.
 - **News is metadata evidence only** (headline / source / date / link). Never imply an article
   body was read; hedge contextual claims; never infer causality from co-occurrence.
 - Task-pane visual work follows `EDDESIGN.md`, same as the site.
-- Provider keys stay server-side; the Excel bundle never carries one.
+- Provider keys stay server-side; the Excel bundle never carries one. Provider/model selection is
+  environment-configured and new provider paths must fail closed when a configured model is absent.
+- `CARIBECON_RESEARCH_TOKEN` is an existing client-visible cost gate, not a provider secret or
+  production-grade user authentication. Never put `NEBIUS_API_KEY` or `MINIMAX_API_KEY` in the
+  webpack environment substitutions.
 
-**CariBench is shelved** as of 2026-08-09 and is explicitly out of scope here (plan §22). The
+**Current plan status:** the local `feature/excel-addin` branch already contains the Phase 0
+deterministic News Hub reader and Ask retrieval facade (`src/lib/news.ts`, `src/lib/askTools.ts`).
+Treat that as completed groundwork, but add its contract tests and planned hardening before any
+provider call or new endpoint work.
+
+**CariBench is shelved** as of 2026-08-09 and is explicitly out of scope in the active plan. The
 spec, the draft question set, the gold records, and both spike runs are committed on
 `feature/caribench`; `CARIBENCH.md` §0 records why it stopped and what must be settled before it
 resumes. Do not restart benchmark runs as part of this build.
@@ -82,11 +96,12 @@ Every page reads from one hub; no per-page hardcoded numbers.
 
 Standalone Vercel Functions in the top-level `api/`, deliberately outside the Astro build so the site stays `output: 'static'`. They must import `src/lib/indicators.ts` — **never `dataHub.ts`**, which pulls the editorial domains (~1.9 MB) in at module scope, and which is not nodenext-clean so it throws `ERR_MODULE_NOT_FOUND` in a deployed function. Both use explicit `.js` specifiers and JSON import attributes for the same reason.
 
-| Endpoint | Purpose |
-| -------- | ------- |
-| `GET /api/indicator?country=&indicator=&year=` | One sourced value + provenance. Deterministic, unauthenticated, edge-cached. |
-| `GET /api/snapshot` | The whole hub (~20 KB gzipped) in one payload, so a client never fetches numbers one at a time. |
-| `POST /api/research` | Grounded Q&A over the hub via Claude tool-use. Spends tokens, so it is token-gated + rate-limited. Needs `ANTHROPIC_API_KEY` and `CARIBECON_RESEARCH_TOKEN` set on the Vercel project. |
+| Endpoint                                         | Purpose                                                                                                                                                                                   |
+| ------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `GET /api/indicator?country=&indicator=&year=` | One sourced value + provenance. Deterministic, unauthenticated, edge-cached.                                                                                                              |
+| `GET /api/snapshot`                            | The whole hub (~20 KB gzipped) in one payload, so a client never fetches numbers one at a time.                                                                                           |
+| `POST /api/research`                           | Legacy grounded Q&A over the Data Hub via Claude tool-use. It is frozen as the rollback endpoint. |
+| `POST /api/ask` *(planned)*                    | New bounded Ask CaribEcon path: shared provider roles, deterministic evidence, and deterministic citations. |
 
 ### Excel add-in (`excel-addin/`)
 
@@ -108,14 +123,15 @@ A separate npm project (own `package.json`, webpack, deps) — not part of the A
 
 ### File ownership
 
-| Domain                      | Key files                                                     |
-| --------------------------- | ------------------------------------------------------------- |
-| Shell                       | `src/layouts/Shell.astro`, `src/components/shell/*`       |
-| Design tokens               | `src/styles/tokens.css`, `src/styles/base.css`            |
-| Data hub                    | `src/lib/dataHub.ts`, `src/lib/types.ts`, `data/*.json` |
-| Charts                      | `src/components/charts/*`                                   |
-| Home                        | `src/pages/index.astro`, `src/components/home/*`          |
-| Data                        | `src/pages/data.astro`, `src/components/data/*`           |
-| News / Publications / Deals | `src/pages/<page>.astro`, `src/components/<page>/*`       |
-| Public API                  | `api/indicator.ts`, `api/snapshot.ts`, `api/research.ts` |
+| Domain                      | Key files                                                                       |
+| --------------------------- | ------------------------------------------------------------------------------- |
+| Shell                       | `src/layouts/Shell.astro`, `src/components/shell/*`                         |
+| Design tokens               | `src/styles/tokens.css`, `src/styles/base.css`                              |
+| Data hub                    | `src/lib/dataHub.ts`, `src/lib/types.ts`, `data/*.json`                   |
+| Charts                      | `src/components/charts/*`                                                     |
+| Home                        | `src/pages/index.astro`, `src/components/home/*`                            |
+| Data                        | `src/pages/data.astro`, `src/components/data/*`                             |
+| News / Publications / Deals | `src/pages/<page>.astro`, `src/components/<page>/*`                         |
+| Public API                  | `api/indicator.ts`, `api/snapshot.ts`, `api/research.ts`, planned `api/ask.ts`                  |
+| AI / evidence services      | `src/lib/ai/*` (planned), `src/lib/indicators.ts`, `src/lib/news.ts`, `src/lib/askTools.ts` |
 | Excel add-in                | `excel-addin/src/{functions,taskpane,shared}/*`, `excel-addin/manifest.xml` |
