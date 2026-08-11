@@ -1092,5 +1092,31 @@
     "url": "https://www.starnieuws.com/index.php/welcome/index/nieuwsitem/93360",
     "source": "Starnieuws",
     "approved": false
+  },
+  {
+    "id": "deal-295f3277",
+    "headline": "First 10 Beryl vessel loans approved, totalling $2.8m",
+    "parties": "",
+    "value": "",
+    "date": "2026-08-11",
+    "country": "BB",
+    "type": "",
+    "suggestedType": "Debt",
+    "url": "https://barbadostoday.bb/2026/08/10/first-10-beryl-vessel-loans-approved-totalling-2-8m/",
+    "source": "Barbados Today",
+    "approved": false
+  },
+  {
+    "id": "deal-d9b6ae79",
+    "headline": "Court orders Instagram, Meta to pay US$567M to address kids’ mental health online",
+    "parties": "",
+    "value": "",
+    "date": "2026-08-09",
+    "country": "JM",
+    "type": "",
+    "suggestedType": "Other",
+    "url": "http://jamaica-gleaner.com/article/business/20260809/court-orders-instagram-meta-pay-us567m-address-kids-mental-health-online",
+    "source": "Jamaica Gleaner",
+    "approved": false
   }
 ]

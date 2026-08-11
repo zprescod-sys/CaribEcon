@@ -1,5 +1,531 @@
 [
   {
+    "id": "guyana-chronicle-0265ce0e",
+    "title": "President Ali mulls poultry hub to transition backyard farmers into commercial production in Region Two",
+    "source": "Guyana Chronicle",
+    "date": "2026-08-11",
+    "country": "GY",
+    "url": "https://guyanachronicle.com/2026/08/11/president-ali-mulls-poultry-hub-to-transition-backyard-farmers-into-commercial-production-in-region-two/",
+    "tags": [
+      "news"
+    ],
+    "category": "Agriculture",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "government policy to transition backyard poultry farmers into commercial production; agricultural development mechanism",
+    "classifier": "llm",
+    "deal_status": "not_a_deal",
+    "deal_type": null
+  },
+  {
+    "id": "guyana-chronicle-5f0a4b10",
+    "title": "Major waterfront development, infrastructural upgrades for Charity",
+    "source": "Guyana Chronicle",
+    "date": "2026-08-11",
+    "country": "GY",
+    "url": "https://guyanachronicle.com/2026/08/11/major-waterfront-development-infrastructural-upgrades-for-charity/",
+    "tags": [
+      "news"
+    ],
+    "category": "Infrastructure",
+    "group": "Investment",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "waterfront development and infrastructural upgrades for Charity; capital infrastructure project",
+    "classifier": "llm",
+    "deal_status": "not_a_deal",
+    "deal_type": null
+  },
+  {
+    "id": "guyana-chronicle-f55dd05d",
+    "title": "GMC to facilitate temporary importation of chicken",
+    "source": "Guyana Chronicle",
+    "date": "2026-08-11",
+    "country": "GY",
+    "url": "https://guyanachronicle.com/2026/08/11/gmc-to-facilitate-temporary-importation-of-chicken/",
+    "tags": [
+      "news"
+    ],
+    "category": "Trade",
+    "group": "Trade & Tourism",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "GMC facilitating temporary chicken importation; trade/tariff policy with domestic agriculture nexus",
+    "classifier": "llm",
+    "deal_status": "not_a_deal",
+    "deal_type": null
+  },
+  {
+    "id": "guyana-chronicle-d019c934",
+    "title": "Suddie set for significant infrastructure overhaul under Model Village Initiative",
+    "source": "Guyana Chronicle",
+    "date": "2026-08-11",
+    "country": "GY",
+    "url": "https://guyanachronicle.com/2026/08/11/suddie-set-for-significant-infrastructure-overhaul-under-model-village-initiative/",
+    "tags": [
+      "news"
+    ],
+    "category": "Infrastructure",
+    "group": "Investment",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Suddie infrastructure overhaul under Model Village Initiative; government-led development and capital investment",
+    "classifier": "llm",
+    "deal_status": "not_a_deal",
+    "deal_type": null
+  },
+  {
+    "id": "guyana-chronicle-c52cbbae",
+    "title": "Gov’t strengthens irrigation, water-storage measures as El Niño intensifies",
+    "source": "Guyana Chronicle",
+    "date": "2026-08-11",
+    "country": "GY",
+    "url": "https://guyanachronicle.com/2026/08/11/govt-strengthens-irrigation-water-storage-measures-as-el-nino-intensifies/",
+    "tags": [
+      "news"
+    ],
+    "category": "Climate",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "government strengthens irrigation and water-storage in response to El Niño; climate adaptation and agricultural-risk management",
+    "classifier": "llm",
+    "deal_status": "not_a_deal",
+    "deal_type": null
+  },
+  {
+    "id": "ttt-news-b75b588c",
+    "title": "Prime Minister Hails New NGC-bpTT Energy Agreement",
+    "source": "TTT News",
+    "date": "2026-08-11",
+    "country": "TT",
+    "url": "https://www.ttt.live/prime-minister-hails-new-ngc-bptt-energy-agreement/?utm_source=rss&utm_medium=rss&utm_campaign=prime-minister-hails-new-ngc-bptt-energy-agreement",
+    "tags": [
+      "energy",
+      "foreign affairs",
+      "government",
+      "news"
+    ],
+    "category": "Energy",
+    "group": "Energy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "NGC-bpTT energy agreement; energy-sector deal or partnership with economic substance",
+    "classifier": "llm",
+    "deal_status": "pending",
+    "deal_type": "Other"
+  },
+  {
+    "id": "barbados-today-7d17b2ef",
+    "title": "‘No one will save us’: Caribbean must be self-reliant for economic survival – professor",
+    "source": "Barbados Today",
+    "date": "2026-08-11",
+    "country": "BB",
+    "url": "https://barbadostoday.bb/2026/08/10/no-one-will-save-us-caribbean-must-be-self-reliant-for-economic-survival-professor/",
+    "tags": [
+      "business",
+      "local news",
+      "regional",
+      "headline",
+      "headlines"
+    ],
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "academic analysis of Caribbean economic self-reliance and survival strategy; macro economic commentary on regional competitiveness",
+    "classifier": "llm",
+    "deal_status": "not_a_deal",
+    "deal_type": null
+  },
+  {
+    "id": "barbados-today-0c4bd826",
+    "title": "Fishermen raise concern over ice, bait, insurance, diesel costs",
+    "source": "Barbados Today",
+    "date": "2026-08-11",
+    "country": "BB",
+    "url": "https://barbadostoday.bb/2026/08/10/fishermen-raise-concern-over-ice-bait-insurance-diesel-costs/",
+    "tags": [
+      "business",
+      "local news",
+      "headline",
+      "headlines"
+    ],
+    "category": "Agriculture",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "fishermen raising concerns over input costs (ice, bait, insurance, diesel); sector cost-of-living and competitiveness issues",
+    "classifier": "llm",
+    "deal_status": "not_a_deal",
+    "deal_type": null
+  },
+  {
+    "id": "barbados-today-295f3277",
+    "title": "First 10 Beryl vessel loans approved, totalling $2.8m",
+    "source": "Barbados Today",
+    "date": "2026-08-11",
+    "country": "BB",
+    "url": "https://barbadostoday.bb/2026/08/10/first-10-beryl-vessel-loans-approved-totalling-2-8m/",
+    "tags": [
+      "local news",
+      "storm watch",
+      "weather",
+      "headline",
+      "headlines"
+    ],
+    "category": "Debt",
+    "group": "Fiscal Policy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Hurricane Beryl vessel loans approved totalling $2.8m; disaster recovery financing",
+    "classifier": "llm",
+    "deal_status": "completed",
+    "deal_type": "Debt"
+  },
+  {
+    "id": "jamaica-observer-a747cf37",
+    "title": "Seiveright urges Jamaican investors to think beyond apartments",
+    "source": "Jamaica Observer",
+    "date": "2026-08-11",
+    "country": "JM",
+    "url": "https://www.jamaicaobserver.com/2026/08/11/seiveright-urges-jamaican-investors-think-beyond-apartments/",
+    "tags": [
+      "news"
+    ],
+    "category": "Investment",
+    "group": "Investment",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "business executive urges Jamaican investors to diversify beyond real estate; domestic investment strategy commentary with economic substance",
+    "classifier": "llm",
+    "deal_status": "not_a_deal",
+    "deal_type": null
+  },
+  {
+    "id": "starnieuws-2fdc9381",
+    "title": "Meer dan helft jonge Surinamers overweegt vertrek naar buitenland",
+    "source": "Starnieuws",
+    "date": "2026-08-11",
+    "country": "SR",
+    "url": "https://www.starnieuws.com/index.php/welcome/index/nieuwsitem/93366",
+    "category": "Labor",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "youth migration/emigration intention survey; labor-market and economic development concern for Suriname",
+    "classifier": "llm",
+    "deal_status": "not_a_deal",
+    "deal_type": null
+  },
+  {
+    "id": "starnieuws-0cf97a27",
+    "title": "NIKOS perceptieonderzoek: Wantrouwen beheer olierijkdom; corruptie grootste bedreiging",
+    "source": "Starnieuws",
+    "date": "2026-08-11",
+    "country": "SR",
+    "url": "https://www.starnieuws.com/index.php/welcome/index/nieuwsitem/93365",
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "public perception survey on oil wealth governance and corruption risk in Suriname; macro governance and natural-resource management",
+    "classifier": "llm",
+    "deal_status": "not_a_deal",
+    "deal_type": null
+  },
+  {
+    "id": "waterkant-259fe8ac",
+    "title": "Finabank opent eerste Cashless Branch in Suriname",
+    "source": "Waterkant",
+    "date": "2026-08-11",
+    "country": "SR",
+    "url": "https://www.waterkant.net/suriname/2026/08/11/finabank-opent-eerste-cashless-branch-in-suriname/#utm_source=rss&utm_medium=rss&utm_campaign=finabank-opent-eerste-cashless-branch-in-suriname",
+    "tags": [
+      "economie",
+      "nieuws uit suriname",
+      "uitgelicht"
+    ],
+    "category": "Banking",
+    "group": "Finance",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Finabank opens first cashless branch in Suriname; digital financial services innovation and adoption",
+    "classifier": "llm",
+    "deal_status": "not_a_deal",
+    "deal_type": null
+  },
+  {
+    "id": "antigua-news-room-fa1b58af",
+    "title": "Government Pushes to Complete Heritage Quay Pier Work Before Cruise Season",
+    "source": "Antigua News Room",
+    "date": "2026-08-11",
+    "country": "AG",
+    "url": "https://antiguanewsroom.com/government-pushes-to-complete-heritage-quay-pier-work-before-cruise-season/",
+    "tags": [
+      "news"
+    ],
+    "category": "Infrastructure",
+    "group": "Investment",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heritage Quay pier infrastructure project completion push ahead of cruise season; tourism infrastructure and tourism-season readiness",
+    "classifier": "llm",
+    "deal_status": "not_a_deal",
+    "deal_type": null
+  },
+  {
+    "id": "antigua-news-room-aede6fa5",
+    "title": "Booby Alley housing development could begin welcoming residents by September or October",
+    "source": "Antigua News Room",
+    "date": "2026-08-11",
+    "country": "AG",
+    "url": "https://antiguanewsroom.com/booby-alley-housing-development-could-begin-welcoming-residents-by-september-or-october/",
+    "tags": [
+      "news"
+    ],
+    "category": "Infrastructure",
+    "group": "Investment",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Booby Alley housing development project progress; infrastructure/real-estate development",
+    "classifier": "llm",
+    "deal_status": "pending",
+    "deal_type": "FDI"
+  },
+  {
+    "id": "antigua-news-room-4bf1676f",
+    "title": "Government Nears First Drawdown From $100 Million Road Programme",
+    "source": "Antigua News Room",
+    "date": "2026-08-11",
+    "country": "AG",
+    "url": "https://antiguanewsroom.com/government-nears-first-drawdown-from-100-million-road-programme/",
+    "tags": [
+      "featured"
+    ],
+    "category": "Fiscal Policy",
+    "group": "Fiscal Policy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "government road infrastructure programme drawdown; public capital expenditure",
+    "classifier": "llm",
+    "deal_status": "not_a_deal",
+    "deal_type": null
+  },
+  {
+    "id": "ziz-online-ad1cda2e",
+    "title": "Record Sargassum Bloom Threatens Caribbean Beaches and Tourism",
+    "source": "ZIZ Online",
+    "date": "2026-08-11",
+    "country": "KN",
+    "url": "https://zizonline.com/record-sargassum-bloom-threatens-caribbean-beaches-and-tourism/",
+    "tags": [
+      "regional"
+    ],
+    "category": "Tourism",
+    "group": "Trade & Tourism",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "sargassum bloom threatens Caribbean beaches and tourism sector; regional environmental impact on tourism",
+    "classifier": "llm",
+    "deal_status": "not_a_deal",
+    "deal_type": null
+  },
+  {
+    "id": "ziz-online-9c769a9d",
+    "title": "IRD Confirms August VAT Rate Days",
+    "source": "ZIZ Online",
+    "date": "2026-08-11",
+    "country": "KN",
+    "url": "https://zizonline.com/ird-confirms-august-vat-rate-days/",
+    "tags": [
+      "national"
+    ],
+    "category": "Fiscal Policy",
+    "group": "Fiscal Policy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "VAT rate collection calendar from tax authority; fiscal/tax administration",
+    "classifier": "llm",
+    "deal_status": "not_a_deal",
+    "deal_type": null
+  },
+  {
+    "id": "ziz-online-2f3e0ee0",
+    "title": "BHS Project Boosts Local Construction Industry",
+    "source": "ZIZ Online",
+    "date": "2026-08-11",
+    "country": "KN",
+    "url": "https://zizonline.com/bhs-project-boosts-local-construction-industry/",
+    "tags": [
+      "national"
+    ],
+    "category": "Infrastructure",
+    "group": "Investment",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "infrastructure project boost to local construction sector; sectoral economic impact",
+    "classifier": "llm",
+    "deal_status": "not_a_deal",
+    "deal_type": null
+  },
+  {
+    "id": "searchlight-svg-6133087f",
+    "title": "Ministry of Health monitoring drug-resistant bacteria at Milton Cato Memorial Hospital",
+    "source": "Searchlight SVG",
+    "date": "2026-08-11",
+    "country": "VC",
+    "url": "https://www.searchlight.vc/news/2026/08/11/ministry-health-monitoring-drug-resistant-bacteria-milton-cato-memorial-hospital/",
+    "tags": [
+      "news"
+    ],
+    "category": "Banking",
+    "group": "Finance",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "health authority monitoring drug-resistant bacteria outbreak at national hospital; public-health crisis affecting healthcare sector operations",
+    "classifier": "llm",
+    "deal_status": "not_a_deal",
+    "deal_type": null
+  },
+  {
+    "id": "searchlight-svg-b990146e",
+    "title": "SVG named among top beach destinations",
+    "source": "Searchlight SVG",
+    "date": "2026-08-11",
+    "country": "VC",
+    "url": "https://www.searchlight.vc/press-release/2026/08/11/svg-named-among-top-beach-destinations/",
+    "tags": [
+      "press release"
+    ],
+    "category": "Tourism",
+    "group": "Trade & Tourism",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "SVG recognized among top beach destinations, tourism-sector recognition and marketing",
+    "classifier": "llm",
+    "deal_status": "not_a_deal",
+    "deal_type": null
+  },
+  {
+    "id": "searchlight-svg-49ce56dc",
+    "title": "Child-centred climate action on radar of UNICEF and Caribbean Community Climate Change Centre",
+    "source": "Searchlight SVG",
+    "date": "2026-08-11",
+    "country": "VC",
+    "url": "https://www.searchlight.vc/press-release/2026/08/11/child-centred-climate-action-radar-unicef-caribbean-community-climate-change-centre/",
+    "tags": [
+      "press release"
+    ],
+    "category": "Climate",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "UNICEF and regional climate centre targeting child-centred climate action, multilateral climate policy",
+    "classifier": "llm",
+    "deal_status": "not_a_deal",
+    "deal_type": null
+  },
+  {
+    "id": "searchlight-svg-857d0a04",
+    "title": "PAHO calls for stronger safeguards against digital marketing that undermines breastfeeding",
+    "source": "Searchlight SVG",
+    "date": "2026-08-11",
+    "country": "VC",
+    "url": "https://www.searchlight.vc/press-release/2026/08/11/paho-calls-stronger-safeguards-digital-marketing-undermines-breastfeeding/",
+    "tags": [
+      "press release"
+    ],
+    "category": "Government",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "PAHO regulatory guidance on digital marketing safeguards, public-health policy with economic implications for marketing practices",
+    "classifier": "llm",
+    "deal_status": "not_a_deal",
+    "deal_type": null
+  },
+  {
+    "id": "cayman-news-service-b37e1b55",
+    "title": "Cayman’s financial services industry: small but mighty",
+    "source": "Cayman News Service",
+    "date": "2026-08-11",
+    "country": "KY",
+    "url": "https://caymannewsservice.com/2026/08/caymans-financial-services-industry-small-but-mighty/",
+    "tags": [
+      "business",
+      "financial services",
+      "viewpoint",
+      "cayman finance",
+      "steve mcintosh"
+    ],
+    "category": "Banking",
+    "group": "Finance",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Cayman financial services sector analysis, core economic sector commentary",
+    "classifier": "llm",
+    "deal_status": "not_a_deal",
+    "deal_type": null
+  },
+  {
+    "id": "cayman-compass-135440ab",
+    "title": "Legislation on renter’s rights in the pipeline",
+    "source": "Cayman Compass",
+    "date": "2026-08-11",
+    "country": "KY",
+    "url": "https://www.caymancompass.com/2026/08/11/legislation-on-renters-rights-in-the-pipeline/",
+    "tags": [
+      "local",
+      "housing",
+      "rent"
+    ],
+    "category": "Government",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "renter-protection legislation in pipeline, housing regulation with economic impact on rental market",
+    "classifier": "llm",
+    "deal_status": "not_a_deal",
+    "deal_type": null
+  },
+  {
+    "id": "bvi-news-0c685165",
+    "title": "A win for women! Demming-Hodge finally lands top Immigration post",
+    "source": "BVI News",
+    "date": "2026-08-11",
+    "country": "VG",
+    "url": "https://bvinews.com/a-win-for-women-demming-hodge-lands-top-immigration-post/",
+    "tags": [
+      "all news"
+    ],
+    "category": "Government",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "executive appointment to immigration authority; governance of economic institution (immigration, work permits, investment)",
+    "classifier": "llm",
+    "deal_status": "not_a_deal",
+    "deal_type": null
+  },
+  {
+    "id": "wic-news-b936c22d",
+    "title": "Dominica to appoint dedicated Minister for Creative Industry, PM Skerrit announces",
+    "source": "WIC News",
+    "date": "2026-08-11",
+    "country": "ALL",
+    "url": "https://wicnews.com/dominica/dominica-to-appoint-dedicated-minister-for-creative-industry-pm-skerrit-announces",
+    "category": "Government",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "government creation of dedicated Creative Industry ministry; economic policy / institutional governance",
+    "classifier": "llm",
+    "deal_status": "not_a_deal",
+    "deal_type": null
+  },
+  {
     "id": "kaieteur-news-e59d3014",
     "title": "Guyana must now receive its 50% profit in Exxon deal",
     "source": "Kaieteur News",
@@ -1300,6 +1826,101 @@
     "deal_type": null
   },
   {
+    "id": "jamaica-observer-2983223d",
+    "title": "UTech and UWI lecturers on strike",
+    "source": "Jamaica Observer",
+    "date": "2026-08-10",
+    "country": "JM",
+    "url": "https://www.jamaicaobserver.com/2026/08/10/utech-uwi-lecturers-strike/",
+    "tags": [
+      "latest news",
+      "news",
+      "strike",
+      "utech",
+      "uwi"
+    ],
+    "category": "Labor",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "university lecturers' strike; labor dispute affecting higher education sector",
+    "classifier": "llm",
+    "deal_status": "not_a_deal",
+    "deal_type": null
+  },
+  {
+    "id": "starnieuws-a8724892",
+    "title": "MinOWC en bedrijfsleven slaan handen ineen voor arbeidsmarktgerichte opleidingen",
+    "source": "Starnieuws",
+    "date": "2026-08-10",
+    "country": "SR",
+    "url": "https://www.starnieuws.com/index.php/welcome/index/nieuwsitem/93350",
+    "category": "Labor",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "workforce skills training partnership between ministry and business; labor-market development",
+    "classifier": "llm",
+    "deal_status": "not_a_deal",
+    "deal_type": null
+  },
+  {
+    "id": "starnieuws-b9e4d90b",
+    "title": "CASAS: Onjuiste documenten vertraagden inzet vervangend SLM-toestel",
+    "source": "Starnieuws",
+    "date": "2026-08-10",
+    "country": "SR",
+    "url": "https://www.starnieuws.com/index.php/welcome/index/nieuwsitem/93362",
+    "category": "Infrastructure",
+    "group": "Investment",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "SLM aircraft operational disruption due to documentation delay; transport/airline service impact",
+    "classifier": "llm",
+    "deal_status": "not_a_deal",
+    "deal_type": null
+  },
+  {
+    "id": "starnieuws-ecffc707",
+    "title": "Gestrande SLM-passagiers wachten sinds zaterdag op oplossing na uitval vluchten",
+    "source": "Starnieuws",
+    "date": "2026-08-10",
+    "country": "SR",
+    "url": "https://www.starnieuws.com/index.php/welcome/index/nieuwsitem/93351",
+    "category": "Infrastructure",
+    "group": "Investment",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "SLM airline operational failure and passenger disruption; transport service crisis",
+    "classifier": "llm",
+    "deal_status": "not_a_deal",
+    "deal_type": null
+  },
+  {
+    "id": "st-lucia-times-eb98186a",
+    "title": "She almost lost everything; now her beauty brand is thriving",
+    "source": "St. Lucia Times",
+    "date": "2026-08-10",
+    "country": "LC",
+    "url": "https://stluciatimes.com/182828/2026/08/she-almost-lost-everything-now-her-beauty-brand-is-thriving/",
+    "tags": [
+      "business",
+      "headlines",
+      "human interest",
+      "beauty industry",
+      "business",
+      "entrepreneurship"
+    ],
+    "category": "Corporate",
+    "group": "Finance",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "beauty brand entrepreneurship and business recovery; small corporate/business feature",
+    "classifier": "llm",
+    "deal_status": "not_a_deal",
+    "deal_type": null
+  },
+  {
     "id": "kaieteur-news-65b47d7a",
     "title": "Govt. must now say what % oil profits Guyana is receiving as Exxon confirms full investment recovered – Opposition Leader",
     "source": "Kaieteur News",
@@ -2208,6 +2829,38 @@
     "classifier": "llm",
     "deal_status": "not_a_deal",
     "deal_type": null
+  },
+  {
+    "id": "jamaica-gleaner-8b84753d",
+    "title": "SpaceX shares rise even as company insiders get a chance to sell for the first time",
+    "source": "Jamaica Gleaner",
+    "date": "2026-08-09",
+    "country": "JM",
+    "url": "http://jamaica-gleaner.com/article/business/20260809/spacex-shares-rise-even-company-insiders-get-chance-sell-first-time",
+    "category": "Corporate",
+    "group": "Finance",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "SpaceX share price appreciation and insider trading opportunity; corporate equity market and capital transaction news",
+    "classifier": "llm",
+    "deal_status": "not_a_deal",
+    "deal_type": null
+  },
+  {
+    "id": "jamaica-gleaner-d9b6ae79",
+    "title": "Court orders Instagram, Meta to pay US$567M to address kids’ mental health online",
+    "source": "Jamaica Gleaner",
+    "date": "2026-08-09",
+    "country": "JM",
+    "url": "http://jamaica-gleaner.com/article/business/20260809/court-orders-instagram-meta-pay-us567m-address-kids-mental-health-online",
+    "category": "Banking",
+    "group": "Finance",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "court orders Meta and Instagram to pay $567M settlement for children's mental-health harm; major corporate financial penalty and regulatory ruling",
+    "classifier": "llm",
+    "deal_status": "completed",
+    "deal_type": "Other"
   },
   {
     "id": "kaieteur-news-8d834d1b",
@@ -4977,6 +5630,29 @@
     "decision": "publish",
     "confidence": "medium",
     "reason": "ongoing water crisis affecting public service delivery and infrastructure",
+    "classifier": "llm",
+    "deal_status": "not_a_deal",
+    "deal_type": null
+  },
+  {
+    "id": "cayman-compass-614484cf",
+    "title": "Developing a back-to-school financial checklist",
+    "source": "Cayman Compass",
+    "date": "2026-08-07",
+    "country": "KY",
+    "url": "https://www.caymancompass.com/2026/08/07/back-to-school-financial-checklist/",
+    "tags": [
+      "business",
+      "finance",
+      "back to school",
+      "marketwatch",
+      "personal finances and investment"
+    ],
+    "category": "Fiscal Policy",
+    "group": "Fiscal Policy",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "back-to-school financial planning guidance, personal-finance advice with household budgeting relevance",
     "classifier": "llm",
     "deal_status": "not_a_deal",
     "deal_type": null
@@ -35260,515 +35936,6 @@
     "url": "https://antiguanewsroom.com/government-projects-antigua-and-barbudas-economy-to-grow-another-five-percent-this-year/",
     "tags": [
       "news"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "antigua-news-room-16794291",
-    "title": "Salary Deductions Likely Under Government’s New Rent-to-Own Housing Programme",
-    "source": "Antigua News Room",
-    "date": "2026-07-03",
-    "country": "AG",
-    "url": "https://antiguanewsroom.com/salary-deductions-likely-under-governments-new-rent-to-own-housing-programme/",
-    "tags": [
-      "news"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "antigua-news-room-6e5031fb",
-    "title": "Sir Lester Bird Medical Centre Chinese Loan Fully Repaid Within Past Six Months",
-    "source": "Antigua News Room",
-    "date": "2026-07-03",
-    "country": "AG",
-    "url": "https://antiguanewsroom.com/sir-lester-bird-medical-centre-chinese-loan-fully-repaid-within-past-six-months/",
-    "tags": [
-      "news"
-    ],
-    "deal_status": "completed",
-    "deal_type": "Debt"
-  },
-  {
-    "id": "antigua-news-room-bc9d9320",
-    "title": "Government Calls Antigua and Barbuda’s High-Income Status ‘Bittersweet’ Over Loss of Concessional Financing",
-    "source": "Antigua News Room",
-    "date": "2026-07-03",
-    "country": "AG",
-    "url": "https://antiguanewsroom.com/government-calls-antigua-and-barbudas-high-income-status-bittersweet-over-loss-of-concessional-financing/",
-    "tags": [
-      "news"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "antigua-news-room-87bca8d3",
-    "title": "Government Says First LNG Shipment Still Expected Within 30 Days",
-    "source": "Antigua News Room",
-    "date": "2026-07-03",
-    "country": "AG",
-    "url": "https://antiguanewsroom.com/government-says-first-lng-shipment-still-expected-within-30-days/",
-    "tags": [
-      "news"
-    ],
-    "deal_status": "pending",
-    "deal_type": "FDI"
-  },
-  {
-    "id": "antigua-news-room-3f220ba0",
-    "title": "Government Says Antigua and Barbuda’s Debt-to-GDP Ratio Nears 60% Following Debt Reduction",
-    "source": "Antigua News Room",
-    "date": "2026-07-03",
-    "country": "AG",
-    "url": "https://antiguanewsroom.com/government-says-antigua-and-barbudas-debt-to-gdp-ratio-nears-60-following-debt-reduction/",
-    "tags": [
-      "news"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "iwitness-news-24741575",
-    "title": "Gov’t follows through on ULP loans amidst tight fiscal space",
-    "source": "iWitness News",
-    "date": "2026-07-03",
-    "country": "VC",
-    "url": "https://www.iwnsvg.com/2026/07/03/govt-follows-through-on-ulp-loans-amidst-tight-fiscal-space/",
-    "tags": [
-      "business"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "cnc3-dce70e2f",
-    "title": "PNM rejects claims of Balisier House financing probe",
-    "source": "CNC3",
-    "date": "2026-07-03",
-    "country": "TT",
-    "url": "https://www.cnc3.co.tt/pnm-rejects-claims-of-balisier-house-financing-probe/?utm_source=rss&utm_medium=rss&utm_campaign=pnm-rejects-claims-of-balisier-house-financing-probe",
-    "tags": [
-      "news"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "jamaica-observer-3551fee4",
-    "title": "Market Bag: Onion dip to $300, yam up to $500 as Yaksta shops at ‘Curry’",
-    "source": "Jamaica Observer",
-    "date": "2026-07-03",
-    "country": "JM",
-    "url": "https://www.jamaicaobserver.com/2026/07/03/market-bag-onion-dip-300-yam-500-yaksta-shops-curry/",
-    "tags": [
-      "latest news",
-      "news",
-      "videos",
-      "food prices",
-      "lettuce",
-      "market bag"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "now-grenada-5cd714ff",
-    "title": "Tourism Licensing 2026–2027",
-    "source": "NOW Grenada",
-    "date": "2026-07-03",
-    "country": "GD",
-    "url": "https://nowgrenada.com/2026/07/tourism-licensing-2026-2027/",
-    "tags": [
-      "business",
-      "press release",
-      "travel/tourism",
-      "grenada tourism authority",
-      "gta",
-      "gta act"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "now-grenada-4f248288",
-    "title": "Specific Procurement Notice: Request for Quotation",
-    "source": "NOW Grenada",
-    "date": "2026-07-03",
-    "country": "GD",
-    "url": "https://nowgrenada.com/2026/07/specific-procurement-notice-request-for-quotation/",
-    "tags": [
-      "advertisement",
-      "business",
-      "caribbean resilient renewable energy infrastructure investment facility",
-      "cegeb",
-      "electronic office equipment",
-      "ministry of climate resilience"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "st-lucia-times-ceeacb3a",
-    "title": "Authorities defend handling of horse export amid Grenada euthanasia controversy",
-    "source": "St. Lucia Times",
-    "date": "2026-07-03",
-    "country": "LC",
-    "url": "https://stluciatimes.com/181584/2026/07/authorities-defend-handling-of-horse-export-amid-grenada-euthanasia-controversy/",
-    "tags": [
-      "agriculture & fisheries",
-      "headlines",
-      "politics & government",
-      "dr melville-edwin",
-      "lisa jawahir",
-      "minister for agriculture lisa jawahir"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "antigua-news-room-793e7784",
-    "title": "Antigua and Barbuda Approves EC$5.2 Million Budget for Carnival 2026",
-    "source": "Antigua News Room",
-    "date": "2026-07-03",
-    "country": "AG",
-    "url": "https://antiguanewsroom.com/antigua-and-barbuda-approves-ec5-2-million-budget-for-carnival-2026/",
-    "tags": [
-      "news"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "st-kitts-nevis-observer-3b17760b",
-    "title": "Great Britain:  Over £4 Billion Invested In Next-Generation Fighter Jet With New International Contract",
-    "source": "St. Kitts-Nevis Observer",
-    "date": "2026-07-03",
-    "country": "KN",
-    "url": "https://www.thestkittsnevisobserver.com/great-britain-over-4-billion-invested-in-next-generation-fighter-jet-with-new-international-contract/",
-    "tags": [
-      "press releases",
-      "regional/international news"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "st-kitts-nevis-observer-f24e4144",
-    "title": "United States:  Gov. Beshear: Kentucky State Parks Generate $1.1 Billion in Economic Impact, Supporting 8,600 Jobs",
-    "source": "St. Kitts-Nevis Observer",
-    "date": "2026-07-03",
-    "country": "KN",
-    "url": "https://www.thestkittsnevisobserver.com/united-states-gov-beshear-kentucky-state-parks-generate-1-1-billion-in-economic-impact-supporting-8600-jobs/",
-    "tags": [
-      "press releases",
-      "regional/international news"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "st-kitts-nevis-observer-ff401f6c",
-    "title": "United States:  Treasury And IRS To Accept Philanthropic Stock Contributions For Trump Accounts",
-    "source": "St. Kitts-Nevis Observer",
-    "date": "2026-07-03",
-    "country": "KN",
-    "url": "https://www.thestkittsnevisobserver.com/united-states-treasury-and-irs-to-accept-philanthropic-stock-contributions-for-trump-accounts/",
-    "tags": [
-      "press releases",
-      "regional/international news"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "iwitness-news-69817767",
-    "title": "The triumph of flesh and rum",
-    "source": "iWitness News",
-    "date": "2026-07-03",
-    "country": "VC",
-    "url": "https://www.iwnsvg.com/2026/07/03/the-triumph-of-flesh-and-rum/",
-    "tags": [
-      "opinion",
-      "plain talk"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "searchlight-svg-46896b22",
-    "title": "Glasgow represents SVG, Caribbean at World Business Angels Investors Week",
-    "source": "Searchlight SVG",
-    "date": "2026-07-03",
-    "country": "VC",
-    "url": "https://www.searchlight.vc/press-release/2026/07/03/glasgow-represents-svg-caribbean-world-business-angels-investors-week/",
-    "tags": [
-      "press release"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "searchlight-svg-168cf5af",
-    "title": "Hotel and Tourism Association pleased with outcome of Restaurant Week",
-    "source": "Searchlight SVG",
-    "date": "2026-07-03",
-    "country": "VC",
-    "url": "https://www.searchlight.vc/press-release/2026/07/03/hotel-tourism-association-pleased-outcome-restaurant-week/",
-    "tags": [
-      "press release"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "searchlight-svg-8702812b",
-    "title": "National Public Library goes solar to reduce energy consumption",
-    "source": "Searchlight SVG",
-    "date": "2026-07-03",
-    "country": "VC",
-    "url": "https://www.searchlight.vc/news/2026/07/03/national-public-library-goes-solar-reduce-energy-consumption/",
-    "tags": [
-      "news"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "cayman-compass-6bcbc62a",
-    "title": "CIREBA responds to Parliament’s real estate motion",
-    "source": "Cayman Compass",
-    "date": "2026-07-03",
-    "country": "KY",
-    "url": "https://www.caymancompass.com/2026/07/03/cireba-responds-to-parliaments-real-estate-motion/",
-    "tags": [
-      "business",
-      "featured local home page",
-      "cayman islands real estate brokers association",
-      "real estate"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "cayman-compass-7977895d",
-    "title": "Government buying up land for port expansion",
-    "source": "Cayman Compass",
-    "date": "2026-07-03",
-    "country": "KY",
-    "url": "https://www.caymancompass.com/2026/07/03/government-buying-up-land-for-port-expansion/",
-    "tags": [
-      "featured local home page",
-      "local",
-      "government",
-      "port",
-      "spending"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "cnc3-5901e9ce",
-    "title": "Young charges political victimsation in firings of 3 T&TEC senior execs",
-    "source": "CNC3",
-    "date": "2026-07-03",
-    "country": "TT",
-    "url": "https://www.cnc3.co.tt/young-charges-political-victimsation-in-firings-of-3-ttec-senior-execs/?utm_source=rss&utm_medium=rss&utm_campaign=young-charges-political-victimsation-in-firings-of-3-ttec-senior-execs",
-    "tags": [
-      "business"
-    ],
-    "category": "Corporate",
-    "group": "Finance",
-    "decision": "publish",
-    "confidence": "high",
-    "reason": "Allegations of political dismissals at T&TEC (energy utility); state enterprise governance and labor impact.",
-    "classifier": "llm",
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "kaieteur-news-ea40e81a",
-    "title": "Hess, CNOOC made no investment in Stabroek Block for two years – financials",
-    "source": "Kaieteur News",
-    "date": "2026-07-02",
-    "country": "GY",
-    "url": "https://kaieteurnewsonline.com/2026/07/02/hess-and-cnooc-made-no-investment-in-stabroek-block-for-two-years-financials/",
-    "tags": [
-      "news",
-      "cnooc",
-      "financial statements",
-      "hess",
-      "stabroek block"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "kaieteur-news-cbe29501",
-    "title": "Guyana stands firm on joint Corentyne Bridge despite Suriname’s solo funding claim",
-    "source": "Kaieteur News",
-    "date": "2026-07-02",
-    "country": "GY",
-    "url": "https://kaieteurnewsonline.com/2026/07/02/guyana-stands-firm-on-joint-corentyne-bridge-despite-surinames-solo-funding-claim/",
-    "tags": [
-      "news",
-      "corentyne bridge",
-      "funding",
-      "suriname"
-    ],
-    "deal_status": "pending",
-    "deal_type": "FDI"
-  },
-  {
-    "id": "kaieteur-news-d26df2ea",
-    "title": "Omai wants ‘bigger bucks’ for Guyana’s gold on stock market",
-    "source": "Kaieteur News",
-    "date": "2026-07-02",
-    "country": "GY",
-    "url": "https://kaieteurnewsonline.com/2026/07/02/omai-wants-bigger-bucks-for-guyanas-gold-on-stock-exchange/",
-    "tags": [
-      "news",
-      "gold market value",
-      "guyana’s gold",
-      "omai gold mines",
-      "stock exchange"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "jamaica-observer-dc5e3d26",
-    "title": "Deputy gov’t trustee urges safeguard against business failure",
-    "source": "Jamaica Observer",
-    "date": "2026-07-02",
-    "country": "JM",
-    "url": "https://www.jamaicaobserver.com/2026/07/01/deputy-govt-trustee-urges-safeguard-business-failure/",
-    "tags": [
-      "latest news",
-      "news",
-      "micro small and medium-sized enterprises",
-      "office of the government trustee",
-      "small business association of jamaica"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "eyewitness-news-d7103c8f",
-    "title": "Two Govt Employees Wanted in Alleged Housing Fraud Case; One Remains at Large",
-    "source": "Eyewitness News",
-    "date": "2026-07-02",
-    "country": "BS",
-    "url": "https://ewnews.com/two-govt-employees-wanted-in-alleged-housing-fraud-case-one-remains-at-large/?utm_source=rss&utm_medium=rss&utm_campaign=two-govt-employees-wanted-in-alleged-housing-fraud-case-one-remains-at-large",
-    "tags": [
-      "local",
-      "newscasts",
-      "videos"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "starnieuws-c9d28ecf",
-    "title": "Nederland reserveert 66,6 miljoen euro voor slavernijprojecten in Suriname",
-    "source": "Starnieuws",
-    "date": "2026-07-02",
-    "country": "SR",
-    "url": "https://www.starnieuws.com/index.php/welcome/index/nieuwsitem/92768",
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "antigua-news-room-38a2345f",
-    "title": "Transport Workers Raise Concerns Over Promotions, Unilateral Job Reassignments and Workplace Safety",
-    "source": "Antigua News Room",
-    "date": "2026-07-02",
-    "country": "AG",
-    "url": "https://antiguanewsroom.com/transport-workers-raise-concerns-over-promotions-unilateral-job-reassignments-and-workplace-safety/",
-    "tags": [
-      "news"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "bvi-news-823bbb35",
-    "title": "Nurses, doctors threatening strike over delayed salary increases",
-    "source": "BVI News",
-    "date": "2026-07-02",
-    "country": "VG",
-    "url": "https://bvinews.com/nurses-doctors-threatening-strike-over-delayed-salary-increases/",
-    "tags": [
-      "all news"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "bvi-news-ec57f355",
-    "title": "Premier apologises for delay in retiree pension increases",
-    "source": "BVI News",
-    "date": "2026-07-02",
-    "country": "VG",
-    "url": "https://bvinews.com/premier-apologises-for-delay-in-retiree-pension-increases/",
-    "tags": [
-      "all news"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "bvi-news-8309b470",
-    "title": "Premier: Salary hikes without pension reform a ‘missed opportunity’",
-    "source": "BVI News",
-    "date": "2026-07-02",
-    "country": "VG",
-    "url": "https://bvinews.com/salary-hikes-without-pension-reform-a-missed-opportunity-premier-admits/",
-    "tags": [
-      "all news"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "the-star-jamaica-a5cf1b80",
-    "title": "Teen overcomes seizures to start own business",
-    "source": "The Star (Jamaica)",
-    "date": "2026-07-02",
-    "country": "JM",
-    "url": "https://jamaica-star.com/article/news/20260702/teen-overcomes-seizures-start-own-business",
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "breaking-belize-news-058d0f64",
-    "title": "Ministry of Education and Caribbean Development Bank tour refurbishment works at Stella Maris Special Education and Life Skills Learning Centre",
-    "source": "Breaking Belize News",
-    "date": "2026-07-02",
-    "country": "BZ",
-    "url": "https://www.breakingbelizenews.com/2026/07/02/ministry-of-education-and-caribbean-development-bank-tour-refurbishment-works-at-stella-maris-special-education-and-life-skills-learning-centre/",
-    "tags": [
-      "community development",
-      "last news"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "now-grenada-9bee957a",
-    "title": "15,000 pounds of ginger procured to drive spice industry revival",
-    "source": "NOW Grenada",
-    "date": "2026-07-02",
-    "country": "GD",
-    "url": "https://nowgrenada.com/2026/07/15000-pounds-of-ginger-procured-to-drive-spice-industry-revival/",
-    "tags": [
-      "agriculture/fisheries",
-      "business",
-      "press release",
-      "ginger",
-      "lauren st louis",
-      "ministry of agriculture"
     ],
     "deal_status": "not_a_deal",
     "deal_type": null
