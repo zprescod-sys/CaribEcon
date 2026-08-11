@@ -35,6 +35,31 @@ export function yoy_change(points: DataPoint[]): CalculationResult[] {
   });
 }
 
+/* Percentage-POINT change year over year — the correct counterpart to yoy_change for a series
+   that is already a rate (unit "%"): inflation moving 4.2% -> 5.1% is +0.9pp, not +21.4%.
+   Running yoy_change on a rate produces that 21.4%, which reads as a rate of change and
+   misleads; api/deepdive.ts picks between the two on the series unit for exactly this reason.
+
+   Same refusals as yoy_change: requires a non-null value at both the target year and the
+   immediately preceding year, and never interpolates across a gap. No zero-denominator case
+   exists here — this is a difference, not a ratio — so a zero prior year is a valid input. */
+export function pp_change(points: DataPoint[]): CalculationResult[] {
+  const byYear = new Map(points.map(p => [p.year, p]));
+  const years = [...byYear.keys()].sort((a, b) => a - b);
+
+  return years.map(year => {
+    const current = byYear.get(year)!;
+    const previous = byYear.get(year - 1);
+    const inputYears = previous ? [year - 1, year] : [year];
+
+    if (current.value === null || !previous || previous.value === null) {
+      return { year, value: null, inputYears };
+    }
+
+    return { year, value: current.value - previous.value, inputYears };
+  });
+}
+
 /* Arithmetic mean over the supplied range, stamped on the latest year in that range for
    display. Points with a null value (hub gaps) are excluded from both the sum and the
    count — a missing year must never silently pull the average down. */
@@ -56,6 +81,7 @@ export function period_average(points: DataPoint[]): CalculationResult {
 
 export const CALCULATION_REGISTRY = {
   yoy_change,
+  pp_change,
   period_average,
 } as const;
 
