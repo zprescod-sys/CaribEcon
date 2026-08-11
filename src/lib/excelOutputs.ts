@@ -45,6 +45,46 @@ export function evidenceId(country: string, indicator: string): string {
   return `${country}:${indicator}`;
 }
 
+/* Number formats. Levels take thousands separators and up to two decimals, which reads correctly
+   for both a millions-of-dollars figure (1,750,288) and a small one (6.51). Rates take a fixed
+   two decimals instead: a thousands separator is meaningless on a percentage, and a fixed width
+   keeps a column of rates aligned on the decimal point. */
+export const CHANGE_NUMBER_FORMAT = '0.00';
+export const YEAR_NUMBER_FORMAT = '0';
+
+export function numberFormatForUnit(unit: string): string {
+  return unit.trim() === '%' ? '0.00' : '#,##0.##';
+}
+
+/* The provider's own identifier for a series — "NY.GDP.MKTP.CN", "GGXWDG_NGDP" — for the Sources
+   sheet's Series column.
+
+   Read from sourceUrl rather than parsed out of the source prose, because the prose is only
+   reliable for one family: World Bank records name the code in a trailing parenthetical, but IMF
+   WEO records read "IMF World Economic Outlook (DataMapper)", where the parenthetical is the tool
+   rather than the series. Both families do carry the code in their URL path.
+
+   A hand-collected primary source (a central bank PDF, a ministry review) has no machine
+   identifier at all, and inventing one would be exactly the kind of fabricated provenance this
+   project refuses. Those return null, and the Sources sheet shows an em dash — the Source and URL
+   columns already name the document. */
+export function seriesIdentifier(evidence: Pick<DataEvidence, 'source' | 'sourceUrl'>): string | null {
+  const url = evidence.sourceUrl ?? '';
+
+  const wdi = url.match(/\/indicator\/([A-Za-z0-9_.]+)/); // api.worldbank.org/v2/country/JAM/indicator/<code>
+  if (wdi) return wdi[1];
+
+  // IMF WEO codes commonly carry an underscore (GGXWDG_NGDP, NGDP_RPCH), unlike WDI's dotted
+  // codes — the character class below must include it or a real WEO series loses its identifier.
+  const weo = url.match(/\/datamapper\/([A-Za-z0-9_.]+)/); // imf.org/external/datamapper/<code>/GUY
+  if (weo) return weo[1];
+
+  // Fallback for a source that names a bare code in a parenthetical, e.g. "… (NY.GDP.MKTP.CN)".
+  // Deliberately strict: must look like an identifier, so "(DataMapper)" or "(CSO)" never matches.
+  const parenthetical = (evidence.source ?? '').match(/\(([A-Z0-9]+(?:[._][A-Z0-9]+)+)\)/);
+  return parenthetical ? parenthetical[1] : null;
+}
+
 // ── Contracts ──────────────────────────────────────────────────────────────────────────────
 
 /* Plan §5: "A validated ChartSpec defines chart type, indicator, countries, year range, and
@@ -88,10 +128,62 @@ export interface TableSection {
   headerRowOffset: number;
   firstDataRowOffset: number;
   summaryRowOffsets: number[];
+  /* One Excel number format per column (Year, value, change), so a percentage and a
+     millions-of-dollars level each render correctly and the renderer never re-derives this from
+     the unit itself — "every... number format is decided here" per this file's header comment,
+     which a previous version of this module said but did not actually do. Applied to the data
+     band AND to summaryRowOffsets' value column, so "Period average" reads "2,568,972.45"
+     rather than Excel's default General format spelling out every float digit. */
+  dataNumberFormats: [string, string, string];
+}
+
+/* One row per selected indicator, summarising its provenance rather than repeating a citation
+   per observation — the Sources sheet is written for a human reader, not for lineage lookup
+   (that stays on the Evidence sheet: see EvidenceRow). Deliberately excludes evidence IDs,
+   confidence, and the internal indicator slug — those are backend fields with no meaning to
+   someone reading the workbook, and the plan (§5) already keeps the model that could misuse them
+   away from ever seeing raw evidence anyway. */
+export interface SourceSummaryRow {
+  indicator: string; // human-readable label, e.g. "Nominal GDP"
+  unit: string;
+  coverage: string;  // e.g. "2015–2025", or a single year if only one is sourced
+  source: string;    // sourceOrg's short tag, e.g. "World Bank WDI"
+  series: string;    // provider's own series/dataset code, or "—" for a hand-collected primary
+                      // source with no machine identifier (see seriesIdentifier)
+  vintage: string;
+  sourceUrl: string;
+}
+
+/* Column order and headings, as [key, heading] pairs — same pattern as EVIDENCE_COLUMNS below,
+   for the same reason: the header and the per-row cell order can never silently drift apart. */
+export const SOURCE_SUMMARY_COLUMNS: readonly (readonly [keyof SourceSummaryRow, string])[] = [
+  ['indicator', 'Indicator'],
+  ['unit', 'Unit'],
+  ['coverage', 'Coverage'],
+  ['source', 'Source'],
+  ['series', 'Series'],
+  ['vintage', 'Vintage'],
+  ['sourceUrl', 'URL'],
+] as const;
+
+export interface SourcesSection {
+  kind: 'sources';
+  startRow: number;
+  rowCount: number;    // heading row + header row + one row per indicator
+  columnCount: number;
+  heading: string;
+  header: string[];
+  rows: SourceSummaryRow[];
+  headingRowOffset: number;
+  headerRowOffset: number;
+  firstDataRowOffset: number;
+  /* Which column the renderer turns into a clickable hyperlink. Published rather than assumed to
+     be the last column, so SOURCE_SUMMARY_COLUMNS can be reordered without a renderer edit. */
+  urlColumnIndex: number;
 }
 
 export interface ListSection {
-  kind: 'sources' | 'caveats';
+  kind: 'caveats';
   startRow: number;
   rowCount: number;
   columnCount: number;
@@ -99,7 +191,19 @@ export interface ListSection {
   rows: string[][];
 }
 
-export type WorkbookSection = TableSection | ListSection;
+/* The report's own heading block — title plus a one-line subtitle naming scope and pointing at
+   where the full provenance lives. A section like any other, so the renderer never special-cases
+   row 0 and buildWorkbookPlan's row arithmetic has exactly one code path. */
+export interface TitleSection {
+  kind: 'title';
+  startRow: number;
+  rowCount: number;
+  columnCount: number;
+  title: string;
+  subtitle: string;
+}
+
+export type WorkbookSection = TitleSection | TableSection | SourcesSection | ListSection;
 
 export interface ChartPlacement {
   spec: ChartSpec;
@@ -166,6 +270,10 @@ export interface WorkbookPlan {
   charts: ChartPlacement[];
   evidenceHeader: string[];
   evidenceRows: EvidenceRow[];
+  /* The same rows that populate the Sources section's rendered table, exposed separately as
+     structured data (not just render output) so a later feature — e.g. a per-indicator news
+     write-up — can key off indicator/source without re-deriving it from a rendered section. */
+  sources: SourceSummaryRow[];
   caveats: string[];
   totalRows: number;
 }
@@ -301,21 +409,92 @@ function buildTableSection(result: IndicatorResult, startRow: number): TableSect
     headerRowOffset: 2,
     firstDataRowOffset,
     summaryRowOffsets: [summaryRowOffset],
+    dataNumberFormats: [YEAR_NUMBER_FORMAT, numberFormatForUnit(evidence.unit), CHANGE_NUMBER_FORMAT],
   };
 }
 
-function buildListSection(
-  kind: 'sources' | 'caveats',
-  heading: string,
-  rows: string[][],
-  startRow: number,
-): ListSection {
+/* A report-level title and one-line subtitle. A section like the others, at startRow 0, so
+   buildWorkbookPlan's row bookkeeping has exactly one code path — nothing special-cases row 0.
+
+   Titled by country code, not name, to match the sheet name's own convention ("CaribEcon GY Deep
+   Dive") — this module has no country-name lookup and deliberately takes no runtime import of
+   one: indicators.ts's country list is JSON the client already has via the loaded snapshot, and
+   pulling it in here for a label would duplicate that data in the bundle for no reason. */
+function buildTitleSection(intent: SingleCountryIntent, results: readonly IndicatorResult[]): TitleSection {
+  const years = results.flatMap(r => r.evidence.points.map(p => p.year));
+  const subtitle = results.length
+    ? `${results.length} indicator${results.length === 1 ? '' : 's'} · ` +
+      `${Math.min(...years)}–${Math.max(...years)} · ` +
+      `Full observation-level provenance is on the hidden Evidence sheet.`
+    : 'No sourced series for this selection — see Caveats below.';
+
   return {
-    kind,
+    kind: 'title',
+    startRow: 0,
+    rowCount: 2,
+    columnCount: 3,
+    title: `CaribEcon Deep Dive — ${intent.country}`,
+    subtitle,
+  };
+}
+
+/* The non-null year span actually retrieved — same "what was retrieved, not what was requested"
+   rule buildChartSpecification applies, restated here so the Sources row is honest even for a
+   series buildChartSpecification would skip entirely (e.g. every point still null: falls back to
+   the full point range rather than claiming "no coverage" for a series that IS in the report). */
+function coverageLabel(points: readonly DataPoint[]): string {
+  const withValue = points.filter(p => p.value !== null);
+  const years = (withValue.length ? withValue : points).map(p => p.year);
+  if (!years.length) return '—';
+  const from = Math.min(...years);
+  const to = Math.max(...years);
+  return from === to ? String(from) : `${from}–${to}`;
+}
+
+/* One summarised row per selected indicator (not per observation — see SourceSummaryRow) plus
+   the raw rows, so buildWorkbookPlan can also expose them unrendered on WorkbookPlan.sources. */
+function buildSourcesSection(
+  results: readonly IndicatorResult[],
+  startRow: number,
+): { section: SourcesSection; rows: SourceSummaryRow[] } {
+  const rows: SourceSummaryRow[] = results.map(r => ({
+    indicator: r.evidence.label,
+    unit: r.evidence.unit,
+    coverage: coverageLabel(r.evidence.points),
+    source: r.evidence.sourceOrg,
+    series: seriesIdentifier(r.evidence) ?? '—',
+    vintage: r.evidence.vintage,
+    sourceUrl: r.evidence.sourceUrl,
+  }));
+
+  const headerRowOffset = 1;
+  const firstDataRowOffset = 2;
+
+  return {
+    rows,
+    section: {
+      kind: 'sources',
+      startRow,
+      rowCount: firstDataRowOffset + rows.length,
+      columnCount: SOURCE_SUMMARY_COLUMNS.length,
+      heading: 'Sources',
+      header: SOURCE_SUMMARY_COLUMNS.map(([, heading]) => heading),
+      rows,
+      headingRowOffset: 0,
+      headerRowOffset,
+      firstDataRowOffset,
+      urlColumnIndex: SOURCE_SUMMARY_COLUMNS.findIndex(([key]) => key === 'sourceUrl'),
+    },
+  };
+}
+
+function buildCaveatsSection(rows: string[][], startRow: number): ListSection {
+  return {
+    kind: 'caveats',
     startRow,
     rowCount: rows.length + 1, // heading row plus the body
     columnCount: Math.max(1, ...rows.map(r => r.length)),
-    heading,
+    heading: 'Caveats',
     rows,
   };
 }
@@ -349,7 +528,10 @@ export function buildWorkbookPlan(
   const charts: ChartPlacement[] = [];
   const evidenceRows: EvidenceRow[] = [];
 
-  let row = 0;
+  const titleSection = buildTitleSection(intent, results);
+  sections.push(titleSection);
+  let row = titleSection.startRow + titleSection.rowCount + SECTION_GAP;
+
   for (const result of results) {
     const table = buildTableSection(result, row);
     sections.push(table);
@@ -394,20 +576,13 @@ export function buildWorkbookPlan(
     }
   }
 
-  // Sources: one row per series, deduped, in the order the tables appear.
-  const sourceRows = results.map(r => [
-    r.evidence.label,
-    r.evidence.source,
-    r.evidence.sourceOrg,
-    r.evidence.sourceTier,
-    r.evidence.vintage,
-    r.evidence.confidence,
-    r.evidence.sourceUrl,
-  ]);
-  if (sourceRows.length) {
-    const sources = buildListSection('sources', 'Sources', sourceRows, row);
-    sections.push(sources);
-    row = sources.startRow + sources.rowCount + SECTION_GAP;
+  // Sources: one summarised row per indicator, in the order the tables appear.
+  let sources: SourceSummaryRow[] = [];
+  if (results.length) {
+    const built = buildSourcesSection(results, row);
+    sections.push(built.section);
+    sources = built.rows;
+    row = built.section.startRow + built.section.rowCount + SECTION_GAP;
   }
 
   const caveats = [
@@ -416,7 +591,7 @@ export function buildWorkbookPlan(
     ...missCaveats(misses),
   ];
   if (caveats.length) {
-    const section = buildListSection('caveats', 'Caveats', caveats.map(c => [c]), row);
+    const section = buildCaveatsSection(caveats.map(c => [c]), row);
     sections.push(section);
     row = section.startRow + section.rowCount + SECTION_GAP;
   }
@@ -434,6 +609,7 @@ export function buildWorkbookPlan(
     charts,
     evidenceHeader: EVIDENCE_COLUMNS.map(([, heading]) => heading),
     evidenceRows,
+    sources,
     caveats,
     totalRows: row,
   };

@@ -20,6 +20,8 @@ import {
   calculationForUnit,
   evidenceId,
   EVIDENCE_COLUMNS,
+  SOURCE_SUMMARY_COLUMNS,
+  seriesIdentifier,
   SERIES_COLORS,
 } from './excelOutputs.ts';
 import { yoy_change, pp_change, period_average } from './calculations.ts';
@@ -64,6 +66,51 @@ const intent = (over = {}) => ({
   ...over,
 });
 
+// ── seriesIdentifier ───────────────────────────────────────────────────────────────────────
+
+test('seriesIdentifier extracts a World Bank WDI code, dots and all', () => {
+  const id = seriesIdentifier({
+    source: 'World Bank — World Development Indicators (NY.GDP.MKTP.CN)',
+    sourceUrl: 'https://api.worldbank.org/v2/country/JAM/indicator/NY.GDP.MKTP.CN?format=json',
+  });
+  assert.equal(id, 'NY.GDP.MKTP.CN');
+});
+
+test('seriesIdentifier extracts an IMF WEO code, including the underscore', () => {
+  // Regression: an earlier version of this regex excluded "_" from its character class, which
+  // would have silently truncated or dropped every WEO code — every real WEO code carries one
+  // (GGXWDG_NGDP, NGDP_RPCH), unlike WDI's dot-only codes.
+  const id = seriesIdentifier({
+    source: 'IMF World Economic Outlook (DataMapper)',
+    sourceUrl: 'https://www.imf.org/external/datamapper/GGXWDG_NGDP/GUY',
+  });
+  assert.equal(id, 'GGXWDG_NGDP');
+});
+
+test('seriesIdentifier falls back to a parenthetical code when the URL itself carries none', () => {
+  const id = seriesIdentifier({
+    source: 'World Bank WDI series (NY.GDP.MKTP.KD.ZG)',
+    sourceUrl: 'https://data.worldbank.org/some-landing-page',
+  });
+  assert.equal(id, 'NY.GDP.MKTP.KD.ZG');
+});
+
+test('seriesIdentifier returns null for a hand-collected primary source, never a fabricated code', () => {
+  const id = seriesIdentifier({
+    source: 'T&T Ministry of Finance — Review of the Economy 2025',
+    sourceUrl: 'https://www.finance.gov.tt/category/economic-review/',
+  });
+  assert.equal(id, null);
+});
+
+test('seriesIdentifier does not mistake a tool name in parentheses for a code', () => {
+  const id = seriesIdentifier({
+    source: 'IMF World Economic Outlook (DataMapper)',
+    sourceUrl: 'https://www.imf.org/external/datamapper/', // no code in the path this time
+  });
+  assert.equal(id, null, '"DataMapper" must not match the parenthetical fallback');
+});
+
 // ── Unit gating ────────────────────────────────────────────────────────────────────────────
 
 test('calculationForUnit routes rates to pp_change and levels to yoy_change', () => {
@@ -76,13 +123,13 @@ test('calculationForUnit routes rates to pp_change and levels to yoy_change', ()
 });
 
 test('the change column is labelled for the calculation that produced it', () => {
-  const rate = buildWorkbookPlan([result()], intent()).sections[0];
+  const rate = buildWorkbookPlan([result()], intent()).sections.find(s => s.kind === 'table');
   assert.equal(rate.header[2], 'Change (pp)');
 
   const level = buildWorkbookPlan(
     [result(evidence({ indicator: 'nominal_gdp', label: 'Nominal GDP', unit: 'GY$ mn' }))],
     intent({ indicators: ['nominal_gdp'] }),
-  ).sections[0];
+  ).sections.find(s => s.kind === 'table');
   assert.equal(level.header[2], 'Change (%)');
 });
 
@@ -284,7 +331,7 @@ test('a series with no plottable values produces a table but no chart', () => {
 
 test('a gap year occupies a row with a blank cell — never zero, never dropped', () => {
   const withGap = evidence({ points: [point(2020, 43.5), point(2021, null), point(2022, 62.3)] });
-  const table = buildWorkbookPlan([result(withGap)], intent()).sections[0];
+  const table = buildWorkbookPlan([result(withGap)], intent()).sections.find(s => s.kind === 'table');
   const dataRows = table.rows.slice(table.firstDataRowOffset, table.firstDataRowOffset + 3);
 
   assert.equal(dataRows.length, 3, 'the gap year still occupies a row');
@@ -293,7 +340,7 @@ test('a gap year occupies a row with a blank cell — never zero, never dropped'
 });
 
 test('the offsets the renderer styles by point at the rows they claim to', () => {
-  const table = buildWorkbookPlan([result()], intent()).sections[0];
+  const table = buildWorkbookPlan([result()], intent()).sections.find(s => s.kind === 'table');
   assert.equal(table.rows[table.titleRowOffset][0], 'GDP Growth Rate');
   assert.deepEqual(table.rows[table.headerRowOffset], table.header);
   assert.equal(table.rows[table.firstDataRowOffset][0], 2020);
@@ -303,16 +350,84 @@ test('the offsets the renderer styles by point at the rows they claim to', () =>
   assert.equal(table.rowCount, table.rows.length);
 });
 
+test('each column of the table has a number format matching its content', () => {
+  const rate = buildWorkbookPlan([result()], intent()).sections.find(s => s.kind === 'table');
+  assert.equal(rate.dataNumberFormats[0], '0'); // Year
+  assert.equal(rate.dataNumberFormats[1], '0.00'); // gdp_growth is "%"
+  assert.equal(rate.dataNumberFormats[2], '0.00'); // change column is always a percentage figure
+
+  const level = buildWorkbookPlan(
+    [result(evidence({ indicator: 'nominal_gdp', label: 'Nominal GDP', unit: 'GY$ mn' }))],
+    intent({ indicators: ['nominal_gdp'] }),
+  ).sections.find(s => s.kind === 'table');
+  assert.equal(level.dataNumberFormats[1], '#,##0.##', 'a level indicator needs thousands separators');
+});
+
 // ── Sources, caveats, gaps ─────────────────────────────────────────────────────────────────
 
-test('every series contributes a sources row carrying its full citation', () => {
+test('every series contributes a summarised sources row, one per indicator, not per observation', () => {
   const plan = buildWorkbookPlan([result()], intent());
-  const sources = plan.sections.find(s => s.kind === 'sources');
-  assert.equal(sources.rows.length, 1);
-  const row = sources.rows[0].join(' | ');
-  for (const field of ['IMF WEO April 2026', 'IMF', 'comparable', '2026-04', 'high', 'https://']) {
-    assert.ok(row.includes(field), `sources row is missing ${field}`);
+  const sourcesSection = plan.sections.find(s => s.kind === 'sources');
+  assert.equal(sourcesSection.rows.length, 1, 'one row per indicator, not one per year');
+
+  const row = sourcesSection.rows[0];
+  assert.equal(row.indicator, 'GDP Growth Rate');
+  assert.equal(row.unit, '%');
+  assert.equal(row.coverage, '2020–2022');
+  assert.equal(row.source, 'IMF'); // sourceOrg's short tag, not the full citation string
+  assert.equal(row.series, 'NGDP_RPCH'); // extracted from the DataMapper URL, incl. the underscore
+  assert.equal(row.vintage, '2026-04');
+  assert.equal(row.sourceUrl, 'https://www.imf.org/external/datamapper/NGDP_RPCH');
+
+  // Internal-only fields must not appear on the user-facing summary row.
+  for (const internal of ['evidenceId', 'confidence', 'sourceTier']) {
+    assert.ok(!(internal in row), `sources row leaked internal field "${internal}"`);
   }
+});
+
+test('SOURCE_SUMMARY_COLUMNS names a real SourceSummaryRow key for every heading it declares', () => {
+  const plan = buildWorkbookPlan([result()], intent());
+  const sourcesSection = plan.sections.find(s => s.kind === 'sources');
+  const row = sourcesSection.rows[0];
+  for (const [key, heading] of SOURCE_SUMMARY_COLUMNS) {
+    assert.ok(key in row, `SOURCE_SUMMARY_COLUMNS declares "${key}", which SourceSummaryRow does not carry`);
+    assert.ok(heading.length > 0);
+  }
+  assert.deepEqual(SOURCE_SUMMARY_COLUMNS.map(([, h]) => h), sourcesSection.header);
+  assert.equal(sourcesSection.urlColumnIndex, SOURCE_SUMMARY_COLUMNS.findIndex(([k]) => k === 'sourceUrl'));
+});
+
+test('a series with no machine-readable identifier reports "—" rather than a fabricated code', () => {
+  const primary = evidence({
+    source: 'T&T Ministry of Finance — Review of the Economy 2025',
+    sourceOrg: 'MoF (T&T)',
+    sourceUrl: 'https://www.finance.gov.tt/category/economic-review/',
+  });
+  const plan = buildWorkbookPlan([result(primary)], intent());
+  const row = plan.sections.find(s => s.kind === 'sources').rows[0];
+  assert.equal(row.series, '—');
+});
+
+test('WorkbookPlan.sources exposes the same rows as structured data, not only rendered output', () => {
+  const plan = buildWorkbookPlan([result()], intent());
+  const sourcesSection = plan.sections.find(s => s.kind === 'sources');
+  assert.deepEqual(plan.sources, sourcesSection.rows);
+});
+
+test('the title section names the economy and points to the hidden Evidence sheet', () => {
+  const plan = buildWorkbookPlan([result(), result(evidence({ indicator: 'inflation', label: 'Inflation Rate' }))], intent({ indicators: ['gdp_growth', 'inflation'] }));
+  const title = plan.sections.find(s => s.kind === 'title');
+  assert.ok(title, 'every plan has a title section');
+  assert.equal(plan.sections[0], title, 'the title section is always first');
+  assert.match(title.title, /GY/);
+  assert.match(title.subtitle, /2 indicators/);
+  assert.match(title.subtitle, /hidden Evidence sheet/i);
+});
+
+test('with no succeeded indicators, the title still reports the empty result honestly', () => {
+  const plan = buildWorkbookPlan([], intent());
+  const title = plan.sections.find(s => s.kind === 'title');
+  assert.match(title.subtitle, /no sourced series/i);
 });
 
 test('mixed units across indicators raise a do-not-compare caveat', () => {
@@ -387,7 +502,7 @@ test('EVIDENCE_COLUMNS names a real EvidenceRow key for every heading it declare
 });
 
 test('dataRowCount matches the rows between the header and the summary', () => {
-  const table = buildWorkbookPlan([result()], intent()).sections[0];
+  const table = buildWorkbookPlan([result()], intent()).sections.find(s => s.kind === 'table');
   assert.equal(table.dataRowCount, evidence().points.length);
   // The renderer applies number formats to exactly this band; if it were wrong it would format
   // the blank spacer or the summary row as data.

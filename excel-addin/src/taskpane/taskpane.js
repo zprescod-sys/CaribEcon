@@ -26,7 +26,12 @@ import {
    same rules, so the pane executes a layout it did not invent. Importing the TypeScript source
    directly is what webpack.config.js's .ts babel rule exists for — the alternative was a second
    copy of the sheet-naming and column-order logic, free to drift from the tested one. */
-import { resolveSheetName, EVIDENCE_COLUMNS, SERIES_COLORS } from '../../../src/lib/excelOutputs';
+import {
+  resolveSheetName,
+  EVIDENCE_COLUMNS,
+  SOURCE_SUMMARY_COLUMNS,
+  SERIES_COLORS,
+} from '../../../src/lib/excelOutputs';
 
 const API_BASE = process.env.CARIBECON_API_BASE;
 const RESEARCH_TOKEN = process.env.CARIBECON_RESEARCH_TOKEN;
@@ -665,13 +670,35 @@ function cellValues(rows) {
   return rows.map(row => row.map(value => (value === null || value === undefined ? '' : value)));
 }
 
+// Pads a short row to a fixed width: Office.js requires every row of a values array to match
+// the range's column count exactly.
+function padRow(row, columnCount) {
+  const padded = row.slice(0, columnCount);
+  while (padded.length < columnCount) padded.push('');
+  return padded;
+}
+
+function writeTitleSection(sheet, section) {
+  const title = sheet.getRangeByIndexes(section.startRow, 0, 1, section.columnCount);
+  title.values = [padRow([section.title], section.columnCount)];
+  title.format.font.bold = true;
+  title.format.font.size = 16;
+  title.format.font.color = '#0E5E4E';
+
+  const subtitle = sheet.getRangeByIndexes(section.startRow + 1, 0, 1, section.columnCount);
+  subtitle.values = [padRow([section.subtitle], section.columnCount)];
+  subtitle.format.font.size = 10;
+  subtitle.format.font.color = '#4C5A54';
+}
+
 function writeTableSection(sheet, section) {
   const top = section.startRow;
   const block = sheet.getRangeByIndexes(top, 0, section.rowCount, section.columnCount);
   block.values = cellValues(section.rows);
 
-  // Year as a plain integer; values and changes with separators but no forced decimals, so a
-  // percentage and a millions-of-dollars level both read correctly — same rule as writeValues().
+  // Per-column format from the plan (§5: "every... number format is decided" server-side) — a
+  // percentage and a millions-of-dollars level each get the format that actually reads correctly
+  // for them; see numberFormatForUnit in excelOutputs.ts.
   if (section.dataRowCount > 0) {
     const data = sheet.getRangeByIndexes(
       top + section.firstDataRowOffset,
@@ -679,11 +706,10 @@ function writeTableSection(sheet, section) {
       section.dataRowCount,
       section.columnCount,
     );
-    data.numberFormat = Array.from({ length: section.dataRowCount }, () => [
-      '0',
-      '#,##0.##',
-      '#,##0.##',
-    ]);
+    data.numberFormat = Array.from(
+      { length: section.dataRowCount },
+      () => section.dataNumberFormats,
+    );
   }
 
   const title = sheet.getRangeByIndexes(top + section.titleRowOffset, 0, 1, section.columnCount);
@@ -697,10 +723,53 @@ function writeTableSection(sheet, section) {
 
   for (const offset of section.summaryRowOffsets) {
     sheet.getRangeByIndexes(top + offset, 0, 1, section.columnCount).format.font.bold = true;
+    // The value column's own format applies to "Period average" too, so it reads "2,568,972.45"
+    // rather than Excel's default General format spelling out every float digit — previously
+    // unformatted, since only the data band above got a numberFormat pass.
+    sheet.getRangeByIndexes(top + offset, 1, 1, 1).numberFormat = [[section.dataNumberFormats[1]]];
   }
 }
 
-function writeListSection(sheet, section) {
+/* Rendered as a real Excel Table (ListObject) — banded rows, a filter row, and a stable
+   structured reference — rather than a plain styled range, per the ask to "format the range as
+   a readable Excel table". Table creation is ExcelApi 1.1 (always available); only the per-row
+   hyperlinks below need the `rich` (1.7) gate. */
+function writeSourcesSection(sheet, section, rich) {
+  const heading = sheet.getRangeByIndexes(section.startRow, 0, 1, 1);
+  heading.values = [[section.heading]];
+  heading.format.font.bold = true;
+  heading.format.font.size = 12;
+  heading.format.font.color = '#0E5E4E';
+
+  if (!section.rows.length) return;
+
+  const headerTop = section.startRow + section.headerRowOffset;
+  const tableRange = sheet.getRangeByIndexes(
+    headerTop,
+    0,
+    1 + section.rows.length,
+    section.columnCount,
+  );
+  const body = section.rows.map(row => SOURCE_SUMMARY_COLUMNS.map(([key]) => row[key]));
+  tableRange.values = cellValues([section.header, ...body]);
+
+  const table = sheet.tables.add(tableRange, true);
+  table.name = 'CaribEconSources';
+  table.style = 'TableStyleLight15';
+
+  if (rich) {
+    // One hyperlink per row rather than a range-wide one — Range.hyperlink addresses a single
+    // destination, so each hyperlink cell needs its own single-cell range.
+    section.rows.forEach((row, i) => {
+      const url = safeUrl(row.sourceUrl);
+      if (!url) return;
+      const cell = sheet.getRangeByIndexes(headerTop + 1 + i, section.urlColumnIndex, 1, 1);
+      cell.hyperlink = { address: url, textToDisplay: url };
+    });
+  }
+}
+
+function writeCaveatsSection(sheet, section) {
   const heading = sheet.getRangeByIndexes(section.startRow, 0, 1, 1);
   heading.values = [[section.heading]];
   heading.format.font.bold = true;
@@ -714,12 +783,7 @@ function writeListSection(sheet, section) {
     section.rows.length,
     section.columnCount,
   );
-  // Pad short rows: Office.js requires every row of a values array to match the range width.
-  body.values = section.rows.map(row => {
-    const padded = row.slice(0, section.columnCount);
-    while (padded.length < section.columnCount) padded.push('');
-    return padded;
-  });
+  body.values = section.rows.map(row => padRow(row, section.columnCount));
   body.format.font.size = 9;
   body.format.font.color = '#4C5A54';
 }
@@ -749,6 +813,7 @@ function addChart(sheet, placement, index, rich) {
   );
   chart.title.text = spec.title;
   chart.axes.valueAxis.title.text = spec.unit;
+  chart.axes.categoryAxis.title.text = 'Year';
   chart.legend.visible = false; // one series per chart, so a legend only repeats the title
 
   if (!rich) return;
@@ -804,21 +869,30 @@ async function insertDeepDiveReport() {
 
       const report = sheets.add(reportName);
       for (const section of plan.sections) {
-        if (section.kind === 'table') writeTableSection(report, section);
-        else writeListSection(report, section);
+        if (section.kind === 'title') writeTitleSection(report, section);
+        else if (section.kind === 'table') writeTableSection(report, section);
+        else if (section.kind === 'sources') writeSourcesSection(report, section, rich);
+        else writeCaveatsSection(report, section); // 'caveats'
       }
       plan.charts.forEach((placement, i) => addChart(report, placement, i, rich));
-      report.getRange('A:C').format.autofitColumns();
+      // The whole used range, not a hardcoded 'A:C' — the Sources table alone is 7 columns wide,
+      // and a hardcoded width would leave it at Excel's default column width.
+      report.getUsedRange().format.autofitColumns();
 
-      writeEvidenceSheet(sheets.add(evidenceName), plan);
+      // Detail evidence lives here for the app (and a future citation feature) to read, but a
+      // reader opening the report should see the summarised Sources table, not one row per
+      // observation — so this sheet is written, then hidden rather than left as a visible tab.
+      const evidenceSheet = sheets.add(evidenceName);
+      writeEvidenceSheet(evidenceSheet, plan);
+      evidenceSheet.visibility = Excel.SheetVisibility.hidden;
 
       report.activate();
       await ctx.sync();
 
       note.textContent =
         `Wrote "${reportName}" with ${plan.charts.length} chart` +
-        `${plan.charts.length === 1 ? '' : 's'}, and "${evidenceName}" with ` +
-        `${plan.evidenceRows.length} lineage rows.`;
+        `${plan.charts.length === 1 ? '' : 's'}. Full observation-level provenance is on the ` +
+        `hidden "${evidenceName}" sheet (right-click any tab → Unhide to view it).`;
     });
   } catch (error) {
     note.textContent = `Could not write the report: ${error.message}`;
