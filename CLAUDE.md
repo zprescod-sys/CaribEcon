@@ -10,11 +10,12 @@ Read at the start of every session to re-ground. This file is the project's orie
 ## Active build — CaribEcon Excel buildathon
 
 **The canonical engineering plan is
-`plans/CaribEcon_AskCaribEcon_Refined_Build_Prompt.md`** (`plans/` is gitignored and local
-only). Its filename is retained, but it is now the plan for the whole Excel add-in: the existing
-Browse and custom-function surface, Single Country Deep Dive, Country Comparison, structured
-charts/output, and bounded Ask CaribEcon. Read it before touching `excel-addin/`, `api/`, or the
-server-side AI modules.
+`CaribEcon_AskCaribEcon_Refined_Build_Prompt.md`** (repo root, tracked — shared with the team for
+the buildathon; `plans/` alongside it is gitignored and holds local-only strategy/roadmap
+material, not this plan). Its filename is retained, but it is now the plan for the whole Excel
+add-in: the existing Browse and custom-function surface, Single Country Deep Dive, Country
+Comparison, structured charts/output, and bounded Ask CaribEcon. Read it before touching
+`excel-addin/`, `api/`, or the server-side AI modules.
 
 Nebius and MiniMax are shared, server-side AI infrastructure for natural-language interpretation,
 optional bounded planning, and evidence-grounded explanation. They do not own facts, citations,
