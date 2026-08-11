@@ -22,6 +22,12 @@ import {
   P_VINTAGE,
 } from '../shared/hub.js';
 
+/* Shared with the server, not reimplemented: api/deepdive.ts builds the WorkbookPlan with these
+   same rules, so the pane executes a layout it did not invent. Importing the TypeScript source
+   directly is what webpack.config.js's .ts babel rule exists for — the alternative was a second
+   copy of the sheet-naming and column-order logic, free to drift from the tested one. */
+import { resolveSheetName, EVIDENCE_COLUMNS, SERIES_COLORS } from '../../../src/lib/excelOutputs';
+
 const API_BASE = process.env.CARIBECON_API_BASE;
 const RESEARCH_TOKEN = process.env.CARIBECON_RESEARCH_TOKEN;
 
@@ -406,6 +412,7 @@ function initDeepDive() {
   });
   el('dd-generate').addEventListener('click', generateDeepDive);
   el('dd-insert').addEventListener('click', insertDeepDiveTable);
+  el('dd-insert-report').addEventListener('click', insertDeepDiveReport);
 
   // Guyana first if present, same reasoning as Browse: the widest, most complete series.
   if ([...el('dd-country').options].some(o => o.value === 'GY')) el('dd-country').value = 'GY';
@@ -631,6 +638,193 @@ function writeDeepDiveBlock(anchor, { evidence, periodAverage }) {
   );
 
   return anchor.getOffsetRange(grid.length + 1, 0);
+}
+
+/* ── Insert report ───────────────────────────────────────────────────────────────────────────
+   Executes the WorkbookPlan api/deepdive.ts computed (plan §6 step 6). Every coordinate, heading
+   and cell value below comes from the plan; this function decides none of them. That split is
+   the point — the layout is unit-tested server-side in src/lib/excelOutputs.test.mjs, and the
+   part that can only be checked by opening Excel is kept as thin as possible.
+
+   Writes to NEW sheets, never into an existing one (plan §5). */
+
+// Series formatting and explicit category axes need ExcelApi 1.7; manifest.xml only requires
+// SharedRuntime 1.1, so the richer calls are feature-detected. Without 1.7 the chart still
+// renders — it just falls back to Excel's default colour and an index-numbered category axis.
+function supportsRichCharts() {
+  try {
+    return Office.context.requirements.isSetSupported('ExcelApi', '1.7');
+  } catch {
+    return false;
+  }
+}
+
+// Office.js writes a JS null as an empty cell, but being explicit keeps a hub gap unmistakably
+// blank rather than risking a coerced 0 — the distinction the whole data policy rests on.
+function cellValues(rows) {
+  return rows.map(row => row.map(value => (value === null || value === undefined ? '' : value)));
+}
+
+function writeTableSection(sheet, section) {
+  const top = section.startRow;
+  const block = sheet.getRangeByIndexes(top, 0, section.rowCount, section.columnCount);
+  block.values = cellValues(section.rows);
+
+  // Year as a plain integer; values and changes with separators but no forced decimals, so a
+  // percentage and a millions-of-dollars level both read correctly — same rule as writeValues().
+  if (section.dataRowCount > 0) {
+    const data = sheet.getRangeByIndexes(
+      top + section.firstDataRowOffset,
+      0,
+      section.dataRowCount,
+      section.columnCount,
+    );
+    data.numberFormat = Array.from({ length: section.dataRowCount }, () => [
+      '0',
+      '#,##0.##',
+      '#,##0.##',
+    ]);
+  }
+
+  const title = sheet.getRangeByIndexes(top + section.titleRowOffset, 0, 1, section.columnCount);
+  title.format.font.bold = true;
+  title.format.font.size = 12;
+  title.format.font.color = '#0E5E4E';
+
+  const header = sheet.getRangeByIndexes(top + section.headerRowOffset, 0, 1, section.columnCount);
+  header.format.font.bold = true;
+  header.format.borders.getItem('EdgeBottom').style = 'Continuous';
+
+  for (const offset of section.summaryRowOffsets) {
+    sheet.getRangeByIndexes(top + offset, 0, 1, section.columnCount).format.font.bold = true;
+  }
+}
+
+function writeListSection(sheet, section) {
+  const heading = sheet.getRangeByIndexes(section.startRow, 0, 1, 1);
+  heading.values = [[section.heading]];
+  heading.format.font.bold = true;
+  heading.format.font.color = '#0E5E4E';
+
+  if (!section.rows.length) return;
+
+  const body = sheet.getRangeByIndexes(
+    section.startRow + 1,
+    0,
+    section.rows.length,
+    section.columnCount,
+  );
+  // Pad short rows: Office.js requires every row of a values array to match the range width.
+  body.values = section.rows.map(row => {
+    const padded = row.slice(0, section.columnCount);
+    while (padded.length < section.columnCount) padded.push('');
+    return padded;
+  });
+  body.format.font.size = 9;
+  body.format.font.color = '#4C5A54';
+}
+
+function addChart(sheet, placement, index, rich) {
+  const { spec } = placement;
+
+  /* Source is the VALUE column only, header row included so Excel names the series from it.
+     Passing the year column too would make Excel plot the years as a second numeric series
+     rather than reading them as categories — the axis is set explicitly below instead. */
+  const source = sheet.getRangeByIndexes(
+    placement.sourceStartRow,
+    placement.sourceValueColumn,
+    placement.sourceRowCount,
+    1,
+  );
+
+  const chart = sheet.charts.add(Excel.ChartType.line, source, Excel.ChartSeriesBy.columns);
+  chart.setPosition(
+    sheet.getRangeByIndexes(placement.row, placement.column, 1, 1),
+    sheet.getRangeByIndexes(
+      placement.row + placement.heightRows,
+      placement.column + placement.widthColumns,
+      1,
+      1,
+    ),
+  );
+  chart.title.text = spec.title;
+  chart.axes.valueAxis.title.text = spec.unit;
+  chart.legend.visible = false; // one series per chart, so a legend only repeats the title
+
+  if (!rich) return;
+  const series = chart.series.getItemAt(0);
+  // Categories exclude the header row, hence the +1 / -1.
+  series.setXAxisValues(
+    sheet.getRangeByIndexes(placement.sourceStartRow + 1, 0, placement.sourceRowCount - 1, 1),
+  );
+  series.format.line.color = SERIES_COLORS[index % SERIES_COLORS.length];
+}
+
+function writeEvidenceSheet(sheet, plan) {
+  const header = plan.evidenceHeader;
+  // Read each cell by the key EVIDENCE_COLUMNS declares, so the body can never fall out of step
+  // with the header order the same constant produced.
+  const rows = plan.evidenceRows.map(row => EVIDENCE_COLUMNS.map(([key]) => row[key]));
+
+  const all = cellValues([header, ...rows]);
+  sheet.getRangeByIndexes(0, 0, all.length, header.length).values = all;
+
+  const headerRange = sheet.getRangeByIndexes(0, 0, 1, header.length);
+  headerRange.format.font.bold = true;
+  headerRange.format.borders.getItem('EdgeBottom').style = 'Continuous';
+  sheet.getRangeByIndexes(0, 0, all.length, header.length).format.autofitColumns();
+}
+
+async function insertDeepDiveReport() {
+  if (!deepDiveResult) return;
+  const plan = deepDiveResult.body.workbookPlan;
+  const note = el('dd-insert-note');
+
+  if (!plan || !plan.sections.some(s => s.kind === 'table')) {
+    note.textContent = 'Nothing to write — this result has no sourced series.';
+    return;
+  }
+
+  try {
+    el('dd-insert-report').disabled = true;
+    note.textContent = 'Writing the report…';
+
+    const rich = supportsRichCharts();
+
+    await Excel.run(async ctx => {
+      const sheets = ctx.workbook.worksheets;
+      sheets.load('items/name');
+      await ctx.sync();
+
+      // Resolve against the real workbook, and resolve the Evidence name against the report
+      // name too so the two new sheets cannot collide with each other.
+      const existing = sheets.items.map(s => s.name);
+      const reportName = resolveSheetName(plan.sheetName, existing);
+      const evidenceName = resolveSheetName(plan.evidenceSheetName, [...existing, reportName]);
+
+      const report = sheets.add(reportName);
+      for (const section of plan.sections) {
+        if (section.kind === 'table') writeTableSection(report, section);
+        else writeListSection(report, section);
+      }
+      plan.charts.forEach((placement, i) => addChart(report, placement, i, rich));
+      report.getRange('A:C').format.autofitColumns();
+
+      writeEvidenceSheet(sheets.add(evidenceName), plan);
+
+      report.activate();
+      await ctx.sync();
+
+      note.textContent =
+        `Wrote "${reportName}" with ${plan.charts.length} chart` +
+        `${plan.charts.length === 1 ? '' : 's'}, and "${evidenceName}" with ` +
+        `${plan.evidenceRows.length} lineage rows.`;
+    });
+  } catch (error) {
+    note.textContent = `Could not write the report: ${error.message}`;
+  } finally {
+    el('dd-insert-report').disabled = false;
+  }
 }
 
 // ── Ask ────────────────────────────────────────────────────────────────────────────────────

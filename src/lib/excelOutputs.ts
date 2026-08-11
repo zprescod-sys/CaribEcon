@@ -70,6 +70,10 @@ export interface TableSection {
   startRow: number;
   rowCount: number;
   columnCount: number;
+  /* How many of `rows` are data rows. Published rather than left for the renderer to derive
+     from the offsets below, so number formats are applied to exactly the right band without the
+     task pane re-doing layout arithmetic this module already did. */
+  dataRowCount: number;
   evidenceIds: string[];
   indicator: string;
   label: string;
@@ -132,6 +136,28 @@ export interface EvidenceRow {
   confidence: string;
   note: string;
 }
+
+/* Column order and headings for the Evidence sheet, as [key, heading] pairs. Single source of
+   truth: the plan's evidenceHeader is derived from this, and the renderer reads each cell by the
+   same key — so a column added here appears in both, and neither can silently drift from the
+   EvidenceRow shape. */
+export const EVIDENCE_COLUMNS: readonly (readonly [keyof EvidenceRow, string])[] = [
+  ['evidenceId', 'Evidence ID'],
+  ['country', 'Economy'],
+  ['indicator', 'Indicator'],
+  ['label', 'Label'],
+  ['year', 'Year'],
+  ['value', 'Value'],
+  ['type', 'Type'],
+  ['unit', 'Unit'],
+  ['vintage', 'Vintage'],
+  ['source', 'Source'],
+  ['sourceOrg', 'Source org'],
+  ['sourceTier', 'Source tier'],
+  ['sourceUrl', 'Source URL'],
+  ['confidence', 'Confidence'],
+  ['note', 'Note'],
+] as const;
 
 export interface WorkbookPlan {
   sheetName: string;
@@ -264,6 +290,7 @@ function buildTableSection(result: IndicatorResult, startRow: number): TableSect
     startRow,
     rowCount: rows.length,
     columnCount: 3,
+    dataRowCount: dataRows.length,
     evidenceIds: [evidenceId(evidence.country, evidence.indicator)],
     indicator: evidence.indicator,
     label: evidence.label,
@@ -405,10 +432,7 @@ export function buildWorkbookPlan(
     evidenceSheetName: sheetNameWithSuffix(base, ' Evidence'),
     sections,
     charts,
-    evidenceHeader: [
-      'Evidence ID', 'Economy', 'Indicator', 'Label', 'Year', 'Value', 'Type', 'Unit',
-      'Vintage', 'Source', 'Source org', 'Source tier', 'Source URL', 'Confidence', 'Note',
-    ],
+    evidenceHeader: EVIDENCE_COLUMNS.map(([, heading]) => heading),
     evidenceRows,
     caveats,
     totalRows: row,

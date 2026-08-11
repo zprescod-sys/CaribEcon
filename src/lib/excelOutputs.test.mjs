@@ -19,6 +19,7 @@ import {
   resolveSheetName,
   calculationForUnit,
   evidenceId,
+  EVIDENCE_COLUMNS,
   SERIES_COLORS,
 } from './excelOutputs.ts';
 import { yoy_change, pp_change, period_average } from './calculations.ts';
@@ -368,8 +369,31 @@ test('the evidence sheet carries one fully-attributed row per retrieved point', 
 
 test('the evidence header labels every column the rows actually carry', () => {
   const plan = buildWorkbookPlan([result()], intent());
-  // 15 keys per EvidenceRow; the header must not silently drift from them.
+  // The header must not silently drift from the EvidenceRow shape.
   assert.equal(plan.evidenceHeader.length, Object.keys(plan.evidenceRows[0]).length);
+  assert.equal(plan.evidenceHeader.length, EVIDENCE_COLUMNS.length);
+});
+
+test('EVIDENCE_COLUMNS names a real EvidenceRow key for every heading it declares', () => {
+  // The renderer writes each cell as row[key] in this order, so a key that does not exist on
+  // EvidenceRow would silently produce a column of blanks in the workbook.
+  const plan = buildWorkbookPlan([result()], intent());
+  const row = plan.evidenceRows[0];
+  for (const [key, heading] of EVIDENCE_COLUMNS) {
+    assert.ok(key in row, `EVIDENCE_COLUMNS declares "${key}", which EvidenceRow does not carry`);
+    assert.ok(heading.length > 0);
+  }
+  assert.deepEqual(EVIDENCE_COLUMNS.map(([, h]) => h), plan.evidenceHeader);
+});
+
+test('dataRowCount matches the rows between the header and the summary', () => {
+  const table = buildWorkbookPlan([result()], intent()).sections[0];
+  assert.equal(table.dataRowCount, evidence().points.length);
+  // The renderer applies number formats to exactly this band; if it were wrong it would format
+  // the blank spacer or the summary row as data.
+  const lastDataOffset = table.firstDataRowOffset + table.dataRowCount - 1;
+  assert.equal(table.rows[lastDataOffset][0], 2022);
+  assert.equal(table.rows[lastDataOffset + 1][0], '', 'the row after the data band must be the spacer');
 });
 
 test('a gap point still gets an evidence row, so the gap itself is auditable', () => {

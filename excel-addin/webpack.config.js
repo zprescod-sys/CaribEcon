@@ -119,13 +119,28 @@ module.exports = async (env, options) => {
     output: {
       clean: true,
     },
+    // .ts last, so a .js file always wins when both exist. Present so the task pane can import
+    // the shared deterministic modules under ../../src/lib — see the babel rule below.
     resolve: {
-      extensions: [".html", ".js"],
+      extensions: [".html", ".js", ".ts"],
     },
     module: {
       rules: [
         {
-          test: /\.js$/,
+          /* .ts as well as .js so taskpane.js can import src/lib/excelOutputs.ts directly rather
+             than keeping a second, drifting copy of the WorkbookPlan layout rules (contrast the
+             devSnapshot duplication above, which is unavoidable because this config file is
+             CommonJS and cannot import TypeScript at all).
+
+             @babel/preset-typescript only strips types — it never type-checks — which is exactly
+             what is wanted here: `npm run check` at the repo root already type-checks src/lib,
+             and excel-addin stays excluded from that tsconfig because its minified dist/ once
+             exhausted the compiler's heap. Safe for the shared modules because every import in
+             excelOutputs.ts is `import type`, so nothing survives erasure to resolve at runtime.
+
+             No exclude for node_modules is needed beyond the existing one; ../../src is outside
+             it and so is compiled normally. */
+          test: /\.[jt]s$/,
           exclude: /node_modules/,
           use: {
             loader: "babel-loader",

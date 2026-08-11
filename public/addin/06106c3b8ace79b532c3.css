@@ -129,7 +129,8 @@ select:focus-visible {
 
 .field { margin-bottom: 16px; }
 
-select {
+select,
+.input {
   width: 100%;
   padding: 8px 10px;
   border: 1px solid var(--line);
@@ -138,6 +139,15 @@ select {
   color: var(--ink);
   font-family: var(--font-body);
   font-size: 14px;
+}
+
+.input:focus-visible {
+  outline: 2px solid var(--teal);
+  outline-offset: 1px;
+}
+
+select[multiple] {
+  height: auto;
 }
 
 .range {
