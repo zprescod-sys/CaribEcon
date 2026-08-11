@@ -37,6 +37,98 @@ test('a valid single-country request returns intent, per-indicator evidence, and
   assert.ok(Array.isArray(body.misses));
 });
 
+// ── Calculation, unit gating, chartSpec, workbookPlan (Phase 2a sub-step 2.2) ───────────────
+
+test('a "%" indicator (gdp_growth, inflation) takes pp_change, never yoy_change', async () => {
+  const res = await post({ country: 'GY', indicators: ['gdp_growth', 'inflation'] });
+  const body = await res.json();
+  for (const slug of ['gdp_growth', 'inflation']) {
+    const { evidence, change } = body.indicators[slug];
+    assert.equal(evidence.unit.trim(), '%');
+    assert.equal(change.name, 'pp_change');
+    assert.ok(Array.isArray(change.results) && change.results.length === evidence.points.length);
+  }
+});
+
+test('a level indicator (nominal_gdp) takes yoy_change, never pp_change', async () => {
+  const res = await post({ country: 'GY', indicators: ['nominal_gdp'] });
+  const body = await res.json();
+  const { evidence, change } = body.indicators.nominal_gdp;
+  assert.notEqual(evidence.unit.trim(), '%');
+  assert.equal(change.name, 'yoy_change');
+});
+
+test('the same underlying evidence yields very different pp_change vs yoy_change values', async () => {
+  // Confirms the unit gate is load-bearing rather than cosmetic — a rate's yoy_change would be a
+  // relative percentage change, which reads as a rate move and is the exact bug this gate avoids.
+  const res = await post({ country: 'GY', indicators: ['gdp_growth'] });
+  const { evidence, change } = (await res.json()).indicators.gdp_growth;
+  const points = evidence.points.filter(p => p.value !== null);
+  if (points.length < 2) return; // nothing to compare if the window has under two real points
+
+  const ppResult = change.results.find(r => r.year === points[1].year);
+  const relativeChange = ((points[1].value - points[0].value) / Math.abs(points[0].value)) * 100;
+  assert.ok(
+    Math.abs(ppResult.value - relativeChange) > 0.01 || points[0].value === points[1].value,
+    'pp_change and the relative formula coincidentally matched — check the fixture picked a non-trivial pair',
+  );
+});
+
+test('chartSpec is present per indicator and its year range matches retrieved points', async () => {
+  const res = await post({ country: 'GY', indicators: ['gdp_growth'], yearFrom: 2019, yearTo: 2022 });
+  const { evidence, chartSpec } = (await res.json()).indicators.gdp_growth;
+  const years = evidence.points.filter(p => p.value !== null).map(p => p.year);
+  assert.equal(chartSpec.indicator, 'gdp_growth');
+  assert.deepEqual(chartSpec.countries, ['GY']);
+  assert.equal(chartSpec.yearFrom, Math.min(...years));
+  assert.equal(chartSpec.yearTo, Math.max(...years));
+});
+
+test('workbookPlan is present, internally consistent, and covers every succeeded indicator', async () => {
+  const res = await post({ country: 'GY', indicators: ['gdp_growth', 'nominal_gdp'] });
+  const body = await res.json();
+  const { workbookPlan } = body;
+
+  assert.ok(workbookPlan.sheetName.length > 0 && workbookPlan.sheetName.length <= 31);
+  assert.ok(workbookPlan.evidenceSheetName.length > 0 && workbookPlan.evidenceSheetName.length <= 31);
+  assert.notEqual(workbookPlan.sheetName.toLowerCase(), workbookPlan.evidenceSheetName.toLowerCase());
+
+  const tableSections = workbookPlan.sections.filter(s => s.kind === 'table');
+  assert.equal(tableSections.length, Object.keys(body.indicators).length);
+  assert.equal(workbookPlan.charts.length, Object.keys(body.indicators).length);
+
+  // Mixed units (% and GY$ mn) must produce the do-not-compare caveat on the actual endpoint
+  // response, not just in the unit test fixtures.
+  assert.ok(workbookPlan.caveats.some(c => /must not be differenced/i.test(c)));
+
+  const known = new Set(workbookPlan.evidenceRows.map(r => r.evidenceId));
+  for (const chart of workbookPlan.charts) {
+    for (const id of chart.spec.evidenceIds) assert.ok(known.has(id));
+  }
+});
+
+test('a retrieval miss still surfaces as a workbookPlan caveat, even alongside a succeeded indicator', async () => {
+  // CW is World-Bank-spine only; fiscal_balance is absent for it (SCHEMA.md) — a real series miss.
+  const res = await post({ country: 'CW', indicators: ['gdp_growth', 'fiscal_balance'] });
+  const body = await res.json();
+  assert.ok(body.indicators.gdp_growth);
+  assert.ok(!('fiscal_balance' in body.indicators));
+  assert.ok(body.workbookPlan.caveats.some(c => c.includes('fiscal_balance')));
+});
+
+test('a request where every indicator misses still returns a valid, if empty, workbookPlan', async () => {
+  // CW/fiscal_balance alone: canonicalisation succeeds (a real slug), so this is a 200 with a
+  // series miss, not a 400 — the endpoint's existing "series has no coverage" behavior.
+  const res = await post({ country: 'CW', indicators: ['fiscal_balance'] });
+  const body = await res.json();
+  assert.equal(res.status, 200);
+  assert.equal(Object.keys(body.indicators).length, 0);
+  assert.equal(body.workbookPlan.charts.length, 0);
+  assert.equal(body.workbookPlan.sections.filter(s => s.kind === 'table').length, 0);
+  assert.ok(body.workbookPlan.sheetName.length > 0, 'the plan must still name a sheet');
+  assert.ok(body.workbookPlan.caveats.some(c => c.includes('fiscal_balance')));
+});
+
 test('a year window is honoured and trims the returned points', async () => {
   const res = await post({ country: 'GY', indicators: ['gdp_growth'], yearFrom: 2019, yearTo: 2021 });
   const body = await res.json();
