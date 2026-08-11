@@ -19,17 +19,29 @@ const urlProd = "https://caribecon.org/addin/";
 
 const devServerPort = process.env.npm_package_config_dev_server_port || 3000;
 
+// Separate `vercel dev` process serving the real /api/*.ts Vercel Functions for local testing
+// (`npx vercel@58 dev --listen ${vercelDevPort}`, run alongside `npm start` in its own terminal —
+// vercel CLI is intentionally NOT a devDependency here, see commit 98725f1: it was the sole
+// source of 24 Dependabot alerts on a public repo, and nothing in this repo depends on it besides
+// this occasional local use, which `npx` covers fine). `vercel dev` has no HTTPS option, so it is
+// proxied below rather than fetched directly — Excel blocks a direct http call from the https
+// task pane as mixed content, but this dev server is already https and already trusted, and
+// proxying to a plain-http backend is a Node-to-Node hop the browser never sees.
+const vercelDevPort = process.env.CARIBECON_VERCEL_DEV_PORT || 3001;
+
 // Where the DATA API lives — a separate concern from the two URLs above. Baked into
 // functions.js at build time via DefinePlugin, so switching environments never means
 // editing source. Override for a one-off environment without touching any file:
 //   CARIBECON_API_BASE=https://my-preview.vercel.app npm run build:dev
 // Must be https: Excel loads the add-in over https, so an http API (plain `vercel dev`
-// on localhost) is blocked as mixed content.
+// on localhost) is blocked as mixed content — see the devServer.proxy rule below, which is
+// what makes leaving this at the dev-server's own https origin work for every /api/* route.
 //
-// Under `npm run dev-server` the default is the dev server itself, which serves
-// /api/snapshot locally (see setupMiddlewares below). That makes the add-in fully testable
-// in Excel with nothing deployed — the point being that you should never have to merge to
-// main to find out whether the task pane works. Plain builds still default to production.
+// Under `npm run dev-server` the default is the dev server itself, which serves /api/snapshot
+// locally (see setupMiddlewares below) and proxies every other /api/* route to vercel dev (see
+// devServer.proxy below). That makes the add-in fully testable in Excel with nothing deployed —
+// the point being that you should never have to merge to main to find out whether the task pane
+// works. Plain builds still default to production.
 function resolveApiBase(isServe) {
   if (process.env.CARIBECON_API_BASE) return process.env.CARIBECON_API_BASE;
   return isServe ? `https://localhost:${devServerPort}` : "https://caribecon.org";
@@ -228,6 +240,38 @@ module.exports = async (env, options) => {
         });
         return middlewares;
       },
+      // Every other /api/*.ts Vercel Function, proxied to a separately-running `vercel dev`
+      // (see the vercelDevPort comment above). /api/snapshot is deliberately NOT in this list —
+      // it keeps using the hand-mocked route above, unchanged. List explicit paths rather than
+      // a blanket '/api' context so a new route added here is a one-line, deliberate opt-in, not
+      // a silent behavior change for whatever else lives under /api next.
+      //
+      // Add a new endpoint's path here as it's built — currently pending: /api/comparison
+      // (Phase 3a), /api/ask (Phase 5).
+      proxy: [
+        {
+          context: ["/api/deepdive", "/api/indicator", "/api/research"],
+          target: `http://localhost:${vercelDevPort}`,
+          changeOrigin: true,
+          on: {
+            error: (err, req, res) => {
+              // The default behavior here is a hung request with no explanation. This is the
+              // one error every contributor hits on a fresh checkout, so it gets a message
+              // pointing at the exact fix rather than a generic ECONNREFUSED.
+              res.writeHead(502, { "Content-Type": "application/json" });
+              res.end(
+                JSON.stringify({
+                  error: "vercel_dev_unreachable",
+                  message:
+                    `Could not reach vercel dev on port ${vercelDevPort} for ${req.url}. ` +
+                    `Run 'npx vercel@58 dev --listen ${vercelDevPort}' in a separate terminal, ` +
+                    `alongside 'npm start'.`,
+                }),
+              );
+            },
+          },
+        },
+      ],
     },
   };
 
