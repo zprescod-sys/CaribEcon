@@ -526,6 +526,502 @@
     "deal_type": null
   },
   {
+    "id": "kaieteur-news-d2e03868",
+    "title": "Guyanese should be outraged over Govt. silence on 50% profits now due to country – former Finance Minister",
+    "source": "Kaieteur News",
+    "date": "2026-08-11",
+    "country": "GY",
+    "url": "https://kaieteurnewsonline.com/2026/08/11/guyanese-should-be-outraged-over-govt-silence-on-50-profits-now-due-to-country-former-finance-minister/",
+    "tags": [
+      "news",
+      "exonmobil",
+      "guyana oil",
+      "oil profits",
+      "outraged"
+    ],
+    "category": "Corporate",
+    "group": "Finance",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "kaieteur-news-841c9a4b",
+    "title": "Guyana’s oil take could triple – opposition leader",
+    "source": "Kaieteur News",
+    "date": "2026-08-11",
+    "country": "GY",
+    "url": "https://kaieteurnewsonline.com/2026/08/11/guyanas-oil-take-could-triple-opposition-leader/",
+    "tags": [
+      "news",
+      "cost recovery",
+      "exxonmobil",
+      "opposition leader",
+      "we invest in nationhood"
+    ],
+    "category": "Energy",
+    "group": "Energy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "kaieteur-news-383b0412",
+    "title": "Australian firm begins drilling at massive Reg. 7 gold project",
+    "source": "Kaieteur News",
+    "date": "2026-08-11",
+    "country": "GY",
+    "url": "https://kaieteurnewsonline.com/2026/08/11/australian-firm-begins-drilling-at-massive-reg-7-gold-project/",
+    "tags": [
+      "news",
+      "altair minerals limited",
+      "diamond drill rig",
+      "drilling",
+      "gold",
+      "gold project"
+    ],
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "kaieteur-news-2c0cba39",
+    "title": "Over $23M in credits awarded for 2025 – PUC Report",
+    "source": "Kaieteur News",
+    "date": "2026-08-11",
+    "country": "GY",
+    "url": "https://kaieteurnewsonline.com/2026/08/11/over-23m-in-credits-awarded-for-2025-puc-report/",
+    "tags": [
+      "news",
+      "bills",
+      "credits",
+      "gwi",
+      "onecomm",
+      "penalties"
+    ],
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "guyana-chronicle-f22c932f",
+    "title": "M&CC launches three-day cleanup campaign at Bourda Market",
+    "source": "Guyana Chronicle",
+    "date": "2026-08-11",
+    "country": "GY",
+    "url": "https://guyanachronicle.com/2026/08/11/mcc-launches-three-day-cleanup-campaign-at-bourda-market/",
+    "tags": [
+      "news"
+    ],
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "ttt-news-308b1cdc",
+    "title": "TSTT, CWU Negotiations Continue As Union And Company Work Toward Settlement",
+    "source": "TTT News",
+    "date": "2026-08-11",
+    "country": "TT",
+    "url": "https://www.ttt.live/tstt-cwu-negotiations-continue-as-union-and-company-work-toward-settlement/?utm_source=rss&utm_medium=rss&utm_campaign=tstt-cwu-negotiations-continue-as-union-and-company-work-toward-settlement",
+    "tags": [
+      "news",
+      "public utilities"
+    ],
+    "category": "Labor",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "ttt-news-e777b9ee",
+    "title": "TobaGrow Loan Launched To Support Tobago’s Farmers And Fishermen",
+    "source": "TTT News",
+    "date": "2026-08-11",
+    "country": "TT",
+    "url": "https://www.ttt.live/tobagrow-loan-launched-to-support-tobagos-farmers-and-fishermen/?utm_source=rss&utm_medium=rss&utm_campaign=tobagrow-loan-launched-to-support-tobagos-farmers-and-fishermen",
+    "tags": [
+      "news"
+    ],
+    "category": "Banking",
+    "group": "Finance",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "ttt-news-0e65955f",
+    "title": "Agriculture Minister Highlights TobaGrow’s Role In Strengthening Agricultural Investment In Tobago",
+    "source": "TTT News",
+    "date": "2026-08-11",
+    "country": "TT",
+    "url": "https://www.ttt.live/agriculture-minister-highlights-tobagrows-role-in-strengthening-agricultural-investment-in-tobago/?utm_source=rss&utm_medium=rss&utm_campaign=agriculture-minister-highlights-tobagrows-role-in-strengthening-agricultural-investment-in-tobago",
+    "tags": [
+      "agriculture",
+      "news"
+    ],
+    "category": "Investment",
+    "group": "Investment",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "ttt-news-715196a1",
+    "title": "Massy Holdings Reports 7% Revenue Growth As Profits Fall 35.6%",
+    "source": "TTT News",
+    "date": "2026-08-11",
+    "country": "TT",
+    "url": "https://www.ttt.live/massy-holdings-reports-7-revenue-growth-as-profits-fall-35-6/?utm_source=rss&utm_medium=rss&utm_campaign=massy-holdings-reports-7-revenue-growth-as-profits-fall-35-6",
+    "tags": [
+      "business and finance",
+      "news"
+    ],
+    "category": "Fiscal Policy",
+    "group": "Fiscal Policy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "barbados-today-fae47013",
+    "title": "Mandatory fishers insurance plan ‘could sink’ small boat owners",
+    "source": "Barbados Today",
+    "date": "2026-08-11",
+    "country": "BB",
+    "url": "https://barbadostoday.bb/2026/08/11/mandatory-fishers-insurance-plan-could-sink-small-boat-owners/",
+    "tags": [
+      "local news",
+      "headline",
+      "headlines"
+    ],
+    "category": "Banking",
+    "group": "Finance",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "barbados-today-a928a205",
+    "title": "PM urges Price Compact model for regional grocery chains",
+    "source": "Barbados Today",
+    "date": "2026-08-11",
+    "country": "BB",
+    "url": "https://barbadostoday.bb/2026/08/11/pm-urges-price-compact-model-for-regional-grocery-chains/",
+    "tags": [
+      "local news"
+    ],
+    "category": "Inflation",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "barbados-today-fc525506",
+    "title": "Manufacturers urged to deepen tourism links",
+    "source": "Barbados Today",
+    "date": "2026-08-11",
+    "country": "BB",
+    "url": "https://barbadostoday.bb/2026/08/11/manufacturers-urged-to-deepen-tourism-links/",
+    "tags": [
+      "business",
+      "local news",
+      "tourism"
+    ],
+    "category": "Tourism",
+    "group": "Trade & Tourism",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "nation-news-d5443904",
+    "title": "Uber taking a bite out of taxi profits",
+    "source": "Nation News",
+    "date": "2026-08-11",
+    "country": "BB",
+    "url": "https://nationnews.com/2026/08/11/uber-taking-a-bite-out-of-taxi-profits/?utm_source=rss&utm_medium=rss&utm_campaign=uber-taking-a-bite-out-of-taxi-profits",
+    "tags": [
+      "uncategorized",
+      "uber taking a bite out of taxi profits"
+    ],
+    "category": "Corporate",
+    "group": "Finance",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "jamaica-observer-6764e5e7",
+    "title": "Forex: $159.30 to one US dollar",
+    "source": "Jamaica Observer",
+    "date": "2026-08-11",
+    "country": "JM",
+    "url": "https://www.jamaicaobserver.com/2026/08/11/forex-159-30-one-us-dollar-20260811-2323-110673/",
+    "tags": [
+      "latest news",
+      "forex",
+      "money",
+      "us"
+    ],
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "jamaica-gleaner-4826cd2f",
+    "title": "Tourism stakeholders eye big business through JAPEX amid hurricane recovery",
+    "source": "Jamaica Gleaner",
+    "date": "2026-08-11",
+    "country": "JM",
+    "url": "http://jamaica-gleaner.com/article/news/20260811/tourism-stakeholders-eye-big-business-through-japex-amid-hurricane-recovery",
+    "category": "Tourism",
+    "group": "Trade & Tourism",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "jamaica-gleaner-0fa8202b",
+    "title": "US stocks slip below their records as oil prices rise 5%",
+    "source": "Jamaica Gleaner",
+    "date": "2026-08-11",
+    "country": "JM",
+    "url": "http://jamaica-gleaner.com/article/business/20260811/us-stocks-slip-below-their-records-oil-prices-rise-5",
+    "category": "Energy",
+    "group": "Energy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "the-star-jamaica-4889ed5f",
+    "title": "Tourism minister rejects beach access claim",
+    "source": "The Star (Jamaica)",
+    "date": "2026-08-11",
+    "country": "JM",
+    "url": "https://jamaica-star.com/article/news/20260811/tourism-minister-rejects-beach-access-claim-0",
+    "category": "Tourism",
+    "group": "Trade & Tourism",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "breaking-belize-news-00fb5ae8",
+    "title": "Climate Resilient and Sustainable Agriculture Project hands over field equipment to Department of Environment",
+    "source": "Breaking Belize News",
+    "date": "2026-08-11",
+    "country": "BZ",
+    "url": "https://www.breakingbelizenews.com/2026/08/11/climate-resilient-and-sustainable-agriculture-project-hands-over-field-equipment-to-department-of-environment/",
+    "tags": [
+      "community development",
+      "last news"
+    ],
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "breaking-belize-news-5f68def7",
+    "title": "International News: U.S. Department of Agriculture fast-tracks Texas Screwworm facility by 7 months",
+    "source": "Breaking Belize News",
+    "date": "2026-08-11",
+    "country": "BZ",
+    "url": "https://www.breakingbelizenews.com/2026/08/11/international-news-u-s-department-of-agriculture-fast-tracks-texas-screwworm-facility-by-7-months/",
+    "tags": [
+      "last news",
+      "world news"
+    ],
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "breaking-belize-news-aa3afcea",
+    "title": "Cabinet receives presentations from Acquisition Stakeholders",
+    "source": "Breaking Belize News",
+    "date": "2026-08-11",
+    "country": "BZ",
+    "url": "https://www.breakingbelizenews.com/2026/08/11/cabinet-receives-presentations-from-acquisition-stakeholders/",
+    "tags": [
+      "headlines",
+      "last news"
+    ],
+    "category": "Investment",
+    "group": "Investment",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "starnieuws-946d7ea5",
+    "title": "Telesur en Liberty versterken internationale digitale verbindingen voor groei oliesector",
+    "source": "Starnieuws",
+    "date": "2026-08-11",
+    "country": "SR",
+    "url": "https://www.starnieuws.com/index.php/welcome/index/nieuwsitem/93375",
+    "category": "Energy",
+    "group": "Energy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "st-lucia-times-fbad78d0",
+    "title": "Agriculture Minister reacts as egg shortage hits Saint Lucia",
+    "source": "St. Lucia Times",
+    "date": "2026-08-11",
+    "country": "LC",
+    "url": "https://stluciatimes.com/182865/2026/08/agriculture-minister-reacts-as-egg-shortage-hits-saint-lucia/",
+    "tags": [
+      "agriculture & fisheries",
+      "headlines",
+      "politics & government",
+      "agriculture",
+      "egg shortage",
+      "farmer registration"
+    ],
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "st-kitts-nevis-observer-4e0d9615",
+    "title": "Antigua to overhaul offshore banking sector",
+    "source": "St. Kitts-Nevis Observer",
+    "date": "2026-08-11",
+    "country": "KN",
+    "url": "https://www.thestkittsnevisobserver.com/antigua-to-overhaul-offshore-banking-sector/",
+    "tags": [
+      "regional"
+    ],
+    "category": "Banking",
+    "group": "Finance",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "st-kitts-nevis-observer-004b131a",
+    "title": "Trinidad: US company wants to become biggest producer of vanadium",
+    "source": "St. Kitts-Nevis Observer",
+    "date": "2026-08-11",
+    "country": "KN",
+    "url": "https://www.thestkittsnevisobserver.com/trinidad-us-company-wants-to-become-biggest-producer-of-vanadium/",
+    "tags": [
+      "regional"
+    ],
+    "category": "Corporate",
+    "group": "Finance",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "st-kitts-nevis-observer-2dc5d95e",
+    "title": "Great Britain:  Bradford Second-Hand Car Dealer Ordered To Repay Covid Loan Cash In Full",
+    "source": "St. Kitts-Nevis Observer",
+    "date": "2026-08-11",
+    "country": "KN",
+    "url": "https://www.thestkittsnevisobserver.com/great-britain-bradford-second-hand-car-dealer-ordered-to-repay-covid-loan-cash-in-full/",
+    "tags": [
+      "press releases",
+      "regional/international news"
+    ],
+    "category": "Banking",
+    "group": "Finance",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "bvi-news-db6bf515",
+    "title": "Failed Joe’s Hill project exposed housing crisis – Grant",
+    "source": "BVI News",
+    "date": "2026-08-11",
+    "country": "VG",
+    "url": "https://bvinews.com/failed-joes-hill-project-exposed-housing-crisis-grant/",
+    "tags": [
+      "all news"
+    ],
+    "category": "Infrastructure",
+    "group": "Investment",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "wic-news-40dde59f",
+    "title": "Shanoya Douglas wins Gold as Jamaica takes 4x100m relay title",
+    "source": "WIC News",
+    "date": "2026-08-11",
+    "country": "ALL",
+    "url": "https://wicnews.com/jamaica/shanoya-douglas-wins-gold-as-jamaica-takes-4x100m-relay-title",
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "wic-news-b45f31fa",
+    "title": "Belize: Major fire damages house in Trial Farm, Orange Walk",
+    "source": "WIC News",
+    "date": "2026-08-11",
+    "country": "ALL",
+    "url": "https://wicnews.com/belize/belize-major-fire-damages-house-in-trial-farm-orange-walk",
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
     "id": "kaieteur-news-e59d3014",
     "title": "Guyana must now receive its 50% profit in Exxon deal",
     "source": "Kaieteur News",
@@ -1919,6 +2415,40 @@
     "classifier": "llm",
     "deal_status": "not_a_deal",
     "deal_type": null
+  },
+  {
+    "id": "st-kitts-nevis-observer-e16197ec",
+    "title": "Mia Alexander crowned Bank of Nevis Miss Culture Queen 2026",
+    "source": "St. Kitts-Nevis Observer",
+    "date": "2026-08-10",
+    "country": "KN",
+    "url": "https://www.thestkittsnevisobserver.com/mia-alexander-crowned-bank-of-nevis-miss-culture-queen-2026/",
+    "tags": [
+      "local news"
+    ],
+    "category": "Banking",
+    "group": "Finance",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "ziz-online-607c4087",
+    "title": "Ministry Defends Farmer Relocation for Housing Project",
+    "source": "ZIZ Online",
+    "date": "2026-08-10",
+    "country": "KN",
+    "url": "https://zizonline.com/ministry-defends-farmer-relocation-for-housing-project/",
+    "tags": [
+      "national"
+    ],
+    "category": "Infrastructure",
+    "group": "Investment",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
   },
   {
     "id": "kaieteur-news-65b47d7a",
@@ -35515,427 +36045,6 @@
     "tags": [
       "news",
       "western"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "starnieuws-eb8af52e",
-    "title": "Rondhoutexport blijft een gemiste kans voor economie",
-    "source": "Starnieuws",
-    "date": "2026-07-05",
-    "country": "SR",
-    "url": "https://www.starnieuws.com/index.php/welcome/index/nieuwsitem/92811",
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "barbados-today-13396b5e",
-    "title": "LPG prices to increase",
-    "source": "Barbados Today",
-    "date": "2026-07-05",
-    "country": "BB",
-    "url": "https://barbadostoday.bb/2026/07/05/lpg-prices-to-increase-3/",
-    "tags": [
-      "economy",
-      "local news"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "barbados-today-29fe7e44",
-    "title": "OPINION: Modern-day slavery in migrant labour markets",
-    "source": "Barbados Today",
-    "date": "2026-07-05",
-    "country": "BB",
-    "url": "https://barbadostoday.bb/2026/07/05/opinion-modern-day-slavery-in-migrant-labour-markets/",
-    "tags": [
-      "local news",
-      "opinion"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "barbados-today-24337db3",
-    "title": "Archer eyes bigger role for creative sector beyond Crop Over",
-    "source": "Barbados Today",
-    "date": "2026-07-05",
-    "country": "BB",
-    "url": "https://barbadostoday.bb/2026/07/05/archer-eyes-bigger-role-for-creative-sector-beyond-crop-over/",
-    "tags": [
-      "business",
-      "crop over",
-      "local news"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "starnieuws-24988fbe",
-    "title": "Guyana betwist Surinaamse lezing over financiering Corantijnbrug",
-    "source": "Starnieuws",
-    "date": "2026-07-05",
-    "country": "SR",
-    "url": "https://www.starnieuws.com/index.php/welcome/index/nieuwsitem/92822",
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "trinidad-express-695b6ab2",
-    "title": "AMCHAM calls for 7% GDP target",
-    "source": "Trinidad Express",
-    "date": "2026-07-05",
-    "country": "TT",
-    "url": "https://trinidadexpress.com/business/local/amcham-calls-for-7-gdp-target/article_feb04b94-dd63-48b3-bd41-5277f9e4adc4.html",
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "kaieteur-news-50a44989",
-    "title": "GPL courts UAE energy giant in bid to power Guyana’s future",
-    "source": "Kaieteur News",
-    "date": "2026-07-04",
-    "country": "GY",
-    "url": "https://kaieteurnewsonline.com/2026/07/04/gpl-courts-uae-energy-giant-in-bid-to-power-guyanas-future/",
-    "tags": [
-      "news",
-      "gpl",
-      "guyana power and light",
-      "mou",
-      "power generation",
-      "renewable energy"
-    ],
-    "deal_status": "pending",
-    "deal_type": "FDI"
-  },
-  {
-    "id": "kaieteur-news-1d9278d5",
-    "title": "LAC trade tops US$57.2B as China pushes deeper ties with Latin America, Caribbean",
-    "source": "Kaieteur News",
-    "date": "2026-07-04",
-    "country": "GY",
-    "url": "https://kaieteurnewsonline.com/2026/07/04/lac-trade-tops-us57-2b-as-china-pushes-deeper-ties-with-latin-america-caribbean/",
-    "tags": [
-      "news",
-      "china",
-      "jiangsu province",
-      "latin america and the caribbean"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "kaieteur-news-ecb68fa9",
-    "title": "27 vie to build new Buxton/ Friendship market",
-    "source": "Kaieteur News",
-    "date": "2026-07-04",
-    "country": "GY",
-    "url": "https://kaieteurnewsonline.com/2026/07/04/27-vie-to-build-new-buxton-friendship-market/",
-    "tags": [
-      "news",
-      "buxton",
-      "friendship market",
-      "nptab"
-    ],
-    "deal_status": "pending",
-    "deal_type": "Other"
-  },
-  {
-    "id": "barbados-today-607a7949",
-    "title": "Employers, sporting bodies back immigration reforms amid workforce, competitiveness concerns",
-    "source": "Barbados Today",
-    "date": "2026-07-04",
-    "country": "BB",
-    "url": "https://barbadostoday.bb/2026/07/03/employers-sporting-bodies-back-immigration-reforms-amid-workforce-competitiveness-concerns/",
-    "tags": [
-      "local news",
-      "headline",
-      "headlines"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "eyewitness-news-62abd6e1",
-    "title": "Colina Suspends Group Insurance for Gov’t Employees",
-    "source": "Eyewitness News",
-    "date": "2026-07-04",
-    "country": "BS",
-    "url": "https://ewnews.com/colina-suspends-group-insurance-for-govt-employees/?utm_source=rss&utm_medium=rss&utm_campaign=colina-suspends-group-insurance-for-govt-employees",
-    "tags": [
-      "local",
-      "newscasts",
-      "videos"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "eyewitness-news-638db4f5",
-    "title": "Gov’t Employee Pleads Not Guilty in Alleged Rent-to-Own Scheme",
-    "source": "Eyewitness News",
-    "date": "2026-07-04",
-    "country": "BS",
-    "url": "https://ewnews.com/govt-employee-pleads-not-guilty-in-alleged-rent-to-own-scheme/?utm_source=rss&utm_medium=rss&utm_campaign=govt-employee-pleads-not-guilty-in-alleged-rent-to-own-scheme",
-    "tags": [
-      "local",
-      "newscasts",
-      "videos"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "starnieuws-18debb52",
-    "title": "Derde helft WK 2026: FIFA reserveert record prijzenpot van US$ 871 miljoen",
-    "source": "Starnieuws",
-    "date": "2026-07-04",
-    "country": "SR",
-    "url": "https://www.starnieuws.com/index.php/welcome/index/nieuwsitem/92790",
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "st-kitts-nevis-observer-bcce6aea",
-    "title": "Jamaica: Development Bank of Jamaica retains strong credit rating",
-    "source": "St. Kitts-Nevis Observer",
-    "date": "2026-07-04",
-    "country": "KN",
-    "url": "https://www.thestkittsnevisobserver.com/jamaica-development-bank-of-jamaica-retains-strong-credit-rating/",
-    "tags": [
-      "regional"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "barbados-today-72b86667",
-    "title": "EDITORIAL: The Central Bank of Barbados in plain English",
-    "source": "Barbados Today",
-    "date": "2026-07-04",
-    "country": "BB",
-    "url": "https://barbadostoday.bb/2026/07/04/editorial-the-central-bank-of-barbados-in-plain-english/",
-    "tags": [
-      "editorial",
-      "news",
-      "banking",
-      "banks",
-      "barbados banks",
-      "bim"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "jamaica-observer-1f35004c",
-    "title": "Dolla Financial completes acquisition of Evolve loan portfolio",
-    "source": "Jamaica Observer",
-    "date": "2026-07-04",
-    "country": "JM",
-    "url": "https://www.jamaicaobserver.com/2026/07/04/dolla-financial-completes-acquisition-evolve-loan-portfolio/",
-    "tags": [
-      "business",
-      "latest news",
-      "dolla financial services limited",
-      "evolve loan"
-    ],
-    "deal_status": "completed",
-    "deal_type": "M&A"
-  },
-  {
-    "id": "starnieuws-a8caca56",
-    "title": "Suriname kiest voor overleg na Guyanese kritiek op financiering Corantijnbrug",
-    "source": "Starnieuws",
-    "date": "2026-07-04",
-    "country": "SR",
-    "url": "https://www.starnieuws.com/index.php/welcome/index/nieuwsitem/92809",
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "trinidad-express-13a6e01a",
-    "title": "Nestle assures Govt on jobs",
-    "source": "Trinidad Express",
-    "date": "2026-07-04",
-    "country": "TT",
-    "url": "https://trinidadexpress.com/business/local/nestle-assures-govt-on-jobs/article_fe6aef5c-7885-4b9e-93f2-581df532df8d.html",
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "kaieteur-news-cefc02f2",
-    "title": "Court quashes $800M GRA tax imposition on Mohameds for importation of luxury vehicles",
-    "source": "Kaieteur News",
-    "date": "2026-07-03",
-    "country": "GY",
-    "url": "https://kaieteurnewsonline.com/2026/07/03/court-quashes-800m-gra-tax-imposition-on-mohameds-for-importation-of-luxury-vehicles/",
-    "tags": [
-      "news",
-      "bibi mohamed",
-      "guyana revenue authority",
-      "hana mohamed.",
-      "high court",
-      "luxury vehicles"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "kaieteur-news-5119ab5a",
-    "title": "EPA gives go ahead to Aranka gold project using Chinese-developed leaching reagent",
-    "source": "Kaieteur News",
-    "date": "2026-07-03",
-    "country": "GY",
-    "url": "https://kaieteurnewsonline.com/2026/07/03/epa-clears-aranka-gold-project-using-chinese-developed-leaching-reagent/",
-    "tags": [
-      "news",
-      "aranka gold project",
-      "epa",
-      "jin chan",
-      "leaching reagent",
-      "orava mining equipment"
-    ],
-    "deal_status": "completed",
-    "deal_type": "FDI"
-  },
-  {
-    "id": "kaieteur-news-8a96dcdf",
-    "title": "Iran warns oil tankers to use approved routes in Strait of Hormuz or face a ‘forceful response’",
-    "source": "Kaieteur News",
-    "date": "2026-07-03",
-    "country": "GY",
-    "url": "https://kaieteurnewsonline.com/2026/07/03/iran-warns-oil-tankers-to-use-approved-routes-in-strait-of-hormuz-or-face-a-forceful-response/",
-    "tags": [
-      "news",
-      "forceful response",
-      "iran",
-      "oil tankers",
-      "strait of hormuz"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "kaieteur-news-d7399a7f",
-    "title": "Canadian company expects new Orinduik oil deal by September",
-    "source": "Kaieteur News",
-    "date": "2026-07-03",
-    "country": "GY",
-    "url": "https://kaieteurnewsonline.com/2026/07/03/canadian-company-expects-new-orinduik-oil-deal-by-september/",
-    "tags": [
-      "news",
-      "eco atlantic oil & gas",
-      "guyana oil",
-      "oil",
-      "orinduik block",
-      "production sharing agreement"
-    ],
-    "deal_status": "pending",
-    "deal_type": "FDI"
-  },
-  {
-    "id": "kaieteur-news-276a41ea",
-    "title": "Fire destroys Home Zone’s employees living quarters",
-    "source": "Kaieteur News",
-    "date": "2026-07-03",
-    "country": "GY",
-    "url": "https://kaieteurnewsonline.com/2026/07/03/fire-destroys-home-zones-employees-living-quarters/",
-    "tags": [
-      "news",
-      "employees living quarters",
-      "fire",
-      "guyana fire service",
-      "home zone"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "jamaica-observer-79b2d5f1",
-    "title": "Insurers face $646-m fee hit",
-    "source": "Jamaica Observer",
-    "date": "2026-07-03",
-    "country": "JM",
-    "url": "https://www.jamaicaobserver.com/2026/07/03/insurers-face-646-m-fee-hit/",
-    "tags": [
-      "business",
-      "caribbean business report (cbr)"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "jamaica-observer-7c66436d",
-    "title": "Water investments key to Jamaica’s resilience–Samuda",
-    "source": "Jamaica Observer",
-    "date": "2026-07-03",
-    "country": "JM",
-    "url": "https://www.jamaicaobserver.com/2026/07/02/water-investments-key-jamaicas-resilience-samuda/",
-    "tags": [
-      "latest news",
-      "news",
-      "matthew samuda",
-      "water"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "eyewitness-news-980d8f59",
-    "title": "Munroe: No Legislation Yet on Proposed Salary Increase",
-    "source": "Eyewitness News",
-    "date": "2026-07-03",
-    "country": "BS",
-    "url": "https://ewnews.com/munroe-no-legislation-yet-on-proposed-salary-increase/?utm_source=rss&utm_medium=rss&utm_campaign=munroe-no-legislation-yet-on-proposed-salary-increase",
-    "tags": [
-      "local",
-      "newscasts",
-      "videos"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "starnieuws-75db5b42",
-    "title": "SEOB: Economie groeit verder; inflatie en staatsschuld blijven zorgenkinderen",
-    "source": "Starnieuws",
-    "date": "2026-07-03",
-    "country": "SR",
-    "url": "https://www.starnieuws.com/index.php/welcome/index/nieuwsitem/92779",
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "starnieuws-b47eb812",
-    "title": "DNL wil Investeringswet aanscherpen met pakket amendementen",
-    "source": "Starnieuws",
-    "date": "2026-07-03",
-    "country": "SR",
-    "url": "https://www.starnieuws.com/index.php/welcome/index/nieuwsitem/92785",
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "starnieuws-77436287",
-    "title": "Regering moet SRD 13 miljard financieren om begroting 2026 uit te voeren",
-    "source": "Starnieuws",
-    "date": "2026-07-03",
-    "country": "SR",
-    "url": "https://www.starnieuws.com/index.php/welcome/index/nieuwsitem/92780",
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "antigua-news-room-4bf1e328",
-    "title": "Government Projects Antigua and Barbuda’s Economy to Grow Another Five Percent This Year",
-    "source": "Antigua News Room",
-    "date": "2026-07-03",
-    "country": "AG",
-    "url": "https://antiguanewsroom.com/government-projects-antigua-and-barbudas-economy-to-grow-another-five-percent-this-year/",
-    "tags": [
-      "news"
     ],
     "deal_status": "not_a_deal",
     "deal_type": null
