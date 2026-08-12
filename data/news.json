@@ -1,5 +1,304 @@
 [
   {
+    "id": "guyana-chronicle-05082286",
+    "title": "Housing Ministry rejects ‘misleading’ claims over Versailles–Parika Road Project",
+    "source": "Guyana Chronicle",
+    "date": "2026-08-12",
+    "country": "GY",
+    "url": "https://guyanachronicle.com/2026/08/12/housing-ministry-rejects-misleading-claims-over-versailles-parika-road-project/",
+    "tags": [
+      "news"
+    ],
+    "category": "Infrastructure",
+    "group": "Investment",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "guyana-chronicle-3eadf088",
+    "title": "Domestic airlines reaffirm commitment to affordable, safe, sustainable air transport",
+    "source": "Guyana Chronicle",
+    "date": "2026-08-12",
+    "country": "GY",
+    "url": "https://guyanachronicle.com/2026/08/12/domestic-airlines-reaffirm-commitment-to-affordable-safe-sustainable-air-transport/",
+    "tags": [
+      "news"
+    ],
+    "category": "Tourism",
+    "group": "Trade & Tourism",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "barbados-today-103c9a77",
+    "title": "CTUSAB demands equal treatment for state, private employers in wage protection law",
+    "source": "Barbados Today",
+    "date": "2026-08-12",
+    "country": "BB",
+    "url": "https://barbadostoday.bb/2026/08/11/ctusab-demands-equal-treatment-for-state-private-employers-in-wage-protection-law/",
+    "tags": [
+      "local news",
+      "headline' headlines"
+    ],
+    "category": "Labor",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "jamaica-gleaner-37028864",
+    "title": "Flow Jamaica revenue dips to US$101 million as hurricane recovery continues",
+    "source": "Jamaica Gleaner",
+    "date": "2026-08-12",
+    "country": "JM",
+    "url": "http://jamaica-gleaner.com/article/business/20260812/flow-jamaica-revenue-dips-us101-million-hurricane-recovery-continues",
+    "category": "Fiscal Policy",
+    "group": "Fiscal Policy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "jamaica-gleaner-8b7c51ae",
+    "title": "NLA to revalue some 900,000 land parcels; property taxes expected to rise",
+    "source": "Jamaica Gleaner",
+    "date": "2026-08-12",
+    "country": "JM",
+    "url": "http://jamaica-gleaner.com/article/business/20260812/nla-revalue-some-900000-land-parcels-property-taxes-expected-rise",
+    "category": "Fiscal Policy",
+    "group": "Fiscal Policy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "jamaica-gleaner-a3f1cc64",
+    "title": "Knutsford Express bets on Mandeville and St Thomas for growth",
+    "source": "Jamaica Gleaner",
+    "date": "2026-08-12",
+    "country": "JM",
+    "url": "http://jamaica-gleaner.com/article/business/20260812/knutsford-express-bets-mandeville-and-st-thomas-growth",
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "jamaica-gleaner-77d6da4b",
+    "title": "Royalton reopens Jamaica resorts after post-hurricane refresh, launches US$30,000 family package",
+    "source": "Jamaica Gleaner",
+    "date": "2026-08-12",
+    "country": "JM",
+    "url": "http://jamaica-gleaner.com/article/business/20260812/royalton-reopens-jamaica-resorts-after-post-hurricane-refresh-launches",
+    "category": "Tourism",
+    "group": "Trade & Tourism",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "jamaica-gleaner-1b156044",
+    "title": "Jamaica leads Cemex’s regional division amid divestments",
+    "source": "Jamaica Gleaner",
+    "date": "2026-08-12",
+    "country": "JM",
+    "url": "http://jamaica-gleaner.com/article/business/20260812/jamaica-leads-cemexs-regional-division-amid-divestments",
+    "category": "Investment",
+    "group": "Investment",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "jamaica-gleaner-3358ebc8",
+    "title": "Copa profits halve as fuel costs bite, but Panama hub deepens Jamaica-Latin America connectivity",
+    "source": "Jamaica Gleaner",
+    "date": "2026-08-12",
+    "country": "JM",
+    "url": "http://jamaica-gleaner.com/article/business/20260812/copa-profits-halve-fuel-costs-bite-panama-hub-deepens-jamaica-latin",
+    "category": "Energy",
+    "group": "Energy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "jamaica-gleaner-ded65687",
+    "title": "Trump media company announces a massive loss and new turnaround effort",
+    "source": "Jamaica Gleaner",
+    "date": "2026-08-12",
+    "country": "JM",
+    "url": "http://jamaica-gleaner.com/article/business/20260812/trump-media-company-announces-massive-loss-and-new-turnaround-effort",
+    "category": "Corporate",
+    "group": "Finance",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "starnieuws-36bd6f5c",
+    "title": "Staatsbegroting 2026: financieel herstel zichtbaar, economische transformatie vraagt verdere uitwerking",
+    "source": "Starnieuws",
+    "date": "2026-08-12",
+    "country": "SR",
+    "url": "https://www.starnieuws.com/index.php/welcome/index/nieuwsitem/93377",
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "starnieuws-9eea00df",
+    "title": "Surinamers voorzichtig optimistisch, maar kiezen voor duurzame economische koers",
+    "source": "Starnieuws",
+    "date": "2026-08-12",
+    "country": "SR",
+    "url": "https://www.starnieuws.com/index.php/welcome/index/nieuwsitem/93369",
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "antigua-news-room-f3fbf865",
+    "title": "Banking Within Reach: How Branch Access Varies Across CARICOM",
+    "source": "Antigua News Room",
+    "date": "2026-08-12",
+    "country": "AG",
+    "url": "https://antiguanewsroom.com/banking-within-reach-how-branch-access-varies-across-caricom/",
+    "tags": [
+      "news"
+    ],
+    "category": "Banking",
+    "group": "Finance",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "antigua-news-room-20d204c2",
+    "title": "Youth unemployment rises as young people face a harder road to decent work – ILO",
+    "source": "Antigua News Room",
+    "date": "2026-08-12",
+    "country": "AG",
+    "url": "https://antiguanewsroom.com/youth-unemployment-rises-as-young-people-face-a-harder-road-to-decent-work-ilo/",
+    "tags": [
+      "news"
+    ],
+    "category": "Infrastructure",
+    "group": "Investment",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "antigua-observer-1867d2e7",
+    "title": "Youth Ambassador Calls for Greater Investment, Stronger Support to Tackle Youth Crime",
+    "source": "Antigua Observer",
+    "date": "2026-08-12",
+    "country": "AG",
+    "url": "https://antiguaobserver.com/youth-ambassador-calls-for-greater-investment-stronger-support-to-tackle-youth-crime/",
+    "tags": [
+      "the big stories"
+    ],
+    "category": "Investment",
+    "group": "Investment",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "st-kitts-nevis-observer-b9f09473",
+    "title": "CARPHA establishes regional reference laboratory in Jamaica",
+    "source": "St. Kitts-Nevis Observer",
+    "date": "2026-08-12",
+    "country": "KN",
+    "url": "https://www.thestkittsnevisobserver.com/carpha-establishes-regional-reference-laboratory-in-jamaica/",
+    "tags": [
+      "regional"
+    ],
+    "category": "Labor",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "st-kitts-nevis-observer-cf9499bb",
+    "title": "United States:  Chinese-Owned Company to Pay More Than $11M to Resolve False Claims Act Allegations Relating to Paycheck Protection Program Loan",
+    "source": "St. Kitts-Nevis Observer",
+    "date": "2026-08-12",
+    "country": "KN",
+    "url": "https://www.thestkittsnevisobserver.com/united-states-chinese-owned-company-to-pay-more-than-11m-to-resolve-false-claims-act-allegations-relating-to-paycheck-protection-program-loan/",
+    "tags": [
+      "press releases",
+      "regional/international news"
+    ],
+    "category": "Banking",
+    "group": "Finance",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "st-kitts-nevis-observer-b8c8ff5a",
+    "title": "United States:  Department of State Releases 2026 Fiscal Transparency Report Media Note",
+    "source": "St. Kitts-Nevis Observer",
+    "date": "2026-08-12",
+    "country": "KN",
+    "url": "https://www.thestkittsnevisobserver.com/united-states-department-of-state-releases-2026-fiscal-transparency-report-media-note/",
+    "tags": [
+      "press releases",
+      "regional/international news"
+    ],
+    "category": "Fiscal Policy",
+    "group": "Fiscal Policy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "bvi-news-f32a108f",
+    "title": "Labour Commissioner warns jobseekers on workplace pitfalls",
+    "source": "BVI News",
+    "date": "2026-08-12",
+    "country": "VG",
+    "url": "https://bvinews.com/labour-commissioner-warns-jobseekers-on-workplace-pitfalls/",
+    "tags": [
+      "all news"
+    ],
+    "category": "Labor",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
     "id": "guyana-chronicle-0265ce0e",
     "title": "President Ali mulls poultry hub to transition backyard farmers into commercial production in Region Two",
     "source": "Guyana Chronicle",
@@ -2447,6 +2746,49 @@
     "group": "Investment",
     "decision": "publish",
     "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "magnetic-media-17b2fb57",
+    "title": "ELECTRICITY BILL SHOCKER: PELICAN ENERGY WARNED GOV’T",
+    "source": "Magnetic Media",
+    "date": "2026-08-10",
+    "country": "TC",
+    "url": "https://magneticmediatv.com/2026/08/electricity-bill-shocker-pelican-energy-warned-govt/",
+    "tags": [
+      "news",
+      "tci news",
+      "#ejaysaunders",
+      "#magneticmedianews",
+      "#pelicanenergy"
+    ],
+    "category": "Energy",
+    "group": "Energy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "magnetic-media-f4f1ab73",
+    "title": "Cabinet Decides to Slow Down Commercial Crown Land Grants",
+    "source": "Magnetic Media",
+    "date": "2026-08-10",
+    "country": "TC",
+    "url": "https://magneticmediatv.com/2026/08/cabinet-decides-to-slow-down-commercial-crown-land-grants/",
+    "tags": [
+      "news",
+      "tci news",
+      "#magneticmedianews",
+      "#nationalfaircompetitionpolicy2026",
+      "#tcicommercialcrownlandgrant",
+      "#tcicreditunion"
+    ],
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
     "reason": "Heuristic: displayable.",
     "classifier": "heuristic"
   },
@@ -35734,317 +36076,6 @@
     "url": "https://antiguanewsroom.com/antigua-and-barbuda-projects-ec250-million-budget-surplus-on-strong-revenue-growth/",
     "tags": [
       "news"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "antigua-news-room-dcbf7619",
-    "title": "Ministry of Finance Official attends Prestigious Oxford Sustainable Finance Executive Programme",
-    "source": "Antigua News Room",
-    "date": "2026-07-06",
-    "country": "AG",
-    "url": "https://antiguanewsroom.com/ministry-of-finance-official-attends-prestigious-oxford-sustainable-finance-executive-programme/",
-    "tags": [
-      "featured"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "antigua-news-room-9d518eef",
-    "title": "LISTEN: Antigua and Barbuda Considering US$100 Million Chinese Loan for Housing and Renewable Energy",
-    "source": "Antigua News Room",
-    "date": "2026-07-06",
-    "country": "AG",
-    "url": "https://antiguanewsroom.com/listen-antigua-and-barbuda-considering-us100-million-chinese-loan-for-housing-and-renewable-energy/",
-    "tags": [
-      "news"
-    ],
-    "deal_status": "pending",
-    "deal_type": "Debt"
-  },
-  {
-    "id": "wic-news-d057f710",
-    "title": "'Back to Wood Fire': Locals react as LPG prices climb across Barbados",
-    "source": "WIC News",
-    "date": "2026-07-06",
-    "country": "ALL",
-    "url": "https://wicnews.com/barbados/back-to-wood-fire-locals-react-as-lpg-prices-climb-across-barbados",
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "now-grenada-4f62f8a0",
-    "title": "Republic Bank honours 5 TAMCC scholars for academic excellence",
-    "source": "NOW Grenada",
-    "date": "2026-07-06",
-    "country": "GD",
-    "url": "https://nowgrenada.com/2026/07/republic-bank-honours-5-tamcc-scholars-for-academic-excellence/",
-    "tags": [
-      "business",
-      "education",
-      "press release",
-      "youth",
-      "peaches george",
-      "republic bank"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "st-lucia-times-2f149da9",
-    "title": "Iconic Laborians Centre, Anse Kawet Crafters Gift Shop unveiled",
-    "source": "St. Lucia Times",
-    "date": "2026-07-06",
-    "country": "LC",
-    "url": "https://stluciatimes.com/181707/2026/07/iconic-laborians-centre-anse-kawet-crafters-gift-shop-unveiled/",
-    "tags": [
-      "community",
-      "headlines",
-      "alva baptiste",
-      "anse kawet",
-      "community business revitalisation project",
-      "laborie"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "the-star-jamaica-706f3aaa",
-    "title": "Brazil fan loses car-loan money in bet",
-    "source": "The Star (Jamaica)",
-    "date": "2026-07-06",
-    "country": "JM",
-    "url": "https://jamaica-star.com/article/news/20260706/brazil-fan-loses-car-loan-money-bet",
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "jamaica-observer-df47f992",
-    "title": "Construction, assembling phase of modular housing programme underway",
-    "source": "Jamaica Observer",
-    "date": "2026-07-06",
-    "country": "JM",
-    "url": "https://www.jamaicaobserver.com/2026/07/06/construction-assembling-phase-modular-housing-programme-underway/",
-    "tags": [
-      "latest news",
-      "news",
-      "government",
-      "modular homes"
-    ],
-    "deal_status": "pending",
-    "deal_type": "FDI"
-  },
-  {
-    "id": "st-kitts-nevis-observer-b57154c7",
-    "title": "Guyana pumps millions of dollars into rice farming",
-    "source": "St. Kitts-Nevis Observer",
-    "date": "2026-07-06",
-    "country": "KN",
-    "url": "https://www.thestkittsnevisobserver.com/guyana-pumps-millions-of-dollars-into-rice-farming/",
-    "tags": [
-      "regional"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "st-kitts-nevis-observer-c94987d1",
-    "title": "Guyana: Opposition leader questions ownership and financing of President’s farm",
-    "source": "St. Kitts-Nevis Observer",
-    "date": "2026-07-06",
-    "country": "KN",
-    "url": "https://www.thestkittsnevisobserver.com/guyana-opposition-leader-questions-ownership-and-financing-of-presidents-farm/",
-    "tags": [
-      "regional"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "st-kitts-nevis-observer-90fa4d94",
-    "title": "New Zealand:  Government Supporting Wairarapa Farmers After Heavy Rain",
-    "source": "St. Kitts-Nevis Observer",
-    "date": "2026-07-06",
-    "country": "KN",
-    "url": "https://www.thestkittsnevisobserver.com/new-zealand-government-supporting-wairarapa-farmers-after-heavy-rain/",
-    "tags": [
-      "press releases",
-      "regional/international news"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "magnetic-media-430800a0",
-    "title": "Warning Puts Spotlight on Governor’s Constitutional Responsibility for Financial Services",
-    "source": "Magnetic Media",
-    "date": "2026-07-06",
-    "country": "TC",
-    "url": "https://magneticmediatv.com/2026/07/warning-puts-spotlight-on-governors-constitutional-responsibility-for-financial-services/",
-    "tags": [
-      "news",
-      "tci news",
-      "#dileenidanielselvaratnam",
-      "#financialservicescommission'sannualindustrymeeting",
-      "#magneticmedianews"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "magnetic-media-01131e9c",
-    "title": "Turks & Caicos Hotel and Tourism Association Secures Landmark Health Insurance Partnership for Tourism Workforce",
-    "source": "Magnetic Media",
-    "date": "2026-07-06",
-    "country": "TC",
-    "url": "https://magneticmediatv.com/2026/07/turks-caicos-hotel-and-tourism-association-secures-landmark-health-insurance-partnership-for-tourism-workforce/",
-    "tags": [
-      "health",
-      "news",
-      "tci news",
-      "#caribbeanhealthinsurance",
-      "#chi",
-      "#craigarchibald"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "magnetic-media-0c46c317",
-    "title": "Turks & Caicos Visitors Spend $670 Million in 90 Days as Survey Reveals Top Resorts",
-    "source": "Magnetic Media",
-    "date": "2026-07-06",
-    "country": "TC",
-    "url": "https://magneticmediatv.com/2026/07/turks-caicos-visitors-spend-670-million-in-90-days-as-survey-reveals-top-resorts/",
-    "tags": [
-      "news",
-      "tci news",
-      "tourism",
-      "#experienceturksandcaicos",
-      "#magneticmedianews",
-      "#tcitourism2026"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "trinidad-express-ffde3cb5",
-    "title": "Prestige reports 44% drop in half-year profit",
-    "source": "Trinidad Express",
-    "date": "2026-07-06",
-    "country": "TT",
-    "url": "https://trinidadexpress.com/business/local/prestige-reports-44-drop-in-half-year-profit/article_a0c03553-cdea-47b2-b514-2ac22059c081.html",
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "kaieteur-news-38ff50ea",
-    "title": "‘Guard assets paid for by Guyana from oil companies’ – T&T expert warns",
-    "source": "Kaieteur News",
-    "date": "2026-07-05",
-    "country": "GY",
-    "url": "https://kaieteurnewsonline.com/2026/07/05/guard-assets-paid-for-by-guyana-from-oil-companies-tt-expert-warns/",
-    "tags": [
-      "news",
-      "anthony paul",
-      "assets",
-      "companies",
-      "guard",
-      "oil"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "kaieteur-news-aad6edc2",
-    "title": "Another Canadian mining company sets eyes on Guyana’s gold fields",
-    "source": "Kaieteur News",
-    "date": "2026-07-05",
-    "country": "GY",
-    "url": "https://kaieteurnewsonline.com/2026/07/05/another-canadian-mining-company-sets-eyes-on-guyanas-gold-fields/",
-    "tags": [
-      "news",
-      "exploration prospects",
-      "guyana's gold fields",
-      "lexston mining corporation"
-    ],
-    "deal_status": "pending",
-    "deal_type": "FDI"
-  },
-  {
-    "id": "kaieteur-news-f348df77",
-    "title": "Should Guyana Create a Public Petroleum Register?",
-    "source": "Kaieteur News",
-    "date": "2026-07-05",
-    "country": "GY",
-    "url": "https://kaieteurnewsonline.com/2026/07/05/when-oil-value-moves-lessons-from-trinidad-for-guyanas-petroleum-future-3/",
-    "tags": [
-      "news",
-      "guyana’s petroleum future",
-      "lessons",
-      "oil value"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "kaieteur-news-3ddd336c",
-    "title": "From a T-shirt business to a five-year celebration: the story of Grafix Tees & Jeans",
-    "source": "Kaieteur News",
-    "date": "2026-07-05",
-    "country": "GY",
-    "url": "https://kaieteurnewsonline.com/2026/07/05/from-a-t-shirt-business-to-a-five-year-celebration-the-story-of-grafix-tees-jeans/",
-    "tags": [
-      "news",
-      "grafix tees & jeans",
-      "kelz entertainment",
-      "t-shirt business"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "kaieteur-news-2e5d7a39",
-    "title": "CARICOM STANDARDS – STRENGTHENING TRADE, QUALITY & CONSUMER PROTECTION",
-    "source": "Kaieteur News",
-    "date": "2026-07-05",
-    "country": "GY",
-    "url": "https://kaieteurnewsonline.com/2026/07/05/caricom-standards-strengthening-trade-quality-consumer-protection/",
-    "tags": [
-      "news",
-      "caricom standards",
-      "consumer protection",
-      "gnbs"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "barbados-today-3fd174f8",
-    "title": "OPINION: Modern-day slavery in migrant labour markets",
-    "source": "Barbados Today",
-    "date": "2026-07-05",
-    "country": "BB",
-    "url": "https://barbadostoday.bb/2026/07/05/opinion-modern-day-slavery-in-migrant-labour-markets/",
-    "tags": [
-      "editorial",
-      "news"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "jamaica-observer-395946af",
-    "title": "Hanover youth business pilot soars",
-    "source": "Jamaica Observer",
-    "date": "2026-07-05",
-    "country": "JM",
-    "url": "https://www.jamaicaobserver.com/2026/07/05/hanover-youth-business-pilot-soars/",
-    "tags": [
-      "news",
-      "western"
     ],
     "deal_status": "not_a_deal",
     "deal_type": null

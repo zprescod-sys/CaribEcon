@@ -1,5 +1,21 @@
 [
   {
+    "id": "jamaica-gleaner-20b188f6",
+    "title": "Vietnam’s VinSpace signs deal with Elon Musk’s SpaceX to launch its first satellites in 2027",
+    "source": "Jamaica Gleaner",
+    "date": "2026-08-12",
+    "country": "JM",
+    "url": "http://jamaica-gleaner.com/article/business/20260812/vietnams-vinspace-signs-deal-elon-musks-spacex-launch-its-first",
+    "category": "",
+    "group": null,
+    "decision": "review",
+    "confidence": "low",
+    "reason": "Business-feed headline contains commercial vocabulary not covered by the public classifier.",
+    "classifier": "heuristic",
+    "approved": false,
+    "suggestedCategory": ""
+  },
+  {
     "id": "waterkant-d03f34c3",
     "title": "Masterclass “Behavioral Governance: Waarom goede governance toch mislukt, terwijl de regels op orde zijn”",
     "source": "Waterkant",
