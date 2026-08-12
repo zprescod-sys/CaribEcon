@@ -1,91 +1,5 @@
 [
   {
-    "id": "guyana-chronicle-b93d8bf2",
-    "title": "GPHC warns of rising road accidents as ICU resources come under pressure",
-    "source": "Guyana Chronicle",
-    "date": "2026-08-11",
-    "country": "GY",
-    "url": "https://guyanachronicle.com/2026/08/11/gphc-warns-of-rising-road-accidents-as-icu-resources-come-under-pressure/",
-    "tags": [
-      "news"
-    ],
-    "category": "",
-    "group": "Macro",
-    "decision": "review",
-    "confidence": "medium",
-    "reason": "road accidents strain ICU resources; plausibly economic if measuring labor-market lost time or healthcare-sector capacity stress, but headline emphasizes health crisis narrative",
-    "classifier": "llm",
-    "deal_status": "not_a_deal",
-    "deal_type": null,
-    "approved": false,
-    "suggestedCategory": "Labor"
-  },
-  {
-    "id": "demerara-waves-9b9eaddd",
-    "title": "Suriname threatens ferry MV Canawaima with sailing ban over safety concerns",
-    "source": "Demerara Waves",
-    "date": "2026-08-11",
-    "country": "GY",
-    "url": "https://demerarawaves.com/2026/08/10/suriname-threatens-ferry-mv-canawaima-with-sailing-ban-over-safety-concerns/",
-    "tags": [
-      "business",
-      "maritime",
-      "news",
-      "transportation",
-      "certificates",
-      "deficiencies"
-    ],
-    "category": "",
-    "group": "Trade & Tourism",
-    "decision": "review",
-    "confidence": "medium",
-    "reason": "ferry safety certification and sailing ban; maritime transport/trade nexus, but headline emphasizes safety compliance rather than economic impact or policy change",
-    "classifier": "llm",
-    "deal_status": "not_a_deal",
-    "deal_type": null,
-    "approved": false,
-    "suggestedCategory": "Trade"
-  },
-  {
-    "id": "jamaica-observer-b33ea91f",
-    "title": "Tougher water fines",
-    "source": "Jamaica Observer",
-    "date": "2026-08-11",
-    "country": "JM",
-    "url": "https://www.jamaicaobserver.com/2026/08/11/tougher-water-fines/",
-    "tags": [
-      "news"
-    ],
-    "category": "",
-    "group": "Macro",
-    "decision": "review",
-    "confidence": "medium",
-    "reason": "water-sector fines; plausibly regulatory/fiscal policy, but headline too thin to confirm substance",
-    "classifier": "llm",
-    "deal_status": "not_a_deal",
-    "deal_type": null,
-    "approved": false,
-    "suggestedCategory": "Government"
-  },
-  {
-    "id": "starnieuws-40904d3d",
-    "title": "Suriname vraagt om kennis uit diaspora - maar durft het die kennis ook werkelijk toe te laten?",
-    "source": "Starnieuws",
-    "date": "2026-08-11",
-    "country": "SR",
-    "url": "https://www.starnieuws.com/index.php/welcome/index/nieuwsitem/93347",
-    "category": "",
-    "group": "Macro",
-    "decision": "review",
-    "confidence": "medium",
-    "reason": "diaspora knowledge/brain-drain opinion piece; plausibly economic but framed as opinion, not reporting on a policy decision",
-    "classifier": "llm",
-    "deal_status": "not_a_deal",
-    "deal_type": null,
-    "approved": false,
-    "suggestedCategory": "Labor"
-  },
-  {
     "id": "waterkant-d03f34c3",
     "title": "Masterclass “Behavioral Governance: Waarom goede governance toch mislukt, terwijl de regels op orde zijn”",
     "source": "Waterkant",
@@ -130,127 +44,24 @@
     "suggestedCategory": "Government"
   },
   {
-    "id": "searchlight-svg-4f105ee7",
-    "title": "Prime Minister Friday heads SVG delegation to Taiwan",
-    "source": "Searchlight SVG",
+    "id": "st-kitts-nevis-observer-ff15cae9",
+    "title": "Great Britain:  British Embassy Santiago Presents Recommendations To Advance Offshore Wind Development In Chile",
+    "source": "St. Kitts-Nevis Observer",
     "date": "2026-08-11",
-    "country": "VC",
-    "url": "https://www.searchlight.vc/front-page/2026/08/11/prime-minister-friday-heads-svg-delegation-taiwan/",
+    "country": "KN",
+    "url": "https://www.thestkittsnevisobserver.com/great-britain-british-embassy-santiago-presents-recommendations-to-advance-offshore-wind-development-in-chile/",
     "tags": [
-      "front page"
+      "press releases",
+      "regional/international news"
     ],
     "category": "",
-    "group": "Macro",
-    "decision": "review",
-    "confidence": "medium",
-    "reason": "PM delegation to Taiwan could signal trade/investment dialogue but headline states only travel, not economic substance",
-    "classifier": "llm",
-    "deal_status": "not_a_deal",
-    "deal_type": null,
-    "approved": false,
-    "suggestedCategory": "Government"
-  },
-  {
-    "id": "searchlight-svg-52d18584",
-    "title": "Remaking the Caribbean resilient",
-    "source": "Searchlight SVG",
-    "date": "2026-08-11",
-    "country": "VC",
-    "url": "https://www.searchlight.vc/our-readers-opinions/2026/08/11/remaking-caribbean-resilient/",
-    "tags": [
-      "our readers' opinions"
-    ],
-    "category": "",
-    "group": "Macro",
-    "decision": "review",
-    "confidence": "medium",
-    "reason": "Caribbean resilience framing suggests climate/disaster-recovery substance but headline alone is opinion, unclear if economic",
-    "classifier": "llm",
-    "deal_status": "not_a_deal",
-    "deal_type": null,
-    "approved": false,
-    "suggestedCategory": "Climate"
-  },
-  {
-    "id": "bvi-news-21f42d88",
-    "title": "Premier should buy water tanks for struggling residents",
-    "source": "BVI News",
-    "date": "2026-08-11",
-    "country": "VG",
-    "url": "https://bvinews.com/premier-should-buy-water-tanks-for-struggling-residents/",
-    "tags": [
-      "all news"
-    ],
-    "category": "",
-    "group": "Investment",
-    "decision": "review",
-    "confidence": "medium",
-    "reason": "public infrastructure (water supply) and government spending proposal; plausible fiscal mechanism but framed as opinion/call, not confirmed action",
-    "classifier": "llm",
-    "deal_status": "not_a_deal",
-    "deal_type": null,
-    "approved": false,
-    "suggestedCategory": "Infrastructure"
-  },
-  {
-    "id": "bvi-news-b96da9b0",
-    "title": "Questions raised over suspended Road Town shuttle service",
-    "source": "BVI News",
-    "date": "2026-08-11",
-    "country": "VG",
-    "url": "https://bvinews.com/questions-raised-over-abandoned-road-town-shuttle-service/",
-    "tags": [
-      "all news"
-    ],
-    "category": "",
-    "group": "Trade & Tourism",
+    "group": "Energy",
     "decision": "review",
     "confidence": "low",
-    "reason": "public transit / shuttle service; ambiguous whether this is infrastructure management or a service provider issue with economic impact",
-    "classifier": "llm",
-    "deal_status": "not_a_deal",
-    "deal_type": null,
+    "reason": "Recognized editorial edge-case vocabulary; suggested Energy.",
+    "classifier": "heuristic",
     "approved": false,
-    "suggestedCategory": "Trade"
-  },
-  {
-    "id": "bvi-news-db6bf515",
-    "title": "Failed Joe’s Hill project exposed housing crisis – Grant",
-    "source": "BVI News",
-    "date": "2026-08-11",
-    "country": "VG",
-    "url": "https://bvinews.com/failed-joes-hill-project-exposed-housing-crisis-grant/",
-    "tags": [
-      "all news"
-    ],
-    "category": "",
-    "group": "Investment",
-    "decision": "review",
-    "confidence": "medium",
-    "reason": "housing project failure and housing crisis; economic substance but unclear if the headline signals a policy response or remains a blame/accountability narrative",
-    "classifier": "llm",
-    "deal_status": "not_a_deal",
-    "deal_type": null,
-    "approved": false,
-    "suggestedCategory": "Infrastructure"
-  },
-  {
-    "id": "wic-news-48aa1702",
-    "title": "YIDA Zone owner Yida Zhang shot in Antigua and Barbuda",
-    "source": "WIC News",
-    "date": "2026-08-11",
-    "country": "ALL",
-    "url": "https://wicnews.com/antigua-barbuda/yida-zone-owner-yida-zhang-shot-in-antigua-and-barbuda",
-    "category": "",
-    "group": "Finance",
-    "decision": "review",
-    "confidence": "low",
-    "reason": "business owner shot; plausibly a corporate/business headline but unclear if the economic relevance is substantive or merely incidental to the crime report",
-    "classifier": "llm",
-    "deal_status": "not_a_deal",
-    "deal_type": null,
-    "approved": false,
-    "suggestedCategory": "Corporate"
+    "suggestedCategory": "Energy"
   },
   {
     "id": "kaieteur-news-18d06ec4",
@@ -352,45 +163,6 @@
     "suggestedCategory": "Infrastructure"
   },
   {
-    "id": "jamaica-observer-323fae77",
-    "title": "Two spectacular weeks of agricultural immersion at Tuskegee for Jamaican high school students",
-    "source": "Jamaica Observer",
-    "date": "2026-08-10",
-    "country": "JM",
-    "url": "https://www.jamaicaobserver.com/2026/08/10/two-spectacular-weeks-agricultural-immersion-tuskegee-jamaican-high-school-students/",
-    "tags": [
-      "news"
-    ],
-    "category": "",
-    "group": "Macro",
-    "decision": "review",
-    "confidence": "low",
-    "reason": "Agricultural education programme at Tuskegee for Jamaican students; plausibly human-capital and agricultural development, but more educational exchange than economic news",
-    "classifier": "llm",
-    "deal_status": "not_a_deal",
-    "deal_type": null,
-    "approved": false,
-    "suggestedCategory": "Agriculture"
-  },
-  {
-    "id": "jamaica-gleaner-ade5fbb3",
-    "title": "CCJ under scrutiny - Regional court urged to move on allegations of division, ‘toxic’ environment",
-    "source": "Jamaica Gleaner",
-    "date": "2026-08-10",
-    "country": "JM",
-    "url": "http://jamaica-gleaner.com/article/news/20260810/ccj-under-scrutiny-regional-court-urged-move-allegations-division-toxic",
-    "category": "",
-    "group": "Macro",
-    "decision": "review",
-    "confidence": "medium",
-    "reason": "CCJ institutional concerns and division; plausibly economic if judicial credibility affects rule of law and investment, but headline emphasizes internal environment rather than economic mechanism",
-    "classifier": "llm",
-    "deal_status": "not_a_deal",
-    "deal_type": null,
-    "approved": false,
-    "suggestedCategory": "Government"
-  },
-  {
     "id": "starnieuws-e2344655",
     "title": "Mulokot en partners: Vijfkilometerwet geen oplossing voor grondenrechten",
     "source": "Starnieuws",
@@ -451,48 +223,6 @@
     "deal_type": null,
     "approved": false,
     "suggestedCategory": "Government"
-  },
-  {
-    "id": "antigua-observer-aa2a3687",
-    "title": "Browne Sees ‘Blessing’ in US Visa Restrictions",
-    "source": "Antigua Observer",
-    "date": "2026-08-10",
-    "country": "AG",
-    "url": "https://antiguaobserver.com/browne-sees-blessing-in-us-visa-restrictions/",
-    "tags": [
-      "the big stories"
-    ],
-    "category": "",
-    "group": "Macro",
-    "decision": "review",
-    "confidence": "medium",
-    "reason": "PM framing US visa restrictions as positive ('blessing') for labor markets; plausibly economic but vague commentary",
-    "classifier": "llm",
-    "deal_status": "not_a_deal",
-    "deal_type": null,
-    "approved": false,
-    "suggestedCategory": "Government"
-  },
-  {
-    "id": "bvi-news-4373324c",
-    "title": "Premier: Compliance lapses may exist across public service",
-    "source": "BVI News",
-    "date": "2026-08-10",
-    "country": "VG",
-    "url": "https://bvinews.com/premier-compliance-lapses-may-exist-across-public-service/",
-    "tags": [
-      "all news"
-    ],
-    "category": "",
-    "group": "Fiscal Policy",
-    "decision": "review",
-    "confidence": "low",
-    "reason": "public-service compliance lapses; plausibly fiscal governance but framed as a bare acknowledgment with no stated consequence or mechanism",
-    "classifier": "llm",
-    "deal_status": "not_a_deal",
-    "deal_type": null,
-    "approved": false,
-    "suggestedCategory": "Fiscal Policy"
   },
   {
     "id": "guyana-chronicle-81453e62",
@@ -665,95 +395,6 @@
     "deal_type": null,
     "approved": false,
     "suggestedCategory": "Investment"
-  },
-  {
-    "id": "st-kitts-nevis-observer-e60153ed",
-    "title": "AG: Extradition reforms will close legal gaps, strengthen justice system",
-    "source": "St. Kitts-Nevis Observer",
-    "date": "2026-08-10",
-    "country": "KN",
-    "url": "https://www.thestkittsnevisobserver.com/ag-extradition-reforms-will-close-legal-gaps-strengthen-justice-system/",
-    "tags": [
-      "local news"
-    ],
-    "category": "",
-    "group": "Macro",
-    "decision": "review",
-    "confidence": "medium",
-    "reason": "extradition/justice reform touches legal/institutional governance but lacks clear economic mechanism",
-    "classifier": "llm",
-    "deal_status": "not_a_deal",
-    "deal_type": null,
-    "approved": false,
-    "suggestedCategory": "Government"
-  },
-  {
-    "id": "st-kitts-nevis-observer-ea158309",
-    "title": "CARICOM calls for greater protection and inclusion of indigenous peoples",
-    "source": "St. Kitts-Nevis Observer",
-    "date": "2026-08-10",
-    "country": "KN",
-    "url": "https://www.thestkittsnevisobserver.com/caricom-calls-for-greater-protection-and-inclusion-of-indigenous-peoples/",
-    "tags": [
-      "regional"
-    ],
-    "category": "",
-    "group": "Macro",
-    "decision": "review",
-    "confidence": "medium",
-    "reason": "CARICOM regional policy on indigenous peoples; social/governance angle, economic impact unclear",
-    "classifier": "llm",
-    "deal_status": "not_a_deal",
-    "deal_type": null,
-    "approved": false,
-    "suggestedCategory": "Government"
-  },
-  {
-    "id": "ziz-online-607c4087",
-    "title": "Ministry Defends Farmer Relocation for Housing Project",
-    "source": "ZIZ Online",
-    "date": "2026-08-10",
-    "country": "KN",
-    "url": "https://zizonline.com/ministry-defends-farmer-relocation-for-housing-project/",
-    "tags": [
-      "national"
-    ],
-    "category": "",
-    "group": "Macro",
-    "decision": "review",
-    "confidence": "medium",
-    "reason": "farmer relocation for housing project; land-use conflict with agriculture displaced, but unclear scope or compensation mechanism",
-    "classifier": "llm",
-    "deal_status": "not_a_deal",
-    "deal_type": null,
-    "approved": false,
-    "suggestedCategory": "Agriculture"
-  },
-  {
-    "id": "jamaica-observer-204e204f",
-    "title": "BWE organisers respond to viral fight video, reaffirms commitment to patron safety",
-    "source": "Jamaica Observer",
-    "date": "2026-08-10",
-    "country": "JM",
-    "url": "https://www.jamaicaobserver.com/2026/08/10/bwe-organisers-respond-viral-fight-video-reaffirms-commitment-patron-safety/",
-    "tags": [
-      "entertainment",
-      "latest news",
-      "news",
-      "best weekend ever",
-      "bwe",
-      "fight"
-    ],
-    "category": "",
-    "group": "Trade & Tourism",
-    "decision": "review",
-    "confidence": "medium",
-    "reason": "event organizer safety response to incident; tourism/entertainment event governance, plausibly economic but thin substance",
-    "classifier": "llm",
-    "deal_status": "not_a_deal",
-    "deal_type": null,
-    "approved": false,
-    "suggestedCategory": "Tourism"
   },
   {
     "id": "breaking-belize-news-831a9ad1",
@@ -1201,27 +842,6 @@
     "suggestedCategory": "Corporate"
   },
   {
-    "id": "jamaica-observer-5a9dedca",
-    "title": "Running dry",
-    "source": "Jamaica Observer",
-    "date": "2026-08-09",
-    "country": "JM",
-    "url": "https://www.jamaicaobserver.com/2026/08/09/running-dry/",
-    "tags": [
-      "news"
-    ],
-    "category": "",
-    "group": "Macro",
-    "decision": "review",
-    "confidence": "low",
-    "reason": "headline too vague to judge; plausibly about water shortage or resource scarcity, but insufficient information",
-    "classifier": "llm",
-    "deal_status": "not_a_deal",
-    "deal_type": null,
-    "approved": false,
-    "suggestedCategory": "Government"
-  },
-  {
     "id": "jamaica-gleaner-6b3671e0",
     "title": "TRIGGER TROUBLE - INDECOM probes 26 accidental firearm discharges in seven months; eight cops injured as FLA warns against negligence",
     "source": "Jamaica Gleaner",
@@ -1611,27 +1231,6 @@
     "suggestedCategory": "Government"
   },
   {
-    "id": "iwitness-news-af891826",
-    "title": "The Closing Door: Washington’s new visa rules and the Vincentian Family",
-    "source": "iWitness News",
-    "date": "2026-08-08",
-    "country": "VC",
-    "url": "https://www.iwnsvg.com/2026/08/08/the-closing-door-washingtons-new-visa-rules-and-the-vincentian-family/",
-    "tags": [
-      "opinion"
-    ],
-    "category": "",
-    "group": "Macro",
-    "decision": "review",
-    "confidence": "medium",
-    "reason": "opinion on US visa policy impact on Vincentian families; plausibly migration/diaspora economic but framed as opinion, not reporting on policy change",
-    "classifier": "llm",
-    "deal_status": "not_a_deal",
-    "deal_type": null,
-    "approved": false,
-    "suggestedCategory": "Labor"
-  },
-  {
     "id": "kaieteur-news-2e342c91",
     "title": "Families of Berbice MV Barima victims fully supported by RDC – Region Six chairman",
     "source": "Kaieteur News",
@@ -1988,32 +1587,6 @@
     "deal_type": null,
     "approved": false,
     "suggestedCategory": "Fiscal Policy"
-  },
-  {
-    "id": "magnetic-media-3051960e",
-    "title": "PAY FIRST. QUESTION LATER.",
-    "source": "Magnetic Media",
-    "date": "2026-08-07",
-    "country": "TC",
-    "url": "https://magneticmediatv.com/2026/08/pay-first-question-later/",
-    "tags": [
-      "news",
-      "tci news",
-      "#douglasparnell",
-      "#interhealthcanada",
-      "#magneticmedianews",
-      "#payfirstquestionlater"
-    ],
-    "category": "",
-    "group": "Finance",
-    "decision": "review",
-    "confidence": "medium",
-    "reason": "Health-care insurance payment dispute; plausibly a regulatory or consumer-protection issue but headline lacks specifics",
-    "classifier": "llm",
-    "deal_status": "not_a_deal",
-    "deal_type": null,
-    "approved": false,
-    "suggestedCategory": "Banking"
   },
   {
     "id": "jamaica-observer-414d7c8e",
@@ -2985,32 +2558,6 @@
     "suggestedCategory": "Labor"
   },
   {
-    "id": "cayman-compass-e168dd08",
-    "title": "Public voice concerns over landfill, litter and noise at West Bay meeting",
-    "source": "Cayman Compass",
-    "date": "2026-08-05",
-    "country": "KY",
-    "url": "https://www.caymancompass.com/2026/08/05/public-voice-concerns-over-landfill-litter-and-noise-at-west-bay-meeting/",
-    "tags": [
-      "environment",
-      "featured local home page",
-      "local",
-      "politics",
-      "department of environment",
-      "katherine ebanks-wilks"
-    ],
-    "category": "",
-    "group": "Macro",
-    "decision": "review",
-    "confidence": "medium",
-    "reason": "landfill and environmental management; plausibly tied to public infrastructure/spending but focus is on public concerns, not confirmed mechanism",
-    "classifier": "llm",
-    "deal_status": "not_a_deal",
-    "deal_type": null,
-    "approved": false,
-    "suggestedCategory": "Government"
-  },
-  {
     "id": "kaieteur-news-f985a92a",
     "title": "Former Minister questions independence of MV Barima COI as secretary deeply tied to Gov’t",
     "source": "Kaieteur News",
@@ -3597,27 +3144,6 @@
     "deal_type": null,
     "approved": false,
     "suggestedCategory": "Corporate"
-  },
-  {
-    "id": "searchlight-svg-abf81a2a",
-    "title": "Cultural Ambassador blasts service of Inter-Caribbean",
-    "source": "Searchlight SVG",
-    "date": "2026-08-04",
-    "country": "VC",
-    "url": "https://www.searchlight.vc/news/2026/08/04/cultural-ambassador-blasts-service-inter-caribbean/",
-    "tags": [
-      "news"
-    ],
-    "category": "",
-    "group": "Trade & Tourism",
-    "decision": "review",
-    "confidence": "medium",
-    "reason": "airline service criticism could indicate operational or competitive issue in regional aviation market but lacks specific economic substance",
-    "classifier": "llm",
-    "deal_status": "not_a_deal",
-    "deal_type": null,
-    "approved": false,
-    "suggestedCategory": "Trade"
   },
   {
     "id": "kaieteur-news-08002484",
@@ -10052,28 +9578,6 @@
     "classifier": "llm",
     "approved": false,
     "suggestedCategory": "Government",
-    "triaged": true
-  },
-  {
-    "id": "ziz-online-226364f6",
-    "title": "Education Leaders Visit Key Project Sites",
-    "source": "ZIZ Online",
-    "date": "2026-04-13",
-    "country": "KN",
-    "url": "https://ziz.kn/education-leaders-visit-key-project-sites/",
-    "tags": [
-      "education",
-      "national",
-      "news"
-    ],
-    "category": "",
-    "group": "Investment",
-    "decision": "review",
-    "confidence": "low",
-    "reason": "Education leaders visiting project sites may imply development activity, but headline is vague on economic content.",
-    "classifier": "llm",
-    "approved": false,
-    "suggestedCategory": "Infrastructure",
     "triaged": true
   }
 ]
