@@ -1,9 +1,10 @@
 # CaribEcon — Refined Architecture & Execution Plan
 
 > Reference document. Written against `CaribEcon_AskCaribEcon_Refined_Build_Prompt.md` (the prior
-> plan) and the verified state of the repo on `feature/excel-addin`. Supersedes that plan's Ask
-> CaribEcon / research architecture per §6 (Migration) below; the prior plan's Deep Dive/Comparison
-> deterministic-core material stays authoritative except where §6 explicitly overrides it.
+> plan) and the verified state of the repo on `feature/excel-addin`. **This document is now the
+> canonical engineering plan for the whole product** — Browse, custom functions, Deep Dive,
+> Comparison, and the Ask CaribEcon Research Agent alike. The prior build prompt is retired to a
+> historical record; §6 (Migration) below records exactly what it kept, changed, and removed.
 
 ---
 
@@ -13,12 +14,12 @@
 
 **The inversion is correct, and the code proves it — this is not a matter of taste.**
 
-- [api/deepdive.ts](api/deepdive.ts) makes **zero model calls**. Its numbers come from
+- [api/deepdive.ts](../api/deepdive.ts) makes **zero model calls**. Its numbers come from
   `getSeriesEvidence` → `CALCULATION_REGISTRY` → `buildWorkbookPlan`, all pure, all covered by
   existing tests. The current plan assigns a Verification role to a pipeline that has nothing to
   verify.
-- [api/research.ts](api/research.ts) — the *only* place prose is generated — records citations from
-  what its tools served (`cite()`, [api/research.ts:299](api/research.ts#L299)) and then **never
+- [api/research.ts](../api/research.ts) — the *only* place prose is generated — records citations from
+  what its tools served (`cite()`, [api/research.ts:299](../api/research.ts#L299)) and then **never
   checks the prose against them**. No grounding check, no refusal path, only a system prompt. The
   surface that can fabricate has the least governance in the system.
 
@@ -91,11 +92,11 @@ produces.
 | ------------------------------ | ------------------------ | ------------------------------------------------------------------------------------------------------------------ |
 | Data Hub reader                | **exists**         | `src/lib/indicators.ts`                                                                                          |
 | News Hub reader                | **exists**         | `src/lib/news.ts` — metadata only, enforced                                                                     |
-| Resolution + intent validation | **exists**         | `canonicaliseIntent`, `resolveCountry`, `resolveIndicator` — [askTools.ts:145-194](src/lib/askTools.ts#L145) |
+| Resolution + intent validation | **exists**         | `canonicaliseIntent`, `resolveCountry`, `resolveIndicator` — [askTools.ts:145-194](../src/lib/askTools.ts#L145) |
 | Series retrieval               | **exists**         | `getSeriesEvidence`, `getSelectedCountrySeries`                                                                |
-| Calculation registry           | **exists**         | `CALCULATION_REGISTRY` + `inputYears` lineage — [calculations.ts:82](src/lib/calculations.ts#L82)              |
-| Comparability rules            | **exists**         | `addComparabilityCaveats` — [askTools.ts:394](src/lib/askTools.ts#L394)                                          |
-| Evidence package               | **exists**, extend | `EvidencePackage` — [askTools.ts:77](src/lib/askTools.ts#L77)                                                    |
+| Calculation registry           | **exists**         | `CALCULATION_REGISTRY` + `inputYears` lineage — [calculations.ts:82](../src/lib/calculations.ts#L82)              |
+| Comparability rules            | **exists**         | `addComparabilityCaveats` — [askTools.ts:394](../src/lib/askTools.ts#L394)                                          |
+| Evidence package               | **exists**, extend | `EvidencePackage` — [askTools.ts:77](../src/lib/askTools.ts#L77)                                                    |
 | Chart / workbook planning      | **exists**         | `buildChartSpecification`, `buildWorkbookPlan`                                                                 |
 | Evidence identity              | **new**            | `EvidenceRef` namespace over `evidenceId()`                                                                    |
 | External evidence              | **new**            | `src/lib/webEvidence.ts` (Tavily)                                                                                |
@@ -172,7 +173,7 @@ The Executor is a pure function of `(ResearchPlan, hub)`. This is what makes "mo
 - It eliminates the accumulating-history cost blow-up your own plan warns about at §7 line 281.
 - The executor is testable with hand-built `ResearchPlan` fixtures and **no LLM mock** — which
   matters, because this repo has a standing policy of never mocking a provider
-  ([api/research.test.mjs](api/research.test.mjs) header).
+  ([api/research.test.mjs](../api/research.test.mjs) header).
 - Adaptivity is preserved with **exactly one** re-plan, which sees only the misses, never the
   evidence.
 
@@ -226,19 +227,52 @@ resolve an explicit `./foo.js` specifier to a `foo.ts` on disk. The pane gets aw
 module with runtime imports is therefore **not importable by the pane**. The pane renders a verdict;
 it never recomputes one.
 
-**C2 — Build the workbook plan client-side.** The service returns exactly one thing, `ResearchResult`
-(§2.5) — answer, evidence, verdict — and **nothing Excel-specific**. The pane calls
-`buildWorkbookPlan` itself; it already imports `excelOutputs.ts` at
-[taskpane.js:34](excel-addin/src/taskpane/taskpane.js#L34). This keeps the service **client-agnostic**
-(a future web surface consumes the same JSON) *and* gets insert-per-turn for free with zero new
-rendering code:
+**C2 — Build the workbook plan client-side, through one small, real adapter.** The service returns
+exactly one thing, `ResearchResult` (§2.5) — answer, evidence, verdict — and **nothing
+Excel-specific**. `buildWorkbookPlan` does not take a `ResearchResult`, though: its actual signature
+is `buildWorkbookPlan(results: readonly IndicatorResult[], intent: SingleCountryIntent, misses)`
+([excelOutputs.ts:522](../src/lib/excelOutputs.ts#L522)), and `IndicatorResult` is
+`{ evidence: DataEvidence; periodAverage: CalculationResult; change: {...} }`
+([excelOutputs.ts:281](../src/lib/excelOutputs.ts#L281)) — a shape a research answer doesn't arrive
+in. The gap is real but small, because every piece `IndicatorResult` needs is already a pure,
+existing function: `api/deepdive.ts` computes exactly this today from a bare `DataEvidence`. The
+pane-side adapter is that same composition, reused rather than reinvented:
+
+```ts
+/* EvidencePackage.data is already DataEvidence[] — the only thing missing to make it an
+   IndicatorResult[] is periodAverage and change, and both are pure functions that already exist.
+   Zero new calculation logic; this is exactly what api/deepdive.ts:110-121 already does per
+   series, lifted into a reusable adapter both call sites can share. */
+function toIndicatorResults(data: readonly DataEvidence[]): IndicatorResult[] {
+  return data.map(evidence => {
+    const name = calculationForUnit(evidence.unit);
+    const results = (name === 'pp_change' ? pp_change : yoy_change)(evidence.points);
+    return { evidence, periodAverage: period_average(evidence.points), change: { name, results } };
+  });
+}
+```
 
 ```
-ResearchResult → client-side buildWorkbookPlan() → WorkbookPlan → Excel insertion
+ResearchResult.evidence.data → toIndicatorResults() → IndicatorResult[]
+                                                              ↓
+        ResearchIntent (single country) → SingleCountryIntent ↓
+                                                              ↓
+                                              client-side buildWorkbookPlan()
+                                                              ↓
+                                                        WorkbookPlan → Excel insertion
 ```
+
+**Known, explicit limit — not solved here, not silently assumed away:** `SingleCountryIntent.country`
+is one string ([excelIntent.ts:30](../src/lib/excelIntent.ts#L30)). A single-country research answer maps
+cleanly. A multi-country research answer (a comparison-shaped Ask question) does not fit
+`buildWorkbookPlan`'s title/section assumptions today — **insertion for multi-country answers is a
+documented future gap, not something Phase 1 needs to solve**, consistent with not building machinery
+the current scope doesn't need. Single-country insertion works end to end now.
 
 **The Research Service knows nothing about Excel.** Returning a `WorkbookPlan` from the server would
-weld it to one client.
+weld it to one client, and `toIndicatorResults` stays entirely on the client for the same reason —
+it belongs beside `buildWorkbookPlan` in the pane, which already imports `excelOutputs.ts` at
+[taskpane.js:34](../excel-addin/src/taskpane/taskpane.js#L34), not inside the service.
 
 **C3 — Turn state is refs, not bodies — and web evidence is turn-local.** The client posts prior
 turns carrying **evidence refs only**. `D:` and `N:` refs re-hydrate deterministically from the hub,
@@ -299,11 +333,11 @@ build, because rebuilding these is the most common way to end up with two source
 | Contract                                                                                 | Status                   | Location                                           |
 | ---------------------------------------------------------------------------------------- | ------------------------ | -------------------------------------------------- |
 | `SingleCountryIntent` / `CountryComparisonIntent` — your `StructuredRequest`      | **exists**         | `src/lib/excelIntent.ts`                         |
-| `ChartSpec`                                                                            | **exists**         | [excelOutputs.ts:96](src/lib/excelOutputs.ts#L96)   |
-| `WorkbookPlan`                                                                         | **exists**         | [excelOutputs.ts:266](src/lib/excelOutputs.ts#L266) |
-| `EvidencePackage`, `DataEvidence`, `DataPoint`, `RetrievalMiss`                  | **exists**, extend | [askTools.ts:44-84](src/lib/askTools.ts#L44)        |
-| `NewsEvidence`                                                                         | **exists**         | [news.ts:27](src/lib/news.ts#L27)                   |
-| `CalculationResult` (carries `inputYears` lineage)                                   | **exists**         | [calculations.ts:9](src/lib/calculations.ts#L9)     |
+| `ChartSpec`                                                                            | **exists**         | [excelOutputs.ts:96](../src/lib/excelOutputs.ts#L96)   |
+| `WorkbookPlan`                                                                         | **exists**         | [excelOutputs.ts:266](../src/lib/excelOutputs.ts#L266) |
+| `EvidencePackage`, `DataEvidence`, `DataPoint`, `RetrievalMiss`                  | **exists**, extend | [askTools.ts:44-84](../src/lib/askTools.ts#L44)        |
+| `NewsEvidence`                                                                         | **exists**         | [news.ts:27](../src/lib/news.ts#L27)                   |
+| `CalculationResult` (carries `inputYears` lineage)                                   | **exists**         | [calculations.ts:9](../src/lib/calculations.ts#L9)     |
 | `AskIntent` → `ResearchIntent`                                                      | extend existing          | `askTools.ts` → `ai/contracts.ts`             |
 | `EvidenceRef`, `EvidenceMeta`, `WebEvidence`                                       | new                      | `src/lib/ai/contracts.ts`                        |
 | `ResearchPlan`, `ResearchStep`                                                       | new                      | "                                                  |
@@ -348,7 +382,9 @@ export type EvidenceRef =
   | `W:${string}`;  // W:<sha256(url)>  — THIS REQUEST ONLY. Never accepted back from a client — see §2.4 C3.
 
 /* The version actually used, alongside the stable ref. Reuses DataEvidence.vintage — no new
-   provenance concept, just made addressable per-ref rather than only per-series. */
+   provenance concept, just made addressable per-ref rather than only per-series. Carried on
+   EvidencePackage.evidenceMeta (below) — a type that exists but is never attached to anything is
+   dead weight, not a contract. */
 export interface EvidenceMeta {
   ref: EvidenceRef;
   vintage: string | null;           // DataEvidence.vintage — dataset vintage, when the hub has one
@@ -377,7 +413,7 @@ export type ResearchStep =
   | { id: string; tool: 'get_series';     country: string; indicator: string; yearFrom: number|null; yearTo: number|null; why: string }
   | { id: string; tool: 'compare_series'; countries: string[]; indicator: string; yearFrom: number|null; yearTo: number|null; why: string }
   | { id: string; tool: 'search_news';    countries: string[]; keywords: string[]; dateFrom: string|null; dateTo: string|null; why: string }
-  | { id: string; tool: 'search_web';     query: string; why: string }
+  | { id: string; tool: 'search_web';     query: string; dateFrom: string|null; dateTo: string|null; why: string }
   | { id: string; tool: 'extract_web';    onStep: string; maxUrls: number; why: string };
 
 export interface ResearchPlan {
@@ -434,9 +470,13 @@ export interface VerificationVerdict {
 }
 ```
 
-**`EvidencePackage` gains exactly one additive field: `web?: WebEvidence[]`.**
-[askTools.test.mjs:337](src/lib/askTools.test.mjs#L337) checks key *presence*, not exhaustiveness, so
-additive is safe and the suite stays green. The uniform envelope is a **derived view**
+**`EvidencePackage` gains exactly two additive fields: `web?: WebEvidence[]` and
+`evidenceMeta: EvidenceMeta[]`.** The second is what actually attaches `EvidenceMeta` to something —
+one entry per unique `EvidenceRef` pulled into the package, populated by `buildEvidencePackage` (or
+its Research-Agent equivalent) at the moment each ref is resolved, so `retrievedAt`/`vintage` reflect
+*this* request rather than being reconstructed after the fact.
+[askTools.test.mjs:337](../src/lib/askTools.test.mjs#L337) checks key *presence*, not exhaustiveness, so
+both additions are safe and the suite stays green. The uniform envelope is a **derived view**
 (`toEvidenceItems(pkg)`), **not** a migration of `DataEvidence`/`NewsEvidence` — migrating would
 touch three working modules and their tests to serve a consumer that does not exist yet.
 
@@ -456,7 +496,7 @@ Pure code. Always runs. Free. Cannot fail open.
    registry function** and compare at that year. `CalculationResult.inputYears` gives the violation
    message its lineage for free.
 5. **Wrong change-calculation** — `unit === '%'` claimed as `yoy_change` is a violation on its own.
-   The gate enforces the same rule [`calculationForUnit`](src/lib/excelOutputs.ts#L36) already
+   The gate enforces the same rule [`calculationForUnit`](../src/lib/excelOutputs.ts#L36) already
    enforces deterministically.
 6. **Unstated numbers** — every numeric literal in prose must be a declared figure, a year in range,
    or a small ordinal ("three indicators"). Catches a figure stated but not declared.
@@ -623,7 +663,7 @@ were owned by different teams. None applies.
 
 | Tool                             | Governance                                                                      |
 | -------------------------------- | ------------------------------------------------------------------------------- |
-| `search_web` (Tavily Search)   | plan-authorized step; max 2/request                                             |
+| `search_web` (Tavily Search)   | plan-authorized step; max 2/request; carries `dateFrom`/`dateTo` from the plan's own scope, same historical-window discipline as `search_news` |
 | `extract_web` (Tavily Extract) | plan-authorized; must reference an earlier search step; max 3 URLs, char-capped |
 
 **Model providers:** one OpenAI-compatible adapter + a registry. See §4.
@@ -784,12 +824,20 @@ the synthesis provider whenever Impala is absent.
 
 CaribEcon splits across two runtimes with a clean boundary.
 
-**Vercel — client layer.** UI and static assets, the Excel add-in bundle, auth and request
+**Client-facing Vercel project.** UI and static assets, the Excel add-in bundle, auth and request
 validation, the deterministic product APIs, and a **thin research proxy**. It is explicitly *not*
-the Research Agent; it forwards research requests and returns structured results.
+the Research Agent, holds **no provider or Tavily keys**, and forwards research requests over the
+signed channel in §5.7.
 
-**NoInfra Spark VPS — research runtime.** OpenClaw runs as the agent harness and operational shell.
-The CaribEcon Research Service runs inside it as one unit, executing the nine steps of §2.3.
+**NoInfra Spark VPS — research runtime (primary).** OpenClaw runs as the agent harness and
+operational shell. The CaribEcon Research Service runs inside it as one unit, executing the nine
+steps of §2.3, holding its own copies of every provider and Tavily key.
+
+**"Research runtime" is a role, not a place — see §5.4.** The proven Vercel fallback (§5.4) is a
+**separate Vercel project and deployment from the client-facing one above**, with its own isolated
+environment holding its own copies of the same keys. It is a second candidate for that role, not an
+extension of the client-facing project. Two research-runtime candidates exist; exactly one client
+layer exists; the client layer never holds a key regardless of which candidate is live.
 
 The property that makes this safe: **the proxy is an indirection point.** Where the Research Service
 lives is a config value, not an architectural fact — which is what makes §5.4 nearly free.
@@ -802,17 +850,19 @@ lives is a config value, not an architectural fact — which is what makes §5.4
 | Auth, request validation, spend gate                                          | Vercel                                                      | sits in front of the proxy;**user-facing** rate limits live here                                              |
 | `/api/indicator`, `/api/snapshot`, `/api/deepdive`, `/api/comparison` | Vercel Functions                                            | deterministic, cacheable,**zero model calls**                                                                 |
 | **Thin research proxy**                                                 | Vercel                                                      | forwards to whichever Research Service target is configured, over the**signed channel in §5.7**              |
-| **Research Service** (nine steps, §2.3)                                | **NoInfra VPS (primary) · Vercel (proven fallback)** | same code, two targets — see §5.4 for how "fallback" is scoped                                                    |
+| **Research Service** (nine steps, §2.3)                                | **NoInfra VPS (primary) · a SEPARATE Vercel project (proven fallback)** | same code, two independently-keyed deployments — see §5.4 for how "fallback" is scoped |
 | **OpenClaw**                                                            | NoInfra VPS                                                 | harness and operational shell**only** — see the boundary below                                               |
-| Model inference                                                               | Nebius · MiniMax · Impala                                 | never self-hosted;**provider + Tavily keys live only on the research runtime**, never on Vercel or the client |
+| Model inference                                                               | Nebius · MiniMax · Impala                                 | never self-hosted;**provider + Tavily keys live only on whichever research-runtime deployment is live** (NoInfra, or the separate fallback project) — never on the client-facing Vercel project, never on the client |
 | External search                                                               | Tavily                                                      | plan-authorized only                                                                                                |
 | Traces                                                                        | OllyGarden                                                  | post-core                                                                                                           |
 
-**The Research Service is not a public browser API.** It is reachable only from the Vercel proxy over
-the authenticated server-to-server channel in §5.7 — never directly by the browser or the Excel
-add-in, and its CORS policy (if it has one at all) must not grant browser-origin access. This is what
-keeps "provider keys stay server-side" true in a two-runtime world: the keys sit on the one machine
-nothing outside the proxy can reach.
+**The Research Service is not a public browser API, on either deployment.** It is reachable only
+from the client-facing Vercel project's proxy, over the authenticated server-to-server channel in
+§5.7 — never directly by the browser or the Excel add-in, and its CORS policy (if it has one at all)
+must not grant browser-origin access. This holds for NoInfra and for the fallback project alike:
+each is a separate machine/deployment nothing outside the proxy can reach, and each holds its own
+key copies precisely because "provider keys stay server-side" must stay true regardless of which one
+is currently live.
 
 **The OpenClaw boundary, stated as a test you can apply:** *if OpenClaw is deciding anything about
 what evidence to gather, it has crossed the line.* It starts the service, keeps it alive, restarts
@@ -827,10 +877,14 @@ These are what make the dual deployment in §5.4 cost almost nothing.
    runtime-specific imports** and **no OpenClaw-specific types anywhere in its contracts**. HTTP
    handler, env access and timers live in a thin adapter — one adapter per runtime.
 2. **All env access through one `config.ts`.** Never `process.env` scattered through roles.
-3. **The service itself stays stateless and request-scoped** — no filesystem dependency, no
-   persistent-process assumption, no background jobs inside a request. The VPS *hosts* it; the VPS's
-   extra capabilities do not leak into it. This is exactly what lets the same code run on Vercel
-   unchanged.
+3. **The service itself stays stateless and request-scoped, and never manages files or paths
+   directly.** It depends only on the existing hub-reader interface — `indicators.ts` / `news.ts` /
+   `askTools.ts`, already plain functions over already-loaded data — never on a filesystem path, a
+   refresh timer, or which runtime it's in. *Getting bytes onto disk before the process starts is a
+   runtime-adapter concern, not a service concern*: Vercel satisfies it by bundling the JSON at
+   deploy time (already true today); NoInfra satisfies it via the scheduled refresh + restart in
+   §5.5. Neither leaks into the service's own logic, no background jobs run inside a request, and
+   this is exactly what lets the same service code run on both runtimes unchanged.
 4. **Conversation state travels as compact turns plus evidence refs, never evidence bodies** (§2.7).
 
 ### 5.4 The Vercel fallback — proven once, not run twice as standing operations
@@ -848,6 +902,10 @@ Vercel proxy ──> CARIBECON_RESEARCH_TARGET
                    └─ vercel    (proven, not actively operated)
 ```
 
+- **This is a second Vercel project, not a second function inside the client-facing one.** Same
+  repo, same service code, its own deployment and its own environment — holding its own copies of
+  the Nebius/MiniMax/Impala/Tavily keys, exactly as NoInfra does. The client-facing project's env
+  never gains a provider key just because the fallback exists.
 - Because the service is a plain function pushed from the same repo (§5.3), Vercel's normal
   build-on-push behavior means the fallback **never goes stale on its own** — it rebuilds whenever the
   repo does, without anyone treating it as a second thing to operate.
@@ -877,15 +935,28 @@ So there is no version of "refresh without restarting" available here; the real 
 **"restart with new data but the same code someone deliberately chose,"** not "restart with whatever
 the branch happens to contain right now."
 
-**Mechanism — no database, and no code checkout in the data path:**
+**Mechanism — no database, no code checkout in the data path, and one atomic swap, not two
+independent ones:**
 
-- On a schedule, the VPS **fetches `almanac-data.json` and `news.json` directly** (e.g. from GitHub's
-  raw-content endpoint, pinned to a specific ref) — plain file downloads, not a `git pull` and not a
-  checkout of anything code-shaped.
-- Each file writes to a temp path and is **renamed into place** — atomic, so a partial or failed fetch
-  can never leave the service reading a half-written file.
-- The service process then restarts, picking up the new data **on top of whatever code was last
-  deliberately deployed.**
+Renaming `almanac-data.json` into place and then separately renaming `news.json` into place leaves a
+real window between the two renames — a restart landing in that window loads one fresh file paired
+with one stale one, and because the service only re-reads at startup, that mismatch would persist
+for a full day until the next refresh, not just an instant. The fix is to make "both files or
+neither" a single filesystem operation:
+
+- On a schedule, the VPS **fetches both `almanac-data.json` and `news.json` into a new, separate
+  staging directory** (e.g. `data/.refresh/<timestamp>/`) — from GitHub's raw-content endpoint,
+  pinned to a specific ref. Plain file downloads; not a `git pull`, not a checkout of anything
+  code-shaped.
+- **Both files are parsed and validated before anything is promoted.** A malformed or partial
+  download in either file aborts the refresh; the previous, already-live snapshot is left completely
+  untouched, and the failure is logged rather than silently degrading the data the service serves.
+- Only once both files validate does a **single `rename()` of the staging directory** (or a single
+  symlink repoint — `data/current → data/.refresh/<timestamp>/`, whichever the deploy environment
+  makes simpler) promote the pair together. A `rename()`/symlink swap on the same filesystem is
+  atomic on POSIX — there is no intermediate state where one file is new and the other isn't.
+- The service process then restarts, reading through that stable path and picking up the new pair
+  **on top of whatever code was last deliberately deployed.**
 - **Application code deploys as its own separate, deliberate action** — a normal push-triggered
   redeploy, or an explicitly invoked pull — never on the data-refresh timer.
 
@@ -910,11 +981,29 @@ and you have said you will not spend personal money.
 Required before Phase 3 ships (when external search lands). **This splits across the two runtimes
 introduced in §5.1, and saying so explicitly avoids the two rules contradicting each other:**
 
-1. **Server-side daily spend cap, enforced on the research runtime** (NoInfra, or Vercel when that
-   target carries traffic) — it is the side holding the provider keys, so it is the only side that can
-   actually stop spend. When the cap is hit, the service returns a clean "research budget exhausted
-   for today" state — the deterministic surfaces (Browse, `CE.*`, Deep Dive) keep working, because
-   they cost nothing.
+1. **Server-side daily spend cap, enforced on the research runtime** (NoInfra, or the separate
+   Vercel fallback project when it's the live target, §5.1) — it is the side holding the provider
+   keys, so it is the only side that can actually stop spend. When the cap is hit, the service
+   returns a clean "research budget exhausted for today" state — the deterministic surfaces
+   (Browse, `CE.*`, Deep Dive) keep working, because they cost nothing.
+
+   **"Daily spend cap" is not fully specified by that sentence alone — it needs a real accounting
+   mechanism, and the two research-runtime candidates need different ones:**
+   - **On NoInfra:** the service is one process on one VPS. An in-process counter genuinely is
+     authoritative there — there is no second instance for a concurrent request to hit.
+   - **On the Vercel fallback, if it is ever the *live* target:** an in-process counter is **not**
+     authoritative. Vercel Functions can run multiple concurrent instances even within one
+     deployment, each with its own memory — a naive counter can be exceeded by concurrent requests
+     landing on different instances. **Before the Vercel fallback is activated as a live target
+     (not merely proven per §5.4), its spend cap must move to an external atomic counter** — a
+     simple `INCR`-with-TTL against Vercel KV or Upstash Redis is enough; this does not need a
+     general-purpose database.
+   - **Reset boundary:** UTC midnight, stated explicitly so "daily" has one unambiguous meaning
+     regardless of which runtime enforces it.
+   - **Cancellation:** hitting the cap **mid-request** must abort any in-flight provider/Tavily call,
+     not merely block the *next* one — this is the same shared budget object from §7 ("Budget and
+     caps"); the spend cap is one more condition that object's `remaining()` check honors, not a
+     separate mechanism bolted on beside it.
 2. **User-facing rate limiting stays on Vercel** (§5.2) — it is the layer that sees the browser/Excel
    client directly and is where `api/research.ts`'s 12 req/min lived. **Drop it hard**: a five-role
    pipeline plus Tavily costs several times a single Claude call, so the old number is now far too
@@ -924,7 +1013,8 @@ introduced in §5.1, and saying so explicitly avoids the two rules contradicting
 4. Treat any published demo token as **burnable** — rotate it after the buildathon.
 
 This is a genuine risk the current plan does not price, and it is cheap to fix now and expensive to
-discover from a bill.
+discover from a bill. The accounting mechanism above is the difference between "priced" and "priced
+on paper only" — a cap that isn't durable and atomic under concurrency isn't a cap.
 
 ### 5.7 Securing the Vercel → NoInfra channel
 
@@ -961,9 +1051,12 @@ Browser / Excel
   in-memory or file-backed set scoped to that same window is enough; there is no need for a database.
 - **The service's CORS policy must not answer browser-origin requests at all.** This is not a public
   browser API with a permissive header — see §5.2.
-- Provider keys (Nebius, MiniMax, Impala) and the Tavily key live **only** on the research runtime,
-  never on Vercel, never in any client bundle — consistent with the existing rule that provider keys
-  are server-side and the Excel bundle never carries one.
+- Provider keys (Nebius, MiniMax, Impala) and the Tavily key live **only** on whichever deployment
+  is acting as the research runtime — NoInfra, or the separate Vercel fallback project when it is
+  the live target (§5.1, §5.4). **Never on the client-facing Vercel project, never in any client
+  bundle** — consistent with the existing rule that provider keys are server-side and the Excel
+  bundle never carries one. This is what makes "never on Vercel" precise rather than contradicted
+  by the fallback existing at all: the fallback is its own deployment, not the client-facing one.
 
 This is deliberately not mutual TLS, OAuth, or a token-issuing service — those solve problems this
 two-node, low-traffic setup does not have. HMAC plus timestamp plus nonce is the standard,
@@ -1079,7 +1172,7 @@ Implementation proceeds **one small step at a time with explicit approval** — 
 4. `src/lib/apiGuard.ts` — token, rate limit, CORS, **copied** from `api/research.ts` (frozen —
    copy, never move).
 5. Close the fail-open hole at
-   [excelOutputs.test.mjs:562](src/lib/excelOutputs.test.mjs#L562): `known.has(id)` passes vacuously
+   [excelOutputs.test.mjs:562](../src/lib/excelOutputs.test.mjs#L562): `known.has(id)` passes vacuously
    if both sides ever degrade to `undefined`. Add a shape assertion on every `evidenceId`.
 
 **Phase 0b — NoInfra connectivity + OpenClaw capability spike**
@@ -1119,6 +1212,13 @@ Research Service is built on top of an untested foundation.
 - **Chat UI in the Excel task pane ships here, not last.** It is the highest-variance,
   least-testable surface in the project (Office.js + WebView2 + the `build:addin` → `public/addin/`
   publish loop). Deferring it hides that risk until the end.
+- **This phase's prose is explicitly internal-only — it is what Phase 2's gate has nothing yet to
+  check.** With no gate built, an unsupported figure or claim can reach whoever sees the pane, and
+  the whole architecture's central promise (§2.1: "no model may produce anything the core doesn't")
+  does not hold yet at this stage. Keep the build in your own hands, or behind a state visibly
+  marked unverified, until Phase 2 ships — never present Phase 1 output as demo-ready. Evidence,
+  tables, and charts (all deterministic, all already grounded) are safe to show earlier; the
+  narrative specifically is not.
 - **Capture real model outputs to a fixture file.** Phase 2's gate is calibrated against these.
 
 **The real runtime build-out follows Phase 0b's proven connectivity:**
