@@ -1,5 +1,231 @@
 [
   {
+    "id": "guyana-chronicle-33c398c8",
+    "title": "Gov’t engages Region Three cane farmers as development projects advance",
+    "source": "Guyana Chronicle",
+    "date": "2026-08-13",
+    "country": "GY",
+    "url": "https://guyanachronicle.com/2026/08/13/govt-engages-region-three-cane-farmers-as-development-projects-advance/",
+    "tags": [
+      "news"
+    ],
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "guyana-chronicle-14c8a346",
+    "title": "Dragon fruit pilot blossoms into new opportunity for Guyana farmers",
+    "source": "Guyana Chronicle",
+    "date": "2026-08-13",
+    "country": "GY",
+    "url": "https://guyanachronicle.com/2026/08/13/dragon-fruit-pilot-blossoms-into-new-opportunity-for-guyana-farmers/",
+    "tags": [
+      "news"
+    ],
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "guyana-chronicle-8815ff2a",
+    "title": "GMSA’s Uncapped Marketplace to showcase more than 100 agro-processors this weekend",
+    "source": "Guyana Chronicle",
+    "date": "2026-08-13",
+    "country": "GY",
+    "url": "https://guyanachronicle.com/2026/08/13/gmsas-uncapped-marketplace-to-showcase-more-than-100-agro-processors-this-weekend/",
+    "tags": [
+      "news"
+    ],
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "guyana-chronicle-49058894",
+    "title": "PSC, bottled water producers pursue plan to lower prices",
+    "source": "Guyana Chronicle",
+    "date": "2026-08-13",
+    "country": "GY",
+    "url": "https://guyanachronicle.com/2026/08/13/psc-bottled-water-producers-pursue-plan-to-lower-prices/",
+    "tags": [
+      "news"
+    ],
+    "category": "Inflation",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "jamaica-gleaner-1f64ecc0",
+    "title": "AI reshaping Brazilian agriculture",
+    "source": "Jamaica Gleaner",
+    "date": "2026-08-13",
+    "country": "JM",
+    "url": "http://jamaica-gleaner.com/article/news/20260813/ai-reshaping-brazilian-agriculture",
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "jamaica-gleaner-9180e9d1",
+    "title": "US inflation slows but prices remain elevated as Iran war and spending on AI push up prices",
+    "source": "Jamaica Gleaner",
+    "date": "2026-08-13",
+    "country": "JM",
+    "url": "http://jamaica-gleaner.com/article/business/20260813/us-inflation-slows-prices-remain-elevated-iran-war-and-spending-ai-push",
+    "category": "Inflation",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "eyewitness-news-ee683d39",
+    "title": "Taxi Union To Take Industrial Action After Alleged Missed Deadline By Govt",
+    "source": "Eyewitness News",
+    "date": "2026-08-13",
+    "country": "BS",
+    "url": "https://ewnews.com/taxi-union-to-take-industrial-action-after-alleged-missed-deadline-by-govt/?utm_source=rss&utm_medium=rss&utm_campaign=taxi-union-to-take-industrial-action-after-alleged-missed-deadline-by-govt",
+    "tags": [
+      "local",
+      "newscasts",
+      "videos"
+    ],
+    "category": "Labor",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "waterkant-3a720f26",
+    "title": "Wereldbank waarschuwt: Suriname kan ruim 15.000 nieuwe banen mislopen zonder investering in vaardigheden",
+    "source": "Waterkant",
+    "date": "2026-08-13",
+    "country": "SR",
+    "url": "https://www.waterkant.net/suriname/2026/08/13/wereldbank-waarschuwt-suriname-kan-ruim-15-000-nieuwe-banen-mislopen-zonder-investering-in-vaardigheden/#utm_source=rss&utm_medium=rss&utm_campaign=wereldbank-waarschuwt-suriname-kan-ruim-15-000-nieuwe-banen-mislopen-zonder-investering-in-vaardigheden",
+    "tags": [
+      "economie",
+      "maatschappij",
+      "nieuws uit suriname",
+      "uitgelicht"
+    ],
+    "category": "Investment",
+    "group": "Investment",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "st-kitts-nevis-observer-768021fd",
+    "title": "47 Ghanaian Nurses Join St. Kitts and Nevis Healthcare Workforce",
+    "source": "St. Kitts-Nevis Observer",
+    "date": "2026-08-13",
+    "country": "KN",
+    "url": "https://www.thestkittsnevisobserver.com/47-ghanaian-nurses-join-st-kitts-and-nevis-healthcare-workforce/",
+    "tags": [
+      "local news"
+    ],
+    "category": "Labor",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "st-kitts-nevis-observer-a3e2afac",
+    "title": "Great Britain:  13 Asylum Hotels Exited And Returned To Local Communities",
+    "source": "St. Kitts-Nevis Observer",
+    "date": "2026-08-13",
+    "country": "KN",
+    "url": "https://www.thestkittsnevisobserver.com/great-britain-13-asylum-hotels-exited-and-returned-to-local-communities/",
+    "tags": [
+      "press releases",
+      "regional/international news"
+    ],
+    "category": "Tourism",
+    "group": "Trade & Tourism",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "st-kitts-nevis-observer-364ba504",
+    "title": "United States:  State Department Establishes Task Force To End Birth Tourism",
+    "source": "St. Kitts-Nevis Observer",
+    "date": "2026-08-13",
+    "country": "KN",
+    "url": "https://www.thestkittsnevisobserver.com/united-states-state-department-establishes-task-force-to-end-birth-tourism/",
+    "tags": [
+      "press releases",
+      "regional/international news"
+    ],
+    "category": "Tourism",
+    "group": "Trade & Tourism",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "cayman-compass-45b7fc71",
+    "title": "Report: Caribbean economies resilient amid global energy shock",
+    "source": "Cayman Compass",
+    "date": "2026-08-13",
+    "country": "KY",
+    "url": "https://www.caymancompass.com/2026/08/13/report-caribbean-economies-resilient-amid-global-energy-shock/",
+    "tags": [
+      "business",
+      "finance",
+      "caribbean",
+      "cibc caribbean",
+      "us-iran tensions"
+    ],
+    "category": "Energy",
+    "group": "Energy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "bvi-news-0884b501",
+    "title": "BVI youths missing out on marine careers, says industry veteran",
+    "source": "BVI News",
+    "date": "2026-08-13",
+    "country": "VG",
+    "url": "https://bvinews.com/bvi-youths-missing-out-on-marine-careers-says-industry-veteran/",
+    "tags": [
+      "all news"
+    ],
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
     "id": "guyana-chronicle-05082286",
     "title": "Housing Ministry rejects ‘misleading’ claims over Versailles–Parika Road Project",
     "source": "Guyana Chronicle",
@@ -35992,175 +36218,5 @@
     "url": "https://trinidadexpress.com/business/local/brian-lewis-on-the-business-of-seeing/article_bf38d3c0-de95-4528-8a90-10206ece3a59.html",
     "deal_status": "not_a_deal",
     "deal_type": null
-  },
-  {
-    "id": "trinidad-express-a279a2b7",
-    "title": "Exploring opportunities  in the Saint Lucian market",
-    "source": "Trinidad Express",
-    "date": "2026-07-08",
-    "country": "TT",
-    "url": "https://trinidadexpress.com/business/local/exploring-opportunities-in-the-saint-lucian-market/article_615ae42d-cda0-4e3f-bf19-32dc99bc5fc0.html",
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "trinidad-express-273b86e6",
-    "title": "Enill: Technology key to credit union relevance",
-    "source": "Trinidad Express",
-    "date": "2026-07-08",
-    "country": "TT",
-    "url": "https://trinidadexpress.com/business/local/enill-technology-key-to-credit-union-relevance/article_9529159e-4644-48b6-a2bb-a2ee98d3424c.html",
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "trinidad-express-2553e597",
-    "title": "TT Chamber CEO awarded DBA  for work on regional services trade",
-    "source": "Trinidad Express",
-    "date": "2026-07-08",
-    "country": "TT",
-    "url": "https://trinidadexpress.com/business/local/tt-chamber-ceo-awarded-dba-for-work-on-regional-services-trade/article_00303d60-5c60-4833-b8ee-b909d64036b4.html",
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "kaieteur-news-92d8a7fc",
-    "title": "‘Guyana has been great for us, very pro-mining – OMAI CEO",
-    "source": "Kaieteur News",
-    "date": "2026-07-07",
-    "country": "GY",
-    "url": "https://kaieteurnewsonline.com/2026/07/07/guyana-has-been-great-for-us-very-pro-mining-omai-ceo/",
-    "tags": [
-      "news",
-      "avalon gold exploration inc",
-      "elaine ellingham",
-      "omai gold mines",
-      "pro-mining"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "kaieteur-news-82f23069",
-    "title": "Concrete quality scare rocks gas-to-energy project",
-    "source": "Kaieteur News",
-    "date": "2026-07-07",
-    "country": "GY",
-    "url": "https://kaieteurnewsonline.com/2026/07/07/concrete-quality-scare-rocks-gas-to-energy-project/",
-    "tags": [
-      "news",
-      "beston consulting",
-      "concrete quality",
-      "gas-to-energy project"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "kaieteur-news-eb63ea1f",
-    "title": "Bids opened for rehabilitation of East Ruimveldt Market",
-    "source": "Kaieteur News",
-    "date": "2026-07-07",
-    "country": "GY",
-    "url": "https://kaieteurnewsonline.com/2026/07/07/bids-opened-for-rehabilitation-of-east-ruimveldt-market/",
-    "tags": [
-      "news",
-      "bids",
-      "east ruimveldt market",
-      "rehabilitation"
-    ],
-    "deal_status": "pending",
-    "deal_type": "FDI"
-  },
-  {
-    "id": "kaieteur-news-c4873d48",
-    "title": "Guyana calls for democratic change, economic freedom in Cuba",
-    "source": "Kaieteur News",
-    "date": "2026-07-07",
-    "country": "GY",
-    "url": "https://kaieteurnewsonline.com/2026/07/07/guyana-calls-for-democratic-change-economic-freedom-in-cuba/",
-    "tags": [
-      "letters"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "jamaica-observer-66b34fa6",
-    "title": "Forex: $158.25 to one US dollar",
-    "source": "Jamaica Observer",
-    "date": "2026-07-07",
-    "country": "JM",
-    "url": "https://www.jamaicaobserver.com/2026/07/06/forex-158-25-one-us-dollar/",
-    "tags": [
-      "latest news",
-      "news",
-      "forex",
-      "us dollar"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "breaking-belize-news-1db3d249",
-    "title": "Hold the government accountable for its job, but never hand it the blame for yours",
-    "source": "Breaking Belize News",
-    "date": "2026-07-07",
-    "country": "BZ",
-    "url": "https://www.breakingbelizenews.com/2026/07/06/hold-the-government-accountable-for-its-job-but-never-hand-it-the-blame-for-yours/",
-    "tags": [
-      "headlines"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "starnieuws-5514b197",
-    "title": "De mens centraal: economische stabiliteit met een sociaal gezicht",
-    "source": "Starnieuws",
-    "date": "2026-07-07",
-    "country": "SR",
-    "url": "https://www.starnieuws.com/index.php/welcome/index/nieuwsitem/92843",
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "antigua-news-room-0b9ee1a5",
-    "title": "Opposition Senators Reject Compulsory Acquisition Resolution, Cite Lack of Transparency and Failure to Provide Critical Information",
-    "source": "Antigua News Room",
-    "date": "2026-07-07",
-    "country": "AG",
-    "url": "https://antiguanewsroom.com/opposition-senators-reject-compulsory-acquisition-resolution-cite-lack-of-transparency-and-failure-to-provide-critical-information/",
-    "tags": [
-      "news"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "antigua-news-room-88ff1508",
-    "title": "JOB VACANCY: Automotive Service Manager",
-    "source": "Antigua News Room",
-    "date": "2026-07-07",
-    "country": "AG",
-    "url": "https://antiguanewsroom.com/automotive-service-manager/",
-    "tags": [
-      "news"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "antigua-news-room-535109c6",
-    "title": "Antigua Turf Club Defends Racetrack Redevelopment Plan, Says Talks Stalled Over Tax Concession",
-    "source": "Antigua News Room",
-    "date": "2026-07-07",
-    "country": "AG",
-    "url": "https://antiguanewsroom.com/antigua-turf-club-defends-racetrack-redevelopment-plan-says-talks-stalled-over-tax-concession/",
-    "tags": [
-      "news"
-    ],
-    "deal_status": "pending",
-    "deal_type": "FDI"
   }
 ]
