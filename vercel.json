@@ -1,0 +1,7 @@
+{
+  "functions": {
+    "api/research.ts": {
+      "maxDuration": 60
+    }
+  }
+}

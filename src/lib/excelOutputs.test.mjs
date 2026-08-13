@@ -56,6 +56,16 @@ function result(ev = evidence()) {
   };
 }
 
+// A real evidenceId is "<country>:<indicator>" (excelOutputs.ts:44). Without this, a test like
+// "every chart ID exists in known IDs" would pass vacuously if evidenceId() ever degraded to
+// undefined on both sides — Set.has(undefined) is true when undefined was itself pushed into the
+// set. Asserting the shape closes that fail-open hole.
+function assertRealEvidenceId(id) {
+  assert.equal(typeof id, 'string', `evidence ID must be a string, got ${typeof id}`);
+  const [country, ...rest] = id.split(':');
+  assert.ok(country && rest.join(':'), `evidence ID "${id}" is not "<country>:<indicator>"`);
+}
+
 const intent = (over = {}) => ({
   workflow: 'single_country',
   country: 'GY',
@@ -563,8 +573,14 @@ test('every calculated figure names real retrieved years as its inputs', () => {
 test('every chart plots evidence IDs that exist in the plan', () => {
   const plan = buildWorkbookPlan([result()], intent());
   const known = new Set(plan.evidenceRows.map(r => r.evidenceId));
+  assert.ok(known.size > 0, 'no evidence rows produced — nothing to check chart IDs against');
+  for (const id of known) assertRealEvidenceId(id);
+
+  assert.ok(plan.charts.length > 0, 'no charts produced — nothing to check');
   for (const chart of plan.charts) {
+    assert.ok(chart.spec.evidenceIds.length > 0, 'chart declares no evidence IDs');
     for (const id of chart.spec.evidenceIds) {
+      assertRealEvidenceId(id);
       assert.ok(known.has(id), `chart references unknown evidence ID ${id}`);
     }
   }
