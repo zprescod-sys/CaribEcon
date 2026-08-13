@@ -4,30 +4,37 @@ Read at the start of every session to re-ground. This file is the project's orie
 
 - **Design / visual system → `EDDESIGN.md`** — the sole authority on look: color, type, geometry, motion, components, page layout.
 - **Data schema & sourcing → `data/SCHEMA.md`** — the canonical record shape, indicator slugs, source tiers, and integrity rules.
+- **Engineering plan & architecture → `docs/ARCHITECTURE.md`** — the canonical engineering plan for the whole product. See "Active build" below.
 - QA workflow → `docs/SCREENSHOT_WORKFLOW.md`.
 - **Project history → `docs/CHANGELOG.md`** — read on demand, not every session: the *why* behind past migrations, rebuilds, and fixes.
 
 ## Active build — CaribEcon Excel buildathon
 
-**The canonical engineering plan is
-`CaribEcon_AskCaribEcon_Refined_Build_Prompt.md`** (repo root, tracked — shared with the team for
-the buildathon; `plans/` alongside it is gitignored and holds local-only strategy/roadmap
-material, not this plan). Its filename is retained, but it is now the plan for the whole Excel
-add-in: the existing Browse and custom-function surface, Single Country Deep Dive, Country
-Comparison, structured charts/output, and bounded Ask CaribEcon. Read it before touching
+**The canonical engineering plan is `docs/ARCHITECTURE.md`.** It governs the whole product: the
+existing Browse and custom-function surface, Single Country Deep Dive, Country Comparison,
+structured charts/output, and the Ask CaribEcon Research Agent — provider roles, the deterministic
+grounding gate, evidence contracts, and the NoInfra/Vercel runtime split. Read it before touching
 `excel-addin/`, `api/`, or the server-side AI modules.
 
-Nebius and MiniMax are shared, server-side AI infrastructure for natural-language interpretation,
-optional bounded planning, and evidence-grounded explanation. They do not own facts, citations,
-calculations, workbook coordinates, tables, or charts. The controlled Data Hub and News Hub remain
-the source of truth; deterministic code retrieves, calculates, validates, and renders.
+`CaribEcon_AskCaribEcon_Refined_Build_Prompt.md` (repo root, tracked) is retired as the active
+plan — the same treatment it once gave its own predecessor, the multi-agent
+`CaribEcon_Build_Worflow.pdf`. It remains a historical record only; `docs/ARCHITECTURE.md` §6
+(Migration) records exactly what was kept, changed, and removed from it. `plans/` alongside it is
+gitignored and holds local-only strategy/roadmap material, not an active plan.
+
+Nebius, MiniMax, and (when access lands) Impala are shared, server-side AI infrastructure —
+`docs/ARCHITECTURE.md` §4 is authoritative on which provider serves which role. None of them own
+facts, citations, calculations, workbook coordinates, tables, or charts. The controlled Data Hub
+and News Hub remain the source of truth; deterministic code retrieves, calculates, validates, and
+renders.
 
 Standing constraints that outlive any single session:
 
 - **`api/research.ts` is frozen** for the duration of the buildathon. The new `/api/ask` path
-  lives beside it. `ASK_CARIBECON_MODE=ask|legacy` is an explicit task-pane rollback switch;
-  `ASK_RETRIEVER_MODE=deterministic|agentic` controls only the new endpoint's retrieval mode.
-  Do not silently fall back to `/api/research` within a request.
+  lives beside it. `ASK_CARIBECON_MODE=ask|legacy` is an explicit task-pane rollback switch.
+  There is no `ASK_RETRIEVER_MODE=agentic` toggle — retired per `docs/ARCHITECTURE.md` §6; the
+  research pipeline plans once and executes in code, never a model tool-loop. Do not silently
+  fall back to `/api/research` within a request.
 - **The existing add-in workflow is the foundation, and it stays.** Browse, the structured
   input → table output flow, and all seven `CE.*` functions are kept as-is and require no model
   call. AI is an optional capability for natural-language workflows; it does not replace or
