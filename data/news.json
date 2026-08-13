@@ -299,6 +299,423 @@
     "classifier": "heuristic"
   },
   {
+    "id": "kaieteur-news-549f1237",
+    "title": "After 10 days of silence, Govt. confirms Guyana receiving 50% profit share",
+    "source": "Kaieteur News",
+    "date": "2026-08-12",
+    "country": "GY",
+    "url": "https://kaieteurnewsonline.com/2026/08/12/after-10-days-of-silence-govt-confirms-guyana-receiving-50-profit-share/",
+    "tags": [
+      "news",
+      "exxonmobil",
+      "guyana oil",
+      "ministry of natural resources",
+      "oil profit"
+    ],
+    "category": "Corporate",
+    "group": "Finance",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "kaieteur-news-8c54fd9a",
+    "title": "Guyana must get more than 50% if country’s profits will be funding new oil projects – MP Andrews",
+    "source": "Kaieteur News",
+    "date": "2026-08-12",
+    "country": "GY",
+    "url": "https://kaieteurnewsonline.com/2026/08/12/guyana-must-get-more-than-50-if-countrys-profits-will-be-funding-new-oil-projects-mp-andrews/",
+    "tags": [
+      "news",
+      "exxonmobil",
+      "guyana oil",
+      "oil profits",
+      "saiku andrews"
+    ],
+    "category": "Energy",
+    "group": "Energy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "kaieteur-news-6b0fb70c",
+    "title": "Domestic airlines hit back at airfare criticism",
+    "source": "Kaieteur News",
+    "date": "2026-08-12",
+    "country": "GY",
+    "url": "https://kaieteurnewsonline.com/2026/08/12/domestic-airlines-hit-back-at-airfare-criticism/",
+    "tags": [
+      "news",
+      "airfare",
+      "airfare criticism",
+      "aoag",
+      "domestic airlines",
+      "hinterland air travel"
+    ],
+    "category": "Tourism",
+    "group": "Trade & Tourism",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "trinidad-express-ba13cd46",
+    "title": "800-TECH puts cybersecurity at centre of growth strategy",
+    "source": "Trinidad Express",
+    "date": "2026-08-12",
+    "country": "TT",
+    "url": "https://trinidadexpress.com/business/local/800-tech-puts-cybersecurity-at-centre-of-growth-strategy/article_73cbaa49-8bc5-4125-b7c5-452134f9bf6a.html",
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "trinidad-express-17c4271c",
+    "title": "T&T labour market stable, but economy remains structurally weak",
+    "source": "Trinidad Express",
+    "date": "2026-08-12",
+    "country": "TT",
+    "url": "https://trinidadexpress.com/business/local/t-t-labour-market-stable-but-economy-remains-structurally-weak/article_d9b3dabb-ef17-4f73-af8e-7561832383d3.html",
+    "category": "Labor",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "trinidad-express-07129bd7",
+    "title": "The strategic importance of the Canadian tourism market",
+    "source": "Trinidad Express",
+    "date": "2026-08-12",
+    "country": "TT",
+    "url": "https://trinidadexpress.com/business/local/the-strategic-importance-of-the-canadian-tourism-market/article_b050f4bd-8f8a-4a4b-998f-37627dfcb729.html",
+    "category": "Trade",
+    "group": "Trade & Tourism",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "ttt-news-5e8e8d7c",
+    "title": "NGC Chairman Predicts Major Turnaround For Energy Industry",
+    "source": "TTT News",
+    "date": "2026-08-12",
+    "country": "TT",
+    "url": "https://www.ttt.live/ngc-chairman-predicts-major-turnaround-for-energy-industry/?utm_source=rss&utm_medium=rss&utm_campaign=ngc-chairman-predicts-major-turnaround-for-energy-industry",
+    "tags": [
+      "energy",
+      "news"
+    ],
+    "category": "Energy",
+    "group": "Energy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "ttt-news-cf97fe1d",
+    "title": "Chicken Supplies Expected To Improve As Farmers Increase Production",
+    "source": "TTT News",
+    "date": "2026-08-12",
+    "country": "TT",
+    "url": "https://www.ttt.live/chicken-supplies-expected-to-improve-as-farmers-increase-production/?utm_source=rss&utm_medium=rss&utm_campaign=chicken-supplies-expected-to-improve-as-farmers-increase-production",
+    "tags": [
+      "agriculture",
+      "news"
+    ],
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "ttt-news-9de34ee3",
+    "title": "T&T Looks To Cut Emissions And Build A Greener Economy",
+    "source": "TTT News",
+    "date": "2026-08-12",
+    "country": "TT",
+    "url": "https://www.ttt.live/tt-looks-to-cut-emissions-and-build-a-greener-economy/?utm_source=rss&utm_medium=rss&utm_campaign=tt-looks-to-cut-emissions-and-build-a-greener-economy",
+    "tags": [
+      "environment",
+      "government",
+      "news"
+    ],
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "barbados-today-65da531f",
+    "title": "Sinckler: Caribbean could be investment hub",
+    "source": "Barbados Today",
+    "date": "2026-08-12",
+    "country": "BB",
+    "url": "https://barbadostoday.bb/2026/08/12/sinckler-caribbean-could-be-investment-hub/",
+    "tags": [
+      "business",
+      "local news",
+      "headline",
+      "headlines"
+    ],
+    "category": "Investment",
+    "group": "Investment",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "barbados-today-b9aaf1b6",
+    "title": "Young workers must be active partners in shaping future, says union youth chair",
+    "source": "Barbados Today",
+    "date": "2026-08-12",
+    "country": "BB",
+    "url": "https://barbadostoday.bb/2026/08/12/young-workers-must-be-active-partners-in-shaping-future-says-union-youth-chair/",
+    "tags": [
+      "business",
+      "local news"
+    ],
+    "category": "Labor",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "barbados-today-77e5e708",
+    "title": "PM pushes Massy for formal contract deals with farmers",
+    "source": "Barbados Today",
+    "date": "2026-08-12",
+    "country": "BB",
+    "url": "https://barbadostoday.bb/2026/08/12/pm-pushes-massy-for-formal-contract-deals-with-farmers/",
+    "tags": [
+      "business",
+      "local news"
+    ],
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "barbados-today-128b09a0",
+    "title": "Massy explores supermarket network to boost Caribbean exports",
+    "source": "Barbados Today",
+    "date": "2026-08-12",
+    "country": "BB",
+    "url": "https://barbadostoday.bb/2026/08/12/massy-explores-supermarket-network-to-boost-caribbean-exports/",
+    "tags": [
+      "business",
+      "local news"
+    ],
+    "category": "Trade",
+    "group": "Trade & Tourism",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "nation-news-7cb56f01",
+    "title": "Economy in ‘position of strength’",
+    "source": "Nation News",
+    "date": "2026-08-12",
+    "country": "BB",
+    "url": "https://nationnews.com/2026/08/12/economy-in-position-of-strength/?utm_source=rss&utm_medium=rss&utm_campaign=economy-in-position-of-strength",
+    "tags": [
+      "business",
+      "economy in ‘position of strength’"
+    ],
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "jamaica-observer-08857fb4",
+    "title": "SHERWIN-WILLIAMS ENDS JAMAICAN MANUFACTURING",
+    "source": "Jamaica Observer",
+    "date": "2026-08-12",
+    "country": "JM",
+    "url": "https://www.jamaicaobserver.com/2026/08/12/sherwin-williams-pulls-plug-local-production/",
+    "tags": [
+      "business"
+    ],
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "jamaica-observer-d940b23b",
+    "title": "Gas prices down $0.25, diesel down $0.25",
+    "source": "Jamaica Observer",
+    "date": "2026-08-12",
+    "country": "JM",
+    "url": "https://www.jamaicaobserver.com/2026/08/12/gas-prices-0-25-diesel-0-25-20260812-2234-089197/",
+    "tags": [
+      "latest news",
+      "news",
+      "gas",
+      "oil",
+      "pumps"
+    ],
+    "category": "Energy",
+    "group": "Energy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "jamaica-observer-27a34ef3",
+    "title": "JN Foundation invests $1.2m in Santa Cruz Women’s Centre to boost security, build resilience post-Melissa",
+    "source": "Jamaica Observer",
+    "date": "2026-08-12",
+    "country": "JM",
+    "url": "https://www.jamaicaobserver.com/2026/08/12/jn-foundation-invests-1-2m-santa-cruz-womens-centre-boost-security-build-resilience-post-melissa/",
+    "tags": [
+      "latest news",
+      "news",
+      "hurricane melissa",
+      "santa cruz"
+    ],
+    "category": "Investment",
+    "group": "Investment",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "the-star-jamaica-654c2f4c",
+    "title": "Tourist forgets ammo in luggage, faces 15 years behind bars",
+    "source": "The Star (Jamaica)",
+    "date": "2026-08-12",
+    "country": "JM",
+    "url": "https://jamaica-star.com/article/news/20260812/tourist-forgets-ammo-luggage-faces-15-years-behind-bars",
+    "category": "Tourism",
+    "group": "Trade & Tourism",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "breaking-belize-news-a4389e10",
+    "title": "From Security to Property maintenance: Service businesses Belizeans should consider!",
+    "source": "Breaking Belize News",
+    "date": "2026-08-12",
+    "country": "BZ",
+    "url": "https://www.breakingbelizenews.com/2026/08/12/from-security-to-property-maintenance-service-businesses-belizeans-should-consider/",
+    "tags": [
+      "community development",
+      "last news"
+    ],
+    "category": "Corporate",
+    "group": "Finance",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "breaking-belize-news-bafcb2ea",
+    "title": "Climate Finance Unit, CABEI and partners discuss climate priorities",
+    "source": "Breaking Belize News",
+    "date": "2026-08-12",
+    "country": "BZ",
+    "url": "https://www.breakingbelizenews.com/2026/08/12/climate-finance-unit-cabei-and-partners-discuss-climate-priorities/",
+    "tags": [
+      "community development",
+      "last news"
+    ],
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "antigua-news-room-5ffcbe65",
+    "title": "Open Letter : The Suffering of Public Works Employees",
+    "source": "Antigua News Room",
+    "date": "2026-08-12",
+    "country": "AG",
+    "url": "https://antiguanewsroom.com/open-letter-the-suffering-of-public-works-employees/",
+    "tags": [
+      "news"
+    ],
+    "category": "Labor",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "ziz-online-f54e1983",
+    "title": "Putin warns of tit-for-tat seizures of European vessels",
+    "source": "ZIZ Online",
+    "date": "2026-08-12",
+    "country": "KN",
+    "url": "https://zizonline.com/putin-warns-of-tit-for-tat-seizures-of-european-vessels/",
+    "tags": [
+      "international"
+    ],
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "cayman-news-service-bdc77916",
+    "title": "Premier seeks insurance sector support from US",
+    "source": "Cayman News Service",
+    "date": "2026-08-12",
+    "country": "KY",
+    "url": "https://caymannewsservice.com/2026/08/premier-seeks-insurance-sector-support-from-us/",
+    "tags": [
+      "business",
+      "financial services",
+      "politics",
+      "andré ebanks",
+      "cima",
+      "julie hunter"
+    ],
+    "category": "Banking",
+    "group": "Finance",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
     "id": "guyana-chronicle-0265ce0e",
     "title": "President Ali mulls poultry hub to transition backyard farmers into commercial production in Region Two",
     "source": "Guyana Chronicle",
@@ -2793,6 +3210,20 @@
     "classifier": "heuristic"
   },
   {
+    "id": "trinidad-express-8b962186",
+    "title": "Massy’s 9-month profit falls 32%",
+    "source": "Trinidad Express",
+    "date": "2026-08-10",
+    "country": "TT",
+    "url": "https://trinidadexpress.com/business/local/massy-s-9-month-profit-falls-32/article_8d2d9b50-6074-4e6a-876e-e1e5f2518e17.html",
+    "category": "Corporate",
+    "group": "Finance",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
     "id": "kaieteur-news-65b47d7a",
     "title": "Govt. must now say what % oil profits Guyana is receiving as Exxon confirms full investment recovered – Opposition Leader",
     "source": "Kaieteur News",
@@ -3735,6 +4166,20 @@
     "deal_type": "Other"
   },
   {
+    "id": "trinidad-express-9b43e671",
+    "title": "Business groups back security posts",
+    "source": "Trinidad Express",
+    "date": "2026-08-09",
+    "country": "TT",
+    "url": "https://trinidadexpress.com/business/local/business-groups-back-security-posts/article_d707621b-e47f-43ca-a8f8-3a579e970235.html",
+    "category": "Corporate",
+    "group": "Finance",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
     "id": "kaieteur-news-8d834d1b",
     "title": "‘No new oil projects until Guyana gets full 50% profits’ – APNU tells Govt.",
     "source": "Kaieteur News",
@@ -4659,6 +5104,20 @@
     "classifier": "llm",
     "deal_status": "not_a_deal",
     "deal_type": null
+  },
+  {
+    "id": "trinidad-express-43c1faaf",
+    "title": "Republic Bank exercised reasonable care",
+    "source": "Trinidad Express",
+    "date": "2026-08-08",
+    "country": "TT",
+    "url": "https://trinidadexpress.com/business/local/republic-bank-exercised-reasonable-care/article_86e56d0c-ec49-4786-a62b-92b9df95485f.html",
+    "category": "Banking",
+    "group": "Finance",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
   },
   {
     "id": "demerara-waves-e7c5cf64",
@@ -35703,381 +36162,5 @@
     ],
     "deal_status": "pending",
     "deal_type": "FDI"
-  },
-  {
-    "id": "antigua-news-room-18d08769",
-    "title": "Antigua and Barbuda’s Debt-to-GDP Ratio Falls to 62%",
-    "source": "Antigua News Room",
-    "date": "2026-07-07",
-    "country": "AG",
-    "url": "https://antiguanewsroom.com/antigua-and-barbudas-debt-to-gdp-ratio-falls-to-62/",
-    "tags": [
-      "news"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "iwitness-news-7e392748",
-    "title": "Tourism Ministry leads ‘Love SVG’ cleanliness initiative for Vincymas",
-    "source": "iWitness News",
-    "date": "2026-07-07",
-    "country": "VC",
-    "url": "https://www.iwnsvg.com/2026/07/07/tourism-ministry-leads-love-svg-cleanliness-initiative-for-vincymas/",
-    "tags": [
-      "news",
-      "entertainment",
-      "vincymas 2026"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "bvi-news-3e1952db",
-    "title": "Residents, tourists treated poorly at main airport — Skelton Cline",
-    "source": "BVI News",
-    "date": "2026-07-07",
-    "country": "VG",
-    "url": "https://bvinews.com/residents-tourists-treated-poorly-at-main-airport-skelton-cline/",
-    "tags": [
-      "all news"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "bvi-news-021896a6",
-    "title": "Labour Department cracks down on poor quality uploads",
-    "source": "BVI News",
-    "date": "2026-07-07",
-    "country": "VG",
-    "url": "https://bvinews.com/labour-department-cracks-down-on-poor-quality-uploads/",
-    "tags": [
-      "all news"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "cnc3-0bef5fda",
-    "title": "Passport alarmImmigration officials warn that current stock of official T&T travel documents is running dangerously low; may soon be issued only in emergency cases",
-    "source": "CNC3",
-    "date": "2026-07-07",
-    "country": "TT",
-    "url": "https://www.cnc3.co.tt/passport-alarmimmigration-officials-warn-that-current-stock-of-official-tt-travel-documents-is-running-dangerously-low-may-soon-be-issued-only-in-emergency-cases/?utm_source=rss&utm_medium=rss&utm_campaign=passport-alarmimmigration-officials-warn-that-current-stock-of-official-tt-travel-documents-is-running-dangerously-low-may-soon-be-issued-only-in-emergency-cases",
-    "tags": [
-      "news"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "cnc3-5927bc39",
-    "title": "Moonilal: 92 acts of sabotage in oil sector since October",
-    "source": "CNC3",
-    "date": "2026-07-07",
-    "country": "TT",
-    "url": "https://www.cnc3.co.tt/moonilal-92-acts-of-sabotage-in-oil-sector-since-october/?utm_source=rss&utm_medium=rss&utm_campaign=moonilal-92-acts-of-sabotage-in-oil-sector-since-october",
-    "tags": [
-      "news"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "barbados-today-879768c1",
-    "title": "Workers set for stronger wage protections",
-    "source": "Barbados Today",
-    "date": "2026-07-07",
-    "country": "BB",
-    "url": "https://barbadostoday.bb/2026/07/07/workers-set-for-stronger-wage-protections/",
-    "tags": [
-      "judicial",
-      "local news",
-      "politics",
-      "headline",
-      "headlines"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "starnieuws-300f4667",
-    "title": "China investeert SRD 245 miljoen in verdere landbouwontwikkeling in Saramacca",
-    "source": "Starnieuws",
-    "date": "2026-07-07",
-    "country": "SR",
-    "url": "https://www.starnieuws.com/index.php/welcome/index/nieuwsitem/92857",
-    "deal_status": "completed",
-    "deal_type": "FDI"
-  },
-  {
-    "id": "st-kitts-nevis-observer-7abcf9ef",
-    "title": "Great Britain:  Welsh Universities Unite To Boost Research Funding And Bring Jobs And Growth",
-    "source": "St. Kitts-Nevis Observer",
-    "date": "2026-07-07",
-    "country": "KN",
-    "url": "https://www.thestkittsnevisobserver.com/great-britain-welsh-universities-unite-to-boost-research-funding-and-bring-jobs-and-growth/",
-    "tags": [
-      "press releases",
-      "regional/international news"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "st-kitts-nevis-observer-4e4d220c",
-    "title": "Great Britain:  UK SME Chosen To Run Kyiv Business Centre",
-    "source": "St. Kitts-Nevis Observer",
-    "date": "2026-07-07",
-    "country": "KN",
-    "url": "https://www.thestkittsnevisobserver.com/great-britain-uk-sme-chosen-to-run-kyiv-business-centre/",
-    "tags": [
-      "press releases",
-      "regional/international news"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "st-kitts-nevis-observer-00232bec",
-    "title": "Nevis airport project takes off",
-    "source": "St. Kitts-Nevis Observer",
-    "date": "2026-07-07",
-    "country": "KN",
-    "url": "https://www.thestkittsnevisobserver.com/nevis-airport-project-takes-off/",
-    "tags": [
-      "local news"
-    ],
-    "deal_status": "pending",
-    "deal_type": "FDI"
-  },
-  {
-    "id": "st-kitts-nevis-observer-530dac42",
-    "title": "Premier Brantley Says Falling Oil Prices Will Result in Lower Electricity Costs for Nevis Consumers",
-    "source": "St. Kitts-Nevis Observer",
-    "date": "2026-07-07",
-    "country": "KN",
-    "url": "https://www.thestkittsnevisobserver.com/premier-brantley-says-falling-oil-prices-will-result-in-lower-electricity-costs-for-nevis-consumers/",
-    "tags": [
-      "local news"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "magnetic-media-9dbfcc44",
-    "title": "From Pathways to Investment: Tackling the US $6 Billion Food Challenge for the Caribbean",
-    "source": "Magnetic Media",
-    "date": "2026-07-07",
-    "country": "TC",
-    "url": "https://magneticmediatv.com/2026/07/from-pathways-to-investment-tackling-the-us-6-billion-food-challenge-for-the-caribbean/",
-    "tags": [
-      "caribbean news",
-      "health",
-      "news",
-      "world news",
-      "#caricom",
-      "#fao"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "cayman-compass-a8bf3d0b",
-    "title": "Power charges set to rise for households and businesses",
-    "source": "Cayman Compass",
-    "date": "2026-07-07",
-    "country": "KY",
-    "url": "https://www.caymancompass.com/2026/07/07/power-charges-set-to-rise-for-households-and-businesses/",
-    "tags": [
-      "featured local home page",
-      "local",
-      "caribbean utilities company",
-      "electricity costs",
-      "ofreg"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "cayman-compass-7f0a705d",
-    "title": "Financial services pioneer Michael Austin establishes new scholarship",
-    "source": "Cayman Compass",
-    "date": "2026-07-07",
-    "country": "KY",
-    "url": "https://www.caymancompass.com/2026/07/07/financial-services-pioneer-michael-austin-establishes-new-scholarship/",
-    "tags": [
-      "featured local home page",
-      "local",
-      "cayman islands institute of professional accountants",
-      "cayman islands monetary authority",
-      "kpmg",
-      "michael austin"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "trinidad-express-7ccbd97e",
-    "title": "Insurance veteran  Dale McLeod joins  Pan-American Life",
-    "source": "Trinidad Express",
-    "date": "2026-07-07",
-    "country": "TT",
-    "url": "https://trinidadexpress.com/business/local/insurance-veteran-dale-mcleod-joins-pan-american-life/article_212d9049-2b72-4e13-b19f-19d779a925f4.html",
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "trinidad-express-2a2af8a9",
-    "title": "Trump launches investment  accounts for children",
-    "source": "Trinidad Express",
-    "date": "2026-07-07",
-    "country": "TT",
-    "url": "https://trinidadexpress.com/business/world/trump-launches-investment-accounts-for-children/article_1c757b28-1a67-4fe4-8009-e7caaede7347.html",
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "kaieteur-news-445bf9da",
-    "title": "Guyana rejects Suriname’s claim it was told of solo bridge financing",
-    "source": "Kaieteur News",
-    "date": "2026-07-06",
-    "country": "GY",
-    "url": "https://kaieteurnewsonline.com/2026/07/06/guyana-rejects-surinames-claim-it-was-told-of-solo-bridge-financing/",
-    "tags": [
-      "news",
-      "bridge financing",
-      "corentyne river bridge",
-      "guyana and suriname",
-      "paramaribo"
-    ],
-    "deal_status": "pending",
-    "deal_type": "Other"
-  },
-  {
-    "id": "kaieteur-news-0e4db4e0",
-    "title": "Our oil wealth should not come at the cost of Indigenous women’s health",
-    "source": "Kaieteur News",
-    "date": "2026-07-06",
-    "country": "GY",
-    "url": "https://kaieteurnewsonline.com/2026/07/06/our-oil-wealth-should-not-come-at-the-cost-of-indigenous-womens-health/",
-    "tags": [
-      "letters",
-      "indigenous women's health",
-      "national budget",
-      "oil wealth"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "kaieteur-news-935f2b29",
-    "title": "AG’s noble intent targets employers’ well-being",
-    "source": "Kaieteur News",
-    "date": "2026-07-06",
-    "country": "GY",
-    "url": "https://kaieteurnewsonline.com/2026/07/06/ags-noble-intent-targets-employers-well-being/",
-    "tags": [
-      "letters",
-      "anil nandlall",
-      "attorney general",
-      "employers",
-      "raymond anderson"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "eyewitness-news-935c1216",
-    "title": "Lightning strike leaves thousands on New Providence without power four hours as Opposition blasts government’s energy management",
-    "source": "Eyewitness News",
-    "date": "2026-07-06",
-    "country": "BS",
-    "url": "https://ewnews.com/lightning-strike-leaves-thousands-on-new-providence-without-power-four-hours-as-opposition-blasts-governments-energy-management/?utm_source=rss&utm_medium=rss&utm_campaign=lightning-strike-leaves-thousands-on-new-providence-without-power-four-hours-as-opposition-blasts-governments-energy-management",
-    "tags": [
-      "business",
-      "always a headline ahead",
-      "bahamas",
-      "ewnews.com",
-      "eyewitness news online",
-      "nassau bahamas"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "eyewitness-news-92eb486b",
-    "title": "URCA: BPL still short $37.6M in fuel cost recovery despite successful fuel hedge",
-    "source": "Eyewitness News",
-    "date": "2026-07-06",
-    "country": "BS",
-    "url": "https://ewnews.com/urca-bpl-still-short-37-6m-in-fuel-cost-recovery-despite-successful-fuel-hedge/?utm_source=rss&utm_medium=rss&utm_campaign=urca-bpl-still-short-37-6m-in-fuel-cost-recovery-despite-successful-fuel-hedge",
-    "tags": [
-      "business",
-      "always a headline ahead",
-      "around the world",
-      "bahamas",
-      "bahamas news",
-      "eyewitness news online"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "eyewitness-news-869ffae6",
-    "title": "URCA unveils new gas worker licensing rules to strengthen safety and support natural gas industry",
-    "source": "Eyewitness News",
-    "date": "2026-07-06",
-    "country": "BS",
-    "url": "https://ewnews.com/urca-unveils-new-gas-worker-licensing-rules-to-strengthen-safety-and-support-natural-gas-industry/?utm_source=rss&utm_medium=rss&utm_campaign=urca-unveils-new-gas-worker-licensing-rules-to-strengthen-safety-and-support-natural-gas-industry",
-    "tags": [
-      "business",
-      "always a headline ahead",
-      "bahamas",
-      "eyewitness news online",
-      "nassau bahamas"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "breaking-belize-news-a2d43b22",
-    "title": "Belize can earn a trade surplus, and here is the plan, in plain Belizean language",
-    "source": "Breaking Belize News",
-    "date": "2026-07-06",
-    "country": "BZ",
-    "url": "https://www.breakingbelizenews.com/2026/07/06/belize-can-earn-a-trade-surplus-and-here-is-the-plan-in-plain-belizean-language/",
-    "tags": [
-      "headlines"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "antigua-news-room-eb919314",
-    "title": "Antigua and Barbuda to Push CARICOM for Longer Suspension of Common External Tariff",
-    "source": "Antigua News Room",
-    "date": "2026-07-06",
-    "country": "AG",
-    "url": "https://antiguanewsroom.com/antigua-and-barbuda-to-push-caricom-for-longer-suspension-of-common-external-tariff/",
-    "tags": [
-      "news"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "antigua-news-room-eb31546f",
-    "title": "Antigua and Barbuda Projects EC$250 Million Budget Surplus on Strong Revenue Growth",
-    "source": "Antigua News Room",
-    "date": "2026-07-06",
-    "country": "AG",
-    "url": "https://antiguanewsroom.com/antigua-and-barbuda-projects-ec250-million-budget-surplus-on-strong-revenue-growth/",
-    "tags": [
-      "news"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
   }
 ]

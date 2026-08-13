@@ -573,24 +573,6 @@
     "suggestedCategory": "Trade"
   },
   {
-    "id": "trinidad-express-9b43e671",
-    "title": "Business groups back security posts",
-    "source": "Trinidad Express",
-    "date": "2026-08-09",
-    "country": "TT",
-    "url": "https://trinidadexpress.com/business/local/business-groups-back-security-posts/article_d707621b-e47f-43ca-a8f8-3a579e970235.html",
-    "category": "",
-    "group": "Macro",
-    "decision": "review",
-    "confidence": "low",
-    "reason": "Business support for security posts; vague economic/policy angle unclear without article body.",
-    "classifier": "llm",
-    "deal_status": "not_a_deal",
-    "deal_type": null,
-    "approved": false,
-    "suggestedCategory": "Government"
-  },
-  {
     "id": "ttt-news-e0c0f8b7",
     "title": "CANPTT Calls For Stronger Action On Noise Pollution",
     "source": "TTT News",
@@ -2013,24 +1995,6 @@
     "deal_type": null,
     "approved": false,
     "suggestedCategory": "Government"
-  },
-  {
-    "id": "trinidad-express-03720d90",
-    "title": "Lisa Mohammed’s vision for TOSL’s future",
-    "source": "Trinidad Express",
-    "date": "2026-08-05",
-    "country": "TT",
-    "url": "https://trinidadexpress.com/business/local/lisa-mohammed-s-vision-for-tosl-s-future/article_81ea181b-303c-436f-a047-ddf2301e1676.html",
-    "category": "",
-    "group": "Finance",
-    "decision": "review",
-    "confidence": "low",
-    "reason": "Leadership vision for TOSL; potentially corporate news but headline too thin to judge substance.",
-    "classifier": "llm",
-    "deal_status": "not_a_deal",
-    "deal_type": null,
-    "approved": false,
-    "suggestedCategory": "Corporate"
   },
   {
     "id": "jamaica-observer-a76b04ec",
@@ -9574,26 +9538,5 @@
     "suggestedCategory": "Corporate",
     "confidence": "low",
     "reason": "Business-feed headline contains commercial vocabulary not covered by the public classifier."
-  },
-  {
-    "id": "ziz-online-d336e018",
-    "title": "Government Expands Security Focus to Human Well-Being",
-    "source": "ZIZ Online",
-    "date": "2026-04-14",
-    "country": "KN",
-    "url": "https://ziz.kn/government-expands-security-focus-to-human-well-being/",
-    "tags": [
-      "national",
-      "news"
-    ],
-    "category": "",
-    "group": "Macro",
-    "decision": "review",
-    "confidence": "medium",
-    "reason": "Security and human well-being focus may touch policy/regulation, but headline lacks economic substance.",
-    "classifier": "llm",
-    "approved": false,
-    "suggestedCategory": "Government",
-    "triaged": true
   }
 ]
