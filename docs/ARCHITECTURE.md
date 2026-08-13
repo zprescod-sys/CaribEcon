@@ -87,20 +87,20 @@ the *core* central and the two pipelines as peers makes that mistake structurall
 Everything below is deterministic code. No model may bypass it, and no model may produce anything it
 produces.
 
-| Component | Status | Files |
-| --- | --- | --- |
-| Data Hub reader | **exists** | `src/lib/indicators.ts` |
-| News Hub reader | **exists** | `src/lib/news.ts` — metadata only, enforced |
-| Resolution + intent validation | **exists** | `canonicaliseIntent`, `resolveCountry`, `resolveIndicator` — [askTools.ts:145-194](src/lib/askTools.ts#L145) |
-| Series retrieval | **exists** | `getSeriesEvidence`, `getSelectedCountrySeries` |
-| Calculation registry | **exists** | `CALCULATION_REGISTRY` + `inputYears` lineage — [calculations.ts:82](src/lib/calculations.ts#L82) |
-| Comparability rules | **exists** | `addComparabilityCaveats` — [askTools.ts:394](src/lib/askTools.ts#L394) |
-| Evidence package | **exists**, extend | `EvidencePackage` — [askTools.ts:77](src/lib/askTools.ts#L77) |
-| Chart / workbook planning | **exists** | `buildChartSpecification`, `buildWorkbookPlan` |
-| Evidence identity | **new** | `EvidenceRef` namespace over `evidenceId()` |
-| External evidence | **new** | `src/lib/webEvidence.ts` (Tavily) |
-| Grounding gate | **new** | `src/lib/ai/grounding.ts` — pure code |
-| Provider registry + adapter | **new** | `src/lib/ai/providers/` |
+| Component                      | Status                   | Files                                                                                                              |
+| ------------------------------ | ------------------------ | ------------------------------------------------------------------------------------------------------------------ |
+| Data Hub reader                | **exists**         | `src/lib/indicators.ts`                                                                                          |
+| News Hub reader                | **exists**         | `src/lib/news.ts` — metadata only, enforced                                                                     |
+| Resolution + intent validation | **exists**         | `canonicaliseIntent`, `resolveCountry`, `resolveIndicator` — [askTools.ts:145-194](src/lib/askTools.ts#L145) |
+| Series retrieval               | **exists**         | `getSeriesEvidence`, `getSelectedCountrySeries`                                                                |
+| Calculation registry           | **exists**         | `CALCULATION_REGISTRY` + `inputYears` lineage — [calculations.ts:82](src/lib/calculations.ts#L82)              |
+| Comparability rules            | **exists**         | `addComparabilityCaveats` — [askTools.ts:394](src/lib/askTools.ts#L394)                                          |
+| Evidence package               | **exists**, extend | `EvidencePackage` — [askTools.ts:77](src/lib/askTools.ts#L77)                                                    |
+| Chart / workbook planning      | **exists**         | `buildChartSpecification`, `buildWorkbookPlan`                                                                 |
+| Evidence identity              | **new**            | `EvidenceRef` namespace over `evidenceId()`                                                                    |
+| External evidence              | **new**            | `src/lib/webEvidence.ts` (Tavily)                                                                                |
+| Grounding gate                 | **new**            | `src/lib/ai/grounding.ts` — pure code                                                                           |
+| Provider registry + adapter    | **new**            | `src/lib/ai/providers/`                                                                                          |
 
 **The invariant that makes everything else work:** the synthesizer sees an `EvidencePackage` and
 nothing else. Never raw search output, never a hub JSON blob, never a tool transcript.
@@ -178,13 +178,13 @@ The Executor is a pure function of `(ResearchPlan, hub)`. This is what makes "mo
 
 **(b) Verification splits in two.**
 
-| | Grounding gate | Claims audit |
-| --- | --- | --- |
-| Implementation | pure code | model (independent provider) |
-| Runs | always | when available + budget |
-| Cost | zero | one call |
-| Catches | fabricated figures, invented URLs, wrong calc for unit, news-body claims, uncited numbers, quotes not in source, cross-currency comparison, out-of-coverage years | overreach, weak attribution, unhedged causal language, scope drift |
-| Can fail open? | no | yes — degrades to gate alone |
+|                | Grounding gate                                                                                                                                                    | Claims audit                                                       |
+| -------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------ |
+| Implementation | pure code                                                                                                                                                         | model (independent provider)                                       |
+| Runs           | always                                                                                                                                                            | when available + budget                                            |
+| Cost           | zero                                                                                                                                                              | one call                                                           |
+| Catches        | fabricated figures, invented URLs, wrong calc for unit, news-body claims, uncited numbers, quotes not in source, cross-currency comparison, out-of-coverage years | overreach, weak attribution, unhedged causal language, scope drift |
+| Can fail open? | no                                                                                                                                                                | yes — degrades to gate alone                                      |
 
 A verifier **cannot check truth** for qualitative research claims — only attribution and overreach.
 Write that sentence into the module header. The failure mode of a safety gate is a reader assuming it
@@ -277,12 +277,12 @@ every pane change** or the deployed add-in silently serves the old bundle.
 
 #### What ships when
 
-| Phase | Task pane |
-| --- | --- |
-| **1** | Message list, input, one turn at a time, generic "Researching…" state, error states, per-turn *Insert table* |
-| **2** | Gate verdict rendering — what was withheld and why, in plain language |
-| **3** | Source transparency — which hub series and which external sources were consulted |
-| **4+** | Multi-turn history UI, *Insert report*, then the caribecon.org web surface |
+| Phase        | Task pane                                                                                                      |
+| ------------ | -------------------------------------------------------------------------------------------------------------- |
+| **1**  | Message list, input, one turn at a time, generic "Researching…" state, error states, per-turn*Insert table* |
+| **2**  | Gate verdict rendering — what was withheld and why, in plain language                                         |
+| **3**  | Source transparency — which hub series and which external sources were consulted                              |
+| **4+** | Multi-turn history UI,*Insert report*, then the caribecon.org web surface                                    |
 
 **One line from the current plan §8 to keep and sharpen:** *"Do not expose reasoning traces,
 internal tool calls, provider messages, or secrets."* That survives — but draw the distinction
@@ -296,20 +296,20 @@ how the model talked itself there.
 Runtime-agnostic and provider-agnostic, as you asked. **Several already exist — map before you
 build, because rebuilding these is the most common way to end up with two sources of truth.**
 
-| Contract | Status | Location |
-| --- | --- | --- |
-| `SingleCountryIntent` / `CountryComparisonIntent` — your `StructuredRequest` | **exists** | `src/lib/excelIntent.ts` |
-| `ChartSpec` | **exists** | [excelOutputs.ts:96](src/lib/excelOutputs.ts#L96) |
-| `WorkbookPlan` | **exists** | [excelOutputs.ts:266](src/lib/excelOutputs.ts#L266) |
-| `EvidencePackage`, `DataEvidence`, `DataPoint`, `RetrievalMiss` | **exists**, extend | [askTools.ts:44-84](src/lib/askTools.ts#L44) |
-| `NewsEvidence` | **exists** | [news.ts:27](src/lib/news.ts#L27) |
-| `CalculationResult` (carries `inputYears` lineage) | **exists** | [calculations.ts:9](src/lib/calculations.ts#L9) |
-| `AskIntent` → `ResearchIntent` | extend existing | `askTools.ts` → `ai/contracts.ts` |
-| `EvidenceRef`, `EvidenceMeta`, `WebEvidence` | new | `src/lib/ai/contracts.ts` |
-| `ResearchPlan`, `ResearchStep` | new | " |
-| `ResearchAnswer`, `Claim`, `StatedFigure` | new | " |
-| `GroundingResult`, `ClaimsAudit`, `VerificationVerdict` | new | " |
-| **`ResearchResult`** — the canonical, client-agnostic Research Service response | new | " |
+| Contract                                                                                 | Status                   | Location                                           |
+| ---------------------------------------------------------------------------------------- | ------------------------ | -------------------------------------------------- |
+| `SingleCountryIntent` / `CountryComparisonIntent` — your `StructuredRequest`      | **exists**         | `src/lib/excelIntent.ts`                         |
+| `ChartSpec`                                                                            | **exists**         | [excelOutputs.ts:96](src/lib/excelOutputs.ts#L96)   |
+| `WorkbookPlan`                                                                         | **exists**         | [excelOutputs.ts:266](src/lib/excelOutputs.ts#L266) |
+| `EvidencePackage`, `DataEvidence`, `DataPoint`, `RetrievalMiss`                  | **exists**, extend | [askTools.ts:44-84](src/lib/askTools.ts#L44)        |
+| `NewsEvidence`                                                                         | **exists**         | [news.ts:27](src/lib/news.ts#L27)                   |
+| `CalculationResult` (carries `inputYears` lineage)                                   | **exists**         | [calculations.ts:9](src/lib/calculations.ts#L9)     |
+| `AskIntent` → `ResearchIntent`                                                      | extend existing          | `askTools.ts` → `ai/contracts.ts`             |
+| `EvidenceRef`, `EvidenceMeta`, `WebEvidence`                                       | new                      | `src/lib/ai/contracts.ts`                        |
+| `ResearchPlan`, `ResearchStep`                                                       | new                      | "                                                  |
+| `ResearchAnswer`, `Claim`, `StatedFigure`                                          | new                      | "                                                  |
+| `GroundingResult`, `ClaimsAudit`, `VerificationVerdict`                            | new                      | "                                                  |
+| **`ResearchResult`** — the canonical, client-agnostic Research Service response | new                      | "                                                  |
 
 **`ResearchResult` is the one and only Research Service response shape.** Earlier drafts of this
 document used `ResearchResult`, `ReportBundle`, and loose "endpoint response" language somewhat
@@ -469,6 +469,7 @@ Pure code. Always runs. Free. Cannot fail open.
 10. **Coverage honesty** — a year named outside that ref's retrieved range → `year_outside_coverage`.
 11. **W: figure reconciliation — the explicit rule for external quantitative claims.** A `StatedFigure`
     whose `ref` is `W:*` is publishable **only if**:
+
     - that `WebEvidence.extract` is non-null (a search snippet alone is never sufficient), **and**
     - the numeric value in `asWritten` can be **deterministically located in `extract.text`** —
       the same written-string-to-actual-number matching `figureMatches` below applies, run against
@@ -478,9 +479,11 @@ Pure code. Always runs. Free. Cannot fail open.
     quote rule is "the *words* must be in the source," this is its numeric counterpart: "the
     *number* must be in the source." Provenance for any `W:`-grounded figure is always traceable in
     one direction:
+
     ```
     StatedFigure → EvidenceRef → W:<id> → trusted WebEvidence.extract.text
     ```
+
     A figure resting on a `W:` ref with no extract, or whose value cannot be located in the extract
     text, fails grounding — full stop, same as an internal figure that fails check 4.
 
@@ -593,44 +596,44 @@ research(request)                   → ResearchResult
 Micro-agents would be justified if roles ran at different rates, had different resource profiles, or
 were owned by different teams. None applies.
 
-| Role | Required now | Notes |
-| --- | --- | --- |
-| Interpret | **yes** | Thin — mostly reuses `canonicaliseIntent` |
-| Plan | Phase 3 | Ship a hardcoded default plan first |
-| Execute | **yes** | Code. Starts as existing `buildEvidencePackage` |
-| Evidence builder | **yes** | Extends what exists |
-| Synthesize | **yes** | Must emit claim-structured output from day one |
-| Verify — gate | **yes** (Phase 2) | The actual safety property |
-| Verify — audit | Phase 4 | Optional, degrades cleanly |
+| Role             | Required now            | Notes                                            |
+| ---------------- | ----------------------- | ------------------------------------------------ |
+| Interpret        | **yes**           | Thin — mostly reuses`canonicaliseIntent`      |
+| Plan             | Phase 3                 | Ship a hardcoded default plan first              |
+| Execute          | **yes**           | Code. Starts as existing`buildEvidencePackage` |
+| Evidence builder | **yes**           | Extends what exists                              |
+| Synthesize       | **yes**           | Must emit claim-structured output from day one   |
+| Verify — gate   | **yes** (Phase 2) | The actual safety property                       |
+| Verify — audit  | Phase 4                 | Optional, degrades cleanly                       |
 
 ### 3.2 Tool inventory
 
 **Required now — internal, deterministic:**
 
-| Tool | Backing | Status |
-| --- | --- | --- |
-| `list_countries` / `list_indicators` | `indicators.ts` | exists |
-| `get_series` | `getSeriesEvidence` | exists |
-| `compare_series` | `getSelectedCountrySeries` | exists |
-| `search_news` | `news.ts` — metadata only | exists |
-| calculation registry | `calculations.ts` | exists |
-| `build_chart_spec` / `build_workbook_plan` | `excelOutputs.ts` | exists |
+| Tool                                           | Backing                      | Status |
+| ---------------------------------------------- | ---------------------------- | ------ |
+| `list_countries` / `list_indicators`       | `indicators.ts`            | exists |
+| `get_series`                                 | `getSeriesEvidence`        | exists |
+| `compare_series`                             | `getSelectedCountrySeries` | exists |
+| `search_news`                                | `news.ts` — metadata only | exists |
+| calculation registry                           | `calculations.ts`          | exists |
+| `build_chart_spec` / `build_workbook_plan` | `excelOutputs.ts`          | exists |
 
 **Required for the research capability — external:**
 
-| Tool | Governance |
-| --- | --- |
-| `search_web` (Tavily Search) | plan-authorized step; max 2/request |
+| Tool                             | Governance                                                                      |
+| -------------------------------- | ------------------------------------------------------------------------------- |
+| `search_web` (Tavily Search)   | plan-authorized step; max 2/request                                             |
 | `extract_web` (Tavily Extract) | plan-authorized; must reference an earlier search step; max 3 URLs, char-capped |
 
 **Model providers:** one OpenAI-compatible adapter + a registry. See §4.
 
 **Runtime and ops — hosts the service, never reasons about research:**
 
-| Tool | Role | Boundary |
-| --- | --- | --- |
-| **NoInfra VPS** | The machine the Research Service runs on | A room, not a worker |
-| **OpenClaw** | Agent harness and operational shell — **verified**, not assumed, by the Phase 0 spike below | **Never a second planner.** If it is deciding what evidence to gather, it has crossed the line |
+| Tool                  | Role                                                                                              | Boundary                                                                                             |
+| --------------------- | ------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| **NoInfra VPS** | The machine the Research Service runs on                                                          | A room, not a worker                                                                                 |
+| **OpenClaw**    | Agent harness and operational shell —**verified**, not assumed, by the Phase 0 spike below | **Never a second planner.** If it is deciding what evidence to gather, it has crossed the line |
 
 **OpenClaw's actual contribution is established by a spike, not stated as a given.** Listing "starts,
 supervises, restarts" without ever exercising it risks the role becoming architecture theater — words
@@ -641,8 +644,8 @@ code, the responsibility stays in CaribEcon code** — the plan does not invent 
 to justify having it. The governing sentence:
 
 > Nebius plans. CaribEcon governs. Tavily researches. OpenClaw runs the agent. NoInfra hosts it.
-| **Tenki** | Dev workflow — PR review, adversarial QA, sandboxed test runs | Any time; zero product coupling |
-| **OllyGarden** | Observability — OTel spans per role | After the pipeline works end-to-end |
+> | **Tenki** | Dev workflow — PR review, adversarial QA, sandboxed test runs | Any time; zero product coupling |
+> | **OllyGarden** | Observability — OTel spans per role | After the pipeline works end-to-end |
 
 None of these is a product dependency, and none may appear in a contract type (§5.3 rule 1). The
 service must run identically with OpenClaw absent — that is what the Vercel fallback in §5.4 proves.
@@ -653,17 +656,17 @@ service must run identically with OpenClaw absent — that is what the Vercel fa
 
 ### 4.1 Recommended mapping
 
-| Role | Primary | Backup | Why |
-| --- | --- | --- | --- |
-| Interpret | **Nebius** | MiniMax | Cheap, structured output, latency-sensitive, highest call volume |
-| Plan | **Nebius** | MiniMax | Same profile; benchmark a stronger model here than Interpret |
-| Execute | **code** | — | No model. Ever. |
-| Compute | **code** | — | `CALCULATION_REGISTRY` only |
-| External research | **Tavily** | — | Retrieval tool, not a provider |
-| Synthesize | **Impala** if access lands | **Nebius** | See below — the backup choice is forced |
-| Verify (audit) | **MiniMax** | *conditional — see §4.2b* | Independence + context window |
-| Observability | OllyGarden | — | Post-core |
-| Build QA | Tenki | — | Outside the request path |
+| Role              | Primary                          | Backup                        | Why                                                              |
+| ----------------- | -------------------------------- | ----------------------------- | ---------------------------------------------------------------- |
+| Interpret         | **Nebius**                 | -                             | Cheap, structured output, latency-sensitive, highest call volume |
+| Plan              | **Nebius**                 | -                             | Same profile; benchmark a stronger model here than Interpret     |
+| Execute           | **code**                   | —                            | No model. Ever.                                                  |
+| Compute           | **code**                   | —                            | `CALCULATION_REGISTRY` only                                    |
+| External research | **Tavily**                 | —                            | Retrieval tool, not a provider                                   |
+| Synthesize        | **Impala** if access lands | **Nebius**              | See below — the backup choice is forced                         |
+| Verify (audit)    | **MiniMax**                | *conditional — see §4.2b* | Independence + context window                                    |
+| Observability     | OllyGarden                       | —                            | Post-core                                                        |
+| Build QA          | Tenki                            | —                            | Outside the request path                                         |
 
 ### 4.2 The synthesis backup — recommendation and justification
 
@@ -713,6 +716,7 @@ are inference, **not Nebius Cloud**. Nebius is never the runtime. Best fit: inte
 synthesis backup, and model experimentation.
 
 **MiniMax** — verification. Two real reasons, not just availability:
+
 1. **Independence** from whatever writes the synthesis.
 2. **Verification is the most context-hungry role in the pipeline** — it must hold the full evidence
    package *and* the full draft answer simultaneously, while every other role sees a subset. A large
@@ -735,13 +739,13 @@ agent to *"List the NoInfra services available to me and what setup or approval 
 
 ### 4.4 Where to benchmark rather than lock in
 
-| Decision | Lock now? | Test |
-| --- | --- | --- |
-| Interpret model | no — benchmark 2 | ~30 real questions → does intent validate without misses? |
-| Plan model | no — benchmark 2-3 | do plans name only real slugs and produce useful steps? |
-| Synthesis model | **no** — this is the one that matters | grounding-gate violation rate over a fixed question set |
-| Verifier model | soft-lock MiniMax | seeded-error corpus: does it catch injected overreach? |
-| Provider *abstraction* | **yes, lock now** | the abstraction is what makes the rest reversible |
+| Decision                | Lock now?                                    | Test                                                       |
+| ----------------------- | -------------------------------------------- | ---------------------------------------------------------- |
+| Interpret model         | no — benchmark 2                            | ~30 real questions → does intent validate without misses? |
+| Plan model              | no — benchmark 2-3                          | do plans name only real slugs and produce useful steps?    |
+| Synthesis model         | **no** — this is the one that matters | grounding-gate violation rate over a fixed question set    |
+| Verifier model          | soft-lock MiniMax                            | seeded-error corpus: does it catch injected overreach?     |
+| Provider*abstraction* | **yes, lock now**                      | the abstraction is what makes the rest reversible          |
 
 The grounding gate doubles as your **benchmark harness** — violation rate per model over a fixed
 question set is an objective synthesis-quality metric you get for free. Build the gate, get model
@@ -792,17 +796,17 @@ lives is a config value, not an architectural fact — which is what makes §5.4
 
 ### 5.2 What runs where
 
-| Layer | Runtime | Notes |
-| --- | --- | --- |
-| Astro site, Excel add-in bundle | Vercel static / `public/addin/` | unchanged |
-| Auth, request validation, spend gate | Vercel | sits in front of the proxy; **user-facing** rate limits live here |
-| `/api/indicator`, `/api/snapshot`, `/api/deepdive`, `/api/comparison` | Vercel Functions | deterministic, cacheable, **zero model calls** |
-| **Thin research proxy** | Vercel | forwards to whichever Research Service target is configured, over the **signed channel in §5.7** |
-| **Research Service** (nine steps, §2.3) | **NoInfra VPS (primary) · Vercel (proven fallback)** | same code, two targets — see §5.4 for how "fallback" is scoped |
-| **OpenClaw** | NoInfra VPS | harness and operational shell **only** — see the boundary below |
-| Model inference | Nebius · MiniMax · Impala | never self-hosted; **provider + Tavily keys live only on the research runtime**, never on Vercel or the client |
-| External search | Tavily | plan-authorized only |
-| Traces | OllyGarden | post-core |
+| Layer                                                                         | Runtime                                                     | Notes                                                                                                               |
+| ----------------------------------------------------------------------------- | ----------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
+| Astro site, Excel add-in bundle                                               | Vercel static /`public/addin/`                            | unchanged                                                                                                           |
+| Auth, request validation, spend gate                                          | Vercel                                                      | sits in front of the proxy;**user-facing** rate limits live here                                              |
+| `/api/indicator`, `/api/snapshot`, `/api/deepdive`, `/api/comparison` | Vercel Functions                                            | deterministic, cacheable,**zero model calls**                                                                 |
+| **Thin research proxy**                                                 | Vercel                                                      | forwards to whichever Research Service target is configured, over the**signed channel in §5.7**              |
+| **Research Service** (nine steps, §2.3)                                | **NoInfra VPS (primary) · Vercel (proven fallback)** | same code, two targets — see §5.4 for how "fallback" is scoped                                                    |
+| **OpenClaw**                                                            | NoInfra VPS                                                 | harness and operational shell**only** — see the boundary below                                               |
+| Model inference                                                               | Nebius · MiniMax · Impala                                 | never self-hosted;**provider + Tavily keys live only on the research runtime**, never on Vercel or the client |
+| External search                                                               | Tavily                                                      | plan-authorized only                                                                                                |
+| Traces                                                                        | OllyGarden                                                  | post-core                                                                                                           |
 
 **The Research Service is not a public browser API.** It is reachable only from the Vercel proxy over
 the authenticated server-to-server channel in §5.7 — never directly by the browser or the Excel
@@ -868,8 +872,7 @@ on its own clock.** A `git pull` on a timer does not know the difference — a h
 sitting on the branch when the timer fires would go live because a headline happened to update.
 
 **The detail that shapes the fix, and that must be stated or the fix silently fails:** the service
-loads its data at process start — `news.ts` reads `news.json` via a module-scope `import ... with
-{ type: 'json' }`. Dropping fresher files onto the disk changes nothing until the process restarts.
+loads its data at process start — `news.ts` reads `news.json` via a module-scope `import ... with { type: 'json' }`. Dropping fresher files onto the disk changes nothing until the process restarts.
 So there is no version of "refresh without restarting" available here; the real distinction is
 **"restart with new data but the same code someone deliberately chose,"** not "restart with whatever
 the branch happens to contain right now."
@@ -988,19 +991,19 @@ build and verify in Phase 0 (§7) rather than deferred.
 
 ### Edited
 
-| § | Change |
-| --- | --- |
-| 1 | MVP boundary — reverse which workflow carries the pipeline |
-| 1 | Guardrail wording: "no general-purpose or always-on web search" → "no *unbounded* web search; Tavily is plan-authorized and capped" |
-| 3 | `providers/nebius.ts` + `providers/minimax.ts` → **one `openaiCompatible.ts` + a registry**; add the Impala slot |
-| 4 | Ten config slots → registry + four role slots |
-| 4/7 | **Split "fail closed" from "degrade"** into two explicitly different code paths |
-| 5 | Verification contract → gate (code) + audit (model), verdict derived by code |
-| 6 | Deep Dive / Comparison lose steps 2, 5, 7; Ask gains 2, 5 |
-| 7 | Role table reassigned per §4 above |
-| 8 | Task pane: single-shot "question → answer" Ask tab → **conversational chat surface** with stage progress and per-turn insert (§2.4). "Enhanced insertion" becomes client-side `buildWorkbookPlan`. |
-| 9 | Build order — full rewrite (see §7) |
-| 11 | File map updated |
+| §  | Change                                                                                                                                                                                                       |
+| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| 1   | MVP boundary — reverse which workflow carries the pipeline                                                                                                                                                  |
+| 1   | Guardrail wording: "no general-purpose or always-on web search" → "no*unbounded* web search; Tavily is plan-authorized and capped"                                                                        |
+| 3   | `providers/nebius.ts` + `providers/minimax.ts` → **one `openaiCompatible.ts` + a registry**; add the Impala slot                                                                                |
+| 4   | Ten config slots → registry + four role slots                                                                                                                                                               |
+| 4/7 | **Split "fail closed" from "degrade"** into two explicitly different code paths                                                                                                                        |
+| 5   | Verification contract → gate (code) + audit (model), verdict derived by code                                                                                                                                |
+| 6   | Deep Dive / Comparison lose steps 2, 5, 7; Ask gains 2, 5                                                                                                                                                    |
+| 7   | Role table reassigned per §4 above                                                                                                                                                                          |
+| 8   | Task pane: single-shot "question → answer" Ask tab →**conversational chat surface** with stage progress and per-turn insert (§2.4). "Enhanced insertion" becomes client-side `buildWorkbookPlan`. |
+| 9   | Build order — full rewrite (see §7)                                                                                                                                                                        |
+| 11  | File map updated                                                                                                                                                                                             |
 
 ### Removed
 
@@ -1028,14 +1031,14 @@ build and verify in Phase 0 (§7) rather than deferred.
 
 ### Statements now inconsistent with your direction
 
-| Location | Statement | Status |
-| --- | --- | --- |
-| §7 | Ask's retriever "cannot access the web" | **now false by design** |
-| §1 guardrail | "no general-purpose or always-on web search" | needs rewording — bounded ≠ always-on |
-| §16 / §7 | "Ask is not a general research agent" | **reversed** |
-| §12 | "open-ended multi-hop web research" is out of scope | now *partially in scope*, bounded by plan |
-| §4 vs §7 | fail-closed vs degrade | conflated; must be separated |
-| §7 | tool-loop cost warning | still true, and is now an argument *for* plan-once |
+| Location      | Statement                                           | Status                                              |
+| ------------- | --------------------------------------------------- | --------------------------------------------------- |
+| §7           | Ask's retriever "cannot access the web"             | **now false by design**                       |
+| §1 guardrail | "no general-purpose or always-on web search"        | needs rewording — bounded ≠ always-on             |
+| §16 / §7    | "Ask is not a general research agent"               | **reversed**                                  |
+| §12          | "open-ended multi-hop web research" is out of scope | now*partially in scope*, bounded by plan          |
+| §4 vs §7    | fail-closed vs degrade                              | conflated; must be separated                        |
+| §7           | tool-loop cost warning                              | still true, and is now an argument*for* plan-once |
 
 ---
 
@@ -1046,13 +1049,13 @@ build and verify in Phase 0 (§7) rather than deferred.
 Five things. Each one is chosen because **skipping it is expensive to retrofit**, and everything not
 on this list can be added later without rework.
 
-| # | Item | Rework avoided |
-| --- | --- | --- |
-| 1 | Typed contracts (`ResearchIntent/Plan/EvidencePackage/Answer/Verdict`) | retrofitting types through five roles |
-| 2 | Provider registry behind one adapter | a hardcoded provider is a rewrite |
-| 3 | **EvidencePackage is the only thing synthesis sees** | a synthesizer that once saw raw output can never be *proven* grounded |
-| 4 | Claim-structured answer with declared `figures[]` | retrofitting a figure parser onto free prose is lossy and never finishes |
-| 5 | Deterministic grounding gate | it is the actual safety property, and it doubles as your model benchmark |
+| # | Item                                                                     | Rework avoided                                                           |
+| - | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
+| 1 | Typed contracts (`ResearchIntent/Plan/EvidencePackage/Answer/Verdict`) | retrofitting types through five roles                                    |
+| 2 | Provider registry behind one adapter                                     | a hardcoded provider is a rewrite                                        |
+| 3 | **EvidencePackage is the only thing synthesis sees**               | a synthesizer that once saw raw output can never be*proven* grounded   |
+| 4 | Claim-structured answer with declared`figures[]`                       | retrofitting a figure parser onto free prose is lossy and never finishes |
+| 5 | Deterministic grounding gate                                             | it is the actual safety property, and it doubles as your model benchmark |
 
 Everything else — planner, Tavily, model auditor, chat polish, observability, portability hardening —
 is incremental.
@@ -1551,21 +1554,21 @@ assumption about the runtime is found before the pipeline is built on top of it.
 
 ### Direct answers to your ten questions
 
-| Question | Answer |
-| --- | --- |
-| Ask as architectural center? | **No** — the shared evidence core is the center; Ask is its most demanding consumer. Prevents refactoring Deep Dive into machinery it doesn't need. |
-| Deep Dive / Comparison mostly deterministic? | **Yes.** Zero model calls for picker input. Interpreter-only front door for NL. |
-| One agent or many? | **One service, six roles.** Latency, shared in-memory evidence, portability, nothing to scale independently. |
-| Best synthesis backup? | **Nebius** — because it keeps MiniMax free for verification. Benchmark the specific model; don't hard-code an ID. |
-| Where does MiniMax fit? | **Verification** — independence plus the largest context need in the pipeline. |
-| Where does Nebius fit? | **Interpret, plan, synthesis backup, model experimentation.** Never the runtime — Token Factory is inference, not Nebius Cloud. |
-| How to govern Tavily? | **Plan-authorized steps only**, executor refuses unauthorized calls, hard caps on searches/extracts/chars, date window from intent, external evidence as its own labeled class. |
-| Tenki's role? | **Build workflow only** — PR review, adversarial QA of the verifier, sandboxed test runs. Zero product coupling. |
-| When does OllyGarden matter? | **After the pipeline works end-to-end**, when you have 5+ spans worth tracing. Thread a correlation ID through the budget object early; wire the exporter late. |
-| Where does the Research Service run? | **NoInfra VPS under OpenClaw (primary), Vercel (proven fallback)**, both behind one thin proxy on Vercel. Live-activating the fallback through demo day is an explicit day-18 operational call, not a permanent requirement (§5.4). |
-| What is OpenClaw allowed to do? | **Start, supervise, restart — verified by a Phase 0b spike, not assumed.** Nebius proposes research strategy; CaribEcon code validates and executes it. If OpenClaw is deciding what evidence to gather, it has crossed the line. Where a capability adds nothing over plain code, the responsibility stays in CaribEcon code (§3.2). |
-| How does the VPS get hub data? | **Scheduled direct fetch of the two hub JSON files**, atomically written, then a restart — deliberately decoupled from code deployment, which happens only as its own deliberate action (§5.5). Your news classifier cron is unchanged and stays the sole writer of `data/news.json`. |
-| How does memory work? | **Memory may change the question; it may never change the answer** (§2.7). Bounded conversational turns + `EvidenceRef`s. `D:`/`N:` refs rehydrate across turns; **`W:` web evidence is turn-local and never accepted back from the client** — re-retrieved if needed again (§2.4 C3). Recalled facts are leads, re-retrieved before publication. No contract depends on OpenClaw memory types. |
-| How is Vercel → NoInfra secured? | **HMAC-signed requests over a shared server-side secret**, with a timestamp and nonce the service checks for freshness and replay before running anything. Not a public endpoint; no browser-facing CORS. The simplest scheme that is actually secure for one server calling another (§5.7). |
-| What does the service actually return? | **One canonical `ResearchResult { answer, evidence, verdict }`.** The service knows nothing about Excel; the pane derives a `WorkbookPlan` from it client-side (§2.4 C2, §2.5). |
-| Portability, concretely | **Four rules**: plain async function with no runtime or OpenClaw-specific imports · all env through `config.ts` · service stays stateless and request-scoped · conversation state as refs (never web-evidence bodies), not bodies. The one proven Vercel deployment is what shows all four still hold, not a permanent second live copy. |
+| Question                                     | Answer                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| -------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Ask as architectural center?                 | **No** — the shared evidence core is the center; Ask is its most demanding consumer. Prevents refactoring Deep Dive into machinery it doesn't need.                                                                                                                                                                                                                                                             |
+| Deep Dive / Comparison mostly deterministic? | **Yes.** Zero model calls for picker input. Interpreter-only front door for NL.                                                                                                                                                                                                                                                                                                                                  |
+| One agent or many?                           | **One service, six roles.** Latency, shared in-memory evidence, portability, nothing to scale independently.                                                                                                                                                                                                                                                                                                     |
+| Best synthesis backup?                       | **Nebius** — because it keeps MiniMax free for verification. Benchmark the specific model; don't hard-code an ID.                                                                                                                                                                                                                                                                                               |
+| Where does MiniMax fit?                      | **Verification** — independence plus the largest context need in the pipeline.                                                                                                                                                                                                                                                                                                                                  |
+| Where does Nebius fit?                       | **Interpret, plan, synthesis backup, model experimentation.** Never the runtime — Token Factory is inference, not Nebius Cloud.                                                                                                                                                                                                                                                                                 |
+| How to govern Tavily?                        | **Plan-authorized steps only**, executor refuses unauthorized calls, hard caps on searches/extracts/chars, date window from intent, external evidence as its own labeled class.                                                                                                                                                                                                                                  |
+| Tenki's role?                                | **Build workflow only** — PR review, adversarial QA of the verifier, sandboxed test runs. Zero product coupling.                                                                                                                                                                                                                                                                                                |
+| When does OllyGarden matter?                 | **After the pipeline works end-to-end**, when you have 5+ spans worth tracing. Thread a correlation ID through the budget object early; wire the exporter late.                                                                                                                                                                                                                                                  |
+| Where does the Research Service run?         | **NoInfra VPS under OpenClaw (primary), Vercel (proven fallback)**, both behind one thin proxy on Vercel. Live-activating the fallback through demo day is an explicit day-18 operational call, not a permanent requirement (§5.4).                                                                                                                                                                             |
+| What is OpenClaw allowed to do?              | **Start, supervise, restart — verified by a Phase 0b spike, not assumed.** Nebius proposes research strategy; CaribEcon code validates and executes it. If OpenClaw is deciding what evidence to gather, it has crossed the line. Where a capability adds nothing over plain code, the responsibility stays in CaribEcon code (§3.2).                                                                          |
+| How does the VPS get hub data?               | **Scheduled direct fetch of the two hub JSON files**, atomically written, then a restart — deliberately decoupled from code deployment, which happens only as its own deliberate action (§5.5). Your news classifier cron is unchanged and stays the sole writer of `data/news.json`.                                                                                                                        |
+| How does memory work?                        | **Memory may change the question; it may never change the answer** (§2.7). Bounded conversational turns + `EvidenceRef`s. `D:`/`N:` refs rehydrate across turns; **`W:` web evidence is turn-local and never accepted back from the client** — re-retrieved if needed again (§2.4 C3). Recalled facts are leads, re-retrieved before publication. No contract depends on OpenClaw memory types. |
+| How is Vercel → NoInfra secured?            | **HMAC-signed requests over a shared server-side secret**, with a timestamp and nonce the service checks for freshness and replay before running anything. Not a public endpoint; no browser-facing CORS. The simplest scheme that is actually secure for one server calling another (§5.7).                                                                                                                    |
+| What does the service actually return?       | **One canonical `ResearchResult { answer, evidence, verdict }`.** The service knows nothing about Excel; the pane derives a `WorkbookPlan` from it client-side (§2.4 C2, §2.5).                                                                                                                                                                                                                            |
+| Portability, concretely                      | **Four rules**: plain async function with no runtime or OpenClaw-specific imports · all env through `config.ts` · service stays stateless and request-scoped · conversation state as refs (never web-evidence bodies), not bodies. The one proven Vercel deployment is what shows all four still hold, not a permanent second live copy.                                                                    |
