@@ -1,5 +1,67 @@
 [
   {
+    "id": "kaieteur-news-b299fdd3",
+    "title": "EXXON HAS RECOVERED ITS US$55 BILLION; TIME TO TALK GUYANESE, SIRS!",
+    "source": "Kaieteur News",
+    "date": "2026-08-14",
+    "country": "GY",
+    "url": "https://kaieteurnewsonline.com/2026/08/14/exxon-has-recovered-its-us55-billion-time-to-talk-guyanese-sirs/",
+    "tags": [
+      "letters",
+      "albert baldeo",
+      "cost recovery",
+      "exxonmobil",
+      "guyana oil",
+      "stabroek block"
+    ],
+    "category": "",
+    "group": "Energy",
+    "decision": "review",
+    "confidence": "low",
+    "reason": "Recognized editorial edge-case vocabulary; suggested Energy.",
+    "classifier": "heuristic",
+    "approved": false,
+    "suggestedCategory": "Energy"
+  },
+  {
+    "id": "nation-news-0f1ea3c2",
+    "title": "Luigi Mangione admits to killing UnitedHealthcare CEO",
+    "source": "Nation News",
+    "date": "2026-08-14",
+    "country": "BB",
+    "url": "https://nationnews.com/2026/08/14/luigi-mangione-admits-to-killing-unitedhealthcare-ceo/?utm_source=rss&utm_medium=rss&utm_campaign=luigi-mangione-admits-to-killing-unitedhealthcare-ceo",
+    "tags": [
+      "world",
+      "luigi mangione",
+      "trial",
+      "unitedhealthcare ceo brian thompson"
+    ],
+    "category": "",
+    "group": "Finance",
+    "decision": "review",
+    "confidence": "low",
+    "reason": "Recognized editorial edge-case vocabulary; suggested Corporate.",
+    "classifier": "heuristic",
+    "approved": false,
+    "suggestedCategory": "Corporate"
+  },
+  {
+    "id": "starnieuws-669f4bf9",
+    "title": "CEO Baitali Group: Suriname heeft geen geldprobleem, maar planningsprobleem",
+    "source": "Starnieuws",
+    "date": "2026-08-14",
+    "country": "SR",
+    "url": "https://www.starnieuws.com/index.php/welcome/index/nieuwsitem/93399",
+    "category": "",
+    "group": "Finance",
+    "decision": "review",
+    "confidence": "low",
+    "reason": "Recognized editorial edge-case vocabulary; suggested Corporate.",
+    "classifier": "heuristic",
+    "approved": false,
+    "suggestedCategory": "Corporate"
+  },
+  {
     "id": "jamaica-gleaner-20b188f6",
     "title": "Vietnam’s VinSpace signs deal with Elon Musk’s SpaceX to launch its first satellites in 2027",
     "source": "Jamaica Gleaner",
