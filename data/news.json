@@ -460,6 +460,473 @@
     "classifier": "heuristic"
   },
   {
+    "id": "kaieteur-news-c0eb3b55",
+    "title": "ExxonMobil produced one billion barrels of oil in less than 7 years – Routledge",
+    "source": "Kaieteur News",
+    "date": "2026-08-14",
+    "country": "GY",
+    "url": "https://kaieteurnewsonline.com/2026/08/14/exxonmobil-produced-one-billion-barrels-of-oil-in-less-than-7-years-routledge/",
+    "tags": [
+      "news",
+      "alistair routledge",
+      "exxonmobil guyana",
+      "guyana oil",
+      "oil barrels",
+      "oil production"
+    ],
+    "category": "Energy",
+    "group": "Energy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "kaieteur-news-8496c671",
+    "title": "Canadian firm announces plan to advance, integrate 3.2M ounce gold project with 4.64M Oko West project",
+    "source": "Kaieteur News",
+    "date": "2026-08-14",
+    "country": "GY",
+    "url": "https://kaieteurnewsonline.com/2026/08/14/canadian-firm-announces-plan-to-advance-integrate-3-2m-ounce-gold-project-with-4-64m-oko-west-project/",
+    "tags": [
+      "news",
+      "cuyuni-mazaruni",
+      "g2’s oko-ghanie project",
+      "gmin",
+      "gold mining",
+      "guyana gold"
+    ],
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "kaieteur-news-9aa7c319",
+    "title": "Huge oil spill off the coast of Oman now covers hundreds of square miles",
+    "source": "Kaieteur News",
+    "date": "2026-08-14",
+    "country": "GY",
+    "url": "https://kaieteurnewsonline.com/2026/08/14/huge-oil-spill-off-the-coast-of-oman-now-covers-hundreds-of-square-miles/",
+    "tags": [
+      "news",
+      "arabian sea",
+      "ecological disaster",
+      "oil spill",
+      "oman"
+    ],
+    "category": "Energy",
+    "group": "Energy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "kaieteur-news-e54b8352",
+    "title": "US$3.6B spent in local companies since 2019 – Exxon",
+    "source": "Kaieteur News",
+    "date": "2026-08-14",
+    "country": "GY",
+    "url": "https://kaieteurnewsonline.com/2026/08/14/us3-6b-spent-in-local-companies-since-2019-exxon/",
+    "tags": [
+      "news",
+      "alistair routledge",
+      "exxonmobil",
+      "local companies",
+      "stabroek block"
+    ],
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "kaieteur-news-4ca03d17",
+    "title": "Australian firm secures US$3.5M to fund exploration, other works at newly acquired gold project in Guyana",
+    "source": "Kaieteur News",
+    "date": "2026-08-14",
+    "country": "GY",
+    "url": "https://kaieteurnewsonline.com/2026/08/14/australian-firm-secures-us3-5m-to-fund-exploration-other-works-at-newly-acquired-gold-project-in-guyana/",
+    "tags": [
+      "news",
+      "gold exploration",
+      "gold project",
+      "guyana gold",
+      "liberty metals"
+    ],
+    "category": "Investment",
+    "group": "Investment",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "kaieteur-news-63ed2ab4",
+    "title": "The Importance of Listening to Children: Why Every Child’s Voice Deserves to be Heard and Believed",
+    "source": "Kaieteur News",
+    "date": "2026-08-14",
+    "country": "GY",
+    "url": "https://kaieteurnewsonline.com/2026/08/14/the-importance-of-listening-to-children-why-every-childs-voice-deserves-to-be-heard-and-believed/",
+    "tags": [
+      "letters",
+      "child’s voice",
+      "daniela araujo"
+    ],
+    "category": "Trade",
+    "group": "Trade & Tourism",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "guyana-chronicle-33ade441",
+    "title": "Government to address flooding, boost farming, advance key community works in Nabaclis",
+    "source": "Guyana Chronicle",
+    "date": "2026-08-14",
+    "country": "GY",
+    "url": "https://guyanachronicle.com/2026/08/14/government-to-address-flooding-boost-farming-advance-key-community-works-in-nabaclis/",
+    "tags": [
+      "news"
+    ],
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "demerara-waves-e482ff9f",
+    "title": "Electricity conservation measures kick in due to hot weather, increased demand",
+    "source": "Demerara Waves",
+    "date": "2026-08-14",
+    "country": "GY",
+    "url": "https://demerarawaves.com/2026/08/14/electricity-conservation-measures-kick-in-due-to-hot-weather-increased-demand/",
+    "tags": [
+      "business",
+      "energy",
+      "news"
+    ],
+    "category": "Energy",
+    "group": "Energy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "ttt-news-75c926d7",
+    "title": "Trinidad And Tobago Deepens Energy Ties With Venezuela As Loran-Manatee Gas Field Advances",
+    "source": "TTT News",
+    "date": "2026-08-14",
+    "country": "TT",
+    "url": "https://www.ttt.live/trinidad-and-tobago-deepens-energy-ties-with-venezuela-as-loran-manatee-gas-field-advances/?utm_source=rss&utm_medium=rss&utm_campaign=trinidad-and-tobago-deepens-energy-ties-with-venezuela-as-loran-manatee-gas-field-advances",
+    "tags": [
+      "energy",
+      "news",
+      "prime minister kamla persad-bissessar",
+      "venezuela"
+    ],
+    "category": "Energy",
+    "group": "Energy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "ttt-news-37a46ce8",
+    "title": "T&T To Invest US$1 Billion To Repair Oil And Gas Pipelines",
+    "source": "TTT News",
+    "date": "2026-08-14",
+    "country": "TT",
+    "url": "https://www.ttt.live/tt-to-invest-us1-billion-to-repair-oil-and-gas-pipelines/?utm_source=rss&utm_medium=rss&utm_campaign=tt-to-invest-us1-billion-to-repair-oil-and-gas-pipelines",
+    "tags": [
+      "energy",
+      "government",
+      "news"
+    ],
+    "category": "Energy",
+    "group": "Energy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "ttt-news-4f83a9a9",
+    "title": "Minister Phillip Alexander: Taxpayers Left To Pay For Failed HDC Projects",
+    "source": "TTT News",
+    "date": "2026-08-14",
+    "country": "TT",
+    "url": "https://www.ttt.live/minister-phillip-alexander-taxpayers-left-to-pay-for-failed-hdc-projects/?utm_source=rss&utm_medium=rss&utm_campaign=minister-phillip-alexander-taxpayers-left-to-pay-for-failed-hdc-projects",
+    "tags": [
+      "housing",
+      "news"
+    ],
+    "category": "Fiscal Policy",
+    "group": "Fiscal Policy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "barbados-today-2c71b5c5",
+    "title": "NCSA warns over export of drug precursors",
+    "source": "Barbados Today",
+    "date": "2026-08-14",
+    "country": "BB",
+    "url": "https://barbadostoday.bb/2026/08/14/ncsa-warns-over-export-of-drug-precursors/",
+    "tags": [
+      "local news"
+    ],
+    "category": "Trade",
+    "group": "Trade & Tourism",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "barbados-today-d0777d87",
+    "title": "Sewage leaks, water damage plague Grotto housing complex",
+    "source": "Barbados Today",
+    "date": "2026-08-14",
+    "country": "BB",
+    "url": "https://barbadostoday.bb/2026/08/14/sewage-leaks-water-damage-plague-grotto-housing-complex/",
+    "tags": [
+      "community",
+      "housing",
+      "local news",
+      "headline",
+      "headlines"
+    ],
+    "category": "Infrastructure",
+    "group": "Investment",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "nation-news-adf3f693",
+    "title": "State pushing for forfeiture of US$24 943 seized at airport",
+    "source": "Nation News",
+    "date": "2026-08-14",
+    "country": "BB",
+    "url": "https://nationnews.com/2026/08/14/state-pushing-for-forfeiture-of-us24-943-seized-at-airport/?utm_source=rss&utm_medium=rss&utm_campaign=state-pushing-for-forfeiture-of-us24-943-seized-at-airport",
+    "tags": [
+      "news",
+      "gregston ricardo orlando sealy",
+      "money seized at airport"
+    ],
+    "category": "Tourism",
+    "group": "Trade & Tourism",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "jamaica-observer-bc8cd24c",
+    "title": "The invisible watermark — AI-written text can now be identified, and what that means for your business",
+    "source": "Jamaica Observer",
+    "date": "2026-08-14",
+    "country": "JM",
+    "url": "https://www.jamaicaobserver.com/2026/08/14/invisible-watermark-ai-written-text-can-now-identified-means-business/",
+    "tags": [
+      "business",
+      "latest news",
+      "ai",
+      "artificial intelligence",
+      "claude",
+      "copilot"
+    ],
+    "category": "Corporate",
+    "group": "Finance",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "jamaica-observer-b5a48c04",
+    "title": "Construction of New Alexandria Market progressing well, says mayor",
+    "source": "Jamaica Observer",
+    "date": "2026-08-14",
+    "country": "JM",
+    "url": "https://www.jamaicaobserver.com/2026/08/14/construction-new-alexandria-market-progressing-well-says-mayor/",
+    "tags": [
+      "latest news",
+      "news",
+      "construction",
+      "new alexandria market",
+      "st ann"
+    ],
+    "category": "Infrastructure",
+    "group": "Investment",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "breaking-belize-news-a43e49b3",
+    "title": "BTL accepts defeat: chairman closes acquisition chapter, confirms dominance ruling",
+    "source": "Breaking Belize News",
+    "date": "2026-08-14",
+    "country": "BZ",
+    "url": "https://www.breakingbelizenews.com/2026/08/14/btl-accepts-defeat-chairman-closes-acquisition-chapter-confirms-dominance-ruling/",
+    "tags": [
+      "headlines"
+    ],
+    "category": "Investment",
+    "group": "Investment",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "breaking-belize-news-6d34a3b7",
+    "title": "Digi chairman says company remains strong despite acquisition setback",
+    "source": "Breaking Belize News",
+    "date": "2026-08-14",
+    "country": "BZ",
+    "url": "https://www.breakingbelizenews.com/2026/08/14/digi-chairman-says-company-remains-strong-despite-acquisition-setback/",
+    "tags": [
+      "last news",
+      "social issues"
+    ],
+    "category": "Investment",
+    "group": "Investment",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "breaking-belize-news-00575a15",
+    "title": "Belize and El Salvador sign historic trade agreement to expand market access",
+    "source": "Breaking Belize News",
+    "date": "2026-08-14",
+    "country": "BZ",
+    "url": "https://www.breakingbelizenews.com/2026/08/14/belize-and-el-salvador-sign-historic-trade-agreement-to-expand-market-access/",
+    "tags": [
+      "community development",
+      "last news"
+    ],
+    "category": "Trade",
+    "group": "Trade & Tourism",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "breaking-belize-news-ae9dbe5a",
+    "title": "Ministry of Agriculture targets higher production and expanded markets",
+    "source": "Breaking Belize News",
+    "date": "2026-08-14",
+    "country": "BZ",
+    "url": "https://www.breakingbelizenews.com/2026/08/14/ministry-of-agriculture-targets-higher-production-and-expanded-markets/",
+    "tags": [
+      "agriculture",
+      "last news"
+    ],
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "breaking-belize-news-aae11728",
+    "title": "Belize expands Tourism reach with 2026 Colombia Roadshow",
+    "source": "Breaking Belize News",
+    "date": "2026-08-14",
+    "country": "BZ",
+    "url": "https://www.breakingbelizenews.com/2026/08/14/belize-expands-tourism-reach-with-2026-colombia-roadshow/",
+    "tags": [
+      "community development",
+      "last news"
+    ],
+    "category": "Tourism",
+    "group": "Trade & Tourism",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "breaking-belize-news-e04d7390",
+    "title": "International News: Oil prices rise as U.S. threatens indefinite blockade of Iran",
+    "source": "Breaking Belize News",
+    "date": "2026-08-14",
+    "country": "BZ",
+    "url": "https://www.breakingbelizenews.com/2026/08/14/international-news-oil-prices-rise-as-u-s-threatens-indefinite-blockade-of-iran/",
+    "tags": [
+      "last news",
+      "world news"
+    ],
+    "category": "Energy",
+    "group": "Energy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "cayman-news-service-fb8c9068",
+    "title": "CIG has huge surplus but half is already spent",
+    "source": "Cayman News Service",
+    "date": "2026-08-14",
+    "country": "KY",
+    "url": "https://caymannewsservice.com/2026/08/report-reveals-huge-surplus-but-half-is-already-spent/",
+    "tags": [
+      "government finance",
+      "politics",
+      "budget",
+      "featured",
+      "rolston anglin"
+    ],
+    "category": "Fiscal Policy",
+    "group": "Fiscal Policy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "cayman-compass-881da744",
+    "title": "Bridgerton-inspired Help for Children’s 2026 charity gala promises to be unforgettable",
+    "source": "Cayman Compass",
+    "date": "2026-08-14",
+    "country": "KY",
+    "url": "https://www.caymancompass.com/2026/08/14/bridgerton-inspired-help-for-childrens-2026-charity-gala-promises-to-be-unforgettable/",
+    "tags": [
+      "press releases",
+      "bridgerton",
+      "help for children cayman",
+      "ritz-carlton grand cayman"
+    ],
+    "category": "Infrastructure",
+    "group": "Investment",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
     "id": "guyana-chronicle-33c398c8",
     "title": "Gov’t engages Region Three cane farmers as development projects advance",
     "source": "Guyana Chronicle",
@@ -36083,332 +36550,5 @@
     ],
     "deal_status": "pending",
     "deal_type": "FDI"
-  },
-  {
-    "id": "kaieteur-news-dfc9842e",
-    "title": "Pres. Ali urges Guyanese in Saint Lucia to invest, return home at Diaspora Town Hall",
-    "source": "Kaieteur News",
-    "date": "2026-07-09",
-    "country": "GY",
-    "url": "https://kaieteurnewsonline.com/2026/07/09/pres-ali-urges-guyanese-in-saint-lucia-to-invest-return-home-at-diaspora-town-hall/",
-    "tags": [
-      "news",
-      "diaspora town hall",
-      "invest",
-      "saint lucia"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "kaieteur-news-5816ab3a",
-    "title": "India’s $100 Billion grid bet is accelerating a solar manufacturing boom",
-    "source": "Kaieteur News",
-    "date": "2026-07-09",
-    "country": "GY",
-    "url": "https://kaieteurnewsonline.com/2026/07/09/indias-100-billion-grid-bet-is-accelerating-a-solar-manufacturing-boom/",
-    "tags": [
-      "news",
-      "india solar",
-      "solar energy",
-      "solar manufacturing"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "kaieteur-news-b7142412",
-    "title": "Georgetown, T&T Chambers sign deal to tackle trade barriers",
-    "source": "Kaieteur News",
-    "date": "2026-07-09",
-    "country": "GY",
-    "url": "https://kaieteurnewsonline.com/2026/07/09/georgetown-tt-chambers-sign-deal-to-tackle-trade-barriers/",
-    "tags": [
-      "news",
-      "gcci",
-      "mou",
-      "trade barriers",
-      "tt chamber of industry and commerce"
-    ],
-    "deal_status": "completed",
-    "deal_type": "Other"
-  },
-  {
-    "id": "barbados-today-370d5dcd",
-    "title": "Govt senator: Go after those who cause financial institution collapse",
-    "source": "Barbados Today",
-    "date": "2026-07-09",
-    "country": "BB",
-    "url": "https://barbadostoday.bb/2026/07/09/govt-senator-go-after-those-who-cause-financial-institution-collapse/",
-    "tags": [
-      "business",
-      "economy",
-      "local news"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "barbados-today-f3ca4969",
-    "title": "Uphold ethical labour practices, says BEC amid worker exploitation charges",
-    "source": "Barbados Today",
-    "date": "2026-07-09",
-    "country": "BB",
-    "url": "https://barbadostoday.bb/2026/07/09/uphold-ethical-labour-practices-says-bec-amid-worker-exploitation-charges/",
-    "tags": [
-      "business",
-      "local news"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "barbados-today-313cf48a",
-    "title": "New campaign warns: Harbouring criminals will cost you",
-    "source": "Barbados Today",
-    "date": "2026-07-09",
-    "country": "BB",
-    "url": "https://barbadostoday.bb/2026/07/08/new-campaign-warns-harbouring-criminals-will-cost-you/",
-    "tags": [
-      "crime",
-      "education",
-      "judicial",
-      "local news",
-      "headline",
-      "headlines"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "starnieuws-30a13fee",
-    "title": "Olierally en wereldwijde beursdalingen na twijfel Trump over wapenstilstand met Iran",
-    "source": "Starnieuws",
-    "date": "2026-07-09",
-    "country": "SR",
-    "url": "https://www.starnieuws.com/index.php/welcome/index/nieuwsitem/92880",
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "starnieuws-169e7026",
-    "title": "Assemblee geeft groen licht voor sterker productiviteitscentrum",
-    "source": "Starnieuws",
-    "date": "2026-07-09",
-    "country": "SR",
-    "url": "https://www.starnieuws.com/index.php/welcome/index/nieuwsitem/92877",
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "antigua-news-room-b6d5f4f9",
-    "title": "Nicholas Meets Huawei Executives in China to Discuss AI and ICT Infrastructure",
-    "source": "Antigua News Room",
-    "date": "2026-07-09",
-    "country": "AG",
-    "url": "https://antiguanewsroom.com/nicholas-meets-huawei-executives-in-china-to-discuss-ai-and-ict-infrastructure/",
-    "tags": [
-      "news"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "antigua-news-room-280c99cb",
-    "title": "Great Customer Service Begins Behind the Scenes — Why Operational Excellence Is the Unsung Hero of Business Success",
-    "source": "Antigua News Room",
-    "date": "2026-07-09",
-    "country": "AG",
-    "url": "https://antiguanewsroom.com/great-customer-service-begins-behind-the-scenes-why-operational-excellence-is-the-unsung-hero-of-business-success/",
-    "tags": [
-      "news"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "antigua-news-room-d90a8372",
-    "title": "ECCB Governor to Present Report on ECCU Monetary, Credit and Financial Conditions at 113th Monetary Council Meeting",
-    "source": "Antigua News Room",
-    "date": "2026-07-09",
-    "country": "AG",
-    "url": "https://antiguanewsroom.com/eccb-governor-to-present-report-on-eccu-monetary-credit-and-financial-conditions-at-113th-monetary-council-meeting/",
-    "tags": [
-      "news"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "st-kitts-nevis-observer-7e4ceaa1",
-    "title": "Passenger traffic declines at Jamaica’s two international airports",
-    "source": "St. Kitts-Nevis Observer",
-    "date": "2026-07-09",
-    "country": "KN",
-    "url": "https://www.thestkittsnevisobserver.com/passenger-traffic-declines-at-jamaicas-two-international-airports/",
-    "tags": [
-      "regional"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "st-kitts-nevis-observer-cc619044",
-    "title": "Labour Ministry warns of fraudulent overseas work permit scheme",
-    "source": "St. Kitts-Nevis Observer",
-    "date": "2026-07-09",
-    "country": "KN",
-    "url": "https://www.thestkittsnevisobserver.com/labour-ministry-warns-of-fraudulent-overseas-work-permit-scheme/",
-    "tags": [
-      "regional"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "st-kitts-nevis-observer-d1a9e23b",
-    "title": "National Productivity Council Marks First Year, Sets Stage for Next Phase of Economic Reform",
-    "source": "St. Kitts-Nevis Observer",
-    "date": "2026-07-09",
-    "country": "KN",
-    "url": "https://www.thestkittsnevisobserver.com/national-productivity-council-marks-first-year-sets-stage-for-next-phase-of-economic-reform/",
-    "tags": [
-      "local news"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "iwitness-news-3f88106f",
-    "title": "Gonsalves denies gov’t had to make up cruise ship pier shortfall",
-    "source": "iWitness News",
-    "date": "2026-07-09",
-    "country": "VC",
-    "url": "https://www.iwnsvg.com/2026/07/09/gonsalves-denies-govt-had-to-make-up-cruise-ship-pier-shortfall/",
-    "tags": [
-      "politics"
-    ],
-    "deal_status": "pending",
-    "deal_type": "FDI"
-  },
-  {
-    "id": "bvi-news-b153a2e2",
-    "title": "Social, infrastructure woes shouldn’t stop our independence",
-    "source": "BVI News",
-    "date": "2026-07-09",
-    "country": "VG",
-    "url": "https://bvinews.com/social-infrastructure-woes-shouldnt-stop-our-independence/",
-    "tags": [
-      "all news"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "wic-news-57bfef67",
-    "title": "CARICOM leaders move ahead with regional ferry initiative to reduce cargo costs",
-    "source": "WIC News",
-    "date": "2026-07-09",
-    "country": "ALL",
-    "url": "https://wicnews.com/barbados/caricom-leaders-move-ahead-with-regional-ferry-initiative-to-reduce-cargo-costs",
-    "deal_status": "pending",
-    "deal_type": "FDI"
-  },
-  {
-    "id": "wic-news-c9370dc5",
-    "title": "31-year-old Russian crewman airlifted after 30-foot fall on oil tanker near Bimini",
-    "source": "WIC News",
-    "date": "2026-07-09",
-    "country": "ALL",
-    "url": "https://wicnews.com/world/31-year-old-russian-crewman-airlifted-after-30-foot-fall-on-oil-tanker-near-bimini",
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "barbados-today-1561c285",
-    "title": "Ferry plan must prioritise cargo to be viable, economist says",
-    "source": "Barbados Today",
-    "date": "2026-07-09",
-    "country": "BB",
-    "url": "https://barbadostoday.bb/2026/07/09/ferry-plan-must-prioritise-cargo-to-be-viable-economist-says/",
-    "tags": [
-      "caricom",
-      "local news",
-      "regional",
-      "transportation",
-      "travel",
-      "headline"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "jamaica-observer-701548fe",
-    "title": "Holland Bamboo in St Elizabeth to be pedestrianised for eco-tourism — Green",
-    "source": "Jamaica Observer",
-    "date": "2026-07-09",
-    "country": "JM",
-    "url": "https://www.jamaicaobserver.com/2026/07/08/holland-bamboo-st-elizabeth-pedestrianised-eco-tourism-green/",
-    "tags": [
-      "latest news",
-      "news",
-      "floyd green",
-      "holland bamboo",
-      "tourism"
-    ],
-    "deal_status": "pending",
-    "deal_type": "FDI"
-  },
-  {
-    "id": "breaking-belize-news-b01ccdf1",
-    "title": "Ministry of Rural Transformation hosts stakeholder consultation on Liquor and Trade License Initiatives",
-    "source": "Breaking Belize News",
-    "date": "2026-07-09",
-    "country": "BZ",
-    "url": "https://www.breakingbelizenews.com/2026/07/09/ministry-of-rural-transformation-hosts-stakeholder-consultation-on-liquor-and-trade-license-initiatives/",
-    "tags": [
-      "community development",
-      "last news"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "now-grenada-19a5a535",
-    "title": "Regulations governing the importation of animals and animal products",
-    "source": "NOW Grenada",
-    "date": "2026-07-09",
-    "country": "GD",
-    "url": "https://nowgrenada.com/2026/07/regulations-governing-the-importation-of-animals-and-animal-products/",
-    "tags": [
-      "agriculture/fisheries",
-      "business",
-      "law",
-      "notice",
-      "press release",
-      "animal"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "the-star-jamaica-2d904fdc",
-    "title": "St Ann poultry farmers get boost",
-    "source": "The Star (Jamaica)",
-    "date": "2026-07-09",
-    "country": "JM",
-    "url": "https://jamaica-star.com/article/news/20260709/st-ann-poultry-farmers-get-boost",
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "the-star-jamaica-b79dea90",
-    "title": "Cops want more businesses to join JamaicaEye",
-    "source": "The Star (Jamaica)",
-    "date": "2026-07-09",
-    "country": "JM",
-    "url": "https://jamaica-star.com/article/news/20260709/cops-want-more-businesses-join-jamaicaeye",
-    "deal_status": "not_a_deal",
-    "deal_type": null
   }
 ]
