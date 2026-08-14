@@ -2,6 +2,9 @@
   "functions": {
     "api/research.ts": {
       "maxDuration": 60
+    },
+    "api/noinfraSpike.ts": {
+      "maxDuration": 30
     }
   }
 }
