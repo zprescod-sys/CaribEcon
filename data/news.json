@@ -1,5 +1,22 @@
 [
   {
+    "id": "breaking-belize-news-9ef6d2f2",
+    "title": "Cabinet rejects the Speednet acquisition",
+    "source": "Breaking Belize News",
+    "date": "2026-08-14",
+    "country": "BZ",
+    "url": "https://www.breakingbelizenews.com/2026/08/13/cabinet-rejects-the-speednet-acquisition/",
+    "tags": [
+      "headlines"
+    ],
+    "category": "Investment",
+    "group": "Investment",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
     "id": "guyana-chronicle-33c398c8",
     "title": "Gov’t engages Region Three cane farmers as development projects advance",
     "source": "Guyana Chronicle",
@@ -222,6 +239,465 @@
     "group": "Macro",
     "decision": "publish",
     "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "kaieteur-news-43c3755d",
+    "title": "New Australian firm secures 44,000 acres gold land in Reg. 7",
+    "source": "Kaieteur News",
+    "date": "2026-08-13",
+    "country": "GY",
+    "url": "https://kaieteurnewsonline.com/2026/08/13/new-australian-firm-secures-44000-acres-gold-land-in-reg-7/",
+    "tags": [
+      "news",
+      "leguan",
+      "mining contract",
+      "oko gold district"
+    ],
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "kaieteur-news-3e2ea488",
+    "title": "U.S. eyes ports, road, housing contracts in Guyana – Deputy Secretary of State",
+    "source": "Kaieteur News",
+    "date": "2026-08-13",
+    "country": "GY",
+    "url": "https://kaieteurnewsonline.com/2026/08/13/u-s-eyes-ports-road-housing-contracts-in-guyana-deputy-secretary-of-state/",
+    "tags": [
+      "news",
+      "housing contracts",
+      "ports",
+      "road",
+      "us/guyana"
+    ],
+    "category": "Trade",
+    "group": "Trade & Tourism",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "kaieteur-news-cfce027c",
+    "title": "America’s sudden interest in Guyana’s bauxite has powerful geopolitical importance",
+    "source": "Kaieteur News",
+    "date": "2026-08-13",
+    "country": "GY",
+    "url": "https://kaieteurnewsonline.com/2026/08/13/americas-sudden-interest-in-guyanas-bauxite-has-powerful-geopolitical-importance/",
+    "tags": [
+      "letters",
+      "bauxite",
+      "emile mervin",
+      "geopolitical importance"
+    ],
+    "category": "Investment",
+    "group": "Investment",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "kaieteur-news-21c067b6",
+    "title": "Profit share, bring out Bharrat Jagdeo",
+    "source": "Kaieteur News",
+    "date": "2026-08-13",
+    "country": "GY",
+    "url": "https://kaieteurnewsonline.com/2026/08/13/profit-share-bring-out-bharrat-jagdeo/",
+    "tags": [
+      "features / columnists",
+      "the ghk lall column",
+      "ghk lall"
+    ],
+    "category": "Corporate",
+    "group": "Finance",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "ttt-news-3009dfee",
+    "title": "PM Holds Talks With ExxonMobil On Energy Sector Opportunities",
+    "source": "TTT News",
+    "date": "2026-08-13",
+    "country": "TT",
+    "url": "https://www.ttt.live/pm-holds-talks-with-exxonmobil-on-energy-sector-opportunities/?utm_source=rss&utm_medium=rss&utm_campaign=pm-holds-talks-with-exxonmobil-on-energy-sector-opportunities",
+    "tags": [
+      "energy",
+      "government",
+      "news"
+    ],
+    "category": "Energy",
+    "group": "Energy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "ttt-news-604b6927",
+    "title": "New Tobago Airport Terminal Could Welcome Passengers Within Weeks",
+    "source": "TTT News",
+    "date": "2026-08-13",
+    "country": "TT",
+    "url": "https://www.ttt.live/new-tobago-airport-terminal-could-welcome-passengers-within-weeks/?utm_source=rss&utm_medium=rss&utm_campaign=new-tobago-airport-terminal-could-welcome-passengers-within-weeks",
+    "tags": [
+      "news",
+      "tobago",
+      "transport and civil aviation"
+    ],
+    "category": "Tourism",
+    "group": "Trade & Tourism",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "ttt-news-ce05dcbc",
+    "title": "Caribbean Airlines Adds 1,200 Seats To Meet Great Race Weekend Demand",
+    "source": "TTT News",
+    "date": "2026-08-13",
+    "country": "TT",
+    "url": "https://www.ttt.live/caribbean-airlines-adds-1200-seats-to-meet-great-race-weekend-demand/?utm_source=rss&utm_medium=rss&utm_campaign=caribbean-airlines-adds-1200-seats-to-meet-great-race-weekend-demand",
+    "tags": [
+      "news"
+    ],
+    "category": "Tourism",
+    "group": "Trade & Tourism",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "ttt-news-101cdb6e",
+    "title": "Trade Ministry Sets US$9 Billion National Investment Target By 2030",
+    "source": "TTT News",
+    "date": "2026-08-13",
+    "country": "TT",
+    "url": "https://www.ttt.live/trade-ministry-sets-us9-billion-national-investment-target-by-2030/?utm_source=rss&utm_medium=rss&utm_campaign=trade-ministry-sets-us9-billion-national-investment-target-by-2030",
+    "tags": [
+      "business and finance",
+      "government",
+      "news",
+      "trade and investment"
+    ],
+    "category": "Investment",
+    "group": "Investment",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "ttt-news-edfc6470",
+    "title": "Ministry Of The People Supports Women’s Economic Empowerment In La Brea With $10,000 One-Off Grant",
+    "source": "TTT News",
+    "date": "2026-08-13",
+    "country": "TT",
+    "url": "https://www.ttt.live/ministry-of-the-people-supports-womens-economic-empowerment-in-la-brea-with-10000-one-off-grant/?utm_source=rss&utm_medium=rss&utm_campaign=ministry-of-the-people-supports-womens-economic-empowerment-in-la-brea-with-10000-one-off-grant",
+    "tags": [
+      "news",
+      "social development"
+    ],
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "barbados-today-804eb4ac",
+    "title": "Caribbean Investment Forum 2026 launches here",
+    "source": "Barbados Today",
+    "date": "2026-08-13",
+    "country": "BB",
+    "url": "https://barbadostoday.bb/2026/08/13/caribbean-investment-forum-2026-launches-here/",
+    "tags": [
+      "business",
+      "local news"
+    ],
+    "category": "Investment",
+    "group": "Investment",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "barbados-today-db3e9c42",
+    "title": "Youth discounts get thumbs up from businesses",
+    "source": "Barbados Today",
+    "date": "2026-08-13",
+    "country": "BB",
+    "url": "https://barbadostoday.bb/2026/08/13/youth-discounts-get-thumbs-up-from-businesses/",
+    "tags": [
+      "business",
+      "local news"
+    ],
+    "category": "Corporate",
+    "group": "Finance",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "nation-news-077efb3c",
+    "title": "IDB lauds fiscal progress, cites challenge",
+    "source": "Nation News",
+    "date": "2026-08-13",
+    "country": "BB",
+    "url": "https://nationnews.com/2026/08/13/idb-lauds-fiscal-progress-cites-challenge/?utm_source=rss&utm_medium=rss&utm_campaign=idb-lauds-fiscal-progress-cites-challenge",
+    "tags": [
+      "business",
+      "cost of living",
+      "inter-american development bank"
+    ],
+    "category": "Fiscal Policy",
+    "group": "Fiscal Policy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "jamaica-observer-f4f6eeaa",
+    "title": "Venezuela inks gas deals with BP, two other foreign companies",
+    "source": "Jamaica Observer",
+    "date": "2026-08-13",
+    "country": "JM",
+    "url": "https://www.jamaicaobserver.com/2026/08/13/venezuela-inks-gas-deals-bp-two-foreign-companies/",
+    "tags": [
+      "international news",
+      "latest news",
+      "regional",
+      "oil",
+      "united states",
+      "venezuela"
+    ],
+    "category": "Energy",
+    "group": "Energy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "jamaica-observer-5f3374e8",
+    "title": "National Farm Queen competition vital to changing perceptions of agriculture, says organiser",
+    "source": "Jamaica Observer",
+    "date": "2026-08-13",
+    "country": "JM",
+    "url": "https://www.jamaicaobserver.com/2026/08/13/national-farm-queen-competition-vital-changing-perceptions-agriculture-says-organiser/",
+    "tags": [
+      "latest news",
+      "news",
+      "national farm queen competition",
+      "velonique bowen"
+    ],
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "the-star-jamaica-248a7961",
+    "title": "Labour Ministry assisting Coopers Pen residents",
+    "source": "The Star (Jamaica)",
+    "date": "2026-08-13",
+    "country": "JM",
+    "url": "https://jamaica-star.com/article/news/20260813/labour-ministry-assisting-coopers-pen-residents",
+    "category": "Labor",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "breaking-belize-news-59f28ffb",
+    "title": "BREAKING: Cabinet rejects proposed acquisition of SMART/Speednet Ltd. by BTL",
+    "source": "Breaking Belize News",
+    "date": "2026-08-13",
+    "country": "BZ",
+    "url": "https://www.breakingbelizenews.com/2026/08/13/breaking-cabinet-rejects-proposed-acquisition-of-smart-speednet-ltd-by-btl/",
+    "tags": [
+      "headlines",
+      "last news"
+    ],
+    "category": "Investment",
+    "group": "Investment",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "breaking-belize-news-f6632bfa",
+    "title": "Belize Beef Fest & Rodeo set for Saturday at National Agriculture Showgrounds",
+    "source": "Breaking Belize News",
+    "date": "2026-08-13",
+    "country": "BZ",
+    "url": "https://www.breakingbelizenews.com/2026/08/13/belize-beef-fest-rodeo-set-for-saturday-at-national-agriculture-showgrounds/",
+    "tags": [
+      "community development",
+      "last news"
+    ],
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "breaking-belize-news-42e59058",
+    "title": "Belize Communications Workers for Justice reiterates stance on BTL- Smart acquisition; calls on BTL to address unresolved obligations to former workers",
+    "source": "Breaking Belize News",
+    "date": "2026-08-13",
+    "country": "BZ",
+    "url": "https://www.breakingbelizenews.com/2026/08/13/belize-communications-workers-for-justice-reiterates-stance-on-btl-smart-acquisition-calls-on-btl-to-address-unresolved-obligations-to-former-workers/",
+    "tags": [
+      "last news",
+      "social issues"
+    ],
+    "category": "Investment",
+    "group": "Investment",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "waterkant-6086cfeb",
+    "title": "Pokie denkt dat discussie over dubbel salaris een politieke aanval is",
+    "source": "Waterkant",
+    "date": "2026-08-13",
+    "country": "SR",
+    "url": "https://www.waterkant.net/suriname/2026/08/13/pokie-denkt-dat-discussie-over-dubbel-salaris-een-politieke-aanval-is/#utm_source=rss&utm_medium=rss&utm_campaign=pokie-denkt-dat-discussie-over-dubbel-salaris-een-politieke-aanval-is",
+    "tags": [
+      "nieuws uit suriname",
+      "overheid",
+      "politiek",
+      "uitgelicht"
+    ],
+    "category": "Labor",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "st-lucia-times-37a74613",
+    "title": "When will Saint Lucia get a North-South link road?",
+    "source": "St. Lucia Times",
+    "date": "2026-08-13",
+    "country": "LC",
+    "url": "https://stluciatimes.com/182914/2026/08/when-will-saint-lucia-get-a-north-south-link-road/",
+    "tags": [
+      "construction & works",
+      "headlines",
+      "dennery",
+      "gros islet",
+      "infrastructure",
+      "north-south link road"
+    ],
+    "category": "Infrastructure",
+    "group": "Investment",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "nature-isle-news-af4a9728",
+    "title": "NCCU introduces new measures to reduce Loan Delinquency",
+    "source": "Nature Isle News",
+    "date": "2026-08-13",
+    "country": "DM",
+    "url": "https://natureisle.news/banking-finance/nccu-introduces-new-measures-to-reduce-loan-delinquency/",
+    "tags": [
+      "banking/finance",
+      "credit union",
+      "finance",
+      "promotion",
+      "public relations"
+    ],
+    "category": "Banking",
+    "group": "Finance",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "cayman-news-service-ed0d321b",
+    "title": "Tourist bitten by ‘predatory fish’ at Governor’s Beach",
+    "source": "Cayman News Service",
+    "date": "2026-08-13",
+    "country": "KY",
+    "url": "https://caymannewsservice.com/2026/08/tourist-bitten-by-predatory-fish-at-governors-beach/",
+    "tags": [
+      "health",
+      "marine environment",
+      "medical health",
+      "science & nature",
+      "department of environment",
+      "incident in the sea"
+    ],
+    "category": "Tourism",
+    "group": "Trade & Tourism",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "cayman-news-service-13315a37",
+    "title": "Ministry delays key transport procurement exercises",
+    "source": "Cayman News Service",
+    "date": "2026-08-13",
+    "country": "KY",
+    "url": "https://caymannewsservice.com/2026/08/ministry-delays-key-transport-procurement-exercises/",
+    "tags": [
+      "local news",
+      "policy",
+      "politics",
+      "transport",
+      "department of vehicle and drivers' licensing",
+      "national roads authority"
+    ],
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "wic-news-94ab78c9",
+    "title": "Antigua and Barbuda plans US$100M Cargo Port Expansion",
+    "source": "WIC News",
+    "date": "2026-08-13",
+    "country": "ALL",
+    "url": "https://wicnews.com/antigua-barbuda/antigua-and-barbuda-plans-us100m-cargo-port-expansion",
+    "category": "Trade",
+    "group": "Trade & Tourism",
+    "decision": "publish",
+    "confidence": "high",
     "reason": "Heuristic: displayable.",
     "classifier": "heuristic"
   },
@@ -35892,330 +36368,6 @@
     "date": "2026-07-08",
     "country": "ALL",
     "url": "https://wicnews.com/trinidad-tobago/caribbean-airlines-launches-three-day-flash-sale-on-trinidad-orlando-flights",
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "wic-news-ea19f483",
-    "title": "Antigua and Barbuda rejects EU call to end CBI, vows to protect key revenue source",
-    "source": "WIC News",
-    "date": "2026-07-08",
-    "country": "ALL",
-    "url": "https://wicnews.com/antigua-barbuda/antigua-and-barbuda-rejects-eu-call-to-end-cbi-vows-to-protect-key-revenue-source",
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "wic-news-5df89763",
-    "title": "American Airlines expands Miami-St. Kitts service with two daily winter flights",
-    "source": "WIC News",
-    "date": "2026-07-08",
-    "country": "ALL",
-    "url": "https://wicnews.com/saint-kitts-nevis/american-airlines-expands-miami-st-kitts-service-with-two-daily-winter-flights",
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "wic-news-45139a21",
-    "title": "Sunrise Airways launches direct Antigua-Barbados flights with introductory fares",
-    "source": "WIC News",
-    "date": "2026-07-08",
-    "country": "ALL",
-    "url": "https://wicnews.com/antigua-barbuda/sunrise-airways-launches-direct-antigua-barbados-flights-with-introductory-fares",
-    "deal_status": "completed",
-    "deal_type": "Other"
-  },
-  {
-    "id": "wic-news-f1da4738",
-    "title": "Massive warehouse fire destroys resort supplies, delays InterContinental opening in Grenada",
-    "source": "WIC News",
-    "date": "2026-07-08",
-    "country": "ALL",
-    "url": "https://wicnews.com/grenada/massive-warehouse-fire-destroys-resort-supplies-delays-intercontinental-opening-in-grenada",
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "wic-news-0c833db7",
-    "title": "Caribbean Airlines ends 15-year partnership with Blue Waters after owners' detention",
-    "source": "WIC News",
-    "date": "2026-07-08",
-    "country": "ALL",
-    "url": "https://wicnews.com/trinidad-tobago/caribbean-airlines-ends-15-year-partnership-with-blue-waters-after-owners-detention",
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "wic-news-53074759",
-    "title": "Caribbean Airlines launches daily non-stop Guyana-Toronto flights with special summer fares",
-    "source": "WIC News",
-    "date": "2026-07-08",
-    "country": "ALL",
-    "url": "https://wicnews.com/guyana/caribbean-airlines-launches-daily-non-stop-guyana-toronto-flights-with-special-summer-fares",
-    "deal_status": "completed",
-    "deal_type": "Other"
-  },
-  {
-    "id": "wic-news-15bfe1bc",
-    "title": "Trinidad: 32-year-old woman goes missing after leaving work in Port of Spain",
-    "source": "WIC News",
-    "date": "2026-07-08",
-    "country": "ALL",
-    "url": "https://wicnews.com/trinidad-tobago/trinidad-32-year-old-woman-goes-missing-after-leaving-work-in-port-of-spain",
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "breaking-belize-news-f508c5cc",
-    "title": "International News: Trump issues warning to Iran after commercial ship attacks",
-    "source": "Breaking Belize News",
-    "date": "2026-07-08",
-    "country": "BZ",
-    "url": "https://www.breakingbelizenews.com/2026/07/08/international-news-trump-issues-warning-to-iran-after-commercial-ship-attacks/",
-    "tags": [
-      "last news",
-      "world news"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "breaking-belize-news-c2df07b2",
-    "title": "Briceño administration moves to strengthen procurement oversight",
-    "source": "Breaking Belize News",
-    "date": "2026-07-08",
-    "country": "BZ",
-    "url": "https://www.breakingbelizenews.com/2026/07/08/briceno-administration-moves-to-strengthen-procurement-oversight/",
-    "tags": [
-      "headlines",
-      "last news"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "breaking-belize-news-d01da7a8",
-    "title": "PM convenes Special Cabinet Meeting to discuss procurement best practices and legislative compliance",
-    "source": "Breaking Belize News",
-    "date": "2026-07-08",
-    "country": "BZ",
-    "url": "https://www.breakingbelizenews.com/2026/07/08/pm-convenes-special-cabinet-meeting-to-discuss-procurement-best-practices-and-legislative-compliance/",
-    "tags": [
-      "headlines",
-      "last news"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "breaking-belize-news-aa56d2bc",
-    "title": "Prime Minister calls Special Cabinet Meeting on procurement best practices and legislative compliance",
-    "source": "Breaking Belize News",
-    "date": "2026-07-08",
-    "country": "BZ",
-    "url": "https://www.breakingbelizenews.com/2026/07/08/prime-minister-calls-special-cabinet-meeting-on-procurement-best-practices-and-legislative-compliance/",
-    "tags": [
-      "headlines",
-      "last news"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "now-grenada-3df23a3d",
-    "title": "Grenlec urges customers to use energy wisely amid higher global fuel costs",
-    "source": "NOW Grenada",
-    "date": "2026-07-08",
-    "country": "GD",
-    "url": "https://nowgrenada.com/2026/07/grenlec-urges-customers-to-use-energy-wisely-amid-higher-global-fuel-costs/",
-    "tags": [
-      "business",
-      "press release",
-      "video",
-      "electricity",
-      "fuel charge",
-      "grenlec"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "st-lucia-times-023fbe80",
-    "title": "From pathways to investment: Tackling the US$6 billion food challenge  for the Caribbean",
-    "source": "St. Lucia Times",
-    "date": "2026-07-08",
-    "country": "LC",
-    "url": "https://stluciatimes.com/181822/2026/07/from-pathways-to-investment-tackling-the-us6-billion-food-challenge-for-the-caribbean/",
-    "tags": [
-      "headlines",
-      "opinions",
-      "region",
-      "barbados",
-      "caricom",
-      "eastern caribbean"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "antigua-news-room-cc686451",
-    "title": "Treasury Department to Close Friday for CHOGM Security Exercise",
-    "source": "Antigua News Room",
-    "date": "2026-07-08",
-    "country": "AG",
-    "url": "https://antiguanewsroom.com/treasury-department-to-close-friday-for-chogm-security-exercise/",
-    "tags": [
-      "news"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "st-kitts-nevis-observer-99585a83",
-    "title": "Op-ed by Hon. Mark Brantley: The Death of Citizenship by Investment in the OECS",
-    "source": "St. Kitts-Nevis Observer",
-    "date": "2026-07-08",
-    "country": "KN",
-    "url": "https://www.thestkittsnevisobserver.com/op-ed-by-hon-mark-brantley-the-death-of-citizenship-by-investment-in-the-oecs/",
-    "tags": [
-      "featured",
-      "local news"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "st-kitts-nevis-observer-a9020bdc",
-    "title": "New Zealand:  Construction Contract Awarded For Permanent SH39 Mangati Bridge",
-    "source": "St. Kitts-Nevis Observer",
-    "date": "2026-07-08",
-    "country": "KN",
-    "url": "https://www.thestkittsnevisobserver.com/new-zealand-construction-contract-awarded-for-permanent-sh39-mangati-bridge/",
-    "tags": [
-      "press releases",
-      "regional/international news"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "cnc3-4c588895",
-    "title": "ANSA McAL releases 2025 sustainability and ESG reports",
-    "source": "CNC3",
-    "date": "2026-07-08",
-    "country": "TT",
-    "url": "https://www.cnc3.co.tt/ansa-mcal-releases-2025-sustainability-and-esg-reports/?utm_source=rss&utm_medium=rss&utm_campaign=ansa-mcal-releases-2025-sustainability-and-esg-reports",
-    "tags": [
-      "business",
-      "instagram"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "barbados-today-aa902748",
-    "title": "AI era forces rethink of jobs training, hiring",
-    "source": "Barbados Today",
-    "date": "2026-07-08",
-    "country": "BB",
-    "url": "https://barbadostoday.bb/2026/07/08/ai-era-forces-rethink-of-jobs-training-hiring/",
-    "tags": [
-      "business",
-      "local news",
-      "technology"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "barbados-today-6b19c09b",
-    "title": "BWU calls for full disclosure after BESCO job cuts",
-    "source": "Barbados Today",
-    "date": "2026-07-08",
-    "country": "BB",
-    "url": "https://barbadostoday.bb/2026/07/08/bwu-calls-for-full-disclosure-after-besco-job-cuts/",
-    "tags": [
-      "business",
-      "local news"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "searchlight-svg-f287b45f",
-    "title": "The Billion-Dollar Decision: How St. Vincent and the Grenadines Paid the Price for Saying “No” to Citizenship by Investment",
-    "source": "Searchlight SVG",
-    "date": "2026-07-08",
-    "country": "VC",
-    "url": "https://www.searchlight.vc/our-readers-opinions/2026/07/08/billion-dollar-decision-st-vincent-grenadines-paid-price-saying-no-citizenship-investment/",
-    "tags": [
-      "our readers' opinions"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "cayman-compass-2d9a2e4f",
-    "title": "Utility bills and minimum wage push Cayman inflation to 2.8%",
-    "source": "Cayman Compass",
-    "date": "2026-07-08",
-    "country": "KY",
-    "url": "https://www.caymancompass.com/2026/07/08/utility-bills-and-minimum-wage-push-cayman-inflation-to-2-8/",
-    "tags": [
-      "business",
-      "featured local home page",
-      "local",
-      "economics and statistics office",
-      "inflation",
-      "minimum wage"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "cayman-compass-3040e03d",
-    "title": "Cayman shipping registry ranked world’s best for vessel safety standards",
-    "source": "Cayman Compass",
-    "date": "2026-07-08",
-    "country": "KY",
-    "url": "https://www.caymancompass.com/2026/07/08/cayman-shipping-registry-ranked-worlds-best-for-vessel-safety-standards/",
-    "tags": [
-      "featured local home page",
-      "local",
-      "cayman islands shipping registry",
-      "memorandum of understanding",
-      "paris"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "caribbean-dev-bank-3666c1ae",
-    "title": "Evaluation of Policy-Based Lending Operations at the Caribbean Development Bank 2017-2025",
-    "source": "Caribbean Dev Bank",
-    "date": "2026-07-08",
-    "country": "ALL",
-    "url": "https://www.caribank.org/evaluations-resources/evaluation-policy-based-lending-operations-caribbean-development-bank-2017-2025",
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "caribbean-dev-bank-fe7705de",
-    "title": "Evaluation of the Caribbean Development Bank Saint Lucia Country Engagement Strategy 2020-2023",
-    "source": "Caribbean Dev Bank",
-    "date": "2026-07-08",
-    "country": "ALL",
-    "url": "https://www.caribank.org/evaluations-resources/evaluation-caribbean-development-bank-saint-lucia-country-engagement-strategy-2020-2023",
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "trinidad-express-0bb2176e",
-    "title": "Brian Lewis on the business of seeing",
-    "source": "Trinidad Express",
-    "date": "2026-07-08",
-    "country": "TT",
-    "url": "https://trinidadexpress.com/business/local/brian-lewis-on-the-business-of-seeing/article_bf38d3c0-de95-4528-8a90-10206ece3a59.html",
     "deal_status": "not_a_deal",
     "deal_type": null
   }

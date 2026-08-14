@@ -16,6 +16,29 @@
     "suggestedCategory": ""
   },
   {
+    "id": "jamaica-observer-2b53d40f",
+    "title": "Bellevue CEO calls for compassion after daughter allegedly told to ‘wheel yourself’ at UHWI",
+    "source": "Jamaica Observer",
+    "date": "2026-08-12",
+    "country": "JM",
+    "url": "https://www.jamaicaobserver.com/2026/08/12/bellevue-ceo-calls-compassion-daughter-allegedly-told-wheel-uhwi/",
+    "tags": [
+      "latest news",
+      "news",
+      "healthcare",
+      "suzette buchanan",
+      "uhwi"
+    ],
+    "category": "",
+    "group": "Finance",
+    "decision": "review",
+    "confidence": "low",
+    "reason": "Recognized editorial edge-case vocabulary; suggested Corporate.",
+    "classifier": "heuristic",
+    "approved": false,
+    "suggestedCategory": "Corporate"
+  },
+  {
     "id": "waterkant-d03f34c3",
     "title": "Masterclass “Behavioral Governance: Waarom goede governance toch mislukt, terwijl de regels op orde zijn”",
     "source": "Waterkant",
