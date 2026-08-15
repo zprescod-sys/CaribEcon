@@ -260,6 +260,242 @@
     "classifier": "heuristic"
   },
   {
+    "id": "kaieteur-news-b9fb53c4",
+    "title": "Two slicks appear in Gulf as huge oil spill off Oman threatens disaster",
+    "source": "Kaieteur News",
+    "date": "2026-08-15",
+    "country": "GY",
+    "url": "https://kaieteurnewsonline.com/2026/08/15/two-slicks-appear-in-gulf-as-huge-oil-spill-off-oman-threatens-disaster/",
+    "tags": [
+      "news",
+      "oil spills",
+      "qeshm island",
+      "reuters",
+      "strait of hormuz"
+    ],
+    "category": "Energy",
+    "group": "Energy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "kaieteur-news-256cc737",
+    "title": "Everybody now tun businessperson",
+    "source": "Kaieteur News",
+    "date": "2026-08-15",
+    "country": "GY",
+    "url": "https://kaieteurnewsonline.com/2026/08/15/everybody-now-tun-businessperson/",
+    "tags": [
+      "dem boys seh",
+      "features / columnists",
+      "news",
+      "businessperson",
+      "entrepreneur",
+      "pavement"
+    ],
+    "category": "Corporate",
+    "group": "Finance",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "kaieteur-news-2e993345",
+    "title": "Guyana’s share of oil revenue: Is this an equitable arrangement?",
+    "source": "Kaieteur News",
+    "date": "2026-08-15",
+    "country": "GY",
+    "url": "https://kaieteurnewsonline.com/2026/08/15/guyanas-share-of-oil-revenue-is-this-an-equitable-arrangement/",
+    "tags": [
+      "letters",
+      "exxon",
+      "guyana",
+      "oil revenue",
+      "shares"
+    ],
+    "category": "Energy",
+    "group": "Energy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "kaieteur-news-cf43f496",
+    "title": "No to Uranium Mining in Guyana",
+    "source": "Kaieteur News",
+    "date": "2026-08-15",
+    "country": "GY",
+    "url": "https://kaieteurnewsonline.com/2026/08/15/no-to-uranium-mining-in-guyana/",
+    "tags": [
+      "letters",
+      "eia",
+      "epa",
+      "guyana",
+      "u92 energy corp.",
+      "uranium mining"
+    ],
+    "category": "Investment",
+    "group": "Investment",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "barbados-today-2fb1bc4f",
+    "title": "NCSA warns over export of drug precursors",
+    "source": "Barbados Today",
+    "date": "2026-08-15",
+    "country": "BB",
+    "url": "https://barbadostoday.bb/2026/08/15/ncsa-warns-over-export-of-drug-precursors-2/",
+    "tags": [
+      "crime",
+      "local news"
+    ],
+    "category": "Trade",
+    "group": "Trade & Tourism",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "barbados-today-47bcf810",
+    "title": "Supermarket contract plan welcomed by farmers, vendors",
+    "source": "Barbados Today",
+    "date": "2026-08-15",
+    "country": "BB",
+    "url": "https://barbadostoday.bb/2026/08/15/supermarket-contract-plan-welcomed-by-farmers-vendors/",
+    "tags": [
+      "agriculture",
+      "economy",
+      "local news"
+    ],
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "nation-news-d0671d06",
+    "title": "ECLAC to release economic survey of LAC",
+    "source": "Nation News",
+    "date": "2026-08-15",
+    "country": "BB",
+    "url": "https://nationnews.com/2026/08/15/eclac-to-release-economic-survey-of-lac/?utm_source=rss&utm_medium=rss&utm_campaign=eclac-to-release-economic-survey-of-lac",
+    "tags": [
+      "regional",
+      "eclac"
+    ],
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "jamaica-observer-abdc3bed",
+    "title": "Modern $760-million Christiana tax office officially opened",
+    "source": "Jamaica Observer",
+    "date": "2026-08-15",
+    "country": "JM",
+    "url": "https://www.jamaicaobserver.com/2026/08/15/modern-760-million-christiana-tax-office-officially-opened/",
+    "tags": [
+      "news"
+    ],
+    "category": "Fiscal Policy",
+    "group": "Fiscal Policy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "jamaica-observer-36e2cc5f",
+    "title": "S Hotel celebrates Jamaica’s resilience with new sculpture",
+    "source": "Jamaica Observer",
+    "date": "2026-08-15",
+    "country": "JM",
+    "url": "https://www.jamaicaobserver.com/2026/08/15/s-hotel-celebrates-jamaicas-resilience-new-sculpture/",
+    "tags": [
+      "news"
+    ],
+    "category": "Tourism",
+    "group": "Trade & Tourism",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "jamaica-observer-71ce0179",
+    "title": "Currenci 87 winning with ‘Owna Tings’",
+    "source": "Jamaica Observer",
+    "date": "2026-08-15",
+    "country": "JM",
+    "url": "https://www.jamaicaobserver.com/2026/08/15/currenci-87-winning-owna-tings/",
+    "tags": [
+      "entertainment",
+      "latest news",
+      "annotto bay",
+      "currenci 87"
+    ],
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "jamaica-observer-f59fbf15",
+    "title": "Colombia leader asks Trump to suspend tariffs over quake",
+    "source": "Jamaica Observer",
+    "date": "2026-08-15",
+    "country": "JM",
+    "url": "https://www.jamaicaobserver.com/2026/08/15/colombia-leader-asks-trump-suspend-tariffs-quake/",
+    "tags": [
+      "international news",
+      "latest news",
+      "colombia",
+      "donald trump",
+      "earthquake"
+    ],
+    "category": "Trade",
+    "group": "Trade & Tourism",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "jamaica-observer-d86bb66f",
+    "title": "SLB approves $1.8 billion in loans in 2025",
+    "source": "Jamaica Observer",
+    "date": "2026-08-15",
+    "country": "JM",
+    "url": "https://www.jamaicaobserver.com/2026/08/15/slb-approves-1-8-billion-loans-2025/",
+    "tags": [
+      "latest news",
+      "news",
+      "loans",
+      "slb"
+    ],
+    "category": "Banking",
+    "group": "Finance",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
     "id": "breaking-belize-news-9ef6d2f2",
     "title": "Cabinet rejects the Speednet acquisition",
     "source": "Breaking Belize News",
@@ -36446,173 +36682,6 @@
       "delano seiveright",
       "rich rum"
     ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "jamaica-observer-f3d45f45",
-    "title": "Chinese company UBTech launches hyper-real humanoid robots for lonely people",
-    "source": "Jamaica Observer",
-    "date": "2026-07-10",
-    "country": "JM",
-    "url": "https://www.jamaicaobserver.com/2026/07/10/chinese-company-ubtech-launches-hyper-real-humanoid-robots-lonely-people/",
-    "tags": [
-      "international news",
-      "latest news",
-      "ai",
-      "humanoid robots",
-      "loneliness",
-      "robots"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "now-grenada-95512b9d",
-    "title": "Strengthening capacity in trade in services in Grenada",
-    "source": "NOW Grenada",
-    "date": "2026-07-10",
-    "country": "GD",
-    "url": "https://nowgrenada.com/2026/07/strengthening-capacity-in-trade-in-services-in-grenada/",
-    "tags": [
-      "business",
-      "press release",
-      "division of trade and export development",
-      "economic development fund",
-      "edf",
-      "oecs"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "antigua-news-room-70a31e12",
-    "title": "PM Browne, Skerrit and Regional Leaders Unite Over EU Citizenship by Investment Demands",
-    "source": "Antigua News Room",
-    "date": "2026-07-10",
-    "country": "AG",
-    "url": "https://antiguanewsroom.com/pm-browne-skerrit-and-regional-leaders-unite-over-eu-citizenship-by-investment-demands/",
-    "tags": [
-      "news"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "antigua-news-room-1e7050a0",
-    "title": "CARICOM Heads of Government Taking Measures to Ease Rising Cost of Living",
-    "source": "Antigua News Room",
-    "date": "2026-07-10",
-    "country": "AG",
-    "url": "https://antiguanewsroom.com/caricom-heads-of-government-taking-measures-to-ease-rising-cost-of-living/",
-    "tags": [
-      "featured"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "antigua-news-room-f8a9bd65",
-    "title": "Communiqué of the 113th Meeting of the Monetary Council",
-    "source": "Antigua News Room",
-    "date": "2026-07-10",
-    "country": "AG",
-    "url": "https://antiguanewsroom.com/communique-of-the-113th-meeting-of-the-monetary-council-of-the/",
-    "tags": [
-      "news"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "antigua-news-room-d5b8b965",
-    "title": "Weatherills Hotel Earns World Culinary Awards Nomination for Caribbean’s Best Brunch Venue",
-    "source": "Antigua News Room",
-    "date": "2026-07-10",
-    "country": "AG",
-    "url": "https://antiguanewsroom.com/weatherills-hotel-earns-world-culinary-awards-nomination-for-caribbeans-best-brunch-venue/",
-    "tags": [
-      "news"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "antigua-news-room-a5c4620c",
-    "title": "Antigua and Barbuda Inland Revenue Collects EC$377.9m in First Half of 2026",
-    "source": "Antigua News Room",
-    "date": "2026-07-10",
-    "country": "AG",
-    "url": "https://antiguanewsroom.com/antigua-and-barbuda-inland-revenue-collects-ec377-9m-in-first-half-of-2026/",
-    "tags": [
-      "news"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "st-kitts-nevis-observer-c604b1b2",
-    "title": "New Zealand:  Government Support For Flood-Hit Kaikōura Farmers",
-    "source": "St. Kitts-Nevis Observer",
-    "date": "2026-07-10",
-    "country": "KN",
-    "url": "https://www.thestkittsnevisobserver.com/new-zealand-government-support-for-flood-hit-kaikoura-farmers/",
-    "tags": [
-      "press releases",
-      "regional/international news"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "st-kitts-nevis-observer-3c7704db",
-    "title": "United States:  Department of War Establishes The Directed Energy Bio-Effects Cross-Functional Team, Delivering First HAVANA Act Payments",
-    "source": "St. Kitts-Nevis Observer",
-    "date": "2026-07-10",
-    "country": "KN",
-    "url": "https://www.thestkittsnevisobserver.com/united-states-department-of-war-establishes-the-directed-energy-bio-effects-cross-functional-team-delivering-first-havana-act-payments/",
-    "tags": [
-      "press releases",
-      "regional/international news"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "st-kitts-nevis-observer-caac0705",
-    "title": "United States: Secretary Scott Bessent Delivers Remarks at the Official Unveiling of the President Donald J. Trump Bridge along Interstate 40 in Dandridge, Tennessee",
-    "source": "St. Kitts-Nevis Observer",
-    "date": "2026-07-10",
-    "country": "KN",
-    "url": "https://www.thestkittsnevisobserver.com/united-states-secretary-scott-bessent-delivers-remarks-at-the-official-unveiling-of-the-president-donald-j-trump-bridge-along-interstate-40-in-dandridge-tennessee/",
-    "tags": [
-      "press releases",
-      "regional/international news"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "st-kitts-nevis-observer-d768bf30",
-    "title": "United States:  U.S. Squeezes Iran’s Regime Financiers And Shadow Banking Networks",
-    "source": "St. Kitts-Nevis Observer",
-    "date": "2026-07-10",
-    "country": "KN",
-    "url": "https://www.thestkittsnevisobserver.com/united-states-u-s-squeezes-irans-regime-financiers-and-shadow-banking-networks/",
-    "tags": [
-      "press releases",
-      "regional/international news"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "jamaica-gleaner-0e024851",
-    "title": "JP Farms: Banana, pineapple production return but more time needed for plantain",
-    "source": "Jamaica Gleaner",
-    "date": "2026-07-10",
-    "country": "JM",
-    "url": "http://jamaica-gleaner.com/article/business/20260710/jp-farms-banana-pineapple-production-return-more-time-needed-plantain",
     "deal_status": "not_a_deal",
     "deal_type": null
   }
