@@ -1,5 +1,265 @@
 [
   {
+    "id": "guyana-chronicle-a4146af4",
+    "title": "Gov’t urges power conservation amidst record electricity demand",
+    "source": "Guyana Chronicle",
+    "date": "2026-08-15",
+    "country": "GY",
+    "url": "https://guyanachronicle.com/2026/08/15/govt-urges-power-conservation-amidst-record-electricity-demand/",
+    "tags": [
+      "news"
+    ],
+    "category": "Energy",
+    "group": "Energy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "guyana-chronicle-fdf4cef6",
+    "title": "Gov’t welcomes $100 suggested price for 500ml bottled water",
+    "source": "Guyana Chronicle",
+    "date": "2026-08-15",
+    "country": "GY",
+    "url": "https://guyanachronicle.com/2026/08/15/govt-welcomes-100-suggested-price-for-500ml-bottled-water/",
+    "tags": [
+      "news"
+    ],
+    "category": "Inflation",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "trinidad-express-09893f78",
+    "title": "Marajh appointed Energy  Chamber president and CEO",
+    "source": "Trinidad Express",
+    "date": "2026-08-15",
+    "country": "TT",
+    "url": "https://trinidadexpress.com/business/local/marajh-appointed-energy-chamber-president-and-ceo/article_1205f901-9b97-4d23-986a-adf58165a90b.html",
+    "category": "Energy",
+    "group": "Energy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "barbados-today-23fd6c63",
+    "title": "Trust is the trade union’s currency",
+    "source": "Barbados Today",
+    "date": "2026-08-15",
+    "country": "BB",
+    "url": "https://barbadostoday.bb/2026/08/15/trust-is-the-trade-unions-currency/",
+    "tags": [
+      "local news",
+      "opinion"
+    ],
+    "category": "Trade",
+    "group": "Trade & Tourism",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "barbados-today-d3421136",
+    "title": "Private sector backs call to strengthen manufacturing",
+    "source": "Barbados Today",
+    "date": "2026-08-15",
+    "country": "BB",
+    "url": "https://barbadostoday.bb/2026/08/14/private-sector-backs-call-to-strengthen-manufacturing/",
+    "tags": [
+      "business",
+      "economy",
+      "local news",
+      "headline",
+      "headlines"
+    ],
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "jamaica-observer-770dec93",
+    "title": "Market Bag: Drought, irrigation and higher food prices",
+    "source": "Jamaica Observer",
+    "date": "2026-08-15",
+    "country": "JM",
+    "url": "https://www.jamaicaobserver.com/2026/08/14/market-bag-drought-irrigation-higher-food-prices/",
+    "tags": [
+      "latest news",
+      "news",
+      "coronation market",
+      "drought",
+      "food prices",
+      "joseph gyles"
+    ],
+    "category": "Inflation",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "eyewitness-news-c8d9ea24",
+    "title": "Bahamas Grid Company Blamed For Mounting Power Outages",
+    "source": "Eyewitness News",
+    "date": "2026-08-15",
+    "country": "BS",
+    "url": "https://ewnews.com/bahamas-grid-company-blamed-for-mounting-power-outages/?utm_source=rss&utm_medium=rss&utm_campaign=bahamas-grid-company-blamed-for-mounting-power-outages",
+    "tags": [
+      "local",
+      "newscasts",
+      "videos"
+    ],
+    "category": "Corporate",
+    "group": "Finance",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "eyewitness-news-5d5dc9f2",
+    "title": "Teachers Reject Government Salary Offer Stalling New Industrial Agreement",
+    "source": "Eyewitness News",
+    "date": "2026-08-15",
+    "country": "BS",
+    "url": "https://ewnews.com/teachers-reject-government-salary-offer-stalling-new-industrial-agreement/?utm_source=rss&utm_medium=rss&utm_campaign=teachers-reject-government-salary-offer-stalling-new-industrial-agreement",
+    "tags": [
+      "local",
+      "newscasts",
+      "videos"
+    ],
+    "category": "Labor",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "eyewitness-news-64edbaaf",
+    "title": "Afro-Caribbean Trade Becomes New Reality Through Recent Partnerships",
+    "source": "Eyewitness News",
+    "date": "2026-08-15",
+    "country": "BS",
+    "url": "https://ewnews.com/afro-caribbean-trade-becomes-new-reality-through-recent-partnerships/?utm_source=rss&utm_medium=rss&utm_campaign=afro-caribbean-trade-becomes-new-reality-through-recent-partnerships",
+    "tags": [
+      "local",
+      "newscasts",
+      "videos"
+    ],
+    "category": "Trade",
+    "group": "Trade & Tourism",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "starnieuws-7bd7b38c",
+    "title": "Brazilië onderzoekt mogelijke tegenmaatregelen na nieuwe Amerikaanse importtarieven",
+    "source": "Starnieuws",
+    "date": "2026-08-15",
+    "country": "SR",
+    "url": "https://www.starnieuws.com/index.php/welcome/index/nieuwsitem/93419",
+    "category": "Trade",
+    "group": "Trade & Tourism",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "st-lucia-times-f716f9cf",
+    "title": "Farmers explore new approaches as heat and other pressures challenge agriculture",
+    "source": "St. Lucia Times",
+    "date": "2026-08-15",
+    "country": "LC",
+    "url": "https://stluciatimes.com/182959/2026/08/farmers-explore-new-approaches-as-heat-and-other-pressures-challenge-agriculture/",
+    "tags": [
+      "agriculture & fisheries",
+      "environment",
+      "headlines",
+      "agriculture",
+      "climate resilience",
+      "drip irrigation"
+    ],
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "ziz-online-8e67c1a9",
+    "title": "Miss SKN 2023 Winner Begins Agriculture Studies in US",
+    "source": "ZIZ Online",
+    "date": "2026-08-15",
+    "country": "KN",
+    "url": "https://zizonline.com/miss-skn-2023-winner-begins-agriculture-studies-in-us/",
+    "tags": [
+      "national"
+    ],
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "cayman-compass-200a21f8",
+    "title": "A summer staycation at ONE | GT, Cayman’s newest hotel",
+    "source": "Cayman Compass",
+    "date": "2026-08-15",
+    "country": "KY",
+    "url": "https://www.caymancompass.com/2026/08/15/a-summer-staycation-at-one-gt-caymans-newest-hotel/",
+    "tags": [
+      "local",
+      "hotel",
+      "one gt",
+      "review",
+      "staycation"
+    ],
+    "category": "Tourism",
+    "group": "Trade & Tourism",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "cayman-compass-94843d73",
+    "title": "Couple describes helping tourist after marine animal bite off Governors Beach",
+    "source": "Cayman Compass",
+    "date": "2026-08-15",
+    "country": "KY",
+    "url": "https://www.caymancompass.com/2026/08/15/couple-describe-helping-tourist-after-seven-mile-beach-bite/",
+    "tags": [
+      "local",
+      "joel bodden",
+      "kaleigh fitch",
+      "seven mile beach"
+    ],
+    "category": "Tourism",
+    "group": "Trade & Tourism",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
     "id": "breaking-belize-news-9ef6d2f2",
     "title": "Cabinet rejects the Speednet acquisition",
     "source": "Breaking Belize News",
@@ -923,6 +1183,81 @@
     "group": "Investment",
     "decision": "publish",
     "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "ttt-news-1127c5e3",
+    "title": "Energy Minister Reports Continued Interest In Refinery Acquisition",
+    "source": "TTT News",
+    "date": "2026-08-14",
+    "country": "TT",
+    "url": "https://www.ttt.live/energy-minister-reports-continued-interest-in-refinery-acquisition/?utm_source=rss&utm_medium=rss&utm_campaign=energy-minister-reports-continued-interest-in-refinery-acquisition",
+    "tags": [
+      "energy",
+      "news"
+    ],
+    "category": "Energy",
+    "group": "Energy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "barbados-today-d5710520",
+    "title": "Digital payments offer greater security, former central bank governor says",
+    "source": "Barbados Today",
+    "date": "2026-08-14",
+    "country": "BB",
+    "url": "https://barbadostoday.bb/2026/08/14/digital-payments-offer-greater-security-former-central-bank-governor-says/",
+    "tags": [
+      "business",
+      "economy",
+      "local news",
+      "headline",
+      "headlines"
+    ],
+    "category": "Banking",
+    "group": "Finance",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "st-kitts-nevis-observer-835ea150",
+    "title": "Great Britain:  Leeds Freight Company With Unpaid International Debts Shut Down",
+    "source": "St. Kitts-Nevis Observer",
+    "date": "2026-08-14",
+    "country": "KN",
+    "url": "https://www.thestkittsnevisobserver.com/great-britain-leeds-freight-company-with-unpaid-international-debts-shut-down/",
+    "tags": [
+      "press releases",
+      "regional/international news"
+    ],
+    "category": "Trade",
+    "group": "Trade & Tourism",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "st-kitts-nevis-observer-29fabcc1",
+    "title": "Great Britain:  PM: Farmers Should Not Carry The Risk Of A Changing Climate Alone",
+    "source": "St. Kitts-Nevis Observer",
+    "date": "2026-08-14",
+    "country": "KN",
+    "url": "https://www.thestkittsnevisobserver.com/great-britain-pm-farmers-should-not-carry-the-risk-of-a-changing-climate-alone/",
+    "tags": [
+      "press releases",
+      "regional/international news"
+    ],
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
     "reason": "Heuristic: displayable.",
     "classifier": "heuristic"
   },
@@ -36280,275 +36615,5 @@
     "url": "http://jamaica-gleaner.com/article/business/20260710/jp-farms-banana-pineapple-production-return-more-time-needed-plantain",
     "deal_status": "not_a_deal",
     "deal_type": null
-  },
-  {
-    "id": "jamaica-gleaner-393c11f7",
-    "title": "Prepare workforce for jobs that do not yet exist, says PSOJ president",
-    "source": "Jamaica Gleaner",
-    "date": "2026-07-10",
-    "country": "JM",
-    "url": "http://jamaica-gleaner.com/article/business/20260710/prepare-workforce-jobs-do-not-yet-exist-says-psoj-president",
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "jamaica-gleaner-2ffc50e3",
-    "title": "CAC 2000 breaks profit drought",
-    "source": "Jamaica Gleaner",
-    "date": "2026-07-10",
-    "country": "JM",
-    "url": "http://jamaica-gleaner.com/article/business/20260710/cac-2000-breaks-profit-drought",
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "antigua-observer-3888d07d",
-    "title": "Junk Food Marketing Needs Same Scrutiny as Tobacco",
-    "source": "Antigua Observer",
-    "date": "2026-07-10",
-    "country": "AG",
-    "url": "https://antiguaobserver.com/junk-food-marketing-needs-same-scrutiny-as-tobacco/",
-    "tags": [
-      "the big stories"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "ziz-online-1d8a117c",
-    "title": "St. Kitts, FAO Discuss Agriculture Strategy",
-    "source": "ZIZ Online",
-    "date": "2026-07-10",
-    "country": "KN",
-    "url": "https://zizonline.com/st-kitts-fao-discuss-agriculture-strategy/",
-    "tags": [
-      "national"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "ziz-online-7c46fd03",
-    "title": "Old Treasury Building Restoration Delayed",
-    "source": "ZIZ Online",
-    "date": "2026-07-10",
-    "country": "KN",
-    "url": "https://zizonline.com/old-treasury-building-restoration-delayed/",
-    "tags": [
-      "national"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "ziz-online-4eec19ff",
-    "title": "Defence Force Expands With Air Guard, New Vessels",
-    "source": "ZIZ Online",
-    "date": "2026-07-10",
-    "country": "KN",
-    "url": "https://zizonline.com/defence-force-expands-with-air-guard-new-vessels/",
-    "tags": [
-      "national",
-      "news"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "nature-isle-news-2dceaaa9",
-    "title": "CARIBBEAN-FINANCE-ECCB governor outlines new initiative to make bank relevant in changing global environment",
-    "source": "Nature Isle News",
-    "date": "2026-07-10",
-    "country": "DM",
-    "url": "https://natureisle.news/finance/caribbean-finance-eccb-governor-outlines-new-initiative-to-make-bank-relevant-in-changing-global-environment/",
-    "tags": [
-      "caricom",
-      "economy",
-      "finance",
-      "government",
-      "politics",
-      "regional/international"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "nature-isle-news-a7267fe8",
-    "title": "EC dollar enters a historic new era as ECCB unveils banknotes featuring national heroes and regional icons",
-    "source": "Nature Isle News",
-    "date": "2026-07-10",
-    "country": "DM",
-    "url": "https://natureisle.news/caricom/ec-dollar-enters-a-historic-new-era-as-eccb-unveils-banknotes-featuring-national-heroes-and-regional-icons/",
-    "tags": [
-      "caricom",
-      "economy",
-      "finance",
-      "government",
-      "public relations",
-      "regional/international"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "searchlight-svg-37f1e8f4",
-    "title": "SVG providing financial assistance to earthquake hit Venezuela",
-    "source": "Searchlight SVG",
-    "date": "2026-07-10",
-    "country": "VC",
-    "url": "https://www.searchlight.vc/front-page/2026/07/10/svg-providing-financial-assistance-earthquake-hit-venezuela/",
-    "tags": [
-      "front page"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "cayman-compass-b2db6aa4",
-    "title": "Prediction markets: Signal, speculation or both?",
-    "source": "Cayman Compass",
-    "date": "2026-07-10",
-    "country": "KY",
-    "url": "https://www.caymancompass.com/2026/07/10/prediction-markets-signal-speculation-or-both/",
-    "tags": [
-      "business",
-      "finance",
-      "marketwatch",
-      "prediction markets"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "caribbean-dev-bank-e0631915",
-    "title": "Enhancing Sustainability and Resilience of the Agriculture Sector in the Commonwealth of Dominica Project",
-    "source": "Caribbean Dev Bank",
-    "date": "2026-07-10",
-    "country": "ALL",
-    "url": "https://www.caribank.org/work-with-us/procurement/procurement-notices/enhancing-sustainability-and-resilience-agriculture-sector-commonwealth-dominica-project-4",
-    "deal_status": "completed",
-    "deal_type": "FDI"
-  },
-  {
-    "id": "searchlight-svg-3ab4f932",
-    "title": "Martinique takes its seat in CARICOM for the first time as an Associate Member",
-    "source": "Searchlight SVG",
-    "date": "2026-07-10",
-    "country": "VC",
-    "url": "https://www.searchlight.vc/press-release/2026/07/10/martinique-takes-seat-caricom-first-time-associate-member/",
-    "tags": [
-      "press release"
-    ],
-    "category": "Regional Developments",
-    "group": "Macro",
-    "decision": "publish",
-    "confidence": "high",
-    "reason": "Martinique accession to CARICOM as Associate Member; regional trade and economic integration",
-    "classifier": "llm",
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "searchlight-svg-e1665ff9",
-    "title": "PAHO launches US$24 million appeal  to support health response following earthquakes in Venezuela",
-    "source": "Searchlight SVG",
-    "date": "2026-07-10",
-    "country": "VC",
-    "url": "https://www.searchlight.vc/press-release/2026/07/10/paho-launches-us24-million-appeal-support-health-response-following-earthquakes-venezuela/",
-    "tags": [
-      "press release"
-    ],
-    "category": "Climate",
-    "group": "Macro",
-    "decision": "publish",
-    "confidence": "high",
-    "reason": "PAHO health-response appeal for earthquake disaster; disaster and humanitarian economic impact",
-    "classifier": "llm",
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "caribbean-dev-bank-3c9108a0",
-    "title": "Strengthening Flood Early Warning Systems in Suriname Project",
-    "source": "Caribbean Dev Bank",
-    "date": "2026-07-10",
-    "country": "ALL",
-    "url": "https://www.caribank.org/work-with-us/procurement/procurement-notices/strengthening-flood-early-warning-systems-suriname-project",
-    "category": "Infrastructure",
-    "group": "Investment",
-    "decision": "publish",
-    "confidence": "high",
-    "reason": "CDB early-warning and flood-resilience infrastructure project in Suriname; climate and disaster-risk investment.",
-    "classifier": "llm",
-    "deal_status": "completed",
-    "deal_type": "FDI"
-  },
-  {
-    "id": "kaieteur-news-7cf116b2",
-    "title": "Guyanese roaring over Pres. Ali’s farm while US trillion-dollar oil giveaway escapes national outrage — Glenn Lall",
-    "source": "Kaieteur News",
-    "date": "2026-07-09",
-    "country": "GY",
-    "url": "https://kaieteurnewsonline.com/2026/07/09/guyanese-roaring-over-pres-alis-farm-while-us-trillion-dollar-oil-giveaway-escapes-national-outrage-glenn-lall/",
-    "tags": [
-      "news",
-      "farming",
-      "glenn lall",
-      "guyana's oil and mineral wealth",
-      "oil",
-      "president irfaan ali"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "kaieteur-news-10bdb2f7",
-    "title": "Rice farmer loses millions as fire guts Corentyne home",
-    "source": "Kaieteur News",
-    "date": "2026-07-09",
-    "country": "GY",
-    "url": "https://kaieteurnewsonline.com/2026/07/09/rice-farmer-loses-millions-as-fire-guts-corentyne-home/",
-    "tags": [
-      "news",
-      "ashes",
-      "corentyne",
-      "fire",
-      "rice farmer"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "kaieteur-news-34aeca43",
-    "title": "Region Three Rice Farmers receive over $201M in cash grants",
-    "source": "Kaieteur News",
-    "date": "2026-07-09",
-    "country": "GY",
-    "url": "https://kaieteurnewsonline.com/2026/07/09/region-three-rice-farmers-receive-over-201m-in-cash-grants/",
-    "tags": [
-      "news",
-      "cash grants",
-      "rice farmers",
-      "zulfikar mustpha"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "kaieteur-news-eb3b9c87",
-    "title": "New Pouderoyen Market to cost at least $1B",
-    "source": "Kaieteur News",
-    "date": "2026-07-09",
-    "country": "GY",
-    "url": "https://kaieteurnewsonline.com/2026/07/09/new-pouderoyen-market-to-cost-at-least-1b/",
-    "tags": [
-      "news",
-      "national budget",
-      "nptab",
-      "pouderoyen",
-      "pouderoyen market"
-    ],
-    "deal_status": "pending",
-    "deal_type": "FDI"
   }
 ]
