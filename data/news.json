@@ -64,6 +64,201 @@
     "classifier": "heuristic"
   },
   {
+    "id": "kaieteur-news-37544bf7",
+    "title": "Four more oil discoveries in Guyana likely to go “above and beyond what we thought were opportunities” – Exxon CEO",
+    "source": "Kaieteur News",
+    "date": "2026-08-16",
+    "country": "GY",
+    "url": "https://kaieteurnewsonline.com/2026/08/16/four-more-oil-discoveries-in-guyana-likely-to-go-above-and-beyond-what-we-thought-were-opportunities-exxon-ceo/",
+    "tags": [
+      "news",
+      "artificial intelligence",
+      "exxonmobil",
+      "guyana oil",
+      "oil discoveries",
+      "oil exploration"
+    ],
+    "category": "Energy",
+    "group": "Energy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "kaieteur-news-203149db",
+    "title": "Disgraceful for VP Jagdeo, Min. Bharrat to allow citizens to rely on Exxon for updates on recovery of all investments – Christopher Ram",
+    "source": "Kaieteur News",
+    "date": "2026-08-16",
+    "country": "GY",
+    "url": "https://kaieteurnewsonline.com/2026/08/16/disgraceful-for-vp-jagdeo-min-bharrat-to-allow-citizens-to-rely-on-exxon-for-updates-on-recovery-of-all-investments-christopher-ram/",
+    "tags": [
+      "news",
+      "bharrat jagdeo",
+      "christopher ram",
+      "exxonmobil",
+      "guyana oil",
+      "oil and gas sector"
+    ],
+    "category": "Investment",
+    "group": "Investment",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "kaieteur-news-40db76fe",
+    "title": "Make MV Barima salvage tenders public – Mahipaul",
+    "source": "Kaieteur News",
+    "date": "2026-08-16",
+    "country": "GY",
+    "url": "https://kaieteurnewsonline.com/2026/08/16/make-mv-barima-salvage-tenders-public-mahipaul/",
+    "tags": [
+      "news",
+      "apnu",
+      "mv barima",
+      "salvage",
+      "tenders"
+    ],
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "kaieteur-news-0ffb9340",
+    "title": "Profit could be anything. How is the $55 billion capex derived?",
+    "source": "Kaieteur News",
+    "date": "2026-08-16",
+    "country": "GY",
+    "url": "https://kaieteurnewsonline.com/2026/08/16/profit-could-be-anything-how-is-the-55-billion-capex-derived/",
+    "tags": [
+      "letters",
+      "exxonmobil",
+      "mike persaud",
+      "oil profit"
+    ],
+    "category": "Corporate",
+    "group": "Finance",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "kaieteur-news-01da76bb",
+    "title": "Guyana invent de drive-through market",
+    "source": "Kaieteur News",
+    "date": "2026-08-16",
+    "country": "GY",
+    "url": "https://kaieteurnewsonline.com/2026/08/16/guyana-invent-de-drive-through-market/",
+    "tags": [
+      "dem boys seh",
+      "features / columnists",
+      "drive-through market",
+      "innovation"
+    ],
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "barbados-today-d2189a24",
+    "title": "Government moves to modernise Barbados’ non-financial cooperative sector",
+    "source": "Barbados Today",
+    "date": "2026-08-16",
+    "country": "BB",
+    "url": "https://barbadostoday.bb/2026/08/16/government-moves-to-modernise-barbados-non-financial-cooperative-sector/",
+    "tags": [
+      "business",
+      "local news"
+    ],
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "jamaica-observer-86c43ce5",
+    "title": "WATCH: Fire destroys several shops at Redemption Market",
+    "source": "Jamaica Observer",
+    "date": "2026-08-16",
+    "country": "JM",
+    "url": "https://www.jamaicaobserver.com/2026/08/16/watch-fire-destroys-several-shops-redemption-market/",
+    "tags": [
+      "latest news",
+      "news",
+      "videos",
+      "downtown kingston",
+      "fire"
+    ],
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "breaking-belize-news-0b958174",
+    "title": "The four Bedran sisters: the women behind San Ignacio Resort Hotel’s 50 years",
+    "source": "Breaking Belize News",
+    "date": "2026-08-16",
+    "country": "BZ",
+    "url": "https://www.breakingbelizenews.com/2026/08/16/the-four-bedran-sisters-the-women-behind-san-ignacio-resort-hotels-50-years/",
+    "tags": [
+      "headlines"
+    ],
+    "category": "Tourism",
+    "group": "Trade & Tourism",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "breaking-belize-news-bf8164a8",
+    "title": "Belize joins regional push to connect Central America’s trade and borders",
+    "source": "Breaking Belize News",
+    "date": "2026-08-16",
+    "country": "BZ",
+    "url": "https://www.breakingbelizenews.com/2026/08/16/belize-joins-regional-push-to-connect-central-americas-trade-and-borders/",
+    "tags": [
+      "headlines"
+    ],
+    "category": "Trade",
+    "group": "Trade & Tourism",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "iwitness-news-c7d8d7fc",
+    "title": "PM Friday outlines investment opportunities to Taiwanese private sector",
+    "source": "iWitness News",
+    "date": "2026-08-16",
+    "country": "VC",
+    "url": "https://www.iwnsvg.com/2026/08/16/pm-friday-outlines-investment-opportunities-to-taiwanese-private-sector/",
+    "tags": [
+      "business"
+    ],
+    "category": "Investment",
+    "group": "Investment",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
     "id": "guyana-chronicle-a4146af4",
     "title": "Gov’t urges power conservation amidst record electricity demand",
     "source": "Guyana Chronicle",
@@ -36549,144 +36744,6 @@
       "diplomatic trust",
       "guyana",
       "suriname"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "kaieteur-news-f780a13e",
-    "title": "Development must serve the people whose labour built this country",
-    "source": "Kaieteur News",
-    "date": "2026-07-10",
-    "country": "GY",
-    "url": "https://kaieteurnewsonline.com/2026/07/10/development-must-serve-the-people-whose-labour-built-this-country/",
-    "tags": [
-      "letters",
-      "apnu+afc",
-      "development",
-      "gtuc",
-      "labour",
-      "natural resources"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "jamaica-observer-8d1d4458",
-    "title": "BOJ PUTS BANKS ON NOTICE",
-    "source": "Jamaica Observer",
-    "date": "2026-07-10",
-    "country": "JM",
-    "url": "https://www.jamaicaobserver.com/2026/07/10/boj-puts-banks-notice-complaints/",
-    "tags": [
-      "business",
-      "caribbean business report (cbr)"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "starnieuws-8c7415c8",
-    "title": "IMF: Mondiale economie vertraagt naar 3 procent groei",
-    "source": "Starnieuws",
-    "date": "2026-07-10",
-    "country": "SR",
-    "url": "https://www.starnieuws.com/index.php/welcome/index/nieuwsitem/92895",
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "now-grenada-80ccb7a7",
-    "title": "ECCB unveils designs of new EC banknotes featuring national heroes and regional icons",
-    "source": "NOW Grenada",
-    "date": "2026-07-10",
-    "country": "GD",
-    "url": "https://nowgrenada.com/2026/07/eccb-unveils-designs-of-new-ec-banknotes-featuring-national-heroes-and-regional-icons/",
-    "tags": [
-      "business",
-      "press release",
-      "arthur lewis",
-      "currency",
-      "dwight venner",
-      "eastern caribbean central bank"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "antigua-news-room-08f0f6bf",
-    "title": "Sir VC Bird and Dame Eugenia Charles Among Icons Replacing Queen on New EC Banknotes",
-    "source": "Antigua News Room",
-    "date": "2026-07-10",
-    "country": "AG",
-    "url": "https://antiguanewsroom.com/sir-vc-bird-and-dame-eugenia-charles-among-icons-replacing-queen-on-new-ec-banknotes/",
-    "tags": [
-      "news"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "antigua-news-room-ed2a9ff5",
-    "title": "PM Browne Proposes Using ECCB Reserves to Help Finance Regional Development",
-    "source": "Antigua News Room",
-    "date": "2026-07-10",
-    "country": "AG",
-    "url": "https://antiguanewsroom.com/pm-browne-proposes-using-eccb-reserves-to-help-finance-regional-development/",
-    "tags": [
-      "featured"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "antigua-news-room-a3361c07",
-    "title": "OECS Leaders to Craft Joint Response to EU Call to End Citizenship by Investment Programmes",
-    "source": "Antigua News Room",
-    "date": "2026-07-10",
-    "country": "AG",
-    "url": "https://antiguanewsroom.com/oecs-leaders-to-craft-joint-response-to-eu-call-to-end-citizenship-by-investment-programmes/",
-    "tags": [
-      "featured"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "antigua-news-room-59c335f7",
-    "title": "Cost Pro Supermarket Closes Permanently, Employees Laid Off",
-    "source": "Antigua News Room",
-    "date": "2026-07-10",
-    "country": "AG",
-    "url": "https://antiguanewsroom.com/cost-pro-supermarket-closes-permanently-employees-laid-off/",
-    "tags": [
-      "news"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "bvi-news-e27fa882",
-    "title": "Rymer blames ageing infrastructure for water crisis",
-    "source": "BVI News",
-    "date": "2026-07-10",
-    "country": "VG",
-    "url": "https://bvinews.com/rymer-blames-ageing-infrastructure-for-water-crisis/",
-    "tags": [
-      "all news"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "cnc3-eab3b52f",
-    "title": "Rowley claims State officials threatened him…warns of political persecution; denies Hadeeds financed PNM",
-    "source": "CNC3",
-    "date": "2026-07-10",
-    "country": "TT",
-    "url": "https://www.cnc3.co.tt/rowley-claims-state-officials-threatened-him-warns-of-political-persecution-denies-hadeeds-financed-pnm/?utm_source=rss&utm_medium=rss&utm_campaign=rowley-claims-state-officials-threatened-him-warns-of-political-persecution-denies-hadeeds-financed-pnm",
-    "tags": [
-      "news"
     ],
     "deal_status": "not_a_deal",
     "deal_type": null
