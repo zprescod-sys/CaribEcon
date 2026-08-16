@@ -1,5 +1,69 @@
 [
   {
+    "id": "guyana-chronicle-03c3b1aa",
+    "title": "Two small habits to cut your electricity bill, conserve — GPL",
+    "source": "Guyana Chronicle",
+    "date": "2026-08-16",
+    "country": "GY",
+    "url": "https://guyanachronicle.com/2026/08/16/two-small-habits-to-cut-your-electricity-bill-conserve-gpl/",
+    "tags": [
+      "news"
+    ],
+    "category": "Energy",
+    "group": "Energy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "ttt-news-9e9a2784",
+    "title": "T&T Targets Increased Gas And Oil Production By 2027",
+    "source": "TTT News",
+    "date": "2026-08-16",
+    "country": "TT",
+    "url": "https://www.ttt.live/tt-targets-increased-gas-and-oil-production-by-2027/?utm_source=rss&utm_medium=rss&utm_campaign=tt-targets-increased-gas-and-oil-production-by-2027",
+    "tags": [
+      "energy",
+      "government",
+      "news"
+    ],
+    "category": "Energy",
+    "group": "Energy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "jamaica-gleaner-8ce54d53",
+    "title": "Salada reaping from efficiencies and market moves",
+    "source": "Jamaica Gleaner",
+    "date": "2026-08-16",
+    "country": "JM",
+    "url": "http://jamaica-gleaner.com/article/business/20260816/salada-reaping-efficiencies-and-market-moves",
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "wic-news-f556e066",
+    "title": "Barbados: Former Central Bank Governor highlights benefits of digital payments over cash",
+    "source": "WIC News",
+    "date": "2026-08-16",
+    "country": "ALL",
+    "url": "https://wicnews.com/barbados/barbados-former-central-bank-governor-highlights-benefits-of-digital-payments-over-cash",
+    "category": "Banking",
+    "group": "Finance",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
     "id": "guyana-chronicle-a4146af4",
     "title": "Gov’t urges power conservation amidst record electricity demand",
     "source": "Guyana Chronicle",
@@ -36623,64 +36687,6 @@
     "url": "https://www.cnc3.co.tt/rowley-claims-state-officials-threatened-him-warns-of-political-persecution-denies-hadeeds-financed-pnm/?utm_source=rss&utm_medium=rss&utm_campaign=rowley-claims-state-officials-threatened-him-warns-of-political-persecution-denies-hadeeds-financed-pnm",
     "tags": [
       "news"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "cnc3-d7f08d11",
-    "title": "Trade Minister dismisses concerns over fallout from impending Nestlé sale",
-    "source": "CNC3",
-    "date": "2026-07-10",
-    "country": "TT",
-    "url": "https://www.cnc3.co.tt/trade-minister-dismisses-concerns-over-fallout-from-impending-nestle-sale/?utm_source=rss&utm_medium=rss&utm_campaign=trade-minister-dismisses-concerns-over-fallout-from-impending-nestle-sale",
-    "tags": [
-      "news"
-    ],
-    "deal_status": "pending",
-    "deal_type": "M&A"
-  },
-  {
-    "id": "wic-news-4391d0e5",
-    "title": "Dominica’s Secret Bay ranked among Caribbean’s Top 10 Resorts by Travel + Leisure",
-    "source": "WIC News",
-    "date": "2026-07-10",
-    "country": "ALL",
-    "url": "https://wicnews.com/dominica/dominicas-secret-bay-ranked-among-caribbeans-top-10-resorts-by-travel-leisure",
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "jamaica-observer-47c1a446",
-    "title": "Market Bag: Bananas for $1,600 amid higher prices, fewer shoppers at Mandeville Market",
-    "source": "Jamaica Observer",
-    "date": "2026-07-10",
-    "country": "JM",
-    "url": "https://www.jamaicaobserver.com/2026/07/10/market-bag-bananas-1600-amid-higher-prices-fewer-shoppers-mandeville-market/",
-    "tags": [
-      "latest news",
-      "news",
-      "manchester",
-      "mandeville market",
-      "market bag",
-      "prices"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "jamaica-observer-11ab6fb9",
-    "title": "Chris Gayle’s Rich Rum launch highlights global power of brand Jamaica —Seiveright",
-    "source": "Jamaica Observer",
-    "date": "2026-07-10",
-    "country": "JM",
-    "url": "https://www.jamaicaobserver.com/2026/07/10/chris-gayles-rich-rum-launch-highlights-global-power-brand-jamaica-seiveright/",
-    "tags": [
-      "latest news",
-      "news",
-      "chris gayle",
-      "delano seiveright",
-      "rich rum"
     ],
     "deal_status": "not_a_deal",
     "deal_type": null
