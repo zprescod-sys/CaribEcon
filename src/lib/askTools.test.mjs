@@ -20,6 +20,7 @@ import {
   getSeriesEvidence,
   getSelectedCountrySeries,
   buildEvidencePackage,
+  evidenceId,
 } from './askTools.ts';
 
 // Convenience: a fully-formed intent so each test varies only the field it is about.
@@ -334,15 +335,65 @@ test('a single retrieved series never raises a cross-country comparability cavea
 
 test('every package returns the full EvidencePackage shape, even when nothing resolved', () => {
   const pkg = buildEvidencePackage(intent({ countries: ['ZZ'], indicators: ['nonsense'] }));
-  for (const key of ['data', 'news', 'misses', 'caveats', 'toolsUsed', 'newsCoverage']) {
+  for (const key of ['data', 'news', 'misses', 'caveats', 'toolsUsed', 'newsCoverage', 'evidenceMeta']) {
     assert.ok(key in pkg, `missing "${key}" — the contract must not vary by outcome`);
   }
-  assert.ok(Array.isArray(pkg.data) && Array.isArray(pkg.misses));
+  assert.ok(Array.isArray(pkg.data) && Array.isArray(pkg.misses) && Array.isArray(pkg.evidenceMeta));
 });
 
-test('deterministic: the same intent produces the same package', () => {
+test('deterministic: the same intent AND the same retrievedAt produce the same package', () => {
+  // retrievedAt is passed explicitly rather than relying on buildEvidencePackage's `new Date()`
+  // default landing on the same millisecond twice — that would pass today by coincidence and
+  // flake later. Passing it explicitly is what actually makes this a determinism test.
+  const FIXED_RETRIEVED_AT = '2026-01-01T00:00:00.000Z';
   const build = () => buildEvidencePackage(intent({
     questionType: 'comparison', countries: ['TT', 'GY'], indicators: ['gdp_growth'], yearFrom: 2018, yearTo: 2022,
-  }));
+  }), FIXED_RETRIEVED_AT);
   assert.deepEqual(build(), build());
+});
+
+// ── evidenceMeta ───────────────────────────────────────────────────────────────────────────
+
+test('evidenceMeta has one D: entry per data record and one N: entry per news record', () => {
+  const FIXED_RETRIEVED_AT = '2026-03-01T12:00:00.000Z';
+  const pkg = buildEvidencePackage(
+    intent({ questionType: 'news', countries: ['GY'], indicators: ['gdp_growth'] }),
+    FIXED_RETRIEVED_AT,
+  );
+  assert.equal(pkg.evidenceMeta.length, pkg.data.length + pkg.news.length);
+
+  const dataRefs = pkg.data.map(d => `D:${d.country}:${d.indicator}`);
+  const newsRefs = pkg.news.map(n => `N:${n.id}`);
+  assert.deepEqual(pkg.evidenceMeta.map(m => m.ref).sort(), [...dataRefs, ...newsRefs].sort());
+
+  for (const meta of pkg.evidenceMeta) {
+    assert.equal(meta.retrievedAt, FIXED_RETRIEVED_AT);
+    assert.equal(meta.sourceRevisionDate, null);
+    assert.equal(meta.contentHash, null);
+  }
+});
+
+test('evidenceMeta.vintage matches the source record — the series vintage for D:, null for N:', () => {
+  const pkg = buildEvidencePackage(intent({ countries: ['GY'], indicators: ['gdp_growth'] }));
+  const dataMeta = pkg.evidenceMeta.find(m => m.ref.startsWith('D:'));
+  assert.equal(dataMeta.vintage, pkg.data[0].vintage);
+
+  const newsPkg = buildEvidencePackage(intent({ questionType: 'news', countries: ['GY'] }));
+  for (const meta of newsPkg.evidenceMeta.filter(m => m.ref.startsWith('N:'))) {
+    assert.equal(meta.vintage, null);
+  }
+});
+
+test('a D: ref matches evidenceId(country, indicator) exactly — the single source of truth', () => {
+  const pkg = buildEvidencePackage(intent({ countries: ['GY'], indicators: ['gdp_growth'] }));
+  const [d] = pkg.data;
+  assert.ok(pkg.evidenceMeta.some(m => m.ref === `D:${evidenceId(d.country, d.indicator)}`));
+});
+
+test('evidenceMeta defaults to a real timestamp when retrievedAt is not supplied', () => {
+  const before = Date.now();
+  const pkg = buildEvidencePackage(intent({ countries: ['GY'], indicators: ['gdp_growth'] }));
+  const after = Date.now();
+  const stamped = new Date(pkg.evidenceMeta[0].retrievedAt).getTime();
+  assert.ok(stamped >= before && stamped <= after, 'retrievedAt should default to "now"');
 });

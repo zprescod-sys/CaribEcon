@@ -365,9 +365,10 @@ If a `ReportBundle` is useful later, it is a **client-layer** structure — e.g.
 (§2.4 C2). It is never what the Research Service returns.
 
 ```ts
-/* One ID namespace over three evidence classes, built ON TOP of excelOutputs.evidenceId() rather
-   than replacing it — that string is written into users' saved workbooks. Prefixed so the gate
-   knows what it holds without a lookup.
+/* One ID namespace over three evidence classes, built ON TOP of askTools.evidenceId() rather
+   than replacing it — that string is written into users' saved workbooks. (Implemented in
+   askTools.ts, not excelOutputs.ts, which re-exports it unchanged — evidence identity is
+   askTools.ts's domain.) Prefixed so the gate knows what it holds without a lookup.
 
    IMPORTANT — identity vs. version: this ref identifies the SOURCE/SERIES, not a frozen value.
    "D:GY:nominal_gdp" is stable so a workbook cell can always be traced back to its series — but

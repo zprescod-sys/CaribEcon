@@ -23,6 +23,7 @@ import {
   getIndicatorAllCountries,
 } from './indicators.js';
 import { searchNews, getNewsCoverage, type NewsEvidence } from './news.js';
+import type { EvidenceMeta, WebEvidence } from './ai/contracts.js';
 
 export type { NewsEvidence };
 
@@ -70,6 +71,17 @@ export interface RetrievalMiss {
   detail: string;
 }
 
+/* Stable evidence ID (plan §5: "every retrieved series and news item has a stable evidence ID").
+   Derived from the record's own identity rather than assigned by position, so the same series
+   carries the same ID across requests and a figure in the report can be traced to its lineage
+   row on the Evidence sheet. Lives here, not in excelOutputs.ts (which re-exports it
+   unchanged): evidence identity is this module's domain, and it is also what backs the `D:`
+   EvidenceRef prefix (ARCHITECTURE.md §2.5) — a research-pipeline concept that has nothing to
+   do with Excel output planning. */
+export function evidenceId(country: string, indicator: string): string {
+  return `${country}:${indicator}`;
+}
+
 /* Retrieved, but constrained in a way the writer must respect — chiefly local-currency levels
    that must not be ranked or differenced across countries. An addition to the plan's suggested
    EvidencePackage: `misses` covers what is absent, and conflating "missing" with "present but
@@ -81,6 +93,13 @@ export interface EvidencePackage {
   caveats: string[];
   toolsUsed: string[];
   newsCoverage: { earliest: string; latest: string; count: number };
+  /* Turn-local, never accepted back from a client (ARCHITECTURE.md §2.4 C3) — absent here
+     because this deterministic path never calls Tavily. The Research Agent's equivalent
+     evidence-package builder (Phase 3) is what actually populates this. */
+  web?: WebEvidence[];
+  /* One entry per unique EvidenceRef pulled into this package, populated below at the moment
+     each ref is resolved — ARCHITECTURE.md §2.5. */
+  evidenceMeta: EvidenceMeta[];
 }
 
 // Bounds — a model is never sent more than it needs, on cost and on focus alike.
@@ -311,8 +330,17 @@ export { searchNews, getNewsCoverage };
 
 /* Turn a validated intent into evidence, with no model in the loop (plan §8). Mode A of the two
    retrieval modes: whatever replaces this — a tool-calling retriever in Phase 3 — must emit this
-   same EvidencePackage, so nothing downstream can tell which retriever ran. */
-export function buildEvidencePackage(intent: AskIntent): EvidencePackage {
+   same EvidencePackage, so nothing downstream can tell which retriever ran.
+
+   `retrievedAt` is a parameter, not a `new Date()` read inside this function, on purpose: this
+   file's whole premise is "no LLM, no network, same inputs to same outputs every time" (see the
+   header), and reading the wall clock internally would make buildEvidencePackage the one
+   non-deterministic thing in it. The real caller supplies the moment of the actual request;
+   tests supply a fixed value and get an exactly reproducible package, evidenceMeta included. */
+export function buildEvidencePackage(
+  intent: AskIntent,
+  retrievedAt: string = new Date().toISOString(),
+): EvidencePackage {
   const pkg: EvidencePackage = {
     data: [],
     news: [],
@@ -320,6 +348,7 @@ export function buildEvidencePackage(intent: AskIntent): EvidencePackage {
     caveats: [],
     toolsUsed: [],
     newsCoverage: getNewsCoverage(),
+    evidenceMeta: [],
   };
 
   const wantsData = intent.indicators.length > 0;
@@ -385,6 +414,28 @@ export function buildEvidencePackage(intent: AskIntent): EvidencePackage {
   }
 
   addComparabilityCaveats(pkg, intent);
+
+  /* Derived from the final pkg.data/pkg.news rather than accumulated alongside them at each
+     push site: every ref this package could possibly carry is decided by then, so one pass here
+     is simpler than threading an evidenceMeta.push() through every branch above and cannot drift
+     out of sync with what actually ended up in the package. */
+  pkg.evidenceMeta = [
+    ...pkg.data.map((d): EvidenceMeta => ({
+      ref: `D:${evidenceId(d.country, d.indicator)}`,
+      vintage: d.vintage,
+      retrievedAt,
+      sourceRevisionDate: null,
+      contentHash: null,
+    })),
+    ...pkg.news.map((n): EvidenceMeta => ({
+      ref: `N:${n.id}`,
+      vintage: null, // News has no vintage concept — only D: series revisions carry one.
+      retrievedAt,
+      sourceRevisionDate: null,
+      contentHash: null,
+    })),
+  ];
+
   return pkg;
 }
 

@@ -16,6 +16,11 @@
 import type { DataEvidence, DataPoint, RetrievalMiss } from './askTools.js';
 import type { CalculationResult } from './calculations.js';
 import type { SingleCountryIntent } from './excelIntent.js';
+// evidenceId lives in askTools.ts now — evidence identity is that module's domain (it also
+// backs the D: EvidenceRef prefix, ARCHITECTURE.md §2.5). Re-exported here unchanged so nothing
+// that already imports it from this file needs to change.
+import { evidenceId } from './askTools.js';
+export { evidenceId };
 
 /* Excel's own sheet-name rules, not ours: 31 characters, and these characters are rejected
    outright by the host. Breaking either throws at worksheets.add() time, which would surface to
@@ -35,14 +40,6 @@ export const SERIES_COLORS = [
    percentage change. See the pp_change header in calculations.ts for why this matters. */
 export function calculationForUnit(unit: string): 'pp_change' | 'yoy_change' {
   return unit.trim() === '%' ? 'pp_change' : 'yoy_change';
-}
-
-/* Stable evidence ID (plan §5: "every retrieved series and news item has a stable evidence ID").
-   Derived from the record's own identity rather than assigned by position, so the same series
-   carries the same ID across requests and a figure in the report can be traced to its lineage
-   row on the Evidence sheet. */
-export function evidenceId(country: string, indicator: string): string {
-  return `${country}:${indicator}`;
 }
 
 /* Number formats. Levels take thousands separators and up to two decimals, which reads correctly
