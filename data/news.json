@@ -258,6 +258,340 @@
     "classifier": "heuristic"
   },
   {
+    "id": "kaieteur-news-6f9798b4",
+    "title": "Two Australian firms now hold 770 km² gold lands in Guyana",
+    "source": "Kaieteur News",
+    "date": "2026-08-17",
+    "country": "GY",
+    "url": "https://kaieteurnewsonline.com/2026/08/17/two-australian-firms-now-hold-770-km%c2%b2-gold-lands-in-guyana/",
+    "tags": [
+      "news",
+      "altair minerals",
+      "gmin",
+      "gold lands",
+      "guyana gold",
+      "liberty"
+    ],
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "kaieteur-news-65b0f837",
+    "title": "Mayor demands answers as Linden grid breaks under industrial weight",
+    "source": "Kaieteur News",
+    "date": "2026-08-17",
+    "country": "GY",
+    "url": "https://kaieteurnewsonline.com/2026/08/17/mayor-demands-answers-as-linden-grid-breaks-under-industrial-weight/",
+    "tags": [
+      "news",
+      "blackouts",
+      "heavily subsidised electricity",
+      "industrial weight",
+      "linden grid",
+      "public frustration"
+    ],
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "kaieteur-news-70a4cab5",
+    "title": "Colombian president asks Trump to suspend tariffs to help earthquake recovery",
+    "source": "Kaieteur News",
+    "date": "2026-08-17",
+    "country": "GY",
+    "url": "https://kaieteurnewsonline.com/2026/08/17/colombian-president-asks-trump-to-suspend-tariffs-to-help-earthquake-recovery/",
+    "tags": [
+      "news",
+      "abelardo de la espriella",
+      "colombia",
+      "earthquake",
+      "recovery",
+      "tariffs"
+    ],
+    "category": "Trade",
+    "group": "Trade & Tourism",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "kaieteur-news-47fe65a9",
+    "title": "The electricity crisis",
+    "source": "Kaieteur News",
+    "date": "2026-08-17",
+    "country": "GY",
+    "url": "https://kaieteurnewsonline.com/2026/08/17/the-electricity-crisis/",
+    "tags": [
+      "features / columnists",
+      "peeping tom",
+      "blackouts",
+      "electricity crisis",
+      "gpl",
+      "power demand"
+    ],
+    "category": "Energy",
+    "group": "Energy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "ttt-news-98c1b17d",
+    "title": "CFTDI Blue Economy Project Opens Pathways For Youth In Fisheries And Maritime Sectors",
+    "source": "TTT News",
+    "date": "2026-08-17",
+    "country": "TT",
+    "url": "https://www.ttt.live/cftdi-blue-economy-project-opens-pathways-for-youth-in-fisheries-and-maritime-sectors/?utm_source=rss&utm_medium=rss&utm_campaign=cftdi-blue-economy-project-opens-pathways-for-youth-in-fisheries-and-maritime-sectors",
+    "tags": [
+      "agriculture",
+      "news",
+      "press releases"
+    ],
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "ttt-news-d3f92678",
+    "title": "PM Persad-Bissessar: Energy Sector Rebounding With Increased Production And New Supply",
+    "source": "TTT News",
+    "date": "2026-08-17",
+    "country": "TT",
+    "url": "https://www.ttt.live/pm-persad-bissessar-energy-sector-rebounding-with-increased-production-and-new-supply/?utm_source=rss&utm_medium=rss&utm_campaign=pm-persad-bissessar-energy-sector-rebounding-with-increased-production-and-new-supply",
+    "tags": [
+      "energy",
+      "news",
+      "prime minister kamla persad-bissessar"
+    ],
+    "category": "Energy",
+    "group": "Energy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "barbados-today-f7608025",
+    "title": "Moore concerned over unfinished Charles Rowe Bridge works",
+    "source": "Barbados Today",
+    "date": "2026-08-17",
+    "country": "BB",
+    "url": "https://barbadostoday.bb/2026/08/17/moore-concerned-over-unfinished-charles-rowe-bridge-works/",
+    "tags": [
+      "local news",
+      "transportation"
+    ],
+    "category": "Infrastructure",
+    "group": "Investment",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "barbados-today-8763549e",
+    "title": "Crop Over promotion, planning to be reviewed",
+    "source": "Barbados Today",
+    "date": "2026-08-17",
+    "country": "BB",
+    "url": "https://barbadostoday.bb/2026/08/17/crop-over-promotion-planning-to-be-reviewed/",
+    "tags": [
+      "arts & culture",
+      "crop over",
+      "local news",
+      "news",
+      "tourism"
+    ],
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "jamaica-observer-7db94212",
+    "title": "Forex: $158.76 to one US dollar",
+    "source": "Jamaica Observer",
+    "date": "2026-08-17",
+    "country": "JM",
+    "url": "https://www.jamaicaobserver.com/2026/08/17/forex-158-76-one-us-dollar/",
+    "tags": [
+      "latest news",
+      "forex",
+      "money",
+      "us"
+    ],
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "jamaica-observer-28a61a7c",
+    "title": "Proposed NPO Act should balance financial compliance with civic space, experts say",
+    "source": "Jamaica Observer",
+    "date": "2026-08-17",
+    "country": "JM",
+    "url": "https://www.jamaicaobserver.com/2026/08/17/proposed-npo-act-balance-financial-compliance-civic-space-experts-say/",
+    "tags": [
+      "latest news",
+      "news",
+      "financial compliance",
+      "jamaica",
+      "npo"
+    ],
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "jamaica-observer-012004ac",
+    "title": "US revokes thousands of visas amid task force to end ‘birth tourism’",
+    "source": "Jamaica Observer",
+    "date": "2026-08-17",
+    "country": "JM",
+    "url": "https://www.jamaicaobserver.com/2026/08/17/us-revokes-thousands-visas-amid-task-force-end-birth-tourism/",
+    "tags": [
+      "international news",
+      "latest news",
+      "birth tourism",
+      "us",
+      "visa"
+    ],
+    "category": "Tourism",
+    "group": "Trade & Tourism",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "breaking-belize-news-eeedd345",
+    "title": "IICA and Zamorano train Belizean dairy producers in sustainable production and processing",
+    "source": "Breaking Belize News",
+    "date": "2026-08-17",
+    "country": "BZ",
+    "url": "https://www.breakingbelizenews.com/2026/08/17/iica-and-zamorano-train-belizean-dairy-producers-in-sustainable-production-and-processing/",
+    "tags": [
+      "government",
+      "last news"
+    ],
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "starnieuws-14f36730",
+    "title": "Offshore-olie en ‘oliedomheid’: Suriname op pad naar schijnwelvaart (1)",
+    "source": "Starnieuws",
+    "date": "2026-08-17",
+    "country": "SR",
+    "url": "https://www.starnieuws.com/index.php/welcome/index/nieuwsitem/93449",
+    "category": "Energy",
+    "group": "Energy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "ziz-online-dfed2255",
+    "title": "Coconut Seedlings Distributed to Farmers in Push to Revive Industry",
+    "source": "ZIZ Online",
+    "date": "2026-08-17",
+    "country": "KN",
+    "url": "https://zizonline.com/coconut-seedlings-distributed-to-farmers-in-push-to-revive-industry/",
+    "tags": [
+      "national",
+      "uncategorised"
+    ],
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "cayman-news-service-49fa5d14",
+    "title": "Report recommends another top job at HSA",
+    "source": "Cayman News Service",
+    "date": "2026-08-17",
+    "country": "KY",
+    "url": "https://caymannewsservice.com/2026/08/report-recommends-another-top-job-at-hsa/",
+    "tags": [
+      "government administration",
+      "politics",
+      "featured",
+      "hsa",
+      "kpmg",
+      "lizzette yearwood"
+    ],
+    "category": "Labor",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "cayman-compass-6f44a937",
+    "title": "Price check",
+    "source": "Cayman Compass",
+    "date": "2026-08-17",
+    "country": "KY",
+    "url": "https://www.caymancompass.com/2026/08/17/price-check/",
+    "tags": [
+      "sponsored content",
+      "bias investors"
+    ],
+    "category": "Inflation",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "bvi-news-1a48eda0",
+    "title": "Big businesses urged to go green as gov’t hikes energy fees",
+    "source": "BVI News",
+    "date": "2026-08-17",
+    "country": "VG",
+    "url": "https://bvinews.com/big-businesses-urged-to-go-green-as-govt-hikes-energy-fees/",
+    "tags": [
+      "all news"
+    ],
+    "category": "Energy",
+    "group": "Energy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
     "id": "guyana-chronicle-03c3b1aa",
     "title": "Two small habits to cut your electricity bill, conserve — GPL",
     "source": "Guyana Chronicle",
@@ -508,6 +842,74 @@
     "url": "https://www.iwnsvg.com/2026/08/16/pm-friday-outlines-investment-opportunities-to-taiwanese-private-sector/",
     "tags": [
       "business"
+    ],
+    "category": "Investment",
+    "group": "Investment",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "amandala-c8d9abb8",
+    "title": "Early evidence in massive Belize River fish kill points to farm runoff after flooding",
+    "source": "Amandala",
+    "date": "2026-08-16",
+    "country": "BZ",
+    "url": "https://amandala.com.bz/news/early-evidence-in-massive-belize-river-fish-kill-points-to-farm-runoff-after-flooding/",
+    "tags": [
+      "headline"
+    ],
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "st-kitts-nevis-observer-4d6a78e9",
+    "title": "Trump administration establishes task force to end ‘birth tourism’ for Caribbean immigrants",
+    "source": "St. Kitts-Nevis Observer",
+    "date": "2026-08-16",
+    "country": "KN",
+    "url": "https://www.thestkittsnevisobserver.com/trump-administration-establishes-task-force-to-end-birth-tourism-for-caribbean-immigrants/",
+    "tags": [
+      "regional/international news"
+    ],
+    "category": "Tourism",
+    "group": "Trade & Tourism",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "st-kitts-nevis-observer-eae02a0b",
+    "title": "Guyana: Efforts underway to boost power supply as El Niño drives record electricity demand",
+    "source": "St. Kitts-Nevis Observer",
+    "date": "2026-08-16",
+    "country": "KN",
+    "url": "https://www.thestkittsnevisobserver.com/guyana-efforts-underway-to-boost-power-supply-as-el-nino-drives-record-electricity-demand/",
+    "tags": [
+      "regional"
+    ],
+    "category": "Energy",
+    "group": "Energy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "st-kitts-nevis-observer-c41b8ef7",
+    "title": "Belize: Government against BTL’s acquisition of Speednet",
+    "source": "St. Kitts-Nevis Observer",
+    "date": "2026-08-16",
+    "country": "KN",
+    "url": "https://www.thestkittsnevisobserver.com/belize-government-against-btls-acquisition-of-speednet/",
+    "tags": [
+      "regional"
     ],
     "category": "Investment",
     "group": "Investment",
@@ -36477,298 +36879,6 @@
     "date": "2026-07-12",
     "country": "JM",
     "url": "http://jamaica-gleaner.com/article/business/20260712/apple-files-lawsuit-accusing-chatgpt-maker-openai-stealing-trade-secrets",
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "jamaica-gleaner-e4c25c22",
-    "title": "Global oil demand dropping, but US drivers keep buying more gas",
-    "source": "Jamaica Gleaner",
-    "date": "2026-07-12",
-    "country": "JM",
-    "url": "http://jamaica-gleaner.com/article/business/20260712/global-oil-demand-dropping-us-drivers-keep-buying-more-gas",
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "eyewitness-news-c44fc7e9",
-    "title": "Teachers union President slams reported plan to recruit 300 Ghanaian teachers, warns of industrial action",
-    "source": "Eyewitness News",
-    "date": "2026-07-12",
-    "country": "BS",
-    "url": "https://ewnews.com/teachers-union-president-slams-reported-plan-to-recruit-300-ghanaian-teachers-warns-of-industrial-action/?utm_source=rss&utm_medium=rss&utm_campaign=teachers-union-president-slams-reported-plan-to-recruit-300-ghanaian-teachers-warns-of-industrial-action",
-    "tags": [
-      "local",
-      "eyewitness news online",
-      "nassau bahamas"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "antigua-news-room-d542846b",
-    "title": "Prime Minister Browne’s Call for United Response to European Union Position on Citizenship by Investment Programmes Gains OECS Backing",
-    "source": "Antigua News Room",
-    "date": "2026-07-12",
-    "country": "AG",
-    "url": "https://antiguanewsroom.com/prime-minister-brownes-call-for-united-response-to-european-union-position-on-citizenship-by-investment-programmes-gains-oecs-backing/",
-    "tags": [
-      "news"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "antigua-news-room-fc1d03d6",
-    "title": "Construction Begins on Community Bathroom Project in Seatons",
-    "source": "Antigua News Room",
-    "date": "2026-07-12",
-    "country": "AG",
-    "url": "https://antiguanewsroom.com/construction-begins-on-community-bathroom-project-in-seatons/",
-    "tags": [
-      "news"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "trinidad-express-58158934",
-    "title": "OECS region needs an airline",
-    "source": "Trinidad Express",
-    "date": "2026-07-12",
-    "country": "TT",
-    "url": "https://trinidadexpress.com/business/local/oecs-region-needs-an-airline/article_991ad5b0-0af5-4a09-b762-fe3d650271e2.html",
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "kaieteur-news-85829102",
-    "title": "Regional leaders, Private Sector agree on measures to improve affordability across the region",
-    "source": "Kaieteur News",
-    "date": "2026-07-11",
-    "country": "GY",
-    "url": "https://kaieteurnewsonline.com/2026/07/11/regional-leaders-private-sector-agree-on-measures-to-improve-affordability-across-the-region/",
-    "tags": [
-      "news",
-      "affordability",
-      "caricom",
-      "oecs business council",
-      "private sector"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "kaieteur-news-1f40d078",
-    "title": "Banks DIH hands over grand prize SUV in “Crown the Road” promotion",
-    "source": "Kaieteur News",
-    "date": "2026-07-11",
-    "country": "GY",
-    "url": "https://kaieteurnewsonline.com/2026/07/11/banks-dih-hands-over-grand-prize-suv-in-crown-the-road-promotion/",
-    "tags": [
-      "news",
-      "banks beer",
-      "banks dih",
-      "crown the road",
-      "suv"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "kaieteur-news-1b2a8d02",
-    "title": "The Ali farm – from bankroller to blackmailer",
-    "source": "Kaieteur News",
-    "date": "2026-07-11",
-    "country": "GY",
-    "url": "https://kaieteurnewsonline.com/2026/07/11/the-ali-farm-from-bankroller-to-blackmailer/",
-    "tags": [
-      "features / columnists",
-      "the ghk lall column",
-      "ali farm",
-      "blackmailer",
-      "ghk lall"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "eyewitness-news-61d9b27e",
-    "title": "FORMER AIRLINE EXECUTIVE: “THIS WAS 100 PERCENT PREVENTABLE”",
-    "source": "Eyewitness News",
-    "date": "2026-07-11",
-    "country": "BS",
-    "url": "https://ewnews.com/former-airline-executive-this-was-100-percent-preventable/?utm_source=rss&utm_medium=rss&utm_campaign=former-airline-executive-this-was-100-percent-preventable",
-    "tags": [
-      "local",
-      "always a headline ahead",
-      "eyewitness news online",
-      "nassau bahamas"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "starnieuws-e434c178",
-    "title": "IEA: Escalatie tussen VS en Iran bedreigt herstel van oliemarkt",
-    "source": "Starnieuws",
-    "date": "2026-07-11",
-    "country": "SR",
-    "url": "https://www.starnieuws.com/index.php/welcome/index/nieuwsitem/92914",
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "st-lucia-times-efadba89",
-    "title": "Labour Department moves to tackle issues in security industry",
-    "source": "St. Lucia Times",
-    "date": "2026-07-11",
-    "country": "LC",
-    "url": "https://stluciatimes.com/181943/2026/07/labour-department-moves-to-tackle-issues-in-security-industry/",
-    "tags": [
-      "employment",
-      "headlines",
-      "emma hippolyte",
-      "employment compliance",
-      "labour act",
-      "nicolai lansiquot"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "antigua-news-room-3aa20a6f",
-    "title": "Ministry Agriculture Interns Gain Hands-On Poultry Farming Experience",
-    "source": "Antigua News Room",
-    "date": "2026-07-11",
-    "country": "AG",
-    "url": "https://antiguanewsroom.com/ministry-agriculture-interns-gain-hands-on-poultry-farming-experience/",
-    "tags": [
-      "featured"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "iwitness-news-17cee62f",
-    "title": "The price SVG paid for saying ‘no’ to CBI",
-    "source": "iWitness News",
-    "date": "2026-07-11",
-    "country": "VC",
-    "url": "https://www.iwnsvg.com/2026/07/10/the-price-svg-paid-for-saying-no-to-cbi/",
-    "tags": [
-      "opinion"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "wic-news-ce55fa9e",
-    "title": "ECCB unveils new EC Banknotes featuring Caribbean heroes, replacing Queen Elizabeth II",
-    "source": "WIC News",
-    "date": "2026-07-11",
-    "country": "ALL",
-    "url": "https://wicnews.com/caribbean/eccb-unveils-new-ec-banknotes-featuring-caribbean-heroes-replacing-queen-elizabeth-ii",
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "wic-news-2e062880",
-    "title": "Caribbean Airlines offers discounted Trinidad-Barbados fares this September",
-    "source": "WIC News",
-    "date": "2026-07-11",
-    "country": "ALL",
-    "url": "https://wicnews.com/trinidad-tobago/caribbean-airlines-offers-discounted-trinidad-barbados-fares-this-september",
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "barbados-today-dae702db",
-    "title": "Enterprise vendors fear worsening sargassum will threaten livelihoods",
-    "source": "Barbados Today",
-    "date": "2026-07-11",
-    "country": "BB",
-    "url": "https://barbadostoday.bb/2026/07/11/enterprise-vendors-fear-worsening-sargassum-will-threaten-livelihoods/",
-    "tags": [
-      "environment",
-      "local news",
-      "tourism"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "jamaica-observer-f3364a34",
-    "title": "Mavis Bank Coffee Factory achieves Safe Quality Food Recertification",
-    "source": "Jamaica Observer",
-    "date": "2026-07-11",
-    "country": "JM",
-    "url": "https://www.jamaicaobserver.com/2026/07/11/mavis-bank-coffee-factory-achieves-safe-quality-food-recertification/",
-    "tags": [
-      "latest news",
-      "news",
-      "coffee",
-      "food",
-      "safety"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "breaking-belize-news-61a42028",
-    "title": "Belize advances development of first Industrial Strategy through Japan study tour",
-    "source": "Breaking Belize News",
-    "date": "2026-07-11",
-    "country": "BZ",
-    "url": "https://www.breakingbelizenews.com/2026/07/11/belize-advances-development-of-first-industrial-strategy-through-japan-study-tour/",
-    "tags": [
-      "community development",
-      "last news"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "st-lucia-times-f3df3572",
-    "title": "PMs to engage EU on future of Citizenship by Investment programmes",
-    "source": "St. Lucia Times",
-    "date": "2026-07-11",
-    "country": "LC",
-    "url": "https://stluciatimes.com/181949/2026/07/pms-to-engage-eu-on-future-of-citizenship-by-investment-programmes/",
-    "tags": [
-      "caribbean",
-      "headlines",
-      "politics & government",
-      "region",
-      "brussels mission",
-      "cbi"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "antigua-news-room-942a4d31",
-    "title": "Airport Authority undertakes crucial vegetation management exercise this weekend as Airfield Upgrade enters final phase",
-    "source": "Antigua News Room",
-    "date": "2026-07-11",
-    "country": "AG",
-    "url": "https://antiguanewsroom.com/airport-authority-undertakes-crucial-vegetation-management-exercise-this-weekend-as-airfield-upgrade-enters-final-phase/",
-    "tags": [
-      "news"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "antigua-news-room-1b6b341c",
-    "title": "Single-Lane Traffic on All Saints Road as Major Infrastructure Works Begin",
-    "source": "Antigua News Room",
-    "date": "2026-07-11",
-    "country": "AG",
-    "url": "https://antiguanewsroom.com/single-lane-traffic-on-all-saints-road-as-major-infrastructure-works-begin/",
-    "tags": [
-      "news"
-    ],
     "deal_status": "not_a_deal",
     "deal_type": null
   }
