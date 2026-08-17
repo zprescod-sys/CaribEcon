@@ -14,6 +14,7 @@
  */
 import { resolveRoleFully } from '../config.js';
 import { callModel, type ChatMessage } from '../providers/openaiCompatible.js';
+import { parseModelJson } from './parseModelJson.js';
 import {
   canonicaliseIntent,
   listCountries,
@@ -69,26 +70,6 @@ function buildSystemPrompt(): string {
   ].join('\n');
 }
 
-/* Models reliably comply with "JSON only" most of the time but not always — a markdown fence or
-   a one-line preamble despite the instruction is common enough to defend against cheaply rather
-   than let it produce an InterpretParseError. Tries, in order: the raw trimmed text; the same
-   text with a ```/```json fence stripped; the largest {...} substring found anywhere in it. */
-function parseModelJson(text: string): unknown {
-  const trimmed = text.trim();
-  const fenceStripped = trimmed.replace(/^```(?:json)?\s*/i, '').replace(/```\s*$/i, '').trim();
-  const braceMatch = text.match(/\{[\s\S]*\}/);
-
-  for (const attempt of [trimmed, fenceStripped, braceMatch?.[0]]) {
-    if (!attempt) continue;
-    try {
-      return JSON.parse(attempt);
-    } catch {
-      continue;
-    }
-  }
-  return null;
-}
-
 export async function interpret(question: string): Promise<InterpretResult> {
   const resolved = resolveRoleFully('interpret');
   if (!resolved) {
@@ -104,7 +85,13 @@ export async function interpret(question: string): Promise<InterpretResult> {
 
   const response = await callModel(resolved.connection, resolved.model, messages, {
     temperature: 0,
-    maxTokens: 500, // structured JSON for 19 countries / 24 indicators needs nowhere near this
+    /* Both numbers below are headroom for reasoning, not an estimate of the JSON's own size —
+       thinking stays ON deliberately (the project's own choice, not a default left unexamined),
+       and a reasoning-capable model (observed live with MiniMax-M3: ~290 completion tokens and
+       ~8s just to say "OK") can spend real time and tokens before ever reaching the answer.
+       Too low a cap or timeout truncates or aborts the response before any JSON exists at all. */
+    maxTokens: 2500,
+    timeoutMs: 20_000,
   });
 
   const raw = parseModelJson(response.text);
