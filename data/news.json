@@ -1,5 +1,263 @@
 [
   {
+    "id": "guyana-chronicle-d39f41ae",
+    "title": "President Ali unveils agro‑tourism vision for Region Two",
+    "source": "Guyana Chronicle",
+    "date": "2026-08-17",
+    "country": "GY",
+    "url": "https://guyanachronicle.com/2026/08/17/president-ali-unveils-agro-tourism-vision-for-region-two/",
+    "tags": [
+      "news"
+    ],
+    "category": "Tourism",
+    "group": "Trade & Tourism",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "guyana-chronicle-b3183448",
+    "title": "Guyana’s electricity demand projected to surge five fold by 2030",
+    "source": "Guyana Chronicle",
+    "date": "2026-08-17",
+    "country": "GY",
+    "url": "https://guyanachronicle.com/2026/08/17/guyanas-electricity-demand-projected-to-surge-five-fold-by-2030/",
+    "tags": [
+      "news"
+    ],
+    "category": "Energy",
+    "group": "Energy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "guyana-chronicle-aaacb558",
+    "title": "Both Justice Anderson, leaked CCJ confidential business must be examined if RJLSC moves ahead with review  -Ralph Ramkarran says",
+    "source": "Guyana Chronicle",
+    "date": "2026-08-17",
+    "country": "GY",
+    "url": "https://guyanachronicle.com/2026/08/17/both-justice-anderson-leaked-ccj-confidential-business-must-be-examined-if-rjlsc-moves-ahead-with-review-ralph-ramkarran-says-2/",
+    "tags": [
+      "news"
+    ],
+    "category": "Corporate",
+    "group": "Finance",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "guyana-chronicle-a8cce4cc",
+    "title": "Yarrowkabra farmers to receive planting materials",
+    "source": "Guyana Chronicle",
+    "date": "2026-08-17",
+    "country": "GY",
+    "url": "https://guyanachronicle.com/2026/08/17/yarrowkabra-farmers-to-receive-planting-materials/",
+    "tags": [
+      "news"
+    ],
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "guyana-chronicle-8c6f9f2f",
+    "title": "U.S. companies eyeing opportunities in Guyana amid rapid growth",
+    "source": "Guyana Chronicle",
+    "date": "2026-08-17",
+    "country": "GY",
+    "url": "https://guyanachronicle.com/2026/08/17/u-s-companies-eyeing-opportunities-in-guyana-amid-rapid-growth/",
+    "tags": [
+      "news"
+    ],
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "demerara-waves-498cb8b6",
+    "title": "APNU says poor govt planning causing electricity woes",
+    "source": "Demerara Waves",
+    "date": "2026-08-17",
+    "country": "GY",
+    "url": "https://demerarawaves.com/2026/08/16/apnu-says-poor-govt-planning-causing-electricity-woes/",
+    "tags": [
+      "business",
+      "energy",
+      "news",
+      "a partnership for national unity (apnu)",
+      "demerara-berbice interconnected system (dbis)",
+      "electricity demand"
+    ],
+    "category": "Energy",
+    "group": "Energy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "trinidad-express-fda18fc2",
+    "title": "Tancoo: Preparations  for budget ‘under way’",
+    "source": "Trinidad Express",
+    "date": "2026-08-17",
+    "country": "TT",
+    "url": "https://trinidadexpress.com/business/local/tancoo-preparations-for-budget-under-way/article_83d1bfa7-d8eb-43de-8db2-91c95d88e66f.html",
+    "category": "Fiscal Policy",
+    "group": "Fiscal Policy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "ttt-news-51526633",
+    "title": "Tacarigua Entrepreneur Receives SEED Grant To Grow Baking Business",
+    "source": "TTT News",
+    "date": "2026-08-17",
+    "country": "TT",
+    "url": "https://www.ttt.live/tacarigua-entrepreneur-receives-seed-grant-to-grow-baking-business/?utm_source=rss&utm_medium=rss&utm_campaign=tacarigua-entrepreneur-receives-seed-grant-to-grow-baking-business",
+    "tags": [
+      "business and finance",
+      "community",
+      "news"
+    ],
+    "category": "Corporate",
+    "group": "Finance",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "barbados-today-5d67d736",
+    "title": "Agricultural revolution still required",
+    "source": "Barbados Today",
+    "date": "2026-08-17",
+    "country": "BB",
+    "url": "https://barbadostoday.bb/2026/08/16/agricultural-revolution-still-required/",
+    "tags": [
+      "local news",
+      "opinion"
+    ],
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "jamaica-gleaner-a6280a19",
+    "title": "Deal or no deal - Public-sector teachers to decide on Government’s adjusted wage offer",
+    "source": "Jamaica Gleaner",
+    "date": "2026-08-17",
+    "country": "JM",
+    "url": "http://jamaica-gleaner.com/article/news/20260817/deal-or-no-deal-public-sector-teachers-decide-governments-adjusted-wage-offer",
+    "category": "Labor",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "jamaica-gleaner-cd733084",
+    "title": "Medical technologists sue Gov’t over unpaid wages",
+    "source": "Jamaica Gleaner",
+    "date": "2026-08-17",
+    "country": "JM",
+    "url": "http://jamaica-gleaner.com/article/news/20260817/medical-technologists-sue-govt-over-unpaid-wages",
+    "category": "Labor",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "eyewitness-news-d96a7685",
+    "title": "Bahamas Grid Company appoints Ryan Holder as COO as all-Bahamian leadership transition continues",
+    "source": "Eyewitness News",
+    "date": "2026-08-17",
+    "country": "BS",
+    "url": "https://ewnews.com/bahamas-grid-company-appoints-ryan-holder-as-coo-as-all-bahamian-leadership-transition-continues/?utm_source=rss&utm_medium=rss&utm_campaign=bahamas-grid-company-appoints-ryan-holder-as-coo-as-all-bahamian-leadership-transition-continues",
+    "tags": [
+      "business",
+      "always a headline ahead",
+      "around the world",
+      "bahamas news",
+      "eyewitness news online"
+    ],
+    "category": "Corporate",
+    "group": "Finance",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "iwitness-news-af7d5c0f",
+    "title": "Bramble urges Taiwan to reinforce diplomatic solidarity with commercial enterprise",
+    "source": "iWitness News",
+    "date": "2026-08-17",
+    "country": "VC",
+    "url": "https://www.iwnsvg.com/2026/08/17/bramble-urges-taiwan-to-reinforce-diplomatic-solidarity-with-commercial-enterprise/",
+    "tags": [
+      "business"
+    ],
+    "category": "Corporate",
+    "group": "Finance",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "bvi-news-57e08a8a",
+    "title": "Premier admits businesses will pass power bill increase to consumers",
+    "source": "BVI News",
+    "date": "2026-08-17",
+    "country": "VG",
+    "url": "https://bvinews.com/premier-admits-businesses-will-pass-power-bill-increase-to-consumers/",
+    "tags": [
+      "all news"
+    ],
+    "category": "Corporate",
+    "group": "Finance",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "bvi-news-8aa1d026",
+    "title": "Fire them! BVICC Chairman slams Labour Commissioner’s remarks",
+    "source": "BVI News",
+    "date": "2026-08-17",
+    "country": "VG",
+    "url": "https://bvinews.com/fire-them-bvicc-chairman-slams-labour-commissioners-remarks/",
+    "tags": [
+      "all news"
+    ],
+    "category": "Labor",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
     "id": "guyana-chronicle-03c3b1aa",
     "title": "Two small habits to cut your electricity bill, conserve — GPL",
     "source": "Guyana Chronicle",
@@ -36510,240 +36768,6 @@
     "url": "https://antiguanewsroom.com/single-lane-traffic-on-all-saints-road-as-major-infrastructure-works-begin/",
     "tags": [
       "news"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "antigua-news-room-37873773",
-    "title": "Monetary Council Keeps Savings and Discount Rates Unchanged",
-    "source": "Antigua News Room",
-    "date": "2026-07-11",
-    "country": "AG",
-    "url": "https://antiguanewsroom.com/monetary-council-keeps-savings-and-discount-rates-unchanged/",
-    "tags": [
-      "news"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "antigua-news-room-a9772a51",
-    "title": "Boat carrying tourists capsizes off Vietnam’s Phu Quoc island, killing 15",
-    "source": "Antigua News Room",
-    "date": "2026-07-11",
-    "country": "AG",
-    "url": "https://antiguanewsroom.com/boat-carrying-tourists-capsizes-off-vietnams-phu-quoc-island-killing-15/",
-    "tags": [
-      "news"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "antigua-news-room-02bdb563",
-    "title": "Antigua among CARICOM states Weighing Insurance Plan to Protect Hotels, Hospitals from Disasters",
-    "source": "Antigua News Room",
-    "date": "2026-07-11",
-    "country": "AG",
-    "url": "https://antiguanewsroom.com/antigua-among-caricom-states-weighing-insurance-plan-to-protect-hotels-hospitals-from-disasters/",
-    "tags": [
-      "news"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "antigua-news-room-0a47bfa3",
-    "title": "Global Uncertainty Could Slow Tourism and Economic Growth, ECCB Warns",
-    "source": "Antigua News Room",
-    "date": "2026-07-11",
-    "country": "AG",
-    "url": "https://antiguanewsroom.com/global-uncertainty-could-slow-tourism-and-economic-growth-eccb-warns/",
-    "tags": [
-      "news"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "st-kitts-nevis-observer-7105a7ed",
-    "title": "ECLAC warns of higher price for oil in LAC this year",
-    "source": "St. Kitts-Nevis Observer",
-    "date": "2026-07-11",
-    "country": "KN",
-    "url": "https://www.thestkittsnevisobserver.com/eclac-warns-of-higher-price-for-oil-in-lac-this-year/",
-    "tags": [
-      "regional"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "st-kitts-nevis-observer-5f09f931",
-    "title": "Antigua PM reiterates call for OECS airline",
-    "source": "St. Kitts-Nevis Observer",
-    "date": "2026-07-11",
-    "country": "KN",
-    "url": "https://www.thestkittsnevisobserver.com/antigua-pm-reiterates-call-for-oecs-airline/",
-    "tags": [
-      "regional"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "demerara-waves-fbfc798e",
-    "title": "East Ruimveldt Market reconstruction plan unveiled",
-    "source": "Demerara Waves",
-    "date": "2026-07-11",
-    "country": "GY",
-    "url": "https://demerarawaves.com/2026/07/11/east-ruimveldt-market-reconstruction-plan-unveiled/",
-    "tags": [
-      "business",
-      "infrastructure",
-      "local government",
-      "news",
-      "east ruimveldt market reconstruction plan",
-      "minister of labour and manpower planning keoma griffith"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "demerara-waves-d8ae6628",
-    "title": "Ali shows off young professionals saying govt backed their high-tech poultry farm",
-    "source": "Demerara Waves",
-    "date": "2026-07-11",
-    "country": "GY",
-    "url": "https://demerarawaves.com/2026/07/11/ali-shows-off-young-professionals-saying-govt-backed-their-high-tech-poultry-farm/",
-    "tags": [
-      "accountability",
-      "agriculture",
-      "business",
-      "news",
-      "politics",
-      "facebook post"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "nature-isle-news-53a9581d",
-    "title": "CARIBBEAN-TRANSPORTATION-Antigua PM reiterates call for OECS airline",
-    "source": "Nature Isle News",
-    "date": "2026-07-11",
-    "country": "DM",
-    "url": "https://natureisle.news/government/caribbean-transportation-antigua-pm-reiterates-call-for-oecs-airline/",
-    "tags": [
-      "government",
-      "oecs",
-      "politics",
-      "promotion",
-      "public relations",
-      "regional/international"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "ziz-online-4b82a247",
-    "title": "ECCB Unveils Redesigned Banknotes",
-    "source": "ZIZ Online",
-    "date": "2026-07-11",
-    "country": "KN",
-    "url": "https://zizonline.com/eccb-unveils-redesigned-banknotes/",
-    "tags": [
-      "national"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "kaieteur-news-03d7b2e6",
-    "title": "No ruptured gas pipeline but ‘slight anomaly’ EPA, MARAD say after video evidence surfaces",
-    "source": "Kaieteur News",
-    "date": "2026-07-10",
-    "country": "GY",
-    "url": "https://kaieteurnewsonline.com/2026/07/10/no-ruptured-gas-pipeline-but-slight-anomaly-epa-marad-say-after-video-evidence-surfaces/",
-    "tags": [
-      "news",
-      "epa",
-      "exxonmobil",
-      "gas",
-      "marad",
-      "pipeline"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "kaieteur-news-18f627d1",
-    "title": "President still to provide records of farm lands acquisition and evidence of blackmail",
-    "source": "Kaieteur News",
-    "date": "2026-07-10",
-    "country": "GY",
-    "url": "https://kaieteurnewsonline.com/2026/07/10/president-still-to-provide-records-of-farm-lands-acquisition-and-evidence-of-blackmail/",
-    "tags": [
-      "news",
-      "blackmail",
-      "farm lands",
-      "president irfaan ali",
-      "records"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "kaieteur-news-a80d1d81",
-    "title": "From infrastructure to digital economy: China and Guyana pave way for deeper bilateral ties",
-    "source": "Kaieteur News",
-    "date": "2026-07-10",
-    "country": "GY",
-    "url": "https://kaieteurnewsonline.com/2026/07/10/from-infrastructure-to-digital-economy-china-and-guyana-pave-way-for-deeper-bilateral-ties/",
-    "tags": [
-      "news",
-      "china",
-      "digital",
-      "economy",
-      "guyana",
-      "infrastructure"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "kaieteur-news-b52fdd81",
-    "title": "Full public disclosure needed on Pres. Ali’s agricultural enterprise",
-    "source": "Kaieteur News",
-    "date": "2026-07-10",
-    "country": "GY",
-    "url": "https://kaieteurnewsonline.com/2026/07/10/full-public-disclosure-needed-on-pres-alis-agricultural-enterprise/",
-    "tags": [
-      "letters",
-      "150 acres",
-      "agricultural enterprise",
-      "barbados",
-      "blackbelly sheep",
-      "brazil"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "kaieteur-news-c3790291",
-    "title": "The Corentyne River Bridge: Conflicting statements represent a serious breakdown in diplomatic trust",
-    "source": "Kaieteur News",
-    "date": "2026-07-10",
-    "country": "GY",
-    "url": "https://kaieteurnewsonline.com/2026/07/10/the-corentyne-river-bridge-conflicting-statements-represent-a-serious-breakdown-in-diplomatic-trust/",
-    "tags": [
-      "letters",
-      "a new and united guyana (anug)",
-      "corentyne river bridge",
-      "diplomatic trust",
-      "guyana",
-      "suriname"
     ],
     "deal_status": "not_a_deal",
     "deal_type": null
