@@ -33,8 +33,8 @@ Implementation proceeds **one small step at a time with explicit approval** — 
 
 | Phase | Status |
 | --- | --- |
-| 0a — Housekeeping | **In progress** |
-| 0b — NoInfra connectivity + OpenClaw spike | Not started |
+| 0a — Housekeeping | **Done** |
+| 0b — NoInfra connectivity + OpenClaw spike | **Done — runtime decision reversed, see below** |
 | 1 — Vertical slice + chat pane | Not started |
 | 2 — Grounding gate | Not started |
 | 3 — Planner + Tavily | Not started |
@@ -87,6 +87,58 @@ Verify concretely:
 
 **If this basic path does not work as assumed, that has to be discovered here** — not after the full
 Research Service is built on top of an untested foundation.
+
+**Phase 0b — OUTCOME (2026-08-17): the path did not work as assumed. Runtime moved to Vercel.**
+
+The spike did its job. Full findings and the exact probes are in `docs/NOINFRA_SPIKE.md`; the short
+version:
+
+- NoInfra's container exposes **no inbound port**, and its Applications service is a **spec-to-app
+  generator** that cannot host code we wrote. The §5.1 "our HTTP server on a VPS behind an HMAC
+  channel" design is not available.
+- The reachable surface is OpenClaw's gateway. An MCP tool over `/tools/invoke` was built, deployed
+  and **verified working** — calling it from OpenClaw's own session returns the exact stub JSON.
+- It is nonetheless unreachable from Vercel: **MCP tools added by hot-reload never enter the
+  gateway's startup-built HTTP tool registry**, and the gateway **cannot be restarted from inside
+  its container** (SIGUSR1 reloads without restarting; no systemd; killing PID 7 under tini exits
+  the container). Config changes to the research runtime therefore cannot be deployed from within it.
+- Gateway auth is **operator-level and all-or-nothing** — no per-token scoping.
+
+**Decision: the Research Service runs on Vercel.** `api/researchStub.ts` proves it — the *same*
+`research()` the MCP adapter calls, imported by a second runtime adapter, reporting
+`runtime: "vercel"` where the MCP tests report `"noinfra"`. That is §5.3 rule 1 demonstrated rather
+than asserted, and it is what made this reversal cheap.
+
+`api/noinfraSpike.ts` is **kept**, correct and tested. §5.4's two-target design still holds: NoInfra
+becomes live again the moment an external container restart makes the gateway serve the tool.
+
+**NoInfra's designated role — the scheduled intelligence tier**
+
+Moving the request path to Vercel does not remove NoInfra from the project. It moves it to work it
+is actually good at, under one rule:
+
+> **Vercel: someone is waiting for a response. NoInfra: nobody is waiting, and a human reviews the
+> output.**
+
+Folded into the plan as post-Phase-1 work:
+
+1. **Scheduled inbox triage.** The `ian` (news) and `warrenb` (deals) agents already describe
+   themselves as "invoke on demand (periodically, or after a feed refresh has grown the queue)" —
+   scheduled judgment work with no user waiting, writing only through `scripts/triage-inbox.mjs` /
+   `scripts/triage-deals.mjs`. *Prerequisite:* git identity + push credentials on the container,
+   which it does not have today.
+2. **Source discovery.** Finding new Caribbean publications, feeds and statistical releases —
+   unbounded, exploratory, no deadline, and NoInfra includes premium web search. Output lands in a
+   review queue, never on the site directly.
+
+Also genuinely NoInfra-only, worth using later: **Owner Contact / Email / Phone** for proactive
+alerts (e.g. an IMF WEO revision changing a series) — a serverless function has no way to reach the
+user at all. And **NoInfra inference** (`inference.noinfra.ai/v1`, OpenAI-compatible: Kimi K3,
+GLM-5.2, GPT-OSS-120B) is a real provider-registry entry per §4.3's open question, callable from
+Vercel — so the included tokens are not stranded by this decision.
+
+**What stays off NoInfra:** anything in the request path that produces a figure or citation, and any
+generated prose that would publish without passing the grounding gate (§2.1).
 
 **Phase 1 — Contracts + vertical slice + chat pane (first demoable answer)**
 
