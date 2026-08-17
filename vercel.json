@@ -4,7 +4,7 @@
       "maxDuration": 60
     },
     "api/ask.ts": {
-      "maxDuration": 60
+      "maxDuration": 120
     },
     "api/noinfraSpike.ts": {
       "maxDuration": 30

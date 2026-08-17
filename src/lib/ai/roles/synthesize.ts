@@ -250,9 +250,11 @@ export async function synthesize(intent: ResearchIntent, pkg: EvidencePackage): 
        Tavily and there is genuinely more to weigh. MiniMax-M3 was observed live spending ~290
        reasoning tokens and ~8s on a trivial prompt; a real synthesis with several data series
        needs headroom for both a longer reasoning phase AND the answer itself (headline +
-       several claims + figures). */
+       several claims + figures). Raised from 40s to 90s after a live capture run
+       (src/lib/ai/fixtures/askCaptures.json, "news_current_context") hit a real 46.5s
+       MiniMax response that the old cap cut off. */
     maxTokens: 6000,
-    timeoutMs: 40_000,
+    timeoutMs: 90_000,
   });
 
   const raw = parseModelJson(response.text);
