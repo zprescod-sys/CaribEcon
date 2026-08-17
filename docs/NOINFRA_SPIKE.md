@@ -214,7 +214,14 @@ are guesses until measured.
 
 ## 7. Open items for the live run
 
-- [ ] Confirm the gateway-namespaced tool name (`caribecon-research__caribecon_research` is the expectation, not a verified fact)
+- [x] **Tool name confirmed: `caribecon-research__caribecon_research`** — matches the default in
+      `api/noinfraSpike.ts`, so `OPENCLAW_CARIBECON_TOOL` does not need to be set. OpenClaw
+      namespaces as `<mcp.servers key>__<registered tool name>`, server key used as-is.
+- [x] **`main` agent verified untouched** — its `agents.list` entry is `{ id: "main",
+      default: true }` with no `tools` key, so it inherits the same defaults as before. Worth
+      recording because the config had to be hand-edited: OpenClaw's `config.patch` refuses
+      `mcp.servers` / `agents.list` / `gateway.tools` as protected paths, so its usual
+      validation was bypassed. Gateway confirmed running with valid JSON afterwards.
 - [ ] Confirm whether the gateway surfaces `structuredContent`, the text block, or both — the route handles all three
 - [ ] Record the real round-trip latency
 - [ ] Confirm the MCP child process survives a gateway restart, and what supervises it
