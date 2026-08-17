@@ -1,0 +1,2415 @@
+[
+  {
+    "category": "simple_factual",
+    "question": "What was Guyana's GDP growth in 2024?",
+    "capturedAt": "2026-08-17T19:42:01.256Z",
+    "providers": {
+      "interpret": {
+        "provider": "nebius",
+        "model": "nvidia/Nemotron-3_5-Lightning"
+      },
+      "synthesis": {
+        "provider": "minimax",
+        "model": "MiniMax-M3"
+      }
+    },
+    "elapsedMs": 12086,
+    "result": {
+      "answer": {
+        "headline": "Guyana's GDP growth in 2024 was 43.82% according to World Bank WDI.",
+        "claims": [
+          {
+            "id": "claim-0",
+            "text": "Guyana's GDP growth rate in 2024 was 43.82%.",
+            "refs": [
+              "D:GY:gdp_growth"
+            ],
+            "type": "figure",
+            "figures": [
+              {
+                "ref": "D:GY:gdp_growth",
+                "year": 2024,
+                "value": 43.82,
+                "unit": "%",
+                "calculation": null,
+                "asWritten": "43.82"
+              }
+            ]
+          },
+          {
+            "id": "claim-1",
+            "text": "The period average for the queried years (2024–2024) is 43.82%.",
+            "refs": [
+              "D:GY:gdp_growth"
+            ],
+            "type": "figure",
+            "figures": [
+              {
+                "ref": "D:GY:gdp_growth",
+                "year": null,
+                "value": 43.82,
+                "unit": "%",
+                "calculation": "period_average",
+                "asWritten": "43.82"
+              }
+            ]
+          },
+          {
+            "id": "claim-2",
+            "text": "Data is sourced from the World Bank World Development Indicators (WDI).",
+            "refs": [],
+            "type": "framing",
+            "figures": []
+          }
+        ],
+        "gaps": [
+          "Only a single year (2024) is in the queried range, so no year-over-year trend or multi-year comparison can be drawn from the evidence provided.",
+          "No prior years are available in the evidence to contextualize whether 43.82% represents an acceleration or deceleration relative to earlier periods.",
+          "No sectoral breakdown or driver decomposition of the growth is provided in the evidence.",
+          "No regional or peer-country comparison figures are supplied."
+        ]
+      },
+      "evidence": {
+        "data": [
+          {
+            "country": "GY",
+            "indicator": "gdp_growth",
+            "label": "GDP Growth Rate",
+            "unit": "%",
+            "source": "World Bank — World Development Indicators (NY.GDP.MKTP.KD.ZG)",
+            "sourceOrg": "World Bank WDI",
+            "sourceTier": "comparable",
+            "sourceUrl": "https://api.worldbank.org/v2/country/GUY/indicator/NY.GDP.MKTP.KD.ZG?format=json",
+            "vintage": "2026-07",
+            "confidence": "medium",
+            "points": [
+              {
+                "year": 2024,
+                "value": 43.82,
+                "type": "actual"
+              }
+            ]
+          }
+        ],
+        "news": [],
+        "misses": [],
+        "caveats": [],
+        "toolsUsed": [
+          "getSeries"
+        ],
+        "newsCoverage": {
+          "earliest": "2026-04-12",
+          "latest": "2026-08-08",
+          "count": 1154
+        },
+        "evidenceMeta": [
+          {
+            "ref": "D:GY:gdp_growth",
+            "vintage": "2026-07",
+            "retrievedAt": "2026-08-17T19:42:08.041Z",
+            "sourceRevisionDate": null,
+            "contentHash": null
+          }
+        ]
+      },
+      "verdict": {
+        "outcome": "PASS",
+        "grounding": {
+          "ran": true,
+          "violations": []
+        },
+        "audit": {
+          "ran": false
+        },
+        "publishedClaims": [
+          "claim-0",
+          "claim-1",
+          "claim-2"
+        ],
+        "reasonCategories": []
+      }
+    },
+    "error": null
+  },
+  {
+    "category": "time_series",
+    "question": "How has Jamaican inflation changed since 2020?",
+    "capturedAt": "2026-08-17T19:42:13.343Z",
+    "providers": {
+      "interpret": {
+        "provider": "nebius",
+        "model": "nvidia/Nemotron-3_5-Lightning"
+      },
+      "synthesis": {
+        "provider": "minimax",
+        "model": "MiniMax-M3"
+      }
+    },
+    "elapsedMs": 15929,
+    "result": {
+      "answer": {
+        "headline": "Jamaica inflation rose sharply to a 2022 peak of 10.35% before easing to 4% by 2025, averaging 6.22% over 2020–2025.",
+        "claims": [
+          {
+            "id": "claim-0",
+            "text": "Jamaica's inflation rate stood at 5.23% in 2020, the starting point of the period.",
+            "refs": [
+              "D:JM:inflation"
+            ],
+            "type": "figure",
+            "figures": [
+              {
+                "ref": "D:JM:inflation",
+                "year": 2020,
+                "value": 5.23,
+                "unit": "%",
+                "calculation": null,
+                "asWritten": "5.23"
+              }
+            ]
+          },
+          {
+            "id": "claim-1",
+            "text": "Inflation edged up by 0.63 pp to 5.86% in 2021.",
+            "refs": [
+              "D:JM:inflation"
+            ],
+            "type": "figure",
+            "figures": [
+              {
+                "ref": "D:JM:inflation",
+                "year": 2021,
+                "value": 5.86,
+                "unit": "%",
+                "calculation": null,
+                "asWritten": "5.86"
+              },
+              {
+                "ref": "D:JM:inflation",
+                "year": 2021,
+                "value": 0.63,
+                "unit": "pp",
+                "calculation": "pp_change",
+                "asWritten": "0.63"
+              }
+            ]
+          },
+          {
+            "id": "claim-2",
+            "text": "Inflation surged by 4.49 pp to a period peak of 10.35% in 2022, the largest single-year jump in the series.",
+            "refs": [
+              "D:JM:inflation"
+            ],
+            "type": "trend",
+            "figures": [
+              {
+                "ref": "D:JM:inflation",
+                "year": 2022,
+                "value": 10.35,
+                "unit": "%",
+                "calculation": null,
+                "asWritten": "10.35"
+              },
+              {
+                "ref": "D:JM:inflation",
+                "year": 2022,
+                "value": 4.49,
+                "unit": "pp",
+                "calculation": "pp_change",
+                "asWritten": "4.49"
+              }
+            ]
+          },
+          {
+            "id": "claim-3",
+            "text": "Inflation then fell sharply, declining 3.88 pp to 6.47% in 2023 — the largest annual decrease in the period.",
+            "refs": [
+              "D:JM:inflation"
+            ],
+            "type": "trend",
+            "figures": [
+              {
+                "ref": "D:JM:inflation",
+                "year": 2023,
+                "value": 6.47,
+                "unit": "%",
+                "calculation": null,
+                "asWritten": "6.47"
+              },
+              {
+                "ref": "D:JM:inflation",
+                "year": 2023,
+                "value": -3.88,
+                "unit": "pp",
+                "calculation": "pp_change",
+                "asWritten": "-3.88"
+              }
+            ]
+          },
+          {
+            "id": "claim-4",
+            "text": "Disinflation continued, with inflation easing 1.06 pp to 5.41% in 2024.",
+            "refs": [
+              "D:JM:inflation"
+            ],
+            "type": "trend",
+            "figures": [
+              {
+                "ref": "D:JM:inflation",
+                "year": 2024,
+                "value": 5.41,
+                "unit": "%",
+                "calculation": null,
+                "asWritten": "5.41"
+              },
+              {
+                "ref": "D:JM:inflation",
+                "year": 2024,
+                "value": -1.06,
+                "unit": "pp",
+                "calculation": "pp_change",
+                "asWritten": "-1.06"
+              }
+            ]
+          },
+          {
+            "id": "claim-5",
+            "text": "By 2025, inflation had declined a further 1.41 pp to 4%, the lowest reading in the series.",
+            "refs": [
+              "D:JM:inflation"
+            ],
+            "type": "trend",
+            "figures": [
+              {
+                "ref": "D:JM:inflation",
+                "year": 2025,
+                "value": 4,
+                "unit": "%",
+                "calculation": null,
+                "asWritten": "4"
+              },
+              {
+                "ref": "D:JM:inflation",
+                "year": 2025,
+                "value": -1.41,
+                "unit": "pp",
+                "calculation": "pp_change",
+                "asWritten": "-1.41"
+              }
+            ]
+          },
+          {
+            "id": "claim-6",
+            "text": "Across 2020–2025, Jamaica's inflation averaged 6.22%.",
+            "refs": [
+              "D:JM:inflation"
+            ],
+            "type": "figure",
+            "figures": [
+              {
+                "ref": "D:JM:inflation",
+                "year": null,
+                "value": 6.22,
+                "unit": "%",
+                "calculation": "period_average",
+                "asWritten": "6.22"
+              }
+            ]
+          },
+          {
+            "id": "claim-7",
+            "text": "Overall, the series shows a single peak in 2022 followed by three consecutive years of disinflation through 2025.",
+            "refs": [],
+            "type": "framing",
+            "figures": []
+          }
+        ],
+        "gaps": [
+          "No data is provided for years before 2020, so the pre-pandemic inflation baseline is unknown.",
+          "No breakdown by inflation sub-components (e.g., food, energy, core) is included.",
+          "No underlying drivers (exchange rate, monetary policy, global commodity prices) are evidenced here.",
+          "No comparison to other Caribbean economies or regional averages is provided.",
+          "Source publication date and any subsequent revisions to the 2024 and 2025 figures are not documented."
+        ]
+      },
+      "evidence": {
+        "data": [
+          {
+            "country": "JM",
+            "indicator": "inflation",
+            "label": "Inflation Rate",
+            "unit": "%",
+            "source": "World Bank — World Development Indicators (FP.CPI.TOTL.ZG)",
+            "sourceOrg": "World Bank WDI",
+            "sourceTier": "comparable",
+            "sourceUrl": "https://api.worldbank.org/v2/country/JAM/indicator/FP.CPI.TOTL.ZG?format=json",
+            "vintage": "2026-07",
+            "confidence": "medium",
+            "points": [
+              {
+                "year": 2020,
+                "value": 5.23,
+                "type": "actual"
+              },
+              {
+                "year": 2021,
+                "value": 5.86,
+                "type": "actual"
+              },
+              {
+                "year": 2022,
+                "value": 10.35,
+                "type": "actual"
+              },
+              {
+                "year": 2023,
+                "value": 6.47,
+                "type": "actual"
+              },
+              {
+                "year": 2024,
+                "value": 5.41,
+                "type": "actual"
+              },
+              {
+                "year": 2025,
+                "value": 4,
+                "type": "actual"
+              }
+            ]
+          }
+        ],
+        "news": [],
+        "misses": [],
+        "caveats": [],
+        "toolsUsed": [
+          "getSeries"
+        ],
+        "newsCoverage": {
+          "earliest": "2026-04-12",
+          "latest": "2026-08-08",
+          "count": 1154
+        },
+        "evidenceMeta": [
+          {
+            "ref": "D:JM:inflation",
+            "vintage": "2026-07",
+            "retrievedAt": "2026-08-17T19:42:17.834Z",
+            "sourceRevisionDate": null,
+            "contentHash": null
+          }
+        ]
+      },
+      "verdict": {
+        "outcome": "PASS",
+        "grounding": {
+          "ran": true,
+          "violations": []
+        },
+        "audit": {
+          "ran": false
+        },
+        "publishedClaims": [
+          "claim-0",
+          "claim-1",
+          "claim-2",
+          "claim-3",
+          "claim-4",
+          "claim-5",
+          "claim-6",
+          "claim-7"
+        ],
+        "reasonCategories": []
+      }
+    },
+    "error": null
+  },
+  {
+    "category": "comparison",
+    "question": "Compare Guyana and Trinidad debt levels.",
+    "capturedAt": "2026-08-17T19:42:29.272Z",
+    "providers": {
+      "interpret": {
+        "provider": "nebius",
+        "model": "nvidia/Nemotron-3_5-Lightning"
+      },
+      "synthesis": {
+        "provider": "minimax",
+        "model": "MiniMax-M3"
+      }
+    },
+    "elapsedMs": 9760,
+    "result": null,
+    "error": {
+      "name": "InterpretParseError",
+      "message": "The model did not return parseable JSON for intent extraction."
+    }
+  },
+  {
+    "category": "news_current_context",
+    "question": "What recent developments are affecting Barbados tourism?",
+    "capturedAt": "2026-08-17T19:42:39.034Z",
+    "providers": {
+      "interpret": {
+        "provider": "nebius",
+        "model": "nvidia/Nemotron-3_5-Lightning"
+      },
+      "synthesis": {
+        "provider": "minimax",
+        "model": "MiniMax-M3"
+      }
+    },
+    "elapsedMs": 46560,
+    "result": null,
+    "error": {
+      "name": "ProviderCallError",
+      "message": "minimax did not respond within 40000ms."
+    }
+  },
+  {
+    "category": "research_question",
+    "question": "Is Guyana showing signs of Dutch disease?",
+    "capturedAt": "2026-08-17T19:43:25.604Z",
+    "providers": {
+      "interpret": {
+        "provider": "nebius",
+        "model": "nvidia/Nemotron-3_5-Lightning"
+      },
+      "synthesis": {
+        "provider": "minimax",
+        "model": "MiniMax-M3"
+      }
+    },
+    "elapsedMs": 19522,
+    "result": {
+      "answer": {
+        "headline": "Guyana's current account swung from deep deficits (peaking at -US$2,823.7 mn in 2019) to sizeable surpluses (US$3,805.9 mn in 2022, US$4,066.8 mn estimated for 2024), while the GY$/US$ rate held essentially flat near 208.5.",
+        "claims": [
+          {
+            "id": "claim-0",
+            "text": "Guyana's current account ran persistent deficits through 2015–2021, bottoming at -2823.7 US$ mn in 2019 (D:GY:current_account).",
+            "refs": [
+              "D:GY:current_account"
+            ],
+            "type": "trend",
+            "figures": [
+              {
+                "ref": "D:GY:current_account",
+                "year": 2019,
+                "value": -2823.7,
+                "unit": "US$ mn",
+                "calculation": null,
+                "asWritten": "-2823.7"
+              }
+            ]
+          },
+          {
+            "id": "claim-1",
+            "text": "The current account flipped into a sizeable surplus from 2022 onward, recording 3805.9 US$ mn in 2022 and an estimated 4066.8 US$ mn in 2024 (D:GY:current_account).",
+            "refs": [
+              "D:GY:current_account"
+            ],
+            "type": "trend",
+            "figures": [
+              {
+                "ref": "D:GY:current_account",
+                "year": 2022,
+                "value": 3805.9,
+                "unit": "US$ mn",
+                "calculation": null,
+                "asWritten": "3805.9"
+              },
+              {
+                "ref": "D:GY:current_account",
+                "year": 2024,
+                "value": 4066.8,
+                "unit": "US$ mn",
+                "calculation": null,
+                "asWritten": "4066.8"
+              }
+            ]
+          },
+          {
+            "id": "claim-2",
+            "text": "Year-on-year, the current account surged 290.77% in 2022 (relative to 2021) and a further 142.09% in 2024 over 2023, while 2017 saw a -1152.54% swing (D:GY:current_account).",
+            "refs": [
+              "D:GY:current_account"
+            ],
+            "type": "figure",
+            "figures": [
+              {
+                "ref": "D:GY:current_account",
+                "year": 2022,
+                "value": 290.77,
+                "unit": "%",
+                "calculation": "yoy_change",
+                "asWritten": "290.77%"
+              },
+              {
+                "ref": "D:GY:current_account",
+                "year": 2024,
+                "value": 142.09,
+                "unit": "%",
+                "calculation": "yoy_change",
+                "asWritten": "142.09%"
+              },
+              {
+                "ref": "D:GY:current_account",
+                "year": 2017,
+                "value": -1152.54,
+                "unit": "%",
+                "calculation": "yoy_change",
+                "asWritten": "-1152.54%"
+              }
+            ]
+          },
+          {
+            "id": "claim-3",
+            "text": "The 2015–2024 period average for the current account balance is 191.95 US$ mn (D:GY:current_account).",
+            "refs": [
+              "D:GY:current_account"
+            ],
+            "type": "figure",
+            "figures": [
+              {
+                "ref": "D:GY:current_account",
+                "year": null,
+                "value": 191.95,
+                "unit": "US$ mn",
+                "calculation": "period_average",
+                "asWritten": "191.95"
+              }
+            ]
+          },
+          {
+            "id": "claim-4",
+            "text": "The GY$/US$ exchange rate moved from 206.5 in 2015 to 208.5 in 2025, with a period average of 207.88 (D:GY:fx_rate_usd).",
+            "refs": [
+              "D:GY:fx_rate_usd"
+            ],
+            "type": "trend",
+            "figures": [
+              {
+                "ref": "D:GY:fx_rate_usd",
+                "year": 2015,
+                "value": 206.5,
+                "unit": "GY$ per US$",
+                "calculation": null,
+                "asWritten": "206.5"
+              },
+              {
+                "ref": "D:GY:fx_rate_usd",
+                "year": 2025,
+                "value": 208.5,
+                "unit": "GY$ per US$",
+                "calculation": null,
+                "asWritten": "208.5"
+              },
+              {
+                "ref": "D:GY:fx_rate_usd",
+                "year": null,
+                "value": 207.88,
+                "unit": "GY$ per US$",
+                "calculation": "period_average",
+                "asWritten": "207.88"
+              }
+            ]
+          },
+          {
+            "id": "claim-5",
+            "text": "Year-on-year FX moves were negligible, with the largest change being 0.59% in 2018 and 0.38% in 2019; rates were flat (0.00%) in every other year reported (D:GY:fx_rate_usd).",
+            "refs": [
+              "D:GY:fx_rate_usd"
+            ],
+            "type": "figure",
+            "figures": [
+              {
+                "ref": "D:GY:fx_rate_usd",
+                "year": 2018,
+                "value": 0.59,
+                "unit": "%",
+                "calculation": "yoy_change",
+                "asWritten": "0.59%"
+              },
+              {
+                "ref": "D:GY:fx_rate_usd",
+                "year": 2019,
+                "value": 0.38,
+                "unit": "%",
+                "calculation": "yoy_change",
+                "asWritten": "0.38%"
+              }
+            ]
+          },
+          {
+            "id": "claim-6",
+            "text": "The two series are reported in different units (US$ mn vs GY$ per US$) and cannot be directly differenced or summed across economies; only growth rates, ratios or shares should be compared.",
+            "refs": [],
+            "type": "framing",
+            "figures": []
+          }
+        ],
+        "gaps": [
+          "No breakdown of current account components (trade balance, services, primary income, secondary income) is provided.",
+          "No information on the drivers behind the 2022 surplus flip (e.g., oil/gold export receipts, remittances).",
+          "No quarterly or intra-year seasonality for either series.",
+          "No forward-looking forecast beyond the 2024 estimate for current account and the 2025 FX rate observation.",
+          "No cross-country comparison data is included despite the caveat about not comparing levels across economies."
+        ]
+      },
+      "evidence": {
+        "data": [
+          {
+            "country": "GY",
+            "indicator": "current_account",
+            "label": "Current Account Balance (BoP)",
+            "unit": "US$ mn",
+            "source": "Bank of Guyana — Annual Report 2024 (Statistical Annexe)",
+            "sourceOrg": "Bank of Guyana",
+            "sourceTier": "primary",
+            "sourceUrl": "https://bankofguyana.org.gy/bog/images/research/Reports/ANNREP2024.pdf",
+            "vintage": "2025",
+            "confidence": "high",
+            "points": [
+              {
+                "year": 2015,
+                "value": -177.4,
+                "type": "actual"
+              },
+              {
+                "year": 2016,
+                "value": 27.6,
+                "type": "actual"
+              },
+              {
+                "year": 2017,
+                "value": -290.5,
+                "type": "actual"
+              },
+              {
+                "year": 2018,
+                "value": -1438.8,
+                "type": "actual"
+              },
+              {
+                "year": 2019,
+                "value": -2823.7,
+                "type": "actual"
+              },
+              {
+                "year": 2020,
+                "value": -935.3,
+                "type": "actual"
+              },
+              {
+                "year": 2021,
+                "value": -1995,
+                "type": "actual"
+              },
+              {
+                "year": 2022,
+                "value": 3805.9,
+                "type": "actual"
+              },
+              {
+                "year": 2023,
+                "value": 1679.9,
+                "type": "actual"
+              },
+              {
+                "year": 2024,
+                "value": 4066.8,
+                "type": "estimate"
+              }
+            ]
+          },
+          {
+            "country": "GY",
+            "indicator": "fx_rate_usd",
+            "label": "USD FX Rate",
+            "unit": "GY$ per US$",
+            "source": "World Bank — World Development Indicators (PA.NUS.FCRF)",
+            "sourceOrg": "World Bank WDI",
+            "sourceTier": "comparable",
+            "sourceUrl": "https://api.worldbank.org/v2/country/GUY/indicator/PA.NUS.FCRF?format=json",
+            "vintage": "2026-07",
+            "confidence": "medium",
+            "points": [
+              {
+                "year": 2015,
+                "value": 206.5,
+                "type": "actual"
+              },
+              {
+                "year": 2016,
+                "value": 206.5,
+                "type": "actual"
+              },
+              {
+                "year": 2017,
+                "value": 206.5,
+                "type": "actual"
+              },
+              {
+                "year": 2018,
+                "value": 207.7167,
+                "type": "actual"
+              },
+              {
+                "year": 2019,
+                "value": 208.5,
+                "type": "actual"
+              },
+              {
+                "year": 2020,
+                "value": 208.5,
+                "type": "actual"
+              },
+              {
+                "year": 2021,
+                "value": 208.5,
+                "type": "actual"
+              },
+              {
+                "year": 2022,
+                "value": 208.5,
+                "type": "actual"
+              },
+              {
+                "year": 2023,
+                "value": 208.5,
+                "type": "actual"
+              },
+              {
+                "year": 2024,
+                "value": 208.5,
+                "type": "actual"
+              },
+              {
+                "year": 2025,
+                "value": 208.5,
+                "type": "actual"
+              }
+            ]
+          }
+        ],
+        "news": [],
+        "misses": [],
+        "caveats": [
+          "Retrieved series use different units (US$ mn, GY$ per US$). These are local-currency levels: do not difference, sum or rank them across economies. Compare growth rates, ratios or shares instead."
+        ],
+        "toolsUsed": [
+          "getSeries"
+        ],
+        "newsCoverage": {
+          "earliest": "2026-04-12",
+          "latest": "2026-08-08",
+          "count": 1154
+        },
+        "evidenceMeta": [
+          {
+            "ref": "D:GY:current_account",
+            "vintage": "2025",
+            "retrievedAt": "2026-08-17T19:43:33.751Z",
+            "sourceRevisionDate": null,
+            "contentHash": null
+          },
+          {
+            "ref": "D:GY:fx_rate_usd",
+            "vintage": "2026-07",
+            "retrievedAt": "2026-08-17T19:43:33.751Z",
+            "sourceRevisionDate": null,
+            "contentHash": null
+          }
+        ]
+      },
+      "verdict": {
+        "outcome": "PASS",
+        "grounding": {
+          "ran": true,
+          "violations": []
+        },
+        "audit": {
+          "ran": false
+        },
+        "publishedClaims": [
+          "claim-0",
+          "claim-1",
+          "claim-2",
+          "claim-3",
+          "claim-4",
+          "claim-5",
+          "claim-6"
+        ],
+        "reasonCategories": []
+      }
+    },
+    "error": null
+  },
+  {
+    "category": "multi_source",
+    "question": "How have higher oil revenues affected Guyana's fiscal position?",
+    "capturedAt": "2026-08-17T19:43:45.138Z",
+    "providers": {
+      "interpret": {
+        "provider": "nebius",
+        "model": "nvidia/Nemotron-3_5-Lightning"
+      },
+      "synthesis": {
+        "provider": "minimax",
+        "model": "MiniMax-M3"
+      }
+    },
+    "elapsedMs": 48207,
+    "result": null,
+    "error": {
+      "name": "SynthesizeParseError",
+      "message": "The model did not return a parseable ResearchAnswer."
+    }
+  },
+  {
+    "category": "ambiguous",
+    "question": "How is Trinidad doing?",
+    "capturedAt": "2026-08-17T19:44:33.346Z",
+    "providers": {
+      "interpret": {
+        "provider": "nebius",
+        "model": "nvidia/Nemotron-3_5-Lightning"
+      },
+      "synthesis": {
+        "provider": "minimax",
+        "model": "MiniMax-M3"
+      }
+    },
+    "elapsedMs": 12267,
+    "result": {
+      "answer": {
+        "headline": "No indicator requested for Trinidad and Tobago (TT) — no evidence available.",
+        "claims": [
+          {
+            "id": "claim-0",
+            "text": "The question did not specify an indicator for TT, and no evidence was retrieved to answer it.",
+            "refs": [],
+            "type": "framing",
+            "figures": []
+          }
+        ],
+        "gaps": [
+          "No hub indicator was identified in the question, so no specific Caribbean macroeconomic indicator for Trinidad and Tobago (TT) could be retrieved or reported.",
+          "No economic data values, series IDs, or time-period observations for TT were supplied in the evidence set."
+        ]
+      },
+      "evidence": {
+        "data": [],
+        "news": [],
+        "misses": [
+          {
+            "kind": "indicator",
+            "detail": "No hub indicator was identified in the question."
+          }
+        ],
+        "caveats": [],
+        "toolsUsed": [],
+        "newsCoverage": {
+          "earliest": "2026-04-12",
+          "latest": "2026-08-08",
+          "count": 1154
+        },
+        "evidenceMeta": []
+      },
+      "verdict": {
+        "outcome": "PASS",
+        "grounding": {
+          "ran": true,
+          "violations": []
+        },
+        "audit": {
+          "ran": false
+        },
+        "publishedClaims": [
+          "claim-0"
+        ],
+        "reasonCategories": []
+      }
+    },
+    "error": null
+  },
+  {
+    "category": "regional",
+    "question": "Which Caribbean economies have the highest debt burdens?",
+    "capturedAt": "2026-08-17T19:44:45.613Z",
+    "providers": {
+      "interpret": {
+        "provider": "nebius",
+        "model": "nvidia/Nemotron-3_5-Lightning"
+      },
+      "synthesis": {
+        "provider": "minimax",
+        "model": "MiniMax-M3"
+      }
+    },
+    "elapsedMs": 25584,
+    "result": {
+      "answer": {
+        "headline": "Cross-country comparison of gross government debt (% of GDP) in the Caribbean is limited to five economies in the retrieved evidence; BB carries the heaviest load, BS the lightest.",
+        "claims": [
+          {
+            "id": "claim-0",
+            "text": "Across 2015–2025, BB carries the heaviest gross government debt burden among the five economies retrieved, with a period average of 112.04% of GDP and a peak of 134.6% in 2017.",
+            "refs": [
+              "D:BB:gross_govt_debt_pct_gdp"
+            ],
+            "type": "figure",
+            "figures": [
+              {
+                "ref": "D:BB:gross_govt_debt_pct_gdp",
+                "year": 2017,
+                "value": 134.6,
+                "unit": "% of GDP",
+                "calculation": null,
+                "asWritten": "134.6"
+              },
+              {
+                "ref": "D:BB:gross_govt_debt_pct_gdp",
+                "year": null,
+                "value": 112.04,
+                "unit": "% of GDP",
+                "calculation": "period_average",
+                "asWritten": "112.04"
+              }
+            ]
+          },
+          {
+            "id": "claim-1",
+            "text": "BS has the lightest debt burden among the retrieved economies, with a period average of 68.24% of GDP and a low of 49.9% in 2015.",
+            "refs": [
+              "D:BS:gross_govt_debt_pct_gdp"
+            ],
+            "type": "figure",
+            "figures": [
+              {
+                "ref": "D:BS:gross_govt_debt_pct_gdp",
+                "year": 2015,
+                "value": 49.9,
+                "unit": "% of GDP",
+                "calculation": null,
+                "asWritten": "49.9"
+              },
+              {
+                "ref": "D:BS:gross_govt_debt_pct_gdp",
+                "year": null,
+                "value": 68.24,
+                "unit": "% of GDP",
+                "calculation": "period_average",
+                "asWritten": "68.24"
+              }
+            ]
+          },
+          {
+            "id": "claim-2",
+            "text": "AG and AW show similar period averages of 83.75% and 82.31% of GDP respectively, both well below BB but above BS and BZ (74.92%).",
+            "refs": [
+              "D:AG:gross_govt_debt_pct_gdp",
+              "D:AW:gross_govt_debt_pct_gdp",
+              "D:BZ:gross_govt_debt_pct_gdp"
+            ],
+            "type": "figure",
+            "figures": [
+              {
+                "ref": "D:AG:gross_govt_debt_pct_gdp",
+                "year": null,
+                "value": 83.75,
+                "unit": "% of GDP",
+                "calculation": "period_average",
+                "asWritten": "83.75"
+              },
+              {
+                "ref": "D:AW:gross_govt_debt_pct_gdp",
+                "year": null,
+                "value": 82.31,
+                "unit": "% of GDP",
+                "calculation": "period_average",
+                "asWritten": "82.31"
+              },
+              {
+                "ref": "D:BZ:gross_govt_debt_pct_gdp",
+                "year": null,
+                "value": 74.92,
+                "unit": "% of GDP",
+                "calculation": "period_average",
+                "asWritten": "74.92"
+              }
+            ]
+          },
+          {
+            "id": "claim-3",
+            "text": "All five retrieved economies show a sharp 2020 COVID-era debt spike. The largest jump was AW at +44.20 pp, followed by BB at +28.00 pp, BZ at +24.40 pp, BS at +11.60 pp, and AG at +18.90 pp.",
+            "refs": [
+              "D:AG:gross_govt_debt_pct_gdp",
+              "D:AW:gross_govt_debt_pct_gdp",
+              "D:BB:gross_govt_debt_pct_gdp",
+              "D:BS:gross_govt_debt_pct_gdp",
+              "D:BZ:gross_govt_debt_pct_gdp"
+            ],
+            "type": "trend",
+            "figures": [
+              {
+                "ref": "D:AG:gross_govt_debt_pct_gdp",
+                "year": 2020,
+                "value": 18.9,
+                "unit": "pp",
+                "calculation": "pp_change",
+                "asWritten": "18.90"
+              },
+              {
+                "ref": "D:AW:gross_govt_debt_pct_gdp",
+                "year": 2020,
+                "value": 44.2,
+                "unit": "pp",
+                "calculation": "pp_change",
+                "asWritten": "44.20"
+              },
+              {
+                "ref": "D:BB:gross_govt_debt_pct_gdp",
+                "year": 2020,
+                "value": 28,
+                "unit": "pp",
+                "calculation": "pp_change",
+                "asWritten": "28.00"
+              },
+              {
+                "ref": "D:BS:gross_govt_debt_pct_gdp",
+                "year": 2020,
+                "value": 11.6,
+                "unit": "pp",
+                "calculation": "pp_change",
+                "asWritten": "11.60"
+              },
+              {
+                "ref": "D:BZ:gross_govt_debt_pct_gdp",
+                "year": 2020,
+                "value": 24.4,
+                "unit": "pp",
+                "calculation": "pp_change",
+                "asWritten": "24.40"
+              }
+            ]
+          },
+          {
+            "id": "claim-4",
+            "text": "BB also shows a notable pre-pandemic jump, rising +7.50 pp in 2017 (to 134.6%), before a large -27.40 pp drop in 2018 (to 107.2%).",
+            "refs": [
+              "D:BB:gross_govt_debt_pct_gdp"
+            ],
+            "type": "trend",
+            "figures": [
+              {
+                "ref": "D:BB:gross_govt_debt_pct_gdp",
+                "year": 2018,
+                "value": 107.2,
+                "unit": "% of GDP",
+                "calculation": null,
+                "asWritten": "107.2"
+              },
+              {
+                "ref": "D:BB:gross_govt_debt_pct_gdp",
+                "year": 2017,
+                "value": 7.5,
+                "unit": "pp",
+                "calculation": "pp_change",
+                "asWritten": "7.50"
+              },
+              {
+                "ref": "D:BB:gross_govt_debt_pct_gdp",
+                "year": 2018,
+                "value": -27.4,
+                "unit": "pp",
+                "calculation": "pp_change",
+                "asWritten": "-27.40"
+              }
+            ]
+          },
+          {
+            "id": "claim-5",
+            "text": "By 2025 projections, AW is forecast to fall to 63.6% (the lowest endpoint among the five), while BB remains highest at 94.2%. AG, BS, and BZ converge near 67.9–73.8%.",
+            "refs": [
+              "D:AG:gross_govt_debt_pct_gdp",
+              "D:AW:gross_govt_debt_pct_gdp",
+              "D:BB:gross_govt_debt_pct_gdp",
+              "D:BS:gross_govt_debt_pct_gdp",
+              "D:BZ:gross_govt_debt_pct_gdp"
+            ],
+            "type": "figure",
+            "figures": [
+              {
+                "ref": "D:AG:gross_govt_debt_pct_gdp",
+                "year": 2025,
+                "value": 69.7,
+                "unit": "% of GDP",
+                "calculation": null,
+                "asWritten": "69.7"
+              },
+              {
+                "ref": "D:AW:gross_govt_debt_pct_gdp",
+                "year": 2025,
+                "value": 63.6,
+                "unit": "% of GDP",
+                "calculation": null,
+                "asWritten": "63.6"
+              },
+              {
+                "ref": "D:BB:gross_govt_debt_pct_gdp",
+                "year": 2025,
+                "value": 94.2,
+                "unit": "% of GDP",
+                "calculation": null,
+                "asWritten": "94.2"
+              },
+              {
+                "ref": "D:BS:gross_govt_debt_pct_gdp",
+                "year": 2025,
+                "value": 73.8,
+                "unit": "% of GDP",
+                "calculation": null,
+                "asWritten": "73.8"
+              },
+              {
+                "ref": "D:BZ:gross_govt_debt_pct_gdp",
+                "year": 2025,
+                "value": 67.9,
+                "unit": "% of GDP",
+                "calculation": null,
+                "asWritten": "67.9"
+              }
+            ]
+          },
+          {
+            "id": "claim-6",
+            "text": "Methodological caveat: IMF WEO series are used here for cross-country comparability. For BB (2024) the Central Bank of Barbados reports a higher gross-debt ratio (e.g. 103% vs IMF 98.9%) on a different GDP base; for BS (2024) the Central Bank of The Bahamas reports 81.5% vs IMF 73.8%.",
+            "refs": [
+              "D:BB:gross_govt_debt_pct_gdp",
+              "D:BS:gross_govt_debt_pct_gdp"
+            ],
+            "type": "context",
+            "figures": [
+              {
+                "ref": "D:BB:gross_govt_debt_pct_gdp",
+                "year": 2024,
+                "value": 98.9,
+                "unit": "% of GDP",
+                "calculation": null,
+                "asWritten": "98.9"
+              },
+              {
+                "ref": "D:BS:gross_govt_debt_pct_gdp",
+                "year": 2024,
+                "value": 73.8,
+                "unit": "% of GDP",
+                "calculation": null,
+                "asWritten": "73.8"
+              }
+            ]
+          }
+        ],
+        "gaps": [
+          "The retrieved evidence contains gross government debt (% of GDP) only for AG, AW, BB, BS, and BZ. No IMF WEO series for this indicator was returned for CW, DM, GD, GY, HT, JM, KN, KY, LC, SR, TC, TT, VC, or VG — though the retrieval hub notes the indicator is carried for TT, GY, JM, SR, GD, LC, KN, DM, VC, and HT, those series were not included in the evidence passed here and therefore cannot be cited.",
+          "No data is available for KY, TC, or VG in the retrieved evidence.",
+          "CW is explicitly flagged as not carried by the hub for this indicator."
+        ]
+      },
+      "evidence": {
+        "data": [
+          {
+            "country": "AG",
+            "indicator": "gross_govt_debt_pct_gdp",
+            "label": "Gross Government Debt as % of GDP",
+            "unit": "%",
+            "source": "IMF World Economic Outlook (DataMapper)",
+            "sourceOrg": "IMF WEO",
+            "sourceTier": "comparable",
+            "sourceUrl": "https://www.imf.org/external/datamapper/GGXWDG_NGDP/ATG",
+            "vintage": "2026-04",
+            "confidence": "medium",
+            "points": [
+              {
+                "year": 2015,
+                "value": 92.1,
+                "type": "actual"
+              },
+              {
+                "year": 2016,
+                "value": 83.1,
+                "type": "actual"
+              },
+              {
+                "year": 2017,
+                "value": 88.2,
+                "type": "actual"
+              },
+              {
+                "year": 2018,
+                "value": 84.3,
+                "type": "actual"
+              },
+              {
+                "year": 2019,
+                "value": 81.6,
+                "type": "actual"
+              },
+              {
+                "year": 2020,
+                "value": 100.5,
+                "type": "actual"
+              },
+              {
+                "year": 2021,
+                "value": 93,
+                "type": "actual"
+              },
+              {
+                "year": 2022,
+                "value": 82.4,
+                "type": "actual"
+              },
+              {
+                "year": 2023,
+                "value": 74.5,
+                "type": "actual"
+              },
+              {
+                "year": 2024,
+                "value": 71.8,
+                "type": "estimate"
+              },
+              {
+                "year": 2025,
+                "value": 69.7,
+                "type": "projection"
+              }
+            ]
+          },
+          {
+            "country": "AW",
+            "indicator": "gross_govt_debt_pct_gdp",
+            "label": "Gross Government Debt as % of GDP",
+            "unit": "%",
+            "source": "IMF World Economic Outlook (DataMapper)",
+            "sourceOrg": "IMF WEO",
+            "sourceTier": "comparable",
+            "sourceUrl": "https://www.imf.org/external/datamapper/GGXWDG_NGDP/ABW",
+            "vintage": "2026-04",
+            "confidence": "medium",
+            "points": [
+              {
+                "year": 2015,
+                "value": 74.2,
+                "type": "actual"
+              },
+              {
+                "year": 2016,
+                "value": 75.4,
+                "type": "actual"
+              },
+              {
+                "year": 2017,
+                "value": 75.8,
+                "type": "actual"
+              },
+              {
+                "year": 2018,
+                "value": 73.3,
+                "type": "actual"
+              },
+              {
+                "year": 2019,
+                "value": 72.1,
+                "type": "actual"
+              },
+              {
+                "year": 2020,
+                "value": 116.3,
+                "type": "actual"
+              },
+              {
+                "year": 2021,
+                "value": 109.7,
+                "type": "actual"
+              },
+              {
+                "year": 2022,
+                "value": 96.1,
+                "type": "actual"
+              },
+              {
+                "year": 2023,
+                "value": 80.3,
+                "type": "actual"
+              },
+              {
+                "year": 2024,
+                "value": 68.6,
+                "type": "estimate"
+              },
+              {
+                "year": 2025,
+                "value": 63.6,
+                "type": "projection"
+              }
+            ]
+          },
+          {
+            "country": "BB",
+            "indicator": "gross_govt_debt_pct_gdp",
+            "label": "Gross Government Debt as % of GDP",
+            "unit": "%",
+            "source": "IMF World Economic Outlook (DataMapper)",
+            "sourceOrg": "IMF WEO",
+            "sourceTier": "comparable",
+            "sourceUrl": "https://www.imf.org/external/datamapper/GGXWDG_NGDP/BRB",
+            "vintage": "2026-04",
+            "confidence": "medium",
+            "note": "IMF WEO series used here for cross-country comparability. The Central Bank of Barbados reports a higher gross-debt ratio (e.g. 103% for 2024 vs IMF 98.9%) on a different GDP base.",
+            "points": [
+              {
+                "year": 2015,
+                "value": 122.5,
+                "type": "actual"
+              },
+              {
+                "year": 2016,
+                "value": 127.1,
+                "type": "actual"
+              },
+              {
+                "year": 2017,
+                "value": 134.6,
+                "type": "actual"
+              },
+              {
+                "year": 2018,
+                "value": 107.2,
+                "type": "actual"
+              },
+              {
+                "year": 2019,
+                "value": 101.6,
+                "type": "actual"
+              },
+              {
+                "year": 2020,
+                "value": 129.6,
+                "type": "actual"
+              },
+              {
+                "year": 2021,
+                "value": 108.6,
+                "type": "actual"
+              },
+              {
+                "year": 2022,
+                "value": 104,
+                "type": "actual"
+              },
+              {
+                "year": 2023,
+                "value": 104.1,
+                "type": "actual"
+              },
+              {
+                "year": 2024,
+                "value": 98.9,
+                "type": "estimate"
+              },
+              {
+                "year": 2025,
+                "value": 94.2,
+                "type": "projection"
+              }
+            ]
+          },
+          {
+            "country": "BS",
+            "indicator": "gross_govt_debt_pct_gdp",
+            "label": "Gross Government Debt as % of GDP",
+            "unit": "%",
+            "source": "IMF World Economic Outlook (DataMapper)",
+            "sourceOrg": "IMF WEO",
+            "sourceTier": "comparable",
+            "sourceUrl": "https://www.imf.org/external/datamapper/GGXWDG_NGDP/BHS",
+            "vintage": "2026-04",
+            "confidence": "medium",
+            "note": "IMF WEO series used here for cross-country comparability. The Central Bank of The Bahamas reports a higher ratio (e.g. 81.5% for 2024 vs IMF 73.8%) on a different GDP base.",
+            "points": [
+              {
+                "year": 2015,
+                "value": 49.9,
+                "type": "actual"
+              },
+              {
+                "year": 2016,
+                "value": 51.1,
+                "type": "actual"
+              },
+              {
+                "year": 2017,
+                "value": 54.6,
+                "type": "actual"
+              },
+              {
+                "year": 2018,
+                "value": 61.5,
+                "type": "actual"
+              },
+              {
+                "year": 2019,
+                "value": 60.3,
+                "type": "actual"
+              },
+              {
+                "year": 2020,
+                "value": 71.9,
+                "type": "actual"
+              },
+              {
+                "year": 2021,
+                "value": 90.7,
+                "type": "actual"
+              },
+              {
+                "year": 2022,
+                "value": 84.7,
+                "type": "actual"
+              },
+              {
+                "year": 2023,
+                "value": 78.3,
+                "type": "actual"
+              },
+              {
+                "year": 2024,
+                "value": 73.8,
+                "type": "estimate"
+              },
+              {
+                "year": 2025,
+                "value": 73.8,
+                "type": "projection"
+              }
+            ]
+          },
+          {
+            "country": "BZ",
+            "indicator": "gross_govt_debt_pct_gdp",
+            "label": "Gross Government Debt as % of GDP",
+            "unit": "%",
+            "source": "IMF World Economic Outlook (DataMapper)",
+            "sourceOrg": "IMF WEO",
+            "sourceTier": "comparable",
+            "sourceUrl": "https://www.imf.org/external/datamapper/GGXWDG_NGDP/BLZ",
+            "vintage": "2026-04",
+            "confidence": "medium",
+            "points": [
+              {
+                "year": 2015,
+                "value": 65.1,
+                "type": "actual"
+              },
+              {
+                "year": 2016,
+                "value": 70.5,
+                "type": "actual"
+              },
+              {
+                "year": 2017,
+                "value": 78.1,
+                "type": "actual"
+              },
+              {
+                "year": 2018,
+                "value": 79,
+                "type": "actual"
+              },
+              {
+                "year": 2019,
+                "value": 78.6,
+                "type": "actual"
+              },
+              {
+                "year": 2020,
+                "value": 103,
+                "type": "actual"
+              },
+              {
+                "year": 2021,
+                "value": 82.2,
+                "type": "actual"
+              },
+              {
+                "year": 2022,
+                "value": 66.8,
+                "type": "actual"
+              },
+              {
+                "year": 2023,
+                "value": 67.5,
+                "type": "actual"
+              },
+              {
+                "year": 2024,
+                "value": 65.4,
+                "type": "estimate"
+              },
+              {
+                "year": 2025,
+                "value": 67.9,
+                "type": "projection"
+              }
+            ]
+          }
+        ],
+        "news": [],
+        "misses": [
+          {
+            "kind": "series",
+            "detail": "The hub has no \"gross_govt_debt_pct_gdp\" series for CW. It carries that indicator for: TT, GY, BB, JM, BS, BZ, SR, GD, LC, AG, KN, DM, VC, HT, AW."
+          }
+        ],
+        "caveats": [],
+        "toolsUsed": [
+          "getSelectedCountrySeries"
+        ],
+        "newsCoverage": {
+          "earliest": "2026-04-12",
+          "latest": "2026-08-08",
+          "count": 1154
+        },
+        "evidenceMeta": [
+          {
+            "ref": "D:AG:gross_govt_debt_pct_gdp",
+            "vintage": "2026-04",
+            "retrievedAt": "2026-08-17T19:44:52.215Z",
+            "sourceRevisionDate": null,
+            "contentHash": null
+          },
+          {
+            "ref": "D:AW:gross_govt_debt_pct_gdp",
+            "vintage": "2026-04",
+            "retrievedAt": "2026-08-17T19:44:52.215Z",
+            "sourceRevisionDate": null,
+            "contentHash": null
+          },
+          {
+            "ref": "D:BB:gross_govt_debt_pct_gdp",
+            "vintage": "2026-04",
+            "retrievedAt": "2026-08-17T19:44:52.215Z",
+            "sourceRevisionDate": null,
+            "contentHash": null
+          },
+          {
+            "ref": "D:BS:gross_govt_debt_pct_gdp",
+            "vintage": "2026-04",
+            "retrievedAt": "2026-08-17T19:44:52.215Z",
+            "sourceRevisionDate": null,
+            "contentHash": null
+          },
+          {
+            "ref": "D:BZ:gross_govt_debt_pct_gdp",
+            "vintage": "2026-04",
+            "retrievedAt": "2026-08-17T19:44:52.215Z",
+            "sourceRevisionDate": null,
+            "contentHash": null
+          }
+        ]
+      },
+      "verdict": {
+        "outcome": "PASS",
+        "grounding": {
+          "ran": true,
+          "violations": []
+        },
+        "audit": {
+          "ran": false
+        },
+        "publishedClaims": [
+          "claim-0",
+          "claim-1",
+          "claim-2",
+          "claim-3",
+          "claim-4",
+          "claim-5",
+          "claim-6"
+        ],
+        "reasonCategories": []
+      }
+    },
+    "error": null
+  },
+  {
+    "category": "out_of_hub_country",
+    "question": "What is Cuba's inflation rate?",
+    "capturedAt": "2026-08-17T19:45:11.198Z",
+    "providers": {
+      "interpret": {
+        "provider": "nebius",
+        "model": "nvidia/Nemotron-3_5-Lightning"
+      },
+      "synthesis": {
+        "provider": "minimax",
+        "model": "MiniMax-M3"
+      }
+    },
+    "elapsedMs": 8611,
+    "result": {
+      "answer": {
+        "headline": "No inflation data was provided in the evidence for the Caribbean region.",
+        "claims": [
+          {
+            "id": "claim-0",
+            "text": "The evidence supplied for the question on regional inflation contains no retrieved inflation figures, country-level data points, or trend indicators for any of the 19 economies in the hub.",
+            "refs": [],
+            "type": "framing",
+            "figures": []
+          },
+          {
+            "id": "claim-1",
+            "text": "The question did not identify a specific economy, leaving the regional scope undefined in terms of which of the 19 hub economies to aggregate or highlight.",
+            "refs": [],
+            "type": "framing",
+            "figures": []
+          }
+        ],
+        "gaps": [
+          "No inflation rate values (headline CPI, core CPI, or year-on-year change) were retrieved for any of the 19 hub economies.",
+          "No time period is specified, so no reference year, quarter, or average can be reported for regional inflation.",
+          "No country is named in the question, so no economy-specific inflation figure can be cited.",
+          "Regional aggregate inflation (e.g., weighted or simple average across the 19 economies) is not available in the supplied evidence.",
+          "Cuba, a Caribbean economy, is excluded from the 19-economy hub and therefore has no inflation data in this evidence base.",
+          "No source documents, datasets, or stable IDs containing inflation observations were provided to support claims."
+        ]
+      },
+      "evidence": {
+        "data": [],
+        "news": [],
+        "misses": [
+          {
+            "kind": "country",
+            "detail": "\"Cuba\" is not one of the 19 economies in the hub."
+          },
+          {
+            "kind": "country",
+            "detail": "No economy in the hub was identified in the question."
+          }
+        ],
+        "caveats": [],
+        "toolsUsed": [
+          "getSeries"
+        ],
+        "newsCoverage": {
+          "earliest": "2026-04-12",
+          "latest": "2026-08-08",
+          "count": 1154
+        },
+        "evidenceMeta": []
+      },
+      "verdict": {
+        "outcome": "PASS",
+        "grounding": {
+          "ran": true,
+          "violations": []
+        },
+        "audit": {
+          "ran": false
+        },
+        "publishedClaims": [
+          "claim-0",
+          "claim-1"
+        ],
+        "reasonCategories": []
+      }
+    },
+    "error": null
+  },
+  {
+    "category": "out_of_range_years",
+    "question": "What was Guyana's GDP in 1990?",
+    "capturedAt": "2026-08-17T19:45:19.809Z",
+    "providers": {
+      "interpret": {
+        "provider": "nebius",
+        "model": "nvidia/Nemotron-3_5-Lightning"
+      },
+      "synthesis": {
+        "provider": "minimax",
+        "model": "MiniMax-M3"
+      }
+    },
+    "elapsedMs": 11527,
+    "result": {
+      "answer": {
+        "headline": "Nominal GDP for Guyana in 1990 is not available in the retrieved evidence",
+        "claims": [
+          {
+            "id": "claim-0",
+            "text": "The requested 1990 figure falls outside the coverage window of the retrieved nominal GDP series for GY.",
+            "refs": [],
+            "type": "framing",
+            "figures": []
+          }
+        ],
+        "gaps": [
+          "nominal_gdp for GY covers 2015–2025 only, so no value can be reported for 1990.",
+          "No alternative nominal GDP source covering 1990 for GY was retrieved."
+        ]
+      },
+      "evidence": {
+        "data": [],
+        "news": [],
+        "misses": [
+          {
+            "kind": "years",
+            "detail": "\"nominal_gdp\" for GY covers 2015–2025, which does not include the requested period."
+          }
+        ],
+        "caveats": [],
+        "toolsUsed": [
+          "getSeries"
+        ],
+        "newsCoverage": {
+          "earliest": "2026-04-12",
+          "latest": "2026-08-08",
+          "count": 1154
+        },
+        "evidenceMeta": []
+      },
+      "verdict": {
+        "outcome": "PASS",
+        "grounding": {
+          "ran": true,
+          "violations": []
+        },
+        "audit": {
+          "ran": false
+        },
+        "publishedClaims": [
+          "claim-0"
+        ],
+        "reasonCategories": []
+      }
+    },
+    "error": null
+  },
+  {
+    "category": "multi_country_comparison",
+    "question": "Compare debt-to-GDP across Jamaica, Barbados, and Guyana.",
+    "capturedAt": "2026-08-17T19:45:31.341Z",
+    "providers": {
+      "interpret": {
+        "provider": "nebius",
+        "model": "nvidia/Nemotron-3_5-Lightning"
+      },
+      "synthesis": {
+        "provider": "minimax",
+        "model": "MiniMax-M3"
+      }
+    },
+    "elapsedMs": 20530,
+    "result": {
+      "answer": {
+        "headline": "Barbados carries the highest gross government debt-to-GDP ratio of the three over 2015–2025, with Guyana consistently well below Jamaica and Barbados; all three posted a sharp 2020 spike, and 2024 estimates sit below 2015 levels in each case.",
+        "claims": [
+          {
+            "id": "claim-0",
+            "text": "The 2015–2025 period average for gross government debt as % of GDP is highest in Barbados (112.04%), followed by Jamaica (86.22%), and is far below in Guyana (34.13%).",
+            "refs": [
+              "D:JM:gross_govt_debt_pct_gdp",
+              "D:BB:gross_govt_debt_pct_gdp",
+              "D:GY:gross_govt_debt_pct_gdp"
+            ],
+            "type": "figure",
+            "figures": [
+              {
+                "ref": "D:JM:gross_govt_debt_pct_gdp",
+                "year": null,
+                "value": 86.22,
+                "unit": "% of GDP",
+                "calculation": "period_average",
+                "asWritten": "86.22"
+              },
+              {
+                "ref": "D:BB:gross_govt_debt_pct_gdp",
+                "year": null,
+                "value": 112.04,
+                "unit": "% of GDP",
+                "calculation": "period_average",
+                "asWritten": "112.04"
+              },
+              {
+                "ref": "D:GY:gross_govt_debt_pct_gdp",
+                "year": null,
+                "value": 34.13,
+                "unit": "% of GDP",
+                "calculation": "period_average",
+                "asWritten": "34.13"
+              }
+            ]
+          },
+          {
+            "id": "claim-1",
+            "text": "Each country registered a sharp 2020 increase in the ratio: Barbados +28.00 pp, Jamaica +13.60 pp, and Guyana +13.20 pp versus 2019.",
+            "refs": [
+              "D:JM:gross_govt_debt_pct_gdp",
+              "D:BB:gross_govt_debt_pct_gdp",
+              "D:GY:gross_govt_debt_pct_gdp"
+            ],
+            "type": "trend",
+            "figures": [
+              {
+                "ref": "D:JM:gross_govt_debt_pct_gdp",
+                "year": 2020,
+                "value": 13.6,
+                "unit": "pp",
+                "calculation": "pp_change",
+                "asWritten": "13.60"
+              },
+              {
+                "ref": "D:BB:gross_govt_debt_pct_gdp",
+                "year": 2020,
+                "value": 28,
+                "unit": "pp",
+                "calculation": "pp_change",
+                "asWritten": "28.00"
+              },
+              {
+                "ref": "D:GY:gross_govt_debt_pct_gdp",
+                "year": 2020,
+                "value": 13.2,
+                "unit": "pp",
+                "calculation": "pp_change",
+                "asWritten": "13.20"
+              }
+            ]
+          },
+          {
+            "id": "claim-2",
+            "text": "By 2024 (IMF estimate), each country's ratio is below its 2015 level: Barbados 98.9 vs 122.5, Jamaica 62.5 vs 115.9, and Guyana 24.3 vs 42.2.",
+            "refs": [
+              "D:JM:gross_govt_debt_pct_gdp",
+              "D:BB:gross_govt_debt_pct_gdp",
+              "D:GY:gross_govt_debt_pct_gdp"
+            ],
+            "type": "figure",
+            "figures": [
+              {
+                "ref": "D:JM:gross_govt_debt_pct_gdp",
+                "year": 2015,
+                "value": 115.9,
+                "unit": "% of GDP",
+                "calculation": null,
+                "asWritten": "115.9"
+              },
+              {
+                "ref": "D:JM:gross_govt_debt_pct_gdp",
+                "year": 2024,
+                "value": 62.5,
+                "unit": "% of GDP",
+                "calculation": null,
+                "asWritten": "62.5"
+              },
+              {
+                "ref": "D:BB:gross_govt_debt_pct_gdp",
+                "year": 2015,
+                "value": 122.5,
+                "unit": "% of GDP",
+                "calculation": null,
+                "asWritten": "122.5"
+              },
+              {
+                "ref": "D:BB:gross_govt_debt_pct_gdp",
+                "year": 2024,
+                "value": 98.9,
+                "unit": "% of GDP",
+                "calculation": null,
+                "asWritten": "98.9"
+              },
+              {
+                "ref": "D:GY:gross_govt_debt_pct_gdp",
+                "year": 2015,
+                "value": 42.2,
+                "unit": "% of GDP",
+                "calculation": null,
+                "asWritten": "42.2"
+              },
+              {
+                "ref": "D:GY:gross_govt_debt_pct_gdp",
+                "year": 2024,
+                "value": 24.3,
+                "unit": "% of GDP",
+                "calculation": null,
+                "asWritten": "24.3"
+              }
+            ]
+          },
+          {
+            "id": "claim-3",
+            "text": "Barbados's ratio peaked at 134.6% in 2017 before falling -27.40 pp in 2018 to 107.2% in 2018.",
+            "refs": [
+              "D:BB:gross_govt_debt_pct_gdp"
+            ],
+            "type": "trend",
+            "figures": [
+              {
+                "ref": "D:BB:gross_govt_debt_pct_gdp",
+                "year": 2017,
+                "value": 134.6,
+                "unit": "% of GDP",
+                "calculation": null,
+                "asWritten": "134.6"
+              },
+              {
+                "ref": "D:BB:gross_govt_debt_pct_gdp",
+                "year": 2018,
+                "value": -27.4,
+                "unit": "pp",
+                "calculation": "pp_change",
+                "asWritten": "-27.40"
+              },
+              {
+                "ref": "D:BB:gross_govt_debt_pct_gdp",
+                "year": 2018,
+                "value": 107.2,
+                "unit": "% of GDP",
+                "calculation": null,
+                "asWritten": "107.2"
+              }
+            ]
+          },
+          {
+            "id": "claim-4",
+            "text": "For 2025, IMF projections diverge: Guyana rises +4.30 pp to 28.6% and Jamaica rises +5.20 pp to 67.7%, while Barbados continues to fall -4.70 pp to 94.2%.",
+            "refs": [
+              "D:JM:gross_govt_debt_pct_gdp",
+              "D:BB:gross_govt_debt_pct_gdp",
+              "D:GY:gross_govt_debt_pct_gdp"
+            ],
+            "type": "trend",
+            "figures": [
+              {
+                "ref": "D:JM:gross_govt_debt_pct_gdp",
+                "year": 2025,
+                "value": 5.2,
+                "unit": "pp",
+                "calculation": "pp_change",
+                "asWritten": "5.20"
+              },
+              {
+                "ref": "D:JM:gross_govt_debt_pct_gdp",
+                "year": 2025,
+                "value": 67.7,
+                "unit": "% of GDP",
+                "calculation": null,
+                "asWritten": "67.7"
+              },
+              {
+                "ref": "D:BB:gross_govt_debt_pct_gdp",
+                "year": 2025,
+                "value": -4.7,
+                "unit": "pp",
+                "calculation": "pp_change",
+                "asWritten": "-4.70"
+              },
+              {
+                "ref": "D:BB:gross_govt_debt_pct_gdp",
+                "year": 2025,
+                "value": 94.2,
+                "unit": "% of GDP",
+                "calculation": null,
+                "asWritten": "94.2"
+              },
+              {
+                "ref": "D:GY:gross_govt_debt_pct_gdp",
+                "year": 2025,
+                "value": 4.3,
+                "unit": "pp",
+                "calculation": "pp_change",
+                "asWritten": "4.30"
+              },
+              {
+                "ref": "D:GY:gross_govt_debt_pct_gdp",
+                "year": 2025,
+                "value": 28.6,
+                "unit": "% of GDP",
+                "calculation": null,
+                "asWritten": "28.6"
+              }
+            ]
+          },
+          {
+            "id": "claim-5",
+            "text": "For Barbados, the IMF WEO series is used; the Central Bank of Barbados reports a higher gross-debt ratio (e.g. 103% for 2024 vs IMF 98.9%) on a different GDP base.",
+            "refs": [
+              "D:BB:gross_govt_debt_pct_gdp"
+            ],
+            "type": "context",
+            "figures": [
+              {
+                "ref": "D:BB:gross_govt_debt_pct_gdp",
+                "year": 2024,
+                "value": 98.9,
+                "unit": "% of GDP",
+                "calculation": null,
+                "asWritten": "98.9"
+              }
+            ]
+          },
+          {
+            "id": "claim-6",
+            "text": "Guyana's lowest level in the series is 24.3% in 2024, well under half of Jamaica's 24-year estimate of 62.5% and a fraction of Barbados's 98.9%.",
+            "refs": [],
+            "type": "framing",
+            "figures": []
+          }
+        ],
+        "gaps": [
+          "No pre-2015 historical data is provided, so the long-run path into the 2015 baseline is not covered.",
+          "No comparison is made to other Caribbean peers (e.g. T&T, Bahamas) — only JM, BB, GY are in the supplied evidence.",
+          "No decomposition of drivers (primary balance, interest costs, nominal GDP growth, exchange-rate effects) is available in the evidence.",
+          "The Barbados figure is on the IMF WEO basis; the Central Bank of Barbados reports a higher gross-debt ratio (e.g. 103% for 2024) on a different GDP base, which is noted but not detailed in the evidence.",
+          "2025 values are IMF projections and may be revised; uncertainty bands are not provided."
+        ]
+      },
+      "evidence": {
+        "data": [
+          {
+            "country": "JM",
+            "indicator": "gross_govt_debt_pct_gdp",
+            "label": "Gross Government Debt as % of GDP",
+            "unit": "%",
+            "source": "IMF World Economic Outlook (DataMapper)",
+            "sourceOrg": "IMF WEO",
+            "sourceTier": "comparable",
+            "sourceUrl": "https://www.imf.org/external/datamapper/GGXWDG_NGDP/JAM",
+            "vintage": "2026-04",
+            "confidence": "medium",
+            "points": [
+              {
+                "year": 2015,
+                "value": 115.9,
+                "type": "actual"
+              },
+              {
+                "year": 2016,
+                "value": 106.9,
+                "type": "actual"
+              },
+              {
+                "year": 2017,
+                "value": 95.1,
+                "type": "actual"
+              },
+              {
+                "year": 2018,
+                "value": 88.3,
+                "type": "actual"
+              },
+              {
+                "year": 2019,
+                "value": 87.7,
+                "type": "actual"
+              },
+              {
+                "year": 2020,
+                "value": 101.3,
+                "type": "actual"
+              },
+              {
+                "year": 2021,
+                "value": 86.3,
+                "type": "actual"
+              },
+              {
+                "year": 2022,
+                "value": 70.2,
+                "type": "actual"
+              },
+              {
+                "year": 2023,
+                "value": 66.5,
+                "type": "actual"
+              },
+              {
+                "year": 2024,
+                "value": 62.5,
+                "type": "estimate"
+              },
+              {
+                "year": 2025,
+                "value": 67.7,
+                "type": "projection"
+              }
+            ]
+          },
+          {
+            "country": "BB",
+            "indicator": "gross_govt_debt_pct_gdp",
+            "label": "Gross Government Debt as % of GDP",
+            "unit": "%",
+            "source": "IMF World Economic Outlook (DataMapper)",
+            "sourceOrg": "IMF WEO",
+            "sourceTier": "comparable",
+            "sourceUrl": "https://www.imf.org/external/datamapper/GGXWDG_NGDP/BRB",
+            "vintage": "2026-04",
+            "confidence": "medium",
+            "note": "IMF WEO series used here for cross-country comparability. The Central Bank of Barbados reports a higher gross-debt ratio (e.g. 103% for 2024 vs IMF 98.9%) on a different GDP base.",
+            "points": [
+              {
+                "year": 2015,
+                "value": 122.5,
+                "type": "actual"
+              },
+              {
+                "year": 2016,
+                "value": 127.1,
+                "type": "actual"
+              },
+              {
+                "year": 2017,
+                "value": 134.6,
+                "type": "actual"
+              },
+              {
+                "year": 2018,
+                "value": 107.2,
+                "type": "actual"
+              },
+              {
+                "year": 2019,
+                "value": 101.6,
+                "type": "actual"
+              },
+              {
+                "year": 2020,
+                "value": 129.6,
+                "type": "actual"
+              },
+              {
+                "year": 2021,
+                "value": 108.6,
+                "type": "actual"
+              },
+              {
+                "year": 2022,
+                "value": 104,
+                "type": "actual"
+              },
+              {
+                "year": 2023,
+                "value": 104.1,
+                "type": "actual"
+              },
+              {
+                "year": 2024,
+                "value": 98.9,
+                "type": "estimate"
+              },
+              {
+                "year": 2025,
+                "value": 94.2,
+                "type": "projection"
+              }
+            ]
+          },
+          {
+            "country": "GY",
+            "indicator": "gross_govt_debt_pct_gdp",
+            "label": "Gross Government Debt as % of GDP",
+            "unit": "%",
+            "source": "IMF World Economic Outlook (DataMapper)",
+            "sourceOrg": "IMF WEO",
+            "sourceTier": "comparable",
+            "sourceUrl": "https://www.imf.org/external/datamapper/GGXWDG_NGDP/GUY",
+            "vintage": "2026-04",
+            "confidence": "medium",
+            "points": [
+              {
+                "year": 2015,
+                "value": 42.2,
+                "type": "actual"
+              },
+              {
+                "year": 2016,
+                "value": 35.7,
+                "type": "actual"
+              },
+              {
+                "year": 2017,
+                "value": 35.2,
+                "type": "actual"
+              },
+              {
+                "year": 2018,
+                "value": 37.4,
+                "type": "actual"
+              },
+              {
+                "year": 2019,
+                "value": 34.2,
+                "type": "actual"
+              },
+              {
+                "year": 2020,
+                "value": 47.4,
+                "type": "actual"
+              },
+              {
+                "year": 2021,
+                "value": 38.9,
+                "type": "actual"
+              },
+              {
+                "year": 2022,
+                "value": 24.8,
+                "type": "actual"
+              },
+              {
+                "year": 2023,
+                "value": 26.7,
+                "type": "actual"
+              },
+              {
+                "year": 2024,
+                "value": 24.3,
+                "type": "estimate"
+              },
+              {
+                "year": 2025,
+                "value": 28.6,
+                "type": "projection"
+              }
+            ]
+          }
+        ],
+        "news": [],
+        "misses": [],
+        "caveats": [],
+        "toolsUsed": [
+          "getSelectedCountrySeries"
+        ],
+        "newsCoverage": {
+          "earliest": "2026-04-12",
+          "latest": "2026-08-08",
+          "count": 1154
+        },
+        "evidenceMeta": [
+          {
+            "ref": "D:JM:gross_govt_debt_pct_gdp",
+            "vintage": "2026-04",
+            "retrievedAt": "2026-08-17T19:45:34.805Z",
+            "sourceRevisionDate": null,
+            "contentHash": null
+          },
+          {
+            "ref": "D:BB:gross_govt_debt_pct_gdp",
+            "vintage": "2026-04",
+            "retrievedAt": "2026-08-17T19:45:34.805Z",
+            "sourceRevisionDate": null,
+            "contentHash": null
+          },
+          {
+            "ref": "D:GY:gross_govt_debt_pct_gdp",
+            "vintage": "2026-04",
+            "retrievedAt": "2026-08-17T19:45:34.805Z",
+            "sourceRevisionDate": null,
+            "contentHash": null
+          }
+        ]
+      },
+      "verdict": {
+        "outcome": "PASS",
+        "grounding": {
+          "ran": true,
+          "violations": []
+        },
+        "audit": {
+          "ran": false
+        },
+        "publishedClaims": [
+          "claim-0",
+          "claim-1",
+          "claim-2",
+          "claim-3",
+          "claim-4",
+          "claim-5",
+          "claim-6"
+        ],
+        "reasonCategories": []
+      }
+    },
+    "error": null
+  },
+  {
+    "category": "vague_short",
+    "question": "Guyana economy?",
+    "capturedAt": "2026-08-17T19:45:51.875Z",
+    "providers": {
+      "interpret": {
+        "provider": "nebius",
+        "model": "nvidia/Nemotron-3_5-Lightning"
+      },
+      "synthesis": {
+        "provider": "minimax",
+        "model": "MiniMax-M3"
+      }
+    },
+    "elapsedMs": 15414,
+    "result": {
+      "answer": {
+        "headline": "Hub indicator not identified for GY",
+        "claims": [
+          {
+            "id": "claim-0",
+            "text": "The evidence does not identify a hub indicator for GY.",
+            "refs": [],
+            "type": "framing",
+            "figures": []
+          }
+        ],
+        "gaps": [
+          "No hub indicator was identified in the question."
+        ]
+      },
+      "evidence": {
+        "data": [],
+        "news": [],
+        "misses": [
+          {
+            "kind": "indicator",
+            "detail": "No hub indicator was identified in the question."
+          }
+        ],
+        "caveats": [],
+        "toolsUsed": [],
+        "newsCoverage": {
+          "earliest": "2026-04-12",
+          "latest": "2026-08-08",
+          "count": 1154
+        },
+        "evidenceMeta": []
+      },
+      "verdict": {
+        "outcome": "PASS",
+        "grounding": {
+          "ran": true,
+          "violations": []
+        },
+        "audit": {
+          "ran": false
+        },
+        "publishedClaims": [
+          "claim-0"
+        ],
+        "reasonCategories": []
+      }
+    },
+    "error": null
+  }
+]
