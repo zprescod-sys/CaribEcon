@@ -68,17 +68,21 @@ Accepted mitigations instead:
 
 ## 3. Deploying the MCP server to the container
 
-The repo is public, so this needs no SSH key and no git identity:
+The repo is public, so this needs no SSH key and no git identity — **but the branch carrying
+`research-service/` must be pushed first, or the clone below finds nothing.** It is not on
+`main`, so the branch must be named explicitly:
 
 ```bash
 mkdir -p ~/workspace && cd ~/workspace
-git clone --depth 1 https://github.com/zprescod-sys/CaribEcon.git
+git clone --depth 1 -b feature/research-service https://github.com/zprescod-sys/CaribEcon.git
 cd CaribEcon/research-service
 npm install --omit=dev
 npm test          # 10 tests — proves the tool works before the gateway ever calls it
 ```
 
 To update later: `git pull && npm install --omit=dev`, then restart the gateway.
+
+Once this work merges to `main`, drop the `-b` flag and re-clone.
 
 ---
 
