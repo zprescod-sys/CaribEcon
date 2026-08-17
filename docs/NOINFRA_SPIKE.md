@@ -212,6 +212,39 @@ are guesses until measured.
 
 ---
 
+## 6b. Live-run finding: two tool registries, and a gateway that cannot restart
+
+The first live run failed with `gateway_error` / `status: 404` on a correct request. Diagnosis,
+by elimination against the live gateway:
+
+| Probe | Result | Conclusion |
+| --- | --- | --- |
+| `POST /tools/invoke`, no auth | 401 | Path is correct |
+| `POST /nonexistent-path` | 404 | That is what a wrong path looks like |
+| `session_status`, no `agentId` | ✅ real result | Token valid, gateway healthy |
+| `session_status`, `agentId: caribecon-research` | `not_found` | Nothing reachable via that agent |
+| 8 candidate tool-name spellings | all `not_found` | Not a naming problem |
+| **Same tool from OpenClaw's own chat session** | ✅ **returns the exact stub JSON** | **The MCP server, its config and its name are all correct** |
+
+**The finding: MCP tools registered by hot-reload reach agent sessions but never enter the HTTP
+`/tools/invoke` tool registry, which is built at gateway startup.** "Visible in my tool list"
+and `not_found` over HTTP are both true at once — they are two different registries.
+
+**And the gateway cannot be restarted from inside the container:**
+
+- `openclaw gateway restart` sends `SIGUSR1`, which is an in-process config *reload*. Uptime
+  never resets (observed: 22h+ across several attempted restarts).
+- No systemd. The gateway is PID 7 under `tini` as PID 1; killing it exits the container rather
+  than respawning the process.
+- So a full restart must be triggered from **outside** the container, through NoInfra's own
+  controls.
+
+This is the operationally significant result of the spike, and it outlives this one bug: **config
+changes to the research runtime cannot be deployed from inside it.** Any change to `mcp.servers`
+that must reach the HTTP surface requires an external container restart. That is a real cost to
+weigh against NoInfra remaining the *primary* runtime, and an argument the §5.4 Vercel path
+deserves to be re-read in light of.
+
 ## 7. Open items for the live run
 
 - [x] **Tool name confirmed: `caribecon-research__caribecon_research`** — matches the default in
