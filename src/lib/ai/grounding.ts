@@ -6,14 +6,13 @@
  * drop anything itself — verify() (Phase 4) derives a VerificationVerdict from this result plus
  * the optional model audit, and that derivation is what actually narrows or withholds a claim.
  *
- * PHASE 2 SCOPE, STATED EXPLICITLY: §2.6 specifies eleven checks (see the GroundingCheck union
- * in contracts.ts). Checks 1 (ref existence), 2 (URL allowlist), 3 (slug/country tokens),
- * 4 (figure reconciliation), 5 (wrong calculation), 6 (unstated number), 7 (news body claim),
- * 9 (cross-currency comparison), and 10 (coverage honesty) are implemented here. Checks 8 (quote
- * check) and 11 (web figure reconciliation) are deliberately deferred — both are `W:` web-evidence
- * rules, and nothing populates web evidence until Phase 3's Tavily integration; there is nothing
- * for them to check yet. This module is NOT YET wired into research()
- * — research.ts still returns its stubVerdict until enough checks exist to be a meaningful gate.
+ * PHASE 2/3 SCOPE, STATED EXPLICITLY: §2.6 specifies eleven checks (see the GroundingCheck union
+ * in contracts.ts). All eleven are implemented here: 1 (ref existence), 2 (URL allowlist),
+ * 3 (slug/country tokens), 4 (figure reconciliation), 5 (wrong calculation), 6 (unstated number),
+ * 7 (news body claim), 8 (quote check), 9 (cross-currency comparison), 10 (coverage honesty), and
+ * 11 (web figure reconciliation). Checks 8 and 11 are the two `W:` web-evidence rules — they were
+ * initially deferred pending Phase 3's Tavily integration populating `pkg.web`, and are now
+ * implemented alongside it (§2f).
  *
  * What this gate genuinely cannot check, even once all eleven checks exist — put this list
  * here, not just in the architecture doc, because a safety gate's worst failure mode is a
@@ -30,7 +29,7 @@ import { getCountries, getIndicatorMeta } from '../indicators.js';
 import { evidenceId, type DataEvidence, type EvidencePackage } from '../askTools.js';
 import { yoy_change, pp_change, period_average } from '../calculations.js';
 import { calculationForUnit } from '../excelOutputs.js';
-import type { EvidenceRef, GroundingResult, GroundingViolation, ResearchAnswer } from './contracts.js';
+import type { EvidenceRef, GroundingResult, GroundingViolation, ResearchAnswer, WebEvidence } from './contracts.js';
 
 /* The set of refs this package can actually back a claim with. Read off evidenceMeta rather
  * than re-deriving `D:${evidenceId(...)}` / `N:${id}` from pkg.data/pkg.news separately —
@@ -439,6 +438,54 @@ function checkNewsBodyClaim(answer: ResearchAnswer, pkg: EvidencePackage): Groun
   return violations;
 }
 
+/* Check 8 (§2.6): "a quoted span on a W: ref must be a substring of that item's extract.text.
+ * Exact, cheap, and the only place quoting is legal." Reuses QUOTE_PATTERN (built for check 7)
+ * rather than a second quote-matching regex — one definition of "what counts as a quoted span"
+ * for the whole module. A claim is in scope here whenever it cites at least one W: ref (refs[] or
+ * figures[].ref, unioned, same pattern every other check here uses) — unlike check 7's
+ * "news-only" gate, a W:-citing claim can ALSO cite D:/N: refs and is still checked, because
+ * quoting is legal against a web extract regardless of what else the claim cites. A claim with no
+ * quoted spans has nothing to verify and is skipped entirely; a ref that doesn't resolve to a
+ * WebEvidence at all is check 1's job, so this only ever compares against refs that DO resolve.
+ *
+ * Deliberately NOT gated on citedWebRefs.length > 0. A claim that cites no W: ref at all (either
+ * empty refs entirely — legal only for type 'framing' — or refs that are all D:/N:) has nothing
+ * that could legally back a quote, so citedExtracts is simply empty and every quoted span in it
+ * falls straight through to the violation below, exactly as it should: "the only place quoting is
+ * legal" is a W: ref with a non-null extract, never the absence of any ref. An earlier version
+ * skipped the whole claim here whenever citedWebRefs was empty, which let a zero-ref 'framing'
+ * claim carry a fabricated attributed quote past this check entirely. */
+function byWebRef(pkg: EvidencePackage): Map<string, WebEvidence> {
+  return new Map((pkg.web ?? []).map(w => [`W:${w.id}`, w]));
+}
+
+function checkQuoteCheck(answer: ResearchAnswer, pkg: EvidencePackage): GroundingViolation[] {
+  const byRef = byWebRef(pkg);
+  const violations: GroundingViolation[] = [];
+
+  for (const claim of answer.claims) {
+    const cited = new Set<EvidenceRef>([...claim.refs, ...claim.figures.map(f => f.ref)]);
+    const citedWebRefs = [...cited].filter((ref): ref is `W:${string}` => ref.startsWith('W:'));
+
+    const citedExtracts = citedWebRefs
+      .map(ref => byRef.get(ref)?.extract)
+      .filter((extract): extract is NonNullable<WebEvidence['extract']> => extract != null);
+
+    for (const match of claim.text.matchAll(QUOTE_PATTERN)) {
+      const quoted = match[1];
+      const foundVerbatim = citedExtracts.some(extract => extract.text.includes(quoted));
+      if (!foundVerbatim) {
+        violations.push({
+          claimId: claim.id,
+          check: 'quote_check',
+          detail: `Claim "${claim.id}" quotes "${quoted}", which is not a verbatim substring of any cited web evidence extract.`,
+        });
+      }
+    }
+  }
+  return violations;
+}
+
 /* Check 9 (§2.6): "Cross-currency comparison — figures spanning two refs with different non-%
  * units plus a comparative token (more than|larger|vs|exceeds|times|double) → flag." A unit
  * counting as "percent-type" — and therefore always mutually comparable regardless of how it's
@@ -501,6 +548,55 @@ function checkCoverageHonesty(answer: ResearchAnswer, pkg: EvidencePackage): Gro
   return violations;
 }
 
+/* Check 11 (§2.6): "A StatedFigure whose ref is W:* is publishable only if: that WebEvidence's
+ * extract is non-null (a search snippet alone is never sufficient), and the numeric value in
+ * asWritten can be deterministically located in extract.text — the same written-string-to-
+ * actual-number matching figureMatches applies, run against the extracted text rather than a hub
+ * series." A ref that doesn't resolve to a WebEvidence at all is check 1's territory — skipped
+ * silently here, same convention checkFigureReconciliation/checkCoverageHonesty already use, to
+ * avoid double-reporting the same missing-ref problem under two different checks. Reuses
+ * NUMBER_PATTERN (built for check 6) to enumerate every number-like substring in the extract text,
+ * then tests each candidate against figure.value via figureMatches — a match ANYWHERE in the
+ * extract is sufficient; the figure need not be the first or only number found. Matching is
+ * sign-insensitive (Math.abs on both sides), the same precedent check 6 already establishes for
+ * this exact class of prose: real web/news text writes a decline as "fell by 3.88 percentage
+ * points" with no literal minus sign, while the matching StatedFigure.value is -3.88. Signed
+ * comparison would falsely flag correctly-grounded prose every time a decrease is phrased in
+ * words rather than a sign. */
+function checkWebFigureReconciliation(answer: ResearchAnswer, pkg: EvidencePackage): GroundingViolation[] {
+  const byRef = byWebRef(pkg);
+  const violations: GroundingViolation[] = [];
+
+  for (const claim of answer.claims) {
+    for (const figure of claim.figures) {
+      if (!figure.ref.startsWith('W:')) continue;
+      const web = byRef.get(figure.ref);
+      if (!web) continue;
+
+      if (!web.extract) {
+        violations.push({
+          claimId: claim.id,
+          check: 'web_figure_reconciliation',
+          detail: `Claim "${claim.id}" states ${figure.asWritten} for ${figure.ref}, but that web evidence has no extract — a search snippet alone is not sufficient grounding.`,
+        });
+        continue;
+      }
+
+      const foundInText = [...web.extract.text.matchAll(NUMBER_PATTERN)].some(match =>
+        figureMatches(Math.abs(figure.value), Math.abs(Number(match[0].replace(/,/g, ''))), figure.asWritten),
+      );
+      if (!foundInText) {
+        violations.push({
+          claimId: claim.id,
+          check: 'web_figure_reconciliation',
+          detail: `Claim "${claim.id}" states ${figure.asWritten} for ${figure.ref}, but that value could not be located in the retrieved extract text.`,
+        });
+      }
+    }
+  }
+  return violations;
+}
+
 export function runGroundingGate(answer: ResearchAnswer, evidence: EvidencePackage): GroundingResult {
   const violations: GroundingViolation[] = [
     ...checkRefExistence(answer, knownRefs(evidence)),
@@ -510,8 +606,10 @@ export function runGroundingGate(answer: ResearchAnswer, evidence: EvidencePacka
     ...checkWrongCalculation(answer, evidence),
     ...checkUnstatedNumber(answer, evidence),
     ...checkNewsBodyClaim(answer, evidence),
+    ...checkQuoteCheck(answer, evidence),
     ...checkCrossCurrencyComparison(answer),
     ...checkCoverageHonesty(answer, evidence),
+    ...checkWebFigureReconciliation(answer, evidence),
   ];
   return { ran: true, violations };
 }

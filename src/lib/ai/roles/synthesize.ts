@@ -29,7 +29,7 @@ import { parseModelJson } from './parseModelJson.js';
 import { evidenceId, type EvidencePackage, type DataEvidence } from '../../askTools.js';
 import { calculationForUnit } from '../../excelOutputs.js';
 import { yoy_change, pp_change, period_average } from '../../calculations.js';
-import type { ResearchIntent, ResearchAnswer, Claim, StatedFigure, EvidenceRef, CalculationName } from '../contracts.js';
+import type { ResearchIntent, ResearchAnswer, Claim, StatedFigure, EvidenceRef, CalculationName, WebEvidence } from '../contracts.js';
 
 export class SynthesizeNotConfiguredError extends Error {}
 
@@ -95,6 +95,26 @@ function describeSeries(d: DataEvidence): string {
   return lines.join('\n');
 }
 
+// Web evidence's "cheap, pre-digested read" (docs plan §2h): prefer the newsExtract-role
+// summary when the digest path ran and succeeded; fall back to a capped slice of the raw
+// extract text when it didn't (extract present, summary null); fall back to the search snippet
+// when no extract ran at all (search_web with no matching extract_web step). A W: item with no
+// extract still gets a line here — it's worth showing for context/framing claims — but the
+// Rules section below (and grounding.ts checks 8/11) forbid quoting or citing a figure against
+// it, mirroring the news-only rule check 7 already applies to N: refs.
+const WEB_BODY_PREVIEW_CHARS = 500;
+
+function describeWeb(w: WebEvidence): string {
+  const body = w.extract
+    ? (w.extract.summary ?? w.extract.text.slice(0, WEB_BODY_PREVIEW_CHARS))
+    : w.snippet;
+  const noExtractNote = w.extract ? '' : ' [no extract retrieved — snippet only]';
+  return [
+    `${w.id} — "${w.title}" (${w.domain}, ${w.url})${noExtractNote}`,
+    `  ${body}`,
+  ].join('\n');
+}
+
 function buildSystemPrompt(intent: ResearchIntent, pkg: EvidencePackage): string {
   const sections: string[] = [
     'You write a grounded research answer about Caribbean macroeconomics from the evidence ' +
@@ -109,6 +129,7 @@ function buildSystemPrompt(intent: ResearchIntent, pkg: EvidencePackage): string
     '',
     ...pkg.data.map(describeSeries),
     ...pkg.news.map(n => `N:${n.id} — "${n.title}" (${n.source}, ${n.date}) [${n.country}]`),
+    ...(pkg.web ?? []).map(describeWeb),
   ];
 
   if (pkg.caveats.length) {
@@ -159,6 +180,9 @@ function buildSystemPrompt(intent: ResearchIntent, pkg: EvidencePackage): string
     '- Only cite a ref shown above. Never invent one.',
     '- "refs" may be empty ONLY when type is "framing" (general commentary, no specific evidence',
     '  tie). Every other claim needs at least one ref.',
+    '- A W: ref may be quoted or cited with a figure only when that evidence item has a non-null',
+    '  extract — a W: item marked "[no extract retrieved — snippet only]" above may back only a',
+    '  "context" or "framing" claim, the same restriction news evidence (N:) is already held to.',
     '- Respect every caveat above exactly as written — it is a constraint, not a suggestion.',
     '- Be concise and specific — a research note, not an essay.',
   );

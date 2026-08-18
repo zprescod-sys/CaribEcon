@@ -823,25 +823,35 @@ the synthesis provider whenever Impala is absent.
 
 ### 5.1 Two layers, one service
 
-CaribEcon splits across two runtimes with a clean boundary.
+**Current state (see the dated note at the end of §6): the client-facing Vercel project IS the
+research runtime today.** `api/ask.ts` calls `src/lib/ai/research.ts` fully in-process — no proxy,
+no signed channel, no second deployment involved. The two-runtime design below is the documented
+target shape for when a second, independently-keyed runtime is worth operating; NoInfra/OpenClaw MCP
+(`research-service/`, `docs/NOINFRA_SPIKE.md`) is a **documented, available alternative that is not
+currently reliable** — a live re-test (2026-08-18) reconfirmed the gateway 404 first found in the
+Phase 0b spike, with no self-recovery in the interim. `docs/BUILD_PLAN.md`'s 2026-08-17 decision
+record is the source of truth on why; this section states the resulting shape, not the analysis.
+
+CaribEcon splits across two runtimes with a clean boundary, in the target design:
 
 **Client-facing Vercel project.** UI and static assets, the Excel add-in bundle, auth and request
 validation, the deterministic product APIs, and a **thin research proxy**. It is explicitly *not*
 the Research Agent, holds **no provider or Tavily keys**, and forwards research requests over the
-signed channel in §5.7.
+signed channel in §5.7. *(Today, this project also runs `research()` directly, in-process — see
+above; the proxy/signed-channel split described below is not yet built.)*
 
-**NoInfra Spark VPS — research runtime (primary).** OpenClaw runs as the agent harness and
-operational shell. The CaribEcon Research Service runs inside it as one unit, executing the nine
-steps of §2.3, holding its own copies of every provider and Tavily key.
+**NoInfra Spark VPS — research runtime (documented alternative, not currently live).** OpenClaw runs
+as the agent harness and operational shell. The CaribEcon Research Service is designed to run inside
+it as one unit, executing the nine steps of §2.3, holding its own copies of every provider and
+Tavily key — pending the gateway reliability fix noted above.
 
-**"Research runtime" is a role, not a place — see §5.4.** The proven Vercel fallback (§5.4) is a
-**separate Vercel project and deployment from the client-facing one above**, with its own isolated
-environment holding its own copies of the same keys. It is a second candidate for that role, not an
-extension of the client-facing project. Two research-runtime candidates exist; exactly one client
-layer exists; the client layer never holds a key regardless of which candidate is live.
+**"Research runtime" is a role, not a place — see §5.4.** A second, independently-keyed runtime
+(NoInfra, once reliable) is a candidate for that role, not an extension of the client-facing
+project. The client layer never holds a key regardless of which candidate is live.
 
 The property that makes this safe: **the proxy is an indirection point.** Where the Research Service
-lives is a config value, not an architectural fact — which is what makes §5.4 nearly free.
+lives is a config value, not an architectural fact — which is what makes §5.4 nearly free, once a
+second runtime actually exists to swap toward.
 
 ### 5.2 What runs where
 
@@ -850,10 +860,10 @@ lives is a config value, not an architectural fact — which is what makes §5.4
 | Astro site, Excel add-in bundle                                               | Vercel static /`public/addin/`                            | unchanged                                                                                                           |
 | Auth, request validation, spend gate                                          | Vercel                                                      | sits in front of the proxy;**user-facing** rate limits live here                                              |
 | `/api/indicator`, `/api/snapshot`, `/api/deepdive`, `/api/comparison` | Vercel Functions                                            | deterministic, cacheable,**zero model calls**                                                                 |
-| **Thin research proxy**                                                 | Vercel                                                      | forwards to whichever Research Service target is configured, over the**signed channel in §5.7**              |
-| **Research Service** (nine steps, §2.3)                                | **NoInfra VPS (primary) · a SEPARATE Vercel project (proven fallback)** | same code, two independently-keyed deployments — see §5.4 for how "fallback" is scoped |
-| **OpenClaw**                                                            | NoInfra VPS                                                 | harness and operational shell**only** — see the boundary below                                               |
-| Model inference                                                               | Nebius · MiniMax · Impala                                 | never self-hosted;**provider + Tavily keys live only on whichever research-runtime deployment is live** (NoInfra, or the separate fallback project) — never on the client-facing Vercel project, never on the client |
+| **Thin research proxy**                                                 | *(spec, not yet built — see §5.1)* | target design: forwards to whichever Research Service target is configured, over the**signed channel in §5.7** |
+| **Research Service** (nine steps, §2.3)                                | **Vercel (live today, in-process via `api/ask.ts` → `src/lib/ai/research.ts`) · NoInfra VPS (documented alternative, not currently reliable — see §5.1)** | same code, portable per §5.3; NoInfra is not a proxied second deployment yet — there is no proxy to switch |
+| **OpenClaw**                                                            | NoInfra VPS                                                 | harness and operational shell**only** — see the boundary below; not currently reachable from Vercel (§5.1) |
+| Model inference                                                               | Nebius · MiniMax · Impala, called from Vercel today                                | never self-hosted;**provider + Tavily keys live only on the active research runtime** (Vercel today; NoInfra once reliable) — never on the client, never in the Excel bundle |
 | External search                                                               | Tavily                                                      | plan-authorized only                                                                                                |
 | Traces                                                                        | OllyGarden                                                  | post-core                                                                                                           |
 
@@ -888,37 +898,32 @@ These are what make the dual deployment in §5.4 cost almost nothing.
    this is exactly what lets the same service code run on both runtimes unchanged.
 4. **Conversation state travels as compact turns plus evidence refs, never evidence bodies** (§2.7).
 
-### 5.4 The Vercel fallback — proven once, not run twice as standing operations
+### 5.4 The non-primary runtime — prove it once, don't operate it continuously
 
-NoInfra is the **primary** runtime. The VPS is free for 21 days and the demo lands near or past that
-boundary, so the plan still needs a way off it that isn't "redeploy under pressure on day 22" — but
-running two live, monitored deployments for the whole buildathon is real ongoing overhead for a team
-this size, and that overhead isn't worth paying continuously just for insurance.
+**As of the §5.1 reconciliation, Vercel is primary and this section's discipline applies to
+NoInfra**, the runtime that isn't live today. The general rule this section exists to state: don't
+run two live, monitored research-runtime deployments as standing operations for a team this size —
+prove the non-primary one works, once, deliberately, and leave it dormant otherwise. Which runtime
+that is can change (it already has, once); the discipline itself doesn't.
 
-**The resolved approach:**
+**The design this maps onto, once NoInfra's gateway reliability issue (§5.1) is resolved:**
 
 ```
 Vercel proxy ──> CARIBECON_RESEARCH_TARGET
-                   ├─ noinfra   (default, carries all live traffic)
-                   └─ vercel    (proven, not actively operated)
+                   ├─ vercel    (default — primary, carries live traffic today)
+                   └─ noinfra   (available, not currently reliable — see §5.1)
 ```
 
-- **This is a second Vercel project, not a second function inside the client-facing one.** Same
-  repo, same service code, its own deployment and its own environment — holding its own copies of
-  the Nebius/MiniMax/Impala/Tavily keys, exactly as NoInfra does. The client-facing project's env
-  never gains a provider key just because the fallback exists.
-- Because the service is a plain function pushed from the same repo (§5.3), Vercel's normal
-  build-on-push behavior means the fallback **never goes stale on its own** — it rebuilds whenever the
-  repo does, without anyone treating it as a second thing to operate.
-- It carries **zero traffic** under normal operation; the proxy default stays `noinfra`.
-- **Exercise the switch exactly once, deliberately** — flip the config value, confirm a real request
-  round-trips end to end, flip it back. That single successful run is what turns "the service is
-  portable" from a claim into a demonstrated fact (§5.3).
-- Calendar reminder at **day 18**: confirm NoInfra's renewal terms. Whether to leave the Vercel target
-  live as an active fallback through demo day, rather than merely proven, is an **explicit operational
-  decision made at that point** — not a permanent requirement baked into the architecture. If the
-  demo date is confirmed on or past day 21, the honest call is almost certainly to activate it; if
-  comfortably earlier, dormant-but-proven is enough.
+- This target proxy is **spec, not yet built** — today `api/ask.ts` calls `research()` in-process on
+  Vercel with no target switch at all. The block above states the intended shape for when a second
+  runtime is worth proxying to, not the current code.
+- Once NoInfra is reachable again, exercising the switch is the same discipline as before: flip the
+  config value, confirm a real request round-trips end to end over the signed channel (§5.7), flip
+  it back. That single successful run is what turns "the service is portable" from a claim into a
+  demonstrated fact (§5.3) — it just hasn't happened yet in this direction.
+- Revisit NoInfra when the gateway's hot-reload/restart limitation (`docs/NOINFRA_SPIKE.md`,
+  `docs/BUILD_PLAN.md` Phase 0b) is actually fixed, not on a calendar reminder — there is no live
+  NoInfra deployment to schedule a renewal check against right now.
 
 ### 5.5 Hub data on the VPS — decoupled from code deployment
 
@@ -1017,11 +1022,17 @@ This is a genuine risk the current plan does not price, and it is cheap to fix n
 discover from a bill. The accounting mechanism above is the difference between "priced" and "priced
 on paper only" — a cap that isn't durable and atomic under concurrency isn't a cap.
 
-### 5.7 Securing the Vercel → NoInfra channel
+### 5.7 Securing the Vercel → NoInfra channel *(spec, not yet built)*
+
+**This whole section describes a design for a channel that does not exist in code today** — there is
+no `CARIBECON_RESEARCH_TARGET`, no proxy, and no HMAC signing anywhere in the repo (confirmed by
+grep); research runs in-process on Vercel (§5.1). It stays here as the spec for when a second,
+independently-keyed runtime is live and needs securing against direct calls — currently that would
+be NoInfra, once its gateway reliability issue (§5.1, `docs/NOINFRA_SPIKE.md`) is resolved.
 
 The Research Service must never be an openly callable endpoint that merely happens to also receive
 traffic from Vercel — anyone who found the URL could call it directly, bypassing every check in §5.2
-and §5.6. The boundary has to be **enforced by NoInfra**, not merely intended by Vercel:
+and §5.6. The boundary has to be **enforced by the research runtime**, not merely intended by Vercel:
 
 ```
 Browser / Excel
@@ -1133,6 +1144,15 @@ build and verify in Phase 0 (§7) rather than deferred.
 | §12          | "open-ended multi-hop web research" is out of scope | now*partially in scope*, bounded by plan          |
 | §4 vs §7    | fail-closed vs degrade                              | conflated; must be separated                        |
 | §7           | tool-loop cost warning                              | still true, and is now an argument*for* plan-once |
+
+### 2026-08-18 — Runtime primacy reconciliation
+
+§5.1, §5.2, §5.4, and §5.7 above are edited to match reality: Vercel (via `api/ask.ts` →
+`research()`) is the live research runtime, and NoInfra/OpenClaw is a documented alternative that is
+not currently reliable. This was already decided and dated 2026-08-17 in `docs/BUILD_PLAN.md`
+(Phase 0b outcome); see that file and `docs/NOINFRA_SPIKE.md` for the full findings and a
+2026-08-18 re-test that reconfirmed the gateway failure with no self-recovery. This note exists only
+to point there, not to restate it.
 
 ---
 

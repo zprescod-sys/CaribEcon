@@ -2,27 +2,38 @@
  * BUILD_PLAN.md Phase 1 item 2: "interpret() -> existing buildEvidencePackage() -> synthesize()
  * -> JSON... returned as the canonical ResearchResult, not a bespoke shape per phase.")
  *
- * CURRENT SCOPE, STATED EXPLICITLY: Phase 2's code-run grounding gate is now real — verify()
- * (verify.ts) calls the actual grounding.ts checks against the synthesized answer and its
- * evidence package, and derives a real `outcome`/`publishedClaims`/`reasonCategories` from
- * whatever violations it finds, rather than assuming there are none. A claim the gate flags
- * (e.g. a fabricated figure never actually retrieved) is genuinely excluded from
- * `publishedClaims`, not just recorded. Still not built: Phase 3 (the planner — research() still
- * goes straight from interpret() to buildEvidencePackage(), with no validated ResearchPlan in
- * between) and Phase 4 (the model claims audit — verify() is called with its `audit` argument
- * omitted, so it always defaults to `{ ran: false }`; that default IS the seam Phase 4 will fill
- * in, not a placeholder to remove). Until Phase 4 exists, `outcome` reflects only what code can
- * check — attribution/overreach findings from a model verifier are not yet part of it.
+ * CURRENT SCOPE, STATED EXPLICITLY: Phase 3 is now wired in — research() goes
+ * interpret() -> plan() -> validateResearchPlan() -> executeResearchPlan() -> synthesize() ->
+ * verify(), replacing the old direct interpret() -> buildEvidencePackage() hop.
+ * validateResearchPlan() (askTools.ts) is the one place a plan's named countries/indicators/
+ * onStep references are checked against the real hub — plan() itself only checks JSON shape
+ * (its own file header). executeResearchPlan() (executor.ts) then runs the validated plan's
+ * steps against the existing deterministic tools and, where the plan calls for it, Tavily
+ * search/extract and the news-digest side path — producing the same EvidencePackage shape
+ * buildEvidencePackage() always has. Phase 2's code-run grounding gate is still real — verify()
+ * (verify.ts) calls the actual grounding.ts checks (now 11 of them, §2.6) against the
+ * synthesized answer and its evidence package, and derives a real
+ * `outcome`/`publishedClaims`/`reasonCategories` from whatever violations it finds, rather than
+ * assuming there are none. A claim the gate flags (e.g. a fabricated figure never actually
+ * retrieved) is genuinely excluded from `publishedClaims`, not just recorded. Still not built:
+ * Phase 4 (the model claims audit — verify() is called with its `audit` argument omitted, so it
+ * always defaults to `{ ran: false }`; that default IS the seam Phase 4 will fill in, not a
+ * placeholder to remove). Until Phase 4 exists, `outcome` reflects only what code can check —
+ * attribution/overreach findings from a model verifier are not yet part of it.
  *
- * interpret()'s misses (a model-named country/indicator that does not resolve, caught by the
- * same canonicaliseIntent the picker uses) are merged into the evidence package's own misses
- * before synthesis runs, so they reach the model as a known gap exactly like a retrieval miss —
- * both are "asked for, not servable," just caught at a different stage.
+ * Three sources of "asked for, not servable" are merged into the evidence package's own misses
+ * before synthesis runs, so all of them reach the model as a known gap exactly like a retrieval
+ * miss — interpret()'s misses (a model-named country/indicator that does not resolve),
+ * validateResearchPlan()'s misses (a plan step naming an unresolved country/indicator/onStep),
+ * and executeResearchPlan()'s own misses (a step that ran but came back empty, a budget skip, an
+ * unauthorized extract_web call) — never dropped, only ever appended to.
  */
 import { interpret } from './roles/interpret.js';
+import { plan } from './roles/plan.js';
 import { synthesize } from './roles/synthesize.js';
 import { verify } from './verify.js';
-import { buildEvidencePackage } from '../askTools.js';
+import { validateResearchPlan } from '../askTools.js';
+import { executeResearchPlan } from './executor.js';
 import type { ResearchResult } from './contracts.js';
 
 export interface ResearchRequest {
@@ -35,8 +46,13 @@ export async function research(
 ): Promise<ResearchResult> {
   const { intent, misses } = await interpret(request.question);
 
-  const evidence = buildEvidencePackage(intent, retrievedAt);
-  evidence.misses = [...misses, ...evidence.misses];
+  const researchPlan = await plan(request.question, intent);
+  const { plan: validatedPlan, misses: planMisses } = validateResearchPlan(researchPlan);
+
+  const evidence = await executeResearchPlan(validatedPlan, retrievedAt);
+  // Merge, never drop — same pattern this file has always used for interpret()'s misses, now
+  // extended to the plan-validation and execution stages too (see header comment).
+  evidence.misses = [...misses, ...planMisses, ...evidence.misses];
 
   const answer = await synthesize(intent, evidence);
   // Third argument (the model claims audit) is intentionally omitted — see header comment.

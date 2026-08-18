@@ -6,7 +6,8 @@
  * api/researchStub.ts and research-service/ are deliberately left untouched by this file — they
  * remain the Phase 0b NoInfra/Vercel portability record (BUILD_PLAN.md), not something this step
  * retires. This endpoint calls a different, real research() — src/lib/ai/research.ts, the
- * interpret -> buildEvidencePackage -> synthesize composition — not the Phase 0b stub.
+ * interpret -> plan -> validateResearchPlan -> executeResearchPlan -> synthesize composition —
+ * not the Phase 0b stub.
  *
  * api/research.ts is frozen for the buildathon (CLAUDE.md "Active build"), so the auth/CORS/
  * rate-limit guard is imported from src/lib/apiGuard.ts (already extracted for exactly this
@@ -20,6 +21,7 @@
 import { CORS_HEADERS, checkToken, clientIp, rateLimited } from '../src/lib/apiGuard.js';
 import { research } from '../src/lib/ai/research.js';
 import { InterpretNotConfiguredError, InterpretParseError } from '../src/lib/ai/roles/interpret.js';
+import { PlanNotConfiguredError, PlanParseError } from '../src/lib/ai/roles/plan.js';
 import { SynthesizeNotConfiguredError, SynthesizeParseError } from '../src/lib/ai/roles/synthesize.js';
 
 const MAX_QUESTION_CHARS = 500;
@@ -76,10 +78,14 @@ export default {
          reason. A model that returned unparseable output is an upstream failure, not the
          caller's mistake and not our bug, so 502 — and the raw model text stays server-side,
          never in the response (ARCHITECTURE.md §2.4: model deliberation is never shown). */
-      if (error instanceof InterpretNotConfiguredError || error instanceof SynthesizeNotConfiguredError) {
+      if (
+        error instanceof InterpretNotConfiguredError ||
+        error instanceof PlanNotConfiguredError ||
+        error instanceof SynthesizeNotConfiguredError
+      ) {
         return json({ error: 'not_configured', message: error.message }, 503);
       }
-      if (error instanceof InterpretParseError || error instanceof SynthesizeParseError) {
+      if (error instanceof InterpretParseError || error instanceof PlanParseError || error instanceof SynthesizeParseError) {
         return json(
           { error: 'model_error', message: 'The research pipeline could not produce a usable answer. Try rephrasing the question.' },
           502,

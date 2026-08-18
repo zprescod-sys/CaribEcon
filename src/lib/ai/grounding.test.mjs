@@ -704,6 +704,125 @@ test('a news-only framing claim with neither a figure nor a long quote is not fl
   assert.deepEqual(result.violations.filter(v => v.check === 'news_body_claim'), []);
 });
 
+// ── Check 8: quote check ─────────────────────────────────────────────────────────────────────
+
+// No real capture predates Phase 3's Tavily integration, so none carries pkg.web — every one of
+// these is hand-built, same convention checks 7/9 already use for evidence classes real captures
+// don't exercise. `webRef` mirrors the real `W:${sha256(url)}` shape closely enough to exercise
+// the check (byWebRef only ever keys off `W:${w.id}`, never re-derives the hash itself).
+const WEB_RETRIEVED_AT = '2026-08-17T00:00:00.000Z';
+const webRefWithExtract = 'W:web-1';
+const webRefNoExtract = 'W:web-2';
+const webPkg = {
+  data: [],
+  news: [],
+  misses: [],
+  caveats: [],
+  toolsUsed: [],
+  newsCoverage: { earliest: '', latest: '', count: 0 },
+  web: [
+    {
+      id: 'web-1',
+      title: 'Guyana GDP growth accelerates',
+      url: 'https://example.com/guyana-gdp-2024',
+      domain: 'example.com',
+      publishedDate: '2024-06-01',
+      retrievedAt: WEB_RETRIEVED_AT,
+      snippet: 'Guyana GDP growth accelerates in 2024.',
+      extract: { text: "Guyana's economy grew by 43.8% in 2024, driven mainly by oil output, the report said.", chars: 89, summary: null },
+      authorizedBy: 'step-1',
+    },
+    {
+      id: 'web-2',
+      title: 'A page with no extract',
+      url: 'https://example.com/no-extract',
+      domain: 'example.com',
+      publishedDate: null,
+      retrievedAt: WEB_RETRIEVED_AT,
+      snippet: 'A snippet only, never extracted.',
+      extract: null,
+      authorizedBy: 'step-1',
+    },
+  ],
+  evidenceMeta: [
+    { ref: webRefWithExtract, vintage: null, retrievedAt: WEB_RETRIEVED_AT, sourceRevisionDate: null, contentHash: null },
+    { ref: webRefNoExtract, vintage: null, retrievedAt: WEB_RETRIEVED_AT, sourceRevisionDate: null, contentHash: null },
+  ],
+};
+
+test('a quote that is a real substring of the cited extract text passes clean', () => {
+  const answer = {
+    headline: 'x',
+    claims: [{
+      id: 'claim-0',
+      text: 'The report said the economy "grew by 43.8% in 2024, driven mainly by oil output".',
+      type: 'context',
+      refs: [webRefWithExtract],
+      figures: [],
+    }],
+    gaps: [],
+  };
+
+  const result = runGroundingGate(answer, webPkg);
+  assert.deepEqual(result.violations.filter(v => v.check === 'quote_check'), []);
+});
+
+test('a fabricated quote (not present in the extract text) is flagged', () => {
+  const answer = {
+    headline: 'x',
+    claims: [{
+      id: 'claim-0',
+      text: 'The report said the economy "collapsed by 12% in 2024".',
+      type: 'context',
+      refs: [webRefWithExtract],
+      figures: [],
+    }],
+    gaps: [],
+  };
+
+  const result = runGroundingGate(answer, webPkg);
+  const violations = result.violations.filter(v => v.check === 'quote_check');
+  assert.equal(violations.length, 1);
+  assert.equal(violations[0].claimId, 'claim-0');
+  assert.match(violations[0].detail, /collapsed by 12% in 2024/);
+});
+
+test('a claim with no quoted spans is unaffected by quote_check, even when it cites a W: ref', () => {
+  const answer = {
+    headline: 'x',
+    claims: [{
+      id: 'claim-0',
+      text: 'The report discusses oil-driven growth in 2024.',
+      type: 'context',
+      refs: [webRefWithExtract],
+      figures: [],
+    }],
+    gaps: [],
+  };
+
+  const result = runGroundingGate(answer, webPkg);
+  assert.deepEqual(result.violations.filter(v => v.check === 'quote_check'), []);
+});
+
+test('a quote on a W: ref whose extract is null is flagged — a search snippet alone is never sufficient', () => {
+  const answer = {
+    headline: 'x',
+    claims: [{
+      id: 'claim-0',
+      text: 'The page says "a snippet only, never extracted".',
+      type: 'context',
+      refs: [webRefNoExtract],
+      figures: [],
+    }],
+    gaps: [],
+  };
+
+  const result = runGroundingGate(answer, webPkg);
+  const violations = result.violations.filter(v => v.check === 'quote_check');
+  assert.equal(violations.length, 1);
+  assert.equal(violations[0].claimId, 'claim-0');
+});
+
 // ── Check 9: cross-currency comparison ──────────────────────────────────────────────────────
 
 // This check essentially never fires on real data (verified: zero true positives across all 9
@@ -902,6 +1021,85 @@ test('a figure whose ref does not resolve at all produces no coverage_honesty vi
 
   const result = runGroundingGate(answer, evidence);
   assert.equal(result.violations.filter(v => v.check === 'coverage_honesty').length, 0);
+  assert.equal(result.violations.filter(v => v.check === 'ref_existence').length, 1);
+});
+
+// ── Check 11: web figure reconciliation ─────────────────────────────────────────────────────
+
+// Reuses the same hand-built webPkg fixture as check 8 above (no real capture carries pkg.web).
+
+test('a figure whose value genuinely appears in the extract text passes', () => {
+  const answer = {
+    headline: 'x',
+    claims: [{
+      id: 'claim-0',
+      text: 'The economy grew by 43.8% in 2024.',
+      type: 'figure',
+      refs: [webRefWithExtract],
+      figures: [{ ref: webRefWithExtract, year: 2024, value: 43.8, unit: '%', calculation: null, asWritten: '43.8%' }],
+    }],
+    gaps: [],
+  };
+
+  const result = runGroundingGate(answer, webPkg);
+  assert.deepEqual(result.violations.filter(v => v.check === 'web_figure_reconciliation'), []);
+});
+
+test('a fabricated figure (value not present anywhere in the extract text) is flagged', () => {
+  const answer = {
+    headline: 'x',
+    claims: [{
+      id: 'claim-0',
+      text: 'The economy grew by 91.2% in 2024.',
+      type: 'figure',
+      refs: [webRefWithExtract],
+      figures: [{ ref: webRefWithExtract, year: 2024, value: 91.2, unit: '%', calculation: null, asWritten: '91.2%' }],
+    }],
+    gaps: [],
+  };
+
+  const result = runGroundingGate(answer, webPkg);
+  const violations = result.violations.filter(v => v.check === 'web_figure_reconciliation');
+  assert.equal(violations.length, 1);
+  assert.equal(violations[0].claimId, 'claim-0');
+  assert.match(violations[0].detail, /could not be located in the retrieved extract text/);
+});
+
+test('a figure citing a W: ref with extract: null is flagged — a search snippet alone is never sufficient', () => {
+  const answer = {
+    headline: 'x',
+    claims: [{
+      id: 'claim-0',
+      text: 'Some figure was reported.',
+      type: 'figure',
+      refs: [webRefNoExtract],
+      figures: [{ ref: webRefNoExtract, year: 2024, value: 5, unit: '%', calculation: null, asWritten: '5%' }],
+    }],
+    gaps: [],
+  };
+
+  const result = runGroundingGate(answer, webPkg);
+  const violations = result.violations.filter(v => v.check === 'web_figure_reconciliation');
+  assert.equal(violations.length, 1);
+  assert.equal(violations[0].claimId, 'claim-0');
+  assert.match(violations[0].detail, /no extract/);
+});
+
+test('a figure whose W: ref does not resolve at all produces no web_figure_reconciliation violation — left to check 1', () => {
+  const answer = {
+    headline: 'x',
+    claims: [{
+      id: 'claim-0',
+      text: 'Some figure was reported.',
+      type: 'figure',
+      refs: ['W:not-a-real-ref'],
+      figures: [{ ref: 'W:not-a-real-ref', year: 2024, value: 5, unit: '%', calculation: null, asWritten: '5%' }],
+    }],
+    gaps: [],
+  };
+
+  const result = runGroundingGate(answer, webPkg);
+  assert.equal(result.violations.filter(v => v.check === 'web_figure_reconciliation').length, 0);
   assert.equal(result.violations.filter(v => v.check === 'ref_existence').length, 1);
 });
 

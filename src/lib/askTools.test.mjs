@@ -21,7 +21,9 @@ import {
   getSelectedCountrySeries,
   buildEvidencePackage,
   evidenceId,
+  validateResearchPlan,
 } from './askTools.ts';
+import { MAX_PLAN_STEPS } from './ai/config.ts';
 
 // Convenience: a fully-formed intent so each test varies only the field it is about.
 const intent = (over = {}) => ({
@@ -396,4 +398,171 @@ test('evidenceMeta defaults to a real timestamp when retrievedAt is not supplied
   const after = Date.now();
   const stamped = new Date(pkg.evidenceMeta[0].retrievedAt).getTime();
   assert.ok(stamped >= before && stamped <= after, 'retrievedAt should default to "now"');
+});
+
+// ── validateResearchPlan ───────────────────────────────────────────────────────────────────
+// Same discipline as canonicaliseIntent, applied to a Planner-emitted ResearchPlan: a step
+// naming a real country/indicator survives, a step naming a fake one is dropped with a miss,
+// and — the one genuinely new piece of behaviour — an extract_web step is only ever kept when
+// its onStep names a real, EARLIER, already-validated search_web step, so a dropped search_web
+// step also drops any extract_web step riding on it (cascading validation).
+
+// Convenience: a fully-formed plan so each test varies only plan.steps.
+const plan = (steps) => ({
+  question: 'test question',
+  scope: { countries: [], indicators: [], yearFrom: null, yearTo: null },
+  steps,
+  anticipatedGaps: [],
+});
+
+test('validateResearchPlan keeps a get_series step naming a real country/indicator untouched', () => {
+  const step = {
+    id: 's1', tool: 'get_series', country: 'Guyana', indicator: 'gdp_growth',
+    yearFrom: null, yearTo: null, why: 'test',
+  };
+  const { plan: out, misses } = validateResearchPlan(plan([step]));
+  assert.equal(out.steps.length, 1);
+  // resolveCountry canonicalises 'Guyana' -> 'GY'; the step's other fields pass through untouched.
+  assert.deepEqual(out.steps[0], { ...step, country: 'GY', indicator: 'gdp_growth' });
+  assert.equal(misses.length, 0);
+});
+
+test('validateResearchPlan drops a get_series step naming a fake country, and records a miss', () => {
+  const step = {
+    id: 's1', tool: 'get_series', country: 'Atlantis', indicator: 'gdp_growth',
+    yearFrom: null, yearTo: null, why: 'test',
+  };
+  const { plan: out, misses } = validateResearchPlan(plan([step]));
+  assert.equal(out.steps.length, 0);
+  assert.equal(misses.length, 1);
+  assert.equal(misses[0].kind, 'country');
+  assert.match(misses[0].detail, /Atlantis/);
+});
+
+test('validateResearchPlan drops a get_series step naming a fake indicator, and records a miss', () => {
+  const step = {
+    id: 's1', tool: 'get_series', country: 'GY', indicator: 'vibes',
+    yearFrom: null, yearTo: null, why: 'test',
+  };
+  const { plan: out, misses } = validateResearchPlan(plan([step]));
+  assert.equal(out.steps.length, 0);
+  assert.equal(misses.length, 1);
+  assert.equal(misses[0].kind, 'indicator');
+  assert.match(misses[0].detail, /vibes/);
+});
+
+test('validateResearchPlan partial-keeps compare_series countries, dropping only the ones that fail', () => {
+  const step = {
+    id: 's1', tool: 'compare_series', countries: ['Guyana', 'Atlantis', 'Trinidad'],
+    indicator: 'gdp_growth', yearFrom: null, yearTo: null, why: 'test',
+  };
+  const { plan: out, misses } = validateResearchPlan(plan([step]));
+  assert.equal(out.steps.length, 1);
+  assert.deepEqual(out.steps[0].countries, ['GY', 'TT']);
+  assert.equal(misses.filter(m => m.kind === 'country').length, 1);
+});
+
+test('validateResearchPlan drops a compare_series step entirely when every country fails', () => {
+  const step = {
+    id: 's1', tool: 'compare_series', countries: ['Atlantis', 'Narnia'],
+    indicator: 'gdp_growth', yearFrom: null, yearTo: null, why: 'test',
+  };
+  const { plan: out, misses } = validateResearchPlan(plan([step]));
+  assert.equal(out.steps.length, 0);
+  assert.equal(misses.filter(m => m.kind === 'country').length, 2);
+});
+
+test('validateResearchPlan keeps a search_news step with an empty countries array — pan-Caribbean', () => {
+  const step = {
+    id: 's1', tool: 'search_news', countries: ['Atlantis'], keywords: ['tourism'],
+    dateFrom: null, dateTo: null, why: 'test',
+  };
+  const { plan: out, misses } = validateResearchPlan(plan([step]));
+  assert.equal(out.steps.length, 1);
+  assert.deepEqual(out.steps[0].countries, []);
+  assert.equal(misses.length, 1);
+  assert.equal(misses[0].kind, 'country');
+});
+
+test('validateResearchPlan passes a search_web step through untouched — no country/indicator to resolve', () => {
+  const step = { id: 's1', tool: 'search_web', query: 'IMF Article IV Guyana 2026', dateFrom: null, dateTo: null, why: 'test' };
+  const { plan: out, misses } = validateResearchPlan(plan([step]));
+  assert.equal(out.steps.length, 1);
+  assert.deepEqual(out.steps[0], step);
+  assert.equal(misses.length, 0);
+});
+
+test('validateResearchPlan keeps an extract_web step whose onStep names a real, earlier search_web step', () => {
+  const search = { id: 's1', tool: 'search_web', query: 'IMF Article IV Guyana 2026', dateFrom: null, dateTo: null, why: 'test' };
+  const extract = { id: 's2', tool: 'extract_web', onStep: 's1', maxUrls: 2, why: 'test' };
+  const { plan: out, misses } = validateResearchPlan(plan([search, extract]));
+  assert.equal(out.steps.length, 2);
+  assert.equal(out.steps[1].id, 's2');
+  assert.equal(misses.length, 0);
+});
+
+test('validateResearchPlan drops an extract_web step whose onStep does not name any step', () => {
+  const search = { id: 's1', tool: 'search_web', query: 'IMF Article IV Guyana 2026', dateFrom: null, dateTo: null, why: 'test' };
+  const extract = { id: 's2', tool: 'extract_web', onStep: 'nonexistent', maxUrls: 2, why: 'test' };
+  const { plan: out, misses } = validateResearchPlan(plan([search, extract]));
+  assert.equal(out.steps.length, 1);
+  assert.equal(out.steps[0].id, 's1');
+  assert.equal(misses.length, 1);
+  assert.equal(misses[0].kind, 'step');
+});
+
+test('validateResearchPlan drops an extract_web step whose onStep names a step that is not search_web', () => {
+  const series = {
+    id: 's1', tool: 'get_series', country: 'GY', indicator: 'gdp_growth',
+    yearFrom: null, yearTo: null, why: 'test',
+  };
+  const extract = { id: 's2', tool: 'extract_web', onStep: 's1', maxUrls: 2, why: 'test' };
+  const { plan: out, misses } = validateResearchPlan(plan([series, extract]));
+  assert.equal(out.steps.length, 1);
+  assert.equal(out.steps[0].id, 's1');
+  assert.equal(misses.length, 1);
+  assert.equal(misses[0].kind, 'step');
+});
+
+test('validateResearchPlan cascades: an extract_web step is ALSO dropped when the step it names was itself dropped', () => {
+  // This is the specific case that proves "refuses any unauthorized Tavily call" actually works:
+  // s1 fails resolution (fake country) and is dropped; s2's onStep names it. Because extract_web
+  // is checked against the VALIDATED array, not the raw input plan, s1's absence from `validated`
+  // means s2 finds no authorization and must cascade-drop too, even though s2 itself is otherwise
+  // well-formed.
+  const badSeries = {
+    id: 's1', tool: 'get_series', country: 'Atlantis', indicator: 'gdp_growth',
+    yearFrom: null, yearTo: null, why: 'test',
+  };
+  const extract = { id: 's2', tool: 'extract_web', onStep: 's1', maxUrls: 2, why: 'test' };
+  const { plan: out, misses } = validateResearchPlan(plan([badSeries, extract]));
+  assert.equal(out.steps.length, 0, 'both the invalid get_series step and the extract_web step depending on it must be gone');
+  assert.equal(misses.filter(m => m.kind === 'country').length, 1, 's1 dropped for a fake country');
+  assert.equal(misses.filter(m => m.kind === 'step').length, 1, 's2 cascade-dropped for an unauthorized onStep');
+});
+
+test('validateResearchPlan truncates a plan of more than MAX_PLAN_STEPS valid steps, keeping the first N in order', () => {
+  const countries = listCountries().map(c => c.code);
+  assert.ok(countries.length > MAX_PLAN_STEPS, 'fixture assumption: more real countries than MAX_PLAN_STEPS');
+  const steps = countries.map((code, i) => ({
+    id: `s${i}`, tool: 'get_series', country: code, indicator: 'gdp_growth',
+    yearFrom: null, yearTo: null, why: 'test',
+  }));
+  const { plan: out, misses } = validateResearchPlan(plan(steps));
+  assert.equal(out.steps.length, MAX_PLAN_STEPS);
+  assert.deepEqual(out.steps.map(s => s.id), steps.slice(0, MAX_PLAN_STEPS).map(s => s.id));
+  assert.equal(misses.length, 0, 'every step here is individually valid — truncation is not a validation miss');
+});
+
+test('validateResearchPlan passes question/scope/anticipatedGaps through unchanged', () => {
+  const input = {
+    question: 'How did GDP growth compare between Guyana and Trinidad?',
+    scope: { countries: ['GY', 'TT'], indicators: ['gdp_growth'], yearFrom: 2020, yearTo: 2024 },
+    steps: [],
+    anticipatedGaps: ['no coverage before 2015'],
+  };
+  const { plan: out } = validateResearchPlan(input);
+  assert.equal(out.question, input.question);
+  assert.deepEqual(out.scope, input.scope);
+  assert.deepEqual(out.anticipatedGaps, input.anticipatedGaps);
 });

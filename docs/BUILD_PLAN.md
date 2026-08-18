@@ -35,9 +35,9 @@ Implementation proceeds **one small step at a time with explicit approval** — 
 | --- | --- |
 | 0a — Housekeeping | **Done** |
 | 0b — NoInfra connectivity + OpenClaw spike | **Done — runtime decision reversed, see below** |
-| 1 — Vertical slice + chat pane | Not started |
-| 2 — Grounding gate | Not started |
-| 3 — Planner + Tavily | Not started |
+| 1 — Vertical slice + chat pane | **Done** |
+| 2 — Grounding gate | **Done** |
+| 3 — Planner + Tavily | In progress |
 | 4 — MiniMax claims audit | Not started |
 | 5 — Country Comparison endpoint | Not started |
 | Post-buildathon | Not started |
@@ -111,6 +111,12 @@ than asserted, and it is what made this reversal cheap.
 
 `api/noinfraSpike.ts` is **kept**, correct and tested. §5.4's two-target design still holds: NoInfra
 becomes live again the moment an external container restart makes the gateway serve the tool.
+
+**2026-08-18 addendum:** a live re-test against the deployed `api/noinfraSpike.ts` endpoint (via the
+Vercel Protection Bypass secret) returned a fresh `404 gateway_error` ("The research runtime returned
+404.") on a tool previously confirmed working — the exact same failure mode, with no auto-recovery
+since the original spike. This is part of why Phase 3 proceeds on Vercel rather than waiting on
+NoInfra.
 
 **NoInfra's designated role — the scheduled intelligence tier**
 

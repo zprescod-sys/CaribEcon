@@ -1,8 +1,13 @@
-/* Tests for api/ask.ts — the real Ask CaribEcon endpoint (interpret -> evidence -> synthesize,
- * wrapped as the canonical ResearchResult).
+/* Tests for api/ask.ts — the real Ask CaribEcon endpoint (interpret -> plan ->
+ * validateResearchPlan -> executeResearchPlan -> synthesize, wrapped as the canonical
+ * ResearchResult).
  *
  * No mocks — same standing policy as api/research.test.mjs and src/lib/ai/research.test.mjs.
- * Two real local HTTP servers stand in for the interpret and synthesis roles.
+ * Three real local HTTP servers stand in for the interpret, plan, and synthesis roles (distinct
+ * provider names so each gets its own base-URL env var). The plan's own step (get_series for
+ * GY/gdp_growth) runs against the REAL deterministic executor and hub — no Tavily/news-digest
+ * step is used here, so no Tavily/article stand-in is needed for this endpoint-level suite; that
+ * machinery is exercised in src/lib/ai/executor.test.mjs instead.
  */
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
@@ -64,14 +69,30 @@ const INTERPRET_OK = () =>
     questionType: 'indicator', countries: ['GY'], indicators: ['gdp_growth'],
     yearFrom: null, yearTo: null, newsKeywords: [],
   });
+// A single get_series step, mirroring the intent above — validateResearchPlan resolves it
+// against the real hub and executeResearchPlan runs it for real, so evidence.data actually
+// gets populated exactly like the pre-Phase-3 buildEvidencePackage() path did.
+const PLAN_OK = () =>
+  JSON.stringify({
+    scope: { countries: ['GY'], indicators: ['gdp_growth'], yearFrom: null, yearTo: null },
+    steps: [
+      { id: 's1', tool: 'get_series', country: 'GY', indicator: 'gdp_growth', yearFrom: null, yearTo: null, why: 'test' },
+    ],
+    anticipatedGaps: [],
+  });
 const SYNTHESIZE_OK = () =>
   JSON.stringify({ headline: 'Guyana GDP growth', claims: [], gaps: [] });
 
-async function withRoleProviders({ interpretRespond = INTERPRET_OK, synthesisRespond = SYNTHESIZE_OK }, run) {
+async function withRoleProviders(
+  { interpretRespond = INTERPRET_OK, planRespond = PLAN_OK, synthesisRespond = SYNTHESIZE_OK },
+  run,
+) {
   const interpretServer = jsonServer(interpretRespond);
+  const planServer = jsonServer(planRespond);
   const synthesisServer = jsonServer(synthesisRespond);
   await Promise.all([
     new Promise(resolve => interpretServer.listen(0, '127.0.0.1', resolve)),
+    new Promise(resolve => planServer.listen(0, '127.0.0.1', resolve)),
     new Promise(resolve => synthesisServer.listen(0, '127.0.0.1', resolve)),
   ]);
   try {
@@ -82,6 +103,10 @@ async function withRoleProviders({ interpretRespond = INTERPRET_OK, synthesisRes
         CARIBECON_INTERPRET_MODEL: 'test-model',
         NEBIUS_BASE_URL: `http://127.0.0.1:${interpretServer.address().port}`,
         NEBIUS_API_KEY: 'test-key',
+        CARIBECON_PLAN_PROVIDER: 'noinfra',
+        CARIBECON_PLAN_MODEL: 'test-model',
+        NOINFRA_BASE_URL: `http://127.0.0.1:${planServer.address().port}`,
+        NOINFRA_API_KEY: 'test-key',
         CARIBECON_SYNTHESIS_PROVIDER: 'minimax',
         CARIBECON_SYNTHESIS_MODEL: 'test-model',
         MINIMAX_BASE_URL: `http://127.0.0.1:${synthesisServer.address().port}`,
@@ -92,6 +117,7 @@ async function withRoleProviders({ interpretRespond = INTERPRET_OK, synthesisRes
   } finally {
     await Promise.all([
       new Promise(resolve => interpretServer.close(resolve)),
+      new Promise(resolve => planServer.close(resolve)),
       new Promise(resolve => synthesisServer.close(resolve)),
     ]);
   }
@@ -174,6 +200,32 @@ test('an unconfigured interpret role is a 503, not a 500', async () => {
 
 test('a model that never returns parseable JSON is a 502 model_error, with no raw model text leaked', async () => {
   await withRoleProviders({ interpretRespond: () => 'I cannot help with that.' }, async () => {
+    const res = await post({ question: 'GDP growth in Guyana?' });
+    assert.equal(res.status, 502);
+    const body = await res.json();
+    assert.equal(body.error, 'model_error');
+    assert.ok(!body.message.includes('I cannot help with that.'));
+  });
+});
+
+test('interpret configured but plan unconfigured is a 503, not a 500', async () => {
+  // withRoleProviders stands up all three role servers, then this deletes only plan's own env
+  // vars afterward — proving interpret runs (and the plan role's own NotConfiguredError, not
+  // interpret's, is what fires) rather than trivially exercising "nothing is configured".
+  await withRoleProviders({}, async () => {
+    await withEnv(
+      { CARIBECON_PLAN_PROVIDER: undefined, CARIBECON_PLAN_MODEL: undefined },
+      async () => {
+        const res = await post({ question: 'GDP growth in Guyana?' });
+        assert.equal(res.status, 503);
+        assert.equal((await res.json()).error, 'not_configured');
+      },
+    );
+  });
+});
+
+test('a plan model that never returns parseable JSON is a 502 model_error, with no raw model text leaked', async () => {
+  await withRoleProviders({ planRespond: () => 'I cannot help with that.' }, async () => {
     const res = await post({ question: 'GDP growth in Guyana?' });
     assert.equal(res.status, 502);
     const body = await res.json();

@@ -23,7 +23,8 @@ import {
   getIndicatorAllCountries,
 } from './indicators.js';
 import { searchNews, getNewsCoverage, type NewsEvidence } from './news.js';
-import type { EvidenceMeta, WebEvidence } from './ai/contracts.js';
+import type { EvidenceMeta, WebEvidence, ResearchPlan, ResearchStep } from './ai/contracts.js';
+import { MAX_PLAN_STEPS } from './ai/config.js';
 
 export type { NewsEvidence };
 
@@ -67,7 +68,14 @@ export interface DataEvidence {
    answer can name the gap — an unretrievable subtask becomes a visible caveat, never a silent
    drop or a guess. */
 export interface RetrievalMiss {
-  kind: 'country' | 'indicator' | 'series' | 'years' | 'news';
+  /* 'step' is validateResearchPlan's own addition (Phase 3, §2b): none of the existing five kinds
+     name "a plan step's own structure was invalid" — country/indicator are about a resolved
+     value, series/years are about what a resolved query returned, news is about a search result.
+     A dropped extract_web step (bad or cascaded-invalid onStep) is a different failure shape —
+     the step itself never became an authorized retrieval at all — so it earns its own kind rather
+     than being force-fit into 'series' (which implies a query ran) or 'indicator'/'country'
+     (which imply a name failed to resolve). */
+  kind: 'country' | 'indicator' | 'series' | 'years' | 'news' | 'step';
   detail: string;
 }
 
@@ -207,6 +215,101 @@ export function canonicaliseIntent(raw: unknown): { intent: AskIntent; misses: R
       yearFrom: toYear(input.yearFrom),
       yearTo: toYear(input.yearTo),
       newsKeywords: toStringArray(input.newsKeywords).slice(0, 8),
+    },
+    misses,
+  };
+}
+
+/* Validate a Planner-emitted ResearchPlan the same way canonicaliseIntent validates raw
+   Interpreter output: every named country/indicator goes through resolveCountry/resolveIndicator,
+   and anything that does not resolve is stripped and recorded rather than kept or guessed. The
+   Planner (plan.ts, Phase 3) only checks structural validity — right shape, valid tool enum; this
+   is the one place that checks the plan's claims against the real hub.
+
+   Steps are walked in order and appended to `validated` as each survives, so `extract_web`'s
+   onStep check only ever sees already-validated earlier steps — a search_web step dropped for
+   any reason silently takes every extract_web step that depended on it with it (cascading drop),
+   with no separate bookkeeping required: the dependency just never appears in `validated` to be
+   found. That is exactly what "an extract must follow a validated search, or it is not
+   authorized" (WebEvidence.authorizedBy, contracts.ts) needs to mean — a Tavily Extract call must
+   trace back to a real, resolved search step, never to a step name a model merely wrote down. */
+export function validateResearchPlan(
+  plan: ResearchPlan,
+): { plan: ResearchPlan; misses: RetrievalMiss[] } {
+  const misses: RetrievalMiss[] = [];
+  const validated: ResearchStep[] = [];
+
+  for (const step of plan.steps) {
+    if (step.tool === 'get_series') {
+      const country = resolveCountry(step.country);
+      const indicator = resolveIndicator(step.indicator);
+      if (!country) {
+        misses.push({ kind: 'country', detail: `"${step.country}" is not one of the 19 economies in the hub.` });
+        continue;
+      }
+      if (!indicator) {
+        misses.push({ kind: 'indicator', detail: `"${step.indicator}" is not an indicator the hub carries.` });
+        continue;
+      }
+      validated.push({ ...step, country, indicator });
+    } else if (step.tool === 'compare_series') {
+      const countries: string[] = [];
+      for (const value of step.countries) {
+        const code = resolveCountry(value);
+        if (code) {
+          if (!countries.includes(code)) countries.push(code);
+        } else {
+          misses.push({ kind: 'country', detail: `"${value}" is not one of the 19 economies in the hub.` });
+        }
+      }
+      // Partial-keep, same as canonicaliseIntent — only drop the whole step if EVERY country failed.
+      if (!countries.length) continue;
+
+      const indicator = resolveIndicator(step.indicator);
+      if (!indicator) {
+        misses.push({ kind: 'indicator', detail: `"${step.indicator}" is not an indicator the hub carries.` });
+        continue;
+      }
+      validated.push({ ...step, countries, indicator });
+    } else if (step.tool === 'search_news') {
+      const countries: string[] = [];
+      for (const value of step.countries) {
+        const code = resolveCountry(value);
+        if (code) {
+          if (!countries.includes(code)) countries.push(code);
+        } else {
+          misses.push({ kind: 'country', detail: `"${value}" is not one of the 19 economies in the hub.` });
+        }
+      }
+      // An empty result is fine — searchNews already treats no countries as pan-Caribbean.
+      validated.push({ ...step, countries });
+    } else if (step.tool === 'search_web') {
+      // No country/indicator to resolve; plan.ts already checked structural validity.
+      validated.push(step);
+    } else {
+      // extract_web: onStep must name an EARLIER step that already survived validation as
+      // search_web — never the raw, unvalidated plan.steps array (that would let an extract ride
+      // in on a search step that itself got dropped for naming a bad country/indicator... except
+      // search_web has neither, but the discipline generalises: only a resolved authorization
+      // counts).
+      const target = validated.find(s => s.id === step.onStep);
+      if (!target || target.tool !== 'search_web') {
+        misses.push({
+          kind: 'step',
+          detail: `extract_web step "${step.id}" names onStep "${step.onStep}", which is not a valid, earlier search_web step.`,
+        });
+        continue;
+      }
+      validated.push(step);
+    }
+  }
+
+  return {
+    plan: {
+      question: plan.question,
+      scope: plan.scope,
+      steps: validated.slice(0, MAX_PLAN_STEPS),
+      anticipatedGaps: plan.anticipatedGaps,
     },
     misses,
   };
@@ -442,7 +545,7 @@ export function buildEvidencePackage(
 /* Local-currency levels are stored in each country's own money, so differencing or ranking them
    across countries produces a real-looking, meaningless number. The unit check catches it from
    the data itself; the slug check catches it even when only one series came back. */
-function addComparabilityCaveats(pkg: EvidencePackage, intent: AskIntent): void {
+export function addComparabilityCaveats(pkg: EvidencePackage, intent: AskIntent): void {
   if (pkg.data.length < 2) return;
 
   const units = new Set(pkg.data.map(d => d.unit));

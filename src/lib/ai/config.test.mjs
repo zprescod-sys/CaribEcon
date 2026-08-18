@@ -6,7 +6,18 @@
  */
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { resolveProvider, resolveRole, resolveRoleFully, ROLES } from './config.ts';
+import {
+  resolveProvider,
+  resolveRole,
+  resolveRoleFully,
+  ROLES,
+  MAX_PLAN_STEPS,
+  MAX_TAVILY_SEARCHES,
+  MAX_TAVILY_EXTRACTS,
+  MAX_EXTRACT_CHARS,
+  MAX_EXTRACT_TOTAL,
+  MAX_NEWS_DIGESTS,
+} from './config.ts';
 
 /* Sets exactly the given env vars for the duration of `run`, restoring each key's original
    value (or absence) afterward — never a blanket process.env swap, so this can't accidentally
@@ -83,11 +94,11 @@ test('resolveProvider: NOINFRA_BASE_URL overrides the verified default rather th
 
 // ── resolveRole ────────────────────────────────────────────────────────────────────────────
 
-test('ROLES lists exactly the four roles ARCHITECTURE.md §4.5 configures', () => {
-  assert.deepEqual([...ROLES].sort(), ['interpret', 'plan', 'synthesis', 'verify']);
+test('ROLES lists exactly the five roles ARCHITECTURE.md §4.5 plus newsExtract (2h) configures', () => {
+  assert.deepEqual([...ROLES].sort(), ['interpret', 'newsExtract', 'plan', 'synthesis', 'verify']);
 });
 
-for (const role of ['interpret', 'plan', 'synthesis', 'verify']) {
+for (const role of ['interpret', 'plan', 'synthesis', 'verify', 'newsExtract']) {
   test(`resolveRole('${role}'): reads CARIBECON_${role.toUpperCase()}_PROVIDER/_MODEL specifically`, () => {
     withEnv(
       { [`CARIBECON_${role.toUpperCase()}_PROVIDER`]: 'nebius', [`CARIBECON_${role.toUpperCase()}_MODEL`]: 'test-model' },
@@ -178,4 +189,18 @@ test('resolveRoleFully: the full chain, role config plus a ready-to-call connect
       });
     },
   );
+});
+
+// ── Phase 3 budget constants ───────────────────────────────────────────────────────────────
+
+test('Phase 3 budget constants: Tavily-related values match ARCHITECTURE.md §7 starting points', () => {
+  assert.equal(MAX_PLAN_STEPS, 8);
+  assert.equal(MAX_TAVILY_SEARCHES, 2);
+  assert.equal(MAX_TAVILY_EXTRACTS, 3);
+  assert.equal(MAX_EXTRACT_CHARS, 6_000);
+  assert.equal(MAX_EXTRACT_TOTAL, 15_000);
+});
+
+test('MAX_NEWS_DIGESTS: independent news-digest budget, not shared with the Tavily constants', () => {
+  assert.equal(MAX_NEWS_DIGESTS, 2);
 });

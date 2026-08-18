@@ -19,8 +19,8 @@
  * own model config) and is pre-filled as a default, still overridable via NOINFRA_BASE_URL.
  */
 
-export type Role = 'interpret' | 'plan' | 'synthesis' | 'verify';
-export const ROLES: readonly Role[] = ['interpret', 'plan', 'synthesis', 'verify'];
+export type Role = 'interpret' | 'plan' | 'synthesis' | 'verify' | 'newsExtract';
+export const ROLES: readonly Role[] = ['interpret', 'plan', 'synthesis', 'verify', 'newsExtract'];
 
 export type ProviderName = 'nebius' | 'minimax' | 'noinfra';
 // Impala is added here once access lands and its API shape is confirmed OpenAI-compatible
@@ -97,3 +97,16 @@ export function resolveRoleFully(role: Role): ResolvedRole | null {
   if (!connection) return null;
   return { ...roleConfig, connection };
 }
+
+// ── Phase 3 budget constants (ARCHITECTURE.md §7) ──────────────────────────────────────────
+// Starting points only what Phase 3's own code needs — not the full §7 shared-deadline object.
+
+export const MAX_PLAN_STEPS = 8; // ARCHITECTURE.md §7 starting point — plan truncated, not rejected
+export const MAX_TAVILY_SEARCHES = 2; // ARCHITECTURE.md §7 starting point
+export const MAX_TAVILY_EXTRACTS = 3; // ARCHITECTURE.md §7 starting point
+export const MAX_EXTRACT_CHARS = 6_000; // ARCHITECTURE.md §7 starting point — per-URL cap
+export const MAX_EXTRACT_TOTAL = 15_000; // ARCHITECTURE.md §7 starting point — total cap across extracts
+// New, independent Phase-3 addition for the news-digest path (2h) — NOT shared with the Tavily
+// constants above, since this path is a plain HTTP fetch, not Tavily; kept small because each
+// digest is an extra model call.
+export const MAX_NEWS_DIGESTS = 2;

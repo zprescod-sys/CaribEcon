@@ -90,7 +90,8 @@ export interface WebEvidence {
   publishedDate: string | null; // only when Tavily supplies one
   retrievedAt: string; // ISO instant — this is the web; it moves under you
   snippet: string;
-  extract: { text: string; chars: number } | null;
+  // summary is additive: an optional 'newsExtract'-role compaction of text; text itself is never edited or replaced.
+  extract: { text: string; chars: number; summary: string | null } | null;
   authorizedBy: string; // ResearchStep['id'] — which validated plan step fetched this
 }
 

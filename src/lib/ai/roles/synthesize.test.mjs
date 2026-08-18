@@ -112,6 +112,73 @@ test('the system prompt carries real retrieved points, a real evidence ref, and 
   );
 });
 
+// ── pkg.web reaches the prompt (Phase 3, §2g/§2h) — summary preferred, then raw text, then
+//    snippet-only for a no-extract item, plus the W:-specific figure/quote restriction rule ────
+
+test('pkg.web evidence appears in the prompt: summary preferred, raw text as fallback, snippet-only when no extract', async () => {
+  const webPkg = {
+    ...pkg,
+    web: [
+      {
+        id: 'W:has-summary',
+        title: 'Article with a digest',
+        url: 'https://example.com/a',
+        domain: 'example.com',
+        publishedDate: '2026-01-01',
+        retrievedAt: '2026-01-01T00:00:00.000Z',
+        snippet: 'a short search snippet',
+        extract: { text: 'a'.repeat(1000), chars: 1000, summary: 'A pre-digested summary of the article.' },
+        authorizedBy: 's1',
+      },
+      {
+        id: 'W:no-summary',
+        title: 'Article with only raw text',
+        url: 'https://example.com/b',
+        domain: 'example.com',
+        publishedDate: null,
+        retrievedAt: '2026-01-01T00:00:00.000Z',
+        snippet: 'another snippet',
+        extract: { text: 'RAW_EXTRACT_MARKER ' + 'x'.repeat(600), chars: 619, summary: null },
+        authorizedBy: 's1',
+      },
+      {
+        id: 'W:no-extract',
+        title: 'Search result never extracted',
+        url: 'https://example.com/c',
+        domain: 'example.com',
+        publishedDate: null,
+        retrievedAt: '2026-01-01T00:00:00.000Z',
+        snippet: 'SNIPPET_ONLY_MARKER',
+        extract: null,
+        authorizedBy: 's1',
+      },
+    ],
+  };
+
+  await withSynthesisProvider(
+    () => JSON.stringify({ headline: 'x', claims: [], gaps: [] }),
+    async received => {
+      await synthesize(intent, webPkg);
+      const system = received[0].messages[0].content;
+
+      assert.ok(system.includes('W:has-summary'));
+      assert.ok(system.includes('A pre-digested summary of the article.'), 'summary must be preferred when present');
+
+      assert.ok(system.includes('W:no-summary'));
+      assert.ok(system.includes('RAW_EXTRACT_MARKER'), 'raw extract text must appear when there is no summary');
+
+      assert.ok(system.includes('W:no-extract'));
+      assert.ok(system.includes('SNIPPET_ONLY_MARKER'), 'the snippet must appear when there is no extract at all');
+      assert.ok(system.includes('no extract retrieved'), 'a no-extract item must be marked as such');
+
+      assert.ok(
+        system.includes('"context" or "framing"'),
+        'the Rules section must state the W:-with-no-extract restriction explicitly',
+      );
+    },
+  );
+});
+
 test('caveats and misses are surfaced as explicit constraints when present', async () => {
   // A comparison across mismatched units reliably produces a comparability caveat.
   const comparisonIntent = { questionType: 'comparison', countries: ['GY', 'TT'], indicators: ['nominal_gdp'], yearFrom: null, yearTo: null, newsKeywords: [] };
