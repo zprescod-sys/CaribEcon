@@ -1,0 +1,7 @@
+# Vercel's zero-config Node.js builder treats every file directly under api/ that matches a
+# supported function runtime extension (.js/.mjs/.ts/...) as its own Serverless Function route —
+# including these *.test.mjs files, which are never meant to be deployed at all, only run
+# locally/in CI via `npm test`. Left unignored, they silently count against the Hobby plan's
+# 12-function-per-deployment cap alongside the real endpoints (api/ask.ts, api/deepdive.ts, etc.),
+# which is exactly what broke the feature/excel-addin preview deployment.
+api/*.test.mjs
