@@ -51,6 +51,15 @@ function resolveApiBase(isServe) {
 // itself rather than shipping a build that 401s on every question.
 const researchToken = process.env.CARIBECON_RESEARCH_TOKEN || "";
 
+// CLAUDE.md's explicit task-pane rollback switch: "ask" points the chat tab at the real
+// Phase 3 pipeline (POST /api/ask — interpret -> plan -> executeResearchPlan -> synthesize ->
+// verify, claim-structured, grounding-gated). Anything else — including unset — is "legacy",
+// which keeps posting to the frozen POST /api/research. Defaults to legacy, not ask: this is a
+// build-time flip, not a runtime feature flag, so the safe default is the endpoint already
+// proven in production, not the newest one. Flip explicitly:
+//   ASK_CARIBECON_MODE=ask npm run build:dev
+const askMode = process.env.ASK_CARIBECON_MODE === "ask" ? "ask" : "legacy";
+
 /* global require, module, process */
 
 async function getHttpsOptions() {
@@ -133,8 +142,23 @@ module.exports = async (env, options) => {
     },
     // .ts last, so a .js file always wins when both exist. Present so the task pane can import
     // the shared deterministic modules under ../../src/lib — see the babel rule below.
+    //
+    // extensionAlias fixes a real, previously-unbuildable gap: src/lib/*.ts increasingly uses
+    // explicit nodenext-style './foo.js' specifiers (TypeScript's own convention for a file that
+    // is actually foo.ts on disk — see e.g. excelOutputs.ts's `import { evidenceId } from
+    // './askTools.js'`). Without this, webpack's default resolver treats an already-.js-suffixed
+    // specifier as fully resolved and does NOT fall back to trying .ts — it appends the
+    // extensions list onto the existing suffix instead (looking for the literal file
+    // 'askTools.js.ts'), which can never exist. This is exactly the gap contracts.ts's own
+    // header comment already named ("webpack's resolve.extensions has no extensionAlias, so it
+    // cannot resolve an explicit ./foo.js specifier to a foo.ts on disk") — it stayed unnoticed
+    // only as long as every runtime import chain into src/lib/ai/* happened to be `import type`
+    // and got erased by babel before webpack ever needed to resolve it.
     resolve: {
       extensions: [".html", ".js", ".ts"],
+      extensionAlias: {
+        ".js": [".ts", ".js"],
+      },
     },
     module: {
       rules: [
@@ -183,6 +207,7 @@ module.exports = async (env, options) => {
         // that writes or costs more than a capped read. Set CARIBECON_RESEARCH_TOKEN in the
         // build environment to the same value configured on the Vercel project.
         "process.env.CARIBECON_RESEARCH_TOKEN": JSON.stringify(researchToken),
+        "process.env.ASK_CARIBECON_MODE": JSON.stringify(askMode),
       }),
       new CustomFunctionsMetadataPlugin({
         output: "functions.json",
@@ -246,11 +271,10 @@ module.exports = async (env, options) => {
       // a blanket '/api' context so a new route added here is a one-line, deliberate opt-in, not
       // a silent behavior change for whatever else lives under /api next.
       //
-      // Add a new endpoint's path here as it's built — currently pending: /api/comparison
-      // (Phase 3a), /api/ask (Phase 5).
+      // Add a new endpoint's path here as it's built — currently pending: /api/comparison.
       proxy: [
         {
-          context: ["/api/deepdive", "/api/indicator", "/api/research"],
+          context: ["/api/deepdive", "/api/indicator", "/api/research", "/api/ask"],
           target: `http://localhost:${vercelDevPort}`,
           changeOrigin: true,
           on: {

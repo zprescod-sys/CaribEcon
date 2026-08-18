@@ -98,6 +98,60 @@ test('extracts text, finishReason and usage from a standard success response', a
   );
 });
 
+// Real capture: MiniMax-M3 answering the 'plan' role prompt (2026-08-18, api/ask.ts live test).
+// The <think> trace itself contains a stray `{"cmd":"final",...}` JSON-looking fragment mid-thought
+// before the model settles on its real answer — this broke every caller's brace-matching JSON
+// extraction until callModel started stripping <think> blocks centrally. Kept verbatim (not
+// trimmed to a minimal repro) because the exact shape — an embedded JSON fragment inside the
+// reasoning, not just prose — is what made this bug non-obvious.
+const REAL_MINIMAX_THINK_LEAK = `<think>
+We need output only JSON. Need plan. Need interpret latest news, oil sector, relate GDP growth. Structured context null years. Need fewest steps. We can search news and series perhaps parallel? Step order deterministic executor. Need get GDP growth maybe recent years. Since null years and latest news, determine latest first via search news, perhaps date bounds null. Then web search official/context, extract. Need perhaps series yearFrom? Recent GDP growth, maybe 2022-current. But cannot know. Tools allow null. We can call get_series country GY indicator gdp_growth null null. Search news Guyana oil GDP growth keywords. Search web query official Guyana oil latest production government GDP IMF perhaps dates null. Then extract s4. Do we need both news and web? Question latest economic news; search_news sufficient, and extract web to details. Could use search news, then maybe extract news URLs? But extract_web must follow search_web, not search_news. So include search_web. Fewest 3: s1 get GDP, s3 search news, s4 search web and s5 extract s4. Is order ideally s1 and s3 then s4 based on? Plans often search broad and series. But we can structure s1 series first, s2 news, s3 web then extract. Yet "latest" and relation. Search news can identify latest. Web search official sources. Sequence perhaps s1, s2, s3, s4. Does search_web query need exact dates? no.
+
+Need anticipatedGaps concise. Potential lack of same-period GDP breakdown/attribution; oil news may discuss announced projects not actual output; geopolitical/local issues. But don't invent. Say "The news may not quantify oil-sector contribution to GDP..." and "Series and news publication dates may not align with latest quarter". That's expected evidence gaps.
+
+Country GY. Indicator gdp_growth. year null. Search dates null because latest. Keywords maybe "Guyana oil GDP growth" exactly. But separate query maybe "Guyana oil sector latest economic news production exports
+
+{"cmd":"final","content":"{\\"answer\\":\\"...\\"}"}
+
+sector. Should we search specific? Search_news keywords can be ["Guyana oil GDP growth"] as intent. Could include "oil production economy". Search web query "Guyana latest oil sector economic news GDP growth production 2025 2026" This risks future. Current date? System doesn't give. We need not assert. Search query perhaps "latest Guyana oil sector economic news GDP growth oil production official". That's fine.
+
+get_series no date null means full series. Good.
+
+Could add compare_series? No, no comparison asked. Extract web maxUrls maybe 8. Search_news itself may return articles but to extract need web. This is 4 steps. Could omit s1? Need relate recent GDP, data useful. Yes.
+
+Need JSON valid. No prose. Anticipated gaps no unsupported facts. Ensure extract onStep s3, not search news.
+
+Maybe order: s1 get series, s2 search_news, s3 search_web, s4 extract. The user asks "latest economic news on oil sector, and how relates to recent GDP growth." Series full gives historical. Search news. Search web official sources. Extract pages. This is apt. Maybe latest news only could use search_news and no web, but news tool likely gives excerpts. Yet relation requires contextual evidence. Search web and extraction.
+
+Need no question field. Let's formulate.
+</think>
+{"scope":{"countries":["GY"],"indicators":["gdp_growth"],"yearFrom":null,"yearTo":null},"steps":[{"id":"s1","tool":"get_series","country":"GY","indicator":"gdp_growth","yearFrom":null,"yearTo":null,"why":"x"}],"anticipatedGaps":["x"]}`;
+
+test('a <think> reasoning block is stripped from text, even when it contains a stray JSON-looking fragment', async () => {
+  await withProvider(
+    () => ({ body: { choices: [{ message: { content: REAL_MINIMAX_THINK_LEAK }, finish_reason: 'stop' }] } }),
+    async connection => {
+      const result = await callModel(connection, 'm', [{ role: 'user', content: 'x' }]);
+      assert.ok(!result.text.includes('<think>'), 'no <think> tag should survive');
+      assert.ok(!result.text.includes('"cmd":"final"'), 'the stray mid-thought JSON fragment should not survive');
+      // The real answer must parse clean on its own, since callModel's whole job here is leaving
+      // exactly one well-formed JSON object behind for parseModelJson's callers.
+      const parsed = JSON.parse(result.text);
+      assert.deepEqual(parsed.scope, { countries: ['GY'], indicators: ['gdp_growth'], yearFrom: null, yearTo: null });
+    },
+  );
+});
+
+test('an unterminated <think> block (cut off mid-reasoning) is left untouched, not guessed at', async () => {
+  await withProvider(
+    () => ({ body: { choices: [{ message: { content: '<think>still reasoning, never closed' }, finish_reason: 'length' }] } }),
+    async connection => {
+      const result = await callModel(connection, 'm', [{ role: 'user', content: 'x' }]);
+      assert.equal(result.text, '<think>still reasoning, never closed');
+    },
+  );
+});
+
 test('usage is null when the provider omits it, not a crash', async () => {
   await withProvider(
     () => ({ body: { choices: [{ message: { content: 'x' }, finish_reason: 'stop' }] } }),

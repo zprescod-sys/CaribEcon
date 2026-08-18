@@ -91,6 +91,7 @@ export default {
           502,
         );
       }
+      console.error('api/ask: unexpected pipeline error', error);
       return json({ error: 'service_error', message: 'The research service failed.' }, 500);
     }
   },

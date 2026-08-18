@@ -35,6 +35,10 @@ import {
 
 const API_BASE = process.env.CARIBECON_API_BASE;
 const RESEARCH_TOKEN = process.env.CARIBECON_RESEARCH_TOKEN;
+// CLAUDE.md's task-pane rollback switch (webpack.config.js's askMode, baked in at build time).
+// 'ask' -> POST /api/ask (Phase 3: claim-structured, grounding-gated). Anything else -> the
+// frozen POST /api/research, unchanged.
+const ASK_MODE = process.env.ASK_CARIBECON_MODE === 'ask' ? 'ask' : 'legacy';
 
 const PREVIEW_ROWS = 8; // enough to show the shape of a series without scrolling the pane
 
@@ -920,7 +924,8 @@ async function ask() {
   out.innerHTML = `<p class="answer__working">Reading the hub…</p>`;
 
   try {
-    const res = await fetch(`${API_BASE}/api/research`, {
+    const endpoint = ASK_MODE === 'ask' ? '/api/ask' : '/api/research';
+    const res = await fetch(`${API_BASE}${endpoint}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'X-CaribEcon-Token': RESEARCH_TOKEN },
       body: JSON.stringify({ question }),
@@ -931,7 +936,8 @@ async function ask() {
       out.innerHTML = `<p class="answer__working">${esc(body.message ?? `Request failed (${res.status}).`)}</p>`;
       return;
     }
-    renderAnswer(question, body);
+    if (ASK_MODE === 'ask') renderAskAnswer(question, body.result);
+    else renderAnswer(question, body);
   } catch (error) {
     out.innerHTML = `<p class="answer__working">Could not reach the research endpoint: ${esc(error.message)}</p>`;
   } finally {
@@ -994,6 +1000,129 @@ async function insertAnswer(question, body) {
       `${c.country} · ${c.label}`,
       `${c.sourceOrg} · ${c.sourceTier} · vintage ${c.vintage} · ${c.sourceUrl}`,
     ]),
+  ];
+
+  try {
+    await Excel.run(async ctx => {
+      const anchor = ctx.workbook.getSelectedRange().getCell(0, 0);
+      const block = anchor.getResizedRange(rows.length - 1, 1);
+      block.values = rows;
+      block.format.autofitColumns();
+      anchor.getResizedRange(0, 1).format.font.bold = true;
+      anchor.getResizedRange(0, 1).format.font.color = '#0E5E4E';
+      await ctx.sync();
+    });
+    el('insert-answer').textContent = 'Inserted at the selected cell';
+  } catch (error) {
+    el('insert-answer').textContent = `Could not insert: ${error.message}`;
+  }
+}
+
+/* The Phase 3 renderer (ASK_MODE === 'ask') — a ResearchResult (answer/evidence/verdict), not
+   the legacy {answer, citations} shape renderAnswer above handles. The one rule this must never
+   break: a claim verify() dropped is NEVER shown as if it survived — publishedClaims is the only
+   thing that decides what narrative text reaches the pane, never answer.claims wholesale. */
+function humanizeReason(reason) {
+  return (
+    {
+      ungrounded_figure: 'a figure or reference could not be verified against retrieved evidence',
+      source_conflict: 'two sources were cited in a way that is not directly comparable',
+      low_confidence: 'a statement read more certain than the evidence supports',
+      unattributed_causation: 'a cause-and-effect claim was not adequately hedged',
+    }[reason] ?? reason
+  );
+}
+
+// Every ref a published claim actually relies on — refs[] and figures[].ref, unioned, same
+// construction the grounding gate itself uses (grounding.ts's checkRefExistence).
+function citedRefs(answer, verdict) {
+  const refs = new Set();
+  for (const claim of answer.claims) {
+    if (!verdict.publishedClaims.includes(claim.id)) continue;
+    for (const ref of claim.refs) refs.add(ref);
+    for (const figure of claim.figures) refs.add(figure.ref);
+  }
+  return refs;
+}
+
+function renderAskAnswer(question, result) {
+  const { answer, evidence, verdict } = result;
+  const published = answer.claims.filter(c => verdict.publishedClaims.includes(c.id));
+  const refs = citedRefs(answer, verdict);
+
+  const narrative = published.length
+    ? published.map(c => `<p>${esc(c.text)}</p>`).join('')
+    : `<p class="answer__working">No part of this answer could be verified against retrieved evidence.</p>`;
+
+  const narrowNote =
+    verdict.outcome === 'NARROW'
+      ? `<span class="provenance__note">Narrowed: ${published.length} of ${answer.claims.length} statement${answer.claims.length === 1 ? '' : 's'} could be shown as verified (${verdict.reasonCategories.map(humanizeReason).join('; ')}).</span>`
+      : '';
+
+  const gapsNote = answer.gaps.length
+    ? `<span class="provenance__note">Not covered: ${answer.gaps.map(esc).join(' · ')}</span>`
+    : '';
+
+  const dataCites = evidence.data
+    .filter(d => refs.has(`D:${d.country}:${d.indicator}`))
+    .map(d => {
+      const url = safeUrl(d.sourceUrl);
+      const org = url ? `<a href="${esc(url)}" target="_blank" rel="noopener">${esc(d.sourceOrg)}</a>` : esc(d.sourceOrg);
+      return `<div class="cite"><b>${esc(d.country)} · ${esc(d.label)}</b><br />${org} · ${esc(d.sourceTier)} · vintage ${esc(d.vintage)}</div>`;
+    });
+  const newsCites = evidence.news
+    .filter(n => refs.has(`N:${n.id}`))
+    .map(n => {
+      const url = safeUrl(n.url);
+      const link = url ? `<a href="${esc(url)}" target="_blank" rel="noopener">${esc(n.source)}</a>` : esc(n.source);
+      return `<div class="cite"><b>${esc(n.title)}</b><br />${link} · ${esc(n.date)}</div>`;
+    });
+  const webCites = (evidence.web ?? [])
+    .filter(w => refs.has(w.id))
+    .map(w => {
+      const url = safeUrl(w.url);
+      const link = url ? `<a href="${esc(url)}" target="_blank" rel="noopener">${esc(w.domain)}</a>` : esc(w.domain);
+      const read = w.extract ? 'read in full' : 'headline/snippet only';
+      return `<div class="cite"><b>${esc(w.title)}</b><br />${link} · ${read}</div>`;
+    });
+  const allCites = [...dataCites, ...newsCites, ...webCites];
+
+  const citeHtml = allCites.length
+    ? `<div class="cites"><p class="cites__label">Sources read (${allCites.length})</p>${allCites.join('')}</div>`
+    : `<div class="cites"><p class="cites__label">Sources read (0)</p><div class="cite">No retrieved evidence backed a verified statement — the note above reports what is missing.</div></div>`;
+
+  el('answer').innerHTML = `
+    <div class="answer__body">
+      <p><b>${esc(answer.headline)}</b></p>
+      ${narrative}
+      ${narrowNote}
+      ${gapsNote}
+    </div>
+    ${citeHtml}
+    <div class="answer__body" style="border-top:1px solid var(--line)">
+      <button class="btn" type="button" id="insert-answer">Insert answer and sources</button>
+    </div>
+  `;
+
+  el('insert-answer').addEventListener('click', () => insertAskAnswer(question, answer, evidence, verdict, refs));
+}
+
+async function insertAskAnswer(question, answer, evidence, verdict, refs) {
+  const published = answer.claims.filter(c => verdict.publishedClaims.includes(c.id));
+  const dataCites = evidence.data.filter(d => refs.has(`D:${d.country}:${d.indicator}`));
+  const newsCites = evidence.news.filter(n => refs.has(`N:${n.id}`));
+  const webCites = (evidence.web ?? []).filter(w => refs.has(w.id));
+
+  const rows = [
+    ['CaribEcon research', ''],
+    ['Question', question],
+    ['Answer', answer.headline],
+    ...published.map(c => ['', c.text]),
+    ['', ''],
+    ['Sources read', String(dataCites.length + newsCites.length + webCites.length)],
+    ...dataCites.map(d => [`${d.country} · ${d.label}`, `${d.sourceOrg} · ${d.sourceTier} · vintage ${d.vintage} · ${d.sourceUrl}`]),
+    ...newsCites.map(n => [n.title, `${n.source} · ${n.date} · ${n.url}`]),
+    ...webCites.map(w => [w.title, `${w.domain} · ${w.extract ? 'read in full' : 'headline/snippet only'} · ${w.url}`]),
   ];
 
   try {

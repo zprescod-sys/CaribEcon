@@ -44,6 +44,23 @@ export class ProviderCallError extends Error {
 
 const DEFAULT_TIMEOUT_MS = 12_000;
 
+/* Some reasoning-capable models (observed live: MiniMax-M3 answering a 'plan' prompt) return
+ * their <think>...</think> trace inline in message.content rather than in a separate field —
+ * there is no reasoning_content sibling to read instead. That trace is not just inert prose to
+ * skip over: a live capture from the plan role contained a stray `{"cmd":"final","content":"..."}`
+ * JSON-looking fragment mid-thought (the model apparently drafting a hypothetical tool call before
+ * settling on its real answer), which broke every caller's JSON extraction — parseModelJson's
+ * brace-matching is a single greedy `{...}` span, so it stretched from that stray fragment's `{`
+ * to the real answer's closing `}`, producing invalid JSON. Stripping here, once, centrally, fixes
+ * every consumer of ModelResponse.text — both parseModelJson-based JSON roles and prose roles
+ * (newsExtract) that never parse JSON at all but would otherwise get a reasoning trace prepended
+ * to their summary. An unterminated <think> (cut off by maxTokens) is left untouched on purpose:
+ * a truncated response has no usable answer either way, and failing loudly downstream is correct,
+ * not something to paper over here. */
+function stripThinking(content: string): string {
+  return content.replace(/<think>[\s\S]*?<\/think>/gi, '').trim();
+}
+
 export async function callModel(
   connection: ResolvedProvider,
   model: string,
@@ -104,7 +121,7 @@ export async function callModel(
   const usage = (body as { usage?: { prompt_tokens?: number; completion_tokens?: number } }).usage;
 
   return {
-    text: choice.message.content,
+    text: stripThinking(choice.message.content),
     finishReason: choice.finish_reason ?? null,
     usage: usage
       ? { promptTokens: usage.prompt_tokens ?? null, completionTokens: usage.completion_tokens ?? null }
