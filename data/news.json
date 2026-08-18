@@ -1,5 +1,355 @@
 [
   {
+    "id": "guyana-chronicle-c408d0d7",
+    "title": "Government takes steps to boost Linden’s electricity supply -Minister Indar says three engines to reach there soon",
+    "source": "Guyana Chronicle",
+    "date": "2026-08-18",
+    "country": "GY",
+    "url": "https://guyanachronicle.com/2026/08/18/government-takes-steps-to-boost-lindens-electricity-supply-minister-indar-says-three-engines-to-reach-there-soon/",
+    "tags": [
+      "news"
+    ],
+    "category": "Energy",
+    "group": "Energy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "guyana-chronicle-ae8287f4",
+    "title": "Review of powership contracts will be based on progress of gas-to-energy project —Minister Indar says",
+    "source": "Guyana Chronicle",
+    "date": "2026-08-18",
+    "country": "GY",
+    "url": "https://guyanachronicle.com/2026/08/18/review-of-powership-contracts-will-be-based-on-progress-of-gas-to-energy-project-minister-indar-says/",
+    "tags": [
+      "news"
+    ],
+    "category": "Energy",
+    "group": "Energy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "jamaica-observer-94436ba4",
+    "title": "Robinson sounds alarm on Jamaica’s economy",
+    "source": "Jamaica Observer",
+    "date": "2026-08-18",
+    "country": "JM",
+    "url": "https://www.jamaicaobserver.com/2026/08/18/robinson-sounds-alarm-jamaicas-economy/",
+    "tags": [
+      "news"
+    ],
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "jamaica-observer-ffe35b86",
+    "title": "Langrin takes BOJ reins as inflation spikes",
+    "source": "Jamaica Observer",
+    "date": "2026-08-18",
+    "country": "JM",
+    "url": "https://www.jamaicaobserver.com/2026/08/18/langrin-takes-boj-reins-inflation-spikes/",
+    "tags": [
+      "news"
+    ],
+    "category": "Inflation",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "jamaica-gleaner-76055f4f",
+    "title": "Langrin takes the helm - BOJ appoints former World Bank board adviser as governor",
+    "source": "Jamaica Gleaner",
+    "date": "2026-08-18",
+    "country": "JM",
+    "url": "http://jamaica-gleaner.com/article/news/20260818/langrin-takes-helm-boj-appoints-former-world-bank-board-adviser-governor",
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "jamaica-gleaner-e6c24be1",
+    "title": "Taxpayers will pay if Cooper’s Pen men win lawsuits – Coley Nicholson",
+    "source": "Jamaica Gleaner",
+    "date": "2026-08-18",
+    "country": "JM",
+    "url": "http://jamaica-gleaner.com/article/news/20260818/taxpayers-will-pay-if-coopers-pen-men-win-lawsuits-coley-nicholson",
+    "category": "Fiscal Policy",
+    "group": "Fiscal Policy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "jamaica-gleaner-6db1bb67",
+    "title": "US stocks edge back from their record as oil prices rise",
+    "source": "Jamaica Gleaner",
+    "date": "2026-08-18",
+    "country": "JM",
+    "url": "http://jamaica-gleaner.com/article/business/20260818/us-stocks-edge-back-their-record-oil-prices-rise",
+    "category": "Energy",
+    "group": "Energy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "the-star-jamaica-7e76344b",
+    "title": "Where is Nicky?  Family desperate for answers after Old Harbour resident disappears",
+    "source": "The Star (Jamaica)",
+    "date": "2026-08-18",
+    "country": "JM",
+    "url": "https://jamaica-star.com/article/news/20260817/where-nicky-family-desperate-answers-after-old-harbour-resident-disappears",
+    "category": "Trade",
+    "group": "Trade & Tourism",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "eyewitness-news-ca4fae1f",
+    "title": "Gov’t Backs Campaign Finance Reform; Questions Grow Over Political Will",
+    "source": "Eyewitness News",
+    "date": "2026-08-18",
+    "country": "BS",
+    "url": "https://ewnews.com/govt-backs-campaign-finance-reform-questions-grow-over-political-will/?utm_source=rss&utm_medium=rss&utm_campaign=govt-backs-campaign-finance-reform-questions-grow-over-political-will",
+    "tags": [
+      "local",
+      "newscasts",
+      "videos"
+    ],
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "eyewitness-news-1ac00175",
+    "title": "FNM on National Investment Fund: Where Is the $700M?",
+    "source": "Eyewitness News",
+    "date": "2026-08-18",
+    "country": "BS",
+    "url": "https://ewnews.com/fnm-on-national-investment-fund-where-is-the-700m/?utm_source=rss&utm_medium=rss&utm_campaign=fnm-on-national-investment-fund-where-is-the-700m",
+    "tags": [
+      "local",
+      "newscasts",
+      "videos"
+    ],
+    "category": "Investment",
+    "group": "Investment",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "starnieuws-35c78a94",
+    "title": "Groei Chinese economie onder druk door zwakke consumptie en investeringen",
+    "source": "Starnieuws",
+    "date": "2026-08-18",
+    "country": "SR",
+    "url": "https://www.starnieuws.com/index.php/welcome/index/nieuwsitem/93469",
+    "category": "Investment",
+    "group": "Investment",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "starnieuws-b4c30ac3",
+    "title": "Lula noemt nieuwe olievondst 'paspoort naar de toekomst' ondanks milieutegenstand",
+    "source": "Starnieuws",
+    "date": "2026-08-18",
+    "country": "SR",
+    "url": "https://www.starnieuws.com/index.php/welcome/index/nieuwsitem/93461",
+    "category": "Energy",
+    "group": "Energy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "antigua-observer-b29fc2f2",
+    "title": "Antigua Distillery Marks 45th Independence Anniversary with New Rum",
+    "source": "Antigua Observer",
+    "date": "2026-08-18",
+    "country": "AG",
+    "url": "https://antiguaobserver.com/antigua-distillery-marks-45-years-of-independence-with-new-rum/",
+    "tags": [
+      "the big stories"
+    ],
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "st-kitts-nevis-observer-5ba86d55",
+    "title": "Guyana: Company threatens legal action against Opposition Leader",
+    "source": "St. Kitts-Nevis Observer",
+    "date": "2026-08-18",
+    "country": "KN",
+    "url": "https://www.thestkittsnevisobserver.com/guyana-company-threatens-legal-action-against-opposition-leader/",
+    "tags": [
+      "regional"
+    ],
+    "category": "Corporate",
+    "group": "Finance",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "st-kitts-nevis-observer-498df8ed",
+    "title": "Grenada: Government releases list of businesses to participate in first ever VAT Free weekend",
+    "source": "St. Kitts-Nevis Observer",
+    "date": "2026-08-18",
+    "country": "KN",
+    "url": "https://www.thestkittsnevisobserver.com/grenada-government-releases-list-of-businesses-to-participate-in-first-ever-vat-free-weekend/",
+    "tags": [
+      "regional"
+    ],
+    "category": "Corporate",
+    "group": "Finance",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "st-kitts-nevis-observer-0baf5833",
+    "title": "OECS advances evidence-based trade in services policy making",
+    "source": "St. Kitts-Nevis Observer",
+    "date": "2026-08-18",
+    "country": "KN",
+    "url": "https://www.thestkittsnevisobserver.com/oecs-advances-evidence-based-trade-in-services-policy-making/",
+    "tags": [
+      "regional"
+    ],
+    "category": "Trade",
+    "group": "Trade & Tourism",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "st-kitts-nevis-observer-446df5d2",
+    "title": "Great Britain:  Free Bus Travel 24/7 For Disabled People As Prime Minister Takes Further Action To Ease Cost Of Living",
+    "source": "St. Kitts-Nevis Observer",
+    "date": "2026-08-18",
+    "country": "KN",
+    "url": "https://www.thestkittsnevisobserver.com/great-britain-free-bus-travel-24-7-for-disabled-people-as-prime-minister-takes-further-action-to-ease-cost-of-living/",
+    "tags": [
+      "press releases",
+      "regional/international news"
+    ],
+    "category": "Inflation",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "st-kitts-nevis-observer-f154d0d6",
+    "title": "Great Britain:  Lanarkshire AI Growth Zone Secures £300 Million Investment As Dell Establishes Scottish Base",
+    "source": "St. Kitts-Nevis Observer",
+    "date": "2026-08-18",
+    "country": "KN",
+    "url": "https://www.thestkittsnevisobserver.com/great-britain-lanarkshire-ai-growth-zone-secures-300-million-investment-as-dell-establishes-scottish-base/",
+    "tags": [
+      "press releases",
+      "regional/international news"
+    ],
+    "category": "Investment",
+    "group": "Investment",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "searchlight-svg-b4511983",
+    "title": "Inland Revenue Department updating Property Tax Information",
+    "source": "Searchlight SVG",
+    "date": "2026-08-18",
+    "country": "VC",
+    "url": "https://www.searchlight.vc/press-release/2026/08/18/inland-revenue-department-updating-property-tax-information/",
+    "tags": [
+      "press release"
+    ],
+    "category": "Fiscal Policy",
+    "group": "Fiscal Policy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "cayman-compass-4462a9a5",
+    "title": "Government optimistic about finances with surplus ahead of target",
+    "source": "Cayman Compass",
+    "date": "2026-08-18",
+    "country": "KY",
+    "url": "https://www.caymancompass.com/2026/08/18/government-optimistic-about-finances-with-surplus-ahead-of-target/",
+    "tags": [
+      "local",
+      "politics",
+      "government financial reporting",
+      "government spending",
+      "public finances",
+      "surplus"
+    ],
+    "category": "Fiscal Policy",
+    "group": "Fiscal Policy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "bvi-news-79723e28",
+    "title": "Penn flags $80M airport project under Works Ministry",
+    "source": "BVI News",
+    "date": "2026-08-18",
+    "country": "VG",
+    "url": "https://bvinews.com/penn-flags-80m-airport-project-under-works-ministry/",
+    "tags": [
+      "all news"
+    ],
+    "category": "Tourism",
+    "group": "Trade & Tourism",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
     "id": "guyana-chronicle-d39f41ae",
     "title": "President Ali unveils agro‑tourism vision for Region Two",
     "source": "Guyana Chronicle",
@@ -588,6 +938,43 @@
     "group": "Energy",
     "decision": "publish",
     "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "nation-news-3b34aa6f",
+    "title": "Central Bank seizes control of Zeemoney",
+    "source": "Nation News",
+    "date": "2026-08-17",
+    "country": "BB",
+    "url": "https://nationnews.com/2026/08/17/central-bank-seizes-control-of-zeemoney/?utm_source=rss&utm_medium=rss&utm_campaign=central-bank-seizes-control-of-zeemoney",
+    "tags": [
+      "news",
+      "business",
+      "central bank of barbados"
+    ],
+    "category": "Banking",
+    "group": "Finance",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "nation-news-4eb33ba9",
+    "title": "Growing risks threaten financial stability",
+    "source": "Nation News",
+    "date": "2026-08-17",
+    "country": "BB",
+    "url": "https://nationnews.com/2026/08/17/growing-risks-threaten-financial-stability/?utm_source=rss&utm_medium=rss&utm_campaign=growing-risks-threaten-financial-stability",
+    "tags": [
+      "business",
+      "barbados’ financial system"
+    ],
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
     "reason": "Heuristic: displayable.",
     "classifier": "heuristic"
   },
@@ -36572,313 +36959,6 @@
       "grenada airports authority",
       "kurt williams"
     ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "now-grenada-e66436e2",
-    "title": "Economics is not apolitical",
-    "source": "NOW Grenada",
-    "date": "2026-07-13",
-    "country": "GD",
-    "url": "https://nowgrenada.com/2026/07/economics-is-not-apolitical/",
-    "tags": [
-      "business",
-      "environment",
-      "opinion/commentary",
-      "politics",
-      "economics",
-      "kari grenade"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "antigua-news-room-0e61d33d",
-    "title": "LETTER: Too many politicians. Where Are the Caribbean’s Slave Revolt Leaders on Our Currency?",
-    "source": "Antigua News Room",
-    "date": "2026-07-13",
-    "country": "AG",
-    "url": "https://antiguanewsroom.com/letter-too-many-politicians-where-are-the-caribbeans-slave-revolt-leaders-on-our-currency/",
-    "tags": [
-      "news"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "antigua-news-room-2b93b2c9",
-    "title": "CARICOM Heads of Government and Regional Private Sector Agree Concrete Actions on Affordability at Second High-Level Breakfast Dialogue",
-    "source": "Antigua News Room",
-    "date": "2026-07-13",
-    "country": "AG",
-    "url": "https://antiguanewsroom.com/caricom-heads-of-government-and-regional-private-sector-agree-concrete-actions-on-affordability-at-second-high-level-breakfast-dialogue/",
-    "tags": [
-      "news"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "st-kitts-nevis-observer-baf2862e",
-    "title": "United States:  TransDigm Abandons Proposed Acquisition Of Stellant Systems In Response To Justice Department’s Decision To Block Transaction",
-    "source": "St. Kitts-Nevis Observer",
-    "date": "2026-07-13",
-    "country": "KN",
-    "url": "https://www.thestkittsnevisobserver.com/united-states-transdigm-abandons-proposed-acquisition-of-stellant-systems-in-response-to-justice-departments-decision-to-block-transaction/",
-    "tags": [
-      "press releases",
-      "regional/international news"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "st-kitts-nevis-observer-b5a75822",
-    "title": "STATEMENT BY THE HEADS OF GOVERNMENT OF THE PARTICIPATING  EASTERN CARIBBEAN STATES ON CITIZENSHIP BY INVESTMENT  PROGRAMMES AND ENGAGEMENT WITH THE EUROPEAN UNION",
-    "source": "St. Kitts-Nevis Observer",
-    "date": "2026-07-13",
-    "country": "KN",
-    "url": "https://www.thestkittsnevisobserver.com/statement-by-the-heads-of-government-of-the-participating-eastern-caribbean-states-on-citizenship-by-investment-programmes-and-engagement-with-the-european-union/",
-    "tags": [
-      "regional"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "kaieteur-news-af4c60d7",
-    "title": "Sod turned for $528M East Ruimveldt Market rehabilitation",
-    "source": "Kaieteur News",
-    "date": "2026-07-12",
-    "country": "GY",
-    "url": "https://kaieteurnewsonline.com/2026/07/12/sod-turned-for-528m-east-ruimveldt-market-rehabilitation/",
-    "tags": [
-      "news"
-    ],
-    "deal_status": "completed",
-    "deal_type": "FDI"
-  },
-  {
-    "id": "kaieteur-news-5ab6d132",
-    "title": "GPL trains staff in renewable energy, battery storage technologies",
-    "source": "Kaieteur News",
-    "date": "2026-07-12",
-    "country": "GY",
-    "url": "https://kaieteurnewsonline.com/2026/07/12/gpl-trains-staff-in-renewable-energy-battery-storage-technologies/",
-    "tags": [
-      "news"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "kaieteur-news-dbcd92f5",
-    "title": "43-room Rooster International Hotel opens on Essequibo Coast",
-    "source": "Kaieteur News",
-    "date": "2026-07-12",
-    "country": "GY",
-    "url": "https://kaieteurnewsonline.com/2026/07/12/43-room-rooster-international-hotel-opens-on-essequibo-coast/",
-    "tags": [
-      "news"
-    ],
-    "deal_status": "completed",
-    "deal_type": "FDI"
-  },
-  {
-    "id": "st-kitts-nevis-observer-3c6be915",
-    "title": "Jamaica: Industry leaders say AI will boost, not replace, global services jobs",
-    "source": "St. Kitts-Nevis Observer",
-    "date": "2026-07-12",
-    "country": "KN",
-    "url": "https://www.thestkittsnevisobserver.com/jamaica-industry-leaders-say-ai-will-boost-not-replace-global-services-jobs/",
-    "tags": [
-      "regional"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "st-kitts-nevis-observer-fa4afce3",
-    "title": "Trinidad: Cabinet approval paves way for US$2 billion Point Lisas investment, says US envoy",
-    "source": "St. Kitts-Nevis Observer",
-    "date": "2026-07-12",
-    "country": "KN",
-    "url": "https://www.thestkittsnevisobserver.com/trinidad-cabinet-approval-paves-way-for-us2-billion-point-lisas-investment-says-us-envoy/",
-    "tags": [
-      "regional"
-    ],
-    "deal_status": "pending",
-    "deal_type": "FDI"
-  },
-  {
-    "id": "cnc3-e4ceb6fe",
-    "title": "PNM rejects Balisier House funding probe as political persecution…claims UNC Govt weaponising ‘machinery and financial resources of State against its opponent’",
-    "source": "CNC3",
-    "date": "2026-07-12",
-    "country": "TT",
-    "url": "https://www.cnc3.co.tt/pnm-rejects-balisier-house-funding-probe-as-political-persecution-claims-unc-govt-weaponising-machinery-and-financial-resources-of-state-against-its-opponent/?utm_source=rss&utm_medium=rss&utm_campaign=pnm-rejects-balisier-house-funding-probe-as-political-persecution-claims-unc-govt-weaponising-machinery-and-financial-resources-of-state-against-its-opponent",
-    "tags": [
-      "news"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "wic-news-3b292691",
-    "title": "Caribbean Airlines launches discounted Barbados-Guyana fares for September",
-    "source": "WIC News",
-    "date": "2026-07-12",
-    "country": "ALL",
-    "url": "https://wicnews.com/barbados/caribbean-airlines-launches-discounted-barbados-guyana-fares-for-september",
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "guyana-chronicle-4feadd3a",
-    "title": "Sod turned for $528.3M East Ruimveldt Market construction",
-    "source": "Guyana Chronicle",
-    "date": "2026-07-12",
-    "country": "GY",
-    "url": "https://guyanachronicle.com/2026/07/12/sod-turned-for-528-3m-east-ruimveldt-market-construction/",
-    "tags": [
-      "news"
-    ],
-    "deal_status": "completed",
-    "deal_type": "FDI"
-  },
-  {
-    "id": "guyana-chronicle-4f01acf1",
-    "title": "Degree holders surge 56.7% as fewer young people remain outside education, employment",
-    "source": "Guyana Chronicle",
-    "date": "2026-07-12",
-    "country": "GY",
-    "url": "https://guyanachronicle.com/2026/07/12/degree-holders-surge-56-7-as-fewer-young-people-remain-outside-education-employment/",
-    "tags": [
-      "news"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "guyana-chronicle-930a9592",
-    "title": "Minister Croal inspects $1B road works in New LBI Housing Scheme",
-    "source": "Guyana Chronicle",
-    "date": "2026-07-12",
-    "country": "GY",
-    "url": "https://guyanachronicle.com/2026/07/12/minister-croal-inspects-1b-road-works-in-new-lbi-housing-scheme/",
-    "tags": [
-      "news"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "demerara-waves-1ea02722",
-    "title": "1,000 pregnant cows from Brazil to expand Guyana’s cattle production",
-    "source": "Demerara Waves",
-    "date": "2026-07-12",
-    "country": "GY",
-    "url": "https://demerarawaves.com/2026/07/12/pregnant-cows-from-brazil-to-expand-guyanas-cattle-production/",
-    "tags": [
-      "agriculture",
-      "business",
-      "news",
-      "1000 pregnant cows",
-      "berbice",
-      "brazil"
-    ],
-    "deal_status": "completed",
-    "deal_type": "FDI"
-  },
-  {
-    "id": "cnc3-c6c0e5bd",
-    "title": "PNM slams Balisier House “distraction”; calls for campaign finance reform",
-    "source": "CNC3",
-    "date": "2026-07-12",
-    "country": "TT",
-    "url": "https://www.cnc3.co.tt/pnm-slams-balisier-house-distraction-calls-for-campaign-finance-reform/?utm_source=rss&utm_medium=rss&utm_campaign=pnm-slams-balisier-house-distraction-calls-for-campaign-finance-reform",
-    "tags": [
-      "news",
-      "instagram"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "jamaica-observer-c9b60a3c",
-    "title": "Banks phasing out cheques",
-    "source": "Jamaica Observer",
-    "date": "2026-07-12",
-    "country": "JM",
-    "url": "https://www.jamaicaobserver.com/2026/07/12/banks-phasing-cheques/",
-    "tags": [
-      "business"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "jamaica-observer-63aedbd5",
-    "title": "NWC Amnesty realised nearly $800 million for State-owned utility",
-    "source": "Jamaica Observer",
-    "date": "2026-07-12",
-    "country": "JM",
-    "url": "https://www.jamaicaobserver.com/2026/07/12/nwc-amnesty-realised-nearly-800-million-state-owned-utility/",
-    "tags": [
-      "latest news",
-      "news",
-      "amenesty",
-      "national water commission"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "jamaica-observer-b8e9901a",
-    "title": "Remittances to Jamaica up 3.8 per cent in 2025, says PIOJ",
-    "source": "Jamaica Observer",
-    "date": "2026-07-12",
-    "country": "JM",
-    "url": "https://www.jamaicaobserver.com/2026/07/12/remittances-jamaica-3-8-per-cent-2025-says-pioj/",
-    "tags": [
-      "latest news",
-      "news",
-      "jamaica",
-      "remittances",
-      "uk",
-      "us"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "jamaica-gleaner-7dde3398",
-    "title": "Montego Bay sports complex banks on daily wellness, pickleball revenue",
-    "source": "Jamaica Gleaner",
-    "date": "2026-07-12",
-    "country": "JM",
-    "url": "http://jamaica-gleaner.com/article/business/20260712/montego-bay-sports-complex-banks-daily-wellness-pickleball-revenue",
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "jamaica-gleaner-63a83745",
-    "title": "Yaneek Page | The missing scorecard: Jamaica needs a national electricity affordability target",
-    "source": "Jamaica Gleaner",
-    "date": "2026-07-12",
-    "country": "JM",
-    "url": "http://jamaica-gleaner.com/article/business/20260712/yaneek-page-missing-scorecard-jamaica-needs-national-electricity",
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "jamaica-gleaner-b827da6b",
-    "title": "Apple files lawsuit accusing ChatGPT maker OpenAI of stealing trade secrets",
-    "source": "Jamaica Gleaner",
-    "date": "2026-07-12",
-    "country": "JM",
-    "url": "http://jamaica-gleaner.com/article/business/20260712/apple-files-lawsuit-accusing-chatgpt-maker-openai-stealing-trade-secrets",
     "deal_status": "not_a_deal",
     "deal_type": null
   }
