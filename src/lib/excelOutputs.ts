@@ -16,11 +16,19 @@
 import type { DataEvidence, DataPoint, RetrievalMiss } from './askTools.js';
 import type { CalculationResult } from './calculations.js';
 import type { SingleCountryIntent } from './excelIntent.js';
-// evidenceId lives in askTools.ts now — evidence identity is that module's domain (it also
-// backs the D: EvidenceRef prefix, ARCHITECTURE.md §2.5). Re-exported here unchanged so nothing
-// that already imports it from this file needs to change.
-import { evidenceId } from './askTools.js';
-export { evidenceId };
+
+/* Stable evidence ID (plan §5: "every retrieved series and news item has a stable evidence ID"),
+   also what backs the D: EvidenceRef prefix (ARCHITECTURE.md §2.5). Implemented HERE, not in
+   askTools.ts, even though evidence identity is conceptually that module's domain — because this
+   file must stay free of runtime imports. excel-addin/webpack.config.js has no
+   resolve.extensionAlias, so it can never resolve an explicit ./foo.js specifier to a foo.ts file
+   on disk (ARCHITECTURE.md §2.4 "C1"); the task pane only gets away with importing this file
+   because every runtime name in it is defined locally, never imported from a sibling module.
+   askTools.ts imports and re-exports this unchanged, so every existing caller of
+   askTools.evidenceId() is unaffected. */
+export function evidenceId(country: string, indicator: string): string {
+  return `${country}:${indicator}`;
+}
 
 /* Excel's own sheet-name rules, not ours: 31 characters, and these characters are rejected
    outright by the host. Breaking either throws at worksheets.add() time, which would surface to

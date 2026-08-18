@@ -74,13 +74,14 @@ export interface RetrievalMiss {
 /* Stable evidence ID (plan §5: "every retrieved series and news item has a stable evidence ID").
    Derived from the record's own identity rather than assigned by position, so the same series
    carries the same ID across requests and a figure in the report can be traced to its lineage
-   row on the Evidence sheet. Lives here, not in excelOutputs.ts (which re-exports it
-   unchanged): evidence identity is this module's domain, and it is also what backs the `D:`
-   EvidenceRef prefix (ARCHITECTURE.md §2.5) — a research-pipeline concept that has nothing to
-   do with Excel output planning. */
-export function evidenceId(country: string, indicator: string): string {
-  return `${country}:${indicator}`;
-}
+   row on the Evidence sheet. Evidence identity is conceptually this module's domain — it also
+   backs the `D:` EvidenceRef prefix (ARCHITECTURE.md §2.5) — but the implementation lives in
+   excelOutputs.ts, because that file must stay free of runtime imports so the Excel task pane
+   can keep bundling it (webpack has no resolve.extensionAlias, so it can never resolve an
+   explicit ./foo.js specifier to a sibling .ts file — ARCHITECTURE.md §2.4 "C1"). Re-exported
+   here unchanged so nothing that already imports evidenceId from this module needs to change. */
+import { evidenceId } from './excelOutputs.js';
+export { evidenceId };
 
 /* Retrieved, but constrained in a way the writer must respect — chiefly local-currency levels
    that must not be ranked or differenced across countries. An addition to the plan's suggested

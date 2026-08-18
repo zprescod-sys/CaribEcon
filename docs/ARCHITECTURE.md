@@ -366,9 +366,12 @@ If a `ReportBundle` is useful later, it is a **client-layer** structure — e.g.
 
 ```ts
 /* One ID namespace over three evidence classes, built ON TOP of askTools.evidenceId() rather
-   than replacing it — that string is written into users' saved workbooks. (Implemented in
-   askTools.ts, not excelOutputs.ts, which re-exports it unchanged — evidence identity is
-   askTools.ts's domain.) Prefixed so the gate knows what it holds without a lookup.
+   than replacing it — that string is written into users' saved workbooks. Evidence identity is
+   conceptually askTools.ts's domain, but the implementation itself lives in excelOutputs.ts,
+   which askTools.ts imports and re-exports unchanged: excelOutputs.ts must stay free of runtime
+   imports so the Excel task pane can keep bundling it (webpack has no resolve.extensionAlias, so
+   it can never resolve an explicit ./foo.js specifier to a sibling .ts file — see C1 below).
+   Prefixed so the gate knows what it holds without a lookup.
 
    IMPORTANT — identity vs. version: this ref identifies the SOURCE/SERIES, not a frozen value.
    "D:GY:nominal_gdp" is stable so a workbook cell can always be traced back to its series — but
