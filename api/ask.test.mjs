@@ -204,6 +204,7 @@ test('a model that never returns parseable JSON is a 502 model_error, with no ra
     assert.equal(res.status, 502);
     const body = await res.json();
     assert.equal(body.error, 'model_error');
+    assert.equal(body.stage, 'interpretation');
     assert.ok(!body.message.includes('I cannot help with that.'));
   });
 });
@@ -230,6 +231,7 @@ test('a plan model that never returns parseable JSON is a 502 model_error, with 
     assert.equal(res.status, 502);
     const body = await res.json();
     assert.equal(body.error, 'model_error');
+    assert.equal(body.stage, 'planning');
     assert.ok(!body.message.includes('I cannot help with that.'));
   });
 });

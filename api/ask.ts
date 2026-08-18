@@ -24,6 +24,13 @@ import { InterpretNotConfiguredError, InterpretParseError } from '../src/lib/ai/
 import { PlanNotConfiguredError, PlanParseError } from '../src/lib/ai/roles/plan.js';
 import { SynthesizeNotConfiguredError, SynthesizeParseError } from '../src/lib/ai/roles/synthesize.js';
 
+function structuredOutputFailure(error: unknown): { stage: 'interpretation' | 'planning' | 'answer'; rawLength: number } | null {
+  if (error instanceof InterpretParseError) return { stage: 'interpretation', rawLength: error.rawText.length };
+  if (error instanceof PlanParseError) return { stage: 'planning', rawLength: error.rawText.length };
+  if (error instanceof SynthesizeParseError) return { stage: 'answer', rawLength: error.rawText.length };
+  return null;
+}
+
 const MAX_QUESTION_CHARS = 500;
 
 function json(body: unknown, status: number): Response {
@@ -85,9 +92,17 @@ export default {
       ) {
         return json({ error: 'not_configured', message: error.message }, 503);
       }
-      if (error instanceof InterpretParseError || error instanceof PlanParseError || error instanceof SynthesizeParseError) {
+      const structuredFailure = structuredOutputFailure(error);
+      if (structuredFailure) {
+        // Keep raw model text server-side — it can contain reasoning or prompt-derived material.
+        // Stage and length are sufficient to diagnose malformed output without recording either.
+        console.warn('api/ask: structured-output failure', structuredFailure);
         return json(
-          { error: 'model_error', message: 'The research pipeline could not produce a usable answer. Try rephrasing the question.' },
+          {
+            error: 'model_error',
+            stage: structuredFailure.stage,
+            message: `The research ${structuredFailure.stage} model returned an invalid structured response. Please try again.`,
+          },
           502,
         );
       }
