@@ -28,15 +28,33 @@
 
 * { box-sizing: border-box; }
 
+/* Several elements below are toggled via the `hidden` IDL property in JS (wireTabs(),
+   showChatView()) while also carrying an author rule that sets `display` (flex, for a chat
+   layout). `[hidden] { display: none }` is only a user-agent default, and author rules win
+   specificity ties against the UA sheet — so a plain `.foo { display: flex }` silently overrides
+   `hidden` the moment both apply to the same element. This one rule outranks every such case,
+   here and in whatever's added later, instead of guarding each toggled selector by hand. */
+[hidden] { display: none !important; }
+
 html, body {
   margin: 0;
   padding: 0;
+  height: 100%;
   background: var(--paper);
   color: var(--ink);
   font-family: var(--font-body);
   font-size: 14px;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
+}
+
+/* A flex column filling the viewport, so a panel can claim the remaining height below the
+   chrome (topbar + tabs) — what the Ask panel needs to pin its composer to the pane's bottom
+   edge instead of the bottom of a tall scrolling document. */
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 /* ── Shell ──────────────────────────────────────────────────────────────────────────── */
@@ -98,7 +116,17 @@ select:focus-visible {
   outline-offset: 1px;
 }
 
-.panel { padding: 16px; }
+/* flex:1 + min-height:0 lets a panel claim the rest of the viewport and scroll internally,
+   instead of the whole document scrolling — same visible behaviour for Browse/Deep Dive/
+   Functions, and what lets .ask-panel below pin a composer to its own bottom edge. A hidden
+   panel (the other three tabs at any moment) takes no flex space, so this is safe with four
+   siblings sharing one flex column. */
+.panel {
+  padding: 16px;
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+}
 
 .status {
   margin: 0;
@@ -290,9 +318,6 @@ select[multiple] {
   gap: 8px;
 }
 
-/* In Browse the preview above already supplies the gap; in Ask the hint sits directly above. */
-#panel-ask .actions { margin-top: 14px; }
-
 .btn {
   padding: 10px 12px;
   border: 1px solid var(--teal);
@@ -321,82 +346,281 @@ select[multiple] {
   cursor: not-allowed;
 }
 
-/* ── Ask ────────────────────────────────────────────────────────────────────────────── */
+/* ── Ask (chat) ─────────────────────────────────────────────────────────────────────── */
 
-textarea {
+/* Overrides the generic .panel above: zero outer padding (the sub-elements own their spacing)
+   and a flex column so the status strip and composer stay put while .ask-body scrolls. Must
+   follow .panel in source order — same specificity, last rule wins. */
+.ask-panel {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  overflow: hidden;
+}
+
+.ask-status {
+  display: flex;
+  flex: none;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 18px 10px;
+  border-bottom: 1px solid var(--line);
+  font-size: 11.5px;
+  font-weight: 500;
+  color: var(--ink-soft);
+}
+
+.ask-status__dot {
+  flex: none;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--teal);
+}
+
+.ask-body {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Centred hero shown before the first question. Replaced by .ask-messages, never both at once
+   — toggled by JS via [hidden], not by removing/re-adding nodes. */
+.ask-empty {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+  padding: 24px 24px 0;
+  text-align: center;
+}
+
+.ask-empty__logo {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.ask-empty__copy {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.ask-empty__copy h2 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 21px;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+
+.ask-empty__copy p {
+  margin: 0;
+  max-width: 230px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--ink-soft);
+}
+
+.ask-suggestions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
   width: 100%;
-  padding: 8px 10px;
+  max-width: 250px;
+}
+
+.ask-suggestion {
+  padding: 10px 16px;
   border: 1px solid var(--line);
-  border-radius: 0;
+  border-radius: 999px;
   background: var(--surface);
   color: var(--ink);
   font-family: var(--font-body);
-  font-size: 14px;
-  line-height: 1.5;
-  resize: vertical;
-}
-
-textarea:focus-visible {
-  outline: 2px solid var(--teal);
-  outline-offset: 1px;
-}
-
-.answer:not(:empty) {
-  margin-top: 16px;
-  border: 1px solid var(--line);
-  border-left: 3px solid var(--teal);
-  background: var(--surface);
-}
-
-.answer__body { padding: 12px; }
-
-.answer__body p {
-  margin: 0 0 10px;
   font-size: 13px;
-  line-height: 1.6;
+  font-weight: 500;
+  cursor: pointer;
 }
 
-.answer__body p:last-child { margin-bottom: 0; }
+.ask-suggestion:hover { background: var(--card-tint); }
 
-.answer__working {
-  padding: 12px;
-  font-family: var(--font-mono);
-  font-size: 11px;
-  color: var(--ink-soft);
+.ask-messages {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px;
 }
 
-/* Citations are recorded from the tool results the model actually read, not from its prose —
-   so this list is the audit trail, and it deserves the same weight as the answer. */
-.cites {
-  padding: 10px 12px;
-  border-top: 1px solid var(--line);
-  background: var(--card-tint);
+.msg { display: flex; flex-direction: column; }
+
+.msg--user {
+  align-self: flex-end;
+  align-items: flex-end;
+  max-width: 85%;
+  gap: 4px;
 }
 
-.cites__label {
-  margin: 0 0 6px;
-  font-family: var(--font-mono);
-  font-size: 10px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--teal);
-}
-
-.cite {
-  padding: 4px 0;
-  font-family: var(--font-mono);
-  font-size: 10px;
-  line-height: 1.5;
-  color: var(--ink-soft);
+.msg--user .msg__bubble {
+  padding: 10px 14px;
+  border-radius: 14px 14px 3px 14px;
+  background: var(--teal);
+  color: var(--paper);
+  font-size: 13.5px;
+  font-weight: 500;
+  line-height: 1.45;
   overflow-wrap: anywhere;
 }
 
-.cite b {
+.msg__time {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--ink-faint);
+}
+
+.msg--assistant {
+  align-self: flex-start;
+  max-width: 92%;
+  gap: 8px;
+}
+
+.msg__headline {
+  margin: 0;
+  font-size: 14.5px;
   font-weight: 500;
+  line-height: 1.5;
   color: var(--ink);
 }
 
-.cite a { color: var(--teal); }
+.msg__detail {
+  margin: 0;
+  font-size: 12.5px;
+  line-height: 1.55;
+  color: var(--ink-soft);
+}
+
+.msg__gaps {
+  margin: 2px 0 0;
+  padding-left: 8px;
+  border-left: 3px solid var(--gold);
+  font-size: 11px;
+  line-height: 1.5;
+  color: var(--ink-soft);
+}
+
+/* Citations traced to a specific EvidenceRef — the audit trail deserves the same weight as the
+   answer, so it's always shown, never a click-to-expand afterthought. */
+.msg__cites {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 2px;
+}
+
+.msg__cite {
+  padding: 3px 8px;
+  border: 1px solid rgba(14, 94, 78, 0.3);
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  letter-spacing: 0.03em;
+  color: var(--teal);
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
+
+/* Phase 1 has no grounding gate yet (BUILD_PLAN.md), so every narrative answer carries this —
+   never a claim of verification the pipeline cannot back yet. */
+.msg__unverified {
+  margin-top: 2px;
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  letter-spacing: 0.02em;
+  color: var(--gold);
+}
+
+.msg__insert {
+  align-self: flex-start;
+  margin-top: 2px;
+  padding: 0;
+  border: 0;
+  background: none;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--teal);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.msg--pending .msg__bubble {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--ink-faint);
+}
+
+.msg--error .msg__bubble {
+  font-size: 12.5px;
+  color: var(--neg);
+}
+
+.ask-composer {
+  flex: none;
+  padding: 12px 16px 16px;
+}
+
+.ask-composer__box {
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  padding: 6px 6px 6px 16px;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: var(--surface);
+}
+
+.ask-composer__box textarea {
+  flex: 1;
+  border: 0;
+  outline: none;
+  resize: none;
+  background: none;
+  padding: 8px 0;
+  max-height: 96px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.4;
+  color: var(--ink);
+}
+
+.ask-composer__box textarea::placeholder { color: var(--ink-faint); }
+
+.ask-composer__send {
+  flex: none;
+  width: 34px;
+  height: 34px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--teal);
+  color: var(--paper);
+  font-size: 15px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.ask-composer__send:hover:not(:disabled) { background: var(--teal-deep); }
+
+.ask-composer__send:disabled {
+  background: var(--ink-faint);
+  cursor: not-allowed;
+}
 
 /* ── Reference ──────────────────────────────────────────────────────────────────────── */
 
