@@ -1,5 +1,48 @@
 [
   {
+    "id": "kaieteur-news-05c6d5fb",
+    "title": "‘Time to change Exxon deal is now’ – Chris Ram",
+    "source": "Kaieteur News",
+    "date": "2026-08-18",
+    "country": "GY",
+    "url": "https://kaieteurnewsonline.com/2026/08/18/time-to-change-exxon-deal-is-now-chris-ram/",
+    "tags": [
+      "news",
+      "contract",
+      "exxon",
+      "exxonmobil",
+      "payment of taxes",
+      "renegotiation"
+    ],
+    "category": "",
+    "group": "Energy",
+    "decision": "review",
+    "confidence": "low",
+    "reason": "Recognized editorial edge-case vocabulary; suggested Energy.",
+    "classifier": "heuristic",
+    "approved": false,
+    "suggestedCategory": "Energy"
+  },
+  {
+    "id": "st-kitts-nevis-observer-10f79643",
+    "title": "NIA makes US$5.9M down payment for geothermal drilling",
+    "source": "St. Kitts-Nevis Observer",
+    "date": "2026-08-18",
+    "country": "KN",
+    "url": "https://www.thestkittsnevisobserver.com/nia-makes-us5-9m-down-payment-for-geothermal-drilling/",
+    "tags": [
+      "local news"
+    ],
+    "category": "",
+    "group": "Energy",
+    "decision": "review",
+    "confidence": "low",
+    "reason": "Recognized editorial edge-case vocabulary; suggested Energy.",
+    "classifier": "heuristic",
+    "approved": false,
+    "suggestedCategory": "Energy"
+  },
+  {
     "id": "kaieteur-news-b299fdd3",
     "title": "EXXON HAS RECOVERED ITS US$55 BILLION; TIME TO TALK GUYANESE, SIRS!",
     "source": "Kaieteur News",
