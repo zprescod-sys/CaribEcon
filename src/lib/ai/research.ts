@@ -2,11 +2,17 @@
  * BUILD_PLAN.md Phase 1 item 2: "interpret() -> existing buildEvidencePackage() -> synthesize()
  * -> JSON... returned as the canonical ResearchResult, not a bespoke shape per phase.")
  *
- * PHASE 1 SCOPE, STATED EXPLICITLY: no planner (Phase 3), no code-run grounding gate (Phase 2),
- * no model claims audit (Phase 4). The `verdict` below is an HONEST STUB, not a real
- * verification — outcome is always 'PASS' and every claim is published, because nothing in this
- * phase has the power to withhold one. Per BUILD_PLAN.md's own Phase 1 warning, this answer's
- * prose is internal-only until Phase 2's gate exists; do not present it to a user as verified.
+ * CURRENT SCOPE, STATED EXPLICITLY: Phase 2's code-run grounding gate is now real — verify()
+ * (verify.ts) calls the actual grounding.ts checks against the synthesized answer and its
+ * evidence package, and derives a real `outcome`/`publishedClaims`/`reasonCategories` from
+ * whatever violations it finds, rather than assuming there are none. A claim the gate flags
+ * (e.g. a fabricated figure never actually retrieved) is genuinely excluded from
+ * `publishedClaims`, not just recorded. Still not built: Phase 3 (the planner — research() still
+ * goes straight from interpret() to buildEvidencePackage(), with no validated ResearchPlan in
+ * between) and Phase 4 (the model claims audit — verify() is called with its `audit` argument
+ * omitted, so it always defaults to `{ ran: false }`; that default IS the seam Phase 4 will fill
+ * in, not a placeholder to remove). Until Phase 4 exists, `outcome` reflects only what code can
+ * check — attribution/overreach findings from a model verifier are not yet part of it.
  *
  * interpret()'s misses (a model-named country/indicator that does not resolve, caught by the
  * same canonicaliseIntent the picker uses) are merged into the evidence package's own misses
@@ -15,21 +21,12 @@
  */
 import { interpret } from './roles/interpret.js';
 import { synthesize } from './roles/synthesize.js';
+import { verify } from './verify.js';
 import { buildEvidencePackage } from '../askTools.js';
-import type { ResearchResult, VerificationVerdict } from './contracts.js';
+import type { ResearchResult } from './contracts.js';
 
 export interface ResearchRequest {
   question: string;
-}
-
-function stubVerdict(publishedClaims: string[]): VerificationVerdict {
-  return {
-    outcome: 'PASS',
-    grounding: { ran: true, violations: [] },
-    audit: { ran: false },
-    publishedClaims,
-    reasonCategories: [],
-  };
 }
 
 export async function research(
@@ -42,7 +39,8 @@ export async function research(
   evidence.misses = [...misses, ...evidence.misses];
 
   const answer = await synthesize(intent, evidence);
-  const verdict = stubVerdict(answer.claims.map(c => c.id));
+  // Third argument (the model claims audit) is intentionally omitted — see header comment.
+  const verdict = verify(answer, evidence);
 
   return { answer, evidence, verdict };
 }

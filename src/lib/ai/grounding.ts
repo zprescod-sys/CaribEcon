@@ -325,6 +325,19 @@ function retrievedPointYears(pkg: EvidencePackage): ReadonlySet<number> {
   return years;
 }
 
+// A number immediately followed (allowing intervening whitespace) by '%', 'percent', or
+// 'percentage point(s)' is unambiguously a stated figure — a percentage is never a plausible
+// "count of economies/years/indicators" the small-count exemption below exists for, regardless
+// of how small its magnitude is. Two literal captures found by adversarial review prove why this
+// must be checked BEFORE the small-count exemption, not folded into it: a fabricated "27%" (no
+// real evidence behind it) and "0.00%" both parse to an integer-valued number, so without this
+// carve-out both would wrongly fall into the 0-30 "small narrative count" range below and never
+// reach the declared-figure check at all.
+const PERCENT_SUFFIX = /^\s*(%|percent(?:age)?(?:\s+points?)?)/i;
+function followedByPercent(text: string, endIndex: number): boolean {
+  return PERCENT_SUFFIX.test(text.slice(endIndex, endIndex + 20));
+}
+
 function checkUnstatedNumber(answer: ResearchAnswer, pkg: EvidencePackage): GroundingViolation[] {
   // The cross-claim pool (see block comment above) — built once per answer, not per claim.
   const allFigures = answer.claims.flatMap(c => c.figures);
@@ -337,19 +350,26 @@ function checkUnstatedNumber(answer: ResearchAnswer, pkg: EvidencePackage): Grou
     for (const match of claim.text.matchAll(NUMBER_PATTERN)) {
       const raw = match[0];
       const extracted = Number(raw.replace(/,/g, ''));
-      // "Integer with no decimal point" means the extracted VALUE has none (0.00 is still a
-      // fractional-looking figure in prose, even though 0 is mathematically a whole number) —
-      // Number.isInteger on the parsed value is exactly that, deliberately not a check of
-      // whether the matched substring contains a literal '.' character.
-      const isInteger = Number.isInteger(extracted);
+      // "Integer with no decimal point" is judged off the MATCHED STRING, not the parsed value —
+      // "27.0" and "0.00" both parse to a mathematically whole number (Number.isInteger(27.0) and
+      // Number.isInteger(0.00) are both true in JS, since 27.0 === 27 once parsed), but both are
+      // still written as a fractional-looking figure in prose, exactly the case this comment used
+      // to warn about without actually implementing. Testing the raw string for a literal '.' is
+      // what makes that distinction real instead of aspirational.
+      const isInteger = !raw.includes('.') && Number.isInteger(extracted);
 
       // Small narrative counts ("19 economies", "the top 3 economies", "2 consecutive years")
       // are prose scaffolding, not data figures. 30 is comfortably above any plausible count of
       // countries/indicators/years-in-a-row this answer would ever narrate, and comfortably
       // below the smallest plausible economic figure (a growth rate, a debt ratio, a year), so
       // it separates the two cleanly without either false-positiving on real counts or
-      // false-negativing on a genuinely small but real figure.
-      if (isInteger && extracted >= 0 && extracted <= 30) continue;
+      // false-negativing on a genuinely small but real figure — UNLESS the literal is itself
+      // percent-shaped (see followedByPercent above), which is always a figure, never a count,
+      // no matter how small: a growth rate of "3%" is exactly as much a claim to verify as one of
+      // "300%".
+      if (isInteger && extracted >= 0 && extracted <= 30 && !followedByPercent(claim.text, (match.index ?? 0) + raw.length)) {
+        continue;
+      }
       // A bare year the answer is narrating ("...in 2017...") is not itself a figure to reconcile
       // — check 4 already reconciles the figure that accompanies it.
       if (isInteger && years.has(extracted)) continue;

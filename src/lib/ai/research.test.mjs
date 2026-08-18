@@ -102,7 +102,7 @@ test('rejects with InterpretNotConfiguredError, no network call, when interpret 
 
 // ── The happy path composes into a canonical ResearchResult ────────────────────────────────
 
-test('composes interpret -> buildEvidencePackage -> synthesize into a ResearchResult with a stubbed PASS verdict', async () => {
+test('composes interpret -> buildEvidencePackage -> synthesize into a ResearchResult with a real PASS verdict', async () => {
   await withResearchProviders(
     {
       interpretRespond: INTERPRET_OK,
@@ -137,6 +137,33 @@ test('composes interpret -> buildEvidencePackage -> synthesize into a ResearchRe
         publishedClaims: ['claim-0', 'claim-1'],
         reasonCategories: [],
       });
+    },
+  );
+});
+
+// ── verify() is genuinely wired in, not just present with an all-empty synthetic answer ────
+
+test('a synthesized claim citing a nonexistent ref is actually dropped by the real grounding gate', async () => {
+  await withResearchProviders(
+    {
+      interpretRespond: INTERPRET_OK,
+      synthesisRespond: () =>
+        JSON.stringify({
+          headline: 'Guyana GDP growth',
+          claims: [
+            // Cites a ref that was never retrieved — a real check-1 (ref_existence) violation.
+            { text: 'Fabricated context.', type: 'context', refs: ['D:XX:not_a_real_series'], figures: [] },
+            { text: 'General context.', type: 'framing', refs: [], figures: [] },
+          ],
+          gaps: [],
+        }),
+    },
+    async () => {
+      const result = await research({ question: 'GDP growth in Guyana?' });
+
+      assert.equal(result.verdict.outcome, 'NARROW');
+      assert.deepEqual(result.verdict.publishedClaims, ['claim-1']);
+      assert.ok(!result.verdict.publishedClaims.includes('claim-0'));
     },
   );
 });

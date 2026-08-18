@@ -21,31 +21,46 @@ const captures = JSON.parse(readFileSync(join(__dirname, 'fixtures/askCaptures.j
 const usable = captures.filter(c => c.result !== null);
 assert.ok(usable.length >= 5, 'expected several usable real captures to test against');
 
-// These two real captures each state a figure sourced from an institution (Central Bank of
-// Barbados / Central Bank of The Bahamas) that this pipeline never actually retrieved — only the
-// IMF figure was retrieved and declared as a StatedFigure. check 6 (unstated_number) correctly
-// flags this: it is a genuine, expected grounding gap in Phase 1's own explicitly-unverified
-// prose (ARCHITECTURE.md: that prose is "internal-only... until Phase 2's gate exists"), proof
-// the gate works — not a false positive to paper over.
+// These real captures each state a figure never actually backed by a declared StatedFigure.
+// check 6 (unstated_number) correctly flags each: a genuine, expected grounding gap — proof the
+// gate works, not a false positive to paper over.
 //
-//   "regional" claim-6 (type: 'context'): "...Central Bank of Barbados reports a higher
-//   gross-debt ratio (e.g. 103% vs IMF 98.9%)... Central Bank of The Bahamas reports 81.5% vs
-//   IMF 73.8%." — 103 and 81.5 are never declared anywhere in the answer; only 98.9 and 73.8 are.
+//   "regional" claim-6 (type: 'context'): states a figure sourced from an institution (Central
+//   Bank of Barbados / Central Bank of The Bahamas) that this pipeline never actually retrieved
+//   — only the IMF figure was retrieved and declared as a StatedFigure: "...Central Bank of
+//   Barbados reports a higher gross-debt ratio (e.g. 103% vs IMF 98.9%)... Central Bank of The
+//   Bahamas reports 81.5% vs IMF 73.8%." — 103 and 81.5 are never declared anywhere in the
+//   answer; only 98.9 and 73.8 are.
 //
-//   "multi_country_comparison" claim-5 (type: 'context'): "...the Central Bank of Barbados
-//   reports a higher gross-debt ratio (e.g. 103% for 2024 vs IMF 98.9%)..." — same 103% pattern.
+//   "multi_country_comparison" claim-5 (type: 'context'): same Central-Bank-vs-IMF pattern:
+//   "...the Central Bank of Barbados reports a higher gross-debt ratio (e.g. 103% for 2024 vs
+//   IMF 98.9%)..." — 103 is never declared.
+//
+//   "research_question" claim-5 (type: 'figure'): "...rates were flat (0.00%) in every other
+//   year reported (D:GY:fx_rate_usd)." — true of the retrieved series (every year besides the two
+//   explicitly declared, 2018 and 2019, really is a flat 0.00% yoy change), but "every other
+//   year" names no specific year and 0.00 is never declared as its own StatedFigure — exactly the
+//   kind of loosely-stated aggregate check 6 exists to force a model to declare structurally
+//   rather than assert in prose, true or not (see this module's header: it checks what the
+//   answer asserts against what evidence explicitly backs, not whether the assertion happens to
+//   be correct). Before the fix to checkUnstatedNumber's small-count exemption, this ALSO relied
+//   on the exact same fabrication-shaped hole flagged by adversarial review (Number.isInteger on
+//   a parsed "0.00" collapses to whole-number 0, wrongly landing in the 0-30 "small narrative
+//   count" range) — closing that hole for the fabricated repro cases necessarily closes it here
+//   too, so this capture's expected result correctly moved from zero violations to one.
 const KNOWN_EXPECTED_VIOLATIONS = {
   regional: [
     { claimId: 'claim-6', check: 'unstated_number' },
     { claimId: 'claim-6', check: 'unstated_number' },
   ],
   multi_country_comparison: [{ claimId: 'claim-5', check: 'unstated_number' }],
+  research_question: [{ claimId: 'claim-5', check: 'unstated_number' }],
 };
 
 // Checks 9 (cross_currency_comparison) and 10 (coverage_honesty) add zero violations across
 // every usable real capture (verified) — none of the KNOWN_EXPECTED_VIOLATIONS entries above
 // change with either check active.
-test('every real captured answer passes cleanly across all nine active checks — except two known, expected unstated_number gaps', () => {
+test('every real captured answer passes cleanly across all nine active checks — except three known, expected unstated_number gaps', () => {
   for (const capture of usable) {
     const { answer, evidence } = capture.result;
     const result = runGroundingGate(answer, evidence);
