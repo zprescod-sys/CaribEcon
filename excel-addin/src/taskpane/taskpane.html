@@ -101,17 +101,36 @@
             second Evidence sheet. Table writes the values at the selected cell.</p>
     </main>
 
-    <!-- ── Ask (grounded research) ────────────────────────────────────────────────────── -->
-    <main class="panel" id="panel-ask" hidden>
-        <label class="eyebrow" for="question">Research question</label>
-        <textarea id="question" rows="3" placeholder="How fast did Guyana grow in 2024 compared with Trinidad?"></textarea>
-        <p class="hint">Answered only from the CaribEcon hub. Gaps in coverage are reported, never filled in.</p>
-
-        <div class="actions">
-            <button class="btn btn--primary" type="button" id="ask">Ask</button>
+    <!-- ── Ask (grounded research chat) ───────────────────────────────────────────────── -->
+    <main class="panel ask-panel" id="panel-ask" hidden>
+        <div class="ask-status" id="ask-status" hidden>
+            <span class="ask-status__dot"></span>
+            <span>Grounded in CaribEcon data, news and cited research sources</span>
         </div>
 
-        <section class="answer" id="answer" aria-live="polite"></section>
+        <div class="ask-body" id="ask-body">
+            <div class="ask-empty" id="ask-empty">
+                <img class="ask-empty__logo" id="ask-empty-logo" alt="" />
+                <div class="ask-empty__copy">
+                    <h2>Ask CaribEcon</h2>
+                    <p>Caribbean economic intelligence, grounded in data and evidence.</p>
+                </div>
+                <div class="ask-suggestions" id="ask-suggestions">
+                    <button class="ask-suggestion" type="button" data-prompt="How does Guyana&#39;s GDP growth compare with Trinidad and Tobago&#39;s over the last five years?">Compare economies</button>
+                    <button class="ask-suggestion" type="button" data-prompt="What&#39;s driving the recent trend in Caribbean inflation?">Explain a trend</button>
+                    <button class="ask-suggestion" type="button" data-prompt="What are the most significant recent economic developments in Guyana?">Research a market</button>
+                </div>
+            </div>
+
+            <div class="ask-messages" id="ask-messages" aria-live="polite" hidden></div>
+        </div>
+
+        <div class="ask-composer">
+            <div class="ask-composer__box">
+                <textarea id="question" rows="1" placeholder="Ask a research question…"></textarea>
+                <button class="ask-composer__send" type="button" id="ask" aria-label="Send">↑</button>
+            </div>
+        </div>
     </main>
 
     <!-- ── Function reference ─────────────────────────────────────────────────────────── -->

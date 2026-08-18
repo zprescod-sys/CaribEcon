@@ -901,102 +901,196 @@ async function insertDeepDiveReport() {
   }
 }
 
-// ── Ask ────────────────────────────────────────────────────────────────────────────────────
+// ── Ask (chat) ─────────────────────────────────────────────────────────────────────────────
+// Phase 1 (BUILD_PLAN.md): one turn at a time against POST /api/ask — src/lib/ai/research.ts's
+// interpret -> buildEvidencePackage -> synthesize composition, returned as a claim-structured
+// ResearchResult (ARCHITECTURE.md §2.5). No planner, no grounding gate yet: every assistant
+// message therefore carries an explicit "not yet fact-checked" mark (msg__unverified) — Phase 1
+// prose is internal-only until Phase 2 ships (BUILD_PLAN.md), and the pane is what enforces
+// that promise, since api/ask.ts's own verdict is a stub that always reads PASS.
 
 function initAsk() {
+  // Set at runtime, not as a static src= in the HTML: html-loader's default `sources: true`
+  // tries to resolve an <img src> as a webpack module relative to taskpane.html's own directory,
+  // but this file is copied verbatim by CopyWebpackPlugin (assets/* -> dist/assets/[name][ext])
+  // and lives one level up — src/taskpane/assets/caribecon-logo.png doesn't exist. Setting it
+  // here is a plain runtime URL the browser resolves against the served page, matching how
+  // every other assets/* reference in this pane already works.
+  el('ask-empty-logo').src = 'assets/caribecon-logo.png';
+
   el('ask').addEventListener('click', ask);
-  // Ctrl/Cmd+Enter submits — Enter alone still adds a newline, since questions run long.
+  // Enter sends, Shift+Enter inserts a newline — the composer is a chat input, not a form field.
   el('question').addEventListener('keydown', event => {
-    if (event.key === 'Enter' && (event.metaKey || event.ctrlKey)) ask();
+    if (event.key === 'Enter' && !event.shiftKey) {
+      event.preventDefault();
+      ask();
+    }
   });
+  el('question').addEventListener('input', autosizeComposer);
+
+  for (const button of document.querySelectorAll('.ask-suggestion')) {
+    button.addEventListener('click', () => {
+      el('question').value = button.dataset.prompt;
+      autosizeComposer();
+      el('question').focus();
+    });
+  }
+}
+
+function autosizeComposer() {
+  const box = el('question');
+  box.style.height = 'auto';
+  box.style.height = `${Math.min(box.scrollHeight, 96)}px`;
+}
+
+// Switches from the empty hero to the message list. Idempotent — safe to call on every turn,
+// not just the first.
+function showChatView() {
+  el('ask-empty').hidden = true;
+  el('ask-messages').hidden = false;
+  el('ask-status').hidden = false;
+}
+
+function scrollMessagesToEnd() {
+  const body = el('ask-body');
+  body.scrollTop = body.scrollHeight;
+}
+
+function appendMessage(className, html) {
+  const wrap = document.createElement('div');
+  wrap.className = className;
+  wrap.innerHTML = html;
+  el('ask-messages').appendChild(wrap);
+  scrollMessagesToEnd();
+  return wrap;
+}
+
+function appendUserMessage(question) {
+  const time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+  appendMessage(
+    'msg msg--user',
+    `<div class="msg__bubble">${esc(question)}</div><span class="msg__time">${esc(time)}</span>`,
+  );
 }
 
 async function ask() {
   const question = el('question').value.trim();
   if (!question) return;
 
-  const out = el('answer');
+  el('question').value = '';
+  autosizeComposer();
+  showChatView();
+  appendUserMessage(question);
+  const pending = appendMessage('msg msg--assistant msg--pending', `<div class="msg__bubble">Researching…</div>`);
   el('ask').disabled = true;
-  out.innerHTML = `<p class="answer__working">Reading the hub…</p>`;
 
   try {
-    const res = await fetch(`${API_BASE}/api/research`, {
+    const res = await fetch(`${API_BASE}/api/ask`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'X-CaribEcon-Token': RESEARCH_TOKEN },
       body: JSON.stringify({ question }),
     });
     const body = await res.json();
+    pending.remove();
 
     if (!res.ok) {
-      out.innerHTML = `<p class="answer__working">${esc(body.message ?? `Request failed (${res.status}).`)}</p>`;
+      appendMessage('msg msg--assistant msg--error', `<div class="msg__bubble">${esc(body.message ?? `Request failed (${res.status}).`)}</div>`);
       return;
     }
-    renderAnswer(question, body);
+    appendAssistantMessage(question, body.result);
   } catch (error) {
-    out.innerHTML = `<p class="answer__working">Could not reach the research endpoint: ${esc(error.message)}</p>`;
+    pending.remove();
+    appendMessage(
+      'msg msg--assistant msg--error',
+      `<div class="msg__bubble">Could not reach the research endpoint: ${esc(error.message)}</div>`,
+    );
   } finally {
     el('ask').disabled = false;
   }
 }
 
-/* Minimal Markdown: paragraphs and bold only. Escaping runs first, so the model's output is
-   inert text before any markup is reintroduced — and only these two forms ever are. */
-function renderMarkdown(text) {
-  return esc(text)
-    .split(/\n{2,}/)
-    .map(
-      block =>
-        `<p>${block.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>').replace(/\n/g, '<br />')}</p>`,
-    )
-    .join('');
+/* Resolves every EvidenceRef a claim actually cites back to something human-readable — D: refs
+   to a hub series (country + label), N: refs to a news headline. Deduped across the whole
+   answer so the same series isn't chipped once per claim. W: refs (Phase 3, not built yet)
+   fall back to the raw ref rather than guessing a shape that doesn't exist. */
+function resolveCitation(ref, evidence) {
+  if (ref.startsWith('D:')) {
+    const [country, indicator] = ref.slice(2).split(':');
+    const d = evidence.data.find(e => e.country === country && e.indicator === indicator);
+    if (!d) return null;
+    return { label: `${d.country} · ${d.label}`, url: safeUrl(d.sourceUrl) };
+  }
+  if (ref.startsWith('N:')) {
+    const id = ref.slice(2);
+    const n = evidence.news?.find(item => item.id === id);
+    if (!n) return null;
+    return { label: `${n.country} · ${n.title}`, url: safeUrl(n.url) };
+  }
+  return { label: ref, url: null };
 }
 
-function renderAnswer(question, body) {
-  const cites = body.citations ?? [];
-  const citeHtml = cites.length
-    ? `<div class="cites">
-         <p class="cites__label">Sources read (${cites.length})</p>
-         ${cites
-           .map(c => {
-             const url = safeUrl(c.sourceUrl);
-             const org = url
-               ? `<a href="${esc(url)}" target="_blank" rel="noopener">${esc(c.sourceOrg)}</a>`
-               : esc(c.sourceOrg);
-             return `<div class="cite"><b>${esc(c.country)} · ${esc(c.label)}</b><br />${org} · ${esc(c.sourceTier)} · vintage ${esc(c.vintage)}</div>`;
-           })
-           .join('')}
-       </div>`
-    : `<div class="cites"><p class="cites__label">Sources read (0)</p>
-         <div class="cite">No hub series matched — the answer above reports what is missing.</div>
-       </div>`;
+function citeChipsHtml(claims, evidence) {
+  const refs = [...new Set(claims.flatMap(c => c.refs))];
+  if (!refs.length) return '';
 
-  el('answer').innerHTML = `
-    <div class="answer__body">${renderMarkdown(body.answer)}</div>
-    ${citeHtml}
-    <div class="answer__body" style="border-top:1px solid var(--line)">
-      <button class="btn" type="button" id="insert-answer">Insert answer and sources</button>
-    </div>
-  `;
+  const chips = refs
+    .map(ref => resolveCitation(ref, evidence))
+    .filter(Boolean)
+    .map(({ label, url }) =>
+      url
+        ? `<a class="msg__cite" href="${esc(url)}" target="_blank" rel="noopener">${esc(label)}</a>`
+        : `<span class="msg__cite">${esc(label)}</span>`,
+    );
 
-  el('insert-answer').addEventListener('click', () => insertAnswer(question, body));
+  return chips.length ? `<div class="msg__cites">${chips.join('')}</div>` : '';
+}
+
+function appendAssistantMessage(question, result) {
+  const { answer, evidence } = result;
+  const details = answer.claims
+    .filter(c => c.text)
+    .map(c => `<p class="msg__detail">${esc(c.text)}</p>`)
+    .join('');
+  const gaps = answer.gaps.length ? `<p class="msg__gaps">${esc(answer.gaps.join(' '))}</p>` : '';
+
+  const wrap = appendMessage(
+    'msg msg--assistant',
+    `<p class="msg__headline">${esc(answer.headline)}</p>` +
+      details +
+      gaps +
+      citeChipsHtml(answer.claims, evidence) +
+      `<span class="msg__unverified">Not yet fact-checked — automated verification isn't built yet</span>`,
+  );
+
+  const insertButton = document.createElement('button');
+  insertButton.type = 'button';
+  insertButton.className = 'msg__insert';
+  insertButton.textContent = 'Insert answer and sources';
+  insertButton.addEventListener('click', () => insertAnswer(question, answer, evidence, insertButton));
+  wrap.appendChild(insertButton);
+  scrollMessagesToEnd();
 }
 
 // Writes the question, the answer, and the audit trail — so the sheet carries the reasoning,
 // not just a number someone has to take on trust.
-async function insertAnswer(question, body) {
+async function insertAnswer(question, answer, evidence, triggerEl) {
+  const refs = [...new Set(answer.claims.flatMap(c => c.refs))];
+  const citationRows = refs.map(ref => {
+    const resolved = resolveCitation(ref, evidence);
+    return resolved ? [resolved.label, resolved.url ?? ''] : [ref, ''];
+  });
+
   const rows = [
     ['CaribEcon research', ''],
     ['Question', question],
-    ['Answer', body.answer],
+    ['Answer', [answer.headline, ...answer.claims.map(c => c.text)].join(' ')],
     ['', ''],
-    ['Sources read', String((body.citations ?? []).length)],
-    ...(body.citations ?? []).map(c => [
-      `${c.country} · ${c.label}`,
-      `${c.sourceOrg} · ${c.sourceTier} · vintage ${c.vintage} · ${c.sourceUrl}`,
-    ]),
+    ['Sources cited', String(citationRows.length)],
+    ...citationRows,
   ];
 
   try {
+    triggerEl.disabled = true;
     await Excel.run(async ctx => {
       const anchor = ctx.workbook.getSelectedRange().getCell(0, 0);
       const block = anchor.getResizedRange(rows.length - 1, 1);
@@ -1006,9 +1100,10 @@ async function insertAnswer(question, body) {
       anchor.getResizedRange(0, 1).format.font.color = '#0E5E4E';
       await ctx.sync();
     });
-    el('insert-answer').textContent = 'Inserted at the selected cell';
+    triggerEl.textContent = 'Inserted at the selected cell';
   } catch (error) {
-    el('insert-answer').textContent = `Could not insert: ${error.message}`;
+    triggerEl.textContent = `Could not insert: ${error.message}`;
+    triggerEl.disabled = false;
   }
 }
 
