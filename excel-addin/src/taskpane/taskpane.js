@@ -914,12 +914,12 @@ async function insertDeepDiveReport() {
 }
 
 // ── Ask (chat) ─────────────────────────────────────────────────────────────────────────────
-// Phase 1 (BUILD_PLAN.md): one turn at a time against POST /api/ask — src/lib/ai/research.ts's
-// interpret -> buildEvidencePackage -> synthesize composition, returned as a claim-structured
-// ResearchResult (ARCHITECTURE.md §2.5). No planner, no grounding gate yet: every assistant
-// message therefore carries an explicit "not yet fact-checked" mark (msg__unverified) — Phase 1
-// prose is internal-only until Phase 2 ships (BUILD_PLAN.md), and the pane is what enforces
-// that promise, since api/ask.ts's own verdict is a stub that always reads PASS.
+// One turn at a time against POST /api/ask — src/lib/ai/research.ts's interpret -> plan ->
+// validateResearchPlan -> executeResearchPlan -> compileEvidence -> synthesize -> verify
+// composition, returned as a claim-structured ResearchResult (ARCHITECTURE.md §2.5). The
+// grounding gate (Phase 2) is real and live: only claims in verdict.publishedClaims are ever
+// rendered or inserted — a claim the gate dropped must NEVER reach the user as if it survived.
+// See appendAssistantMessage below.
 
 function initAsk() {
   // Set at runtime, not as a static src= in the HTML: html-loader's default `sources: true`
@@ -1024,9 +1024,9 @@ async function ask() {
 }
 
 /* Resolves every EvidenceRef a claim actually cites back to something human-readable — D: refs
-   to a hub series (country + label), N: refs to a news headline. Deduped across the whole
-   answer so the same series isn't chipped once per claim. W: refs (Phase 3, not built yet)
-   fall back to the raw ref rather than guessing a shape that doesn't exist. */
+   to a hub series (country + label), N: refs to a news headline, W: refs (Tavily/news-digest web
+   evidence) to the article's domain + title. Deduped across the whole answer so the same series
+   isn't chipped once per claim. */
 function resolveCitation(ref, evidence) {
   if (ref.startsWith('D:')) {
     const [country, indicator] = ref.slice(2).split(':');
@@ -1039,6 +1039,11 @@ function resolveCitation(ref, evidence) {
     const n = evidence.news?.find(item => item.id === id);
     if (!n) return null;
     return { label: `${n.country} · ${n.title}`, url: safeUrl(n.url) };
+  }
+  if (ref.startsWith('W:')) {
+    const w = evidence.web?.find(item => item.id === ref);
+    if (!w) return null;
+    return { label: `${w.domain} · ${w.title}`, url: safeUrl(w.url) };
   }
   return { label: ref, url: null };
 }
@@ -1119,36 +1124,49 @@ async function insertLegacyAnswer(question, body, triggerEl) {
   }
 }
 
+/* The one rule this function must never break: a claim verify() dropped is NEVER shown as if it
+   survived — verdict.publishedClaims is the only thing that decides what narrative text reaches
+   the pane or gets inserted into a workbook, never answer.claims wholesale. */
 function appendAssistantMessage(question, result) {
-  const { answer, evidence } = result;
-  const details = answer.claims
-    .filter(c => c.text)
-    .map(c => `<p class="msg__detail">${esc(c.text)}</p>`)
-    .join('');
+  const { answer, evidence, verdict } = result;
+  const published = answer.claims.filter(c => verdict.publishedClaims.includes(c.id));
+
+  const details = published.length
+    ? published.filter(c => c.text).map(c => `<p class="msg__detail">${esc(c.text)}</p>`).join('')
+    : `<p class="msg__detail">No part of this answer could be verified against retrieved evidence.</p>`;
+
+  const narrowNote =
+    verdict.outcome === 'NARROW'
+      ? `<span class="msg__gaps">Narrowed: ${published.length} of ${answer.claims.length} statement${answer.claims.length === 1 ? '' : 's'} could be shown as verified (${verdict.reasonCategories.map(humanizeReason).join('; ')}).</span>`
+      : '';
   const gaps = answer.gaps.length ? `<p class="msg__gaps">${esc(answer.gaps.join(' '))}</p>` : '';
+  const evidenceNoteHtml = renderEvidenceNote(result.evidenceNote);
 
   const wrap = appendMessage(
     'msg msg--assistant',
     `<p class="msg__headline">${esc(answer.headline)}</p>` +
       details +
+      narrowNote +
       gaps +
-      citeChipsHtml(answer.claims, evidence) +
-      `<span class="msg__unverified">Not yet fact-checked — automated verification isn't built yet</span>`,
+      citeChipsHtml(published, evidence) +
+      evidenceNoteHtml,
   );
 
   const insertButton = document.createElement('button');
   insertButton.type = 'button';
   insertButton.className = 'msg__insert';
   insertButton.textContent = 'Insert answer and sources';
-  insertButton.addEventListener('click', () => insertAnswer(question, answer, evidence, insertButton));
+  insertButton.addEventListener('click', () => insertAnswer(question, answer.headline, published, evidence, insertButton));
   wrap.appendChild(insertButton);
   scrollMessagesToEnd();
 }
 
 // Writes the question, the answer, and the audit trail — so the sheet carries the reasoning,
-// not just a number someone has to take on trust.
-async function insertAnswer(question, answer, evidence, triggerEl) {
-  const refs = [...new Set(answer.claims.flatMap(c => c.refs))];
+// not just a number someone has to take on trust. `publishedClaims` here is already filtered to
+// verdict.publishedClaims by the caller (appendAssistantMessage) — this function never sees a
+// claim the grounding gate dropped, so it can't insert one into a workbook either.
+async function insertAnswer(question, headline, publishedClaims, evidence, triggerEl) {
+  const refs = [...new Set(publishedClaims.flatMap(c => c.refs))];
   const citationRows = refs.map(ref => {
     const resolved = resolveCitation(ref, evidence);
     return resolved ? [resolved.label, resolved.url ?? ''] : [ref, ''];
@@ -1157,7 +1175,7 @@ async function insertAnswer(question, answer, evidence, triggerEl) {
   const rows = [
     ['CaribEcon research', ''],
     ['Question', question],
-    ['Answer', [answer.headline, ...answer.claims.map(c => c.text)].join(' ')],
+    ['Answer', [headline, ...publishedClaims.map(c => c.text)].join(' ')],
     ['', ''],
     ['Sources cited', String(citationRows.length)],
     ...citationRows,
@@ -1181,10 +1199,7 @@ async function insertAnswer(question, answer, evidence, triggerEl) {
   }
 }
 
-/* The Phase 3 renderer (ASK_MODE === 'ask') — a ResearchResult (answer/evidence/verdict), not
-   the legacy {answer, citations} shape renderAnswer above handles. The one rule this must never
-   break: a claim verify() dropped is NEVER shown as if it survived — publishedClaims is the only
-   thing that decides what narrative text reaches the pane, never answer.claims wholesale. */
+// Human-readable form of a VerificationVerdict.reasonCategory, used in the "Narrowed" note below.
 function humanizeReason(reason) {
   return (
     {
@@ -1196,112 +1211,25 @@ function humanizeReason(reason) {
   );
 }
 
-// Every ref a published claim actually relies on — refs[] and figures[].ref, unioned, same
-// construction the grounding gate itself uses (grounding.ts's checkRefExistence).
-function citedRefs(answer, verdict) {
-  const refs = new Set();
-  for (const claim of answer.claims) {
-    if (!verdict.publishedClaims.includes(claim.id)) continue;
-    for (const ref of claim.refs) refs.add(ref);
-    for (const figure of claim.figures) refs.add(figure.ref);
-  }
-  return refs;
-}
-
-function renderAskAnswer(question, result) {
-  const { answer, evidence, verdict } = result;
-  const published = answer.claims.filter(c => verdict.publishedClaims.includes(c.id));
-  const refs = citedRefs(answer, verdict);
-
-  const narrative = published.length
-    ? published.map(c => `<p>${esc(c.text)}</p>`).join('')
-    : `<p class="answer__working">No part of this answer could be verified against retrieved evidence.</p>`;
-
-  const narrowNote =
-    verdict.outcome === 'NARROW'
-      ? `<span class="provenance__note">Narrowed: ${published.length} of ${answer.claims.length} statement${answer.claims.length === 1 ? '' : 's'} could be shown as verified (${verdict.reasonCategories.map(humanizeReason).join('; ')}).</span>`
-      : '';
-
-  const gapsNote = answer.gaps.length
-    ? `<span class="provenance__note">Not covered: ${answer.gaps.map(esc).join(' · ')}</span>`
-    : '';
-
-  const dataCites = evidence.data
-    .filter(d => refs.has(`D:${d.country}:${d.indicator}`))
-    .map(d => {
-      const url = safeUrl(d.sourceUrl);
-      const org = url ? `<a href="${esc(url)}" target="_blank" rel="noopener">${esc(d.sourceOrg)}</a>` : esc(d.sourceOrg);
-      return `<div class="cite"><b>${esc(d.country)} · ${esc(d.label)}</b><br />${org} · ${esc(d.sourceTier)} · vintage ${esc(d.vintage)}</div>`;
-    });
-  const newsCites = evidence.news
-    .filter(n => refs.has(`N:${n.id}`))
-    .map(n => {
-      const url = safeUrl(n.url);
-      const link = url ? `<a href="${esc(url)}" target="_blank" rel="noopener">${esc(n.source)}</a>` : esc(n.source);
-      return `<div class="cite"><b>${esc(n.title)}</b><br />${link} · ${esc(n.date)}</div>`;
-    });
-  const webCites = (evidence.web ?? [])
-    .filter(w => refs.has(w.id))
-    .map(w => {
-      const url = safeUrl(w.url);
-      const link = url ? `<a href="${esc(url)}" target="_blank" rel="noopener">${esc(w.domain)}</a>` : esc(w.domain);
-      const read = w.extract ? 'read in full' : 'headline/snippet only';
-      return `<div class="cite"><b>${esc(w.title)}</b><br />${link} · ${read}</div>`;
-    });
-  const allCites = [...dataCites, ...newsCites, ...webCites];
-
-  const citeHtml = allCites.length
-    ? `<div class="cites"><p class="cites__label">Sources read (${allCites.length})</p>${allCites.join('')}</div>`
-    : `<div class="cites"><p class="cites__label">Sources read (0)</p><div class="cite">No retrieved evidence backed a verified statement — the note above reports what is missing.</div></div>`;
-
-  el('answer').innerHTML = `
-    <div class="answer__body">
-      <p><b>${esc(answer.headline)}</b></p>
-      ${narrative}
-      ${narrowNote}
-      ${gapsNote}
-    </div>
-    ${citeHtml}
-    <div class="answer__body" style="border-top:1px solid var(--line)">
-      <button class="btn" type="button" id="insert-answer">Insert answer and sources</button>
-    </div>
+/* The deterministic evidence note (Stage E — Synthesis Latency + Evidence Compiler upgrade).
+   result.evidenceNote is built by evidenceCompiler.ts's buildEvidenceNote(), never by the model —
+   summary is a short inline line, limitations the detailed, per-reason list (each with the real
+   refs that caused it). Rendered as a native <details> disclosure so the short note stays the
+   default view and the detail is one click away, not competing for space with the answer. Empty
+   evidenceNote.summary means nothing to report — render nothing, not an empty disclosure. */
+function renderEvidenceNote(evidenceNote) {
+  if (!evidenceNote || !evidenceNote.summary) return '';
+  const items = evidenceNote.limitations
+    .map(
+      l => `<li>${esc(l.reason)}${l.relatedRefs.length ? ` <span class="evidence-note__refs">(${l.relatedRefs.map(esc).join(', ')})</span>` : ''}</li>`,
+    )
+    .join('');
+  return `
+    <details class="evidence-note">
+      <summary>${esc(evidenceNote.summary)}</summary>
+      <ul class="evidence-note__list">${items}</ul>
+    </details>
   `;
-
-  el('insert-answer').addEventListener('click', () => insertAskAnswer(question, answer, evidence, verdict, refs));
-}
-
-async function insertAskAnswer(question, answer, evidence, verdict, refs) {
-  const published = answer.claims.filter(c => verdict.publishedClaims.includes(c.id));
-  const dataCites = evidence.data.filter(d => refs.has(`D:${d.country}:${d.indicator}`));
-  const newsCites = evidence.news.filter(n => refs.has(`N:${n.id}`));
-  const webCites = (evidence.web ?? []).filter(w => refs.has(w.id));
-
-  const rows = [
-    ['CaribEcon research', ''],
-    ['Question', question],
-    ['Answer', answer.headline],
-    ...published.map(c => ['', c.text]),
-    ['', ''],
-    ['Sources read', String(dataCites.length + newsCites.length + webCites.length)],
-    ...dataCites.map(d => [`${d.country} · ${d.label}`, `${d.sourceOrg} · ${d.sourceTier} · vintage ${d.vintage} · ${d.sourceUrl}`]),
-    ...newsCites.map(n => [n.title, `${n.source} · ${n.date} · ${n.url}`]),
-    ...webCites.map(w => [w.title, `${w.domain} · ${w.extract ? 'read in full' : 'headline/snippet only'} · ${w.url}`]),
-  ];
-
-  try {
-    await Excel.run(async ctx => {
-      const anchor = ctx.workbook.getSelectedRange().getCell(0, 0);
-      const block = anchor.getResizedRange(rows.length - 1, 1);
-      block.values = rows;
-      block.format.autofitColumns();
-      anchor.getResizedRange(0, 1).format.font.bold = true;
-      anchor.getResizedRange(0, 1).format.font.color = '#0E5E4E';
-      await ctx.sync();
-    });
-    el('insert-answer').textContent = 'Inserted at the selected cell';
-  } catch (error) {
-    el('insert-answer').textContent = `Could not insert: ${error.message}`;
-  }
 }
 
 // ── Reference ──────────────────────────────────────────────────────────────────────────────

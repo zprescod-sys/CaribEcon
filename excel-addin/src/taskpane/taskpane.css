@@ -552,14 +552,33 @@ select[multiple] {
   overflow-wrap: anywhere;
 }
 
-/* Phase 1 has no grounding gate yet (BUILD_PLAN.md), so every narrative answer carries this —
-   never a claim of verification the pipeline cannot back yet. */
-.msg__unverified {
-  margin-top: 2px;
+/* The deterministic evidence note (Stage E — Synthesis Latency + Evidence Compiler upgrade).
+   Native <details>/<summary>: the short note is always visible as the closed-state summary line,
+   the per-limitation detail is one click away rather than competing with the answer for space. */
+.evidence-note {
+  margin-top: 4px;
+}
+
+.evidence-note summary {
   font-family: var(--font-mono);
   font-size: 9.5px;
   letter-spacing: 0.02em;
   color: var(--gold);
+  cursor: pointer;
+}
+
+.evidence-note__list {
+  margin: 4px 0 0;
+  padding-left: 16px;
+  font-size: 10.5px;
+  line-height: 1.5;
+  color: var(--ink-soft);
+}
+
+.evidence-note__refs {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: var(--ink-faint);
 }
 
 .msg__insert {
