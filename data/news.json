@@ -366,6 +366,336 @@
     "classifier": "heuristic"
   },
   {
+    "id": "kaieteur-news-3c1e5303",
+    "title": "Guyana’s profits move from 12.5% to 39.8% – Pres. Ali",
+    "source": "Kaieteur News",
+    "date": "2026-08-19",
+    "country": "GY",
+    "url": "https://kaieteurnewsonline.com/2026/08/19/guyanas-profits-move-from-12-5-to-39-8-pres-ali/",
+    "tags": [
+      "news",
+      "cost",
+      "exxonmobil",
+      "irfaan ali",
+      "profits",
+      "silence"
+    ],
+    "category": "Corporate",
+    "group": "Finance",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "kaieteur-news-f0685783",
+    "title": "Canadian firm eyes more gold fields in Guyana",
+    "source": "Kaieteur News",
+    "date": "2026-08-19",
+    "country": "GY",
+    "url": "https://kaieteurnewsonline.com/2026/08/19/canadian-firm-eyes-more-gold-fields-in-guyana/",
+    "tags": [
+      "news",
+      "canadian firm",
+      "gold",
+      "guyana",
+      "noseno gold project"
+    ],
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "kaieteur-news-fcfa34cb",
+    "title": "“I have nothing to hide on farm lands” – President Ali",
+    "source": "Kaieteur News",
+    "date": "2026-08-19",
+    "country": "GY",
+    "url": "https://kaieteurnewsonline.com/2026/08/19/i-have-nothing-to-hide-on-farm-lands-president-ali/",
+    "tags": [
+      "news",
+      "corruption",
+      "farm lands",
+      "linden soesdyke highway",
+      "long creek",
+      "president ali"
+    ],
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "kaieteur-news-c17f41e0",
+    "title": "No corruption involved in the awarding of the contracts to company linked to President Ali brother – GWI",
+    "source": "Kaieteur News",
+    "date": "2026-08-19",
+    "country": "GY",
+    "url": "https://kaieteurnewsonline.com/2026/08/19/no-corruption-involved-in-the-awarding-of-the-contracts-to-company-linked-to-president-ali-brother-gwi/",
+    "tags": [
+      "news",
+      "contracts",
+      "gwi",
+      "president ali brother",
+      "sigma engineers ltd"
+    ],
+    "category": "Corporate",
+    "group": "Finance",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "demerara-waves-05680b6c",
+    "title": "OPINION: Permanent farmers market, let it be tried",
+    "source": "Demerara Waves",
+    "date": "2026-08-19",
+    "country": "GY",
+    "url": "https://demerarawaves.com/2026/08/19/opinion-permanent-farmers-market-let-it-be-tried/",
+    "tags": [
+      "opinion"
+    ],
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "ttt-news-056fc1e1",
+    "title": "New Airline Set To Enter T&T Market In October",
+    "source": "TTT News",
+    "date": "2026-08-19",
+    "country": "TT",
+    "url": "https://www.ttt.live/new-airline-set-to-enter-tt-market-in-october/?utm_source=rss&utm_medium=rss&utm_campaign=new-airline-set-to-enter-tt-market-in-october",
+    "tags": [
+      "government",
+      "news",
+      "transport and civil aviation"
+    ],
+    "category": "Tourism",
+    "group": "Trade & Tourism",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "barbados-today-97453c93",
+    "title": "NHC reports progress on housing handovers, tenant ownership",
+    "source": "Barbados Today",
+    "date": "2026-08-19",
+    "country": "BB",
+    "url": "https://barbadostoday.bb/2026/08/19/nhc-reports-progress-on-housing-handovers-tenant-ownership/",
+    "tags": [
+      "community",
+      "housing",
+      "local news",
+      "headline",
+      "headlines"
+    ],
+    "category": "Infrastructure",
+    "group": "Investment",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "barbados-today-1f18055b",
+    "title": "New York trade mission prepares first-time exporters",
+    "source": "Barbados Today",
+    "date": "2026-08-19",
+    "country": "BB",
+    "url": "https://barbadostoday.bb/2026/08/19/new-york-trade-mission-prepares-first-time-exporters/",
+    "tags": [
+      "business",
+      "economy",
+      "local news"
+    ],
+    "category": "Trade",
+    "group": "Trade & Tourism",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "jamaica-observer-aa98c8e7",
+    "title": "NCB resets consumer lending after delinquency spike",
+    "source": "Jamaica Observer",
+    "date": "2026-08-19",
+    "country": "JM",
+    "url": "https://www.jamaicaobserver.com/2026/08/19/ncb-resets-consumer-lending-delinquency-spike/",
+    "tags": [
+      "business"
+    ],
+    "category": "Banking",
+    "group": "Finance",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "jamaica-observer-f39370a4",
+    "title": "Gas prices up $1.43, $.25, diesel up $4.50",
+    "source": "Jamaica Observer",
+    "date": "2026-08-19",
+    "country": "JM",
+    "url": "https://www.jamaicaobserver.com/2026/08/19/gas-prices-1-43-25-diesel-4-50/",
+    "tags": [
+      "latest news",
+      "news",
+      "gasoline",
+      "oil",
+      "prices"
+    ],
+    "category": "Energy",
+    "group": "Energy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "jamaica-observer-e8a4ea66",
+    "title": "Forex: $159.41 to one US dollar",
+    "source": "Jamaica Observer",
+    "date": "2026-08-19",
+    "country": "JM",
+    "url": "https://www.jamaicaobserver.com/2026/08/19/forex-159-41-one-us-dollar/",
+    "tags": [
+      "latest news",
+      "news",
+      "daily trade",
+      "forex",
+      "jamaica"
+    ],
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "jamaica-observer-ed97ccf0",
+    "title": "WATCH: Paulwell raises concerns over airport runway expansion",
+    "source": "Jamaica Observer",
+    "date": "2026-08-19",
+    "country": "JM",
+    "url": "https://www.jamaicaobserver.com/2026/08/19/watch-paulwell-raises-concerns-airport-runway-expansion/",
+    "tags": [
+      "latest news",
+      "news",
+      "airport",
+      "philip paulwell",
+      "runway"
+    ],
+    "category": "Tourism",
+    "group": "Trade & Tourism",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "the-star-jamaica-e7fe2d0b",
+    "title": "Doctor admits role in $600m mortgage fraud scheme",
+    "source": "The Star (Jamaica)",
+    "date": "2026-08-19",
+    "country": "JM",
+    "url": "https://jamaica-star.com/article/news/20260819/doctor-admits-role-600m-mortgage-fraud-scheme",
+    "category": "Banking",
+    "group": "Finance",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "breaking-belize-news-4abc0c8d",
+    "title": "International News: Could this be a Cancer vaccine breakthrough? Moderna stock soars",
+    "source": "Breaking Belize News",
+    "date": "2026-08-19",
+    "country": "BZ",
+    "url": "https://www.breakingbelizenews.com/2026/08/19/international-news-could-this-be-a-cancer-vaccine-breakthrough-moderna-stock-soars/",
+    "tags": [
+      "last news",
+      "world news"
+    ],
+    "category": "Corporate",
+    "group": "Finance",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "st-lucia-times-4e1d0d36",
+    "title": "MP speaks out about damage to water infrastructure",
+    "source": "St. Lucia Times",
+    "date": "2026-08-19",
+    "country": "LC",
+    "url": "https://stluciatimes.com/183127/2026/08/mp-speaks-out-about-damage-to-water-infrastructure/",
+    "tags": [
+      "community",
+      "headlines",
+      "choiseul",
+      "delcer treatment plant",
+      "keithson charles",
+      "saint lucia"
+    ],
+    "category": "Infrastructure",
+    "group": "Investment",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "ziz-online-98611560",
+    "title": "Brazil Discovers Oil Near Amazon River",
+    "source": "ZIZ Online",
+    "date": "2026-08-19",
+    "country": "KN",
+    "url": "https://zizonline.com/brazil-discovers-oil-near-amazon-river/",
+    "tags": [
+      "international"
+    ],
+    "category": "Energy",
+    "group": "Energy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "ziz-online-ae83fb34",
+    "title": "New Phase Begins In BHS Construction",
+    "source": "ZIZ Online",
+    "date": "2026-08-19",
+    "country": "KN",
+    "url": "https://zizonline.com/new-phase-begins-in-bhs-construction/",
+    "tags": [
+      "national"
+    ],
+    "category": "Infrastructure",
+    "group": "Investment",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
     "id": "guyana-chronicle-c408d0d7",
     "title": "Government takes steps to boost Linden’s electricity supply -Minister Indar says three engines to reach there soon",
     "source": "Guyana Chronicle",
@@ -36903,248 +37233,6 @@
     "tags": [
       "news"
     ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "barbados-today-0cefb168",
-    "title": "Central bank orders alignment of spending caps amid user complaints",
-    "source": "Barbados Today",
-    "date": "2026-07-14",
-    "country": "BB",
-    "url": "https://barbadostoday.bb/2026/07/13/central-bank-orders-alignment-of-spending-caps-amid-user-complaints/",
-    "tags": [
-      "business",
-      "local news",
-      "technology",
-      "headline",
-      "headlines"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "barbados-today-4cf4a990",
-    "title": "Banks ‘may charge’ biz for BiMPay transfers, kept free for individuals",
-    "source": "Barbados Today",
-    "date": "2026-07-14",
-    "country": "BB",
-    "url": "https://barbadostoday.bb/2026/07/13/banks-may-charge-biz-for-bimpay-transfers-kept-free-for-individuals/",
-    "tags": [
-      "business",
-      "local news",
-      "technology",
-      "headline",
-      "headlines"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "eyewitness-news-e6949a06",
-    "title": "PM says LNG terminal will deliver “a stronger , cleaner , and more reliable” energy future",
-    "source": "Eyewitness News",
-    "date": "2026-07-14",
-    "country": "BS",
-    "url": "https://ewnews.com/pm-says-lng-terminal-will-deliver-a-stronger-cleaner-and-more-reliable-energy-future/?utm_source=rss&utm_medium=rss&utm_campaign=pm-says-lng-terminal-will-deliver-a-stronger-cleaner-and-more-reliable-energy-future",
-    "tags": [
-      "business",
-      "always a headline ahead",
-      "bahamas",
-      "bahamas news",
-      "ewnews.com",
-      "eyewitness news"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "eyewitness-news-af5cfac5",
-    "title": "URCA seeks public feedback on proposed change in control of Baker’s Bay Utility Ltd.",
-    "source": "Eyewitness News",
-    "date": "2026-07-14",
-    "country": "BS",
-    "url": "https://ewnews.com/urca-seeks-public-feedback-on-proposed-change-in-control-of-bakers-bay-utility-ltd/?utm_source=rss&utm_medium=rss&utm_campaign=urca-seeks-public-feedback-on-proposed-change-in-control-of-bakers-bay-utility-ltd",
-    "tags": [
-      "business",
-      "around the world",
-      "bahamas news",
-      "eyewitness news"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "starnieuws-65e64da9",
-    "title": "Olieprijzen stijgen fors door escalatie VS-Iran over Straat van Hormuz",
-    "source": "Starnieuws",
-    "date": "2026-07-14",
-    "country": "SR",
-    "url": "https://www.starnieuws.com/index.php/welcome/index/nieuwsitem/92961",
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "antigua-news-room-f56c97d9",
-    "title": "Antigua and Barbuda Chamber of Commerce Introduces 2026–2027 Executive Team",
-    "source": "Antigua News Room",
-    "date": "2026-07-14",
-    "country": "AG",
-    "url": "https://antiguanewsroom.com/antigua-and-barbuda-chamber-of-commerce-introduces-2026-2027-executive-team/",
-    "tags": [
-      "news"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "antigua-observer-f3032524",
-    "title": "Resort Employee Claims Victimisation",
-    "source": "Antigua Observer",
-    "date": "2026-07-14",
-    "country": "AG",
-    "url": "https://antiguaobserver.com/resort-employee-claims-victimisation/",
-    "tags": [
-      "the big stories"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "st-kitts-nevis-observer-58085b94",
-    "title": "Energy services sector reports mixed business conditions in second quarter of 2026",
-    "source": "St. Kitts-Nevis Observer",
-    "date": "2026-07-14",
-    "country": "KN",
-    "url": "https://www.thestkittsnevisobserver.com/energy-services-sector-reports-mixed-business-conditions-in-second-quarter-of-2026/",
-    "tags": [
-      "regional"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "iwitness-news-3eadeae0",
-    "title": "Ministry’s state land review raises bigger questions about housing",
-    "source": "iWitness News",
-    "date": "2026-07-14",
-    "country": "VC",
-    "url": "https://www.iwnsvg.com/2026/07/14/ministrys-state-land-review-raises-bigger-questions-about-housing/",
-    "tags": [
-      "opinion"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "searchlight-svg-75a28422",
-    "title": "Gov’t reaffirms commitment to fiscal consolidation and growth",
-    "source": "Searchlight SVG",
-    "date": "2026-07-14",
-    "country": "VC",
-    "url": "https://www.searchlight.vc/front-page/2026/07/14/govt-reaffirms-commitment-fiscal-consolidation-growth/",
-    "tags": [
-      "front page"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "searchlight-svg-447c9990",
-    "title": "Banks should explain better says ECCB",
-    "source": "Searchlight SVG",
-    "date": "2026-07-14",
-    "country": "VC",
-    "url": "https://www.searchlight.vc/news/2026/07/14/banks-explain-better-says-eccb/",
-    "tags": [
-      "news"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "searchlight-svg-bd27c3ba",
-    "title": "The Extravagant Mind: Your attention is currency",
-    "source": "Searchlight SVG",
-    "date": "2026-07-14",
-    "country": "VC",
-    "url": "https://www.searchlight.vc/our-readers-opinions/2026/07/14/extravagant-mind-attention-currency/",
-    "tags": [
-      "our readers' opinions"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "searchlight-svg-e74c8be8",
-    "title": "The Silence in the Bond Market",
-    "source": "Searchlight SVG",
-    "date": "2026-07-14",
-    "country": "VC",
-    "url": "https://www.searchlight.vc/editorial/2026/07/14/silence-bond-market/",
-    "tags": [
-      "editorial"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "cayman-compass-9bc6d45e",
-    "title": "Redefining resilience: The women reshaping Cayman agriculture",
-    "source": "Cayman Compass",
-    "date": "2026-07-14",
-    "country": "KY",
-    "url": "https://www.caymancompass.com/2026/07/14/redefining-resilience-the-women-reshaping-cayman-agriculture/",
-    "tags": [
-      "environment",
-      "local",
-      "cayman islands department of agriculture",
-      "food security",
-      "women farmers"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "cayman-compass-db5034e4",
-    "title": "Report: Cayman profited from population growth but failed to plan for its cost",
-    "source": "Cayman Compass",
-    "date": "2026-07-14",
-    "country": "KY",
-    "url": "https://www.caymancompass.com/2026/07/14/report-cayman-profited-on-population-growth-but-failed-to-plan-for-its-cost/",
-    "tags": [
-      "local",
-      "infrastructure",
-      "marla dukharan",
-      "population growth"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "cayman-compass-6ef43890",
-    "title": "Cayman’s reinsurance association rebuts Apollo criticism",
-    "source": "Cayman Compass",
-    "date": "2026-07-14",
-    "country": "KY",
-    "url": "https://www.caymancompass.com/2026/07/14/caymans-reinsurance-association-rebuts-apollo-criticism/",
-    "tags": [
-      "business",
-      "finance",
-      "cayman international reinsurance companies association (circa)",
-      "naic qualified jurisdiction",
-      "reinsurance"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "wic-news-ad515784",
-    "title": "Caribbean Airlines adds 72 flights to Trinidad-Tobago Air Bridge for peak vacation season",
-    "source": "WIC News",
-    "date": "2026-07-14",
-    "country": "ALL",
-    "url": "https://wicnews.com/trinidad-tobago/caribbean-airlines-adds-72-flights-to-trinidad-tobago-air-bridge-for-peak-vacation-season",
     "deal_status": "not_a_deal",
     "deal_type": null
   }
