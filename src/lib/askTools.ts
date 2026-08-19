@@ -118,8 +118,10 @@ const MAX_NEWS = 6;
 // ── Canonicalisation ───────────────────────────────────────────────────────────────────────
 
 /* Fold the spellings a model actually emits onto one key: case, diacritics ("Curacao" for
-   "Curaçao"), punctuation, "&" vs "and", "St." vs "Saint". Applied to both sides of every
-   comparison, so the hub's own labels need no special-casing.
+   "Curaçao"), punctuation, "&" vs "and", "St." vs "Saint", American vs British spelling (the hub
+   itself uses British spelling, e.g. "Labour Force Participation Rate" — a model defaulting to
+   American English otherwise fails on that alone). Applied to both sides of every comparison, so
+   the hub's own labels need no special-casing.
 
    newsSearch.ts has a near-identical normalise() and this is deliberately not shared with it:
    that module uses extensionless specifiers and would break this file's nodenext safety. */
@@ -130,6 +132,7 @@ function normalise(value: string): string {
     .replace(/\p{Diacritic}/gu, '')
     .replace(/&/g, ' and ')
     .replace(/\bst\.?\b/g, 'saint')
+    .replace(/\blabor\b/g, 'labour')
     .replace(/[^a-z0-9]+/g, ' ')
     .trim();
 }
@@ -157,12 +160,99 @@ const countryByKey = (() => {
   return map;
 })();
 
+/* Phrasing the hub's own slug/label doesn't already catch, verified against data/SCHEMA.md's
+ * indicator definitions and sourcing notes before being added — not just plausible-sounding
+ * English. Each entry must map unambiguously to exactly ONE hub slug; a phrase that could
+ * plausibly mean any of several real hub indicators (bare "government debt" — gross, net, or the
+ * ratio; bare "government spending" — current, capital, or total) is deliberately left OUT and
+ * must stay unresolved rather than guess. See evidenceCompiler.test.mjs / askTools.test.mjs for
+ * the negative tests asserting those specific ambiguous phrases stay null. */
+const INDICATOR_ALIASES: Record<string, string> = {
+  'nominal gross domestic product': 'nominal_gdp',
+  'gdp at current prices': 'nominal_gdp',
+  'real gross domestic product': 'real_gdp',
+  'gdp in constant prices': 'real_gdp',
+  'constant price gdp': 'real_gdp',
+  'gdp at constant prices': 'real_gdp',
+  'economic growth': 'gdp_growth',
+  'rate of economic growth': 'gdp_growth',
+  'rate of gdp growth': 'gdp_growth',
+  'per capita gdp': 'gdp_per_capita',
+  'income per person': 'gdp_per_capita',
+  'per capita income': 'gdp_per_capita',
+  'gdp per person': 'gdp_per_capita',
+  'total population': 'population',
+  'number of inhabitants': 'population',
+  'number of people': 'population',
+  'cpi inflation': 'inflation',
+  'consumer price inflation': 'inflation',
+  'price inflation': 'inflation',
+  'headline inflation': 'inflation',
+  'rate of inflation': 'inflation',
+  'usd exchange rate': 'fx_rate_usd',
+  'dollar exchange rate': 'fx_rate_usd',
+  'us dollar exchange rate': 'fx_rate_usd',
+  'joblessness': 'unemployment',
+  'rate of unemployment': 'unemployment',
+  'labour force participation': 'labour_participation',
+  'workforce participation rate': 'labour_participation',
+  'workforce participation': 'labour_participation',
+  'age dependency ratio': 'dependency_ratio',
+  'foreign direct investment': 'fdi',
+  'net foreign direct investment': 'fdi',
+  'direct investment inflows': 'fdi',
+  'base money': 'monetary_base',
+  'reserve money': 'monetary_base',
+  'm0': 'monetary_base',
+  'current account balance': 'current_account',
+  'current account deficit': 'current_account',
+  'current account surplus': 'current_account',
+  'capital account balance': 'capital_account',
+  'capital account deficit': 'capital_account',
+  'capital account surplus': 'capital_account',
+  'primary deficit': 'primary_balance',
+  'primary surplus': 'primary_balance',
+  'primary fiscal balance': 'primary_balance',
+  'budget balance': 'fiscal_balance',
+  'budget deficit': 'fiscal_balance',
+  'fiscal deficit': 'fiscal_balance',
+  'overall fiscal balance': 'fiscal_balance',
+  'budget surplus': 'fiscal_balance',
+  'fiscal surplus': 'fiscal_balance',
+  'government revenue': 'govt_revenue_total',
+  'total government revenue': 'govt_revenue_total',
+  'fiscal revenue': 'govt_revenue_total',
+  'state revenue': 'govt_revenue_total',
+  'public revenue': 'govt_revenue_total',
+  'current expenditure': 'govt_current_expenditure',
+  'recurrent expenditure': 'govt_current_expenditure',
+  'government current spending': 'govt_current_expenditure',
+  'recurrent spending': 'govt_current_expenditure',
+  'capital expenditure': 'govt_capital_expenditure',
+  'capital spending': 'govt_capital_expenditure',
+  'government capital spending': 'govt_capital_expenditure',
+  'total government expenditure': 'govt_total_expenditure',
+  'total government spending': 'govt_total_expenditure',
+  'gross public debt': 'gross_govt_debt',
+  'gross debt': 'gross_govt_debt',
+  'net public debt': 'net_govt_debt',
+  'net debt': 'net_govt_debt',
+  'debt to gdp': 'gross_govt_debt_pct_gdp',
+  'debt to gdp ratio': 'gross_govt_debt_pct_gdp',
+  'government debt as a percentage of gdp': 'gross_govt_debt_pct_gdp',
+  'public debt to gdp ratio': 'gross_govt_debt_pct_gdp',
+  'government debt ratio': 'gross_govt_debt_pct_gdp',
+  'months of import cover': 'import_cover',
+  'reserve cover': 'import_cover',
+};
+
 const indicatorByKey = (() => {
   const map = new Map<string, string>();
   for (const m of getIndicatorMeta()) {
     map.set(normalise(m.slug), m.slug);
     map.set(normalise(m.label), m.slug);
   }
+  for (const [alias, slug] of Object.entries(INDICATOR_ALIASES)) map.set(normalise(alias), slug);
   return map;
 })();
 
@@ -173,7 +263,20 @@ export function resolveCountry(value: string): string | null {
   return countryByKey.get(normalise(value)) ?? null;
 }
 
+/* Retired schema identifiers that must never resolve again — data/SCHEMA.md's own words for
+ * `debt_to_gdp`: "Do not reintroduce a separate debt_to_gdp slug." normalise() would otherwise
+ * fold this machine slug onto the exact same key as the natural-language phrase "debt to GDP"
+ * (both become "debt to gdp" once underscores/spaces are collapsed) — but those are two different
+ * things colliding by normalization coincidence, not one real ambiguity: the retired PROGRAMMATIC
+ * IDENTIFIER must stay dead, while "debt to GDP" is a perfectly valid, current way to name
+ * gross_govt_debt_pct_gdp (the slug it was merged into) and has every right to keep resolving.
+ * Checked against the raw, lightly-cleaned input — NOT the fully normalised form — so this only
+ * ever catches the literal retired spelling, never a natural phrase that happens to share its
+ * normalised key. */
+const RETIRED_INDICATOR_SLUGS = new Set(['debt_to_gdp']);
+
 export function resolveIndicator(value: string): string | null {
+  if (RETIRED_INDICATOR_SLUGS.has(value.trim().toLowerCase())) return null;
   return indicatorByKey.get(normalise(value)) ?? null;
 }
 

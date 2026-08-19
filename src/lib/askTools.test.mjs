@@ -76,6 +76,97 @@ test('resolveIndicator returns null for a slug the hub does not carry', () => {
   assert.equal(resolveIndicator('gini_coefficient'), null);
 });
 
+/* The retired-slug guard (RETIRED_INDICATOR_SLUGS) is narrower than the test above's name
+   suggests: it protects the literal machine-identifier spelling specifically, not the underlying
+   concept. "debt to GDP" normalises onto the exact same key as "debt_to_gdp" (underscores and
+   spaces both collapse the same way) — without the guard, either both would resolve or neither
+   would; the guard is what lets them diverge correctly. Proves all four corners: the retired
+   identifier stays dead, the natural-language phrase and its "ratio" variant both resolve to the
+   merged canonical slug, and the current slug itself is unaffected. */
+test('resolveIndicator: the retired debt_to_gdp identifier stays dead, but "debt to GDP" (the natural phrase it merged into) resolves fine', () => {
+  assert.equal(resolveIndicator('debt_to_gdp'), null);
+  assert.equal(resolveIndicator('DEBT_TO_GDP'), null, 'case must not matter for the retired-identifier check either');
+  assert.equal(resolveIndicator('debt to GDP'), 'gross_govt_debt_pct_gdp');
+  assert.equal(resolveIndicator('debt-to-GDP ratio'), 'gross_govt_debt_pct_gdp');
+  assert.equal(resolveIndicator('gross_govt_debt_pct_gdp'), 'gross_govt_debt_pct_gdp');
+});
+
+test('resolveIndicator folds American spelling onto the hub\'s British labels', () => {
+  assert.equal(resolveIndicator('Labor Force Participation Rate'), 'labour_participation');
+  assert.equal(resolveIndicator('labor force participation rate'), 'labour_participation');
+});
+
+// INDICATOR_ALIASES entries — one per indicator FAMILY they were added for, verified against
+// data/SCHEMA.md's actual indicator definitions before being added (see the constant's own doc
+// comment in askTools.ts). Not exhaustive over every alias — that would just restate the table —
+// but every family with an alias has at least one case here, so a family-level regression (e.g.
+// the whole GDP-level group silently losing its aliases) cannot pass unnoticed.
+test('resolveIndicator: natural-language aliases resolve to the correct canonical slug', () => {
+  const cases = {
+    'nominal gross domestic product': 'nominal_gdp',
+    'GDP at current prices': 'nominal_gdp',
+    'real gross domestic product': 'real_gdp',
+    'GDP at constant prices': 'real_gdp',
+    'economic growth': 'gdp_growth',
+    'rate of GDP growth': 'gdp_growth',
+    'GDP per person': 'gdp_per_capita',
+    'number of people': 'population',
+    'CPI inflation': 'inflation',
+    'rate of inflation': 'inflation',
+    'USD exchange rate': 'fx_rate_usd',
+    'US dollar exchange rate': 'fx_rate_usd',
+    'joblessness': 'unemployment',
+    'workforce participation': 'labour_participation',
+    'age dependency ratio': 'dependency_ratio',
+    'foreign direct investment': 'fdi',
+    'direct investment inflows': 'fdi',
+    'reserve money': 'monetary_base',
+    'M0': 'monetary_base',
+    'current account surplus': 'current_account',
+    'capital account surplus': 'capital_account',
+    'primary deficit': 'primary_balance',
+    'budget surplus': 'fiscal_balance',
+    'fiscal surplus': 'fiscal_balance',
+    'public revenue': 'govt_revenue_total',
+    'recurrent spending': 'govt_current_expenditure',
+    'capital spending': 'govt_capital_expenditure',
+    'total government spending': 'govt_total_expenditure',
+    'gross debt': 'gross_govt_debt',
+    'net debt': 'net_govt_debt',
+    'debt-to-GDP ratio': 'gross_govt_debt_pct_gdp',
+    'government debt ratio': 'gross_govt_debt_pct_gdp',
+    'reserve cover': 'import_cover',
+  };
+  for (const [phrase, slug] of Object.entries(cases)) {
+    assert.equal(resolveIndicator(phrase), slug, `expected "${phrase}" to resolve to ${slug}`);
+  }
+});
+
+/* The other half of the alias table's design: a phrase that could plausibly mean more than one
+   real hub indicator must stay unresolved, not guess. Government debt (gross/net/ratio) and
+   government spending (current/capital/total) are the two families with real sibling ambiguity;
+   "money supply" is a genuinely different concept from monetary_base (M0), not a synonym for it —
+   see the plan discussion, not just an oversight. A future careless alias addition that collapses
+   any of these would break this test, which is the point. */
+test('resolveIndicator: genuinely ambiguous or non-equivalent phrases stay null, never a guess', () => {
+  const ambiguous = [
+    'government debt',
+    'public debt',
+    'government spending',
+    'government expenditure',
+    'GDP', // ambiguous between nominal_gdp and real_gdp — see the plan discussion
+    'gross domestic product',
+    'growth rate', // too broad — population/credit/export growth all share this shape
+    'exchange rate', // doesn't name a currency — fx_rate_usd is specifically USD
+    'currency exchange rate',
+    'foreign investment inflows', // broader than FDI — could include portfolio flows
+    'money supply', // M1/M2, not the same concept as monetary_base (M0)
+  ];
+  for (const phrase of ambiguous) {
+    assert.equal(resolveIndicator(phrase), null, `expected "${phrase}" to stay unresolved, not guess`);
+  }
+});
+
 // ── Invalid intent handling ────────────────────────────────────────────────────────────────
 
 test('canonicaliseIntent strips an unresolvable country and records it as a miss', () => {
