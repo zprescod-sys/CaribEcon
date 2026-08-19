@@ -208,11 +208,22 @@ export async function extractArticleInsights(article: ArticleContext): Promise<A
   try {
     const response = await callModel(resolved.connection, resolved.model, messages, {
       temperature: 0,
-      // Structured extraction over already-fetched text, not open-ended generation — kept small
-      // and fast so this never becomes the slowest step in a concurrent digest batch (independent
-      // budget, MAX_NEWS_DIGESTS).
-      maxTokens: 800,
-      timeoutMs: 15_000,
+      /* Measured live against real Caribbean news articles, not assumed. The configured model
+         (a reasoning model) writes its full chain-of-thought into a separate `reasoning` field
+         BEFORE it ever writes the JSON answer into `content` — distinct from the <think>-in-
+         content pattern stripThinking() (openaiCompatible.ts) already handles, and NOT something
+         this call can see or budget around; only the total token count is controllable here. At
+         the original 800, real articles measured 0% success (finish_reason: "length" every time,
+         content empty — the reasoning trace alone exceeded the budget). Sweeping 2000/4000/6000/
+         10000 against 6 real fetched articles: 6000 reached 80% success, 10000 resolved the one
+         remaining holdout at 17.1s. 8000 splits that with real margin. Successful-call latency
+         does not scale with the cap itself — a call that only needs 1500 tokens finishes just as
+         fast at an 8000 cap as at a 2000 one; the cap only matters for calls that would otherwise
+         truncate. Candidates in a digest batch run concurrently (Promise.all in executor.ts), so
+         this is the per-call ceiling, not a per-request multiplier. timeoutMs keeps real margin
+         above the worst completion observed (17-18s). */
+      maxTokens: 8_000,
+      timeoutMs: 45_000,
     });
     responseText = response.text;
   } catch {

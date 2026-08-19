@@ -303,14 +303,19 @@ export async function synthesize(compiled: CompiledEvidence): Promise<ResearchAn
 
   const response = await callModel(resolved.connection, resolved.model, messages, {
     temperature: 0,
-    /* UNCHANGED by Stage C on purpose — the plan's own sequencing rule: measure the actual
-       compiled-evidence size live before cutting this budget, never before. Prior history (why
-       these are 12000/150000, not the original 6000/90000) is preserved in git blame rather than
-       repeated here now that the prompt this budget serves has fundamentally changed shape —
-       Stage D re-measures and re-documents from scratch against the new CompiledEvidence prompt,
-       not against these stale numbers' original justification. */
-    maxTokens: 12_000,
-    timeoutMs: 150_000,
+    /* Stage D — measured live, not assumed. Two real end-to-end runs against the new compact
+       CompiledEvidence prompt (Nebius interpret/plan/execute + MiniMax synthesize, one
+       news-heavy, one comparison-heavy): completionTokens 1836 and 2095 — comfortably under
+       6000 (3x+ headroom) despite one genuinely evidence-rich case. 12000 was never earned by
+       real usage; it was the emergency fix for the OLD raw-evidence-dump prompt's parse
+       failures, carried forward unmeasured through Stage C. timeoutMs keeps real margin above
+       the slower of the two observed synthesis times (43-45s) — the two runs used near-identical
+       compiled input size yet differed 3x in wall-clock time (13s vs 43-45s), which points to
+       provider-side variance, not prompt size, as the dominant latency factor; a token cut alone
+       is not expected to reliably buy latency, only a tighter safety margin. Re-measure before
+       cutting further — this is two live samples, not a large one. */
+    maxTokens: 6_000,
+    timeoutMs: 90_000,
   });
 
   const raw = parseModelJson(response.text);
