@@ -23,6 +23,7 @@ import { research } from '../src/lib/ai/research.js';
 import { InterpretNotConfiguredError, InterpretParseError } from '../src/lib/ai/roles/interpret.js';
 import { PlanNotConfiguredError, PlanParseError } from '../src/lib/ai/roles/plan.js';
 import { SynthesizeNotConfiguredError, SynthesizeParseError } from '../src/lib/ai/roles/synthesize.js';
+import { ProviderCallError } from '../src/lib/ai/providers/openaiCompatible.js';
 
 function structuredOutputFailure(error: unknown): { stage: 'interpretation' | 'planning' | 'answer'; rawLength: number } | null {
   if (error instanceof InterpretParseError) return { stage: 'interpretation', rawLength: error.rawText.length };
@@ -104,6 +105,20 @@ export default {
             message: `The research ${structuredFailure.stage} model returned an invalid structured response. Please try again.`,
           },
           502,
+        );
+      }
+      // A transport failure has no HTTP status because the provider never replied at all. That
+      // is a temporary upstream outage, not a bug in the user's question or in this endpoint.
+      // Keep the provider's raw error server-side: it can include implementation detail, whereas
+      // this stable code lets every client give the user an accurate, actionable explanation.
+      if (error instanceof ProviderCallError && error.status === null) {
+        console.warn('api/ask: research provider unavailable');
+        return json(
+          {
+            error: 'provider_unavailable',
+            message: 'The research provider is temporarily unavailable. Please try again shortly.',
+          },
+          503,
         );
       }
       console.error('api/ask: unexpected pipeline error', error);

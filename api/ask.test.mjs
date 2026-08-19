@@ -198,6 +198,18 @@ test('an unconfigured interpret role is a 503, not a 500', async () => {
   );
 });
 
+test('an unreachable research provider is a 503 provider_unavailable, not a generic 500', async () => {
+  await withRoleProviders({}, async () => {
+    await withEnv({ NEBIUS_BASE_URL: 'http://127.0.0.1:1' }, async () => {
+      const res = await post({ question: 'GDP growth in Guyana?' });
+      assert.equal(res.status, 503);
+      const body = await res.json();
+      assert.equal(body.error, 'provider_unavailable');
+      assert.equal(body.message, 'The research provider is temporarily unavailable. Please try again shortly.');
+    });
+  });
+});
+
 test('a model that never returns parseable JSON is a 502 model_error, with no raw model text leaked', async () => {
   await withRoleProviders({ interpretRespond: () => 'I cannot help with that.' }, async () => {
     const res = await post({ question: 'GDP growth in Guyana?' });
