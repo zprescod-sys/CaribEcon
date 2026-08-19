@@ -144,7 +144,9 @@ test('dedup keeps the higher-tier source and retains every originating ref', () 
     ],
   });
   const result = compileEvidence(intent(), plan(), p);
-  const merged = result.keyFacts.filter(item => item.indicator === 'GDP growth');
+  // 'GDP growth' now resolves to the canonical hub slug 'gdp_growth' (metric resolution) —
+  // that's the whole point: both sources' raw phrasing collapses to the SAME canonical item.
+  const merged = result.keyFacts.filter(item => item.indicator === 'gdp_growth');
   assert.equal(merged.length, 1, 'two agreeing sources for the same fact must collapse to one item');
   assert.equal(merged[0].compilerQualityTier, 'comparable', 'the imf.org source should win the tier comparison');
   assert.equal(merged[0].refs.length, 2, 'both originating refs must be retained, not just the winner\'s');
@@ -219,6 +221,199 @@ test('an annual figure and a monthly figure for the "same" metric+period do NOT 
   const result = compileEvidence(intent(), plan(), p);
   // Different unit ('%' vs 'unspecified') means these must NOT collapse into one contradictory group.
   assert.equal(result.contradictions.length, 0, 'a differently-unit\'d figure must not be treated as a conflicting duplicate');
+});
+
+// ── Metric resolution: resolved -> comparable to hub data; unresolved -> preserved, non-comparable ──
+
+test('a web figure whose metric resolves (realistic phrasing, not the raw slug) now conflicts with real hub data', () => {
+  const p = pkg({
+    data: [dataSeries()], // GY gdp_growth, %, actual, latest 2024 = 43.8
+    web: [
+      webItem({
+        extract: {
+          text: 'GDP growth in Guyana was 12.0% in 2024.',
+          chars: 40,
+          summary: null,
+          insights: {
+            keyClaims: [],
+            // Realistic model phrasing, not the internal slug — resolveIndicator() must canonicalize
+            // this to 'gdp_growth' before it can ever compare against hub data.
+            importantFigures: [{ metric: 'GDP growth', value: '12.0%', period: '2024', country: 'GY', textPresenceVerified: true }],
+            economicDrivers: [],
+            relevantContext: [],
+            topics: [],
+          },
+        },
+      }),
+    ],
+  });
+  const result = compileEvidence(intent(), plan(), p);
+  assert.equal(result.contradictions.length, 1, 'a resolved, realistically-phrased metric must still match real hub data');
+  const merged = result.contradictions[0].items;
+  assert.ok(merged.every(item => item.indicator === 'gdp_growth'), 'the compiled item must carry the canonical slug, not the raw phrasing');
+});
+
+test("a genuinely non-hub metric stays under its own label — still usable, but never cross-matches hub data", () => {
+  const p = pkg({
+    data: [dataSeries()], // GY gdp_growth — unrelated to the web figure below
+    web: [
+      webItem({
+        extract: {
+          text: 'Container throughput at the Georgetown port rose to 8.4 in 2024.',
+          chars: 60,
+          summary: null,
+          insights: {
+            keyClaims: [],
+            importantFigures: [{ metric: 'Container throughput', value: '8.4', period: '2024', country: 'GY', textPresenceVerified: true }],
+            economicDrivers: [],
+            relevantContext: [],
+            topics: [],
+          },
+        },
+      }),
+    ],
+  });
+  const result = compileEvidence(intent(), plan(), p);
+  assert.equal(result.contradictions.length, 0, 'an unresolvable metric must never be silently compared against unrelated hub data');
+  const nonHubItem = result.keyFacts.find(item => item.indicator === 'Container throughput');
+  assert.ok(nonHubItem, 'the item must still be preserved and usable under its own original label, not dropped');
+});
+
+test('two unresolved items sharing the exact same raw metric label still dedupe/conflict with EACH OTHER', () => {
+  const p = pkg({
+    web: [
+      webItem({
+        id: 'W:src-a',
+        extract: {
+          text: 'Container throughput reached 8.4 in 2024.',
+          chars: 40,
+          summary: null,
+          insights: {
+            keyClaims: [],
+            importantFigures: [{ metric: 'Container throughput', value: '8.4', period: '2024', country: 'GY', textPresenceVerified: true }],
+            economicDrivers: [],
+            relevantContext: [],
+            topics: [],
+          },
+        },
+      }),
+      webItem({
+        id: 'W:src-b',
+        url: 'https://another.example.com/story',
+        domain: 'another.example.com',
+        extract: {
+          text: 'Container throughput was 15.0 in 2024.',
+          chars: 40,
+          summary: null,
+          insights: {
+            keyClaims: [],
+            importantFigures: [{ metric: 'Container throughput', value: '15.0', period: '2024', country: 'GY', textPresenceVerified: true }],
+            economicDrivers: [],
+            relevantContext: [],
+            topics: [],
+          },
+        },
+      }),
+    ],
+  });
+  const result = compileEvidence(intent(), plan(), p);
+  assert.equal(
+    result.contradictions.length,
+    1,
+    'two unresolved items agreeing on the same raw label are still comparable to EACH OTHER, even though neither is comparable to canonical hub data',
+  );
+});
+
+test('a resolved metric earns canonical relevance credit; an unresolved one does not', () => {
+  const p = pkg({
+    web: [
+      webItem({
+        id: 'W:resolved',
+        extract: {
+          text: 'GDP growth was 12.0% in 2024.',
+          chars: 30,
+          summary: null,
+          insights: {
+            keyClaims: [],
+            importantFigures: [{ metric: 'GDP growth', value: '12.0%', period: '2024', country: 'GY', textPresenceVerified: true }],
+            economicDrivers: [],
+            relevantContext: [],
+            topics: [],
+          },
+        },
+      }),
+      webItem({
+        id: 'W:unresolved',
+        url: 'https://another.example.com/story',
+        domain: 'another.example.com',
+        extract: {
+          text: 'Container throughput was 8.4 in 2024.',
+          chars: 30,
+          summary: null,
+          insights: {
+            keyClaims: [],
+            importantFigures: [{ metric: 'Container throughput', value: '8.4', period: '2024', country: 'GY', textPresenceVerified: true }],
+            economicDrivers: [],
+            relevantContext: [],
+            topics: [],
+          },
+        },
+      }),
+    ],
+  });
+  // intent().indicators is ['gdp_growth'] — only the resolved item should score relevance for it.
+  const result = compileEvidence(intent(), plan(), p);
+  const resolved = result.keyFacts.find(item => item.indicator === 'gdp_growth');
+  const unresolved = result.keyFacts.find(item => item.indicator === 'Container throughput');
+  assert.ok(resolved, 'the resolved item should be present');
+  assert.ok(unresolved, 'the unresolved item should still be present and usable');
+  // Both fit under MAX_KEY_FACTS here, so this only proves relevance-tier separation, not ranking
+  // order under a tight budget — see the ordering assertion below for that.
+});
+
+test('under a tight budget, a resolved metric outranks an unresolved one with equal source quality', () => {
+  const manyUnresolved = Array.from({ length: 15 }, (_, i) =>
+    webItem({
+      id: `W:unresolved-${i}`,
+      url: `https://outlet${i}.example.com/story`,
+      domain: `outlet${i}.example.com`,
+      extract: {
+        text: `Metric${i} was ${i} in 2024.`,
+        chars: 30,
+        summary: null,
+        insights: {
+          keyClaims: [],
+          importantFigures: [{ metric: `Metric${i}`, value: String(i), period: '2024', country: 'GY', textPresenceVerified: true }],
+          economicDrivers: [],
+          relevantContext: [],
+          topics: [],
+        },
+      },
+    }),
+  );
+  const resolvedItem = webItem({
+    id: 'W:resolved',
+    url: 'https://resolved.example.com/story',
+    domain: 'resolved.example.com',
+    extract: {
+      text: 'GDP growth was 12.0% in 2024.',
+      chars: 30,
+      summary: null,
+      insights: {
+        keyClaims: [],
+        importantFigures: [{ metric: 'GDP growth', value: '12.0%', period: '2024', country: 'GY', textPresenceVerified: true }],
+        economicDrivers: [],
+        relevantContext: [],
+        topics: [],
+      },
+    },
+  });
+  const result = compileEvidence(intent(), plan(), pkg({ web: [...manyUnresolved, resolvedItem] }));
+  assert.ok(result.keyFacts.length <= MAX_KEY_FACTS, `expected <= ${MAX_KEY_FACTS}, got ${result.keyFacts.length}`);
+  assert.ok(
+    result.keyFacts.some(item => item.indicator === 'gdp_growth'),
+    'the resolved, on-topic item must survive the budget cut — it should outrank every equal-tier unresolved item',
+  );
 });
 
 test('a web-sourced figure with a resolved country now conflicts with real hub data for the same country/indicator/period/unit', () => {

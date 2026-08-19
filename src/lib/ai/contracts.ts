@@ -321,12 +321,18 @@ export type CompilerQualityTier = 'primary' | 'comparable' | 'journalism' | 'unv
 
 /* One hub data point or pre-computed change/average, compiled from EITHER a real DataEvidence
  * series OR a news/web-extracted figure that survived newsExtract.ts's textPresenceVerified
- * check (in which case `indicator` is the source's own freeform metric name, not a hub slug, and
- * `country` may be null when the article didn't name a resolvable hub country — a known,
- * deliberate limitation: exact-key dedup/conflict-detection over a freeform metric name will not
- * match a differently-worded hub slug for "the same thing," which is stated here rather than
- * silently assumed away). `refs` carries every source that agreed on this exact fact after
- * dedup — see EvidenceCompiler's own dedup rule. */
+ * check. For a news/web-extracted figure, `indicator` and `country` are each independently
+ * resolved-or-preserved by evidenceCompiler.ts's normalizeWebItem: when askTools.ts's
+ * resolveIndicator()/resolveCountry() can canonicalize the source's own text, this item becomes
+ * genuinely comparable to real hub DataEvidence (dedup, conflict detection, and relevance ranking
+ * all treat it as if it were hub-derived); when they can't, the source's original label/absence
+ * is preserved as-is rather than discarded — still fully usable for display, citation, and
+ * synthesis, but `indicator`/`country` then can only ever exact-match ANOTHER unresolved item
+ * carrying that exact same raw label (two sources agreeing or disagreeing on the same non-hub
+ * figure is still real signal), never a canonical hub slug/country code, and it earns no
+ * canonical-relevance credit in statisticRelevance(). Unresolved does not mean unusable — it
+ * means non-comparable to canonical hub data. `refs` carries every source that agreed on this
+ * exact fact after dedup — see EvidenceCompiler's own dedup rule. */
 export interface StatisticItem {
   type: 'statistic';
   refs: EvidenceRef[];

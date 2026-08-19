@@ -17,7 +17,7 @@
  * (MAX_KEY_FACTS/MAX_DRIVER_ITEMS/MAX_CONCEPTS/MAX_EXTERNAL_FINDINGS/MAX_CONTRADICTIONS, config.ts)
  * so the latency control this whole stage exists for is a tested fact, not a hope.
  */
-import { evidenceId, type EvidencePackage, type DataEvidence, type NewsEvidence } from '../askTools.js';
+import { evidenceId, resolveIndicator, type EvidencePackage, type DataEvidence, type NewsEvidence } from '../askTools.js';
 import { yoy_change, pp_change, period_average } from '../calculations.js';
 import { calculationForUnit } from '../excelOutputs.js';
 import {
@@ -247,7 +247,18 @@ function normalizeWebItem(w: WebEvidence): { context: NewsContextItem[]; figures
         // model genuinely couldn't tell, not that this code declined to look (see
         // ImportantFigure's own doc comment).
         country: f.country,
-        indicator: f.metric,
+        // f.metric itself is left untouched upstream (ImportantFigure keeps it "as-written",
+        // same contract as `value`) — resolution happens here, at the compiled view, which is
+        // the layer whose job is producing something comparable. Resolved -> the real hub slug,
+        // so this item can match/rank/dedupe/conflict against canonical DataEvidence exactly
+        // like a hub-derived StatisticItem. Unresolved -> the source's own label, preserved
+        // verbatim: still fully usable for display/citation/synthesis, and still able to
+        // dedupe/conflict against ANOTHER unresolved item with the same exact label (two sources
+        // agreeing or disagreeing on the same non-hub figure is real signal), but the raw label
+        // will never coincidentally collide with a real hub slug string, so it can never be
+        // silently treated as equivalent to canonical hub data or earn canonical relevance
+        // credit in statisticRelevance() below.
+        indicator: resolveIndicator(f.metric) ?? f.metric,
         period: f.period,
         value: numeric,
         unit: f.value.includes('%') ? '%' : 'unspecified',
