@@ -12,6 +12,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { createServer } from 'node:http';
 import { executeResearchPlan } from './executor.ts';
+import { MAX_NEWS_DIGESTS } from './config.ts';
 
 /* Sets exactly the given env vars for the duration of `run` (async), restoring each key
    afterward — duplicated per-file on purpose, same convention as webEvidence.test.mjs. */
@@ -219,12 +220,16 @@ test('the news-digest fan-out for a search_news step runs concurrently, not sequ
     const result = await executeResearchPlan(plan);
     const elapsedMs = Date.now() - started;
 
-    // MAX_NEWS_DIGESTS is 2 (config.ts) — exactly two article fetches should have been attempted.
-    assert.equal(getRequestCount(), 2, 'expected exactly MAX_NEWS_DIGESTS=2 article fetch attempts');
-    assert.equal(result.web.filter(w => w.extract).length, 2);
+    // MAX_NEWS_DIGESTS (config.ts) article fetches should have been attempted — read the real
+    // constant rather than a hardcoded number, so this test doesn't silently go stale the next
+    // time that budget is retuned.
+    assert.equal(getRequestCount(), MAX_NEWS_DIGESTS, `expected exactly MAX_NEWS_DIGESTS=${MAX_NEWS_DIGESTS} article fetch attempts`);
+    assert.equal(result.web.filter(w => w.extract).length, MAX_NEWS_DIGESTS);
 
-    // Sequential would take ~2 * DELAY_MS (~600ms); genuinely concurrent takes ~1 * DELAY_MS.
-    // Generous one-sided bound: well under 2x, comfortably above 1x to rule out a no-op fetch.
+    // Sequential would take ~N * DELAY_MS; genuinely concurrent takes ~1 * DELAY_MS regardless of N.
+    // Generous one-sided bound: well under a 2-fetch-equivalent, comfortably above 1x to rule out
+    // a no-op fetch — this bound is independent of MAX_NEWS_DIGESTS by design (that's the point of
+    // asserting concurrency: elapsed time shouldn't scale with fetch count at all).
     assert.ok(elapsedMs < DELAY_MS * 1.7, `expected concurrent timing (<${DELAY_MS * 1.7}ms), got ${elapsedMs}ms`);
     assert.ok(elapsedMs >= DELAY_MS * 0.8, `expected at least ~1 delay's worth (>=${DELAY_MS * 0.8}ms), got ${elapsedMs}ms`);
   });
@@ -232,7 +237,7 @@ test('the news-digest fan-out for a search_news step runs concurrently, not sequ
 
 // ── (3) a failed/unconfigured summarizeArticle keeps the real fetched text ────────────────────
 
-test('when newsExtract is unconfigured, WebEvidence still carries the real fetched text with summary: null', async () => {
+test('when newsExtract is unconfigured, WebEvidence still carries the real fetched text with insights: null', async () => {
   await withEnv({ CARIBECON_NEWSEXTRACT_PROVIDER: undefined, CARIBECON_NEWSEXTRACT_MODEL: undefined }, async () => {
     await withArticleStandIn(20, async () => {
       const plan = {
@@ -250,7 +255,8 @@ test('when newsExtract is unconfigured, WebEvidence still carries the real fetch
       for (const w of digested) {
         assert.ok(w.extract, 'a fetched article must still carry an extract');
         assert.ok(w.extract.text.length > 0, 'the real fetched text must be present');
-        assert.equal(w.extract.summary, null, 'summary must be null, never fabricated, when newsExtract is unconfigured');
+        assert.equal(w.extract.summary, null, 'summary must be null — no longer populated by the news-digest path');
+        assert.equal(w.extract.insights, null, 'insights must be null, never fabricated, when newsExtract is unconfigured');
       }
     });
   });

@@ -90,9 +90,50 @@ export interface WebEvidence {
   publishedDate: string | null; // only when Tavily supplies one
   retrievedAt: string; // ISO instant — this is the web; it moves under you
   snippet: string;
-  // summary is additive: an optional 'newsExtract'-role compaction of text; text itself is never edited or replaced.
-  extract: { text: string; chars: number; summary: string | null } | null;
+  /* summary and insights are both additive, optional 'newsExtract'-role output — text itself is
+   * never edited or replaced by either. `summary` (plain prose) predates the Synthesis Latency +
+   * Evidence Compiler upgrade and is kept only as a fallback field, no longer populated by
+   * newsExtract.ts's news-digest path (which now emits `insights` instead) — remove once nothing
+   * reads it. Neither field is ever checked by grounding.ts; only `text` is (see newsExtract.ts's
+   * header for why). */
+  extract: { text: string; chars: number; summary: string | null; insights: ArticleInsights | null } | null;
   authorizedBy: string; // ResearchStep['id'] — which validated plan step fetched this
+}
+
+/* One figure the News Extract Agent (newsExtract.ts) claims the article states. `value` is kept
+ * as-written (never reparsed/renormalized here) for the same reason StatedFigure.asWritten is —
+ * precision lives in the string. `textPresenceVerified` is a weak, extraction-time co-occurrence
+ * check (does this number appear anywhere in the real text), NOT a grounding verdict — read
+ * newsExtract.ts's header before using this field for anything beyond an early fabrication filter.
+ * The real, substantive check (does *this* figure, cited in *this* claim, actually match) still
+ * happens exactly once, downstream, in grounding.ts's web_figure_reconciliation. */
+export interface ImportantFigure {
+  metric: string;
+  value: string;
+  period: string;
+  textPresenceVerified: boolean;
+}
+
+/* An economic mechanism the article explicitly discusses, not one the extraction model invented
+ * to explain a figure — `evidence` names what in the article text supports it, so a human (or a
+ * later automated check) can trace the claim back to something real. */
+export interface EconomicDriver {
+  driver: string;
+  mechanism: string;
+  evidence: string;
+  confidence: 'high' | 'medium' | 'low';
+}
+
+/* The News Extract Agent's structured output (Synthesis Latency + Evidence Compiler upgrade,
+ * Stage A) — replaces the old plain-prose `summary`. Deliberately excludes anything the caller
+ * already knows deterministically (articleId, source, publishedAt, url, country) — see
+ * newsExtract.ts's header for why asking a model to reproduce known metadata is pure downside. */
+export interface ArticleInsights {
+  keyClaims: string[];
+  importantFigures: ImportantFigure[];
+  economicDrivers: EconomicDriver[];
+  relevantContext: string[];
+  topics: string[];
 }
 
 // ── Research plan (§2.3, §3.2) ──────────────────────────────────────────────────────────────
@@ -249,4 +290,122 @@ export interface ResearchResult {
   answer: ResearchAnswer;
   evidence: EvidencePackage;
   verdict: VerificationVerdict;
+  /* Additive (Stage C) — the task-pane-facing short note + collapsible detail, built
+   * deterministically from compiled evidence (evidenceCompiler.ts's buildEvidenceNote()), never
+   * from the model. See EvidenceNote's own doc comment. */
+  evidenceNote: EvidenceNote;
+}
+
+// ── Compiled evidence (Synthesis Latency + Evidence Compiler upgrade, Stage B) ──────────────
+
+/* A heuristic, iterable ranking — NEVER written onto DataEvidence/NewsEvidence/WebEvidence
+ * themselves (those stay exactly the evidence-of-record grounding.ts checks against). It exists
+ * only on a compiled EvidenceItem, computed by evidenceCompiler.ts. 'primary'/'comparable' reuse
+ * DataEvidence.sourceTier's own real vocabulary (data/SCHEMA.md) for hub-sourced items;
+ * 'journalism' and 'unverified' are new, compiler-only distinctions for news/web-sourced items,
+ * which carry no tier concept of their own today. */
+export type CompilerQualityTier = 'primary' | 'comparable' | 'journalism' | 'unverified';
+
+/* One hub data point or pre-computed change/average, compiled from EITHER a real DataEvidence
+ * series OR a news/web-extracted figure that survived newsExtract.ts's textPresenceVerified
+ * check (in which case `indicator` is the source's own freeform metric name, not a hub slug, and
+ * `country` may be null when the article didn't name a resolvable hub country — a known,
+ * deliberate limitation: exact-key dedup/conflict-detection over a freeform metric name will not
+ * match a differently-worded hub slug for "the same thing," which is stated here rather than
+ * silently assumed away). `refs` carries every source that agreed on this exact fact after
+ * dedup — see EvidenceCompiler's own dedup rule. */
+export interface StatisticItem {
+  type: 'statistic';
+  refs: EvidenceRef[];
+  country: string | null;
+  indicator: string;
+  period: string;
+  value: number;
+  unit: string;
+  valueType: string; // DataPoint['type']: actual | estimate | projection | derived
+  transformation: CalculationName | null; // null = raw retrieved/reported value
+  compilerQualityTier: CompilerQualityTier;
+}
+
+/* A qualitative claim from News Hub metadata or a web/news extraction — with a `mechanism` only
+ * when it came from newsExtract.ts's structured `economicDrivers` (a driver item); a plain
+ * headline, keyClaim, or Tavily snippet has `mechanism: null` and lands in `externalEvidence`
+ * rather than `driverEvidence` (see CompiledEvidence below). */
+export interface NewsContextItem {
+  type: 'news_context';
+  refs: EvidenceRef[];
+  country: string | null;
+  claim: string;
+  mechanism: string | null;
+  confidence: 'high' | 'medium' | 'low' | null;
+  source: string;
+  date: string | null;
+  topics: string[];
+  compilerQualityTier: CompilerQualityTier;
+}
+
+/* Knowledge Hub placeholder (deferred — see the plan). Typed now so the compiler and synthesizer
+ * can consume one later; `refs: []` always, since a concept isn't retrieval-sourced. Nothing
+ * populates this today. */
+export interface ConceptItem {
+  type: 'concept';
+  refs: EvidenceRef[];
+  concept: string;
+  explanation: string;
+  mechanism: string;
+  topics: string[];
+}
+
+export type EvidenceItem = StatisticItem | NewsContextItem | ConceptItem;
+
+/* A structured limitation, not free prose — generated by the compiler from real evidence
+ * metadata (misses, low-tier-only coverage, etc.), never asked of the synthesis model. This is
+ * what lets Stage C emit a short deterministic note and Stage E's task-pane UI show a plain
+ * `.length` count without MiniMax ever generating either. */
+export interface EvidenceLimitation {
+  reason: string;
+  relatedRefs: EvidenceRef[];
+}
+
+/* Two or more EvidenceItems that, after correct normalization (country + metric/indicator +
+ * period + unit + frequency + valueType + transformation — NOT metric+period alone, which would
+ * false-flag e.g. CPI vs. GDP-deflator inflation or an annual vs. a monthly figure as conflicting)
+ * report materially different values for what is otherwise the same fact. */
+export interface EvidenceContradiction {
+  description: string;
+  items: EvidenceItem[];
+}
+
+/* The compact, synthesis-facing view evidenceCompiler.ts produces from a full EvidencePackage.
+ * grounding.ts never reads this — it checks claims against the original EvidencePackage
+ * unchanged (see docs/plan's safety-critical design decision). Every category is truncated to
+ * its config.ts budget constant (MAX_KEY_FACTS, MAX_DRIVER_ITEMS, MAX_CONCEPTS,
+ * MAX_EXTERNAL_FINDINGS, MAX_CONTRADICTIONS), highest-ranked first — an enforced invariant, not a
+ * prompt preference. */
+export interface CompiledEvidence {
+  question: string;
+  analysisGoal: string;
+  keyFacts: EvidenceItem[];
+  driverEvidence: EvidenceItem[];
+  economicConcepts: ConceptItem[];
+  externalEvidence: EvidenceItem[];
+  contradictions: EvidenceContradiction[];
+  gaps: EvidenceLimitation[];
+  /* Passed through from EvidencePackage.caveats UNCHANGED — hard constraints (e.g. "these are
+   * local-currency levels; do not difference or rank them across economies"), not gaps and not
+   * compiler-detected. Not in the original spec's CompiledEvidence example; added because
+   * dropping these would materially increase how often check 9 (cross_currency_comparison) has
+   * to reject a synthesized claim after the fact, instead of the prompt preventing it upfront. */
+  caveats: string[];
+}
+
+/* The task-pane-facing evidence note (Stage C/E) — `summary` is the short inline line,
+ * `limitations` the detailed, collapsible list (each entry traceable to real refs via
+ * EvidenceLimitation.relatedRefs). Built by evidenceCompiler.ts's buildEvidenceNote(), from
+ * compiled.gaps/contradictions — never asked of the synthesis model, so its count and content
+ * can't drift from what the compiler actually knows. Empty (`summary: ''`) when there is nothing
+ * to report. */
+export interface EvidenceNote {
+  summary: string;
+  limitations: EvidenceLimitation[];
 }

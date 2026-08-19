@@ -102,11 +102,31 @@ export function resolveRoleFully(role: Role): ResolvedRole | null {
 // Starting points only what Phase 3's own code needs — not the full §7 shared-deadline object.
 
 export const MAX_PLAN_STEPS = 8; // ARCHITECTURE.md §7 starting point — plan truncated, not rejected
-export const MAX_TAVILY_SEARCHES = 2; // ARCHITECTURE.md §7 starting point
-export const MAX_TAVILY_EXTRACTS = 3; // ARCHITECTURE.md §7 starting point
+export const MAX_TAVILY_SEARCHES = 4; // ARCHITECTURE.md §7 starting point
+export const MAX_TAVILY_EXTRACTS = 5; // ARCHITECTURE.md §7 starting point
 export const MAX_EXTRACT_CHARS = 6_000; // ARCHITECTURE.md §7 starting point — per-URL cap
 export const MAX_EXTRACT_TOTAL = 15_000; // ARCHITECTURE.md §7 starting point — total cap across extracts
 // New, independent Phase-3 addition for the news-digest path (2h) — NOT shared with the Tavily
 // constants above, since this path is a plain HTTP fetch, not Tavily; kept small because each
 // digest is an extra model call.
-export const MAX_NEWS_DIGESTS = 2;
+export const MAX_NEWS_DIGESTS = 5;
+
+// ── Evidence Compiler budget constants (Synthesis Latency + Evidence Compiler upgrade, Stage B) ──
+// Hard invariants, enforced by evidenceCompiler.ts and asserted by its own tests — not just a
+// prompt preference. Starting points from the user's own spec examples; calibrate against real
+// compiled-evidence sizes the same way every other budget constant in this file was, not fixed.
+export const MAX_KEY_FACTS = 10;
+export const MAX_DRIVER_ITEMS = 8;
+export const MAX_CONCEPTS = 4;
+export const MAX_EXTERNAL_FINDINGS = 4;
+export const MAX_CONTRADICTIONS = 3;
+
+// ── Visible-answer ceiling (Stage C) — enforced in code, not left to "be concise" in the prompt.
+// MAX_VISIBLE_CLAIMS allows headroom beyond the "2-4 core conclusions" the prompt asks for, since
+// a conclusion is often backed by one or two supporting claims, not stated bare — this caps
+// runaway enumeration (a real live capture produced 12 claims before this stage existed) without
+// cutting a conclusion's own support out from under it. MAX_VISIBLE_ANSWER_TOKENS is the user's
+// spec target; token count is estimated (chars/4), not an exact tokenizer count — a deliberately
+// conservative, cheap approximation, not a hard guarantee to the token.
+export const MAX_VISIBLE_CLAIMS = 8;
+export const MAX_VISIBLE_ANSWER_TOKENS = 1_200;

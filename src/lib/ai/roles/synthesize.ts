@@ -1,5 +1,5 @@
 /* synthesize() — ARCHITECTURE.md §3.1: "synthesize(intent, pkg) -> ResearchAnswer." Turns
- * validated evidence into a claim-structured answer: a headline, a list of Claims, and a list
+ * compiled evidence into a claim-structured answer: a headline, a list of Claims, and a list
  * of gaps the evidence could not cover.
  *
  * PHASE 1 SCOPE, STATED EXPLICITLY: this validates that the model's output matches the
@@ -10,26 +10,45 @@
  * reconciliation" are checks 1 and 4 there, not duplicated here. Building even a cheap version
  * of that logic into this file would create two implementations of grounding that could drift
  * out of sync with each other, which is the exact failure mode §2.5 warns about for types,
- * applied here to behaviour instead.
+ * applied here to behaviour instead. This still holds after the Synthesis Latency + Evidence
+ * Compiler upgrade (Stage C): grounding.ts checks a claim against the ORIGINAL, untouched
+ * EvidencePackage — never against the CompiledEvidence this file now reads — so a claim citing
+ * a ref that only exists because of a compiler bug still fails check 1 exactly as before.
  *
- * Per the plan's own caution for this phase: this function's output is internal-only. Nothing
- * here has been checked against the evidence yet, so it must not be shown to anyone as a
- * finished answer until Phase 2's gate exists.
+ * ── Stage C: this file now reads CompiledEvidence, not a raw EvidencePackage ──
+ * evidenceCompiler.ts (Stage B) produces a compact, pre-organised view — grouped by analytical
+ * purpose, deduplicated, ranked, budget-capped — specifically so this prompt is smaller and this
+ * role behaves like an analyst reasoning over curated evidence, not a summarizer enumerating a
+ * raw dump. `describeIntent`/`describeSeries`/`describeWeb` (the old per-EvidencePackage prompt
+ * builders) are gone; `evidenceCompiler.ts`'s `buildAnalysisGoal` and item normalization replace
+ * them upstream, and `compiled.question`/`compiled.analysisGoal` carry what `describeIntent` used
+ * to build here.
  *
- * The one deliberate de-risking move beyond bare structural validation: derived figures
- * (year-over-year change, period average) are PRE-COMPUTED here using the same
- * calculations.ts functions api/deepdive.ts already relies on, and handed to the model as
- * evidence rather than left for the model to calculate itself. Citing a given number is far
- * safer than asking a model to do arithmetic and hoping it is right — and it costs nothing new,
- * since yoy_change/pp_change/period_average already exist, are pure, and are already tested.
+ * ── The visible-answer ceiling is enforced in code, not left to "be concise" in the prompt ──
+ * coerceAnswer below caps `claims[]` at MAX_VISIBLE_CLAIMS and then at a rough
+ * MAX_VISIBLE_ANSWER_TOKENS estimate (config.ts) — dropping trailing (lowest-priority) claims
+ * whole, never editing a kept claim's own text, so nothing a StatedFigure/quoted span was
+ * anchored to ever shifts. The claims a user actually sees are the intersection of "the model
+ * emitted it, within the cap" and "grounding didn't drop it" (verify.ts, unchanged).
+ *
+ * The one deliberate de-risking move beyond bare structural validation, unchanged since Phase 1:
+ * derived figures (year-over-year change, period average) are PRE-COMPUTED — now by
+ * evidenceCompiler.ts rather than this file — and handed to the model as evidence rather than
+ * left for the model to calculate itself.
  */
 import { resolveRoleFully } from '../config.js';
 import { callModel, type ChatMessage } from '../providers/openaiCompatible.js';
 import { parseModelJson } from './parseModelJson.js';
-import { evidenceId, type EvidencePackage, type DataEvidence } from '../../askTools.js';
-import { calculationForUnit } from '../../excelOutputs.js';
-import { yoy_change, pp_change, period_average } from '../../calculations.js';
-import type { ResearchIntent, ResearchAnswer, Claim, StatedFigure, EvidenceRef, CalculationName, WebEvidence } from '../contracts.js';
+import { MAX_VISIBLE_CLAIMS, MAX_VISIBLE_ANSWER_TOKENS } from '../config.js';
+import type {
+  CompiledEvidence,
+  EvidenceItem,
+  ResearchAnswer,
+  Claim,
+  StatedFigure,
+  EvidenceRef,
+  CalculationName,
+} from '../contracts.js';
 
 export class SynthesizeNotConfiguredError extends Error {}
 
@@ -44,102 +63,91 @@ export class SynthesizeParseError extends Error {
   }
 }
 
-// ── Restating the question from structured intent (no raw NL question in this signature) ──
+// ── Evidence context, rendered from CompiledEvidence's own grouped, pre-ranked items ─────────
 
-function yearRange(intent: ResearchIntent): string {
-  if (intent.yearFrom !== null && intent.yearTo !== null) return `, ${intent.yearFrom}-${intent.yearTo}`;
-  if (intent.yearFrom !== null) return `, from ${intent.yearFrom}`;
-  if (intent.yearTo !== null) return `, through ${intent.yearTo}`;
-  return '';
-}
-
-function describeIntent(intent: ResearchIntent): string {
-  const countries = intent.countries.length ? intent.countries.join(', ') : 'the region';
-  const indicators = intent.indicators.length ? intent.indicators.join(', ') : 'the requested indicator';
-
-  if (intent.questionType === 'comparison') {
-    return `Question: compare ${indicators} across ${countries}${yearRange(intent)}.`;
+/* One line per compiled item, every ref it may be cited under shown explicitly — a dedup-merged
+   item can carry more than one real ref (evidenceCompiler.ts retains all of them), and the model
+   may cite ANY one of the listed refs; grounding.ts's ref_existence check only needs the cited
+   ref to be real, not to be a specific one of several agreeing sources. */
+function describeItem(item: EvidenceItem): string {
+  const refs = item.refs.length ? item.refs.join(' | ') : '(no ref — not citable to a specific source)';
+  if (item.type === 'statistic') {
+    const calc = item.transformation ? ` [${item.transformation}]` : '';
+    const country = item.country ?? 'unspecified country';
+    return `${refs} — ${country} ${item.indicator}${calc}: ${item.value} ${item.unit} (${item.period}, ${item.valueType})`;
   }
-  if (intent.questionType === 'news') {
-    const kw = intent.newsKeywords.length ? ` about: ${intent.newsKeywords.join(', ')}` : '';
-    return `Question: recent news for ${countries}${kw}.`;
+  if (item.type === 'news_context') {
+    const mechanism = item.mechanism ? ` | mechanism: ${item.mechanism}` : '';
+    const confidence = item.confidence ? ` | confidence: ${item.confidence}` : '';
+    const date = item.date ? `, ${item.date}` : '';
+    return `${refs} — ${item.claim}${mechanism}${confidence} (${item.source}${date})`;
   }
-  return `Question: ${indicators} for ${countries}${yearRange(intent)}.`;
+  // concept — always refs: [], not citable; shown for context only (Knowledge Hub is a
+  // schema placeholder today, so this branch is currently unreachable in practice).
+  return `${refs} — ${item.concept}: ${item.explanation} | mechanism: ${item.mechanism}`;
 }
 
-// ── Evidence context, with derived figures pre-computed rather than left to the model ──────
+const ANALYST_INSTRUCTIONS = [
+  'You are an economic analyst reasoning over an already-curated evidence package, not a',
+  'summarizer restating it. Your job is to answer the actual question, not enumerate every',
+  'retrieved fact.',
+  '',
+  '- Determine the 2-4 most important conclusions the evidence supports.',
+  '- Explain the economic mechanisms that best account for what the evidence shows.',
+  '- Use quantitative evidence to defend those explanations — numbers support analysis, they do',
+  '  not replace it.',
+  '- Distinguish what is directly observed in the evidence from what is plausible inference.',
+  '  State uncertainty clearly when an explanation is plausible but not directly proven.',
+  '- Do not enumerate every retrieved fact, and do not repeat evidence unless it advances the',
+  '  explanation of why something happened.',
+  '- Prioritize explanation over evidence recitation: what happened, why it likely happened, the',
+  '  mechanism, the supporting evidence, what remains uncertain — not a list of facts followed by',
+  '  a limitations paragraph.',
+  '- Explain economic relationships in clear, interpretable language; when a technical concept is',
+  '  useful, explain it naturally rather than assuming the reader already knows the term.',
+  '- Use the strongest available evidence and ignore low-value evidence that would not materially',
+  '  improve the answer — you do not need to use everything you were given.',
+  '- Do not manufacture a causal explanation where the evidence does not support one.',
+  '- Keep gaps/limitations terse — a short analytical note on what remains uncertain, not an',
+  '  audit of every source\'s metadata; the evidence note shown to the user is built separately,',
+  '  deterministically, from what was actually retrieved.',
+].join('\n');
 
-function describeSeries(d: DataEvidence): string {
-  const ref = `D:${evidenceId(d.country, d.indicator)}`;
-  const calcName: CalculationName = calculationForUnit(d.unit);
-  const changes = (calcName === 'pp_change' ? pp_change : yoy_change)(d.points);
-  const avg = period_average(d.points);
-
-  const pointLines = d.points
-    .map(p => `    ${p.year}: ${p.value === null ? 'no data' : p.value} (${p.type})`)
-    .join('\n');
-  const changeLines = changes
-    .filter(c => c.value !== null)
-    .map(c => `    ${c.year}: ${(c.value as number).toFixed(2)} [${calcName}, from years ${c.inputYears.join(', ')}]`)
-    .join('\n');
-
-  const lines = [
-    `${ref} — ${d.label} (${d.unit}), source: ${d.sourceOrg}${d.note ? `. Note: ${d.note}` : ''}`,
-    '  Retrieved points:',
-    pointLines,
-  ];
-  if (changeLines) lines.push(`  Pre-computed ${calcName}:`, changeLines);
-  if (avg.value !== null) {
-    lines.push(`  Period average: ${avg.value.toFixed(2)} [period_average, years ${avg.inputYears.join(', ')}]`);
-  }
-  return lines.join('\n');
-}
-
-// Web evidence's "cheap, pre-digested read" (docs plan §2h): prefer the newsExtract-role
-// summary when the digest path ran and succeeded; fall back to a capped slice of the raw
-// extract text when it didn't (extract present, summary null); fall back to the search snippet
-// when no extract ran at all (search_web with no matching extract_web step). A W: item with no
-// extract still gets a line here — it's worth showing for context/framing claims — but the
-// Rules section below (and grounding.ts checks 8/11) forbid quoting or citing a figure against
-// it, mirroring the news-only rule check 7 already applies to N: refs.
-const WEB_BODY_PREVIEW_CHARS = 500;
-
-function describeWeb(w: WebEvidence): string {
-  const body = w.extract
-    ? (w.extract.summary ?? w.extract.text.slice(0, WEB_BODY_PREVIEW_CHARS))
-    : w.snippet;
-  const noExtractNote = w.extract ? '' : ' [no extract retrieved — snippet only]';
-  return [
-    `${w.id} — "${w.title}" (${w.domain}, ${w.url})${noExtractNote}`,
-    `  ${body}`,
-  ].join('\n');
-}
-
-function buildSystemPrompt(intent: ResearchIntent, pkg: EvidencePackage): string {
+function buildSystemPrompt(compiled: CompiledEvidence): string {
   const sections: string[] = [
-    'You write a grounded research answer about Caribbean macroeconomics from the evidence ' +
-      'given below, and nothing else. You never state a number, country, or indicator that is ' +
-      'not explicitly given to you here — anything you are not given, you must not claim to ' +
-      'know, even if you believe you do. Report what the evidence does not cover in "gaps" ' +
-      'rather than filling it in.',
+    ANALYST_INSTRUCTIONS,
     '',
-    describeIntent(intent),
+    `Question: ${compiled.question}`,
+    `Analysis goal: ${compiled.analysisGoal}`,
     '',
-    "EVIDENCE (each item's stable ID is shown — cite it exactly, never invent one):",
-    '',
-    ...pkg.data.map(describeSeries),
-    ...pkg.news.map(n => `N:${n.id} — "${n.title}" (${n.source}, ${n.date}) [${n.country}]`),
-    ...(pkg.web ?? []).map(describeWeb),
+    "KEY FACTS (each item's ref(s) shown — cite one exactly, never invent one):",
+    ...(compiled.keyFacts.length ? compiled.keyFacts.map(describeItem) : ['(none retrieved)']),
   ];
 
-  if (pkg.caveats.length) {
-    sections.push('', 'CAVEATS — hard constraints, not suggestions:', ...pkg.caveats.map(c => `- ${c}`));
+  if (compiled.caveats.length) {
+    sections.push('', 'CAVEATS — hard constraints, not suggestions:', ...compiled.caveats.map(c => `- ${c}`));
   }
-  if (pkg.misses.length) {
+  if (compiled.driverEvidence.length) {
+    sections.push('', 'POSSIBLE ECONOMIC DRIVERS:', ...compiled.driverEvidence.map(describeItem));
+  }
+  if (compiled.economicConcepts.length) {
+    sections.push('', 'ECONOMIC CONCEPTS (context only, not independently citable):', ...compiled.economicConcepts.map(describeItem));
+  }
+  if (compiled.externalEvidence.length) {
+    sections.push('', 'EXTERNAL CONTEXT:', ...compiled.externalEvidence.map(describeItem));
+  }
+  if (compiled.contradictions.length) {
     sections.push(
       '',
-      'KNOWN GAPS — retrieval could not cover these; report honestly in "gaps", do not guess:',
-      ...pkg.misses.map(m => `- ${m.detail}`),
+      'CONTRADICTORY EVIDENCE — sources disagree; hedge or note the disagreement, never silently pick one:',
+      ...compiled.contradictions.map(c => `- ${c.description}`),
+    );
+  }
+  if (compiled.gaps.length) {
+    sections.push(
+      '',
+      'KNOWN GAPS — retrieval could not cover these; report honestly, do not guess:',
+      ...compiled.gaps.map(g => `- ${g.reason}`),
     );
   }
 
@@ -175,16 +183,16 @@ function buildSystemPrompt(intent: ResearchIntent, pkg: EvidencePackage): string
     'Rules:',
     '- Every number in a claim\'s "text" must have a matching entry in that claim\'s "figures[]"',
     '  — never state a number that is not declared as a figure.',
-    '- "calculation" must be null (a raw retrieved value) or exactly one of the pre-computed',
-    '  values shown above for that ref — never compute your own change or average.',
+    '- "calculation" must be null (a raw/reported value) or exactly one of the pre-computed values',
+    '  shown above for that ref — never compute your own change or average.',
     '- Only cite a ref shown above. Never invent one.',
+    '- A concept item (marked "no ref") may back only a "context" or "framing" claim, never a',
+    '  figure — the same restriction a W: item with no extract is already held to.',
     '- "refs" may be empty ONLY when type is "framing" (general commentary, no specific evidence',
     '  tie). Every other claim needs at least one ref.',
-    '- A W: ref may be quoted or cited with a figure only when that evidence item has a non-null',
-    '  extract — a W: item marked "[no extract retrieved — snippet only]" above may back only a',
-    '  "context" or "framing" claim, the same restriction news evidence (N:) is already held to.',
     '- Respect every caveat above exactly as written — it is a constraint, not a suggestion.',
-    '- Be concise and specific — a research note, not an essay.',
+    '- Order your claims by importance — the most important conclusion first. If your answer runs',
+    '  long, only the leading claims are guaranteed to be shown.',
   );
 
   return sections.join('\n');
@@ -233,6 +241,28 @@ function coerceClaim(raw: unknown, id: string): Claim | null {
   return { id, text: r.text, refs: r.refs as EvidenceRef[], type: r.type as Claim['type'], figures };
 }
 
+// A cheap, deliberately conservative estimate (~4 chars/token for English) — not an exact
+// tokenizer count, just enough to keep the visible answer roughly within MAX_VISIBLE_ANSWER_TOKENS
+// without pulling in a real tokenizer dependency for a soft UX target, not a billing-accurate one.
+function estimateTokens(text: string): number {
+  return Math.ceil(text.length / 4);
+}
+
+/* Caps claims[] at MAX_VISIBLE_CLAIMS, then drops further trailing claims (lowest priority — the
+   model was instructed to order by importance) until headline + kept claims' text estimates under
+   MAX_VISIBLE_ANSWER_TOKENS. Never edits a kept claim's own text — only whole claims are
+   included/excluded, so nothing a StatedFigure or quoted span was anchored to ever shifts. */
+function capVisibleClaims(headline: string, claims: Claim[]): Claim[] {
+  const capped = claims.slice(0, MAX_VISIBLE_CLAIMS);
+  let kept = capped;
+  while (kept.length > 0) {
+    const tokens = estimateTokens(headline) + kept.reduce((sum, c) => sum + estimateTokens(c.text), 0);
+    if (tokens <= MAX_VISIBLE_ANSWER_TOKENS) break;
+    kept = kept.slice(0, -1);
+  }
+  return kept;
+}
+
 function coerceAnswer(raw: unknown): ResearchAnswer | null {
   if (!raw || typeof raw !== 'object') return null;
   const r = raw as Record<string, unknown>;
@@ -250,10 +280,15 @@ function coerceAnswer(raw: unknown): ResearchAnswer | null {
     else console.warn(`synthesize(): dropped a structurally invalid claim at model output index ${index}`);
   });
 
-  return { headline: r.headline, claims, gaps: r.gaps as string[] };
+  const visible = capVisibleClaims(r.headline, claims);
+  if (visible.length < claims.length) {
+    console.warn(`synthesize(): capped ${claims.length} claims to ${visible.length} for the visible-answer ceiling`);
+  }
+
+  return { headline: r.headline, claims: visible, gaps: r.gaps as string[] };
 }
 
-export async function synthesize(intent: ResearchIntent, pkg: EvidencePackage): Promise<ResearchAnswer> {
+export async function synthesize(compiled: CompiledEvidence): Promise<ResearchAnswer> {
   const resolved = resolveRoleFully('synthesis');
   if (!resolved) {
     throw new SynthesizeNotConfiguredError(
@@ -262,23 +297,20 @@ export async function synthesize(intent: ResearchIntent, pkg: EvidencePackage): 
   }
 
   const messages: ChatMessage[] = [
-    { role: 'system', content: buildSystemPrompt(intent, pkg) },
+    { role: 'system', content: buildSystemPrompt(compiled) },
     { role: 'user', content: 'Write the research answer now, following the rules and shape exactly.' },
   ];
 
   const response = await callModel(resolved.connection, resolved.model, messages, {
     temperature: 0,
-    /* Deliberately generous, and higher than interpret's on both counts. Thinking stays ON for
-       this role by design — synthesis is the harder task (turning evidence into grounded
-       claims) and is worth letting the model reason fully for, especially once Phase 3 adds
-       Tavily and there is genuinely more to weigh. MiniMax-M3 was observed live spending ~290
-       reasoning tokens and ~8s on a trivial prompt; a real synthesis with several data series
-       needs headroom for both a longer reasoning phase AND the answer itself (headline +
-       several claims + figures). Raised from 40s to 90s after a live capture run
-       (src/lib/ai/fixtures/askCaptures.json, "news_current_context") hit a real 46.5s
-       MiniMax response that the old cap cut off. */
-    maxTokens: 6000,
-    timeoutMs: 90_000,
+    /* UNCHANGED by Stage C on purpose — the plan's own sequencing rule: measure the actual
+       compiled-evidence size live before cutting this budget, never before. Prior history (why
+       these are 12000/150000, not the original 6000/90000) is preserved in git blame rather than
+       repeated here now that the prompt this budget serves has fundamentally changed shape —
+       Stage D re-measures and re-documents from scratch against the new CompiledEvidence prompt,
+       not against these stale numbers' original justification. */
+    maxTokens: 12_000,
+    timeoutMs: 150_000,
   });
 
   const raw = parseModelJson(response.text);

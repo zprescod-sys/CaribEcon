@@ -193,14 +193,18 @@ test('resolveRoleFully: the full chain, role config plus a ready-to-call connect
 
 // ── Phase 3 budget constants ───────────────────────────────────────────────────────────────
 
-test('Phase 3 budget constants: Tavily-related values match ARCHITECTURE.md §7 starting points', () => {
+// These are documented "starting points to calibrate," not permanent invariants (config.ts's own
+// comment) — pinned to the CURRENT tuned values, not the original ARCHITECTURE.md §7 defaults,
+// which have since been retuned directly in config.ts. Update these alongside any future retune;
+// the point of the test is "the constant is a real, sane number," not "it never changes."
+test('Phase 3 budget constants: Tavily-related values are set to real, positive numbers', () => {
   assert.equal(MAX_PLAN_STEPS, 8);
-  assert.equal(MAX_TAVILY_SEARCHES, 2);
-  assert.equal(MAX_TAVILY_EXTRACTS, 3);
+  assert.equal(MAX_TAVILY_SEARCHES, 4);
+  assert.equal(MAX_TAVILY_EXTRACTS, 5);
   assert.equal(MAX_EXTRACT_CHARS, 6_000);
   assert.equal(MAX_EXTRACT_TOTAL, 15_000);
 });
 
 test('MAX_NEWS_DIGESTS: independent news-digest budget, not shared with the Tavily constants', () => {
-  assert.equal(MAX_NEWS_DIGESTS, 2);
+  assert.equal(MAX_NEWS_DIGESTS, 5);
 });

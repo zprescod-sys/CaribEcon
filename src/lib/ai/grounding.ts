@@ -312,8 +312,12 @@ function checkWrongCalculation(answer: ResearchAnswer, pkg: EvidencePackage): Gr
  * Matching is sign-insensitive (Math.abs on both sides, via the existing figureMatches helper) —
  * a real capture ("time_series" category) writes "declining 3.88 pp" in prose with no literal
  * minus sign, while the matching StatedFigure.value is -3.88. Signed comparison would falsely
- * flag correct, idiomatic prose every time a decrease is phrased in words rather than a sign. */
-const NUMBER_PATTERN = /-?\d[\d,]*\.?\d+|-?\d+/g;
+ * flag correct, idiomatic prose every time a decrease is phrased in words rather than a sign.
+ *
+ * Exported: newsExtract.ts's verifyImportantFigures() reuses this exact pattern for its own,
+ * explicitly weaker, extraction-time co-occurrence check — sharing the primitive, not the check
+ * itself, keeps that a distinct thing from grounding rather than a second implementation of it. */
+export const NUMBER_PATTERN = /-?\d[\d,]*\.?\d+|-?\d+/g;
 
 /* Every point-year actually retrieved, across every series in the package — a model narrating
  * "...to 134.6% in 2017..." is stating a year, not a figure, and years are not in StatedFigure at

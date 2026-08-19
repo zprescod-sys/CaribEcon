@@ -22,11 +22,20 @@
  * attribution/overreach findings from a model verifier are not yet part of it.
  *
  * Three sources of "asked for, not servable" are merged into the evidence package's own misses
- * before synthesis runs, so all of them reach the model as a known gap exactly like a retrieval
- * miss — interpret()'s misses (a model-named country/indicator that does not resolve),
+ * before compilation/synthesis runs, so all of them reach the model as a known gap exactly like a
+ * retrieval miss — interpret()'s misses (a model-named country/indicator that does not resolve),
  * validateResearchPlan()'s misses (a plan step naming an unresolved country/indicator/onStep),
  * and executeResearchPlan()'s own misses (a step that ran but came back empty, a budget skip, an
  * unauthorized extract_web call) — never dropped, only ever appended to.
+ *
+ * Synthesis Latency + Evidence Compiler upgrade (Stage C): evidenceCompiler.ts's compileEvidence()
+ * now sits between executeResearchPlan() and synthesize() — synthesize() reads the compact
+ * CompiledEvidence it produces, never the raw EvidencePackage directly. verify() is UNCHANGED and
+ * still checks the synthesized answer against the original, untouched `evidence` — the
+ * safety-critical property this whole upgrade depends on (see the plan). `evidenceNote` is built
+ * from the same CompiledEvidence, deterministically, and returned alongside the answer for the
+ * task pane to show (a short inline line plus a collapsible detailed list) without the model ever
+ * generating that count or that prose itself.
  */
 import { interpret } from './roles/interpret.js';
 import { plan } from './roles/plan.js';
@@ -34,6 +43,7 @@ import { synthesize } from './roles/synthesize.js';
 import { verify } from './verify.js';
 import { validateResearchPlan } from '../askTools.js';
 import { executeResearchPlan } from './executor.js';
+import { compileEvidence, buildEvidenceNote } from './evidenceCompiler.js';
 import type { ResearchResult } from './contracts.js';
 
 export interface ResearchRequest {
@@ -54,9 +64,12 @@ export async function research(
   // extended to the plan-validation and execution stages too (see header comment).
   evidence.misses = [...misses, ...planMisses, ...evidence.misses];
 
-  const answer = await synthesize(intent, evidence);
+  const compiled = compileEvidence(intent, validatedPlan, evidence);
+  const answer = await synthesize(compiled);
+  // verify() checks `answer` against `evidence` — the ORIGINAL EvidencePackage, never `compiled`.
   // Third argument (the model claims audit) is intentionally omitted — see header comment.
   const verdict = verify(answer, evidence);
+  const evidenceNote = buildEvidenceNote(compiled);
 
-  return { answer, evidence, verdict };
+  return { answer, evidence, verdict, evidenceNote };
 }

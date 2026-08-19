@@ -729,7 +729,7 @@ const webPkg = {
       publishedDate: '2024-06-01',
       retrievedAt: WEB_RETRIEVED_AT,
       snippet: 'Guyana GDP growth accelerates in 2024.',
-      extract: { text: "Guyana's economy grew by 43.8% in 2024, driven mainly by oil output, the report said.", chars: 89, summary: null },
+      extract: { text: "Guyana's economy grew by 43.8% in 2024, driven mainly by oil output, the report said.", chars: 89, summary: null, insights: null },
       authorizedBy: 'step-1',
     },
     {

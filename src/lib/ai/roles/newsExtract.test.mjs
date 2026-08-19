@@ -1,23 +1,34 @@
-/* Tests for summarizeArticle() (src/lib/ai/roles/newsExtract.ts).
+/* Tests for extractArticleInsights() and verifyImportantFigures() (src/lib/ai/roles/newsExtract.ts).
  *
- * No mocks — same standing policy as interpret.test.mjs and openaiCompatible.test.mjs. Each test
- * stands up a real local HTTP server as the stand-in provider and points
+ * No mocks — same standing policy as interpret.test.mjs and openaiCompatible.test.mjs. Each model
+ * call test stands up a real local HTTP server as the stand-in provider and points
  * CARIBECON_NEWSEXTRACT_PROVIDER's connection at it.
  *
- * The behaviour under test that matters most here is the fail-soft contract: unlike interpret(),
- * summarizeArticle() must never throw — unconfigured, provider error, and empty output all
- * resolve to null, not a rejection.
+ * Two things matter most here, past the earlier prose-summary version: (1) the fail-soft contract
+ * — unconfigured, provider error, and unparseable output all resolve to null, never a rejection —
+ * and (2) verifyImportantFigures' textPresenceVerified check, which is deliberately weak (proves a
+ * number is somewhere in the article, not that it's attached to the right metric/period) and must
+ * drop, not merely flag, a figure whose value isn't in the text at all.
  */
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { createServer } from 'node:http';
-import { summarizeArticle } from './newsExtract.ts';
+import { extractArticleInsights, verifyImportantFigures } from './newsExtract.ts';
 
 const SAMPLE_ARTICLE = {
   title: 'Guyana announces new budget allocation',
-  url: 'https://example.com/guyana-budget',
-  text: 'The government of Guyana announced a record budget today, with increased allocations for infrastructure and healthcare.',
+  text: 'The government of Guyana announced a record budget today, with GDP growth reaching 43.8% in 2024, driven mainly by oil output. Increased allocations were made for infrastructure and healthcare.',
   publishedDate: '2026-08-10',
+};
+
+const VALID_RESPONSE = {
+  keyClaims: ['Guyana announced a record budget with increased infrastructure and healthcare spending.'],
+  importantFigures: [{ metric: 'GDP growth', value: '43.8%', period: '2024' }],
+  economicDrivers: [
+    { driver: 'Oil output', mechanism: 'Higher oil production raises export revenue and GDP.', evidence: 'driven mainly by oil output', confidence: 'high' },
+  ],
+  relevantContext: ['The budget covers infrastructure and healthcare.'],
+  topics: ['fiscal_policy', 'oil'],
 };
 
 /* Sets exactly the given env vars for the duration of `run`, restoring each key afterward —
@@ -41,7 +52,8 @@ function withEnv(vars, run) {
 }
 
 /* Stands up a stand-in provider and runs `test_` with the newsExtract role pointed at it.
-   `respond` receives the parsed request body and returns either a raw text content string, or a
+   `respond` receives the parsed request body and returns either a raw text content string (the
+   model's message.content — e.g. a JSON string, or deliberately malformed text), or a
    { status, text } object to simulate a provider error response. */
 async function withNewsExtractProvider(respond, test_) {
   const received = [];
@@ -84,30 +96,105 @@ test('returns null, with no network call, when the role is unconfigured', async 
   await withEnv(
     { CARIBECON_NEWSEXTRACT_PROVIDER: undefined, CARIBECON_NEWSEXTRACT_MODEL: undefined },
     async () => {
-      const result = await summarizeArticle(SAMPLE_ARTICLE);
+      const result = await extractArticleInsights(SAMPLE_ARTICLE);
       assert.equal(result, null);
     },
   );
 });
 
-// ── A real successful call ──────────────────────────────────────────────────────────────────
+// ── A real successful structured call ───────────────────────────────────────────────────────
 
-test('a successful call returns the trimmed summary text', async () => {
+test('a successful call returns structured insights, with a real figure verified present', async () => {
   await withNewsExtractProvider(
-    () => '  Guyana announced a record budget with more spending on infrastructure and healthcare.  \n',
+    () => JSON.stringify(VALID_RESPONSE),
     async received => {
-      const result = await summarizeArticle(SAMPLE_ARTICLE);
-      assert.equal(
-        result,
-        'Guyana announced a record budget with more spending on infrastructure and healthcare.',
-      );
+      const result = await extractArticleInsights(SAMPLE_ARTICLE);
+      assert.deepEqual(result.keyClaims, VALID_RESPONSE.keyClaims);
+      assert.deepEqual(result.relevantContext, VALID_RESPONSE.relevantContext);
+      assert.deepEqual(result.topics, VALID_RESPONSE.topics);
+      assert.deepEqual(result.economicDrivers, VALID_RESPONSE.economicDrivers);
+      assert.deepEqual(result.importantFigures, [
+        { metric: 'GDP growth', value: '43.8%', period: '2024', textPresenceVerified: true },
+      ]);
+
       const [req] = received;
       assert.equal(req.temperature, 0);
       assert.equal(req.messages[0].role, 'system');
-      assert.ok(req.messages[0].content.includes('short, factual summary'));
       assert.equal(req.messages[1].role, 'user');
       assert.ok(req.messages[1].content.includes(SAMPLE_ARTICLE.title));
       assert.ok(req.messages[1].content.includes(SAMPLE_ARTICLE.text));
+      // The caller-known metadata (url, source, articleId, country) is never asked of the model —
+      // it isn't in the user content at all, since the caller attaches it deterministically.
+      assert.ok(!req.messages[1].content.includes('http'), 'no URL should be sent as input either — not needed for extraction');
+    },
+  );
+});
+
+test("a figure the model claims but that isn't in the article text is dropped, not merely flagged", async () => {
+  const responseWithFabrication = {
+    ...VALID_RESPONSE,
+    importantFigures: [
+      { metric: 'GDP growth', value: '43.8%', period: '2024' }, // real — in SAMPLE_ARTICLE.text
+      { metric: 'Inflation', value: '91.2%', period: '2024' }, // fabricated — never in the text
+    ],
+  };
+  await withNewsExtractProvider(
+    () => JSON.stringify(responseWithFabrication),
+    async () => {
+      const result = await extractArticleInsights(SAMPLE_ARTICLE);
+      assert.equal(result.importantFigures.length, 1, 'the fabricated figure must be dropped, not kept with a false flag');
+      assert.equal(result.importantFigures[0].metric, 'GDP growth');
+      assert.equal(result.importantFigures[0].textPresenceVerified, true);
+    },
+  );
+});
+
+test('the model attempting to emit url/source/articleId is silently ignored, not a parse failure', async () => {
+  const responseWithExtraFields = {
+    ...VALID_RESPONSE,
+    url: 'https://fabricated-by-model.example.com',
+    source: 'Model-Invented Source',
+    articleId: 'model-invented-id',
+  };
+  await withNewsExtractProvider(
+    () => JSON.stringify(responseWithExtraFields),
+    async () => {
+      const result = await extractArticleInsights(SAMPLE_ARTICLE);
+      assert.ok(result, 'extra unrequested fields must not break parsing');
+      assert.deepEqual(Object.keys(result).sort(), [
+        'economicDrivers',
+        'importantFigures',
+        'keyClaims',
+        'relevantContext',
+        'topics',
+      ]);
+    },
+  );
+});
+
+// ── Structural coercion — malformed entries dropped, not the whole response ────────────────
+
+test('a malformed importantFigures/economicDrivers entry is dropped; the rest of the response survives', async () => {
+  const responseWithBadEntries = {
+    keyClaims: ['A real claim.'],
+    importantFigures: [
+      { metric: 'GDP growth', value: '43.8%', period: '2024' }, // valid
+      { metric: 'Missing value field', period: '2024' }, // invalid — dropped
+    ],
+    economicDrivers: [
+      { driver: 'Oil output', mechanism: 'x', evidence: 'y', confidence: 'high' }, // valid
+      { driver: 'Missing mechanism' }, // invalid — dropped
+    ],
+    relevantContext: [],
+    topics: ['oil'],
+  };
+  await withNewsExtractProvider(
+    () => JSON.stringify(responseWithBadEntries),
+    async () => {
+      const result = await extractArticleInsights(SAMPLE_ARTICLE);
+      assert.equal(result.importantFigures.length, 1);
+      assert.equal(result.economicDrivers.length, 1);
+      assert.equal(result.keyClaims.length, 1);
     },
   );
 });
@@ -119,21 +206,50 @@ test('a provider error (500) returns null instead of throwing', async () => {
     () => ({ status: 500, text: 'internal error' }),
     async () => {
       await assert.doesNotReject(async () => {
-        const result = await summarizeArticle(SAMPLE_ARTICLE);
+        const result = await extractArticleInsights(SAMPLE_ARTICLE);
         assert.equal(result, null);
       });
     },
   );
 });
 
-// ── Fail-soft: empty/whitespace-only model output is treated as null ───────────────────────
+// ── Fail-soft: unparseable JSON returns null ────────────────────────────────────────────────
 
-test('an empty response is treated as null, not an empty-string summary', async () => {
+test('a non-JSON response returns null, not a throw', async () => {
   await withNewsExtractProvider(
-    () => '   \n  ',
+    () => 'This is not JSON at all, just prose the model wrote instead.',
     async () => {
-      const result = await summarizeArticle(SAMPLE_ARTICLE);
+      const result = await extractArticleInsights(SAMPLE_ARTICLE);
       assert.equal(result, null);
     },
   );
+});
+
+// ── verifyImportantFigures — pure function, no model call ──────────────────────────────────
+
+test('verifyImportantFigures: a real, present value is verified; sign and precision are handled', () => {
+  const text = 'Inflation declined 3.88 percentage points to 4.1% in the second quarter.';
+  const figures = [
+    { metric: 'Inflation change', value: '-3.88', period: 'Q2' }, // signed, text has it unsigned
+    { metric: 'Inflation level', value: '4.1%', period: 'Q2' },
+  ];
+  const result = verifyImportantFigures(figures, text);
+  assert.equal(result.length, 2);
+  assert.ok(result.every(f => f.textPresenceVerified === true));
+});
+
+test('verifyImportantFigures: a value nowhere in the text is dropped entirely', () => {
+  const text = 'Inflation declined 3.88 percentage points to 4.1% in the second quarter.';
+  const figures = [
+    { metric: 'GDP growth', value: '91.2%', period: '2024' }, // not in the text at all
+  ];
+  const result = verifyImportantFigures(figures, text);
+  assert.equal(result.length, 0);
+});
+
+test('verifyImportantFigures: an unparseable value string is dropped, not a crash', () => {
+  const text = 'Inflation declined 3.88 percentage points.';
+  const figures = [{ metric: 'Vague', value: 'a lot', period: '2024' }];
+  const result = verifyImportantFigures(figures, text);
+  assert.equal(result.length, 0);
 });

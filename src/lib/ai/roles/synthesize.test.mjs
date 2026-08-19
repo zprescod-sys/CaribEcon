@@ -1,15 +1,19 @@
-/* Tests for synthesize() (src/lib/ai/roles/synthesize.ts).
+/* Tests for synthesize() (src/lib/ai/roles/synthesize.ts) — Stage C of the Synthesis Latency +
+ * Evidence Compiler upgrade: this role now reads CompiledEvidence (evidenceCompiler.ts's output),
+ * not a raw EvidencePackage directly.
  *
  * No mocks — same standing policy as interpret.test.mjs/openaiCompatible.test.mjs. Evidence
- * packages are built through the REAL buildEvidencePackage(), so a test asserting "the prompt
- * shows a pre-computed pp_change" is exercising the actual calculations.ts integration, not a
- * fabricated stand-in of it.
+ * packages are built through the REAL buildEvidencePackage() and REAL compileEvidence(), so a
+ * test asserting "the prompt shows a compiled key fact" is exercising the actual integration,
+ * not a fabricated stand-in of it.
  */
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { createServer } from 'node:http';
 import { synthesize, SynthesizeNotConfiguredError, SynthesizeParseError } from './synthesize.ts';
 import { buildEvidencePackage } from '../../askTools.ts';
+import { compileEvidence } from '../evidenceCompiler.ts';
+import { MAX_VISIBLE_CLAIMS } from '../config.ts';
 
 function withEnv(vars, run) {
   const saved = {};
@@ -58,11 +62,14 @@ async function withSynthesisProvider(respond, test_) {
   }
 }
 
-// Real evidence, via the real retrieval facade — a GDP growth rate series for Guyana (unit '%',
-// so calculationForUnit picks pp_change) plus a news question, to exercise the full evidence
-// section builder including the caveat/miss paths.
+// Real evidence, via the real retrieval facade + real compiler — a GDP growth rate series for
+// Guyana (unit '%', so calculationForUnit picks pp_change), compiled the same way research.ts
+// actually does it.
 const intent = { questionType: 'indicator', countries: ['GY'], indicators: ['gdp_growth'], yearFrom: null, yearTo: null, newsKeywords: [] };
 const pkg = buildEvidencePackage(intent);
+const researchPlan = { question: 'How is Guyana\'s GDP growth trending?', scope: { countries: ['GY'], indicators: ['gdp_growth'], yearFrom: null, yearTo: null }, steps: [], anticipatedGaps: [] };
+const compiled = compileEvidence(intent, researchPlan, pkg);
+const realRef = compiled.keyFacts[0]?.refs[0];
 
 const WELL_FORMED = {
   headline: 'Guyana GDP growth',
@@ -70,8 +77,8 @@ const WELL_FORMED = {
     {
       text: 'Guyana GDP growth reached 62.3% in the latest year.',
       type: 'figure',
-      refs: pkg.evidenceMeta.filter(m => m.ref.startsWith('D:')).map(m => m.ref),
-      figures: [{ ref: pkg.evidenceMeta.find(m => m.ref.startsWith('D:')).ref, year: 2022, value: 62.3, unit: '%', calculation: null, asWritten: '62.3%' }],
+      refs: [realRef],
+      figures: [{ ref: realRef, year: 2022, value: 62.3, unit: '%', calculation: null, asWritten: '62.3%' }],
     },
     {
       text: 'Figures should be read alongside broader regional context.',
@@ -89,108 +96,86 @@ test('throws SynthesizeNotConfiguredError, with no network call, when the role i
   await withEnv(
     { CARIBECON_SYNTHESIS_PROVIDER: undefined, CARIBECON_SYNTHESIS_MODEL: undefined },
     async () => {
-      await assert.rejects(() => synthesize(intent, pkg), SynthesizeNotConfiguredError);
+      await assert.rejects(() => synthesize(compiled), SynthesizeNotConfiguredError);
     },
   );
 });
 
-// ── The evidence context actually sent ──────────────────────────────────────────────────────
+// ── The compiled evidence actually sent ─────────────────────────────────────────────────────
 
-test('the system prompt carries real retrieved points, a real evidence ref, and the pre-computed pp_change', async () => {
+test('the system prompt carries a real compiled key fact and its pre-computed pp_change', async () => {
   await withSynthesisProvider(
     () => JSON.stringify(WELL_FORMED),
     async received => {
-      await synthesize(intent, pkg);
+      await synthesize(compiled);
       const system = received[0].messages[0].content;
-      const dataRef = pkg.evidenceMeta.find(m => m.ref.startsWith('D:')).ref;
-      assert.ok(system.includes(dataRef), 'the real D: ref must appear');
-      // Derived from pkg itself, not a hardcoded guess — the real hub value, whatever it is.
-      assert.ok(system.includes(String(pkg.data[0].points[0].value)), 'a real retrieved point must appear');
+      assert.ok(system.includes('KEY FACTS'));
+      assert.ok(system.includes(realRef), 'the real D: ref must appear');
       assert.ok(system.includes('pp_change'), 'gdp_growth is a % series — pp_change, not yoy_change');
-      assert.ok(system.toLowerCase().includes('never invent'));
+      assert.ok(system.toLowerCase().includes('analyst'), 'the analyst-voice framing must be present');
+      assert.ok(system.includes(compiled.question), 'compiled.question must reach the prompt verbatim');
     },
   );
 });
 
-// ── pkg.web reaches the prompt (Phase 3, §2g/§2h) — summary preferred, then raw text, then
-//    snippet-only for a no-extract item, plus the W:-specific figure/quote restriction rule ────
-
-test('pkg.web evidence appears in the prompt: summary preferred, raw text as fallback, snippet-only when no extract', async () => {
+test('driver evidence and external context appear in their own grouped sections, and mechanism-bearing items land in drivers', async () => {
   const webPkg = {
     ...pkg,
     web: [
       {
-        id: 'W:has-summary',
-        title: 'Article with a digest',
+        id: 'W:driver-item',
+        title: 'Article with a driver',
         url: 'https://example.com/a',
         domain: 'example.com',
         publishedDate: '2026-01-01',
         retrievedAt: '2026-01-01T00:00:00.000Z',
-        snippet: 'a short search snippet',
-        extract: { text: 'a'.repeat(1000), chars: 1000, summary: 'A pre-digested summary of the article.' },
-        authorizedBy: 's1',
-      },
-      {
-        id: 'W:no-summary',
-        title: 'Article with only raw text',
-        url: 'https://example.com/b',
-        domain: 'example.com',
-        publishedDate: null,
-        retrievedAt: '2026-01-01T00:00:00.000Z',
-        snippet: 'another snippet',
-        extract: { text: 'RAW_EXTRACT_MARKER ' + 'x'.repeat(600), chars: 619, summary: null },
-        authorizedBy: 's1',
-      },
-      {
-        id: 'W:no-extract',
-        title: 'Search result never extracted',
-        url: 'https://example.com/c',
-        domain: 'example.com',
-        publishedDate: null,
-        retrievedAt: '2026-01-01T00:00:00.000Z',
-        snippet: 'SNIPPET_ONLY_MARKER',
-        extract: null,
+        snippet: 'a short snippet',
+        extract: {
+          text: 'Oil output drove GDP growth.'.repeat(20),
+          chars: 500,
+          summary: null,
+          insights: {
+            keyClaims: ['A KEY_CLAIM_MARKER fact.'],
+            importantFigures: [],
+            economicDrivers: [{ driver: 'Oil output', mechanism: 'DRIVER_MECHANISM_MARKER', evidence: 'x', confidence: 'high' }],
+            relevantContext: [],
+            topics: ['oil'],
+          },
+        },
         authorizedBy: 's1',
       },
     ],
   };
-
+  const webCompiled = compileEvidence(intent, researchPlan, webPkg);
   await withSynthesisProvider(
     () => JSON.stringify({ headline: 'x', claims: [], gaps: [] }),
     async received => {
-      await synthesize(intent, webPkg);
+      await synthesize(webCompiled);
       const system = received[0].messages[0].content;
-
-      assert.ok(system.includes('W:has-summary'));
-      assert.ok(system.includes('A pre-digested summary of the article.'), 'summary must be preferred when present');
-
-      assert.ok(system.includes('W:no-summary'));
-      assert.ok(system.includes('RAW_EXTRACT_MARKER'), 'raw extract text must appear when there is no summary');
-
-      assert.ok(system.includes('W:no-extract'));
-      assert.ok(system.includes('SNIPPET_ONLY_MARKER'), 'the snippet must appear when there is no extract at all');
-      assert.ok(system.includes('no extract retrieved'), 'a no-extract item must be marked as such');
-
-      assert.ok(
-        system.includes('"context" or "framing"'),
-        'the Rules section must state the W:-with-no-extract restriction explicitly',
-      );
+      assert.ok(system.includes('POSSIBLE ECONOMIC DRIVERS'));
+      assert.ok(system.includes('DRIVER_MECHANISM_MARKER'), 'a driver item\'s mechanism must appear under drivers');
+      assert.ok(system.includes('KEY_CLAIM_MARKER'), 'a non-driver key claim must still appear somewhere (external context)');
+      // The whole raw extract text (repeated 20x) must never leak into the prompt — only the
+      // compiler's structured, compact items may.
+      assert.ok(!system.includes('Oil output drove GDP growth.'.repeat(5)), 'raw extract text must not leak into the prompt');
     },
   );
 });
 
-test('caveats and misses are surfaced as explicit constraints when present', async () => {
+test('caveats are surfaced as explicit hard constraints when present', async () => {
   // A comparison across mismatched units reliably produces a comparability caveat.
   const comparisonIntent = { questionType: 'comparison', countries: ['GY', 'TT'], indicators: ['nominal_gdp'], yearFrom: null, yearTo: null, newsKeywords: [] };
   const comparisonPkg = buildEvidencePackage(comparisonIntent);
+  const comparisonPlan = { question: 'Compare nominal GDP', scope: { countries: ['GY', 'TT'], indicators: ['nominal_gdp'], yearFrom: null, yearTo: null }, steps: [], anticipatedGaps: [] };
+  const comparisonCompiled = compileEvidence(comparisonIntent, comparisonPlan, comparisonPkg);
   await withSynthesisProvider(
     () => JSON.stringify({ headline: 'x', claims: [], gaps: [] }),
     async received => {
-      await synthesize(comparisonIntent, comparisonPkg);
+      await synthesize(comparisonCompiled);
       const system = received[0].messages[0].content;
-      if (comparisonPkg.caveats.length) {
+      if (comparisonCompiled.caveats.length) {
         assert.ok(system.includes('CAVEATS'));
-        assert.ok(system.includes(comparisonPkg.caveats[0]));
+        assert.ok(system.includes(comparisonCompiled.caveats[0]));
       }
     },
   );
@@ -202,7 +187,7 @@ test('a well-formed response resolves to a ResearchAnswer with code-assigned, co
   await withSynthesisProvider(
     () => JSON.stringify(WELL_FORMED),
     async () => {
-      const answer = await synthesize(intent, pkg);
+      const answer = await synthesize(compiled);
       assert.equal(answer.headline, 'Guyana GDP growth');
       assert.equal(answer.claims.length, 2);
       assert.equal(answer.claims[0].id, 'claim-0');
@@ -223,7 +208,7 @@ test('refs: [] is accepted for type "framing" but the claim is dropped for any o
       gaps: [],
     }),
     async () => {
-      const answer = await synthesize(intent, pkg);
+      const answer = await synthesize(compiled);
       assert.equal(answer.claims.length, 1);
       assert.equal(answer.claims[0].type, 'framing');
     },
@@ -244,7 +229,7 @@ test('a structurally invalid claim is dropped; well-formed claims around it are 
       gaps: [],
     }),
     async () => {
-      const answer = await synthesize(intent, pkg);
+      const answer = await synthesize(compiled);
       assert.equal(answer.claims.length, 2);
       assert.deepEqual(answer.claims.map(c => c.text), ['valid one', 'also valid']);
     },
@@ -252,23 +237,22 @@ test('a structurally invalid claim is dropped; well-formed claims around it are 
 });
 
 test('a malformed figure is dropped; the claim it belongs to survives with the rest of its figures', async () => {
-  const validRef = pkg.evidenceMeta.find(m => m.ref.startsWith('D:')).ref;
   await withSynthesisProvider(
     () => JSON.stringify({
       headline: 'x',
       claims: [{
         text: 'one good figure, one bad',
         type: 'figure',
-        refs: [validRef],
+        refs: [realRef],
         figures: [
-          { ref: validRef, year: 2022, value: 62.3, unit: '%', calculation: null, asWritten: '62.3%' },
-          { ref: validRef, year: 2022, value: 'not a number', unit: '%', calculation: null, asWritten: 'x' }, // invalid
+          { ref: realRef, year: 2022, value: 62.3, unit: '%', calculation: null, asWritten: '62.3%' },
+          { ref: realRef, year: 2022, value: 'not a number', unit: '%', calculation: null, asWritten: 'x' }, // invalid
         ],
       }],
       gaps: [],
     }),
     async () => {
-      const answer = await synthesize(intent, pkg);
+      const answer = await synthesize(compiled);
       assert.equal(answer.claims[0].figures.length, 1);
       assert.equal(answer.claims[0].figures[0].value, 62.3);
     },
@@ -276,21 +260,58 @@ test('a malformed figure is dropped; the claim it belongs to survives with the r
 });
 
 test('an unrecognised "calculation" value causes that figure to be dropped, not silently accepted', async () => {
-  const validRef = pkg.evidenceMeta.find(m => m.ref.startsWith('D:')).ref;
   await withSynthesisProvider(
     () => JSON.stringify({
       headline: 'x',
       claims: [{
         text: 'x',
         type: 'figure',
-        refs: [validRef],
-        figures: [{ ref: validRef, year: 2022, value: 1, unit: '%', calculation: 'made_up_calc', asWritten: '1%' }],
+        refs: [realRef],
+        figures: [{ ref: realRef, year: 2022, value: 1, unit: '%', calculation: 'made_up_calc', asWritten: '1%' }],
       }],
       gaps: [],
     }),
     async () => {
-      const answer = await synthesize(intent, pkg);
+      const answer = await synthesize(compiled);
       assert.equal(answer.claims[0].figures.length, 0);
+    },
+  );
+});
+
+// ── Visible-answer ceiling — enforced in code, not left to the prompt alone ────────────────
+
+test('claims are capped at MAX_VISIBLE_CLAIMS, without mutating any kept claim\'s text', async () => {
+  const manyClaims = Array.from({ length: MAX_VISIBLE_CLAIMS + 5 }, (_, i) => ({
+    text: `Claim number ${i}, unmodified text that must survive verbatim if kept.`,
+    type: 'framing',
+    refs: [],
+    figures: [],
+  }));
+  await withSynthesisProvider(
+    () => JSON.stringify({ headline: 'x', claims: manyClaims, gaps: [] }),
+    async () => {
+      const answer = await synthesize(compiled);
+      assert.ok(answer.claims.length <= MAX_VISIBLE_CLAIMS, `expected <= ${MAX_VISIBLE_CLAIMS}, got ${answer.claims.length}`);
+      // Every kept claim's text is verbatim, unmodified — only whole claims are dropped.
+      for (const claim of answer.claims) {
+        assert.ok(claim.text.endsWith('must survive verbatim if kept.'));
+      }
+    },
+  );
+});
+
+test('a very long set of claims is truncated further to stay near the visible-answer token target', async () => {
+  const longClaims = Array.from({ length: MAX_VISIBLE_CLAIMS }, (_, i) => ({
+    text: `Claim ${i}: `.padEnd(2000, 'x'), // each ~2000 chars ~= 500 tokens; several blow well past 1200
+    type: 'framing',
+    refs: [],
+    figures: [],
+  }));
+  await withSynthesisProvider(
+    () => JSON.stringify({ headline: 'x', claims: longClaims, gaps: [] }),
+    async () => {
+      const answer = await synthesize(compiled);
+      assert.ok(answer.claims.length < MAX_VISIBLE_CLAIMS, 'the token cap must drop claims below the count cap when they are individually long');
     },
   );
 });
@@ -302,7 +323,7 @@ test('a non-JSON response raises SynthesizeParseError', async () => {
     () => 'I cannot help with that.',
     async () => {
       await assert.rejects(
-        () => synthesize(intent, pkg),
+        () => synthesize(compiled),
         err => err instanceof SynthesizeParseError && err.rawText === 'I cannot help with that.',
       );
     },
@@ -313,7 +334,7 @@ test('a top-level shape that is not even close to a ResearchAnswer raises Synthe
   await withSynthesisProvider(
     () => JSON.stringify({ answer: 'wrong shape entirely' }),
     async () => {
-      await assert.rejects(() => synthesize(intent, pkg), SynthesizeParseError);
+      await assert.rejects(() => synthesize(compiled), SynthesizeParseError);
     },
   );
 });

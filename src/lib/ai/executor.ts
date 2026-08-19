@@ -60,7 +60,7 @@ import {
 } from '../askTools.js';
 import { searchWeb, extractWeb } from '../webEvidence.js';
 import { fetchArticleText } from '../newsArticleFetch.js';
-import { summarizeArticle } from './roles/newsExtract.js';
+import { extractArticleInsights } from './roles/newsExtract.js';
 import { plan as planFollowUp } from './roles/plan.js';
 import { MAX_TAVILY_SEARCHES, MAX_TAVILY_EXTRACTS, MAX_NEWS_DIGESTS } from './config.js';
 import type {
@@ -171,9 +171,8 @@ export async function executeResearchPlan(
       candidates.map(async (item): Promise<WebEvidence | null> => {
         const fetched = await fetchArticleText(item.url);
         if (!fetched) return null; // fetch failed — no evidence to emit for this article at all
-        const summary = await summarizeArticle({
+        const insights = await extractArticleInsights({
           title: item.title,
-          url: item.url,
           text: fetched.text,
           publishedDate: item.date ?? null,
         });
@@ -185,7 +184,7 @@ export async function executeResearchPlan(
           publishedDate: item.date ?? null,
           retrievedAt: new Date().toISOString(),
           snippet: '',
-          extract: { text: fetched.text, chars: fetched.chars, summary },
+          extract: { text: fetched.text, chars: fetched.chars, summary: null, insights },
           authorizedBy: step.id,
         };
       }),
@@ -278,7 +277,7 @@ export async function executeResearchPlan(
       // Same object reference as the one already pushed into pkg.web by the search_web branch
       // above — mutating it here populates `extract` in place. One URL, one evidence entry.
       const entry = target.find(w => w.url === url);
-      if (hit && entry) entry.extract = { text: hit.text, chars: hit.chars, summary: null };
+      if (hit && entry) entry.extract = { text: hit.text, chars: hit.chars, summary: null, insights: null };
     }
     const missingCount = urlsToExtract.length - extracted.size;
     if (missingCount > 0) {
