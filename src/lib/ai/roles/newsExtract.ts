@@ -8,11 +8,21 @@
  * paragraph on every request.
  *
  * The model is asked for ONLY what it can't already know deterministically. articleId, source,
- * publishedAt, url, and country are already known to the caller (the executor has the News Hub
- * item's own metadata before it ever calls this role) — asking the model to reproduce them would
- * spend tokens and add a hallucination surface for zero benefit. Same reasoning plan.ts already
- * applies to ResearchPlan.question: code assigns what code already has, never trusts a model to
- * echo it back faithfully.
+ * publishedAt, and url are already known to the caller (the executor has the News Hub item's own
+ * metadata before it ever calls this role) — asking the model to reproduce them would spend
+ * tokens and add a hallucination surface for zero benefit. Same reasoning plan.ts already applies
+ * to ResearchPlan.question: code assigns what code already has, never trusts a model to echo it
+ * back faithfully.
+ *
+ * The one deliberate exception: each importantFigures entry DOES ask the model for that figure's
+ * own country. The article's overall country is caller-known, but which country a SPECIFIC figure
+ * is about is not reliably the same thing — an article primarily about one country can still cite
+ * a figure for another, and defaulting every figure to the article's subject would mis-tag exactly
+ * that case (the alternative this was weighed against and rejected). This is genuine inference,
+ * not lookup, so it is scoped and hedged like textPresenceVerified below, not treated as fact:
+ * newsExtract.ts resolves the model's raw country string through askTools.ts's resolveCountry()
+ * before it goes anywhere near the Evidence Compiler, and an unresolved or omitted answer becomes
+ * `country: null`, never a guess.
  *
  * Structurally this still mirrors interpret.ts's pattern: resolveRoleFully('newsExtract'), one
  * callModel call at temperature 0, no tool loop — now through parseModelJson like every other
@@ -42,6 +52,7 @@ import { resolveRoleFully } from '../config.js';
 import { callModel, type ChatMessage } from '../providers/openaiCompatible.js';
 import { parseModelJson } from './parseModelJson.js';
 import { figureMatches, NUMBER_PATTERN } from '../grounding.js';
+import { resolveCountry } from '../../askTools.js';
 import type { ArticleInsights, ImportantFigure, EconomicDriver } from '../contracts.js';
 
 const SYSTEM_PROMPT = [
@@ -55,7 +66,12 @@ const SYSTEM_PROMPT = [
     {
       keyClaims: ['string — a factual claim the article makes'],
       importantFigures: [
-        { metric: 'string', value: 'string, as written, e.g. "16.2%"', period: 'string, e.g. "2026" or "Q2 2026"' },
+        {
+          metric: 'string',
+          value: 'string, as written, e.g. "16.2%"',
+          period: 'string, e.g. "2026" or "Q2 2026"',
+          country: 'string or null — the country THIS figure is about, or null if unclear',
+        },
       ],
       economicDrivers: [
         {
@@ -72,9 +88,15 @@ const SYSTEM_PROMPT = [
     2,
   ),
   '',
-  'Do not include articleId, source, publishedAt, url, or country — the caller already has these.',
+  'Do not include articleId, source, publishedAt, or url — the caller already has these.',
   'Every figure in importantFigures must actually appear in the article text as written there —',
   'never invent a number the article does not state.',
+  '',
+  "For each figure's country: read the sentence and surrounding paragraph the figure itself",
+  "appears in, not just the article's general subject. An article mainly about one country can",
+  'still cite a figure for another — attribute each figure to the country IT is actually about,',
+  "even when that differs from the article's main subject. If the text genuinely does not make a",
+  'figure\'s country clear, use null rather than guessing.',
 ].join('\n');
 
 export interface ArticleContext {
@@ -95,13 +117,16 @@ function buildUserContent(article: ArticleContext): string {
 
 // Structural coercion only — mirrors synthesize.ts's coerceClaim/coerceAnswer discipline: drop a
 // malformed entry, keep the rest, never throw over one bad item in an otherwise-usable response.
+// `country` is resolved through resolveCountry(), never passed through raw — see ImportantFigure's
+// own doc comment for why an unresolved model string must become null, not a silently-broken key.
 function coerceFigure(raw: unknown): Omit<ImportantFigure, 'textPresenceVerified'> | null {
   if (!raw || typeof raw !== 'object') return null;
   const r = raw as Record<string, unknown>;
   if (typeof r.metric !== 'string' || !r.metric.trim()) return null;
   if (typeof r.value !== 'string' || !r.value.trim()) return null;
   if (typeof r.period !== 'string' || !r.period.trim()) return null;
-  return { metric: r.metric, value: r.value, period: r.period };
+  const country = typeof r.country === 'string' ? resolveCountry(r.country) : null;
+  return { metric: r.metric, value: r.value, period: r.period, country };
 }
 
 const VALID_CONFIDENCE = new Set(['high', 'medium', 'low']);

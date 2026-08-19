@@ -243,7 +243,10 @@ function normalizeWebItem(w: WebEvidence): { context: NewsContextItem[]; figures
       return {
         type: 'statistic' as const,
         refs: [ref],
-        country: null, // not resolved to a hub country code — see StatisticItem's own doc comment
+        // newsExtract.ts already resolved this through resolveCountry() — null here means the
+        // model genuinely couldn't tell, not that this code declined to look (see
+        // ImportantFigure's own doc comment).
+        country: f.country,
         indicator: f.metric,
         period: f.period,
         value: numeric,

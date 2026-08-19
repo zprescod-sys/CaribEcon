@@ -106,11 +106,21 @@ export interface WebEvidence {
  * check (does this number appear anywhere in the real text), NOT a grounding verdict — read
  * newsExtract.ts's header before using this field for anything beyond an early fabrication filter.
  * The real, substantive check (does *this* figure, cited in *this* claim, actually match) still
- * happens exactly once, downstream, in grounding.ts's web_figure_reconciliation. */
+ * happens exactly once, downstream, in grounding.ts's web_figure_reconciliation.
+ *
+ * `country` is the model's inferred read of which country THIS figure (not the article as a
+ * whole) is about — genuinely model-inferred, not caller-known, since a single article can name
+ * more than one country and the article's own overall subject is not reliably the right answer
+ * for every figure in it (see newsExtract.ts's prompt for the explicit anti-shortcut instruction).
+ * Always a real hub country code after newsExtract.ts's coercion resolves it through
+ * askTools.ts's resolveCountry(), or null when the model couldn't determine one — never a raw,
+ * unresolved model string, which would silently fail to ever match a hub DataEvidence country in
+ * the Evidence Compiler's exact-key dedup/conflict detection. */
 export interface ImportantFigure {
   metric: string;
   value: string;
   period: string;
+  country: string | null;
   textPresenceVerified: boolean;
 }
 
@@ -126,8 +136,11 @@ export interface EconomicDriver {
 
 /* The News Extract Agent's structured output (Synthesis Latency + Evidence Compiler upgrade,
  * Stage A) — replaces the old plain-prose `summary`. Deliberately excludes anything the caller
- * already knows deterministically (articleId, source, publishedAt, url, country) — see
- * newsExtract.ts's header for why asking a model to reproduce known metadata is pure downside. */
+ * already knows deterministically at the ARTICLE level (articleId, source, publishedAt, url,
+ * the article's own overall country) — see newsExtract.ts's header for why asking a model to
+ * reproduce known metadata is pure downside. Per-figure country on ImportantFigure is a distinct,
+ * later addition: which country a SPECIFIC figure is about is not reliably the article's own
+ * overall country and genuinely needs inference — see ImportantFigure's own doc comment. */
 export interface ArticleInsights {
   keyClaims: string[];
   importantFigures: ImportantFigure[];

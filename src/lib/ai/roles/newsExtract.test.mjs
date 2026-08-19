@@ -23,7 +23,7 @@ const SAMPLE_ARTICLE = {
 
 const VALID_RESPONSE = {
   keyClaims: ['Guyana announced a record budget with increased infrastructure and healthcare spending.'],
-  importantFigures: [{ metric: 'GDP growth', value: '43.8%', period: '2024' }],
+  importantFigures: [{ metric: 'GDP growth', value: '43.8%', period: '2024', country: 'Guyana' }],
   economicDrivers: [
     { driver: 'Oil output', mechanism: 'Higher oil production raises export revenue and GDP.', evidence: 'driven mainly by oil output', confidence: 'high' },
   ],
@@ -114,7 +114,7 @@ test('a successful call returns structured insights, with a real figure verified
       assert.deepEqual(result.topics, VALID_RESPONSE.topics);
       assert.deepEqual(result.economicDrivers, VALID_RESPONSE.economicDrivers);
       assert.deepEqual(result.importantFigures, [
-        { metric: 'GDP growth', value: '43.8%', period: '2024', textPresenceVerified: true },
+        { metric: 'GDP growth', value: '43.8%', period: '2024', country: 'GY', textPresenceVerified: true },
       ]);
 
       const [req] = received;
@@ -123,8 +123,9 @@ test('a successful call returns structured insights, with a real figure verified
       assert.equal(req.messages[1].role, 'user');
       assert.ok(req.messages[1].content.includes(SAMPLE_ARTICLE.title));
       assert.ok(req.messages[1].content.includes(SAMPLE_ARTICLE.text));
-      // The caller-known metadata (url, source, articleId, country) is never asked of the model —
-      // it isn't in the user content at all, since the caller attaches it deterministically.
+      // The caller-known article-level metadata (url, source, articleId) is never asked of the
+      // model and never sent as input either — the caller attaches it deterministically. Per-figure
+      // country IS asked (as output only, see below) — a distinct, deliberate exception.
       assert.ok(!req.messages[1].content.includes('http'), 'no URL should be sent as input either — not needed for extraction');
     },
   );
@@ -195,6 +196,86 @@ test('a malformed importantFigures/economicDrivers entry is dropped; the rest of
       assert.equal(result.importantFigures.length, 1);
       assert.equal(result.economicDrivers.length, 1);
       assert.equal(result.keyClaims.length, 1);
+    },
+  );
+});
+
+// ── Per-figure country: resolved through resolveCountry(), never passed through raw ───────
+
+test('a figure country the model writes as a full name resolves to the real hub code', async () => {
+  const response = {
+    ...VALID_RESPONSE,
+    importantFigures: [{ metric: 'GDP growth', value: '43.8%', period: '2024', country: 'Guyana' }],
+  };
+  await withNewsExtractProvider(
+    () => JSON.stringify(response),
+    async () => {
+      const result = await extractArticleInsights(SAMPLE_ARTICLE);
+      assert.equal(result.importantFigures[0].country, 'GY');
+    },
+  );
+});
+
+test('an unrecognized figure country string becomes null, not passed through raw', async () => {
+  const response = {
+    ...VALID_RESPONSE,
+    importantFigures: [{ metric: 'GDP growth', value: '43.8%', period: '2024', country: 'Freedonia' }],
+  };
+  await withNewsExtractProvider(
+    () => JSON.stringify(response),
+    async () => {
+      const result = await extractArticleInsights(SAMPLE_ARTICLE);
+      assert.equal(
+        result.importantFigures[0].country,
+        null,
+        'an unresolved country string must never reach the Evidence Compiler raw — it would silently never match a hub country key',
+      );
+    },
+  );
+});
+
+test('a figure with no country field, or an explicit null, resolves to null rather than a crash', async () => {
+  const response = {
+    ...VALID_RESPONSE,
+    importantFigures: [
+      { metric: 'GDP growth', value: '43.8%', period: '2024' }, // field omitted entirely
+      { metric: 'Inflation', value: '4.1%', period: '2024', country: null }, // explicit null
+    ],
+  };
+  await withNewsExtractProvider(
+    () => JSON.stringify(response),
+    async () => {
+      const result = await extractArticleInsights(SAMPLE_ARTICLE);
+      // Both figures are real text in SAMPLE_ARTICLE.text? No — only GDP growth 43.8% is; the
+      // Inflation figure must survive coercion but can still be dropped by textPresenceVerified.
+      // What matters here is coercion never throws over a missing/null country either way.
+      assert.ok(result, 'a missing or explicitly null country must not break parsing');
+      const gdp = result.importantFigures.find(f => f.metric === 'GDP growth');
+      assert.equal(gdp.country, null);
+    },
+  );
+});
+
+test("a multi-country article: each figure keeps the model's OWN per-figure country, not a shared article-level default", async () => {
+  const article = {
+    title: 'Regional oil roundup',
+    text: 'Guyana posted GDP growth of 19.3% in 2025, driven by offshore oil. By contrast, Trinidad and Tobago contracted -0.8% over the same period as its gas sector matured.',
+    publishedDate: '2026-08-10',
+  };
+  const response = {
+    ...VALID_RESPONSE,
+    importantFigures: [
+      { metric: 'GDP growth', value: '19.3%', period: '2025', country: 'Guyana' },
+      { metric: 'GDP growth', value: '-0.8%', period: '2025', country: 'Trinidad and Tobago' },
+    ],
+  };
+  await withNewsExtractProvider(
+    () => JSON.stringify(response),
+    async () => {
+      const result = await extractArticleInsights(article);
+      const byValue = Object.fromEntries(result.importantFigures.map(f => [f.value, f.country]));
+      assert.equal(byValue['19.3%'], 'GY');
+      assert.equal(byValue['-0.8%'], 'TT');
     },
   );
 });

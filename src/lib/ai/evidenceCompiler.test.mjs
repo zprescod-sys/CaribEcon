@@ -221,6 +221,60 @@ test('an annual figure and a monthly figure for the "same" metric+period do NOT 
   assert.equal(result.contradictions.length, 0, 'a differently-unit\'d figure must not be treated as a conflicting duplicate');
 });
 
+test('a web-sourced figure with a resolved country now conflicts with real hub data for the same country/indicator/period/unit', () => {
+  // newsExtract.ts resolves the model's country string through resolveCountry() before this ever
+  // runs, so the figure here already carries the real hub code 'GY' — same shape the compiler
+  // actually receives now that per-figure country attribution exists.
+  const p = pkg({
+    data: [dataSeries()], // GY gdp_growth, %, actual, latest 2024 = 43.8
+    web: [
+      webItem({
+        extract: {
+          text: 'GDP growth in Guyana was 12.0% in 2024.',
+          chars: 40,
+          summary: null,
+          insights: {
+            keyClaims: [],
+            importantFigures: [{ metric: 'gdp_growth', value: '12.0%', period: '2024', country: 'GY', textPresenceVerified: true }],
+            economicDrivers: [],
+            relevantContext: [],
+            topics: [],
+          },
+        },
+      }),
+    ],
+  });
+  const result = compileEvidence(intent(), plan(), p);
+  assert.equal(result.contradictions.length, 1, 'a resolved-country web figure disagreeing with real hub data must now be caught');
+  assert.equal(result.contradictions[0].items.length, 2);
+  const values = result.contradictions[0].items.map(i => i.value).sort((a, b) => a - b);
+  assert.deepEqual(values, [12.0, 43.8]);
+});
+
+test('a web-sourced figure with country: null still never conflicts with hub data — no guessing', () => {
+  const p = pkg({
+    data: [dataSeries()], // GY gdp_growth, %, actual, latest 2024 = 43.8
+    web: [
+      webItem({
+        extract: {
+          text: 'GDP growth was 12.0% in 2024.',
+          chars: 30,
+          summary: null,
+          insights: {
+            keyClaims: [],
+            importantFigures: [{ metric: 'gdp_growth', value: '12.0%', period: '2024', country: null, textPresenceVerified: true }],
+            economicDrivers: [],
+            relevantContext: [],
+            topics: [],
+          },
+        },
+      }),
+    ],
+  });
+  const result = compileEvidence(intent(), plan(), p);
+  assert.equal(result.contradictions.length, 0, 'a figure the model itself could not attribute to a country must not be forced into a match');
+});
+
 // ── Hard budget invariants ────────────────────────────────────────────────────────────────
 
 test('keyFacts never exceeds MAX_KEY_FACTS regardless of how much data goes in', () => {
