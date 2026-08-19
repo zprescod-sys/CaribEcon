@@ -1,5 +1,371 @@
 [
   {
+    "id": "guyana-chronicle-55b9dae2",
+    "title": "Guyana’s fifth FPSO to push oil output beyond 1 million barrels per day",
+    "source": "Guyana Chronicle",
+    "date": "2026-08-19",
+    "country": "GY",
+    "url": "https://guyanachronicle.com/2026/08/19/guyanas-fifth-fpso-to-push-oil-output-beyond-1-million-barrels-per-day/",
+    "tags": [
+      "news"
+    ],
+    "category": "Energy",
+    "group": "Energy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "guyana-chronicle-e0816960",
+    "title": "Agriculture Ministry moves to link farmers directly with hospitality sector",
+    "source": "Guyana Chronicle",
+    "date": "2026-08-19",
+    "country": "GY",
+    "url": "https://guyanachronicle.com/2026/08/19/agriculture-ministry-moves-to-link-farmers-directly-with-hospitality-sector/",
+    "tags": [
+      "news"
+    ],
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "guyana-chronicle-398d63b3",
+    "title": "Guyana explores maritime expansion, flag State recognition in talks with ABS and Hanwha Shipping",
+    "source": "Guyana Chronicle",
+    "date": "2026-08-19",
+    "country": "GY",
+    "url": "https://guyanachronicle.com/2026/08/19/guyana-explores-maritime-expansion-flag-state-recognition-in-talks-with-abs-and-hanwha-shipping/",
+    "tags": [
+      "news"
+    ],
+    "category": "Trade",
+    "group": "Trade & Tourism",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "demerara-waves-e90d5dd5",
+    "title": "President’s disclosed acreage of his farm far lower than Google Earth’s measurement",
+    "source": "Demerara Waves",
+    "date": "2026-08-19",
+    "country": "GY",
+    "url": "https://demerarawaves.com/2026/08/19/presidents-disclosed-acreage-of-his-farm-far-lower-than-google-earths-measurement/",
+    "tags": [
+      "accountability",
+      "agriculture",
+      "transparency"
+    ],
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "jamaica-observer-4298c159",
+    "title": "Trump pauses 50% Canada tariffs for three days",
+    "source": "Jamaica Observer",
+    "date": "2026-08-19",
+    "country": "JM",
+    "url": "https://www.jamaicaobserver.com/2026/08/18/trump-pauses-50-canada-tariffs-three-days/",
+    "tags": [
+      "international news",
+      "latest news",
+      "canada",
+      "us",
+      "washington"
+    ],
+    "category": "Trade",
+    "group": "Trade & Tourism",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "jamaica-gleaner-85795654",
+    "title": "Butchered in the bushes - Cattle farmers tremble over thieves’ midnight meat runs",
+    "source": "Jamaica Gleaner",
+    "date": "2026-08-19",
+    "country": "JM",
+    "url": "http://jamaica-gleaner.com/article/news/20260819/butchered-bushes-cattle-farmers-tremble-over-thieves-midnight-meat-runs",
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "jamaica-gleaner-5189aa98",
+    "title": "PIOJ cuts recovery timeline as economy contracts 2.9 per cent in June quarter",
+    "source": "Jamaica Gleaner",
+    "date": "2026-08-19",
+    "country": "JM",
+    "url": "http://jamaica-gleaner.com/article/news/20260819/pioj-cuts-recovery-timeline-economy-contracts-29-cent-june-quarter",
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "jamaica-gleaner-0892e9a3",
+    "title": "Jamaica’s net remittances jump 9.3% in June, marking strongest monthly gain this year",
+    "source": "Jamaica Gleaner",
+    "date": "2026-08-19",
+    "country": "JM",
+    "url": "http://jamaica-gleaner.com/article/business/20260819/jamaicas-net-remittances-jump-93-june-marking-strongest-monthly-gain-year",
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "jamaica-gleaner-e384b56b",
+    "title": "Kingston air traffic grows while Montego Bay passenger volumes and Falmouth cruise arrivals lag",
+    "source": "Jamaica Gleaner",
+    "date": "2026-08-19",
+    "country": "JM",
+    "url": "http://jamaica-gleaner.com/article/business/20260819/kingston-air-traffic-grows-while-montego-bay-passenger-volumes-and",
+    "category": "Tourism",
+    "group": "Trade & Tourism",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "jamaica-gleaner-73ae153b",
+    "title": "Jamaica’s cocoa output halves as ageing trees drag production to new lows",
+    "source": "Jamaica Gleaner",
+    "date": "2026-08-19",
+    "country": "JM",
+    "url": "http://jamaica-gleaner.com/article/business/20260819/jamaicas-cocoa-output-halves-ageing-trees-drag-production-new-lows",
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "jamaica-gleaner-719b5bb8",
+    "title": "IMF welcomes Dr Brian Langrin’s appointment as Bank of Jamaica governor",
+    "source": "Jamaica Gleaner",
+    "date": "2026-08-19",
+    "country": "JM",
+    "url": "http://jamaica-gleaner.com/article/business/20260819/imf-welcomes-dr-brian-langrins-appointment-bank-jamaica-governor",
+    "category": "Debt",
+    "group": "Fiscal Policy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "jamaica-gleaner-3bd9162e",
+    "title": "Barita clears sites for construction as investment group hires real estate developer",
+    "source": "Jamaica Gleaner",
+    "date": "2026-08-19",
+    "country": "JM",
+    "url": "http://jamaica-gleaner.com/article/business/20260819/barita-clears-sites-construction-investment-group-hires-real-estate",
+    "category": "Investment",
+    "group": "Investment",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "jamaica-gleaner-7a865b37",
+    "title": "JMMB’s Sagicor stake earns more than its own business – and worth more than the entire company",
+    "source": "Jamaica Gleaner",
+    "date": "2026-08-19",
+    "country": "JM",
+    "url": "http://jamaica-gleaner.com/article/business/20260819/jmmbs-sagicor-stake-earns-more-its-own-business-and-worth-more-entire",
+    "category": "Corporate",
+    "group": "Finance",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "starnieuws-7224bce6",
+    "title": "Canawaima onder vergrootglas: onderzoek naar financiële administratie over vijf jaar",
+    "source": "Starnieuws",
+    "date": "2026-08-19",
+    "country": "SR",
+    "url": "https://www.starnieuws.com/index.php/welcome/index/nieuwsitem/93482",
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "st-kitts-nevis-observer-4a991f22",
+    "title": "Government Expands Household Support as Global Economic Pressures Persist",
+    "source": "St. Kitts-Nevis Observer",
+    "date": "2026-08-19",
+    "country": "KN",
+    "url": "https://www.thestkittsnevisobserver.com/government-expands-household-support-as-global-economic-pressures-persist/",
+    "tags": [
+      "featured",
+      "local news"
+    ],
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "iwitness-news-634be788",
+    "title": "Friday eyes Taiwanese business mission as SVG courts investors",
+    "source": "iWitness News",
+    "date": "2026-08-19",
+    "country": "VC",
+    "url": "https://www.iwnsvg.com/2026/08/18/friday-eyes-taiwanese-business-mission-as-svg-courts-investors/",
+    "tags": [
+      "business"
+    ],
+    "category": "Investment",
+    "group": "Investment",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "iwitness-news-8c72db66",
+    "title": "Taiwan pledges grant for SVG’s dev’t bank, boosts funding for social programmes",
+    "source": "iWitness News",
+    "date": "2026-08-19",
+    "country": "VC",
+    "url": "https://www.iwnsvg.com/2026/08/18/taiwan-pledges-grant-for-svgs-devt-bank-boosts-funding-for-social-programmes/",
+    "tags": [
+      "politics"
+    ],
+    "category": "Banking",
+    "group": "Finance",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "cayman-compass-293a439c",
+    "title": "Cayman launches US reinsurance qualification bid",
+    "source": "Cayman Compass",
+    "date": "2026-08-19",
+    "country": "KY",
+    "url": "https://www.caymancompass.com/2026/08/19/cayman-launches-us-reinsurance-qualification-bid/",
+    "tags": [
+      "business",
+      "finance",
+      "naic qualified jurisdiction",
+      "reinsurance"
+    ],
+    "category": "Banking",
+    "group": "Finance",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "cayman-compass-a5e7c2c8",
+    "title": "Four Caribbean countries face expanded US visa bond rules",
+    "source": "Cayman Compass",
+    "date": "2026-08-19",
+    "country": "KY",
+    "url": "https://www.caymancompass.com/2026/08/19/four-caribbean-countries-face-expanded-us-visa-bond-rules/",
+    "tags": [
+      "local",
+      "tourism",
+      "antigua and barbuda",
+      "cuba",
+      "dominica",
+      "grenada"
+    ],
+    "category": "Debt",
+    "group": "Fiscal Policy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "cayman-compass-88222e35",
+    "title": "Grand Hyatt reducing height of stone basket wall on West Bay Road",
+    "source": "Cayman Compass",
+    "date": "2026-08-19",
+    "country": "KY",
+    "url": "https://www.caymancompass.com/2026/08/19/grand-hyatt-reducing-height-of-stone-basket-wall-on-west-bay-road/",
+    "tags": [
+      "local",
+      "grand hyatt",
+      "planning",
+      "tourism",
+      "west bay road"
+    ],
+    "category": "Infrastructure",
+    "group": "Investment",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "bvi-news-bf89efac",
+    "title": "BVI ranks third for cruise growth in Caribbean",
+    "source": "BVI News",
+    "date": "2026-08-19",
+    "country": "VG",
+    "url": "https://bvinews.com/bvi-ranks-third-for-cruise-growth-in-caribbean/",
+    "tags": [
+      "all news"
+    ],
+    "category": "Tourism",
+    "group": "Trade & Tourism",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "bvi-news-ab378070",
+    "title": "Electricity rates not increasing, BVIEC says",
+    "source": "BVI News",
+    "date": "2026-08-19",
+    "country": "VG",
+    "url": "https://bvinews.com/electricity-rates-not-increasing-bviec-says/",
+    "tags": [
+      "all news"
+    ],
+    "category": "Energy",
+    "group": "Energy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
     "id": "guyana-chronicle-c408d0d7",
     "title": "Government takes steps to boost Linden’s electricity supply -Minister Indar says three engines to reach there soon",
     "source": "Guyana Chronicle",
@@ -914,6 +1280,27 @@
     ],
     "category": "Debt",
     "group": "Fiscal Policy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "barbados-today-d3947c3a",
+    "title": "Cost-of-living relief ‘unlikely’ as Price Compact return questioned",
+    "source": "Barbados Today",
+    "date": "2026-08-18",
+    "country": "BB",
+    "url": "https://barbadostoday.bb/2026/08/18/cost-of-living-relief-unlikely-as-price-compact-return-questioned/",
+    "tags": [
+      "business",
+      "economy",
+      "local news",
+      "headline",
+      "headlines"
+    ],
+    "category": "Inflation",
+    "group": "Macro",
     "decision": "publish",
     "confidence": "high",
     "reason": "Heuristic: displayable.",
@@ -36758,348 +37145,6 @@
     "date": "2026-07-14",
     "country": "ALL",
     "url": "https://wicnews.com/trinidad-tobago/caribbean-airlines-adds-72-flights-to-trinidad-tobago-air-bridge-for-peak-vacation-season",
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "nation-news-b32c378f",
-    "title": "Sanctuary Vibez refuses to let financial hurdles silence ambition",
-    "source": "Nation News",
-    "date": "2026-07-14",
-    "country": "BB",
-    "url": "https://nationnews.com/2026/07/14/sanctuary-vibez-refuses-to-let-financial-hurdles-silence-ambition/?utm_source=rss&utm_medium=rss&utm_campaign=sanctuary-vibez-refuses-to-let-financial-hurdles-silence-ambition",
-    "tags": [
-      "crop over",
-      "entertainment",
-      "sanctuary vibez refuses to let financial hurdles silence ambition"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "nation-news-bfa7fe4f",
-    "title": "BARP reports major surplus",
-    "source": "Nation News",
-    "date": "2026-07-14",
-    "country": "BB",
-    "url": "https://nationnews.com/2026/07/14/barp-reports-major-surplus/?utm_source=rss&utm_medium=rss&utm_campaign=barp-reports-major-surplus",
-    "tags": [
-      "business",
-      "news",
-      "barp reports major surplus"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "jamaica-observer-1f3ae079",
-    "title": "Forex: $159.13 to one US dollar",
-    "source": "Jamaica Observer",
-    "date": "2026-07-14",
-    "country": "JM",
-    "url": "https://www.jamaicaobserver.com/2026/07/14/forex-159-13-to-one-us-dollar/",
-    "tags": [
-      "latest news",
-      "news",
-      "daily trades",
-      "foreign exchange",
-      "forex"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "jamaica-gleaner-8539b8c7",
-    "title": "IShowSpeed and Tom Cruise join World Cup closing ceremony's cast",
-    "source": "Jamaica Gleaner",
-    "date": "2026-07-14",
-    "country": "JM",
-    "url": "http://jamaica-gleaner.com/article/sports/20260714/ishowspeed-and-tom-cruise-join-world-cup-closing-ceremonys-cast",
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "jamaica-gleaner-633ea33d",
-    "title": "Caribbean governments urged to balance fuel subsidies amid US-Iran conflict",
-    "source": "Jamaica Gleaner",
-    "date": "2026-07-14",
-    "country": "JM",
-    "url": "http://jamaica-gleaner.com/article/news/20260714/caribbean-governments-urged-balance-fuel-subsidies-amid-us-iran-conflict",
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "jamaica-gleaner-bf57660d",
-    "title": "St Lucian company to buy majority stake in Dolphin Cove",
-    "source": "Jamaica Gleaner",
-    "date": "2026-07-14",
-    "country": "JM",
-    "url": "http://jamaica-gleaner.com/article/business/20260714/st-lucian-company-buy-majority-stake-dolphin-cove",
-    "deal_status": "pending",
-    "deal_type": "M&A"
-  },
-  {
-    "id": "breaking-belize-news-12f4aedb",
-    "title": "Belize advances Regional Financial Integration through engagement with the Central American Monetary Council",
-    "source": "Breaking Belize News",
-    "date": "2026-07-14",
-    "country": "BZ",
-    "url": "https://www.breakingbelizenews.com/2026/07/14/belize-advances-regional-financial-integration-through-engagement-with-the-central-american-monetary-council/",
-    "tags": [
-      "community development",
-      "last news"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "amandala-08b05e67",
-    "title": "Tourism, expatriate communities and money: The case for a New Belize",
-    "source": "Amandala",
-    "date": "2026-07-14",
-    "country": "BZ",
-    "url": "https://amandala.com.bz/news/tourism-expatriate-communities-and-money-the-case-for-a-new-belize/",
-    "tags": [
-      "features"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "now-grenada-871acdc8",
-    "title": "GAA RfP: Employee Transportation Service",
-    "source": "NOW Grenada",
-    "date": "2026-07-14",
-    "country": "GD",
-    "url": "https://nowgrenada.com/2026/07/gaa-rfp-employee-transportation-service/",
-    "tags": [
-      "advertisement",
-      "business",
-      "vacancy",
-      "employee transportation service",
-      "gaa",
-      "grenada airports authority"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "now-grenada-68dc7f27",
-    "title": "Grenada’s Q2 2026 Outlook: Beyond the budget",
-    "source": "NOW Grenada",
-    "date": "2026-07-14",
-    "country": "GD",
-    "url": "https://nowgrenada.com/2026/07/grenadas-q2-2026-outlook-beyond-the-budget/",
-    "tags": [
-      "business",
-      "opinion/commentary",
-      "central statistical office (cso)",
-      "eastern caribbean securities exchange",
-      "ecse",
-      "grenada union of teachers"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "now-grenada-c46bd5a2",
-    "title": "Is there an economic war of the United States against Cuba?",
-    "source": "NOW Grenada",
-    "date": "2026-07-14",
-    "country": "GD",
-    "url": "https://nowgrenada.com/2026/07/is-there-an-economic-war-of-the-united-states-against-cuba/",
-    "tags": [
-      "business",
-      "opinion/commentary",
-      "politics",
-      "ariel pazos ortiz",
-      "blockade",
-      "cuba"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "st-lucia-times-e1c97e61",
-    "title": "Dragon fruit nursery opens as ministry grows Saint Lucia’s agriculture",
-    "source": "St. Lucia Times",
-    "date": "2026-07-14",
-    "country": "LC",
-    "url": "https://stluciatimes.com/182002/2026/07/dragon-fruit-nursery-opens-as-ministry-grows-saint-lucias-agriculture/",
-    "tags": [
-      "agriculture & fisheries",
-      "economy",
-      "headlines",
-      "politics & government",
-      "dragon fruit",
-      "ministry of agriculture and fisheries"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "antigua-news-room-246e8460",
-    "title": "PM Browne Says Country Faces Tough Choice Over Citizenship by Investment",
-    "source": "Antigua News Room",
-    "date": "2026-07-14",
-    "country": "AG",
-    "url": "https://antiguanewsroom.com/pm-browne-says-country-faces-tough-choice-over-citizenship-by-investment/",
-    "tags": [
-      "news"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "antigua-news-room-57cabb8d",
-    "title": "Ministry of Works Employees Resume Duties After Talks Over Pay Dispute",
-    "source": "Antigua News Room",
-    "date": "2026-07-14",
-    "country": "AG",
-    "url": "https://antiguanewsroom.com/ministry-of-works-employees-resume-duties-after-talks-over-pay-dispute/",
-    "tags": [
-      "news"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "cayman-news-service-3e3c8887",
-    "title": "Hew: Spending of surplus at 2026 half-way point ‘unsettling’",
-    "source": "Cayman News Service",
-    "date": "2026-07-14",
-    "country": "KY",
-    "url": "https://caymannewsservice.com/2026/07/hew-spending-of-surplus-at-2026-half-way-point-unsettling/",
-    "tags": [
-      "local news",
-      "budget",
-      "featured",
-      "finance committee",
-      "joey hew"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "st-kitts-nevis-observer-67cd06bc",
-    "title": "New Zealand:  Guidance To Increase Supermarket Competition And Help Lower Prices",
-    "source": "St. Kitts-Nevis Observer",
-    "date": "2026-07-14",
-    "country": "KN",
-    "url": "https://www.thestkittsnevisobserver.com/new-zealand-guidance-to-increase-supermarket-competition-and-help-lower-prices/",
-    "tags": [
-      "press releases",
-      "regional/international news"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "st-kitts-nevis-observer-33c7cb8d",
-    "title": "New Zealand:  Capital Market Reforms To Power Economic Growth",
-    "source": "St. Kitts-Nevis Observer",
-    "date": "2026-07-14",
-    "country": "KN",
-    "url": "https://www.thestkittsnevisobserver.com/new-zealand-capital-market-reforms-to-power-economic-growth/",
-    "tags": [
-      "press releases",
-      "regional/international news"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "st-kitts-nevis-observer-20121c66",
-    "title": "United States:  U.S.-UK Transatlantic Taskforce for the Markets Of The Future Publishes Recommendations To Promote Growth And Innovation In Capital Markets And Digital Assets",
-    "source": "St. Kitts-Nevis Observer",
-    "date": "2026-07-14",
-    "country": "KN",
-    "url": "https://www.thestkittsnevisobserver.com/united-states-u-s-uk-transatlantic-taskforce-for-the-markets-of-the-future-publishes-recommendations-to-promote-growth-and-innovation-in-capital-markets-and-digital-assets/",
-    "tags": [
-      "press releases",
-      "regional/international news"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "st-kitts-nevis-observer-284d3b82",
-    "title": "Nevis targets expansion of financial services sector",
-    "source": "St. Kitts-Nevis Observer",
-    "date": "2026-07-14",
-    "country": "KN",
-    "url": "https://www.thestkittsnevisobserver.com/nevis-targets-expansion-of-financial-services-sector/",
-    "tags": [
-      "local news"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "trinidad-express-d7ad65d5",
-    "title": "Caricom backs pilot ferry service",
-    "source": "Trinidad Express",
-    "date": "2026-07-14",
-    "country": "TT",
-    "url": "https://trinidadexpress.com/business/local/caricom-backs-pilot-ferry-service/article_bde03b26-3749-4ffa-bd12-a667b12b3a5d.html",
-    "category": "Regional Developments",
-    "group": "Macro",
-    "decision": "publish",
-    "confidence": "high",
-    "reason": "CARICOM backing pilot ferry service; regional transport and trade integration.",
-    "classifier": "llm",
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "kaieteur-news-12cd9f54",
-    "title": "Omai Gold Project a “rare gem” with potential to exceed 300,000 ounces a year – CEO",
-    "source": "Kaieteur News",
-    "date": "2026-07-13",
-    "country": "GY",
-    "url": "https://kaieteurnewsonline.com/2026/07/13/omai-gold-project-a-rare-gem-with-potential-to-exceed-300000-ounces-a-year-ceo/",
-    "tags": [
-      "news",
-      "gold mining",
-      "guyana gold",
-      "omai gold mines",
-      "rare gem"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "kaieteur-news-8a943e2d",
-    "title": "Pres. Ali mega farm exposes weak transparency laws",
-    "source": "Kaieteur News",
-    "date": "2026-07-13",
-    "country": "GY",
-    "url": "https://kaieteurnewsonline.com/2026/07/13/pres-alis-farm-controversy-exposes-weak-transparency-laws/",
-    "tags": [
-      "news",
-      "azruddin mohamed",
-      "president ali farm",
-      "transparency in public office",
-      "transparency laws"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "kaieteur-news-23fd4d6e",
-    "title": "The Resource Curse has arrived – on a Farm Part I",
-    "source": "Kaieteur News",
-    "date": "2026-07-13",
-    "country": "GY",
-    "url": "https://kaieteurnewsonline.com/2026/07/13/the-resource-curse-has-arrived-on-a-farm-part-i/",
-    "tags": [
-      "news",
-      "agro-processing",
-      "long creek",
-      "natural resource fund",
-      "president irfaan ali's farm",
-      "resource curse"
-    ],
     "deal_status": "not_a_deal",
     "deal_type": null
   }
