@@ -13,14 +13,14 @@
    type-checks and runs functions under moduleResolution "nodenext" — see the header of
    indicators.ts for the production failure that convention prevents. */
 
-import type { DataEvidence, DataPoint, RetrievalMiss } from './askTools.js';
+import type { DataEvidence, DataPoint, RetrievalMiss, evidenceId } from './askTools.js';
 import type { CalculationResult } from './calculations.js';
 import type { SingleCountryIntent } from './excelIntent.js';
-// evidenceId lives in askTools.ts now — evidence identity is that module's domain (it also
-// backs the D: EvidenceRef prefix, ARCHITECTURE.md §2.5). Re-exported here unchanged so nothing
-// that already imports it from this file needs to change.
-import { evidenceId } from './askTools.js';
-export { evidenceId };
+// evidenceId is re-exported as a type so server-side consumers can still access its type,
+// but the runtime export is removed because webpack in the Excel add-in build can't resolve
+// the ./askTools.js import when bundling taskpane.ts. Server-side code (api/*.ts) imports
+// evidenceId directly from askTools.ts.
+export type { evidenceId };
 
 /* Excel's own sheet-name rules, not ours: 31 characters, and these characters are rejected
    outright by the host. Breaking either throws at worksheets.add() time, which would surface to

@@ -951,6 +951,30 @@ function renderMarkdown(text) {
     .join('');
 }
 
+function renderReasoningAccordion(reasoning) {
+  if (!reasoning || reasoning.length === 0) {
+    return '';
+  }
+
+  const stepsHtml = reasoning
+    .map(step => {
+      const title = step.title ? `<strong>${esc(step.title)}</strong>` : '';
+      const content = step.content ? esc(step.content) : '';
+      return `<div class="reasoning-step">${title}${content}</div>`;
+    })
+    .join('');
+
+  return `<div class="reasoning">
+    <button class="reasoning-trigger" type="button" aria-expanded="false">
+      <span class="reasoning-chevron">▼</span>
+      <span>Reasoning steps</span>
+    </button>
+    <div class="reasoning-content">
+      ${stepsHtml}
+    </div>
+  </div>`;
+}
+
 function renderSourcesCollapsible(cites) {
   if (!cites.length) {
     return `<div class="cites">
@@ -981,10 +1005,13 @@ function renderSourcesCollapsible(cites) {
 }
 
 function renderAnswer(question, body) {
+  const reasoning = body.reasoning ?? [];
   const cites = body.citations ?? [];
+  const reasoningHtml = renderReasoningAccordion(reasoning);
   const citeHtml = renderSourcesCollapsible(cites);
 
   el('answer').innerHTML = `
+    ${reasoningHtml}
     <div class="answer__body">${renderMarkdown(body.answer)}</div>
     ${citeHtml}
     <div class="answer__body" style="border-top:1px solid var(--line)">
@@ -992,12 +1019,21 @@ function renderAnswer(question, body) {
     </div>
   `;
 
+  // Add toggle functionality to the reasoning trigger
+  const reasoningTrigger = el('answer').querySelector('.reasoning-trigger');
+  if (reasoningTrigger) {
+    reasoningTrigger.addEventListener('click', () => {
+      const isExpanded = reasoningTrigger.getAttribute('aria-expanded') === 'true';
+      reasoningTrigger.setAttribute('aria-expanded', String(!isExpanded));
+    });
+  }
+
   // Add toggle functionality to the sources trigger
-  const trigger = el('answer').querySelector('.sources-trigger');
-  if (trigger) {
-    trigger.addEventListener('click', () => {
-      const isExpanded = trigger.getAttribute('aria-expanded') === 'true';
-      trigger.setAttribute('aria-expanded', String(!isExpanded));
+  const sourcesTrigger = el('answer').querySelector('.sources-trigger');
+  if (sourcesTrigger) {
+    sourcesTrigger.addEventListener('click', () => {
+      const isExpanded = sourcesTrigger.getAttribute('aria-expanded') === 'true';
+      sourcesTrigger.setAttribute('aria-expanded', String(!isExpanded));
     });
   }
 
