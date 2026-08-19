@@ -951,24 +951,38 @@ function renderMarkdown(text) {
     .join('');
 }
 
+function renderSourcesCollapsible(cites) {
+  if (!cites.length) {
+    return `<div class="cites">
+      <p class="cites__label">Sources read (0)</p>
+      <div class="cite">No hub series matched — the answer above reports what is missing.</div>
+    </div>`;
+  }
+
+  const citesHtml = cites
+    .map(c => {
+      const url = safeUrl(c.sourceUrl);
+      const org = url
+        ? `<a href="${esc(url)}" target="_blank" rel="noopener">${esc(c.sourceOrg)}</a>`
+        : esc(c.sourceOrg);
+      return `<li class="cite"><b>${esc(c.country)} · ${esc(c.label)}</b><br />${org} · ${esc(c.sourceTier)} · vintage ${esc(c.vintage)}</li>`;
+    })
+    .join('');
+
+  return `<div class="cites">
+    <button class="sources-trigger" type="button" aria-expanded="false">
+      <span class="sources-toggle">▼</span>
+      <span class="cites__label">Used ${cites.length} source${cites.length === 1 ? '' : 's'}</span>
+    </button>
+    <ul class="sources-list">
+      ${citesHtml}
+    </ul>
+  </div>`;
+}
+
 function renderAnswer(question, body) {
   const cites = body.citations ?? [];
-  const citeHtml = cites.length
-    ? `<div class="cites">
-         <p class="cites__label">Sources read (${cites.length})</p>
-         ${cites
-           .map(c => {
-             const url = safeUrl(c.sourceUrl);
-             const org = url
-               ? `<a href="${esc(url)}" target="_blank" rel="noopener">${esc(c.sourceOrg)}</a>`
-               : esc(c.sourceOrg);
-             return `<div class="cite"><b>${esc(c.country)} · ${esc(c.label)}</b><br />${org} · ${esc(c.sourceTier)} · vintage ${esc(c.vintage)}</div>`;
-           })
-           .join('')}
-       </div>`
-    : `<div class="cites"><p class="cites__label">Sources read (0)</p>
-         <div class="cite">No hub series matched — the answer above reports what is missing.</div>
-       </div>`;
+  const citeHtml = renderSourcesCollapsible(cites);
 
   el('answer').innerHTML = `
     <div class="answer__body">${renderMarkdown(body.answer)}</div>
@@ -977,6 +991,15 @@ function renderAnswer(question, body) {
       <button class="btn" type="button" id="insert-answer">Insert answer and sources</button>
     </div>
   `;
+
+  // Add toggle functionality to the sources trigger
+  const trigger = el('answer').querySelector('.sources-trigger');
+  if (trigger) {
+    trigger.addEventListener('click', () => {
+      const isExpanded = trigger.getAttribute('aria-expanded') === 'true';
+      trigger.setAttribute('aria-expanded', String(!isExpanded));
+    });
+  }
 
   el('insert-answer').addEventListener('click', () => insertAnswer(question, body));
 }

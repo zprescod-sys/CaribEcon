@@ -460,3 +460,88 @@ textarea:focus-visible {
   font-size: 10px;
   color: var(--ink-faint);
 }
+
+/* ── Ask / Sources Collapsible ──────────────────────────────────────────────────── */
+
+.cites {
+  margin-top: 12px;
+}
+
+.cites__label {
+  margin: 0 0 8px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  color: var(--ink-soft);
+}
+
+.sources-trigger {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  color: var(--ink-soft);
+  cursor: pointer;
+  user-select: none;
+  transition: color 0.15s ease-out;
+}
+
+.sources-trigger:hover {
+  color: var(--ink);
+}
+
+.sources-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  font-size: 11px;
+  line-height: 1;
+  transition: transform 0.2s ease-out;
+}
+
+.sources-trigger[aria-expanded="true"] .sources-toggle {
+  transform: rotate(180deg);
+}
+
+.sources-list {
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 8px;
+  padding: 0;
+  list-style: none;
+}
+
+.sources-trigger[aria-expanded="true"] ~ .sources-list {
+  display: flex;
+}
+
+.cite {
+  padding: 8px;
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  background: var(--card);
+  font-size: 12px;
+  color: var(--ink);
+  line-height: 1.4;
+  transition: background-color 0.15s ease-out, border-color 0.15s ease-out;
+}
+
+.cite:hover {
+  background-color: var(--card-tint);
+  border-color: rgba(14, 94, 78, 0.3);
+}
+
+.cite b {
+  font-weight: 600;
+  color: var(--teal);
+}
