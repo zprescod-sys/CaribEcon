@@ -61,11 +61,11 @@ body {
 
 .topbar {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   justify-content: space-between;
   gap: 8px;
   padding: 12px 16px;
-  background: var(--teal-deep);
+  background: var(--teal);
   color: var(--paper);
 }
 
@@ -76,10 +76,25 @@ body {
   letter-spacing: -0.01em;
 }
 
-.topbar__meta {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  color: rgba(236, 238, 232, 0.62);
+.close-pane {
+  width: 28px;
+  height: 28px;
+  margin: -4px -6px -4px 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--paper);
+  font-family: system-ui, sans-serif;
+  font-size: 24px;
+  font-weight: 300;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.close-pane:hover { background: rgba(255, 255, 255, 0.14); }
+.close-pane:focus-visible {
+  outline: 2px solid var(--paper);
+  outline-offset: -2px;
 }
 
 .tabs {

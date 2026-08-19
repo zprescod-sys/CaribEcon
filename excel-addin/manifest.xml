@@ -7,7 +7,7 @@
   <Version>1.0.0.0</Version>
   <ProviderName>CaribEcon</ProviderName>
   <DefaultLocale>en-US</DefaultLocale>
-  <DisplayName DefaultValue="CaribEcon Excel Functions" />
+  <DisplayName DefaultValue="CaribEcon" />
   <Description DefaultValue="Sourced Caribbean macroeconomic data as live Excel functions." />
   <IconUrl DefaultValue="https://localhost:3000/assets/icon-32.png"/>
   <HighResolutionIconUrl DefaultValue="https://localhost:3000/assets/icon-64.png"/>
@@ -101,7 +101,7 @@
         <bt:String id="Functions.Namespace" DefaultValue="CE" />
         <bt:String id="GetStarted.Title" DefaultValue="CaribEcon is ready" />
         <bt:String id="CommandsGroup.Label" DefaultValue="CaribEcon" />
-        <bt:String id="TaskpaneButton.Label" DefaultValue="CaribEcon Data" />
+        <bt:String id="TaskpaneButton.Label" DefaultValue="CaribEcon" />
       </bt:ShortStrings>
       <bt:LongStrings>
         <bt:String id="GetStarted.Description" DefaultValue="Type =CE.GDP(&quot;GY&quot;, 2024) in any cell, or open the CaribEcon Data pane on the Home tab to browse indicators and insert a sourced series." />

@@ -64,6 +64,7 @@ Office.onReady(async info => {
   }
 
   wireTabs();
+  el('close-pane').addEventListener('click', closeTaskpane);
 
   const data = await loadHub(API_BASE);
   if (!data) {
@@ -75,7 +76,6 @@ Office.onReady(async info => {
   }
 
   el('status').hidden = true;
-  el('hub-version').textContent = `hub ${data.version}`;
   el('panel-browse').hidden = false;
 
   initBrowse();
@@ -89,6 +89,14 @@ Office.onReady(async info => {
     initAsk();
   }
 });
+
+async function closeTaskpane() {
+  try {
+    await Office.addin.hide();
+  } catch {
+    setStatus('Excel could not close this pane. Use the pane close button in Excel instead.', true);
+  }
+}
 
 function setStatus(message, isError = false) {
   const node = el('status');
