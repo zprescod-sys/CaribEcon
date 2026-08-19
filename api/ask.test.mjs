@@ -52,13 +52,13 @@ async function withEnv(vars, run) {
   }
 }
 
-function jsonServer(respond) {
+function jsonServer(respond, status = 200) {
   return createServer((req, res) => {
     let raw = '';
     req.on('data', chunk => (raw += chunk));
     req.on('end', () => {
       const text = respond(JSON.parse(raw));
-      res.writeHead(200, { 'Content-Type': 'application/json' });
+      res.writeHead(status, { 'Content-Type': 'application/json' });
       res.end(JSON.stringify({ choices: [{ message: { content: text }, finish_reason: 'stop' }] }));
     });
   });
@@ -84,10 +84,15 @@ const SYNTHESIZE_OK = () =>
   JSON.stringify({ headline: 'Guyana GDP growth', claims: [], gaps: [] });
 
 async function withRoleProviders(
-  { interpretRespond = INTERPRET_OK, planRespond = PLAN_OK, synthesisRespond = SYNTHESIZE_OK },
+  {
+    interpretRespond = INTERPRET_OK,
+    planRespond = PLAN_OK,
+    synthesisRespond = SYNTHESIZE_OK,
+    interpretStatus = 200,
+  },
   run,
 ) {
-  const interpretServer = jsonServer(interpretRespond);
+  const interpretServer = jsonServer(interpretRespond, interpretStatus);
   const planServer = jsonServer(planRespond);
   const synthesisServer = jsonServer(synthesisRespond);
   await Promise.all([
@@ -198,15 +203,30 @@ test('an unconfigured interpret role is a 503, not a 500', async () => {
   );
 });
 
-test('an unreachable research provider is a 503 provider_unavailable, not a generic 500', async () => {
+test('an unreachable research provider is a retryable 503 with a stable stage-aware code', async () => {
   await withRoleProviders({}, async () => {
     await withEnv({ NEBIUS_BASE_URL: 'http://127.0.0.1:1' }, async () => {
       const res = await post({ question: 'GDP growth in Guyana?' });
       assert.equal(res.status, 503);
       const body = await res.json();
-      assert.equal(body.error, 'provider_unavailable');
-      assert.equal(body.message, 'The research provider is temporarily unavailable. Please try again shortly.');
+      assert.equal(body.error, 'provider_unreachable');
+      assert.equal(body.stage, 'interpret');
+      assert.equal(body.retryable, true);
+      assert.equal(body.message, 'An AI service is temporarily unavailable. Please try again shortly.');
     });
+  });
+});
+
+test('a missing configured model or endpoint is non-retryable and does not leak provider text', async () => {
+  await withRoleProviders({ interpretStatus: 404 }, async () => {
+    const res = await post({ question: 'GDP growth in Guyana?' });
+    assert.equal(res.status, 503);
+    const body = await res.json();
+    assert.equal(body.error, 'provider_not_found');
+    assert.equal(body.stage, 'interpret');
+    assert.equal(body.retryable, false);
+    assert.equal(body.message, 'The configured AI model or service endpoint is currently unavailable.');
+    assert.equal(typeof body.requestId, 'string');
   });
 });
 

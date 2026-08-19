@@ -124,6 +124,26 @@ body {
   border-bottom-color: var(--gold);
 }
 
+.msg__retry {
+  display: block;
+  margin-top: 10px;
+  padding: 6px 10px;
+  border: 1px solid currentColor;
+  border-radius: 0;
+  background: transparent;
+  color: inherit;
+  font: 600 11px/1 var(--font-mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.msg__retry:hover { background: rgba(15, 35, 30, 0.08); }
+.msg__retry:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
 .tab:focus-visible,
 .btn:focus-visible,
 select:focus-visible {

@@ -37,6 +37,10 @@ export class ProviderCallError extends Error {
   constructor(
     message: string,
     public readonly status: number | null,
+    public readonly provider: string,
+    public readonly model: string,
+    public readonly endpoint: string,
+    public readonly kind: 'timeout' | 'unreachable' | 'http' | 'invalid_response',
   ) {
     super(message);
   }
@@ -93,6 +97,10 @@ export async function callModel(
         ? `${connection.name} did not respond within ${timeoutMs}ms.`
         : `${connection.name} is unreachable.`,
       null,
+      connection.name,
+      model,
+      '/chat/completions',
+      timedOut ? 'timeout' : 'unreachable',
     );
   }
 
@@ -101,13 +109,24 @@ export async function callModel(
   try {
     body = JSON.parse(raw);
   } catch {
-    throw new ProviderCallError(`${connection.name} returned a non-JSON response.`, response.status);
+    throw new ProviderCallError(
+      `${connection.name} returned a non-JSON response.`,
+      response.status,
+      connection.name,
+      model,
+      '/chat/completions',
+      'invalid_response',
+    );
   }
 
   if (!response.ok) {
     throw new ProviderCallError(
       extractErrorMessage(body) ?? `${connection.name} returned ${response.status}.`,
       response.status,
+      connection.name,
+      model,
+      '/chat/completions',
+      'http',
     );
   }
 
@@ -115,7 +134,14 @@ export async function callModel(
     body as { choices?: { message?: { content?: string }; finish_reason?: string }[] }
   ).choices?.[0];
   if (!choice?.message?.content) {
-    throw new ProviderCallError(`${connection.name} returned no message content.`, response.status);
+    throw new ProviderCallError(
+      `${connection.name} returned no message content.`,
+      response.status,
+      connection.name,
+      model,
+      '/chat/completions',
+      'invalid_response',
+    );
   }
 
   const usage = (body as { usage?: { prompt_tokens?: number; completion_tokens?: number } }).usage;

@@ -23,7 +23,7 @@ import { research } from '../src/lib/ai/research.js';
 import { InterpretNotConfiguredError, InterpretParseError } from '../src/lib/ai/roles/interpret.js';
 import { PlanNotConfiguredError, PlanParseError } from '../src/lib/ai/roles/plan.js';
 import { SynthesizeNotConfiguredError, SynthesizeParseError } from '../src/lib/ai/roles/synthesize.js';
-import { ProviderCallError } from '../src/lib/ai/providers/openaiCompatible.js';
+import { StagedProviderFailure } from '../src/lib/ai/providerFailure.js';
 
 function structuredOutputFailure(error: unknown): { stage: 'interpretation' | 'planning' | 'answer'; rawLength: number } | null {
   if (error instanceof InterpretParseError) return { stage: 'interpretation', rawLength: error.rawText.length };
@@ -77,6 +77,7 @@ export default {
     }
 
     const startedAt = Date.now();
+    const requestId = crypto.randomUUID();
     try {
       const result = await research({ question });
       return json({ ok: true, result, elapsedMs: Date.now() - startedAt }, 200);
@@ -91,38 +92,67 @@ export default {
         error instanceof PlanNotConfiguredError ||
         error instanceof SynthesizeNotConfiguredError
       ) {
-        return json({ error: 'not_configured', message: error.message }, 503);
+        console.warn('api/ask: provider configuration failure', { requestId });
+        return json(
+          {
+            error: 'not_configured',
+            message: 'An AI service required for this request is not configured correctly.',
+            retryable: false,
+            requestId,
+          },
+          503,
+        );
       }
       const structuredFailure = structuredOutputFailure(error);
       if (structuredFailure) {
         // Keep raw model text server-side — it can contain reasoning or prompt-derived material.
         // Stage and length are sufficient to diagnose malformed output without recording either.
-        console.warn('api/ask: structured-output failure', structuredFailure);
+        console.warn('api/ask: structured-output failure', { requestId, ...structuredFailure });
         return json(
           {
             error: 'model_error',
             stage: structuredFailure.stage,
             message: `The research ${structuredFailure.stage} model returned an invalid structured response. Please try again.`,
+            retryable: true,
+            requestId,
           },
           502,
         );
       }
-      // A transport failure has no HTTP status because the provider never replied at all. That
-      // is a temporary upstream outage, not a bug in the user's question or in this endpoint.
-      // Keep the provider's raw error server-side: it can include implementation detail, whereas
-      // this stable code lets every client give the user an accurate, actionable explanation.
-      if (error instanceof ProviderCallError && error.status === null) {
-        console.warn('api/ask: research provider unavailable');
+      if (error instanceof StagedProviderFailure) {
+        const { failure } = error;
+        // Do not log provider text, prompts, headers, or keys. These stable fields make route
+        // faults diagnosable without making model/provider internals part of the public contract.
+        console.warn('api/ask: provider failure', {
+          requestId,
+          stage: failure.stage,
+          provider: failure.provider,
+          model: failure.model,
+          endpoint: failure.endpoint,
+          providerStatus: failure.providerStatus,
+          code: failure.code,
+          retryable: failure.retryable,
+          elapsedMs: Date.now() - startedAt,
+        });
         return json(
           {
-            error: 'provider_unavailable',
-            message: 'The research provider is temporarily unavailable. Please try again shortly.',
+            error: failure.code,
+            stage: failure.stage,
+            message: failure.message,
+            retryable: failure.retryable,
+            requestId,
           },
-          503,
+          failure.code === 'provider_timeout'
+            ? 504
+            : failure.code === 'provider_server_error' ||
+                failure.code === 'provider_invalid_response' ||
+                failure.code === 'provider_bad_request'
+              ? 502
+              : 503,
         );
       }
       console.error('api/ask: unexpected pipeline error', error);
-      return json({ error: 'service_error', message: 'The research service failed.' }, 500);
+      return json({ error: 'service_error', message: 'The research service failed.', retryable: false, requestId }, 500);
     }
   },
 };

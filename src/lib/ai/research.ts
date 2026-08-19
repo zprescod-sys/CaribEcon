@@ -44,19 +44,32 @@ import { verify } from './verify.js';
 import { validateResearchPlan } from '../askTools.js';
 import { executeResearchPlan } from './executor.js';
 import { compileEvidence, buildEvidenceNote } from './evidenceCompiler.js';
+import { classifyProviderFailure, StagedProviderFailure, type PipelineStage } from './providerFailure.js';
+import { ProviderCallError } from './providers/openaiCompatible.js';
 import type { ResearchResult } from './contracts.js';
 
 export interface ResearchRequest {
   question: string;
 }
 
+async function runModelStage<T>(stage: PipelineStage, work: () => Promise<T>): Promise<T> {
+  try {
+    return await work();
+  } catch (error) {
+    if (error instanceof ProviderCallError) {
+      throw new StagedProviderFailure(classifyProviderFailure(error, stage));
+    }
+    throw error;
+  }
+}
+
 export async function research(
   request: ResearchRequest,
   { retrievedAt }: { retrievedAt?: string } = {},
 ): Promise<ResearchResult> {
-  const { intent, misses } = await interpret(request.question);
+  const { intent, misses } = await runModelStage('interpret', () => interpret(request.question));
 
-  const researchPlan = await plan(request.question, intent);
+  const researchPlan = await runModelStage('plan', () => plan(request.question, intent));
   const { plan: validatedPlan, misses: planMisses } = validateResearchPlan(researchPlan);
 
   const evidence = await executeResearchPlan(validatedPlan, retrievedAt);
@@ -65,7 +78,7 @@ export async function research(
   evidence.misses = [...misses, ...planMisses, ...evidence.misses];
 
   const compiled = compileEvidence(intent, validatedPlan, evidence);
-  const answer = await synthesize(compiled);
+  const answer = await runModelStage('synthesize', () => synthesize(compiled));
   // verify() checks `answer` against `evidence` — the ORIGINAL EvidencePackage, never `compiled`.
   // Third argument (the model claims audit) is intentionally omitted — see header comment.
   const verdict = verify(answer, evidence);

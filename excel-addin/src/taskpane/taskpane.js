@@ -991,8 +991,12 @@ async function ask() {
 
   el('question').value = '';
   autosizeComposer();
+  await submitAsk(question);
+}
+
+async function submitAsk(question, showUserMessage = true) {
   showChatView();
-  appendUserMessage(question);
+  if (showUserMessage) appendUserMessage(question);
   const pending = appendMessage('msg msg--assistant msg--pending', `<div class="msg__bubble">Researching…</div>`);
   el('ask').disabled = true;
 
@@ -1007,7 +1011,7 @@ async function ask() {
     pending.remove();
 
     if (!res.ok) {
-      appendMessage('msg msg--assistant msg--error', `<div class="msg__bubble">${esc(body.message ?? `Request failed (${res.status}).`)}</div>`);
+      appendAskError(body.message ?? `Request failed (${res.status}).`, body.retryable === true, question);
       return;
     }
     if (ASK_MODE === 'ask') appendAssistantMessage(question, body.result);
@@ -1020,6 +1024,18 @@ async function ask() {
     );
   } finally {
     el('ask').disabled = false;
+  }
+}
+
+function appendAskError(message, retryable, question) {
+  const retry = retryable ? '<button class="msg__retry" type="button">Retry</button>' : '';
+  const node = appendMessage('msg msg--assistant msg--error', `<div class="msg__bubble">${esc(message)}${retry}</div>`);
+  const button = node.querySelector('.msg__retry');
+  if (button) {
+    button.addEventListener('click', () => {
+      node.remove();
+      void submitAsk(question, false);
+    });
   }
 }
 
