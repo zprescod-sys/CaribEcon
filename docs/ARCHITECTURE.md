@@ -1,6 +1,8 @@
 # CaribEcon — Refined Architecture & Execution Plan
 
-> Reference document. Written against `CaribEcon_AskCaribEcon_Refined_Build_Prompt.md` (the prior
+> Reference document. Session bootstrap is [`CURRENT_CONTEXT.md`](../CURRENT_CONTEXT.md); use this
+> document as a section-specific reference for the task at hand rather than reading it in full by
+> default. Written against `CaribEcon_AskCaribEcon_Refined_Build_Prompt.md` (the prior
 > plan) and the verified state of the repo on `feature/excel-addin`. **This document is now the
 > canonical engineering plan for the whole product** — Browse, custom functions, Deep Dive,
 > Comparison, and the Ask CaribEcon Research Agent alike. The prior build prompt is retired to a

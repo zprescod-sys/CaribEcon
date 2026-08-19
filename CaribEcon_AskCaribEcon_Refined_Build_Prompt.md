@@ -1,6 +1,10 @@
-# CaribEcon Excel Buildathon Engineering Plan
+# Historical — superseded CaribEcon Excel Buildathon Engineering Plan
 
-This file retains its earlier Ask CaribEcon filename for continuity. It is now the canonical plan for the whole Excel add-in.
+> **Not active guidance.** This document is retained only as a historical record. It is superseded
+> by [`CURRENT_CONTEXT.md`](CURRENT_CONTEXT.md) for session orientation and
+> [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) for detailed architecture. Do not use it to make
+> implementation decisions or treat any statement below as current without verifying it against
+> those documents and the live code.
 
 ## Purpose and MVP boundary
 
@@ -444,5 +448,7 @@ The initial success criterion is not a count of agents or providers:
 
 > A real request produces an editable Excel output from CaribEcon evidence, with correct calculations, traceable sources, honest gaps, and no invented data.
 
-This document is the active Excel engineering plan. It now incorporates a tightened version of the retired `CaribEcon_Build_Worflow.pdf`'s multi-agent pipeline for Deep Dive/Comparison (section 1, section 6, section 7) — that architecture was correct in shape, wrong only in being CariBench-coupled and sized for a 6-role/two-verifier design this plan deliberately trims to 4 roles and one merged verifier. The PDF itself, and its CariBench/team-lane/day-gate specifics, remain retired and non-authoritative; only the tightened pipeline described in this document governs implementation. Historical changelogs and archived plans remain records; they do not override this document.
-
+Historical note: this plan once incorporated a tightened version of the retired
+`CaribEcon_Build_Worflow.pdf` pipeline. Its historical discussion can inform archaeology, but it
+does not govern implementation. `CURRENT_CONTEXT.md`, `docs/ARCHITECTURE.md`, and the live code
+take precedence.

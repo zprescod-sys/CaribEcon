@@ -1,10 +1,13 @@
 # CLAUDE.md — CaribEcon
 
-Read at the start of every session to re-ground. This file is the project's orientation map. Two companion docs are authoritative in their own domains — do not duplicate or contradict them here:
+Read `CURRENT_CONTEXT.md` at the start of every engineering session. It is the compact orientation
+and task-routing document. This file provides durable repository guidance; do not load the full
+architecture plan unless the current task needs a named section.
 
 - **Design / visual system → `EDDESIGN.md`** — the sole authority on look: color, type, geometry, motion, components, page layout.
 - **Data schema & sourcing → `data/SCHEMA.md`** — the canonical record shape, indicator slugs, source tiers, and integrity rules.
-- **Engineering plan & architecture → `docs/ARCHITECTURE.md`** — the canonical engineering plan for the whole product. See "Active build" below.
+- **Current engineering context → `CURRENT_CONTEXT.md`** — session bootstrap, active direction, invariants, and task routing.
+- **Engineering plan & architecture → `docs/ARCHITECTURE.md`** — canonical detailed reference; read the relevant section on demand.
 - QA workflow → `docs/SCREENSHOT_WORKFLOW.md`.
 - **Project history → `docs/CHANGELOG.md`** — read on demand, not every session: the *why* behind past migrations, rebuilds, and fixes.
 
@@ -13,8 +16,11 @@ Read at the start of every session to re-ground. This file is the project's orie
 **The canonical engineering plan is `docs/ARCHITECTURE.md`.** It governs the whole product: the
 existing Browse and custom-function surface, Single Country Deep Dive, Country Comparison,
 structured charts/output, and the Ask CaribEcon Research Agent — provider roles, the deterministic
-grounding gate, evidence contracts, and the NoInfra/Vercel runtime split. Read it before touching
-`excel-addin/`, `api/`, or the server-side AI modules.
+grounding gate, evidence contracts, and the NoInfra/Vercel runtime split. `CURRENT_CONTEXT.md`
+states the mandatory boundaries; read the relevant architecture section before a change that
+affects its design, not as a whole-file session bootstrap.
+
+Do not read `docs/ARCHITECTURE.md` in full by default. Read only the section relevant to the current task. Do not load historical build prompts unless the task explicitly requires historical context.
 
 `CaribEcon_AskCaribEcon_Refined_Build_Prompt.md` (repo root, tracked) is retired as the active
 plan — the same treatment it once gave its own predecessor, the multi-agent
@@ -104,12 +110,12 @@ Every page reads from one hub; no per-page hardcoded numbers.
 
 Standalone Vercel Functions in the top-level `api/`, deliberately outside the Astro build so the site stays `output: 'static'`. They must import `src/lib/indicators.ts` — **never `dataHub.ts`**, which pulls the editorial domains (~1.9 MB) in at module scope, and which is not nodenext-clean so it throws `ERR_MODULE_NOT_FOUND` in a deployed function. Both use explicit `.js` specifiers and JSON import attributes for the same reason.
 
-| Endpoint                                         | Purpose                                                                                                                                                                                   |
-| ------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `GET /api/indicator?country=&indicator=&year=` | One sourced value + provenance. Deterministic, unauthenticated, edge-cached.                                                                                                              |
-| `GET /api/snapshot`                            | The whole hub (~20 KB gzipped) in one payload, so a client never fetches numbers one at a time.                                                                                           |
-| `POST /api/research`                           | Legacy grounded Q&A over the Data Hub via Claude tool-use. It is frozen as the rollback endpoint. |
-| `POST /api/ask` *(planned)*                    | New bounded Ask CaribEcon path: shared provider roles, deterministic evidence, and deterministic citations. |
+| Endpoint                                         | Purpose                                                                                                     |
+| ------------------------------------------------ | ----------------------------------------------------------------------------------------------------------- |
+| `GET /api/indicator?country=&indicator=&year=` | One sourced value + provenance. Deterministic, unauthenticated, edge-cached.                                |
+| `GET /api/snapshot`                            | The whole hub (~20 KB gzipped) in one payload, so a client never fetches numbers one at a time.             |
+| `POST /api/research`                           | Legacy grounded Q&A over the Data Hub via Claude tool-use. It is frozen as the rollback endpoint.           |
+| `POST /api/ask` *(planned)*                  | New bounded Ask CaribEcon path: shared provider roles, deterministic evidence, and deterministic citations. |
 
 ### Excel add-in (`excel-addin/`)
 
@@ -131,15 +137,15 @@ A separate npm project (own `package.json`, webpack, deps) — not part of the A
 
 ### File ownership
 
-| Domain                      | Key files                                                                       |
-| --------------------------- | ------------------------------------------------------------------------------- |
-| Shell                       | `src/layouts/Shell.astro`, `src/components/shell/*`                         |
-| Design tokens               | `src/styles/tokens.css`, `src/styles/base.css`                              |
-| Data hub                    | `src/lib/dataHub.ts`, `src/lib/types.ts`, `data/*.json`                   |
-| Charts                      | `src/components/charts/*`                                                     |
-| Home                        | `src/pages/index.astro`, `src/components/home/*`                            |
-| Data                        | `src/pages/data.astro`, `src/components/data/*`                             |
-| News / Publications / Deals | `src/pages/<page>.astro`, `src/components/<page>/*`                         |
-| Public API                  | `api/indicator.ts`, `api/snapshot.ts`, `api/research.ts`, planned `api/ask.ts`                  |
+| Domain                      | Key files                                                                                           |
+| --------------------------- | --------------------------------------------------------------------------------------------------- |
+| Shell                       | `src/layouts/Shell.astro`, `src/components/shell/*`                                             |
+| Design tokens               | `src/styles/tokens.css`, `src/styles/base.css`                                                  |
+| Data hub                    | `src/lib/dataHub.ts`, `src/lib/types.ts`, `data/*.json`                                       |
+| Charts                      | `src/components/charts/*`                                                                         |
+| Home                        | `src/pages/index.astro`, `src/components/home/*`                                                |
+| Data                        | `src/pages/data.astro`, `src/components/data/*`                                                 |
+| News / Publications / Deals | `src/pages/<page>.astro`, `src/components/<page>/*`                                             |
+| Public API                  | `api/indicator.ts`, `api/snapshot.ts`, `api/research.ts`, planned `api/ask.ts`              |
 | AI / evidence services      | `src/lib/ai/*` (planned), `src/lib/indicators.ts`, `src/lib/news.ts`, `src/lib/askTools.ts` |
-| Excel add-in                | `excel-addin/src/{functions,taskpane,shared}/*`, `excel-addin/manifest.xml` |
+| Excel add-in                | `excel-addin/src/{functions,taskpane,shared}/*`, `excel-addin/manifest.xml`                     |
