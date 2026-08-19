@@ -531,13 +531,26 @@ select[multiple] {
   color: var(--ink-soft);
 }
 
-/* Citations traced to a specific EvidenceRef — the audit trail deserves the same weight as the
-   answer, so it's always shown, never a click-to-expand afterthought. */
+/* Citations traced to a specific EvidenceRef. Collapsed behind a native <details> (see
+   .msg__cites-toggle) so a long source list doesn't compete with the answer for space — the
+   count is always visible as the closed-state summary, full chips are one click away. */
+.msg__cites-toggle {
+  margin-top: 4px;
+}
+
+.msg__cites-toggle summary {
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  letter-spacing: 0.02em;
+  color: var(--teal);
+  cursor: pointer;
+}
+
 .msg__cites {
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
-  margin-top: 2px;
+  margin-top: 6px;
 }
 
 .msg__cite {

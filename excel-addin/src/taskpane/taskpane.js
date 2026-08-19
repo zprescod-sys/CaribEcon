@@ -1060,8 +1060,14 @@ function citeChipsHtml(claims, evidence) {
         ? `<a class="msg__cite" href="${esc(url)}" target="_blank" rel="noopener">${esc(label)}</a>`
         : `<span class="msg__cite">${esc(label)}</span>`,
     );
+  if (!chips.length) return '';
 
-  return chips.length ? `<div class="msg__cites">${chips.join('')}</div>` : '';
+  return `
+    <details class="msg__cites-toggle">
+      <summary>Used ${chips.length} source${chips.length === 1 ? '' : 's'}</summary>
+      <div class="msg__cites">${chips.join('')}</div>
+    </details>
+  `;
 }
 
 // The chat shell is shared by the explicit /api/ask path and the frozen /api/research rollback
