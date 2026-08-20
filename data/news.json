@@ -281,6 +281,329 @@
     "classifier": "heuristic"
   },
   {
+    "id": "kaieteur-news-00e53a91",
+    "title": "OMAI targets average US$1.2B in annual gold production for 18 years",
+    "source": "Kaieteur News",
+    "date": "2026-08-20",
+    "country": "GY",
+    "url": "https://kaieteurnewsonline.com/2026/08/20/omai-targets-average-us1-2b-in-annual-gold-production-for-18-years/",
+    "tags": [
+      "news",
+      "gold mining",
+      "gold production",
+      "guyana gold",
+      "omai"
+    ],
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "kaieteur-news-94f68f5c",
+    "title": "U.S. debt crosses $40 trillion threshold after doubling under Trump and Biden",
+    "source": "Kaieteur News",
+    "date": "2026-08-20",
+    "country": "GY",
+    "url": "https://kaieteurnewsonline.com/2026/08/20/u-s-debt-crosses-40-trillion-threshold-after-doubling-under-trump-and-biden/",
+    "tags": [
+      "news",
+      "biden",
+      "debt",
+      "threshold",
+      "trump",
+      "u.s"
+    ],
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "kaieteur-news-bfd16738",
+    "title": "GPL team visits Skeldon Energy Inc following acquisition from NICIL",
+    "source": "Kaieteur News",
+    "date": "2026-08-20",
+    "country": "GY",
+    "url": "https://kaieteurnewsonline.com/2026/08/20/gpl-team-visits-skeldon-energy-inc-following-acquisition-from-nicil/",
+    "tags": [
+      "news",
+      "delegation",
+      "gpl",
+      "kesh nandlall",
+      "leadership team",
+      "nicil"
+    ],
+    "category": "Energy",
+    "group": "Energy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "guyana-chronicle-d6c1b18f",
+    "title": "GPL removes over 220 illegal electricity connections",
+    "source": "Guyana Chronicle",
+    "date": "2026-08-20",
+    "country": "GY",
+    "url": "https://guyanachronicle.com/2026/08/20/gpl-removes-over-220-illegal-electricity-connections/",
+    "tags": [
+      "news"
+    ],
+    "category": "Energy",
+    "group": "Energy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "ttt-news-24aa1d4c",
+    "title": "Ministry Of Trade, Investment And Tourism Names New Board Of Bureau of Standards",
+    "source": "TTT News",
+    "date": "2026-08-20",
+    "country": "TT",
+    "url": "https://www.ttt.live/ministry-of-trade-investment-and-tourism-names-new-board-of-bureau-of-standards/?utm_source=rss&utm_medium=rss&utm_campaign=ministry-of-trade-investment-and-tourism-names-new-board-of-bureau-of-standards",
+    "tags": [
+      "news",
+      "trade and investment"
+    ],
+    "category": "Investment",
+    "group": "Investment",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "ttt-news-cc5b20e9",
+    "title": "Works Credit Union To Reopen On Monday After Salary Deal",
+    "source": "TTT News",
+    "date": "2026-08-20",
+    "country": "TT",
+    "url": "https://www.ttt.live/works-credit-union-to-reopen-on-monday-after-salary-deal/?utm_source=rss&utm_medium=rss&utm_campaign=works-credit-union-to-reopen-on-monday-after-salary-deal",
+    "tags": [
+      "community",
+      "labour",
+      "news"
+    ],
+    "category": "Labor",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "ttt-news-ff65dbd3",
+    "title": "Housing, Education Among Priorities For TTNNA Candidate Letitia Cox",
+    "source": "TTT News",
+    "date": "2026-08-20",
+    "country": "TT",
+    "url": "https://www.ttt.live/housing-education-among-priorities-for-ttnna-candidate-letitia-cox/?utm_source=rss&utm_medium=rss&utm_campaign=housing-education-among-priorities-for-ttnna-candidate-letitia-cox",
+    "tags": [
+      "health",
+      "labour",
+      "news"
+    ],
+    "category": "Infrastructure",
+    "group": "Investment",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "barbados-today-edc98ba6",
+    "title": "Poultry industry: T&T shortages unlikely here",
+    "source": "Barbados Today",
+    "date": "2026-08-20",
+    "country": "BB",
+    "url": "https://barbadostoday.bb/2026/08/20/poultry-industry-tt-shortages-unlikely-here/",
+    "tags": [
+      "local news",
+      "headline",
+      "headlines"
+    ],
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "barbados-today-9c7b4118",
+    "title": "Caribbean digital commerce falls behind North America – minister",
+    "source": "Barbados Today",
+    "date": "2026-08-20",
+    "country": "BB",
+    "url": "https://barbadostoday.bb/2026/08/20/caribbean-digital-commerce-falls-behind-north-america-minister/",
+    "tags": [
+      "business",
+      "local news",
+      "regional"
+    ],
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "jamaica-observer-25802b07",
+    "title": "Panama Canal to reduce shipping over El Nino-fueled drought",
+    "source": "Jamaica Observer",
+    "date": "2026-08-20",
+    "country": "JM",
+    "url": "https://www.jamaicaobserver.com/2026/08/20/panama-canal-reduce-shipping-el-nino-fueled-drought/",
+    "tags": [
+      "international news",
+      "latest news",
+      "drought",
+      "el nino",
+      "panama canal"
+    ],
+    "category": "Energy",
+    "group": "Energy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "jamaica-observer-2d31b7b3",
+    "title": "Caribbean MSMEs to benefit from new CDB-supported digital transformation initiative",
+    "source": "Jamaica Observer",
+    "date": "2026-08-20",
+    "country": "JM",
+    "url": "https://www.jamaicaobserver.com/2026/08/20/caribbean-msmes-benefit-new-cdb-supported-digital-transformation-initiative/",
+    "tags": [
+      "international news",
+      "latest news",
+      "regional",
+      "caribbean",
+      "cdb",
+      "msmes"
+    ],
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "jamaica-observer-1b89eae1",
+    "title": "Forex: $159.55 to one US dollar",
+    "source": "Jamaica Observer",
+    "date": "2026-08-20",
+    "country": "JM",
+    "url": "https://www.jamaicaobserver.com/2026/08/20/forex-159-55-one-us-dollar/",
+    "tags": [
+      "latest news",
+      "news",
+      "cad",
+      "forex",
+      "us"
+    ],
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "the-star-jamaica-eec28474",
+    "title": "JPS offers energy reduction tips",
+    "source": "The Star (Jamaica)",
+    "date": "2026-08-20",
+    "country": "JM",
+    "url": "https://jamaica-star.com/article/news/20260820/jps-offers-energy-reduction-tips",
+    "category": "Energy",
+    "group": "Energy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "starnieuws-97f1e4fc",
+    "title": "Olie-export stijgt fors tijdens VS-Iran akkoord, spanningen houden aan",
+    "source": "Starnieuws",
+    "date": "2026-08-20",
+    "country": "SR",
+    "url": "https://www.starnieuws.com/index.php/welcome/index/nieuwsitem/93501",
+    "category": "Energy",
+    "group": "Energy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "waterkant-44ae0e1e",
+    "title": "Man misbruikt ex-partner in pension en bedreigt haar met de dood",
+    "source": "Waterkant",
+    "date": "2026-08-20",
+    "country": "SR",
+    "url": "https://www.waterkant.net/suriname/2026/08/20/man-misbruikt-ex-partner-in-pension-en-bedreigt-haar-met-de-dood/#utm_source=rss&utm_medium=rss&utm_campaign=man-misbruikt-ex-partner-in-pension-en-bedreigt-haar-met-de-dood",
+    "tags": [
+      "justitie en politie",
+      "nieuws uit suriname",
+      "uitgelicht"
+    ],
+    "category": "Labor",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "st-kitts-nevis-observer-5ac6a790",
+    "title": "Great Britain:  British Weapons Jobs Rise By More Than 50% In A Year As Defence Investment Strengthens UK Industry",
+    "source": "St. Kitts-Nevis Observer",
+    "date": "2026-08-20",
+    "country": "KN",
+    "url": "https://www.thestkittsnevisobserver.com/united-states-british-weapons-jobs-rise-by-more-than-50-in-a-year-as-defence-investment-strengthens-uk-industry/",
+    "tags": [
+      "press releases",
+      "regional/international news"
+    ],
+    "category": "Investment",
+    "group": "Investment",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "st-kitts-nevis-observer-69d98fb2",
+    "title": "United States:  Mississippi Man Pleads Guilty To Evading $2M In Taxes",
+    "source": "St. Kitts-Nevis Observer",
+    "date": "2026-08-20",
+    "country": "KN",
+    "url": "https://www.thestkittsnevisobserver.com/united-states-mississippi-man-pleads-guilty-to-evading-2m-in-taxes/",
+    "tags": [
+      "press releases",
+      "regional/international news"
+    ],
+    "category": "Fiscal Policy",
+    "group": "Fiscal Policy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
     "id": "guyana-chronicle-55b9dae2",
     "title": "Guyana’s fifth FPSO to push oil output beyond 1 million barrels per day",
     "source": "Guyana Chronicle",
@@ -37076,210 +37399,5 @@
     ],
     "deal_status": "not_a_deal",
     "deal_type": null
-  },
-  {
-    "id": "jamaica-observer-db3ee3e9",
-    "title": "Samuda calls for accelerated global action on water, energy and sustainability at UN forum",
-    "source": "Jamaica Observer",
-    "date": "2026-07-15",
-    "country": "JM",
-    "url": "https://www.jamaicaobserver.com/2026/07/15/samuda-calls-accelerated-global-action-water-energy-sustainability-un-forum/",
-    "tags": [
-      "latest news",
-      "news",
-      "matthew samuda",
-      "un forum",
-      "un forum on sustainable development"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "jamaica-gleaner-a34771a5",
-    "title": "Land acquisition continues for Port Antonio Bypass",
-    "source": "Jamaica Gleaner",
-    "date": "2026-07-15",
-    "country": "JM",
-    "url": "http://jamaica-gleaner.com/article/news/20260715/land-acquisition-continues-port-antonio-bypass",
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "jamaica-gleaner-6a7453ee",
-    "title": "Gas prices up",
-    "source": "Jamaica Gleaner",
-    "date": "2026-07-15",
-    "country": "JM",
-    "url": "http://jamaica-gleaner.com/article/news/20260715/gas-prices",
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "jamaica-gleaner-d8d24625",
-    "title": "Image Plus to pay $620m for recent acquisitions",
-    "source": "Jamaica Gleaner",
-    "date": "2026-07-15",
-    "country": "JM",
-    "url": "http://jamaica-gleaner.com/article/business/20260715/image-plus-pay-620m-recent-acquisitions",
-    "deal_status": "completed",
-    "deal_type": "M&A"
-  },
-  {
-    "id": "jamaica-gleaner-4a15d58b",
-    "title": "Lee-Chin signs nuclear energy pact in Turkey",
-    "source": "Jamaica Gleaner",
-    "date": "2026-07-15",
-    "country": "JM",
-    "url": "http://jamaica-gleaner.com/article/business/20260715/lee-chin-signs-nuclear-energy-pact-turkey",
-    "deal_status": "pending",
-    "deal_type": "Other"
-  },
-  {
-    "id": "jamaica-gleaner-c3df069f",
-    "title": "PriceSmart to open distribution centre in Jamaica as retailer doubles island footprint to four clubs",
-    "source": "Jamaica Gleaner",
-    "date": "2026-07-15",
-    "country": "JM",
-    "url": "http://jamaica-gleaner.com/article/business/20260715/pricesmart-open-distribution-centre-jamaica-retailer-doubles-island",
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "jamaica-gleaner-f263b701",
-    "title": "Mailpac continues growth momentum",
-    "source": "Jamaica Gleaner",
-    "date": "2026-07-15",
-    "country": "JM",
-    "url": "http://jamaica-gleaner.com/article/business/20260715/mailpac-continues-growth-momentum",
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "breaking-belize-news-2f6cd877",
-    "title": "Climate Finance Unit hosts focus group to develop Belize Climate Investment Platform",
-    "source": "Breaking Belize News",
-    "date": "2026-07-15",
-    "country": "BZ",
-    "url": "https://www.breakingbelizenews.com/2026/07/15/climate-finance-unit-hosts-focus-group-to-develop-belize-climate-investment-platform/",
-    "tags": [
-      "community development",
-      "last news"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "breaking-belize-news-5c897990",
-    "title": "Ministry of Rural Transformation teams work on production wells in Southern Belize",
-    "source": "Breaking Belize News",
-    "date": "2026-07-15",
-    "country": "BZ",
-    "url": "https://www.breakingbelizenews.com/2026/07/15/ministry-of-rural-transformation-teams-work-on-production-wells-in-southern-belize/",
-    "tags": [
-      "community development",
-      "last news"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "st-lucia-times-00bc0f20",
-    "title": "Tax measures, citizenship changes and major infrastructure loans approved by Parliament",
-    "source": "St. Lucia Times",
-    "date": "2026-07-15",
-    "country": "LC",
-    "url": "https://stluciatimes.com/182067/2026/07/tax-measures-citizenship-changes-and-major-infrastructure-loans-approved-by-parliament/",
-    "tags": [
-      "headlines",
-      "politics & government",
-      "borrowing resolution",
-      "cdb loan",
-      "electricity act",
-      "house of assembly"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "st-lucia-times-6d210bf4",
-    "title": "Government maintains fuel and LPG prices",
-    "source": "St. Lucia Times",
-    "date": "2026-07-15",
-    "country": "LC",
-    "url": "https://stluciatimes.com/182051/2026/07/government-maintains-fuel-and-lpg-prices/",
-    "tags": [
-      "headlines",
-      "social",
-      "energy subsidy",
-      "fuel prices",
-      "gasoline price",
-      "kerosene subsidy"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "ziz-online-252252da",
-    "title": "Ministry Officials Tour BHS Construction With Stakeholders",
-    "source": "ZIZ Online",
-    "date": "2026-07-15",
-    "country": "KN",
-    "url": "https://zizonline.com/ministry-officials-tour-bhs-construction-with-stakeholders/",
-    "tags": [
-      "national",
-      "news"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "wic-news-455ab9b9",
-    "title": "Caribbean Airlines replaces Blue Waters with SM Jaleel as in-flight water supplier",
-    "source": "WIC News",
-    "date": "2026-07-15",
-    "country": "ALL",
-    "url": "https://wicnews.com/trinidad-tobago/caribbean-airlines-replaces-blue-waters-with-sm-jaleel-as-in-flight-water-supplier",
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "trinidad-express-ca8e9a15",
-    "title": "Central Bank charts digital payments roadmap to boost fintech growth",
-    "source": "Trinidad Express",
-    "date": "2026-07-15",
-    "country": "TT",
-    "url": "https://trinidadexpress.com/business/local/central-bank-charts-digital-payments-roadmap-to-boost-fintech-growth/article_1eaba076-405d-488a-bbaf-b4701d103ad3.html",
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "trinidad-express-662409ae",
-    "title": "IDB targets faster delivery  as it shapes new T&T strategy",
-    "source": "Trinidad Express",
-    "date": "2026-07-15",
-    "country": "TT",
-    "url": "https://trinidadexpress.com/business/local/idb-targets-faster-delivery-as-it-shapes-new-t-t-strategy/article_a3044694-5dd9-4131-8fb2-141fe426be34.html",
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "trinidad-express-0273a93e",
-    "title": "Strengthening trade and investment  between T&T and Canada",
-    "source": "Trinidad Express",
-    "date": "2026-07-15",
-    "country": "TT",
-    "url": "https://trinidadexpress.com/business/local/strengthening-trade-and-investment-between-t-t-and-canada/article_66c3334b-5726-4b68-b7d3-f81367963fe8.html",
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "jamaica-gleaner-659b79b8",
-    "title": "Image Plus pays $620m for recent acquisitions",
-    "source": "Jamaica Gleaner",
-    "date": "2026-07-15",
-    "country": "JM",
-    "url": "http://jamaica-gleaner.com/article/business/20260715/image-plus-pays-620m-recent-acquisitions",
-    "deal_status": "completed",
-    "deal_type": "M&A"
   }
 ]
