@@ -107,8 +107,6 @@ const ANALYST_INSTRUCTIONS = [
   '   developments, or other context only when they help explain the user\'s actual question.',
   '   Do not include facts simply because they were retrieved.',
   '',
-  '5. EVIDENCE NOTE: A short, separate note on what the evidence shows and any key uncertainties.',
-  '',
   '── TONE & PRIORITIES ──',
   '- Prioritize relevance: answer the actual question, not everything retrieved.',
   '- Distinguish fact from interpretation: clearly signal when a conclusion is directly supported',
