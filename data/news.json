@@ -1,5 +1,286 @@
 [
   {
+    "id": "guyana-chronicle-e33f59a0",
+    "title": "Guyana Development Bank to become operational in weeks –President Ali",
+    "source": "Guyana Chronicle",
+    "date": "2026-08-20",
+    "country": "GY",
+    "url": "https://guyanachronicle.com/2026/08/20/guyana-development-bank-to-become-operational-in-weeks-president-ali/",
+    "tags": [
+      "news"
+    ],
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "guyana-chronicle-a74c6949",
+    "title": "Public Works Ministry pushes timely, safe delivery of new community bridges",
+    "source": "Guyana Chronicle",
+    "date": "2026-08-20",
+    "country": "GY",
+    "url": "https://guyanachronicle.com/2026/08/20/public-works-ministry-pushes-timely-safe-delivery-of-new-community-bridges/",
+    "tags": [
+      "news"
+    ],
+    "category": "Infrastructure",
+    "group": "Investment",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "guyana-chronicle-2d2841e8",
+    "title": "New West Demerara Hospital taking shape as construction progresses",
+    "source": "Guyana Chronicle",
+    "date": "2026-08-20",
+    "country": "GY",
+    "url": "https://guyanachronicle.com/2026/08/20/new-west-demerara-hospital-taking-shape-as-construction-progresses/",
+    "tags": [
+      "news"
+    ],
+    "category": "Infrastructure",
+    "group": "Investment",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "guyana-chronicle-daf0136d",
+    "title": "Minister Mustapha commits to addressing ECD livestock farmers’ woes",
+    "source": "Guyana Chronicle",
+    "date": "2026-08-20",
+    "country": "GY",
+    "url": "https://guyanachronicle.com/2026/08/20/minister-mustapha-commits-to-addressing-ecd-livestock-farmers-woes/",
+    "tags": [
+      "news"
+    ],
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "ttt-news-f6e43d46",
+    "title": "Keeping It Green – Tropikist Steps Up Environmental Efforts With Farm-To-Table Initiative",
+    "source": "TTT News",
+    "date": "2026-08-20",
+    "country": "TT",
+    "url": "https://www.ttt.live/keeping-it-green-tropikist-steps-up-environmental-efforts-with-farm-to-table-initiative/?utm_source=rss&utm_medium=rss&utm_campaign=keeping-it-green-tropikist-steps-up-environmental-efforts-with-farm-to-table-initiative",
+    "tags": [
+      "features",
+      "keeping it green"
+    ],
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "jamaica-observer-9c9a1d0c",
+    "title": "Assault on tax dodgers!",
+    "source": "Jamaica Observer",
+    "date": "2026-08-20",
+    "country": "JM",
+    "url": "https://www.jamaicaobserver.com/2026/08/20/assault-tax-dodgers/",
+    "tags": [
+      "news"
+    ],
+    "category": "Fiscal Policy",
+    "group": "Fiscal Policy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "jamaica-observer-289c787e",
+    "title": "TEF, UTech sign tourism agreement",
+    "source": "Jamaica Observer",
+    "date": "2026-08-20",
+    "country": "JM",
+    "url": "https://www.jamaicaobserver.com/2026/08/19/tef-utech-sign-tourism-agreement/",
+    "tags": [
+      "latest news",
+      "news",
+      "tourism",
+      "tourism enhancement fund",
+      "utech"
+    ],
+    "category": "Tourism",
+    "group": "Trade & Tourism",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "eyewitness-news-4b37083a",
+    "title": "PM Davis Defends Energy Minister’s Silence As BPL Crisis Deepens",
+    "source": "Eyewitness News",
+    "date": "2026-08-20",
+    "country": "BS",
+    "url": "https://ewnews.com/pm-davis-defends-energy-ministers-silence-as-bpl-crisis-deepens/?utm_source=rss&utm_medium=rss&utm_campaign=pm-davis-defends-energy-ministers-silence-as-bpl-crisis-deepens",
+    "tags": [
+      "local",
+      "newscasts",
+      "videos"
+    ],
+    "category": "Energy",
+    "group": "Energy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "eyewitness-news-e702f7c3",
+    "title": "Vote-Buying Claims Renew Calls For Campaign Finance Reform",
+    "source": "Eyewitness News",
+    "date": "2026-08-20",
+    "country": "BS",
+    "url": "https://ewnews.com/vote-buying-claims-renew-calls-for-campaign-finance-reform/?utm_source=rss&utm_medium=rss&utm_campaign=vote-buying-claims-renew-calls-for-campaign-finance-reform",
+    "tags": [
+      "local",
+      "newscasts",
+      "videos"
+    ],
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "starnieuws-9d28219d",
+    "title": "Abiamofo: SWM niet klaar voor olie- en gasontwikkeling",
+    "source": "Starnieuws",
+    "date": "2026-08-20",
+    "country": "SR",
+    "url": "https://www.starnieuws.com/index.php/welcome/index/nieuwsitem/93496",
+    "category": "Energy",
+    "group": "Energy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "st-kitts-nevis-observer-8c0e0ed3",
+    "title": "ST. VINCENT-FINANCE-Taiwan to help establish national development bank in St. Vincent and the Grenadines",
+    "source": "St. Kitts-Nevis Observer",
+    "date": "2026-08-20",
+    "country": "KN",
+    "url": "https://www.thestkittsnevisobserver.com/st-vincent-finance-taiwan-to-help-establish-national-development-bank-in-st-vincent-and-the-grenadines/",
+    "tags": [
+      "regional"
+    ],
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "st-kitts-nevis-observer-5c71dc3f",
+    "title": "St. Vincent: Government holding talks on multi-million debt loan",
+    "source": "St. Kitts-Nevis Observer",
+    "date": "2026-08-20",
+    "country": "KN",
+    "url": "https://www.thestkittsnevisobserver.com/st-vincent-government-holding-talks-on-multi-million-debt-loan/",
+    "tags": [
+      "regional"
+    ],
+    "category": "Banking",
+    "group": "Finance",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "st-kitts-nevis-observer-2836097a",
+    "title": "Great Britain:  PM Orders Crackdown On The Criminal Gangs Profiting From Illegal Waste And Blighting Communities",
+    "source": "St. Kitts-Nevis Observer",
+    "date": "2026-08-20",
+    "country": "KN",
+    "url": "https://www.thestkittsnevisobserver.com/united-states-pm-orders-crackdown-on-the-criminal-gangs-profiting-from-illegal-waste-and-blighting-communities/",
+    "tags": [
+      "press releases",
+      "regional/international news"
+    ],
+    "category": "Corporate",
+    "group": "Finance",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "cayman-compass-77040204",
+    "title": "CIMPA Next GEN event inspires Cayman’s future marketing leaders",
+    "source": "Cayman Compass",
+    "date": "2026-08-20",
+    "country": "KY",
+    "url": "https://www.caymancompass.com/2026/08/20/cimpa-next-gen-event-inspires-caymans-future-marketing-leaders/",
+    "tags": [
+      "local",
+      "cayman islands marketing professionals association (cimpa)",
+      "cimpa next gen"
+    ],
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "bvi-news-4a126505",
+    "title": "Premier to lead BVI trade mission to India",
+    "source": "BVI News",
+    "date": "2026-08-20",
+    "country": "VG",
+    "url": "https://bvinews.com/premier-to-lead-bvi-trade-mission-to-india/",
+    "tags": [
+      "all news"
+    ],
+    "category": "Trade",
+    "group": "Trade & Tourism",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "bvi-news-45a50020",
+    "title": "Electricity hike is a short-term fix that will cause hardship",
+    "source": "BVI News",
+    "date": "2026-08-20",
+    "country": "VG",
+    "url": "https://bvinews.com/electricity-hike-is-a-short-term-fix-that-will-cause-hardship/",
+    "tags": [
+      "all news"
+    ],
+    "category": "Energy",
+    "group": "Energy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
     "id": "guyana-chronicle-55b9dae2",
     "title": "Guyana’s fifth FPSO to push oil output beyond 1 million barrels per day",
     "source": "Guyana Chronicle",
@@ -690,6 +971,48 @@
     ],
     "category": "Infrastructure",
     "group": "Investment",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "barbados-today-e6417785",
+    "title": "Economist flags potential policyholder impact after ICBL investment diluted",
+    "source": "Barbados Today",
+    "date": "2026-08-19",
+    "country": "BB",
+    "url": "https://barbadostoday.bb/2026/08/19/economist-flags-potential-policyholder-impact-after-icbl-investment-diluted/",
+    "tags": [
+      "business",
+      "economy",
+      "local news",
+      "headline",
+      "headlines"
+    ],
+    "category": "Investment",
+    "group": "Investment",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "jamaica-observer-cdb6dad1",
+    "title": "Gas prices up $1.43, $.25, diesel up $4.50",
+    "source": "Jamaica Observer",
+    "date": "2026-08-19",
+    "country": "JM",
+    "url": "https://www.jamaicaobserver.com/2026/08/19/gas-prices-1-43-2-diesel-4-50/",
+    "tags": [
+      "latest news",
+      "news",
+      "gasoline",
+      "oil",
+      "prices"
+    ],
+    "category": "Energy",
+    "group": "Energy",
     "decision": "publish",
     "confidence": "high",
     "reason": "Heuristic: displayable.",
@@ -36958,282 +37281,5 @@
     "url": "http://jamaica-gleaner.com/article/business/20260715/image-plus-pays-620m-recent-acquisitions",
     "deal_status": "completed",
     "deal_type": "M&A"
-  },
-  {
-    "id": "starnieuws-41760f3d",
-    "title": "Private sector wil onafhankelijke Local Content Council voor snellere uitvoering oliebeleid",
-    "source": "Starnieuws",
-    "date": "2026-07-15",
-    "country": "SR",
-    "url": "https://www.starnieuws.com/index.php/welcome/index/nieuwsitem/92976",
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "st-kitts-nevis-observer-aae32fdc",
-    "title": "United States:  Governor Abbott Announces HHSC Referral In Birth Tourism Investigation",
-    "source": "St. Kitts-Nevis Observer",
-    "date": "2026-07-15",
-    "country": "KN",
-    "url": "https://www.thestkittsnevisobserver.com/united-states-governor-abbott-announces-hhsc-referral-in-birth-tourism-investigation/",
-    "tags": [
-      "press releases",
-      "regional/international news"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "st-kitts-nevis-observer-86f1502c",
-    "title": "United States:  Treasury Targets Global Network Procuring Weapons For Iranian Regime",
-    "source": "St. Kitts-Nevis Observer",
-    "date": "2026-07-15",
-    "country": "KN",
-    "url": "https://www.thestkittsnevisobserver.com/united-states-treasury-targets-global-network-procuring-weapons-for-iranian-regime/",
-    "tags": [
-      "press releases",
-      "regional/international news"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "st-kitts-nevis-observer-c442d25c",
-    "title": "United States:  Redi-Bag USA And CEO Agree To Pay $7.3M To Settle False Claims Act Allegations Relating To Evaded Customs Duties",
-    "source": "St. Kitts-Nevis Observer",
-    "date": "2026-07-15",
-    "country": "KN",
-    "url": "https://www.thestkittsnevisobserver.com/united-states-redi-bag-usa-and-ceo-agree-to-pay-7-3m-to-settle-false-claims-act-allegations-relating-to-evaded-customs-duties/",
-    "tags": [
-      "press releases",
-      "regional/international news"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "st-kitts-nevis-observer-3a849798",
-    "title": "United States:  The United States Leverages American Private Sector To Save Lives And Treat Global Malnutrition",
-    "source": "St. Kitts-Nevis Observer",
-    "date": "2026-07-15",
-    "country": "KN",
-    "url": "https://www.thestkittsnevisobserver.com/united-states-the-united-states-leverages-american-private-sector-to-save-lives-and-treat-global-malnutrition/",
-    "tags": [
-      "press releases",
-      "regional/international news"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "trinidad-express-fcf5a180",
-    "title": "T&T’s AI future: Opportunity or risk?",
-    "source": "Trinidad Express",
-    "date": "2026-07-15",
-    "country": "TT",
-    "url": "https://trinidadexpress.com/business/local/t-t-s-ai-future-opportunity-or-risk/article_efd0721e-4775-45da-95eb-96b4ce8b80ad.html",
-    "category": "Technology",
-    "group": "Macro",
-    "decision": "publish",
-    "confidence": "high",
-    "reason": "T&T artificial intelligence policy and economic opportunity/risk discussion; digital economy strategy.",
-    "classifier": "llm",
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "trinidad-express-797ddf22",
-    "title": "How Aurora Bitayson built  a brand from family tradition",
-    "source": "Trinidad Express",
-    "date": "2026-07-15",
-    "country": "TT",
-    "url": "https://trinidadexpress.com/business/local/how-aurora-bitayson-built-a-brand-from-family-tradition/article_1a0c5ce3-a7b3-4ad2-acaa-154631c1676a.html",
-    "category": "Corporate",
-    "group": "Finance",
-    "decision": "publish",
-    "confidence": "medium",
-    "reason": "Profile of entrepreneur building brand from family tradition; business development and entrepreneurship.",
-    "classifier": "llm",
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "trinidad-express-87d46c97",
-    "title": "T&T must decide its data centre future",
-    "source": "Trinidad Express",
-    "date": "2026-07-15",
-    "country": "TT",
-    "url": "https://trinidadexpress.com/business/local/t-t-must-decide-its-data-centre-future/article_d905e45a-f206-4109-8156-4542838bcc53.html",
-    "category": "Technology",
-    "group": "Macro",
-    "decision": "publish",
-    "confidence": "high",
-    "reason": "T&T data-centre policy and infrastructure strategy; digital economy and technology investment.",
-    "classifier": "llm",
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "cayman-compass-6137e8cd",
-    "title": "Cayman fund registrations continue to climb",
-    "source": "Cayman Compass",
-    "date": "2026-07-15",
-    "country": "KY",
-    "url": "https://www.caymancompass.com/2026/07/15/cayman-fund-registrations-continue-to-climb-2/",
-    "tags": [
-      "business",
-      "featured local home page",
-      "finance",
-      "cayman finance",
-      "cayman islands monetary authority (cima)",
-      "private funds"
-    ],
-    "category": "Banking",
-    "group": "Finance",
-    "decision": "publish",
-    "confidence": "high",
-    "reason": "Cayman private-fund registrations growth; financial-services market and sector activity.",
-    "classifier": "llm",
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "kaieteur-news-d6fec6a0",
-    "title": "Govt. still silent on full 50% profits in Exxon deal… Guyana raked in US$1.2B from oil in 2nd quarter",
-    "source": "Kaieteur News",
-    "date": "2026-07-14",
-    "country": "GY",
-    "url": "https://kaieteurnewsonline.com/2026/07/14/govt-still-silent-on-full-50-profits-in-exxon-deal-guyana-raked-in-us1-2b-from-oil-in-2nd-quarter/",
-    "tags": [
-      "news",
-      "guyana oil",
-      "natural resource fund",
-      "oil money"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "kaieteur-news-34e367db",
-    "title": "U.S. reinstates blockade of Iranian shipping in Strait of Hormuz after new clashes",
-    "source": "Kaieteur News",
-    "date": "2026-07-14",
-    "country": "GY",
-    "url": "https://kaieteurnewsonline.com/2026/07/14/u-s-reinstates-blockade-of-iranian-shipping-in-strait-of-hormuz-after-new-clashes/",
-    "tags": [
-      "news",
-      "blockade",
-      "donald trump",
-      "​iranian shipping",
-      "strait of hormuz"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "kaieteur-news-2f0b7f06",
-    "title": "Ghanaian firm given final deadline to pay US$17M signing bonus for oil block",
-    "source": "Kaieteur News",
-    "date": "2026-07-14",
-    "country": "GY",
-    "url": "https://kaieteurnewsonline.com/2026/07/14/ghanaian-firm-given-final-deadline-to-pay-us17m-signing-bonus-for-oil-block/",
-    "tags": [
-      "news",
-      "cybele energy",
-      "natural resources fund",
-      "offshore guyana",
-      "oil block",
-      "signing bonus"
-    ],
-    "deal_status": "pending",
-    "deal_type": "FDI"
-  },
-  {
-    "id": "kaieteur-news-e6aa9596",
-    "title": "PUC flags GWI’s unsustainable finances, $13.4B lost through water leaks",
-    "source": "Kaieteur News",
-    "date": "2026-07-14",
-    "country": "GY",
-    "url": "https://kaieteurnewsonline.com/2026/07/14/puc-flags-gwis-unsustainable-finances-13-4b-lost-through-water-leaks/",
-    "tags": [
-      "news",
-      "annual report",
-      "financial pressure",
-      "gwi",
-      "public utilities commission",
-      "puc"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "kaieteur-news-2337647c",
-    "title": "Canadian firms working through final conditions to close US$2.2B deal for tier-one gold mining hub in Guyana",
-    "source": "Kaieteur News",
-    "date": "2026-07-14",
-    "country": "GY",
-    "url": "https://kaieteurnewsonline.com/2026/07/14/canadian-firms-working-through-final-conditions-to-close-us2-2b-deal-for-tier-one-gold-mining-hub-in-guyana/",
-    "tags": [
-      "news",
-      "g mining ventures",
-      "g2 goldfields inc.",
-      "gold mining",
-      "guyana gold",
-      "tier-one gold mining hub"
-    ],
-    "deal_status": "pending",
-    "deal_type": "FDI"
-  },
-  {
-    "id": "guyana-chronicle-fe4d6ad9",
-    "title": "Imported cattle safely, comfortably housed at Ebini facility",
-    "source": "Guyana Chronicle",
-    "date": "2026-07-14",
-    "country": "GY",
-    "url": "https://guyanachronicle.com/2026/07/14/imported-cattle-safely-comfortably-housed-at-ebini-facility/",
-    "tags": [
-      "news"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "guyana-chronicle-341f296e",
-    "title": "Bartica now home to Banks DIH’s seventh Demico Qik Serv",
-    "source": "Guyana Chronicle",
-    "date": "2026-07-14",
-    "country": "GY",
-    "url": "https://guyanachronicle.com/2026/07/14/bartica-now-home-to-banks-dihs-seventh-demico-qik-serv/",
-    "tags": [
-      "news"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "guyana-chronicle-810e5ef9",
-    "title": "Labour Ministry hosts National Youth Skills Forum, Expo this Wednesday",
-    "source": "Guyana Chronicle",
-    "date": "2026-07-14",
-    "country": "GY",
-    "url": "https://guyanachronicle.com/2026/07/14/labour-ministry-hosts-national-youth-skills-forum-expo-this-wednesday/",
-    "tags": [
-      "news"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "guyana-chronicle-bfa6f6af",
-    "title": "LCDS-funded eco-lodges creating jobs, supporting Mainstay/Whyaka’s community development",
-    "source": "Guyana Chronicle",
-    "date": "2026-07-14",
-    "country": "GY",
-    "url": "https://guyanachronicle.com/2026/07/14/lcds-funded-eco-lodges-creating-jobs-supporting-mainstay-whyakas-community-development/",
-    "tags": [
-      "news"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
   }
 ]
