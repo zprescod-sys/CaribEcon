@@ -1,9 +1,13 @@
 /* executeResearchPlan() — the deterministic executor (docs plan §2d/§2h; ARCHITECTURE.md §3.2).
  *
- * A plain loop over a VALIDATED ResearchPlan's steps, dispatching each to the existing
- * deterministic tools (getSeriesEvidence/getSelectedCountrySeries/searchNews, all from
- * askTools.ts) or the new Tavily-backed facade (searchWeb/extractWeb, webEvidence.ts),
- * accumulating into the same EvidencePackage shape buildEvidencePackage() already produces.
+ * Runs a VALIDATED ResearchPlan's steps with maximum safe CONCURRENCY (runStepsConcurrently,
+ * below), not one at a time — dispatching each to the existing deterministic tools
+ * (getSeriesEvidence/getSelectedCountrySeries/searchNews, all from askTools.ts) or the Tavily-
+ * backed facade (searchWeb/extractWeb, webEvidence.ts), accumulating into the same
+ * EvidencePackage shape buildEvidencePackage() already produces. Only extract_web has a real data
+ * dependency (see point 2 below); every other step type — including two separate search_news
+ * steps' own concurrent news-digest sub-batches — now runs together rather than queued behind
+ * each other, which is most of where this function's wall-clock latency used to go.
  *
  * The caller (research.ts, wired in a later stage) is expected to call validateResearchPlan()
  * BEFORE this function — every country/indicator/onStep name here is assumed already resolved.
@@ -11,30 +15,35 @@
  * a runtime-budget/safety concern rather than a validation concern:
  *
  *   1. Tavily call budgets (MAX_TAVILY_SEARCHES, MAX_TAVILY_EXTRACTS) — validateResearchPlan only
- *      caps total plan steps (MAX_PLAN_STEPS), not how many of them are Tavily-backed.
+ *      caps total plan steps (MAX_PLAN_STEPS), not how many of them are Tavily-backed. Budget
+ *      consumption order is unaffected by running steps concurrently — see runStepsConcurrently's
+ *      own comment for why the check-then-spend pairs still resolve in exact plan order.
  *   2. extract_web authorization — THE CENTRAL SAFETY RULE. validateResearchPlan already checks
  *      that an extract_web step's onStep names a real, earlier search_web step in the STATIC plan
  *      (structural/cascading check, done once, before execution). This executor does NOT trust
  *      that check transitively. It re-derives authorization from its OWN runtime state: a
  *      `Map<stepId, WebEvidence[]>` populated ONLY as a search_web step is actually dispatched and
  *      actually returns results, in THIS execution run. An extract_web step may only extract URLs
- *      that are already sitting in that map under its own onStep id. If onStep is not a key in the
- *      map — because the referenced step never ran (bad plan, static check bypassed or a hand-
- *      crafted plan handed to this function directly), was skipped for budget reasons, or returned
- *      zero results — extractWeb() is never called at all; a RetrievalMiss is recorded instead.
- *      This means a plan object assembled by hand (skipping validateResearchPlan entirely, as a
- *      test does) genuinely cannot trigger an unauthorized Tavily Extract call: there is no code
- *      path from "extract_web step present" to "extractWeb() invoked" that does not pass through
- *      a real, already-populated map entry keyed by that exact onStep id.
+ *      that are already sitting in that map under its own onStep id — and runStepsConcurrently
+ *      makes it genuinely WAIT for that step to finish first, never just check-and-hope. If onStep
+ *      is not a key in the map once that wait resolves — because the referenced step never ran
+ *      (bad plan, static check bypassed or a hand-crafted plan handed to this function directly),
+ *      was skipped for budget reasons, or returned zero results — extractWeb() is never called at
+ *      all; a RetrievalMiss is recorded instead. This means a plan object assembled by hand
+ *      (skipping validateResearchPlan entirely, as a test does) genuinely cannot trigger an
+ *      unauthorized Tavily Extract call: there is no code path from "extract_web step present" to
+ *      "extractWeb() invoked" that does not pass through a real, already-populated map entry keyed
+ *      by that exact onStep id.
  *
  * News-digest side path (§2h, NOT Tavily): immediately after a search_news step returns results,
  * the top MAX_NEWS_DIGESTS of THIS step's own results (that carry a real http(s) url) are fetched
- * and summarized CONCURRENTLY (Promise.all) via fetchArticleText() (newsArticleFetch.ts, a plain
- * fetch — never Tavily) and summarizeArticle() (the 'newsExtract' role, fail-soft — returns null
- * on any failure). A fetch that fails is simply skipped (no WebEvidence emitted for that URL); a
- * summary that fails still keeps the real fetched text, with `extract.summary: null`. This path
- * has its own independent budget (MAX_NEWS_DIGESTS, per search_news step) and never touches
- * MAX_TAVILY_EXTRACTS.
+ * and enriched CONCURRENTLY (Promise.all) via fetchArticleText() (newsArticleFetch.ts, a plain
+ * fetch — never Tavily) and extractArticleInsights() (the 'newsExtract' role, fail-soft — returns
+ * null on any failure). A fetch that fails is simply skipped (no WebEvidence emitted for that
+ * URL); an extraction that fails still keeps the real fetched text, with `extract.insights: null`.
+ * This path has its own independent budget (MAX_NEWS_DIGESTS, per search_news step) and never
+ * touches MAX_TAVILY_EXTRACTS. Two search_news steps' digest batches now run concurrently WITH
+ * each other too (runStepsConcurrently), not just internally within one step.
  *
  * One optional re-plan: if any misses remain after the first pass, plan() is called ONCE more
  * with a synthetic follow-up question describing only the misses (never the evidence gathered so
@@ -288,9 +297,47 @@ export async function executeResearchPlan(
     }
   }
 
-  for (const step of researchPlan.steps) {
-    await runStep(step);
+  /* Runs a batch of steps with maximum safe concurrency instead of one-at-a-time. Only extract_web
+   * has a real data dependency — on the search_web step it names via onStep (see this file's own
+   * "extract_web authorization" header section) — so every other step type starts immediately,
+   * together. This is what took execute() from serial (e.g. two search_news steps' own concurrent
+   * news-digest sub-batches running one after the other) to genuinely concurrent (both digest
+   * batches, get_series, and search_web all running at once); only extract_web still waits, and
+   * only for the one step it is actually authorized by.
+   *
+   * Correctness under concurrency, argued once here rather than at every call site:
+   *   - `steps.map()` runs its callback synchronously, in array order. Calling an async function
+   *     also runs its body SYNCHRONOUSLY up to its first await. So every step's synchronous
+   *     prefix — executedSignatures.add(), the searchCalls/extractBudget check-then-mutate pairs,
+   *     which all happen before their own first `await` inside runStep() — still executes in
+   *     exact plan order, one full prefix at a time, before the next step's prefix begins. Budget
+   *     consumption order is therefore unchanged from strictly sequential execution; only the
+   *     slow I/O after each prefix (Tavily calls, article fetches, model calls) now overlaps.
+   *   - `stepPromises.set(step.id, promise)` happens only AFTER that step's own synchronous
+   *     prefix has run (including its own onStep lookup, if it's an extract_web step) — so a step
+   *     can never see itself in the map, and an extract_web step's onStep lookup only ever finds
+   *     an earlier step's promise, exactly matching validateResearchPlan's "onStep must name an
+   *     earlier step" invariant. An onStep naming a step id this batch never ran (a hand-crafted
+   *     plan, or a real step of the wrong tool) finds nothing here, awaits nothing, and falls
+   *     through to runStep()'s own searchWebResultsByStep authorization check exactly as before —
+   *     this function only ever adds a wait; it never weakens what that check allows. */
+  async function runStepsConcurrently(steps: ResearchStep[]): Promise<void> {
+    const stepPromises = new Map<string, Promise<void>>();
+    const promises = steps.map(step => {
+      const promise = (async () => {
+        if (step.tool === 'extract_web') {
+          const dep = stepPromises.get(step.onStep);
+          if (dep) await dep;
+        }
+        await runStep(step);
+      })();
+      stepPromises.set(step.id, promise);
+      return promise;
+    });
+    await Promise.all(promises);
   }
+
+  await runStepsConcurrently(researchPlan.steps);
 
   // ── One optional re-plan ──────────────────────────────────────────────────────────────────
   if (pkg.misses.length > 0) {
@@ -317,9 +364,7 @@ export async function executeResearchPlan(
       searchWebResultsByStep.clear();
 
       const newSteps = validatedReplan.steps.filter(s => !executedSignatures.has(stepSignature(s)));
-      for (const step of newSteps) {
-        await runStep(step);
-      }
+      await runStepsConcurrently(newSteps);
     } catch {
       // plan() throws PlanNotConfiguredError/PlanParseError when unconfigured or unparseable.
       // The re-plan is optional enrichment (docs plan §2d) — swallow and keep the first pass's
