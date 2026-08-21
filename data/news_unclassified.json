@@ -1,5 +1,24 @@
 [
   {
+    "id": "guyana-chronicle-733ccdce",
+    "title": "Gov’t welcomes arrival of fifth FPSO",
+    "source": "Guyana Chronicle",
+    "date": "2026-08-21",
+    "country": "GY",
+    "url": "https://guyanachronicle.com/2026/08/21/govt-welcomes-arrival-of-fifth-fpso/",
+    "tags": [
+      "news"
+    ],
+    "category": "",
+    "group": "Energy",
+    "decision": "review",
+    "confidence": "low",
+    "reason": "Recognized editorial edge-case vocabulary; suggested Energy.",
+    "classifier": "heuristic",
+    "approved": false,
+    "suggestedCategory": "Energy"
+  },
+  {
     "id": "ttt-news-41c7ab5e",
     "title": "TSTT Announces Change In Executive Leadership: Reza Hosein Appointed Acting CEO",
     "source": "TTT News",

@@ -469,6 +469,500 @@
     "classifier": "heuristic"
   },
   {
+    "id": "kaieteur-news-656a1ef2",
+    "title": "Govt. will seek expert advice on financing of future Exxon projects",
+    "source": "Kaieteur News",
+    "date": "2026-08-21",
+    "country": "GY",
+    "url": "https://kaieteurnewsonline.com/2026/08/21/govt-will-seek-expert-advice-on-financing-of-future-exxon-projects/",
+    "tags": [
+      "news",
+      "exxon",
+      "oil discovery",
+      "oil profits",
+      "psa",
+      "stabroek block"
+    ],
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "kaieteur-news-1b291d83",
+    "title": "Canadian firm secures option to acquire 15,000 acres gold property in Reg. 1 from Russian company",
+    "source": "Kaieteur News",
+    "date": "2026-08-21",
+    "country": "GY",
+    "url": "https://kaieteurnewsonline.com/2026/08/21/canadian-firm-secures-option-to-acquire-15000-acres-gold-property-in-reg-1-from-russian-company/",
+    "tags": [
+      "news",
+      "gold mining",
+      "guyana gold",
+      "matthews ridge property",
+      "xau resources inc.",
+      "xau’s noseno gold project"
+    ],
+    "category": "Investment",
+    "group": "Investment",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "kaieteur-news-4861d9fc",
+    "title": "‘Change your eating habits’ – Pres. Ali blames citizens lifestyle for rising cost of living",
+    "source": "Kaieteur News",
+    "date": "2026-08-21",
+    "country": "GY",
+    "url": "https://kaieteurnewsonline.com/2026/08/21/change-your-eating-habits-pres-ali-blames-citizens-lifestyle-for-rising-cost-of-living/",
+    "tags": [
+      "news",
+      "cost-of-living",
+      "eating habits",
+      "soaring prices",
+      "supermarkets"
+    ],
+    "category": "Inflation",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "kaieteur-news-a89a8bd2",
+    "title": "Hotels urged to buy more Guyanese produce",
+    "source": "Kaieteur News",
+    "date": "2026-08-21",
+    "country": "GY",
+    "url": "https://kaieteurnewsonline.com/2026/08/21/hotels-urged-to-buy-more-guyanese-produce/",
+    "tags": [
+      "news",
+      "guyanese produce",
+      "hotels"
+    ],
+    "category": "Tourism",
+    "group": "Trade & Tourism",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "kaieteur-news-0c4279b6",
+    "title": "Guyana has the oil; does it have the literary ambition?",
+    "source": "Kaieteur News",
+    "date": "2026-08-21",
+    "country": "GY",
+    "url": "https://kaieteurnewsonline.com/2026/08/21/guyana-has-the-oil-does-it-have-the-literary-ambition/",
+    "tags": [
+      "letters",
+      "guyana oil",
+      "literary ambition",
+      "rajat kanti",
+      "wilson harris"
+    ],
+    "category": "Energy",
+    "group": "Energy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "kaieteur-news-4f7d14dd",
+    "title": "Guyana must now claim its full oil dividend",
+    "source": "Kaieteur News",
+    "date": "2026-08-21",
+    "country": "GY",
+    "url": "https://kaieteurnewsonline.com/2026/08/21/guyana-must-now-claim-its-full-oil-dividend/",
+    "tags": [
+      "letters",
+      "albert baldeo",
+      "exxonmobil",
+      "oil dividend"
+    ],
+    "category": "Energy",
+    "group": "Energy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "guyana-chronicle-8086e5fa",
+    "title": "Ambassador Rodrigues-Birkett takes lead in second UN Secretary-General straw poll —edges ahead of Grynspan as race for top job tightens",
+    "source": "Guyana Chronicle",
+    "date": "2026-08-21",
+    "country": "GY",
+    "url": "https://guyanachronicle.com/2026/08/21/ambassador-rodrigues-birkett-takes-lead-in-second-un-secretary-general-straw-poll-edges-ahead-of-grynspan-as-race-for-top-job-tightens/",
+    "tags": [
+      "news"
+    ],
+    "category": "Labor",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "ttt-news-3ca9c884",
+    "title": "Cipriani College Highlights Skills Training For Changing Labour Market",
+    "source": "TTT News",
+    "date": "2026-08-21",
+    "country": "TT",
+    "url": "https://www.ttt.live/cipriani-college-highlights-skills-training-for-changing-labour-market/?utm_source=rss&utm_medium=rss&utm_campaign=cipriani-college-highlights-skills-training-for-changing-labour-market",
+    "tags": [
+      "community",
+      "education",
+      "labour",
+      "news"
+    ],
+    "category": "Labor",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "jamaica-observer-4db6141a",
+    "title": "Forex: $159.39 to one US dollar",
+    "source": "Jamaica Observer",
+    "date": "2026-08-21",
+    "country": "JM",
+    "url": "https://www.jamaicaobserver.com/2026/08/21/forex-159-39-one-us-dollar/",
+    "tags": [
+      "latest news",
+      "news",
+      "forex",
+      "us dollar"
+    ],
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "jamaica-observer-dfb534d4",
+    "title": "Airports Authority refutes claim NMIA runway extension project causing seawater ingress in Port Royal",
+    "source": "Jamaica Observer",
+    "date": "2026-08-21",
+    "country": "JM",
+    "url": "https://www.jamaicaobserver.com/2026/08/21/airports-authority-refutes-claim-nmia-runway-extension-project-causing-seawater-ingress-port-royal/",
+    "tags": [
+      "latest news",
+      "news",
+      "aaj",
+      "airports authority of jamaica",
+      "nmia",
+      "norman manley international airport"
+    ],
+    "category": "Trade",
+    "group": "Trade & Tourism",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "jamaica-gleaner-2df1085d",
+    "title": "Alibaba quarterly profit drops 75% as AI investment spending grows",
+    "source": "Jamaica Gleaner",
+    "date": "2026-08-21",
+    "country": "JM",
+    "url": "http://jamaica-gleaner.com/article/business/20260821/alibaba-quarterly-profit-drops-75-ai-investment-spending-grows",
+    "category": "Investment",
+    "group": "Investment",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "jamaica-gleaner-2dba808c",
+    "title": "Higher yields in bond market and drop for Walmart drag US stocks lower",
+    "source": "Jamaica Gleaner",
+    "date": "2026-08-21",
+    "country": "JM",
+    "url": "http://jamaica-gleaner.com/article/business/20260821/higher-yields-bond-market-and-drop-walmart-drag-us-stocks-lower",
+    "category": "Debt",
+    "group": "Fiscal Policy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "eyewitness-news-81dc1bc5",
+    "title": "Downtown Businesses Left in the Dark as Power Crisis Deepens",
+    "source": "Eyewitness News",
+    "date": "2026-08-21",
+    "country": "BS",
+    "url": "https://ewnews.com/downtown-businesses-left-in-the-dark-as-power-crisis-deepens/?utm_source=rss&utm_medium=rss&utm_campaign=downtown-businesses-left-in-the-dark-as-power-crisis-deepens",
+    "tags": [
+      "local",
+      "newscasts",
+      "videos"
+    ],
+    "category": "Corporate",
+    "group": "Finance",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "breaking-belize-news-36e85c8c",
+    "title": "PM says new power suppliers could come online within months; blames energy crisis on years of underinvestment by previous administration",
+    "source": "Breaking Belize News",
+    "date": "2026-08-21",
+    "country": "BZ",
+    "url": "https://www.breakingbelizenews.com/2026/08/21/pm-says-new-power-suppliers-could-come-online-within-months-blames-energy-crisis-on-years-of-underinvestment-by-previous-administration/",
+    "tags": [
+      "government",
+      "headlines",
+      "last news",
+      "social issues"
+    ],
+    "category": "Energy",
+    "group": "Energy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "breaking-belize-news-9024042c",
+    "title": "PM says he knows Belizeans are struggling but $6 minimum wage increase must consider businesses",
+    "source": "Breaking Belize News",
+    "date": "2026-08-21",
+    "country": "BZ",
+    "url": "https://www.breakingbelizenews.com/2026/08/21/pm-says-he-knows-belizeans-are-struggling-but-6-minimum-wage-increase-must-consider-businesses/",
+    "tags": [
+      "government",
+      "headlines",
+      "last news",
+      "social issues"
+    ],
+    "category": "Labor",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "breaking-belize-news-c19d9872",
+    "title": "PM Briceño says he is concerned over sharp increases in electricity bills; Meeting with BEL and PUC scheduled",
+    "source": "Breaking Belize News",
+    "date": "2026-08-21",
+    "country": "BZ",
+    "url": "https://www.breakingbelizenews.com/2026/08/21/pm-briceno-says-he-is-concerned-over-sharp-increases-in-electricity-bills-meeting-with-bel-and-puc-scheduled/",
+    "tags": [
+      "government",
+      "headlines",
+      "last news",
+      "social issues"
+    ],
+    "category": "Energy",
+    "group": "Energy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "breaking-belize-news-b16a97c0",
+    "title": "UK, Belize discuss sustainable finance and climate resilience at Green and Blue Finance Forum",
+    "source": "Breaking Belize News",
+    "date": "2026-08-21",
+    "country": "BZ",
+    "url": "https://www.breakingbelizenews.com/2026/08/21/uk-belize-discuss-sustainable-finance-and-climate-resilience-at-green-and-blue-finance-forum/",
+    "tags": [
+      "community development",
+      "last news"
+    ],
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "breaking-belize-news-593bd3d8",
+    "title": "UDP demands immediate rollback of latest Electricity rate increase",
+    "source": "Breaking Belize News",
+    "date": "2026-08-21",
+    "country": "BZ",
+    "url": "https://www.breakingbelizenews.com/2026/08/21/udp-demands-immediate-rollback-of-latest-electricity-rate-increase/",
+    "tags": [
+      "headlines",
+      "last news"
+    ],
+    "category": "Energy",
+    "group": "Energy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "breaking-belize-news-374cf393",
+    "title": "UDP asks where the benefit is after $400 million power investment",
+    "source": "Breaking Belize News",
+    "date": "2026-08-21",
+    "country": "BZ",
+    "url": "https://www.breakingbelizenews.com/2026/08/21/udp-asks-where-the-benefit-is-after-400-million-power-investment/",
+    "tags": [
+      "headlines"
+    ],
+    "category": "Investment",
+    "group": "Investment",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "breaking-belize-news-d6e1e628",
+    "title": "Three years on, $77 million Saudi solar loan yet to break ground",
+    "source": "Breaking Belize News",
+    "date": "2026-08-21",
+    "country": "BZ",
+    "url": "https://www.breakingbelizenews.com/2026/08/21/three-years-on-77-million-saudi-solar-loan-yet-to-break-ground/",
+    "tags": [
+      "headlines"
+    ],
+    "category": "Energy",
+    "group": "Energy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "breaking-belize-news-c905f954",
+    "title": "No insurance, no licence, expired driver’s licence: Yo Creek man gets three charges",
+    "source": "Breaking Belize News",
+    "date": "2026-08-21",
+    "country": "BZ",
+    "url": "https://www.breakingbelizenews.com/2026/08/21/no-insurance-no-licence-expired-drivers-licence-yo-creek-man-gets-three-charges/",
+    "tags": [
+      "headlines"
+    ],
+    "category": "Banking",
+    "group": "Finance",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "st-lucia-times-9c401c1e",
+    "title": "Ancillary workers receive August salaries for first time",
+    "source": "St. Lucia Times",
+    "date": "2026-08-21",
+    "country": "LC",
+    "url": "https://stluciatimes.com/183223/2026/08/ancillary-workers-receive-august-salaries-for-first-time/",
+    "tags": [
+      "caribbean",
+      "education",
+      "employment",
+      "headlines",
+      "politics & government",
+      "early childhood development centre"
+    ],
+    "category": "Labor",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "st-lucia-times-e01f3f57",
+    "title": "91 years on, Caribbean Union of Teachers says the fight continues",
+    "source": "St. Lucia Times",
+    "date": "2026-08-21",
+    "country": "LC",
+    "url": "https://stluciatimes.com/183196/2026/08/91-years-on-caribbean-union-of-teachers-says-the-fight-continues/",
+    "tags": [
+      "business",
+      "education",
+      "headlines",
+      "caribbean union of teachers (cut)",
+      "education",
+      "president sharon kelsick"
+    ],
+    "category": "Labor",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "st-kitts-nevis-observer-855d283f",
+    "title": "Suriname: IDB says favourable medium term economic outlook for Suriname",
+    "source": "St. Kitts-Nevis Observer",
+    "date": "2026-08-21",
+    "country": "KN",
+    "url": "https://www.thestkittsnevisobserver.com/suriname-idb-says-favourable-medium-term-economic-outlook-for-suriname/",
+    "tags": [
+      "regional/international news"
+    ],
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "cayman-compass-ec9a8618",
+    "title": "Digicel publishes inaugural ‘Sustainability Report’",
+    "source": "Cayman Compass",
+    "date": "2026-08-21",
+    "country": "KY",
+    "url": "https://www.caymancompass.com/2026/08/21/digicel-publishes-inaugural-sustainability-report/",
+    "tags": [
+      "press releases",
+      "digicel",
+      "esg",
+      "sustainability",
+      "telecoms"
+    ],
+    "category": "Corporate",
+    "group": "Finance",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "wic-news-ca767c1d",
+    "title": "Belize: Six armed men Rob Puma Gas Station of BZ$30,000",
+    "source": "WIC News",
+    "date": "2026-08-21",
+    "country": "ALL",
+    "url": "https://wicnews.com/belize/belize-six-armed-men-rob-puma-gas-station-of-bz30000",
+    "category": "Energy",
+    "group": "Energy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
     "id": "guyana-chronicle-e33f59a0",
     "title": "Guyana Development Bank to become operational in weeks –President Ali",
     "source": "Guyana Chronicle",
@@ -37050,396 +37544,6 @@
     "tags": [
       "letters to the editor"
     ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "antigua-observer-ba076bb1",
-    "title": "Government Moves to Unlock Millions in Abandoned Bank Deposits",
-    "source": "Antigua Observer",
-    "date": "2026-07-16",
-    "country": "AG",
-    "url": "https://antiguaobserver.com/government-moves-to-unlock-millions-in-abandoned-bank-deposits/",
-    "tags": [
-      "the big stories"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "st-kitts-nevis-observer-8e540076",
-    "title": "ASPIRE Symposium Equips Nevis Youth with Essential Financial Skills",
-    "source": "St. Kitts-Nevis Observer",
-    "date": "2026-07-16",
-    "country": "KN",
-    "url": "https://www.thestkittsnevisobserver.com/aspire-symposium-equips-nevis-youth-with-essential-financial-skills/",
-    "tags": [
-      "local news"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "st-kitts-nevis-observer-51604ed4",
-    "title": "BVI calls for Caribbean to cooperate on sustainable development with other world regions to buffer against negative effects of ongoing geopolitical turmoil, economic volatility and conflict",
-    "source": "St. Kitts-Nevis Observer",
-    "date": "2026-07-16",
-    "country": "KN",
-    "url": "https://www.thestkittsnevisobserver.com/bvi-calls-for-caribbean-to-cooperate-on-sustainable-development-with-other-world-regions-to-buffer-against-negative-effects-of-ongoing-geopolitical-turmoil-economic-volatility-and-conflict/",
-    "tags": [
-      "regional"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "iwitness-news-3d82caa1",
-    "title": "Credit rating downgrade reflects ULP’s ‘prolonged neglect’",
-    "source": "iWitness News",
-    "date": "2026-07-16",
-    "country": "VC",
-    "url": "https://www.iwnsvg.com/2026/07/16/credit-rating-downgrade-reflects-ulps-prolonged-neglect/",
-    "tags": [
-      "politics"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "iwitness-news-4a10ebbd",
-    "title": "Former PM who drove debt to $3.5b blames new gov’t for downgrade",
-    "source": "iWitness News",
-    "date": "2026-07-16",
-    "country": "VC",
-    "url": "https://www.iwnsvg.com/2026/07/16/former-pm-who-drove-debt-to-3-5b-blames-new-govt-for-downgrade/",
-    "tags": [
-      "politics"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "bvi-news-cc3eca58",
-    "title": "More grants coming for small businesses, Smith says",
-    "source": "BVI News",
-    "date": "2026-07-16",
-    "country": "VG",
-    "url": "https://bvinews.com/more-grants-coming-for-small-businesses-smith-says/",
-    "tags": [
-      "all news"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "wic-news-45c1d97a",
-    "title": "St. Kitts and Nevis-flagged cargo ship sinks in Strait of Hormuz, all 23 crew rescued",
-    "source": "WIC News",
-    "date": "2026-07-16",
-    "country": "ALL",
-    "url": "https://wicnews.com/saint-kitts-nevis/st-kitts-and-nevis-flagged-cargo-ship-sinks-in-strait-of-hormuz-all-23-crew-rescued",
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "cnc3-287c223a",
-    "title": "Businessman loses $1.3M in alleged online banking hack",
-    "source": "CNC3",
-    "date": "2026-07-16",
-    "country": "TT",
-    "url": "https://www.cnc3.co.tt/businessman-loses-1-3m-in-alleged-online-banking-hack/?utm_source=rss&utm_medium=rss&utm_campaign=businessman-loses-1-3m-in-alleged-online-banking-hack",
-    "tags": [
-      "news"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "cnc3-faa0a6eb",
-    "title": "ANSA McAL earns high CariCRIS credit ratings",
-    "source": "CNC3",
-    "date": "2026-07-16",
-    "country": "TT",
-    "url": "https://www.cnc3.co.tt/ansa-mcal-earns-high-caricris-credit-ratings/?utm_source=rss&utm_medium=rss&utm_campaign=ansa-mcal-earns-high-caricris-credit-ratings",
-    "tags": [
-      "business",
-      "news"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "jamaica-observer-9ed6e817",
-    "title": "CIBC joins banks to cease isssuing, accepting $1-million cheques",
-    "source": "Jamaica Observer",
-    "date": "2026-07-16",
-    "country": "JM",
-    "url": "https://www.jamaicaobserver.com/2026/07/16/cibc-joins-banks-cease-isssuing-accepting-1-million-cheques/",
-    "tags": [
-      "business",
-      "latest news",
-      "cheques",
-      "cibc"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "jamaica-observer-fe90b515",
-    "title": "Golding calls for ‘Marshall Plan’ to rescue hurricane hit small businesses",
-    "source": "Jamaica Observer",
-    "date": "2026-07-16",
-    "country": "JM",
-    "url": "https://www.jamaicaobserver.com/2026/07/16/golding-calls-marshall-plan-rescue-hurricane-hit-small-businesses/",
-    "tags": [
-      "latest news",
-      "news",
-      "hurricane melissa",
-      "micro",
-      "opposition mark golding",
-      "small and medium enterprises"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "jamaica-gleaner-fe5359a6",
-    "title": "Gov’t expects to recoup Petrojam losses from rising global oil prices – Vaz",
-    "source": "Jamaica Gleaner",
-    "date": "2026-07-16",
-    "country": "JM",
-    "url": "http://jamaica-gleaner.com/article/news/20260716/govt-expects-recoup-petrojam-losses-rising-global-oil-prices-vaz",
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "jamaica-gleaner-ff5970e6",
-    "title": "St Catherine councillor calls for gov’t to establish health insurance for taxi operators",
-    "source": "Jamaica Gleaner",
-    "date": "2026-07-16",
-    "country": "JM",
-    "url": "http://jamaica-gleaner.com/article/news/20260716/st-catherine-councillor-calls-govt-establish-health-insurance-taxi-operators",
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "now-grenada-a19bbe62",
-    "title": "Liberty Caribbean: Headline Sponsor of CANTO’s 41st Annual Conference and Trade Exhibition",
-    "source": "NOW Grenada",
-    "date": "2026-07-16",
-    "country": "GD",
-    "url": "https://nowgrenada.com/2026/07/liberty-caribbean-headline-sponsor-of-cantos-41st-annual-conference-and-trade-exhibition/",
-    "tags": [
-      "business",
-      "press release",
-      "technology",
-      "canto",
-      "caribbean association of national telecommunications organizations",
-      "inge smidts"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "antigua-news-room-038be44f",
-    "title": "Health Ministry Cracks Down on Illegal Construction in Public Cemeteries",
-    "source": "Antigua News Room",
-    "date": "2026-07-16",
-    "country": "AG",
-    "url": "https://antiguanewsroom.com/health-ministry-cracks-down-on-illegal-construction-in-public-cemeteries/",
-    "tags": [
-      "news"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "antigua-news-room-f793f70f",
-    "title": "Minister Benjamin Signals Budget Support for New Police Academy",
-    "source": "Antigua News Room",
-    "date": "2026-07-16",
-    "country": "AG",
-    "url": "https://antiguanewsroom.com/minister-benjamin-signals-budget-support-for-new-police-academy/",
-    "tags": [
-      "news"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "wic-news-6f4f05b2",
-    "title": "Who Owns It? Newly formed Saint Lucian company to take control of JA$4.3B Dolphin Cove",
-    "source": "WIC News",
-    "date": "2026-07-16",
-    "country": "ALL",
-    "url": "https://wicnews.com/saint-lucia/who-owns-it-newly-formed-saint-lucian-company-to-take-control-of-ja43b-dolphin-cove",
-    "deal_status": "pending",
-    "deal_type": "M&A"
-  },
-  {
-    "id": "st-kitts-nevis-observer-27262c25",
-    "title": "United States:  Idaho Man Indicted For Tax Evasion",
-    "source": "St. Kitts-Nevis Observer",
-    "date": "2026-07-16",
-    "country": "KN",
-    "url": "https://www.thestkittsnevisobserver.com/united-states-idaho-man-indicted-for-tax-evasion/",
-    "tags": [
-      "press releases",
-      "regional/international news"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "st-kitts-nevis-observer-63ad2dbb",
-    "title": "Mechanical Issue Causes Smoke on Makana Ferry; Vessel Arrives Safely in Saba",
-    "source": "St. Kitts-Nevis Observer",
-    "date": "2026-07-16",
-    "country": "KN",
-    "url": "https://www.thestkittsnevisobserver.com/mechanical-issue-causes-smoke-on-makana-ferry-vessel-arrives-safely-in-saba/",
-    "tags": [
-      "breaking news"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "magnetic-media-6b9fdf6b",
-    "title": "Invest TCI Supports Certification of Local Flats Fishing Guides Through MSME Technical Assistance Under Historic TCFFA–TCICC Partnership",
-    "source": "Magnetic Media",
-    "date": "2026-07-16",
-    "country": "TC",
-    "url": "https://magneticmediatv.com/2026/07/invest-tci-supports-certification-of-local-flats-fishing-guides-through-msme-technical-assistance-under-historic-tcffa-tcicc-partnership/",
-    "tags": [
-      "news",
-      "tci news",
-      "#alexacooper",
-      "#angelamusgrove",
-      "#investturksandcaicos",
-      "#lavardotalbot"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "trinidad-express-1e4e549a",
-    "title": "SM Jaleel eyes CAL water contract",
-    "source": "Trinidad Express",
-    "date": "2026-07-16",
-    "country": "TT",
-    "url": "https://trinidadexpress.com/business/local/sm-jaleel-eyes-cal-water-contract/article_0033ef6d-0fd2-4036-a2fc-514d282cbb32.html",
-    "category": "Corporate",
-    "group": "Finance",
-    "decision": "publish",
-    "confidence": "high",
-    "reason": "SM Jaleel pursuing CAL water contract; corporate business development/procurement.",
-    "classifier": "llm",
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "trinidad-express-7da18789",
-    "title": "72 extra domestic flights for vacation period",
-    "source": "Trinidad Express",
-    "date": "2026-07-16",
-    "country": "TT",
-    "url": "https://trinidadexpress.com/business/local/72-extra-domestic-flights-for-vacation-period/article_6f952a50-59fe-4bed-a16e-c82d9f8dd5eb.html",
-    "category": "Tourism",
-    "group": "Trade & Tourism",
-    "decision": "publish",
-    "confidence": "high",
-    "reason": "Additional domestic flights during vacation period; airline capacity and tourism mobility.",
-    "classifier": "llm",
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "magnetic-media-494cefb9",
-    "title": "Ministry of Health Welcomes Appointment of New NHIB Chief Executive Officer and Highlights Progress of Organisational Transformation",
-    "source": "Magnetic Media",
-    "date": "2026-07-16",
-    "country": "TC",
-    "url": "https://magneticmediatv.com/2026/07/ministry-of-health-welcomes-appointment-of-new-nhib-chief-executive-officer-and-highlights-progress-of-organisational-transformation/",
-    "tags": [
-      "news",
-      "tci news",
-      "#magneticmedianews",
-      "#nhib",
-      "#ralphpatrick"
-    ],
-    "category": "Banking",
-    "group": "Finance",
-    "decision": "publish",
-    "confidence": "high",
-    "reason": "Appointment of healthcare-insurance chief executive; leadership of financial institution",
-    "classifier": "llm",
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "cayman-compass-6b0666fd",
-    "title": "Cayman a top target for phishing scams",
-    "source": "Cayman Compass",
-    "date": "2026-07-16",
-    "country": "KY",
-    "url": "https://www.caymancompass.com/2026/07/16/cayman-a-top-target-for-phishing-scams/",
-    "tags": [
-      "local",
-      "cayman police",
-      "crime",
-      "cyber attacks",
-      "phishing"
-    ],
-    "category": "Banking",
-    "group": "Finance",
-    "decision": "publish",
-    "confidence": "high",
-    "reason": "Cayman phishing-scam targeting; financial-crime threat to banking sector.",
-    "classifier": "llm",
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "cayman-compass-23299dfc",
-    "title": "From a single truck to a leading role in tackling waste",
-    "source": "Cayman Compass",
-    "date": "2026-07-16",
-    "country": "KY",
-    "url": "https://www.caymancompass.com/2026/07/16/from-a-single-truck-to-a-leading-role-in-tackling-waste/",
-    "tags": [
-      "local",
-      "island waste carriers",
-      "jason brown",
-      "waste management"
-    ],
-    "category": "Corporate",
-    "group": "Finance",
-    "decision": "publish",
-    "confidence": "high",
-    "reason": "Waste-management company growth and sector leadership; corporate business narrative.",
-    "classifier": "llm",
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "barbados-today-8b26d5b5",
-    "title": "‘Ask Dealia’ app launches to help find deals, events",
-    "source": "Barbados Today",
-    "date": "2026-07-16",
-    "country": "BB",
-    "url": "https://barbadostoday.bb/2026/07/15/ask-dealia-app-launches-to-help-find-deals-events/",
-    "tags": [
-      "business",
-      "economy",
-      "local news",
-      "technology"
-    ],
-    "category": "Technology",
-    "group": "Macro",
-    "decision": "publish",
-    "confidence": "high",
-    "reason": "Mobile application launch for deals and event discovery; digital-economy and consumer fintech service.",
-    "classifier": "llm",
     "deal_status": "not_a_deal",
     "deal_type": null
   }
