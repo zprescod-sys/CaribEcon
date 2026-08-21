@@ -58,7 +58,13 @@ export class SynthesizeNotConfiguredError extends Error {}
    single malformed claim inside an otherwise-valid response is not this; it is dropped and the
    rest of the answer is kept. */
 export class SynthesizeParseError extends Error {
-  constructor(public readonly rawText: string) {
+  constructor(
+    public readonly rawText: string,
+    // Diagnostic pair carried by all three role parse errors — see api/ask.ts's
+    // structuredOutputFailure() for what they distinguish and why it matters.
+    public readonly finishReason: string | null = null,
+    public readonly completionTokens: number | null = null,
+  ) {
     super('The model did not return a parseable ResearchAnswer.');
   }
 }
@@ -308,25 +314,28 @@ export async function synthesize(compiled: CompiledEvidence): Promise<ResearchAn
 
   const response = await callModel(resolved.connection, resolved.model, messages, {
     temperature: 0,
-    /* Stage D — measured live, not assumed. Two real end-to-end runs against the new compact
-       CompiledEvidence prompt (Nebius interpret/plan/execute + MiniMax synthesize, one
-       news-heavy, one comparison-heavy): completionTokens 1836 and 2095 — comfortably under
-       6000 (3x+ headroom) despite one genuinely evidence-rich case. 12000 was never earned by
-       real usage; it was the emergency fix for the OLD raw-evidence-dump prompt's parse
-       failures, carried forward unmeasured through Stage C. timeoutMs keeps real margin above
-       the slower of the two observed synthesis times (43-45s) — the two runs used near-identical
-       compiled input size yet differed 3x in wall-clock time (13s vs 43-45s), which points to
-       provider-side variance, not prompt size, as the dominant latency factor; a token cut alone
-       is not expected to reliably buy latency, only a tighter safety margin. Re-measure before
-       cutting further — this is two live samples, not a large one. */
-    maxTokens: 6_000,
+    /* Raised 6000 -> 12000. Stage D's live measurement (completionTokens 1836/2095, comfortably
+       under 6000) is now STALE: it was taken against the pre-restructure prompt (Stage D landed
+       Aug 19; the ANALYST_INSTRUCTIONS rewrite landed the next morning), so it no longer bounds
+       what the current prompt actually asks the model to produce. Rather than re-measure a prompt
+       that this same change is about to rewrite again, this adopts interpret.ts's general rule
+       (a runaway backstop set generously above normal use, not a size estimate) at twice
+       newsExtract.ts's measured-safe 8000 floor, since this role's reasoning trace plus prose
+       answer is the largest completion of the three JSON roles.
+       timeoutMs stays 90s, UNCHANGED and now the deliberately sole binding constraint: Stage D's
+       own two samples already showed 3x wall-clock variance (13s vs 43-45s) at near-identical
+       compiled input size — provider-side latency variance, not token count, so raising maxTokens
+       cannot make this call slower on its own, only let a call that used to die mid-<think>
+       finish instead. See interpret.ts's maxTokens comment for why timeouts, not tokens, are the
+       scarce budget across this pipeline (vercel.json's 240s api/ask.ts ceiling). */
+    maxTokens: 12_000,
     timeoutMs: 90_000,
   });
 
   const raw = parseModelJson(response.text);
   const answer = raw === null ? null : coerceAnswer(raw);
   if (answer === null) {
-    throw new SynthesizeParseError(response.text);
+    throw new SynthesizeParseError(response.text, response.finishReason, response.usage?.completionTokens ?? null);
   }
   return answer;
 }

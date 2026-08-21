@@ -33,7 +33,13 @@ export class PlanNotConfiguredError extends Error {}
    "steps" is not an array. A single malformed step inside an otherwise-valid plan is not this; it
    is dropped and the rest of the plan is kept, exactly like a malformed claim in synthesize.ts. */
 export class PlanParseError extends Error {
-  constructor(public readonly rawText: string) {
+  constructor(
+    public readonly rawText: string,
+    // Diagnostic pair carried by all three role parse errors — see api/ask.ts's
+    // structuredOutputFailure() for what they distinguish and why it matters.
+    public readonly finishReason: string | null = null,
+    public readonly completionTokens: number | null = null,
+  ) {
     super('The model did not return a parseable ResearchPlan.');
   }
 }
@@ -258,22 +264,22 @@ export async function plan(question: string, intent: ResearchIntent): Promise<Re
 
   const response = await callModel(resolved.connection, resolved.model, messages, {
     temperature: 0,
-    /* Generous relative to interpret's 2500/20000: a plan's JSON has real internal structure —
-       up to several steps, each a discriminated-union object with its own required fields —
-       versus interpret's single flat object. Thinking stays ON here too (this project's
-       deliberate per-role choice, per interpret.ts's and synthesize.ts's own comments), so
-       headroom is needed before any JSON appears at all. Not as high as synthesize's 6000/90000,
-       since a plan is still bounded (a handful of short steps, no prose to write) — 4000 tokens /
-       30s is a reasonable middle starting point; revisit with a live capture (same discipline
-       that raised synthesis's own timeout to 90s) if it proves too tight in practice. */
-    maxTokens: 4000,
+    /* Raised 4000 -> 8000. See interpret.ts's maxTokens comment for the governing rule (a runaway
+       backstop set above normal use, never a size estimate) — this role adopts the same floor for
+       the same reason. The previous 4000 described itself as "a reasonable middle starting point;
+       revisit with a live capture... if it proves too tight in practice"; this is that revisit.
+       A plan's JSON has real internal structure (several steps, each a discriminated-union object
+       with its own required fields) versus interpret's single flat object, and thinking stays ON
+       here too, so the reasoning trace — not the plan itself — is what consumes the budget.
+       timeoutMs stays 30s: wall clock, not tokens, is the constrained budget (interpret.ts). */
+    maxTokens: 8_000,
     timeoutMs: 30_000,
   });
 
   const raw = parseModelJson(response.text);
   const coerced = raw === null ? null : coercePlan(raw);
   if (coerced === null) {
-    throw new PlanParseError(response.text);
+    throw new PlanParseError(response.text, response.finishReason, response.usage?.completionTokens ?? null);
   }
 
   // `question` is always the caller's own parameter, never the model's copy of it — see the file

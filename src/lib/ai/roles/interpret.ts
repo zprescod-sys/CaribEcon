@@ -32,7 +32,13 @@ export class InterpretNotConfiguredError extends Error {}
    which is what canonicaliseIntent(null) alone would silently produce) would let a total
    interpretation failure look identical to "an in-scope, well-formed question." */
 export class InterpretParseError extends Error {
-  constructor(public readonly rawText: string) {
+  constructor(
+    public readonly rawText: string,
+    // Diagnostic pair carried by all three role parse errors — see api/ask.ts's
+    // structuredOutputFailure() for what they distinguish and why it matters.
+    public readonly finishReason: string | null = null,
+    public readonly completionTokens: number | null = null,
+  ) {
     super('The model did not return parseable JSON for intent extraction.');
   }
 }
@@ -85,18 +91,32 @@ export async function interpret(question: string): Promise<InterpretResult> {
 
   const response = await callModel(resolved.connection, resolved.model, messages, {
     temperature: 0,
-    /* Both numbers below are headroom for reasoning, not an estimate of the JSON's own size —
-       thinking stays ON deliberately (the project's own choice, not a default left unexamined),
+    /* ── The canonical maxTokens rationale for every JSON role; plan.ts and synthesize.ts refer
+       back here rather than repeat it. ──
+       maxTokens is a RUNAWAY BACKSTOP, not an estimate of the answer's size. It is set high
+       enough that a normal call never reaches it, so timeoutMs is the single binding constraint
+       and a `finish_reason: "length"` in the logs is a genuine alarm rather than routine noise.
+       Thinking stays ON deliberately (the project's own choice, not a default left unexamined),
        and a reasoning-capable model (observed live with MiniMax-M3: ~290 completion tokens and
-       ~8s just to say "OK") can spend real time and tokens before ever reaching the answer.
-       Too low a cap or timeout truncates or aborts the response before any JSON exists at all. */
-    maxTokens: 2500,
+       ~8s just to say "OK") spends real tokens before reaching the answer.
+       Why generous rather than tuned: truncation here is a CLIFF, not a gradient. stripThinking()
+       (openaiCompatible.ts) deliberately leaves an unterminated <think> block intact, so a call cut
+       off mid-reasoning yields NO parseable JSON at all — not a shorter answer. Overshooting the
+       cap costs nothing (providers bill per token actually generated, and a call needing 1500
+       tokens finishes just as fast at an 8000 cap as at a 2000 one — measured in newsExtract.ts's
+       own sweep); undershooting costs the entire response and returns a 502.
+       8000 is that file's measured-safe floor, adopted here to replace an unmeasured 2500 that was
+       only ever labelled a "starting point".
+       timeoutMs is deliberately NOT raised anywhere: vercel.json caps api/ask.ts at maxDuration
+       240s, and interpret+plan+newsExtract+synthesize already sum to 185s of worst-case wall clock
+       before any Tavily time. Wall clock is the scarce budget here; tokens are not. */
+    maxTokens: 8_000,
     timeoutMs: 20_000,
   });
 
   const raw = parseModelJson(response.text);
   if (raw === null) {
-    throw new InterpretParseError(response.text);
+    throw new InterpretParseError(response.text, response.finishReason, response.usage?.completionTokens ?? null);
   }
 
   return canonicaliseIntent(raw);

@@ -25,10 +25,22 @@ import { PlanNotConfiguredError, PlanParseError } from '../src/lib/ai/roles/plan
 import { SynthesizeNotConfiguredError, SynthesizeParseError } from '../src/lib/ai/roles/synthesize.js';
 import { StagedProviderFailure } from '../src/lib/ai/providerFailure.js';
 
-function structuredOutputFailure(error: unknown): { stage: 'interpretation' | 'planning' | 'answer'; rawLength: number } | null {
-  if (error instanceof InterpretParseError) return { stage: 'interpretation', rawLength: error.rawText.length };
-  if (error instanceof PlanParseError) return { stage: 'planning', rawLength: error.rawText.length };
-  if (error instanceof SynthesizeParseError) return { stage: 'answer', rawLength: error.rawText.length };
+/* finishReason/completionTokens are the diagnostic pair that tells apart the two very different
+   ways a role can fail to produce parseable JSON: 'length' means the completion was cut off
+   before the model ever finished its <think> trace (see openaiCompatible.ts's stripThinking) —
+   the fix is a bigger maxTokens ceiling. 'stop' means the model finished normally and still
+   didn't produce valid JSON — a prompt/compliance problem, not a budget one. Neither value is raw
+   model text, so both are safe to log (and to keep server-side alongside rawLength, never in the
+   client response, per this function's existing discipline). */
+function structuredOutputFailure(
+  error: unknown,
+): { stage: 'interpretation' | 'planning' | 'answer'; rawLength: number; finishReason: string | null; completionTokens: number | null } | null {
+  if (error instanceof InterpretParseError)
+    return { stage: 'interpretation', rawLength: error.rawText.length, finishReason: error.finishReason, completionTokens: error.completionTokens };
+  if (error instanceof PlanParseError)
+    return { stage: 'planning', rawLength: error.rawText.length, finishReason: error.finishReason, completionTokens: error.completionTokens };
+  if (error instanceof SynthesizeParseError)
+    return { stage: 'answer', rawLength: error.rawText.length, finishReason: error.finishReason, completionTokens: error.completionTokens };
   return null;
 }
 
@@ -106,7 +118,9 @@ export default {
       const structuredFailure = structuredOutputFailure(error);
       if (structuredFailure) {
         // Keep raw model text server-side — it can contain reasoning or prompt-derived material.
-        // Stage and length are sufficient to diagnose malformed output without recording either.
+        // Stage, length, finishReason, and completionTokens are sufficient to diagnose malformed
+        // output (and to tell truncation apart from a model that simply ignored the JSON
+        // instruction) without recording the text itself.
         console.warn('api/ask: structured-output failure', { requestId, ...structuredFailure });
         return json(
           {
