@@ -42,15 +42,38 @@ export function calculationForUnit(unit: string): 'pp_change' | 'yoy_change' {
   return unit.trim() === '%' ? 'pp_change' : 'yoy_change';
 }
 
-/* Number formats. Levels take thousands separators and up to two decimals, which reads correctly
-   for both a millions-of-dollars figure (1,750,288) and a small one (6.51). Rates take a fixed
-   two decimals instead: a thousands separator is meaningless on a percentage, and a fixed width
-   keeps a column of rates aligned on the decimal point. */
+/* Excel number formats, one per unit class. Two rules decide every choice here:
+
+   1. Never end a format with `.##`. Excel prints the decimal separator literally while `#`
+      suppresses insignificant digits, so `#,##0.##` renders a whole number as "1,349,667." —
+      a trailing full stop with nothing after it. Population and per-capita levels are 100%
+      whole numbers in the hub, so that affected every one of those cells.
+
+   2. Hub percent values are stored already in percent form (13.01 means 13.01%). Excel's native
+      `%` operator multiplies by 100 and would render that as "1301.00%", so the sign is added as
+      a literal suffix instead. The stored number stays 13.01 — the same figure CE.GDPGROWTH()
+      returns, so inserted values and inserted formulas never disagree. */
 export const CHANGE_NUMBER_FORMAT = '0.00';
 export const YEAR_NUMBER_FORMAT = '0';
 
 export function numberFormatForUnit(unit: string): string {
-  return unit.trim() === '%' ? '0.00' : '#,##0.##';
+  const u = unit.trim();
+  if (u === '%') return '0.00"%"';
+  if (u === 'persons') return '#,##0';
+  if (u === 'months') return '#,##0.0';
+  // "J$ per US$" = 116.9698 — an exchange rate carries four decimals of real precision that
+  // a two-decimal format would silently round away.
+  if (/\sper\s/.test(u)) return '#,##0.0000';
+  if (/\smn$/.test(u)) return '#,##0.00';   // "US$ mn", "EC$ mn" — millions levels
+  if (!u.includes(' ')) return '#,##0';     // bare currency ("GY$", "EC$") — per-capita levels
+  return '#,##0.00';                        // anything new: safe 2dp, never a trailing dot
+}
+
+/* The change column is a computed percentage, and which kind depends on the source unit: a rate
+   moving 4.2% -> 5.1% is +0.90pp, not +21.40%. Suffix the column so the two can't be misread as
+   the same quantity — see the pp_change header in calculations.ts. */
+export function changeNumberFormatForUnit(unit: string): string {
+  return calculationForUnit(unit) === 'pp_change' ? '0.00"pp"' : '0.00"%"';
 }
 
 /* The provider's own identifier for a series — "NY.GDP.MKTP.CN", "GGXWDG_NGDP" — for the Sources
@@ -406,7 +429,11 @@ function buildTableSection(result: IndicatorResult, startRow: number): TableSect
     headerRowOffset: 2,
     firstDataRowOffset,
     summaryRowOffsets: [summaryRowOffset],
-    dataNumberFormats: [YEAR_NUMBER_FORMAT, numberFormatForUnit(evidence.unit), CHANGE_NUMBER_FORMAT],
+    dataNumberFormats: [
+      YEAR_NUMBER_FORMAT,
+      numberFormatForUnit(evidence.unit),
+      changeNumberFormatForUnit(evidence.unit),
+    ],
   };
 }
 

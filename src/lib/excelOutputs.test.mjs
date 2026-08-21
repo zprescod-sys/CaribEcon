@@ -23,6 +23,7 @@ import {
   SOURCE_SUMMARY_COLUMNS,
   seriesIdentifier,
   SERIES_COLORS,
+  numberFormatForUnit,
 } from './excelOutputs.ts';
 import { yoy_change, pp_change, period_average } from './calculations.ts';
 
@@ -362,15 +363,33 @@ test('the offsets the renderer styles by point at the rows they claim to', () =>
 
 test('each column of the table has a number format matching its content', () => {
   const rate = buildWorkbookPlan([result()], intent()).sections.find(s => s.kind === 'table');
-  assert.equal(rate.dataNumberFormats[0], '0'); // Year
-  assert.equal(rate.dataNumberFormats[1], '0.00'); // gdp_growth is "%"
-  assert.equal(rate.dataNumberFormats[2], '0.00'); // change column is always a percentage figure
+  assert.equal(rate.dataNumberFormats[0], '0');            // Year
+  assert.equal(rate.dataNumberFormats[1], '0.00"%"');      // gdp_growth is "%"
+  assert.equal(rate.dataNumberFormats[2], '0.00"pp"');     // a rate's change is in points
 
   const level = buildWorkbookPlan(
     [result(evidence({ indicator: 'nominal_gdp', label: 'Nominal GDP', unit: 'GY$ mn' }))],
     intent({ indicators: ['nominal_gdp'] }),
   ).sections.find(s => s.kind === 'table');
-  assert.equal(level.dataNumberFormats[1], '#,##0.##', 'a level indicator needs thousands separators');
+  assert.equal(level.dataNumberFormats[1], '#,##0.00', 'a level indicator needs thousands separators');
+  assert.equal(level.dataNumberFormats[2], '0.00"%"', "a level's change is a relative percentage");
+});
+
+test('no number format ends in a bare decimal separator', () => {
+  // `#,##0.##` renders a whole number as "1,349,667." — Excel prints the separator literally.
+  for (const unit of ['%', 'persons', 'months', 'US$ mn', 'GY$', 'J$ per US$', 'Newly Added Unit']) {
+    assert.ok(!/\.#*$/.test(numberFormatForUnit(unit)), `${unit} must not end in a bare separator`);
+  }
+});
+
+test('each unit class gets the precision its values actually carry', () => {
+  assert.equal(numberFormatForUnit('%'), '0.00"%"');
+  assert.equal(numberFormatForUnit('persons'), '#,##0');        // population is always whole
+  assert.equal(numberFormatForUnit('months'), '#,##0.0');
+  assert.equal(numberFormatForUnit('J$ per US$'), '#,##0.0000'); // 116.9698 must survive
+  assert.equal(numberFormatForUnit('US$ mn'), '#,##0.00');
+  assert.equal(numberFormatForUnit('GY$'), '#,##0');             // per-capita level
+  assert.equal(numberFormatForUnit(' % '), '0.00"%"');           // unit strings are trimmed
 });
 
 // ── Sources, caveats, gaps ─────────────────────────────────────────────────────────────────

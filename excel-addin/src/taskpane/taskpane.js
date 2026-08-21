@@ -31,6 +31,8 @@ import {
   EVIDENCE_COLUMNS,
   SOURCE_SUMMARY_COLUMNS,
   SERIES_COLORS,
+  numberFormatForUnit,
+  YEAR_NUMBER_FORMAT,
 } from '../../../src/lib/excelOutputs';
 
 const API_BASE = process.env.CARIBECON_API_BASE;
@@ -349,11 +351,11 @@ async function writeValues(ctx) {
   const block = anchor.getResizedRange(grid.length - 1, 1);
   block.values = grid;
 
-  // Year column as a plain integer; values with separators but no forced decimals, so a
-  // percentage and a millions-of-dollars level both read correctly.
+  // Year as a plain integer; the value column takes the format its unit actually calls for.
   const dataStart = 3;
   const dataRange = anchor.getOffsetRange(dataStart, 0).getResizedRange(rows.length - 1, 1);
-  dataRange.numberFormat = rows.map(() => ['0', '#,##0.##']);
+  const valueFormat = numberFormatForUnit(series.u);
+  dataRange.numberFormat = rows.map(() => [YEAR_NUMBER_FORMAT, valueFormat]);
 
   const footer = anchor.getOffsetRange(dataStart + rows.length + 1, 0).getResizedRange(4, 1);
   footer.format.font.size = 9;
@@ -388,6 +390,13 @@ async function writeFormulas(ctx) {
 
   // One spilling formula covers every row of the series.
   anchor.getOffsetRange(3, 0).formulas = [[`=CE.SERIES(${args},${from},${to})`]];
+
+  // Match the values path — a spill lands in General otherwise, so the same series would look
+  // different depending on which insert button was used.
+  if (rows.length > 0) {
+    const spill = anchor.getOffsetRange(3, 0).getResizedRange(rows.length - 1, 1);
+    spill.numberFormat = rows.map(() => [YEAR_NUMBER_FORMAT, numberFormatForUnit(series.u)]);
+  }
 
   const footerTop = 3 + rows.length + 1;
   anchor.getOffsetRange(footerTop, 0).getResizedRange(2, 1).formulas = [
@@ -642,7 +651,11 @@ function writeDeepDiveBlock(anchor, { evidence, periodAverage }) {
 
   const dataStart = 3;
   const dataRange = anchor.getOffsetRange(dataStart, 0).getResizedRange(rows.length - 1, 1);
-  dataRange.numberFormat = rows.map(() => ['0', '#,##0.##']);
+  const valueFormat = numberFormatForUnit(evidence.unit);
+  dataRange.numberFormat = rows.map(() => [YEAR_NUMBER_FORMAT, valueFormat]);
+
+  // The period average is the same quantity as the column above it, so it takes the same format.
+  anchor.getOffsetRange(dataStart + rows.length + 1, 1).numberFormat = [[valueFormat]];
 
   const footer = anchor.getOffsetRange(dataStart + rows.length + 1, 0).getResizedRange(4, 1);
   footer.format.font.size = 9;
