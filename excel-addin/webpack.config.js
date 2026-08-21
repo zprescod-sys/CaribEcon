@@ -49,6 +49,14 @@ function resolveApiBase(isServe) {
 
 // Shared token for the research endpoint. Empty by default: with no token the Ask tab hides
 // itself rather than shipping a build that 401s on every question.
+//
+// This file reads plain process.env, nothing here loads .env itself — package.json's
+// dev-server/build:dev scripts do that (`node --env-file-if-exists=../.env ...`), so both this
+// token and ASK_CARIBECON_MODE below are picked up automatically from the repo root .env for
+// local dev, no exporting required. `build` (what `npm run build:addin` calls, whose output is
+// public/addin/, committed and served at caribecon.org/addin/) deliberately does NOT get this
+// treatment — a real deploy's env comes from Vercel/CI, never a developer's local .env, and
+// auto-loading it there would risk baking a local token into a publicly committed bundle.
 const researchToken = process.env.CARIBECON_RESEARCH_TOKEN || "";
 
 // CLAUDE.md's explicit task-pane rollback switch: "ask" points the chat tab at the real
@@ -56,7 +64,8 @@ const researchToken = process.env.CARIBECON_RESEARCH_TOKEN || "";
 // verify, claim-structured, grounding-gated). Anything else — including unset — is "legacy",
 // which keeps posting to the frozen POST /api/research. Defaults to legacy, not ask: this is a
 // build-time flip, not a runtime feature flag, so the safe default is the endpoint already
-// proven in production, not the newest one. Flip explicitly:
+// proven in production, not the newest one. Flip explicitly (or add ASK_CARIBECON_MODE=ask to
+// the repo root .env, which dev-server/build:dev now read automatically — see above):
 //   ASK_CARIBECON_MODE=ask npm run build:dev
 const askMode = process.env.ASK_CARIBECON_MODE === "ask" ? "ask" : "legacy";
 

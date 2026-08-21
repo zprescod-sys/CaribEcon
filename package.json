@@ -9,6 +9,7 @@
     "dev": "astro dev",
     "build": "astro build",
     "build:addin": "npm --prefix excel-addin run build && rm -rf public/addin && mkdir -p public/addin && cp -R excel-addin/dist/. public/addin/",
+    "dev:ask": "node scripts/dev-ask.mjs",
     "preview": "astro preview",
     "check": "astro check",
     "test": "tsx --test 'src/lib/**/*.test.mjs' 'api/**/*.test.mjs'",

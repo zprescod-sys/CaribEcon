@@ -8,8 +8,8 @@
   "license": "MIT",
   "scripts": {
     "build": "webpack --mode production",
-    "build:dev": "webpack --mode development",
-    "dev-server": "webpack serve --mode development",
+    "build:dev": "node --env-file-if-exists=../.env ./node_modules/.bin/webpack --mode development",
+    "dev-server": "node --env-file-if-exists=../.env ./node_modules/.bin/webpack serve --mode development",
     "lint": "office-addin-lint check",
     "lint:fix": "office-addin-lint fix",
     "prestart": "npm run build",

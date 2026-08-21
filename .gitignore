@@ -12,3 +12,4 @@ temporary_screenshots/
 .vercel
 .vscode/
 plans/
+.env*
