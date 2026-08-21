@@ -319,13 +319,32 @@ function checkWrongCalculation(answer: ResearchAnswer, pkg: EvidencePackage): Gr
  * itself, keeps that a distinct thing from grounding rather than a second implementation of it. */
 export const NUMBER_PATTERN = /-?\d[\d,]*\.?\d+|-?\d+/g;
 
-/* Every point-year actually retrieved, across every series in the package — a model narrating
- * "...to 134.6% in 2017..." is stating a year, not a figure, and years are not in StatedFigure at
- * all (they live alongside figures, not as one), so they need their own exemption. */
-function retrievedPointYears(pkg: EvidencePackage): ReadonlySet<number> {
+/* Every year actually retrieved anywhere in the package — a model narrating "...to 134.6% in
+ * 2017..." or "...awards in 2025..." is stating a YEAR, not a figure, and years are not in
+ * StatedFigure at all (they live alongside figures, not as one), so they need their own
+ * exemption. This is not limited to hub data points: a news-only or web-only question (no
+ * D: series retrieved at all) still legitimately narrates real, retrieved years off N:/W:
+ * evidence — a news headline's own publication date, or a Tavily result's publishedDate — and
+ * those are exactly as retrieved as a hub series point is. Before this covered hub data alone,
+ * check 6 flagged EVERY bare year in EVERY claim on a pure-news question (retrievedPointYears
+ * was permanently empty, since pkg.data is empty when no get_series/compare_series step ran),
+ * which in practice meant almost no claim on a news-heavy answer could survive grounding —
+ * observed live: a claim declaring a real 66,814-passenger figure correctly, sitting next to
+ * "July 2026", was dropped for the year alone. */
+function retrievedYears(pkg: EvidencePackage): ReadonlySet<number> {
   const years = new Set<number>();
   for (const d of pkg.data) for (const p of d.points) years.add(p.year);
+  for (const n of pkg.news) addYearFromIsoDate(years, n.date);
+  for (const w of pkg.web ?? []) addYearFromIsoDate(years, w.publishedDate);
   return years;
+}
+
+// Leading 4 digits, not a strict YYYY-MM-DD parse — news.ts documents its own `date` as ISO
+// YYYY-MM-DD, but WebEvidence.publishedDate is "whatever Tavily supplies" (contracts.ts), so this
+// tolerates a full ISO datetime or any other reasonable year-first format without assuming one.
+function addYearFromIsoDate(years: Set<number>, date: string | null): void {
+  const match = date?.match(/^(\d{4})/);
+  if (match) years.add(Number(match[1]));
 }
 
 // A number immediately followed (allowing intervening whitespace) by '%', 'percent', or
@@ -344,7 +363,7 @@ function followedByPercent(text: string, endIndex: number): boolean {
 function checkUnstatedNumber(answer: ResearchAnswer, pkg: EvidencePackage): GroundingViolation[] {
   // The cross-claim pool (see block comment above) — built once per answer, not per claim.
   const allFigures = answer.claims.flatMap(c => c.figures);
-  const years = retrievedPointYears(pkg);
+  const years = retrievedYears(pkg);
   const violations: GroundingViolation[] = [];
 
   for (const claim of answer.claims) {

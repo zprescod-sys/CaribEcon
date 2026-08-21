@@ -221,12 +221,41 @@ export async function executeResearchPlan(
     }
 
     if (step.tool === 'search_news') {
-      const results = searchNews({
+      let results = searchNews({
         countries: step.countries,
         keywords: step.keywords,
         dateFrom: step.dateFrom,
         dateTo: step.dateTo,
       });
+
+      /* scoreKeyword (news.ts) matches each keyword ELEMENT as a literal contiguous phrase
+         (`new RegExp('\\b' + needle)`), never as a bag of words — deliberately, since news.ts's
+         own contract is exact, deterministic matching (its tests pin "a keyword with no match
+         anywhere returns nothing rather than falling back to recency" and the leading-word-
+         boundary rule). But the planner is a language model and naturally emits descriptive
+         phrases ("tourism sector", "stay-over arrivals") that a real, well-covered topic still
+         scores zero against, because the phrase never appears verbatim in a title/tag/category/
+         source. That is a retrieval MISS masquerading as a topic with no coverage — observed
+         live: "tourism sector" returned 0 records against the same News Hub where "tourism"
+         alone returned 6.
+
+         Retry ONCE, only on zero results, with every keyword split into its own term — turns an
+         AND-shaped phrase into an OR-shaped bag of words, exactly what searchNews already does
+         when the caller passes multiple keyword array elements. A phrase search that DID match
+         is never re-run, so precision is unaffected wherever exact matching already worked;
+         this only ever widens a search that would otherwise return nothing. */
+      if (!results.length) {
+        const splitKeywords = [...new Set(step.keywords.flatMap(k => k.split(/\s+/)).filter(Boolean))];
+        if (splitKeywords.length > step.keywords.length) {
+          results = searchNews({
+            countries: step.countries,
+            keywords: splitKeywords,
+            dateFrom: step.dateFrom,
+            dateTo: step.dateTo,
+          });
+        }
+      }
+
       pkg.news.push(...results);
       pushTool('searchNews');
       if (!pkg.caveats.includes(NEWS_METADATA_ONLY_CAVEAT)) pkg.caveats.push(NEWS_METADATA_ONLY_CAVEAT);

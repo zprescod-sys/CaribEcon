@@ -13,6 +13,7 @@ import assert from 'node:assert/strict';
 import { createServer } from 'node:http';
 import { executeResearchPlan } from './executor.ts';
 import { MAX_NEWS_DIGESTS } from './config.ts';
+import { searchNews } from '../news.ts';
 
 /* Sets exactly the given env vars for the duration of `run` (async), restoring each key
    afterward — duplicated per-file on purpose, same convention as webEvidence.test.mjs. */
@@ -235,6 +236,64 @@ test('the news-digest fan-out for a search_news step runs concurrently, not sequ
   });
 });
 
+// ── (2b) a multi-word planner keyword that exact-matches nothing still retrieves via the
+// split-keyword fallback ───────────────────────────────────────────────────────────────────────
+//
+// scoreKeyword (news.ts) matches each keyword ARRAY ELEMENT as one literal contiguous phrase —
+// deliberate, exact, deterministic matching. A planner naming a topic in natural language
+// ("tourism sector", not "tourism") routinely produces a phrase that never appears verbatim
+// anywhere, scoring 0 against a topic the News Hub actually covers (observed live: "tourism
+// arrivals" returned 0 records against the same hub where "tourism" alone returned 6). The
+// executor's search_news branch now retries once, splitting each keyword on whitespace, only
+// when the first search returns nothing.
+//
+// Derives its test keyword from REAL, currently-published data rather than a hardcoded phrase,
+// so this doesn't silently stop testing anything as news.json's content changes day to day: a
+// clearly-fictional token that can never appear in any real title, paired with one real word
+// pulled from an actual GY article at test time. As a phrase, the fictional token guarantees a
+// zero-score match everywhere. Split into two keywords, the real word still scores its own
+// article on its own — the same OR-across-keywords behavior news.ts already implements and
+// already tests, exercised here through the executor, not re-tested here.
+test('search_news retries with split keywords when an exact-phrase search matches nothing', async () => {
+  await withArticleStandIn(20, async () => {
+    const existing = searchNews({ countries: ['GY'], keywords: [] });
+    assert.ok(existing.length > 0, 'expected at least one real, currently-published GY article to build the test keyword from');
+
+    const realWord = existing[0].title.split(/\s+/).find(w => /^[A-Za-z]{5,}$/.test(w));
+    assert.ok(realWord, `expected a findable plain-alphabetic word (>=5 chars) in "${existing[0].title}"`);
+
+    const nonsensePhrase = `zzznotarealwordzzz ${realWord}`;
+    // Sanity check: the phrase itself, as one contiguous string, must genuinely match nothing —
+    // otherwise this test would pass without the fallback ever running.
+    assert.equal(
+      searchNews({ countries: ['GY'], keywords: [nonsensePhrase] }).length,
+      0,
+      'the fictional token unexpectedly matched something — pick a different sanity-check phrase',
+    );
+
+    const plan = {
+      question: 'Recent Guyana news',
+      scope: { countries: ['GY'], indicators: [], yearFrom: null, yearTo: null },
+      steps: [
+        { id: 's1', tool: 'search_news', countries: ['GY'], keywords: [nonsensePhrase], dateFrom: null, dateTo: null, why: 'x' },
+      ],
+      anticipatedGaps: [],
+    };
+
+    const result = await executeResearchPlan(plan);
+
+    assert.ok(result.news.length > 0, 'expected the split-keyword fallback to recover at least one record');
+    assert.ok(
+      result.news.some(n => n.id === existing[0].id),
+      'expected the fallback to recover the specific article the real word was drawn from',
+    );
+    assert.ok(
+      !result.misses.some(m => m.kind === 'news'),
+      'a successful fallback must not still record a "no matching records" miss',
+    );
+  });
+});
+
 // ── (3) a failed/unconfigured summarizeArticle keeps the real fetched text ────────────────────
 
 test('when newsExtract is unconfigured, WebEvidence still carries the real fetched text with insights: null', async () => {
@@ -259,6 +318,41 @@ test('when newsExtract is unconfigured, WebEvidence still carries the real fetch
         assert.equal(w.extract.insights, null, 'insights must be null, never fabricated, when newsExtract is unconfigured');
       }
     });
+  });
+});
+
+test('when webExtract is unconfigured, extract_web pages still carry the real extracted text with insights: null', async () => {
+  await withEnv({ CARIBECON_WEBEXTRACT_PROVIDER: undefined, CARIBECON_WEBEXTRACT_MODEL: undefined }, async () => {
+    await withTavilyStandIn(
+      {
+        '/search': () => ({
+          status: 200,
+          body: { results: [{ title: 'A real web result', url: 'https://example.test/article', content: 'snippet text' }] },
+        }),
+        '/extract': () => ({
+          status: 200,
+          body: { results: [{ url: 'https://example.test/article', raw_content: 'Full extracted page body text.' }], failed_results: [] },
+        }),
+      },
+      async () => {
+        const plan = {
+          question: 'irrelevant',
+          scope: { countries: [], indicators: [], yearFrom: null, yearTo: null },
+          steps: [
+            { id: 's1', tool: 'search_web', query: 'test query', dateFrom: null, dateTo: null, why: 'x' },
+            { id: 'e1', tool: 'extract_web', onStep: 's1', maxUrls: 2, why: 'x' },
+          ],
+          anticipatedGaps: [],
+        };
+
+        const result = await executeResearchPlan(plan);
+        const extracted = result.web.find(w => w.url === 'https://example.test/article');
+        assert.ok(extracted, 'expected the extract_web step to have populated this entry');
+        assert.ok(extracted.extract, 'a successfully extracted page must still carry an extract');
+        assert.equal(extracted.extract.text, 'Full extracted page body text.');
+        assert.equal(extracted.extract.insights, null, 'insights must be null, never fabricated, when webExtract is unconfigured');
+      },
+    );
   });
 });
 
