@@ -1,5 +1,474 @@
 [
   {
+    "id": "guyana-chronicle-c781438c",
+    "title": "Avalon Gold eyes major employment, career prospects for Guyanese",
+    "source": "Guyana Chronicle",
+    "date": "2026-08-21",
+    "country": "GY",
+    "url": "https://guyanachronicle.com/2026/08/21/avalon-gold-eyes-major-employment-career-prospects-for-guyanese/",
+    "tags": [
+      "news"
+    ],
+    "category": "Labor",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "guyana-chronicle-04eb5eb4",
+    "title": "GPL removes over 220 illegal electricity connections during three-day operation",
+    "source": "Guyana Chronicle",
+    "date": "2026-08-21",
+    "country": "GY",
+    "url": "https://guyanachronicle.com/2026/08/21/gpl-removes-over-220-illegal-electricity-connections-during-three-day-operation/",
+    "tags": [
+      "news"
+    ],
+    "category": "Energy",
+    "group": "Energy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "guyana-chronicle-e306c57b",
+    "title": "Guyana inches closer to world-class workforce",
+    "source": "Guyana Chronicle",
+    "date": "2026-08-21",
+    "country": "GY",
+    "url": "https://guyanachronicle.com/2026/08/21/guyana-inches-closer-to-world-class-workforce/",
+    "tags": [
+      "news"
+    ],
+    "category": "Labor",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "guyana-chronicle-f3d67bd6",
+    "title": "Guyana drives regional food production",
+    "source": "Guyana Chronicle",
+    "date": "2026-08-21",
+    "country": "GY",
+    "url": "https://guyanachronicle.com/2026/08/21/guyana-drives-regional-food-production/",
+    "tags": [
+      "news"
+    ],
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "jamaica-observer-cffe96c0",
+    "title": "Rewarding taxpayers",
+    "source": "Jamaica Observer",
+    "date": "2026-08-21",
+    "country": "JM",
+    "url": "https://www.jamaicaobserver.com/2026/08/21/rewarding-taxpayers/",
+    "tags": [
+      "news"
+    ],
+    "category": "Fiscal Policy",
+    "group": "Fiscal Policy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "jamaica-observer-c950c9b6",
+    "title": "INFLATION STARTS TO SPREAD",
+    "source": "Jamaica Observer",
+    "date": "2026-08-21",
+    "country": "JM",
+    "url": "https://www.jamaicaobserver.com/2026/08/21/boj-sees-inflation-pressures-spreading/",
+    "tags": [
+      "business",
+      "caribbean business report (cbr)"
+    ],
+    "category": "Inflation",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "jamaica-observer-43e21876",
+    "title": "US targets more Cuban entities, including Construction Ministry",
+    "source": "Jamaica Observer",
+    "date": "2026-08-21",
+    "country": "JM",
+    "url": "https://www.jamaicaobserver.com/2026/08/20/us-targets-cuban-entities-including-construction-ministry/",
+    "tags": [
+      "international news",
+      "latest news",
+      "cuba",
+      "marco rubio",
+      "us",
+      "us sanctions"
+    ],
+    "category": "Infrastructure",
+    "group": "Investment",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "jamaica-gleaner-a88bc9b5",
+    "title": "FLIGHT SQUEEZE - Ja-Florida fares soar past US$3,000 as travellers battle for scarce seats",
+    "source": "Jamaica Gleaner",
+    "date": "2026-08-21",
+    "country": "JM",
+    "url": "http://jamaica-gleaner.com/article/news/20260821/flight-squeeze-ja-florida-fares-soar-past-us3000-travellers-battle-scarce",
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "jamaica-gleaner-c6097cd2",
+    "title": "Hotel Four Seasons relisted at US$13.5m",
+    "source": "Jamaica Gleaner",
+    "date": "2026-08-21",
+    "country": "JM",
+    "url": "http://jamaica-gleaner.com/article/business/20260821/hotel-four-seasons-relisted-us135m",
+    "category": "Tourism",
+    "group": "Trade & Tourism",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "jamaica-gleaner-db881059",
+    "title": "Pan Jamaica Group acquires Discount Pharmacy property, charts Manor Park redevelopment",
+    "source": "Jamaica Gleaner",
+    "date": "2026-08-21",
+    "country": "JM",
+    "url": "http://jamaica-gleaner.com/article/business/20260821/pan-jamaica-group-acquires-discount-pharmacy-property-charts-manor-park",
+    "category": "Investment",
+    "group": "Investment",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "jamaica-gleaner-5be3b0e4",
+    "title": "BOJ sees inflation risk as stability is job one",
+    "source": "Jamaica Gleaner",
+    "date": "2026-08-21",
+    "country": "JM",
+    "url": "http://jamaica-gleaner.com/article/business/20260821/boj-sees-inflation-risk-stability-job-one",
+    "category": "Inflation",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "jamaica-gleaner-2bb2999e",
+    "title": "Seprod profit rises 16%, group trims debt",
+    "source": "Jamaica Gleaner",
+    "date": "2026-08-21",
+    "country": "JM",
+    "url": "http://jamaica-gleaner.com/article/business/20260821/seprod-profit-rises-16-group-trims-debt",
+    "category": "Corporate",
+    "group": "Finance",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "jamaica-gleaner-662cc61c",
+    "title": "PROVEN returns to profitability on US$9.4-million gain from Roberts Manufacturing partial sale",
+    "source": "Jamaica Gleaner",
+    "date": "2026-08-21",
+    "country": "JM",
+    "url": "http://jamaica-gleaner.com/article/business/20260821/proven-returns-profitability-us94-million-gain-roberts-manufacturing",
+    "category": "Corporate",
+    "group": "Finance",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "jamaica-gleaner-4fec81a1",
+    "title": "US debt surpasses US$40-trillion mark",
+    "source": "Jamaica Gleaner",
+    "date": "2026-08-21",
+    "country": "JM",
+    "url": "http://jamaica-gleaner.com/article/business/20260821/us-debt-surpasses-us40-trillion-mark",
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "antigua-observer-16ca48d4",
+    "title": "Bus Drivers at Both Terminals Want Fare Hike After More Than 20 Years",
+    "source": "Antigua Observer",
+    "date": "2026-08-21",
+    "country": "AG",
+    "url": "https://antiguaobserver.com/bus-drivers-at-both-terminals-want-fare-hike-after-more-than-20-years/",
+    "tags": [
+      "the big stories"
+    ],
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "st-kitts-nevis-observer-ec135f8d",
+    "title": "GUYANA-HEALTH-Government moves to protect public investment following termination of hospital contracts",
+    "source": "St. Kitts-Nevis Observer",
+    "date": "2026-08-21",
+    "country": "KN",
+    "url": "https://www.thestkittsnevisobserver.com/guyana-health-government-moves-to-protect-public-investment-following-termination-of-hospital-contracts/",
+    "tags": [
+      "regional"
+    ],
+    "category": "Investment",
+    "group": "Investment",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "st-kitts-nevis-observer-b7580dbc",
+    "title": "Government Renews Utility Reconnection Support for Households Facing Arrears",
+    "source": "St. Kitts-Nevis Observer",
+    "date": "2026-08-21",
+    "country": "KN",
+    "url": "https://www.thestkittsnevisobserver.com/government-renews-utility-reconnection-support-for-households-facing-arrears/",
+    "tags": [
+      "local news"
+    ],
+    "category": "Energy",
+    "group": "Energy",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "st-kitts-nevis-observer-a29cfaa7",
+    "title": "SOTIC 2026 to feature Cruise Master Class as Guyana advances cruise tourism ambitions",
+    "source": "St. Kitts-Nevis Observer",
+    "date": "2026-08-21",
+    "country": "KN",
+    "url": "https://www.thestkittsnevisobserver.com/sotic-2026-to-feature-cruise-master-class-as-guyana-advances-cruise-tourism-ambitions/",
+    "tags": [
+      "regional"
+    ],
+    "category": "Tourism",
+    "group": "Trade & Tourism",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "st-kitts-nevis-observer-dfedbd2a",
+    "title": "Caribbean MSMEs to benefit from new CDB-supported digital transformation initiative",
+    "source": "St. Kitts-Nevis Observer",
+    "date": "2026-08-21",
+    "country": "KN",
+    "url": "https://www.thestkittsnevisobserver.com/caribbean-msmes-to-benefit-from-new-cdb-supported-digital-transformation-initiative/",
+    "tags": [
+      "regional"
+    ],
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "ziz-online-b567e613",
+    "title": "St. Kitts Cruise Sector Surpasses One Million Passengers",
+    "source": "ZIZ Online",
+    "date": "2026-08-21",
+    "country": "KN",
+    "url": "https://zizonline.com/st-kitts-cruise-sector-surpasses-one-million-passengers/",
+    "tags": [
+      "national"
+    ],
+    "category": "Tourism",
+    "group": "Trade & Tourism",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "searchlight-svg-deced585",
+    "title": "What if Washington wanted one of our islands? Chagos and Emancipation’s unfinished business",
+    "source": "Searchlight SVG",
+    "date": "2026-08-21",
+    "country": "VC",
+    "url": "https://www.searchlight.vc/prof-j-robinson/2026/08/21/washington-wanted-one-islands-chagos-emancipations-unfinished-business/",
+    "tags": [
+      "prof. j robinson - eye of the needle"
+    ],
+    "category": "Corporate",
+    "group": "Finance",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "cayman-compass-c375e19c",
+    "title": "Job seekers wanted by ‘Hello 2 Hired’ programme",
+    "source": "Cayman Compass",
+    "date": "2026-08-21",
+    "country": "KY",
+    "url": "https://www.caymancompass.com/2026/08/21/job-seekers-wanted-by-hello-2-hired-programme/",
+    "tags": [
+      "business",
+      "job fair",
+      "michael myles",
+      "minister for caymanian employment and immigration"
+    ],
+    "category": "Labor",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "cayman-compass-0ffc062a",
+    "title": "Water company ran without a licence for almost 7 years",
+    "source": "Cayman Compass",
+    "date": "2026-08-21",
+    "country": "KY",
+    "url": "https://www.caymancompass.com/2026/08/21/water-company-ran-without-a-licence-for-almost-seven-years/",
+    "tags": [
+      "local",
+      "cayman water",
+      "ofreg",
+      "water supplies"
+    ],
+    "category": "Corporate",
+    "group": "Finance",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "cayman-compass-1f026a14",
+    "title": "Dangerous invasive toad captured in shipping container",
+    "source": "Cayman Compass",
+    "date": "2026-08-21",
+    "country": "KY",
+    "url": "https://www.caymancompass.com/2026/08/21/dangerous-invasive-toad-captured-in-shipping-container/",
+    "tags": [
+      "local",
+      "cane toad",
+      "captured!",
+      "department of agriculture",
+      "invasive species",
+      "poisonous"
+    ],
+    "category": "Trade",
+    "group": "Trade & Tourism",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "bvi-news-9aaf334f",
+    "title": "Wheatley opposes cruise deal for The Baths",
+    "source": "BVI News",
+    "date": "2026-08-21",
+    "country": "VG",
+    "url": "https://bvinews.com/wheatley-opposes-cruise-deal-for-the-baths/",
+    "tags": [
+      "all news"
+    ],
+    "category": "Tourism",
+    "group": "Trade & Tourism",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "bvi-news-d917bdfb",
+    "title": "Smith admits doing business in BVI is not easy",
+    "source": "BVI News",
+    "date": "2026-08-21",
+    "country": "VG",
+    "url": "https://bvinews.com/smith-admits-doing-business-in-bvi-is-not-easy/",
+    "tags": [
+      "all news"
+    ],
+    "category": "Corporate",
+    "group": "Finance",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "bvi-news-dd539064",
+    "title": "Marine tourism needs public-private partnership — policy analyst",
+    "source": "BVI News",
+    "date": "2026-08-21",
+    "country": "VG",
+    "url": "https://bvinews.com/marine-tourism-needs-public-private-partnership-policy-analyst/",
+    "tags": [
+      "all news"
+    ],
+    "category": "Tourism",
+    "group": "Trade & Tourism",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "wic-news-9c7a54a8",
+    "title": "St. Kitts and Nevis cruise passenger arrivals hit one million for first time since pandemic",
+    "source": "WIC News",
+    "date": "2026-08-21",
+    "country": "ALL",
+    "url": "https://wicnews.com/saint-kitts-nevis/st-kitts-and-nevis-cruise-passenger-arrivals-hit-one-million-for-first-time-since-pandemic",
+    "category": "Tourism",
+    "group": "Trade & Tourism",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
     "id": "guyana-chronicle-e33f59a0",
     "title": "Guyana Development Bank to become operational in weeks –President Ali",
     "source": "Guyana Chronicle",
@@ -600,6 +1069,43 @@
     "group": "Fiscal Policy",
     "decision": "publish",
     "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "ttt-news-61e4b05a",
+    "title": "Housing, Education Among Priorities For TTNNA Election Candidate Letitia Cox",
+    "source": "TTT News",
+    "date": "2026-08-20",
+    "country": "TT",
+    "url": "https://www.ttt.live/housing-education-among-priorities-for-ttnna-election-candidate-letitia-cox/?utm_source=rss&utm_medium=rss&utm_campaign=housing-education-among-priorities-for-ttnna-election-candidate-letitia-cox",
+    "tags": [
+      "health",
+      "labour",
+      "news"
+    ],
+    "category": "Infrastructure",
+    "group": "Investment",
+    "decision": "publish",
+    "confidence": "high",
+    "reason": "Heuristic: displayable.",
+    "classifier": "heuristic"
+  },
+  {
+    "id": "nation-news-37e865b7",
+    "title": "Bajans deeper in debt",
+    "source": "Nation News",
+    "date": "2026-08-20",
+    "country": "BB",
+    "url": "https://nationnews.com/2026/08/20/bajans-deeper-in-debt/?utm_source=rss&utm_medium=rss&utm_campaign=bajans-deeper-in-debt",
+    "tags": [
+      "business",
+      "bajans deeper in debt"
+    ],
+    "category": "Macro",
+    "group": "Macro",
+    "decision": "publish",
+    "confidence": "medium",
     "reason": "Heuristic: displayable.",
     "classifier": "heuristic"
   },
@@ -36934,469 +37440,6 @@
     "confidence": "high",
     "reason": "Mobile application launch for deals and event discovery; digital-economy and consumer fintech service.",
     "classifier": "llm",
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "magnetic-media-e3574e52",
-    "title": "DDME’s Hurricane Hunt Scavenger Hunt Sparks Community Spirit and Storm Preparedness in Providenciales",
-    "source": "Magnetic Media",
-    "date": "2026-07-16",
-    "country": "TC",
-    "url": "https://magneticmediatv.com/2026/07/ddmes-hurricane-hunt-scavenger-hunt-sparks-community-spirit-and-storm-preparedness-in-providenciales/",
-    "tags": [
-      "news",
-      "tci news",
-      "#ddmehurricanehunt",
-      "#ddmescavengerhunt",
-      "#hurricanepreparedness",
-      "#magneticmedianews"
-    ],
-    "category": "Government",
-    "group": "Macro",
-    "decision": "publish",
-    "confidence": "medium",
-    "reason": "Hurricane preparedness program; climate resilience and disaster mitigation policy",
-    "classifier": "llm",
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "kaieteur-news-06396b04",
-    "title": "Govt. must come clean on Exxon’s cost bank balance – Opposition Leader",
-    "source": "Kaieteur News",
-    "date": "2026-07-15",
-    "country": "GY",
-    "url": "https://kaieteurnewsonline.com/2026/07/15/govt-must-come-clean-on-exxons-cost-bank-balance-opposition-leader/",
-    "tags": [
-      "news",
-      "azruddin mohamed",
-      "cost bank",
-      "exxonmobil",
-      "natural resource fund"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "kaieteur-news-e7595328",
-    "title": "Trump resumes Iran port blockade and threatens strikes on energy targets",
-    "source": "Kaieteur News",
-    "date": "2026-07-15",
-    "country": "GY",
-    "url": "https://kaieteurnewsonline.com/2026/07/15/trump-resumes-iran-port-blockade-and-threatens-strikes-on-energy-targets/",
-    "tags": [
-      "news",
-      "iran port blockade"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "kaieteur-news-210ad4b2",
-    "title": "GTE contractors can be debarred under Guyana’s procurement laws over ‘hidden info’, checking off substandard work",
-    "source": "Kaieteur News",
-    "date": "2026-07-15",
-    "country": "GY",
-    "url": "https://kaieteurnewsonline.com/2026/07/15/gte-contractors-can-be-debarred-under-guyanas-procurement-laws-over-hidden-info-checking-off-substandard-work/",
-    "tags": [
-      "news",
-      "gas-to-energy",
-      "gte contractors",
-      "procurement laws",
-      "substandard work"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "kaieteur-news-53f7ae3d",
-    "title": "Govt. seeks contractor to design, build bridges at Mahaica, Mahaicony & Abary",
-    "source": "Kaieteur News",
-    "date": "2026-07-15",
-    "country": "GY",
-    "url": "https://kaieteurnewsonline.com/2026/07/15/govt-seeks-contractor-to-design-build-bridges-at-mahaica-mahaicony-abary/",
-    "tags": [
-      "news",
-      "abary",
-      "bridges",
-      "mahaica",
-      "mahaicony"
-    ],
-    "deal_status": "pending",
-    "deal_type": "Other"
-  },
-  {
-    "id": "kaieteur-news-ecd801f2",
-    "title": "The resource curse is a disease of economics before it is a disease of institutions",
-    "source": "Kaieteur News",
-    "date": "2026-07-15",
-    "country": "GY",
-    "url": "https://kaieteurnewsonline.com/2026/07/15/the-resource-curse-is-a-disease-of-economics-before-it-is-a-disease-of-institutions/",
-    "tags": [
-      "features / columnists",
-      "peeping tom",
-      "disease of economics",
-      "disease of institutions",
-      "resource curse"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "kaieteur-news-b979426d",
-    "title": "Oil revenues 2025 and Guyana’s shares",
-    "source": "Kaieteur News",
-    "date": "2026-07-15",
-    "country": "GY",
-    "url": "https://kaieteurnewsonline.com/2026/07/15/oil-revenues-2025-and-guyanas-shares/",
-    "tags": [
-      "letters",
-      "exxon",
-      "guyana oil revenue",
-      "hess",
-      "oggn"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "guyana-chronicle-0914f4d9",
-    "title": "Health investments turning Guyana into regional medical hub",
-    "source": "Guyana Chronicle",
-    "date": "2026-07-15",
-    "country": "GY",
-    "url": "https://guyanachronicle.com/2026/07/15/health-investments-turning-guyana-into-regional-medical-hub/",
-    "tags": [
-      "news"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "guyana-chronicle-37a2ddd3",
-    "title": "374 Region Four rice farmers get $113M in relief subsidies",
-    "source": "Guyana Chronicle",
-    "date": "2026-07-15",
-    "country": "GY",
-    "url": "https://guyanachronicle.com/2026/07/15/374-region-four-rice-farmers-get-113m-in-relief-subsidies/",
-    "tags": [
-      "news"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "cnc3-a6f0b18f",
-    "title": "Privy Council reserves decision on SoE detention of senior cop, two others",
-    "source": "CNC3",
-    "date": "2026-07-15",
-    "country": "TT",
-    "url": "https://www.cnc3.co.tt/privy-council-reserves-decision-on-soe-detention-of-senior-cop-two-others/?utm_source=rss&utm_medium=rss&utm_campaign=privy-council-reserves-decision-on-soe-detention-of-senior-cop-two-others",
-    "tags": [
-      "news"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "cnc3-3013b604",
-    "title": "PNM rejects public financial disclosure amid Balisier House probe",
-    "source": "CNC3",
-    "date": "2026-07-15",
-    "country": "TT",
-    "url": "https://www.cnc3.co.tt/pnm-rejects-public-financial-disclosure-amid-balisier-house-probe/?utm_source=rss&utm_medium=rss&utm_campaign=pnm-rejects-public-financial-disclosure-amid-balisier-house-probe",
-    "tags": [
-      "news"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "barbados-today-b8e89097",
-    "title": "‘Tourism 3.0’ shift declared with hotel opening",
-    "source": "Barbados Today",
-    "date": "2026-07-15",
-    "country": "BB",
-    "url": "https://barbadostoday.bb/2026/07/14/tourism-3-0-shift-declared-with-hotel-opening/",
-    "tags": [
-      "business",
-      "local news",
-      "tourism",
-      "headline",
-      "headlines"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "barbados-today-98053d35",
-    "title": "Banks withhold backing as govts scramble to fix gaps, restore confidence",
-    "source": "Barbados Today",
-    "date": "2026-07-15",
-    "country": "BB",
-    "url": "https://barbadostoday.bb/2026/07/14/banks-withhold-backing-as-govts-scramble-to-fix-gaps-restore-confidence/",
-    "tags": [
-      "business",
-      "economy",
-      "local news"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "jamaica-observer-5e9be47a",
-    "title": "Newly formed St Lucian company to take control of Dolphin Cove",
-    "source": "Jamaica Observer",
-    "date": "2026-07-15",
-    "country": "JM",
-    "url": "https://www.jamaicaobserver.com/2026/07/15/newly-formed-st-lucian-company-take-control-dolphin-cove/",
-    "tags": [
-      "business"
-    ],
-    "deal_status": "pending",
-    "deal_type": "M&A"
-  },
-  {
-    "id": "eyewitness-news-c2a1964b",
-    "title": "J.P. Morgan Trust Company set to unveil new Bahamas office after relocation",
-    "source": "Eyewitness News",
-    "date": "2026-07-15",
-    "country": "BS",
-    "url": "https://ewnews.com/j-p-morgan-trust-company-set-to-unveil-new-bahamas-office-after-relocation/?utm_source=rss&utm_medium=rss&utm_campaign=j-p-morgan-trust-company-set-to-unveil-new-bahamas-office-after-relocation",
-    "tags": [
-      "business",
-      "always a headline ahead",
-      "bahamas news",
-      "eyewitness news online",
-      "nassau bahamas"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "now-grenada-ef8d42b6",
-    "title": "Nominations open: Caricom Farmer of the Year Award",
-    "source": "NOW Grenada",
-    "date": "2026-07-15",
-    "country": "GD",
-    "url": "https://nowgrenada.com/2026/07/nominations-open-caricom-farmer-of-the-year-award/",
-    "tags": [
-      "agriculture/fisheries",
-      "business",
-      "press release",
-      "caribbean week of agriculture",
-      "caricom",
-      "farmer"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "now-grenada-7d73c9b6",
-    "title": "Communiqué of the 113th Meeting of the ECCB Monetary Council",
-    "source": "NOW Grenada",
-    "date": "2026-07-15",
-    "country": "GD",
-    "url": "https://www.eccb-centralbank.org/news/communique-of-the-113th-meeting-of-the-monetary-council-of-the-eastern-caribbean-central-bank#new_tab",
-    "tags": [
-      "business",
-      "external link",
-      "dominica",
-      "eastern caribbean central bank",
-      "eastern caribbean currency union",
-      "eccb"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "st-lucia-times-8959645f",
-    "title": "OPINION: If road safety is a productivity issue, so is insurance access",
-    "source": "St. Lucia Times",
-    "date": "2026-07-15",
-    "country": "LC",
-    "url": "https://stluciatimes.com/182043/2026/07/opinion-if-road-safety-is-a-productivity-issue-so-is-insurance-access/",
-    "tags": [
-      "headlines",
-      "opinions",
-      "car insurance",
-      "insurance reform",
-      "ncpc",
-      "productivity"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "antigua-news-room-d7b82912",
-    "title": "APUA Pipe Installation Works to Affect Traffic on Market Street Today",
-    "source": "Antigua News Room",
-    "date": "2026-07-15",
-    "country": "AG",
-    "url": "https://antiguanewsroom.com/apua-pipe-installation-works-to-affect-traffic-on-market-street-today/",
-    "tags": [
-      "news"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "antigua-observer-e57b03a8",
-    "title": "Bank Fees Erode Abandoned Account Balances",
-    "source": "Antigua Observer",
-    "date": "2026-07-15",
-    "country": "AG",
-    "url": "https://antiguaobserver.com/bank-fees-erode-abandoned-account-balances/",
-    "tags": [
-      "the big stories"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "cayman-compass-05562a3c",
-    "title": "Cayman’s booming property market breaks records in Q2 2026",
-    "source": "Cayman Compass",
-    "date": "2026-07-15",
-    "country": "KY",
-    "url": "https://www.caymancompass.com/2026/07/15/caymans-booming-property-market-breaks-records-in-q2-2026/",
-    "tags": [
-      "business",
-      "condos",
-      "property",
-      "provenance properties"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "wic-news-b35ae58f",
-    "title": "‘Investment migration isn’t shrinking, it’s growing up,’ says CS Global Partners CEO",
-    "source": "WIC News",
-    "date": "2026-07-15",
-    "country": "ALL",
-    "url": "https://wicnews.com/world/investment-migration-isnt-shrinking-its-growing-up-says-cs-global-partners-ceo",
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "cnc3-de9ce100",
-    "title": "Government exempts proposed US$800m bond issue from taxes, exchange control",
-    "source": "CNC3",
-    "date": "2026-07-15",
-    "country": "TT",
-    "url": "https://www.cnc3.co.tt/government-exempts-proposed-us800m-bond-issue-from-taxes-exchange-control/?utm_source=rss&utm_medium=rss&utm_campaign=government-exempts-proposed-us800m-bond-issue-from-taxes-exchange-control",
-    "tags": [
-      "news",
-      "instagram"
-    ],
-    "deal_status": "pending",
-    "deal_type": "Bond"
-  },
-  {
-    "id": "cnc3-a353409b",
-    "title": "U.S. reimposes blockade and steps up strikes as Iran threatens to halt Mideast energy exports",
-    "source": "CNC3",
-    "date": "2026-07-15",
-    "country": "TT",
-    "url": "https://www.cnc3.co.tt/u-s-reimposes-blockade-and-steps-up-strikes-as-iran-threatens-to-halt-mideast-energy-exports/?utm_source=rss&utm_medium=rss&utm_campaign=u-s-reimposes-blockade-and-steps-up-strikes-as-iran-threatens-to-halt-mideast-energy-exports",
-    "tags": [
-      "news"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "cnc3-4851e931",
-    "title": "Vessel towed back to safety after stalling at sea",
-    "source": "CNC3",
-    "date": "2026-07-15",
-    "country": "TT",
-    "url": "https://www.cnc3.co.tt/vessel-towed-back-to-safety-after-stalling-at-sea/?utm_source=rss&utm_medium=rss&utm_campaign=vessel-towed-back-to-safety-after-stalling-at-sea",
-    "tags": [
-      "news",
-      "instagram"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "barbados-today-2c6c59c0",
-    "title": "BCEN backs Central Bank BiMPay action, calls for stronger oversight",
-    "source": "Barbados Today",
-    "date": "2026-07-15",
-    "country": "BB",
-    "url": "https://barbadostoday.bb/2026/07/15/bcen-backs-central-bank-bimpay-action-calls-for-stronger-oversight/",
-    "tags": [
-      "business",
-      "local news"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "nation-news-4d6aadf7",
-    "title": "Financial markets ‘rebound from Iran war’",
-    "source": "Nation News",
-    "date": "2026-07-15",
-    "country": "BB",
-    "url": "https://nationnews.com/2026/07/15/financial-markets-rebound-from-iran-war/?utm_source=rss&utm_medium=rss&utm_campaign=financial-markets-rebound-from-iran-war",
-    "tags": [
-      "business",
-      "financial markets ‘rebound from iran war'"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "jamaica-observer-2702df16",
-    "title": "Taxi fares, food push inflation to 29-month high",
-    "source": "Jamaica Observer",
-    "date": "2026-07-15",
-    "country": "JM",
-    "url": "https://www.jamaicaobserver.com/2026/07/15/taxi-fares-food-push-inflation-29-month-high/",
-    "tags": [
-      "business",
-      "latest news",
-      "bank of jamaica",
-      "food prices",
-      "taxi",
-      "taxi fare"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "jamaica-observer-f03a28aa",
-    "title": "Gas prices up $3.06, diesel up $12.50",
-    "source": "Jamaica Observer",
-    "date": "2026-07-15",
-    "country": "JM",
-    "url": "https://www.jamaicaobserver.com/2026/07/15/gas-prices-3-06-diesel-12-50/",
-    "tags": [
-      "latest news",
-      "news",
-      "gas",
-      "gas prices",
-      "petrojam"
-    ],
-    "deal_status": "not_a_deal",
-    "deal_type": null
-  },
-  {
-    "id": "jamaica-observer-1cd02083",
-    "title": "Forex: $158.96 to one US dollar",
-    "source": "Jamaica Observer",
-    "date": "2026-07-15",
-    "country": "JM",
-    "url": "https://www.jamaicaobserver.com/2026/07/15/forex-158-96-one-us-dollar/",
-    "tags": [
-      "latest news",
-      "forex",
-      "money",
-      "us"
-    ],
     "deal_status": "not_a_deal",
     "deal_type": null
   }
