@@ -93,35 +93,61 @@ function describeItem(item: EvidenceItem): string {
   return `${refs} — ${item.concept}: ${item.explanation} | mechanism: ${item.mechanism}`;
 }
 
+/* Second iteration of this prompt. The first (git history: the plain-English rewrite) traded away
+ * economic depth and evidentiary grounding for readability — a real regression, not a style nit,
+ * caught independently from two directions: it also coincided with a maxTokens truncation problem
+ * (fixed separately, see interpret.ts's maxTokens comment) because it pushed completions longer
+ * right as headroom was already tight. This version's job is BOTH: analyst-grade reasoning AND
+ * plain language, not one traded for the other. */
 const ANALYST_INSTRUCTIONS = [
-  'Write as if explaining to an intelligent person who is curious about economics but not an',
-  'economist. Your answer should read like a clear explanation, not an analyst memo or evidence',
-  'dump. Structure every answer the same way:',
+  'You are an economic analyst, not a general explainer. Write for an intelligent reader who is',
+  'not an economist — simple language — but do not lose the analytical edge: real economic',
+  'reasoning, named mechanisms, and evidence, not a plain-English summary of the headline result.',
   '',
-  '1. MAIN STORY (plain English): State what is happening and why it matters in one clear',
-  '   sentence or two. Do not lead with numbers or caveats.',
+  'Preferred flow — adapt the order to whatever makes THIS question clearest; do not force a',
+  'question into this shape if another order explains it better:',
   '',
-  '2. WHY IT\'S HAPPENING: Explain the cause-and-effect chain. Why did this happen? What economic',
-  '   mechanisms are at work? Describe what is actually happening (e.g., "weaker energy exports',
-  '   mean fewer US dollars entering the economy") rather than just restating the outcome.',
+  '1. DIRECT CONCLUSION: What is happening economically and why it matters, in one or two',
+  '   sentences. Lead with the conclusion, not a number or a caveat.',
   '',
-  '3. SUPPORTING EVIDENCE: Use 2–4 key figures or examples to support your explanation. Fold them',
-  '   naturally into the narrative. For example: "GDP fell 3.2% in Q3 2025, driven primarily by",',
-  '   not "Q3 2025 GDP was 3.2% lower; also, [separate fact]."',
+  '2. MECHANISM: The cause-and-effect chain, in plain language — e.g. "weaker energy exports mean',
+  '   fewer US dollars entering the economy," not just a restatement of the outcome. Name the',
+  '   actual channel at work (growth, investment, fiscal revenue, exports, foreign exchange,',
+  '   inflation, employment, productivity, demand, external balances) whenever one genuinely',
+  '   applies — translate the jargon, do not delete the economics.',
   '',
-  '4. SECONDARY DETAILS (only if relevant): Add company actions, policy changes, trade',
-  '   developments, or other context only when they help explain the user\'s actual question.',
-  '   Do not include facts simply because they were retrieved.',
+  '3. EVIDENCE: Ground the 2-4 most important claims in the strongest available figures, dates,',
+  '   and sourced developments. Fold numbers into the narrative ("GDP fell 3.2% in Q3 2025, driven',
+  '   primarily by...") rather than listing them separately. A major analytical claim without',
+  '   quantitative support should be the exception, not the norm.',
   '',
-  '── TONE & PRIORITIES ──',
-  '- Prioritize relevance: answer the actual question, not everything retrieved.',
-  '- Distinguish fact from interpretation: clearly signal when a conclusion is directly supported',
-  '  by evidence versus a plausible inference from available evidence.',
-  '- Use data as support, not structure: numbers explain the narrative, not the other way around.',
-  '- Explain economic relationships in plain language: instead of "foreign-exchange earnings fell,"',
-  '  explain what that means in everyday terms.',
-  '- Do not enumerate every retrieved fact or repeat evidence unless it advances the explanation.',
-  '- Build one coherent spine to the answer — not a list of unrelated facts.',
+  '4. WHAT THIS MEANS (only if it genuinely follows): what to watch next, or what this implies.',
+  '   Keep this brief. It is the first thing cut if the answer runs long, so 1-3 must stand on',
+  '   their own without it — do not put anything load-bearing here.',
+  '',
+  '── EVIDENCE VS. INFERENCE ──',
+  '- State a mechanism as settled only when the evidence directly establishes it.',
+  '- When a mechanism is your own plausible reading of the data rather than something the evidence',
+  '  states outright, say so inline — "this points to...", "consistent with...", "likely',
+  '  reflects..." — and still cite whatever evidence supports the inference, even if that evidence',
+  '  does not state the mechanism directly. Never invent a mechanism just because it is',
+  '  theoretically plausible with no evidentiary anchor at all.',
+  '- If the evidence shows correlation or only partial support, say that plainly. Do not overstate',
+  '  causality.',
+  '',
+  '── DISCIPLINE ──',
+  '- Choose the 2-4 most important conclusions and build one coherent narrative around them — do',
+  '  not enumerate every retrieved fact.',
+  '- Keep company announcements, policy changes, and individual news developments subordinate:',
+  '  include them only when they help explain the main economic story, never because they were',
+  '  retrieved.',
+  '- Keep the answer semi-concise — a focused explanation, not an analyst memo or a long report.',
+  '- Never write a separate "evidence limitations" or "caveats" paragraph inside the narrative.',
+  '  Anything the evidence could not establish belongs in gaps[], not in claim text.',
+  '- Each claim\'s "text" must read as a complete, self-contained statement. It is rendered as its',
+  '  own paragraph in one surface and space-joined with every other claim, back to back, in',
+  '  another — so never open a claim with a dangling connective ("This is because...",',
+  '  "Additionally,...") that only makes sense immediately after the previous one.',
 ].join('\n');
 
 function buildSystemPrompt(compiled: CompiledEvidence): string {
@@ -130,10 +156,23 @@ function buildSystemPrompt(compiled: CompiledEvidence): string {
     '',
     `Question: ${compiled.question}`,
     `Analysis goal: ${compiled.analysisGoal}`,
+  ];
+
+  if (compiled.investigationNotes.length) {
+    sections.push(
+      '',
+      "INVESTIGATION RATIONALE (why this evidence was sought, in retrieval order — not narrative",
+      "importance). Use it to judge what the question is actually asking about, not as a template",
+      'for claim order:',
+      ...compiled.investigationNotes.map(n => `- ${n}`),
+    );
+  }
+
+  sections.push(
     '',
     "KEY FACTS (each item's ref(s) shown — cite one exactly, never invent one):",
     ...(compiled.keyFacts.length ? compiled.keyFacts.map(describeItem) : ['(none retrieved)']),
-  ];
+  );
 
   if (compiled.caveats.length) {
     sections.push('', 'CAVEATS — hard constraints, not suggestions:', ...compiled.caveats.map(c => `- ${c}`));
@@ -204,6 +243,12 @@ function buildSystemPrompt(compiled: CompiledEvidence): string {
     '- Respect every caveat above exactly as written — it is a constraint, not a suggestion.',
     '- Order your claims by importance — the most important conclusion first. If your answer runs',
     '  long, only the leading claims are guaranteed to be shown.',
+    '- Never assert an inferred mechanism as settled fact. Hedge it inline in "text" ("this points',
+    '  to...", "likely reflects...") and still cite whatever evidence supports the inference, even',
+    '  if that evidence does not state the mechanism directly.',
+    '- A closing "what this means" / "what to watch" claim is usually type "framing" (no required',
+    '  refs) unless it cites a specific evidence-backed figure — and belongs LAST, since it is the',
+    '  first claim dropped if the answer runs long.',
   );
 
   return sections.join('\n');
@@ -329,7 +374,7 @@ export async function synthesize(compiled: CompiledEvidence): Promise<ResearchAn
        finish instead. See interpret.ts's maxTokens comment for why timeouts, not tokens, are the
        scarce budget across this pipeline (vercel.json's 240s api/ask.ts ceiling). */
     maxTokens: 12_000,
-    timeoutMs: 90_000,
+    timeoutMs: 120_000,
   });
 
   const raw = parseModelJson(response.text);

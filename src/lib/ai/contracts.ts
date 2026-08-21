@@ -416,6 +416,13 @@ export interface CompiledEvidence {
    * dropping these would materially increase how often check 9 (cross_currency_comparison) has
    * to reject a synthesized claim after the fact, instead of the prompt preventing it upfront. */
   caveats: string[];
+  /* Each validated ResearchStep's own `why` (plan.ts), in plan order — the planner's stated reason
+   * for seeking that piece of evidence, never the model's own commentary. Context only, exactly
+   * like economicConcepts: it tells synthesize() what the plan considered central to the question
+   * so ordering/emphasis isn't guessed from the evidence alone, but it carries no ref and is never
+   * independently citable. Deterministic and gate-irrelevant — verify() still checks `answer`
+   * against the original EvidencePackage, never against this or anything else in CompiledEvidence. */
+  investigationNotes: string[];
 }
 
 /* The task-pane-facing evidence note (Stage C/E) — `summary` is the short inline line,

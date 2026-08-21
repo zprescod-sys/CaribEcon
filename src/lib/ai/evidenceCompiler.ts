@@ -451,5 +451,10 @@ export function compileEvidence(intent: ResearchIntent, plan: ResearchPlan, pkg:
     contradictions: contradictions.slice(0, MAX_CONTRADICTIONS),
     gaps: computeGaps(pkg),
     caveats: pkg.caveats,
+    // plan (the validated ResearchPlan) is already this function's own parameter — MAX_PLAN_STEPS
+    // (config.ts) already bounds `steps` to 8, so no separate cap is needed here. Filtered for
+    // the same reason toFilteredStringArray (plan.ts) exists: a step's `why` is model output too,
+    // and an empty one is possible even though coerceStep requires it be non-empty at parse time.
+    investigationNotes: plan.steps.map(s => s.why).filter(why => why.trim().length > 0),
   };
 }

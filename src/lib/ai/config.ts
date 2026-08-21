@@ -125,8 +125,13 @@ export const MAX_CONTRADICTIONS = 3;
 // MAX_VISIBLE_CLAIMS allows headroom beyond the "2-4 core conclusions" the prompt asks for, since
 // a conclusion is often backed by one or two supporting claims, not stated bare — this caps
 // runaway enumeration (a real live capture produced 12 claims before this stage existed) without
-// cutting a conclusion's own support out from under it. MAX_VISIBLE_ANSWER_TOKENS is the user's
-// spec target; token count is estimated (chars/4), not an exact tokenizer count — a deliberately
-// conservative, cheap approximation, not a hard guarantee to the token.
+// cutting a conclusion's own support out from under it. Unchanged by the analyst-style rewrite:
+// conclusion + mechanism + 2-4 grounded data points + an optional closing claim still fits inside
+// 8. MAX_VISIBLE_ANSWER_TOKENS was the ORIGINAL spec target (1200), sized for the plainer,
+// shorter narrative prompt this file had before the analyst-style rewrite; re-derived to 1600 for
+// that rewrite's explicit ask for real analytical depth (named economic mechanism, evidence vs.
+// inference hedging) at the same claim count — more required content per claim, not more claims.
+// Token count is estimated (chars/4), not an exact tokenizer count — a deliberately conservative,
+// cheap approximation, not a hard guarantee to the token.
 export const MAX_VISIBLE_CLAIMS = 8;
-export const MAX_VISIBLE_ANSWER_TOKENS = 1_200;
+export const MAX_VISIBLE_ANSWER_TOKENS = 1_600;
