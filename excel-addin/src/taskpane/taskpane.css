@@ -690,11 +690,8 @@ select[multiple] {
 .ask-composer__send:hover:not(:disabled) { background: var(--teal-deep); }
 
 .ask-composer__send--cancel {
-  background: var(--ink);
   font-size: 11px;
 }
-
-.ask-composer__send--cancel:hover:not(:disabled) { background: var(--ink-soft); }
 
 .ask-composer__send:disabled {
   background: var(--ink-faint);
