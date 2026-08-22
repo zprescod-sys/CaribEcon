@@ -120,6 +120,9 @@ export const MAX_EXTRACT_TOTAL = 15_000; // ARCHITECTURE.md §7 starting point �
 // constants above, since this path is a plain HTTP fetch, not Tavily; kept small because each
 // digest is an extra model call.
 export const MAX_NEWS_DIGESTS = 5;
+// Recovery is deliberately separate from the primary-request latency. It is a single optional
+// enrichment pass and must never keep an Ask request alive beyond this hard cap.
+export const MAX_RECOVERY_LATENCY_MS = 60_000;
 
 // Bounded conversational memory (§7, §2.7 rule 2) — named in §7's own constant list from the
 // start, implemented alongside ConversationTurn (contracts.ts). Enforced at the api/ask.ts trust

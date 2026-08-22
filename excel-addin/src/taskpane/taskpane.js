@@ -1219,12 +1219,15 @@ function appendAssistantMessage(question, result) {
   // no surviving claim ever carried — is never shown as if it were verified. Same discipline as
   // `published` above (the one rule this function must never break), just for the one string in
   // the answer that isn't a Claim and so isn't already covered by that filter.
-  const displayHeadline = verdict.publishedHeadline
-    ? answer.headline
-    : 'This headline could not be fully verified against retrieved evidence — see the statements below.';
+  // Keep the verification boundary intact: an unsupported model headline is never shown. When
+  // verified claims survived, use the first complete surviving claim as the lead instead of a
+  // generic warning; it is already grounding-checked and therefore remains safe to display.
+  const fallbackHeadline = published.find(c => c.text)?.text ??
+    'This headline could not be fully verified against retrieved evidence — see the statements below.';
+  const displayHeadline = verdict.publishedHeadline ? answer.headline : fallbackHeadline;
 
   const details = published.length
-    ? published.filter(c => c.text).map(c => `<p class="msg__detail">${esc(c.text)}</p>`).join('')
+    ? published.filter(c => c.text && (verdict.publishedHeadline || c.text !== fallbackHeadline)).map(c => `<p class="msg__detail">${esc(c.text)}</p>`).join('')
     : `<p class="msg__detail">No part of this answer could be verified against retrieved evidence.</p>`;
 
   // outcome can go NARROW two ways that don't overlap in what they mean: some claims were

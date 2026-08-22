@@ -17,7 +17,12 @@ import {
   MAX_EXTRACT_CHARS,
   MAX_EXTRACT_TOTAL,
   MAX_NEWS_DIGESTS,
+  MAX_RECOVERY_LATENCY_MS,
 } from './config.ts';
+
+test('recovery latency has one explicit hard 60-second budget', () => {
+  assert.equal(MAX_RECOVERY_LATENCY_MS, 60_000);
+});
 
 /* Sets exactly the given env vars for the duration of `run`, restoring each key's original
    value (or absence) afterward — never a blanket process.env swap, so this can't accidentally

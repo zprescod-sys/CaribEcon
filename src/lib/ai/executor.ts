@@ -71,8 +71,8 @@ import { searchWeb, extractWeb } from '../webEvidence.js';
 import { fetchArticleText } from '../newsArticleFetch.js';
 import { extractArticleInsights } from './roles/newsExtract.js';
 import { plan as planFollowUp } from './roles/plan.js';
-import { throwIfAborted } from './cancellation.js';
-import { MAX_TAVILY_SEARCHES, MAX_TAVILY_EXTRACTS, MAX_NEWS_DIGESTS } from './config.js';
+import { signalWithTimeout, throwIfAborted } from './cancellation.js';
+import { MAX_TAVILY_SEARCHES, MAX_TAVILY_EXTRACTS, MAX_NEWS_DIGESTS, MAX_RECOVERY_LATENCY_MS } from './config.js';
 import type {
   ResearchPlan,
   ResearchStep,
@@ -148,10 +148,107 @@ function scopeToSyntheticIntent(researchPlan: ResearchPlan): ResearchIntent {
   };
 }
 
+export interface RecoveryContext {
+  trigger: 'evidence' | 'synthesis';
+  missingIndicatorsOrData?: string[];
+  failedRetrievals?: string[];
+  unsupportedClaimsOrGaps?: string[];
+  sourcesOrAnglesTried?: string[];
+}
+
+export interface RecoveryResult {
+  evidence: EvidencePackage;
+  attempted: true;
+  completed: boolean;
+  timedOut: boolean;
+}
+
+function unique<T>(items: T[]): T[] {
+  return [...new Set(items)];
+}
+
+function mergeEvidence(first: EvidencePackage, followUp: EvidencePackage): EvidencePackage {
+  const uniqueBy = <T>(items: T[], key: (item: T) => string): T[] => {
+    const seen = new Set<string>();
+    return items.filter(item => {
+      const value = key(item);
+      if (seen.has(value)) return false;
+      seen.add(value);
+      return true;
+    });
+  };
+  return {
+    ...first,
+    data: uniqueBy([...first.data, ...followUp.data], data => evidenceId(data.country, data.indicator)),
+    news: uniqueBy([...first.news, ...followUp.news], news => news.id),
+    web: uniqueBy([...(first.web ?? []), ...(followUp.web ?? [])], web => web.id),
+    misses: uniqueBy([...first.misses, ...followUp.misses], miss => `${miss.kind}:${miss.detail}`),
+    caveats: unique([...first.caveats, ...followUp.caveats]),
+    toolsUsed: unique([...first.toolsUsed, ...followUp.toolsUsed]),
+    evidenceMeta: uniqueBy([...first.evidenceMeta, ...followUp.evidenceMeta], meta => meta.ref),
+  };
+}
+
+function recoveryPrompt(researchPlan: ResearchPlan, context: RecoveryContext): string {
+  const lines = [
+    `One bounded recovery planning pass for the original question: "${researchPlan.question}"`,
+    'Plan only new, materially different retrieval steps. Seek a different evidence angle; do not repeat the sources, queries, or step shapes already tried.',
+    'Do not answer the question. This is the only recovery pass.',
+  ];
+  const add = (label: string, values?: string[]) => {
+    if (values?.length) lines.push(`${label}: ${values.slice(0, 8).join(' | ')}`);
+  };
+  add('Missing indicators/data', context.missingIndicatorsOrData);
+  add('Failed retrieval/extraction', context.failedRetrievals);
+  add('Unsupported claims/evidence gaps', context.unsupportedClaimsOrGaps);
+  add('Sources/angles already tried', context.sourcesOrAnglesTried);
+  lines.push(`Recovery trigger: ${context.trigger}.`);
+  return lines.join('\n');
+}
+
+/** Executes the sole recovery allowance for a request. Timeout and re-plan failure preserve the
+ * original package so synthesis can return the best verified partial answer. */
+export async function recoverEvidenceOnce(
+  researchPlan: ResearchPlan,
+  evidence: EvidencePackage,
+  context: RecoveryContext,
+  retrievedAt: string = new Date().toISOString(),
+  { signal }: { signal?: AbortSignal } = {},
+): Promise<RecoveryResult> {
+  const recoverySignal = signalWithTimeout(signal, MAX_RECOVERY_LATENCY_MS);
+  try {
+    const rawReplan = await planFollowUp(recoveryPrompt(researchPlan, context), scopeToSyntheticIntent(researchPlan), { signal: recoverySignal });
+    const { plan: validatedReplan, misses: replanMisses } = validateResearchPlan(rawReplan);
+    const seen = new Set(researchPlan.steps.map(stepSignature));
+    const newSteps = validatedReplan.steps.filter(step => !seen.has(stepSignature(step)));
+    const recovered = await executeResearchPlan(
+      { ...validatedReplan, steps: newSteps },
+      retrievedAt,
+      { signal: recoverySignal, recovery: { enabled: false } },
+    );
+    recovered.misses.push(...replanMisses);
+    return { evidence: mergeEvidence(evidence, recovered), attempted: true, completed: true, timedOut: false };
+  } catch {
+    // A real user cancellation must still escape; a recovery timeout is an expected bounded
+    // outcome and intentionally falls through to the original evidence.
+    throwIfAborted(signal);
+    const timedOut = recoverySignal.aborted;
+    const limitation = timedOut
+      ? `Recovery pass reached its ${MAX_RECOVERY_LATENCY_MS / 1000}-second limit; returning the best evidence retrieved before recovery.`
+      : 'Recovery pass could not add new evidence; returning the best evidence from the initial pass.';
+    return {
+      evidence: { ...evidence, caveats: unique([...evidence.caveats, limitation]) },
+      attempted: true,
+      completed: false,
+      timedOut,
+    };
+  }
+}
+
 export async function executeResearchPlan(
   researchPlan: ResearchPlan,
   retrievedAt: string = new Date().toISOString(),
-  { signal }: { signal?: AbortSignal } = {},
+  { signal, recovery = { enabled: true } }: { signal?: AbortSignal; recovery?: { enabled?: boolean } } = {},
 ): Promise<EvidencePackage> {
   const pkg: EvidencePackage = {
     data: [],
@@ -388,7 +485,7 @@ export async function executeResearchPlan(
   await runStepsConcurrently(researchPlan.steps);
 
   // ── One optional re-plan ──────────────────────────────────────────────────────────────────
-  if (pkg.misses.length > 0) {
+  if (recovery.enabled !== false && pkg.misses.length > 0) {
     try {
       const missSummary = pkg.misses.map(m => `- (${m.kind}) ${m.detail}`).join('\n');
       const followUpQuestion = [

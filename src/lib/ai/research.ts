@@ -57,7 +57,7 @@ import { routePlan } from './roles/routePlan.js';
 import { synthesize } from './roles/synthesize.js';
 import { verify } from './verify.js';
 import { validateResearchPlan } from '../askTools.js';
-import { executeResearchPlan } from './executor.js';
+import { executeResearchPlan, recoverEvidenceOnce, type RecoveryContext } from './executor.js';
 import { compileEvidence, buildEvidenceNote } from './evidenceCompiler.js';
 import { classifyProviderFailure, StagedProviderFailure, type PipelineStage } from './providerFailure.js';
 import { ProviderCallError } from './providers/openaiCompatible.js';
@@ -67,6 +67,9 @@ import type {
   ResearchResult,
   ResearchIntent,
   ResearchPlan,
+  EvidencePackage,
+  ResearchAnswer,
+  VerificationVerdict,
   RetrievalMiss,
 } from './contracts.js';
 
@@ -88,6 +91,37 @@ async function runModelStage<T>(stage: PipelineStage, work: () => Promise<T>): P
     }
     throw error;
   }
+}
+
+function evidenceRecoveryContext(evidence: EvidencePackage): RecoveryContext {
+  return {
+    trigger: 'evidence',
+    missingIndicatorsOrData: evidence.misses.filter(miss => miss.kind === 'indicator' || miss.kind === 'years').map(miss => miss.detail),
+    failedRetrievals: evidence.misses.filter(miss => miss.kind !== 'indicator' && miss.kind !== 'years').map(miss => miss.detail),
+    sourcesOrAnglesTried: [...evidence.toolsUsed, ...(evidence.web ?? []).map(item => item.domain)].filter(Boolean),
+  };
+}
+
+function needsEvidenceRecovery(evidence: EvidencePackage): boolean {
+  return evidence.misses.length > 0 || (evidence.data.length === 0 && !(evidence.web ?? []).some(item => item.extract));
+}
+
+function needsSynthesisRecovery(answer: ResearchAnswer, verdict: VerificationVerdict): boolean {
+  // An intentionally empty, fully verified answer is not evidence insufficiency. Recovery is for
+  // a substantive draft whose claims were all removed by the grounding gate.
+  return answer.claims.length > 0 && verdict.publishedClaims.length === 0;
+}
+
+function synthesisRecoveryContext(answer: ResearchAnswer, verdict: VerificationVerdict, evidence: EvidencePackage): RecoveryContext {
+  return {
+    ...evidenceRecoveryContext(evidence),
+    trigger: 'synthesis',
+    unsupportedClaimsOrGaps: [
+      ...answer.gaps,
+      ...verdict.reasonCategories.map(reason => `Verification gap: ${reason}`),
+      'Synthesis produced no publishable grounded claims.',
+    ],
+  };
 }
 
 export async function research(
@@ -134,21 +168,44 @@ export async function research(
   const { plan: validatedPlan, misses: planMisses } = validateResearchPlan(researchPlan);
 
   const executeStartedAt = performance.now();
-  const evidence = await executeResearchPlan(validatedPlan, retrievedAt, { signal });
+  let evidence = await executeResearchPlan(validatedPlan, retrievedAt, { signal, recovery: { enabled: false } });
   timings.executeMs = Math.round(performance.now() - executeStartedAt);
   // Merge, never drop — same pattern this file has always used for interpret()'s misses, now
   // extended to the plan-validation and execution stages too (see header comment).
   evidence.misses = [...misses, ...planMisses, ...evidence.misses];
 
-  const compiled = compileEvidence(intent, validatedPlan, evidence);
+  let recoveryUsed = false;
+  if (needsEvidenceRecovery(evidence)) {
+    const recoveryStartedAt = performance.now();
+    const recovery = await recoverEvidenceOnce(validatedPlan, evidence, evidenceRecoveryContext(evidence), retrievedAt, { signal });
+    timings.recoveryMs = Math.round(performance.now() - recoveryStartedAt);
+    evidence = recovery.evidence;
+    recoveryUsed = true;
+    console.log('research: recovery', { trigger: 'evidence', completed: recovery.completed, timedOut: recovery.timedOut, recoveryMs: timings.recoveryMs });
+  }
+
+  let compiled = compileEvidence(intent, validatedPlan, evidence);
   const synthesizeStartedAt = performance.now();
-  const answer = await runModelStage('synthesize', () => synthesize(compiled, { signal }));
+  let answer = await runModelStage('synthesize', () => synthesize(compiled, { signal }));
   timings.synthesizeMs = Math.round(performance.now() - synthesizeStartedAt);
   // verify() checks `answer` against `evidence` — the ORIGINAL EvidencePackage, never `compiled`.
   // Third argument (the model claims audit) is intentionally omitted — see header comment.
   const verifyStartedAt = performance.now();
-  const verdict = verify(answer, evidence);
+  let verdict = verify(answer, evidence);
   timings.verifyMs = Math.round(performance.now() - verifyStartedAt);
+  if (!recoveryUsed && needsSynthesisRecovery(answer, verdict)) {
+    const recoveryStartedAt = performance.now();
+    const recovery = await recoverEvidenceOnce(validatedPlan, evidence, synthesisRecoveryContext(answer, verdict, evidence), retrievedAt, { signal });
+    timings.recoveryMs = Math.round(performance.now() - recoveryStartedAt);
+    evidence = recovery.evidence;
+    recoveryUsed = true;
+    console.log('research: recovery', { trigger: 'synthesis', completed: recovery.completed, timedOut: recovery.timedOut, recoveryMs: timings.recoveryMs });
+    if (recovery.completed) {
+      compiled = compileEvidence(intent, validatedPlan, evidence);
+      answer = await runModelStage('synthesize', () => synthesize(compiled, { signal }));
+      verdict = verify(answer, evidence);
+    }
+  }
   const evidenceNote = buildEvidenceNote(compiled);
 
   timings.totalMs = Math.round(performance.now() - requestStartedAt);
