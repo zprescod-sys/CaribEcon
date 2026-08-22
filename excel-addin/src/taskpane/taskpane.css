@@ -633,20 +633,6 @@ select[multiple] {
   color: var(--ink-faint);
 }
 
-.msg__stop {
-  margin-left: 6px;
-  padding: 1px 5px;
-  border: 1px solid var(--line);
-  border-radius: 4px;
-  background: var(--surface);
-  color: var(--ink-soft);
-  font: inherit;
-  cursor: pointer;
-}
-
-.msg__stop:hover:not(:disabled) { border-color: var(--ink-soft); }
-.msg__stop:disabled { cursor: wait; opacity: 0.65; }
-
 .msg--cancelled .msg__bubble {
   font-size: 12.5px;
   color: var(--ink-soft);
@@ -702,6 +688,13 @@ select[multiple] {
 }
 
 .ask-composer__send:hover:not(:disabled) { background: var(--teal-deep); }
+
+.ask-composer__send--cancel {
+  background: var(--ink);
+  font-size: 11px;
+}
+
+.ask-composer__send--cancel:hover:not(:disabled) { background: var(--ink-soft); }
 
 .ask-composer__send:disabled {
   background: var(--ink-faint);

@@ -943,7 +943,10 @@ function initAsk() {
   // every other assets/* reference in this pane already works.
   el('ask-empty-logo').src = 'assets/caribecon-logo.png';
 
-  el('ask').addEventListener('click', ask);
+  el('ask').addEventListener('click', () => {
+    if (activeAskController) stopActiveAsk();
+    else void ask();
+  });
   // Enter sends, Shift+Enter inserts a newline — the composer is a chat input, not a form field.
   el('question').addEventListener('keydown', event => {
     if (event.key === 'Enter' && !event.shiftKey) {
@@ -1012,6 +1015,24 @@ const MAX_CLIENT_HISTORY_TURNS = 4;
 let askHistory = [];
 let activeAskController = null;
 
+// The composer keeps one stable action: send while idle, cancel while a research request is
+// active. Keeping cancellation on that control avoids a second, literal "Stop" button in the
+// message stream and makes the active-request state unmistakable.
+function setAskActionPending(isPending, isStopping = false) {
+  const button = el('ask');
+  button.classList.toggle('ask-composer__send--cancel', isPending);
+  button.textContent = isPending ? '■' : '↑';
+  button.setAttribute('aria-label', isPending ? (isStopping ? 'Stopping research' : 'Stop research') : 'Send');
+  button.disabled = isStopping;
+}
+
+function stopActiveAsk() {
+  const controller = activeAskController;
+  if (!controller || controller.signal.aborted) return;
+  setAskActionPending(true, true);
+  controller.abort();
+}
+
 async function ask() {
   if (activeAskController) return;
   const question = el('question').value.trim();
@@ -1030,16 +1051,9 @@ async function submitAsk(question, showUserMessage = true) {
   activeAskController = controller;
   const pending = appendMessage(
     'msg msg--assistant msg--pending',
-    '<div class="msg__bubble">Researching… <button class="msg__stop" type="button">Stop</button></div>',
+    '<div class="msg__bubble">Researching…</div>',
   );
-  const stop = pending.querySelector('.msg__stop');
-  stop.addEventListener('click', () => {
-    if (controller.signal.aborted) return;
-    stop.disabled = true;
-    pending.querySelector('.msg__bubble').firstChild.textContent = 'Stopping research… ';
-    controller.abort();
-  });
-  el('ask').disabled = true;
+  setAskActionPending(true);
 
   try {
     const endpoint = ASK_MODE === 'ask' ? '/api/ask' : '/api/research';
@@ -1070,7 +1084,7 @@ async function submitAsk(question, showUserMessage = true) {
     );
   } finally {
     if (activeAskController === controller) activeAskController = null;
-    el('ask').disabled = false;
+    setAskActionPending(false);
   }
 }
 
