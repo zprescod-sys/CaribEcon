@@ -593,6 +593,61 @@ test('a sign-mismatched number ("declining 3.88" vs a declared figure of -3.88) 
   assert.deepEqual(result.violations.filter(v => v.check === 'unstated_number'), []);
 });
 
+// No real capture predates the 'webExtract' role, so none carries a pkg.web item with a real
+// extract.insights.importantFigures — hand-built, same convention checks 7/8/9 already use for
+// evidence classes real captures don't exercise.
+test('a claim naming a year from a web figure\'s own period is not flagged, even if it differs from the article\'s publish date', () => {
+  const evidence = {
+    data: [],
+    news: [],
+    misses: [],
+    caveats: [],
+    toolsUsed: [],
+    newsCoverage: { earliest: '', latest: '', count: 0 },
+    web: [
+      {
+        id: 'web-1',
+        title: 'Barbados stayover arrivals rise',
+        url: 'https://example.com/barbados-tourism',
+        domain: 'example.com',
+        publishedDate: '2026-08-07', // the article's OWN publish date — a different year than the figure it reports
+        retrievedAt: '2026-08-17T00:00:00.000Z',
+        snippet: 'Stayover arrivals rose in the first eight months of 2025.',
+        extract: {
+          text: 'Stayover tourist arrivals grew 5.43% year-on-year to 503,000 in the first eight months of 2025.',
+          chars: 97,
+          summary: null,
+          insights: {
+            keyClaims: ['Stayover arrivals grew 5.43% year-on-year to 503,000 in the first eight months of 2025.'],
+            importantFigures: [
+              { metric: 'stayover arrivals growth', value: '5.43%', period: 'Jan-Aug 2025', country: 'BB', textPresenceVerified: true },
+            ],
+            economicDrivers: [],
+            relevantContext: [],
+            topics: ['tourism'],
+          },
+        },
+        authorizedBy: 'step-1',
+      },
+    ],
+    evidenceMeta: [{ ref: 'W:web-1', vintage: null, retrievedAt: '2026-08-17T00:00:00.000Z', sourceRevisionDate: null, contentHash: null }],
+  };
+  const answer = {
+    headline: 'x',
+    claims: [{
+      id: 'claim-0',
+      text: 'Stayover tourist arrivals grew 5.43% year-on-year in the first eight months of 2025.',
+      type: 'figure',
+      refs: ['W:web-1'],
+      figures: [{ ref: 'W:web-1', year: 2025, value: 5.43, unit: '%', calculation: null, asWritten: '5.43%' }],
+    }],
+    gaps: [],
+  };
+
+  const result = runGroundingGate(answer, evidence);
+  assert.deepEqual(result.violations.filter(v => v.check === 'unstated_number'), []);
+});
+
 // ── Check 7: news body claim ────────────────────────────────────────────────────────────────
 
 // None of the 9 usable real captures include any news evidence at all — every capture's

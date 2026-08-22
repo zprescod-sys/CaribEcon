@@ -271,6 +271,33 @@ test('a headlineRefs entry with a trailing calculation-label suffix is normalize
   );
 });
 
+test('a figure ref carrying the whole describeItem() line (ref, " — ", description) is normalized to the bare ref', async () => {
+  // Observed live on a plain (non-calculated) stat, distinct from the bracket-suffix case above:
+  // the model copied ref AND the human-readable description after describeItem()'s own " — "
+  // separator, e.g. "D:JM:inflation — JM inflation: 5.23 % (2020, actual)" — real question, real
+  // answer, dropped every claim to ref_existence before this fix.
+  const malformedRef = `${realRef} — Guyana gdp_growth: 62.3 % (2022, actual)`;
+  await withSynthesisProvider(
+    () => JSON.stringify({
+      ...WELL_FORMED,
+      claims: [
+        {
+          text: 'Guyana GDP growth reached 62.3% in the latest year.',
+          type: 'figure',
+          refs: [malformedRef],
+          figures: [{ ref: malformedRef, year: 2022, value: 62.3, unit: '%', calculation: null, asWritten: '62.3%' }],
+        },
+      ],
+    }),
+    async () => {
+      const answer = await synthesize(compiled);
+      assert.equal(answer.claims.length, 1);
+      assert.deepEqual(answer.claims[0].refs, [realRef]);
+      assert.equal(answer.claims[0].figures[0].ref, realRef);
+    },
+  );
+});
+
 test('a ref with no calculation-label suffix is left exactly as-is', async () => {
   await withSynthesisProvider(
     () => JSON.stringify(WELL_FORMED),

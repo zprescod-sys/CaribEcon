@@ -280,16 +280,26 @@ const VALID_CLAIM_TYPES: readonly Claim['type'][] = ['figure', 'trend', 'context
 const VALID_CALCULATIONS: readonly CalculationName[] = ['yoy_change', 'pp_change', 'period_average'];
 
 /* Defensive normalization, not the primary fix (that's the explicit "ref must be copied exactly"
- * prompt rule above) — a model can still fold describeItem()'s trailing "[pp_change]"/
- * "[yoy_change]"/"[period_average]" label into the ref it emits, since a calculated stat's three
- * facts (raw value, change, average) all share one base ref in the prompt and that label is the
- * only thing distinguishing them there. Stripping it here never changes which fact a ref points
- * to — `calculation` already carries that, redundantly — it only removes a duplicate the model
- * should not have copied into `ref`. A real D:/N:/W: ref never legitimately ends in "[...]", so
- * this can only ever turn an invented-looking ref into a real, matchable one, never the reverse. */
+ * prompt rule above) — a model can still fold part or all of describeItem()'s own rendering of a
+ * stat line into the ref it emits, in two observed shapes:
+ *   1. Just the trailing "[pp_change]"/"[yoy_change]"/"[period_average]" label, e.g.
+ *      "D:GY:gross_govt_debt_pct_gdp [pp_change]" — a calculated stat's three facts (raw value,
+ *      change, average) all share one base ref in the prompt, and that label is the only thing
+ *      distinguishing them there.
+ *   2. The ENTIRE line — ref, its own " — " separator, and the human-readable description after
+ *      it, e.g. "D:JM:inflation — JM inflation: 5.23 % (2020, actual)" — observed live on a
+ *      plain (non-calculated) stat, so this is not limited to case 1's calculated-stat ambiguity.
+ * Stripping either here never changes which fact a ref points to — `calculation` and the claim's
+ * own text already carry that, redundantly — it only removes a duplicate the model should not
+ * have copied into `ref`. A real D:/N:/W: ref never legitimately contains " — " (describeItem()'s
+ * own separator, an em dash) or ends in "[...]", so this can only ever turn an invented-looking
+ * ref into a real, matchable one, never the reverse. Order matters: stripping the description
+ * suffix first means case 2's own trailing bracket (inside the description) is already gone
+ * before the bracket-only pattern runs, so it never has to handle both at once. */
+const REF_DESCRIPTION_SUFFIX = / — .*$/;
 const REF_CALC_SUFFIX = /\s*\[(?:yoy_change|pp_change|period_average)\]$/;
 function normalizeRef(ref: string): EvidenceRef {
-  return ref.replace(REF_CALC_SUFFIX, '') as EvidenceRef;
+  return ref.replace(REF_DESCRIPTION_SUFFIX, '').replace(REF_CALC_SUFFIX, '').trim() as EvidenceRef;
 }
 
 function coerceFigure(raw: unknown): StatedFigure | null {

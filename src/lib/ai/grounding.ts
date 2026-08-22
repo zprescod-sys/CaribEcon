@@ -330,12 +330,24 @@ export const NUMBER_PATTERN = /-?\d[\d,]*\.?\d+|-?\d+/g;
  * was permanently empty, since pkg.data is empty when no get_series/compare_series step ran),
  * which in practice meant almost no claim on a news-heavy answer could survive grounding —
  * observed live: a claim declaring a real 66,814-passenger figure correctly, sitting next to
- * "July 2026", was dropped for the year alone. */
+ * "July 2026", was dropped for the year alone.
+ *
+ * Also credits years from each web item's own extracted importantFigures[].period (newsExtract.ts
+ * / webExtract role) — an article's publish date alone is NOT the same year a figure inside it is
+ * actually about (e.g. an article published in 2026 reporting "grew 5.43% ... in the first eight
+ * months of 2025"). Observed live: a full news-heavy answer built entirely on real, verified
+ * figures was reduced to 0 published claims because none of their stated periods happened to
+ * match any article's publish date. period is free-form (newsExtract.ts's own schema: "2026" or
+ * "Q2 2026"), not an ISO date, so this scans for a year anywhere in the string rather than
+ * assuming it leads. */
 function retrievedYears(pkg: EvidencePackage): ReadonlySet<number> {
   const years = new Set<number>();
   for (const d of pkg.data) for (const p of d.points) years.add(p.year);
   for (const n of pkg.news) addYearFromIsoDate(years, n.date);
-  for (const w of pkg.web ?? []) addYearFromIsoDate(years, w.publishedDate);
+  for (const w of pkg.web ?? []) {
+    addYearFromIsoDate(years, w.publishedDate);
+    for (const f of w.extract?.insights?.importantFigures ?? []) addYearsFromPeriod(years, f.period);
+  }
   return years;
 }
 
@@ -345,6 +357,14 @@ function retrievedYears(pkg: EvidencePackage): ReadonlySet<number> {
 function addYearFromIsoDate(years: Set<number>, date: string | null): void {
   const match = date?.match(/^(\d{4})/);
   if (match) years.add(Number(match[1]));
+}
+
+// A figure's `period` is free-form prose ("Q2 2026", "Jan-Aug 2025", "Dec 2025"), not an ISO
+// date, so the year is not reliably the leading token the way addYearFromIsoDate can assume —
+// this scans the whole string instead.
+const YEAR_ANYWHERE = /\b(?:19|20)\d{2}\b/g;
+function addYearsFromPeriod(years: Set<number>, period: string): void {
+  for (const match of period.matchAll(YEAR_ANYWHERE)) years.add(Number(match[0]));
 }
 
 // A number immediately followed (allowing intervening whitespace) by '%', 'percent', or
