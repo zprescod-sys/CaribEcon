@@ -198,6 +198,7 @@ test('composes interpret -> plan -> validateResearchPlan -> executeResearchPlan 
         grounding: { ran: true, violations: [] },
         audit: { ran: false },
         publishedClaims: ['claim-0', 'claim-1'],
+        publishedHeadline: true,
         reasonCategories: [],
       });
     },

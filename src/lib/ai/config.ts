@@ -111,6 +111,13 @@ export const MAX_EXTRACT_TOTAL = 15_000; // ARCHITECTURE.md §7 starting point �
 // digest is an extra model call.
 export const MAX_NEWS_DIGESTS = 5;
 
+// Bounded conversational memory (§7, §2.7 rule 2) — named in §7's own constant list from the
+// start, implemented alongside ConversationTurn (contracts.ts). Enforced at the api/ask.ts trust
+// boundary, not inside research()/interpret(): a client's raw `history` array is untrusted input
+// the same way `question` itself is, regardless of what a well-behaved client actually sends.
+export const MAX_HISTORY_TURNS = 4;
+export const MAX_REHYDRATED_REFS = 40;
+
 // ── Evidence Compiler budget constants (Synthesis Latency + Evidence Compiler upgrade, Stage B) ──
 // Hard invariants, enforced by evidenceCompiler.ts and asserted by its own tests — not just a
 // prompt preference. Starting points from the user's own spec examples; calibrate against real

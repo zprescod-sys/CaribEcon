@@ -283,6 +283,104 @@ test('ADVERSARIAL REVIEW REGRESSION: a fabricated "0.00%" (a whole number once p
 
 // ── The motivating case, as its own self-evident test ──────────────────────────────────────
 
+// ── Headline gating: the headline is held to the same standard as the claims beneath it ────────
+//
+// A headline previously shipped unfiltered even when the one claim carrying its figure was
+// dropped by the gate — observed live: a headline asserting the economy "nearly tripled" survived
+// after the sole claim citing that period-average figure failed check 4. headlineRefs lets
+// verify() catch this: a headline ref must be carried by a claim that actually SURVIVED
+// publication, not merely exist somewhere in the evidence package.
+
+test('an empty headlineRefs is vacuously published — a purely qualitative headline asserts nothing to violate', () => {
+  const { evidence } = capture('simple_factual');
+  const answer = {
+    headline: 'The economy is growing.',
+    headlineRefs: [],
+    claims: [{ id: 'claim-0', text: 'General context.', type: 'framing', refs: [], figures: [] }],
+    gaps: [],
+  };
+
+  const verdict = verify(answer, evidence);
+  assert.equal(verdict.publishedHeadline, true);
+  assert.equal(verdict.outcome, 'PASS');
+});
+
+test('a headlineRef carried by a claim that survives grounding -> publishedHeadline true, PASS unaffected', () => {
+  const { evidence } = capture('simple_factual'); // D:GY:gdp_growth, 2024 = 43.82
+  const answer = {
+    headline: "Guyana's GDP grew 43.82% in 2024.",
+    headlineRefs: ['D:GY:gdp_growth'],
+    claims: [
+      {
+        id: 'claim-0',
+        text: 'GDP growth reached 43.82% in 2024.',
+        type: 'figure',
+        refs: ['D:GY:gdp_growth'],
+        figures: [{ ref: 'D:GY:gdp_growth', year: 2024, value: 43.82, unit: '%', calculation: null, asWritten: '43.82%' }],
+      },
+    ],
+    gaps: [],
+  };
+
+  const verdict = verify(answer, evidence);
+  assert.equal(verdict.publishedHeadline, true);
+  assert.equal(verdict.outcome, 'PASS');
+});
+
+test('THE MOTIVATING CASE: a headlineRef whose only carrying claim was dropped -> publishedHeadline false, NARROW even though nothing else is wrong', () => {
+  const { evidence } = capture('simple_factual'); // D:GY:gdp_growth is real; this ref is not
+  const answer = {
+    headline: "Guyana's economy has nearly tripled in real terms.",
+    headlineRefs: ['D:XX:not_a_real_series'],
+    // Every claim here is clean framing (no refs to violate) — proves the headline can fail the
+    // gate ON ITS OWN, independent of whether any claim was dropped.
+    claims: [{ id: 'claim-0', text: 'General context.', type: 'framing', refs: [], figures: [] }],
+    gaps: [],
+  };
+
+  const verdict = verify(answer, evidence);
+  assert.equal(verdict.publishedHeadline, false);
+  assert.equal(verdict.outcome, 'NARROW');
+  assert.deepEqual(verdict.publishedClaims, ['claim-0']); // the claim itself is untouched
+  assert.deepEqual(verdict.reasonCategories, ['ungrounded_figure']);
+});
+
+test('a headlineRef that is real but only ever cited by a claim the gate dropped -> publishedHeadline false', () => {
+  const { evidence } = capture('simple_factual'); // D:GY:gdp_growth 2024 actual = 43.82
+  const answer = {
+    headline: "Guyana's GDP grew 250.7% in 2024.",
+    headlineRefs: ['D:GY:gdp_growth'], // a REAL ref — but the only claim carrying it is wrong
+    claims: [
+      {
+        id: 'claim-0',
+        text: 'GDP growth reached an unprecedented 250.7% in 2024.',
+        type: 'context',
+        refs: ['D:GY:gdp_growth'],
+        figures: [], // no declared figure for 250.7% -> unstated_number violation -> dropped
+      },
+    ],
+    gaps: [],
+  };
+
+  const verdict = verify(answer, evidence);
+  assert.deepEqual(verdict.publishedClaims, []); // the claim was dropped
+  assert.equal(verdict.publishedHeadline, false); // so its ref no longer backs the headline either
+  assert.equal(verdict.outcome, 'NARROW');
+});
+
+test('a missing headlineRefs field (real captures/older fixtures predate it) degrades to vacuously published, not a crash', () => {
+  const { evidence } = capture('simple_factual');
+  const answer = {
+    headline: 'x',
+    claims: [{ id: 'claim-0', text: 'General context.', type: 'framing', refs: [], figures: [] }],
+    gaps: [],
+  }; // no headlineRefs property at all
+
+  const verdict = verify(answer, evidence);
+  assert.equal(verdict.publishedHeadline, true);
+  assert.equal(verdict.outcome, 'PASS');
+});
+
 test('THE BUG THIS TASK FIXES: the "regional" claim mentioning "Central Bank" (the fabricated debt figure) is not published', () => {
   const { answer, evidence } = capture('regional');
   const centralBankClaim = answer.claims.find(c => c.text.includes('Central Bank'));

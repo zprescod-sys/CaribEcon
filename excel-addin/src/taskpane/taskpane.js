@@ -998,6 +998,19 @@ function appendUserMessage(question) {
   );
 }
 
+// Bounded conversational memory (ARCHITECTURE.md §2.7, §2.4 C3) — client-carried, since the
+// server is deliberately stateless (Diagram E: "Next turn rehydrates D:/N: from the hub; any W:
+// evidence needed again is RE-RETRIEVED"). Oldest-first, matching ConversationTurn's own
+// documented order (contracts.ts) so interpret()'s prompt reads as an actual conversation.
+// 4, not imported from config.ts: MAX_HISTORY_TURNS is a server module constant, and duplicating
+// the literal here (not a shared cross-boundary import) is the same convention this codebase's
+// own test files already use for constants that must agree across a network hop, not a build
+// graph — the SERVER independently re-clamps to its own MAX_HISTORY_TURNS/MAX_REHYDRATED_REFS
+// regardless of what a client sends, so this value only ever controls this client's own memory
+// footprint, never the server's actual guarantee.
+const MAX_CLIENT_HISTORY_TURNS = 4;
+let askHistory = [];
+
 async function ask() {
   const question = el('question').value.trim();
   if (!question) return;
@@ -1018,7 +1031,7 @@ async function submitAsk(question, showUserMessage = true) {
     const res = await fetch(`${API_BASE}${endpoint}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'X-CaribEcon-Token': RESEARCH_TOKEN },
-      body: JSON.stringify({ question }),
+      body: JSON.stringify({ question, history: askHistory }),
     });
     const body = await res.json();
     pending.remove();
@@ -1165,21 +1178,39 @@ async function insertLegacyAnswer(question, body, triggerEl) {
 function appendAssistantMessage(question, result) {
   const { answer, evidence, verdict } = result;
   const published = answer.claims.filter(c => verdict.publishedClaims.includes(c.id));
+  recordHistoryTurn(question, result, published);
+
+  // A headline verify() could not confirm — its own evidence was dropped, or it cited something
+  // no surviving claim ever carried — is never shown as if it were verified. Same discipline as
+  // `published` above (the one rule this function must never break), just for the one string in
+  // the answer that isn't a Claim and so isn't already covered by that filter.
+  const displayHeadline = verdict.publishedHeadline
+    ? answer.headline
+    : 'This headline could not be fully verified against retrieved evidence — see the statements below.';
 
   const details = published.length
     ? published.filter(c => c.text).map(c => `<p class="msg__detail">${esc(c.text)}</p>`).join('')
     : `<p class="msg__detail">No part of this answer could be verified against retrieved evidence.</p>`;
 
+  // outcome can go NARROW two ways that don't overlap in what they mean: some claims were
+  // dropped (report the count, as before), or every claim survived but the HEADLINE alone was
+  // unpublishable (reporting "N of N statements" there would misleadingly read as nothing being
+  // narrowed at all, when something plainly was).
+  const claimsNarrowed = published.length < answer.claims.length;
   const narrowNote =
     verdict.outcome === 'NARROW'
-      ? `<span class="msg__gaps">Narrowed: ${published.length} of ${answer.claims.length} statement${answer.claims.length === 1 ? '' : 's'} could be shown as verified (${verdict.reasonCategories.map(humanizeReason).join('; ')}).</span>`
+      ? `<span class="msg__gaps">${
+          claimsNarrowed
+            ? `Narrowed: ${published.length} of ${answer.claims.length} statement${answer.claims.length === 1 ? '' : 's'} could be shown as verified`
+            : "This answer's headline could not be fully verified"
+        } (${verdict.reasonCategories.map(humanizeReason).join('; ')}).</span>`
       : '';
   const gaps = answer.gaps.length ? `<p class="msg__gaps">${esc(answer.gaps.join(' '))}</p>` : '';
   const evidenceNoteHtml = renderEvidenceNote(result.evidenceNote);
 
   const wrap = appendMessage(
     'msg msg--assistant',
-    `<p class="msg__headline">${esc(answer.headline)}</p>` +
+    `<p class="msg__headline">${esc(displayHeadline)}</p>` +
       details +
       narrowNote +
       gaps +
@@ -1191,9 +1222,23 @@ function appendAssistantMessage(question, result) {
   insertButton.type = 'button';
   insertButton.className = 'msg__insert';
   insertButton.textContent = 'Insert answer and sources';
-  insertButton.addEventListener('click', () => insertAnswer(question, answer.headline, published, evidence, insertButton));
+  insertButton.addEventListener('click', () => insertAnswer(question, displayHeadline, published, evidence, insertButton));
   wrap.appendChild(insertButton);
   scrollMessagesToEnd();
+}
+
+// Appends this turn to the client-carried conversation memory (ARCHITECTURE.md §2.7). Always the
+// RAW answer.headline, never displayHeadline — an unpublished headline is still a legitimate lead
+// for a FUTURE turn's own intent resolution (contracts.ts's ConversationTurn doc comment), even
+// though it is never shown to the user as verified. Refs, though, come ONLY from `published`
+// claims: a dropped claim's ref is often exactly WHY it was dropped (e.g. a fabricated
+// ref_existence violation) — not a safety issue either way, since interpret()'s output is always
+// re-validated regardless of what history suggests, but there is no reason to feed a known-bad ref
+// into a future turn's context when the clean set is already sitting right here.
+function recordHistoryTurn(question, result, published) {
+  const refs = [...new Set(published.flatMap(c => c.refs))];
+  askHistory.push({ question, headline: result.answer.headline, refs });
+  askHistory = askHistory.slice(-MAX_CLIENT_HISTORY_TURNS);
 }
 
 // Writes the question, the answer, and the audit trail — so the sheet carries the reasoning,

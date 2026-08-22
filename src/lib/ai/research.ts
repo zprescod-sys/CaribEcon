@@ -46,10 +46,15 @@ import { executeResearchPlan } from './executor.js';
 import { compileEvidence, buildEvidenceNote } from './evidenceCompiler.js';
 import { classifyProviderFailure, StagedProviderFailure, type PipelineStage } from './providerFailure.js';
 import { ProviderCallError } from './providers/openaiCompatible.js';
-import type { ResearchResult } from './contracts.js';
+import type { ConversationTurn, ResearchResult } from './contracts.js';
 
 export interface ResearchRequest {
   question: string;
+  /* Oldest-first, already clamped to MAX_HISTORY_TURNS/MAX_REHYDRATED_REFS by the caller
+   * (api/ask.ts) — research() trusts its shape the same way it trusts `question` having already
+   * been trimmed and length-capped. Optional and additive: omitting it is identical to every
+   * request before this feature existed. */
+  history?: ConversationTurn[];
 }
 
 async function runModelStage<T>(stage: PipelineStage, work: () => Promise<T>): Promise<T> {
@@ -67,7 +72,7 @@ export async function research(
   request: ResearchRequest,
   { retrievedAt }: { retrievedAt?: string } = {},
 ): Promise<ResearchResult> {
-  const { intent, misses } = await runModelStage('interpret', () => interpret(request.question));
+  const { intent, misses } = await runModelStage('interpret', () => interpret(request.question, request.history));
 
   const researchPlan = await runModelStage('plan', () => plan(request.question, intent));
   const { plan: validatedPlan, misses: planMisses } = validateResearchPlan(researchPlan);

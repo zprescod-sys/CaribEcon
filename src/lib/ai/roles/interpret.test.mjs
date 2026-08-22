@@ -94,6 +94,87 @@ test('sends the question as user content and embeds the real hub catalog in the 
   );
 });
 
+// ── Bounded conversational memory (ARCHITECTURE.md §2.7) ───────────────────────────────────
+
+test('with no history argument, the prompt carries no RECENT CONVERSATION section at all', async () => {
+  await withInterpretProvider(
+    () => JSON.stringify({ questionType: 'indicator', countries: ['GY'], indicators: ['gdp_growth'], yearFrom: null, yearTo: null, newsKeywords: [] }),
+    async received => {
+      await interpret('What was GDP growth in Guyana?');
+      const system = received[0].messages[0].content;
+      assert.ok(!system.includes('RECENT CONVERSATION'), 'no history was passed — the section must not appear at all');
+    },
+  );
+});
+
+test('a passed history turn appears in the prompt with its question, headline, and refs', async () => {
+  await withInterpretProvider(
+    () => JSON.stringify({ questionType: 'indicator', countries: ['TT'], indicators: ['gdp_growth'], yearFrom: null, yearTo: null, newsKeywords: [] }),
+    async received => {
+      await interpret('How is their overall economy looking?', [
+        {
+          question: "What are Trinidad's oil and gas exports?",
+          headline: 'Trinidad oil exports rose sharply in 2025',
+          refs: ['D:TT:oil_exports', 'D:TT:non_energy_exports'],
+        },
+      ]);
+      const system = received[0].messages[0].content;
+      assert.ok(system.includes('RECENT CONVERSATION'));
+      assert.ok(system.includes("What are Trinidad's oil and gas exports?"));
+      assert.ok(system.includes('Trinidad oil exports rose sharply in 2025'));
+      assert.ok(system.includes('D:TT:oil_exports'));
+      assert.ok(system.includes('D:TT:non_energy_exports'));
+    },
+  );
+});
+
+test('the prompt explicitly instructs the new question to override history, never blend with it', async () => {
+  await withInterpretProvider(
+    () => JSON.stringify({ questionType: 'indicator', countries: ['TT'], indicators: ['gdp_growth'], yearFrom: null, yearTo: null, newsKeywords: [] }),
+    async received => {
+      await interpret('How is their overall economy looking?', [
+        { question: 'Prior question', headline: 'Prior headline', refs: ['D:TT:oil_exports'] },
+      ]);
+      // Prompt lines are joined with '\n', so a phrase this assertion cares about can legitimately
+      // be split across two source lines (it is, here) — the 's' flag lets '.' span those
+      // newlines instead of silently failing to match a prompt that is actually correct.
+      const system = received[0].messages[0].content;
+      assert.ok(
+        /ignore the.*conversation|new question is authoritative/is.test(system),
+        'the prompt must explicitly tell the model the new question overrides history when it already names its own subject',
+      );
+    },
+  );
+});
+
+test('multiple history turns render oldest first, in the order given', async () => {
+  await withInterpretProvider(
+    () => JSON.stringify({ questionType: 'indicator', countries: ['GY'], indicators: ['gdp_growth'], yearFrom: null, yearTo: null, newsKeywords: [] }),
+    async received => {
+      await interpret('A follow-up', [
+        { question: 'First question', headline: 'First headline', refs: [] },
+        { question: 'Second question', headline: 'Second headline', refs: [] },
+      ]);
+      const system = received[0].messages[0].content;
+      assert.ok(
+        system.indexOf('First question') < system.indexOf('Second question'),
+        'turns must render in the order given (oldest first), not reversed',
+      );
+    },
+  );
+});
+
+test('a history turn with no refs at all still renders without crashing', async () => {
+  await withInterpretProvider(
+    () => JSON.stringify({ questionType: 'indicator', countries: ['GY'], indicators: ['gdp_growth'], yearFrom: null, yearTo: null, newsKeywords: [] }),
+    async received => {
+      await interpret('A follow-up', [{ question: 'A prior question', headline: 'A prior headline', refs: [] }]);
+      const system = received[0].messages[0].content;
+      assert.ok(system.includes('A prior question'));
+    },
+  );
+});
+
 // ── A clean response resolves through the real canonicaliseIntent ──────────────────────────
 
 test('a well-formed model response resolves to a real hub intent, via the actual canonicaliseIntent', async () => {

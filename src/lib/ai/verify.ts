@@ -12,6 +12,7 @@ import { runGroundingGate } from './grounding.js';
 import type {
   AuditFinding,
   ClaimsAudit,
+  EvidenceRef,
   EvidencePackage,
   GroundingCheck,
   ReasonCategory,
@@ -77,6 +78,35 @@ const AUDIT_REASON: Record<AuditFinding, ReasonCategory> = {
   scope_drift: 'low_confidence',
 };
 
+/* Whether the headline itself may be shown as verified. Deliberately NOT a grounding.ts check:
+ * grounding.ts finds problems with claims against the evidence package (Phase 2's fixed scope),
+ * and this needs the OUTCOME of publication (which claims survived) as its input, not just the
+ * evidence package — a headlineRef pointing at a real, existing D:/N:/W: ref is exactly as
+ * unpublishable as a fabricated one if the one claim that carried that ref got dropped for an
+ * unrelated reason (wrong calculation, a bad quote, whatever). So this belongs where the
+ * publication decision itself is made, one call after grounding runs, not before it.
+ *
+ * Reusing check 1's own guarantee rather than re-deriving it: a claim only survives into
+ * `published` if NONE of its refs/figures triggered ref_existence (or any other check) — so every
+ * ref pulled from a published claim below is already known-real by construction. Requiring
+ * headlineRefs to be a SUBSET of that set therefore both catches a headline citing something that
+ * was never real (subsumes existence) and a headline citing something real but orphaned by a
+ * dropped claim (the case this was written for) — one rule, not two. An empty headlineRefs is
+ * vacuously true: a purely qualitative headline asserts nothing specific to violate, the same
+ * "zero claims -> PASS" convention this file already applies to publishedClaims. */
+function computeHeadlinePublished(answer: ResearchAnswer, published: ReadonlySet<string>): boolean {
+  const headlineRefs = answer.headlineRefs ?? []; // defensive: real captures/hand-built tests predate this field
+  if (headlineRefs.length === 0) return true;
+
+  const publishedRefs = new Set<EvidenceRef>();
+  for (const claim of answer.claims) {
+    if (!published.has(claim.id)) continue;
+    for (const ref of claim.refs) publishedRefs.add(ref);
+    for (const figure of claim.figures) publishedRefs.add(figure.ref);
+  }
+  return headlineRefs.every(ref => publishedRefs.has(ref));
+}
+
 /* verify() itself. Signature and behaviour are ARCHITECTURE.md §3.1's Verification role, made
  * concrete:
  *   - grounding always runs (grounding.ts "cannot fail open"), so its violations are always part
@@ -86,9 +116,12 @@ const AUDIT_REASON: Record<AuditFinding, ReasonCategory> = {
  *     must be right now so wiring in the real audit later is purely additive, not a rewrite.
  *   - a dropped claim is EXCLUDED, never edited — "only code can produce a number" (§2.3c), so
  *     there is no such thing as a partially-published claim in this design.
- *   - outcome is binary: PASS iff nothing was dropped, NARROW otherwise (including the case where
- *     every claim is dropped) — RETRY/ESCALATE are reserved enum values with no machinery behind
- *     them yet (§2.3c).
+ *   - the headline is held to the same standard as the claims beneath it (see
+ *     computeHeadlinePublished above) — a claim silently dropped no longer excuses the prose built
+ *     on top of it.
+ *   - outcome is binary: PASS iff nothing was dropped AND the headline is publishable, NARROW
+ *     otherwise (including the case where every claim is dropped) — RETRY/ESCALATE are reserved
+ *     enum values with no machinery behind them yet (§2.3c).
  */
 export function verify(
   answer: ResearchAnswer,
@@ -103,10 +136,11 @@ export function verify(
   }
 
   const publishedClaims = answer.claims.map(c => c.id).filter(id => !droppedClaimIds.has(id));
+  const publishedHeadline = computeHeadlinePublished(answer, new Set(publishedClaims));
 
   // An answer with no claims at all has nothing to drop and nothing wrong with it — PASS, not
   // NARROW. Distinct from "some claims were dropped down to zero," which IS NARROW.
-  const outcome = droppedClaimIds.size === 0 ? 'PASS' : 'NARROW';
+  const outcome = droppedClaimIds.size === 0 && publishedHeadline ? 'PASS' : 'NARROW';
 
   // Deduplicated, order-preserved by first occurrence (Set insertion order), so reasonCategories
   // is deterministic across runs of the same violations rather than depending on iteration quirks.
@@ -115,12 +149,16 @@ export function verify(
   if (audit.ran) {
     for (const finding of audit.findings) reasonCategories.add(AUDIT_REASON[finding.finding]);
   }
+  // Same family as ref_existence/figure_reconciliation: an unpublishable headline asserts
+  // something with no real, surviving backing — no new ReasonCategory needed for it.
+  if (!publishedHeadline) reasonCategories.add('ungrounded_figure');
 
   return {
     outcome,
     grounding,
     audit,
     publishedClaims,
+    publishedHeadline,
     reasonCategories: [...reasonCategories],
   };
 }

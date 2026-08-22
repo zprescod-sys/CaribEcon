@@ -143,6 +143,7 @@ test('returns a canonical ResearchResult with a stubbed PASS verdict', async () 
       grounding: { ran: true, violations: [] },
       audit: { ran: false },
       publishedClaims: [],
+      publishedHeadline: true,
       reasonCategories: [],
     });
     assert.equal(typeof body.elapsedMs, 'number');
@@ -265,5 +266,86 @@ test('a plan model that never returns parseable JSON is a 502 model_error, with 
     assert.equal(body.error, 'model_error');
     assert.equal(body.stage, 'planning');
     assert.ok(!body.message.includes('I cannot help with that.'));
+  });
+});
+
+// ── Bounded conversational memory (sanitizeHistory, ARCHITECTURE.md §2.7 / §2.4 C3) ────────────
+//
+// Tested through the real endpoint, not by exporting sanitizeHistory for direct unit testing —
+// same "no mocks, real integration path" policy this file states in its own header. The interpret
+// stand-in receives the actual sanitized history baked into interpret()'s system prompt, so
+// asserting on that captured request body proves what a real client's history actually becomes.
+
+test('a "W:" ref in submitted history never reaches the interpret prompt — D:/N: refs do', async () => {
+  let interpretRequestBody = null;
+  await withRoleProviders(
+    {
+      interpretRespond: body => {
+        interpretRequestBody = body;
+        return INTERPRET_OK();
+      },
+    },
+    async () => {
+      await post({
+        question: 'How is their overall economy looking?',
+        history: [
+          {
+            question: "What are Trinidad's oil and gas exports?",
+            headline: 'Trinidad oil exports rose in 2025',
+            refs: ['D:TT:oil_exports', 'N:some-article-id', 'W:fabricated-web-evidence-id'],
+          },
+        ],
+      });
+    },
+  );
+
+  const system = interpretRequestBody.messages[0].content;
+  assert.ok(system.includes('D:TT:oil_exports'), 'a real D: ref must reach the prompt');
+  assert.ok(system.includes('N:some-article-id'), 'a real N: ref must reach the prompt');
+  assert.ok(
+    !system.includes('W:fabricated-web-evidence-id'),
+    'a W: ref must NEVER reach the prompt — web evidence is turn-local and never trusted from a client',
+  );
+});
+
+test('history entries beyond MAX_HISTORY_TURNS are clamped to the most recent, oldest dropped first', async () => {
+  let interpretRequestBody = null;
+  const history = Array.from({ length: 6 }, (_, i) => ({
+    question: `Question number ${i}`,
+    headline: `Headline number ${i}`,
+    refs: [`D:GY:indicator_${i}`],
+  }));
+
+  await withRoleProviders(
+    {
+      interpretRespond: body => {
+        interpretRequestBody = body;
+        return INTERPRET_OK();
+      },
+    },
+    async () => {
+      await post({ question: 'A follow-up question', history });
+    },
+  );
+
+  const system = interpretRequestBody.messages[0].content;
+  // MAX_HISTORY_TURNS is 4 (config.ts) — only the last 4 of the 6 submitted turns (indices 2-5)
+  // may appear; the two oldest (0, 1) must be forgotten entirely.
+  assert.ok(!system.includes('Question number 0'), 'the oldest turn must be dropped');
+  assert.ok(!system.includes('Question number 1'), 'the second-oldest turn must be dropped');
+  assert.ok(system.includes('Question number 5'), 'the most recent turn must survive');
+  assert.ok(system.includes('Question number 2'), 'the 4th-most-recent turn must survive (exactly at the cap)');
+});
+
+test('a malformed history (not an array, or entries missing a question) degrades to no history, never a 400', async () => {
+  await withRoleProviders({}, async () => {
+    const resNotArray = await post({ question: 'GDP growth in Guyana?', history: 'not-an-array' });
+    assert.equal(resNotArray.status, 200);
+
+    const resBadEntries = await post({
+      question: 'GDP growth in Guyana?',
+      history: [null, 42, { headline: 'no question field' }, { question: '   ' }],
+    });
+    assert.equal(resBadEntries.status, 200);
   });
 });

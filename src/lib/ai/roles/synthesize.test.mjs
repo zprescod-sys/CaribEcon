@@ -193,6 +193,42 @@ test('a well-formed response resolves to a ResearchAnswer with code-assigned, co
       assert.equal(answer.claims[0].id, 'claim-0');
       assert.equal(answer.claims[1].id, 'claim-1');
       assert.equal(answer.claims[0].figures[0].value, 62.3);
+      // WELL_FORMED predates headlineRefs entirely (like a real capture would) — must degrade to
+      // [], the safe default verify.ts's computeHeadlinePublished treats as vacuously trusted.
+      assert.deepEqual(answer.headlineRefs, []);
+    },
+  );
+});
+
+// ── headlineRefs — parsed permissively, never a reason to fail the whole answer ─────────────
+
+test('headlineRefs is parsed through from a well-formed response', async () => {
+  await withSynthesisProvider(
+    () => JSON.stringify({ ...WELL_FORMED, headlineRefs: [realRef] }),
+    async () => {
+      const answer = await synthesize(compiled);
+      assert.deepEqual(answer.headlineRefs, [realRef]);
+    },
+  );
+});
+
+test('a malformed headlineRefs (not an array, or containing non-strings) degrades to [], never fails the whole answer', async () => {
+  await withSynthesisProvider(
+    () => JSON.stringify({ ...WELL_FORMED, headlineRefs: 'D:GY:gdp_growth' }), // a bare string, not an array
+    async () => {
+      const answer = await synthesize(compiled);
+      assert.deepEqual(answer.headlineRefs, []);
+      assert.equal(answer.claims.length, 2); // the rest of the answer is unaffected
+    },
+  );
+});
+
+test('an empty-string entry inside headlineRefs is filtered out, real entries kept', async () => {
+  await withSynthesisProvider(
+    () => JSON.stringify({ ...WELL_FORMED, headlineRefs: [realRef, '', '   '] }),
+    async () => {
+      const answer = await synthesize(compiled);
+      assert.deepEqual(answer.headlineRefs, [realRef]);
     },
   );
 });

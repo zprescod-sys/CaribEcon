@@ -21,7 +21,7 @@ import {
   listIndicators,
   type RetrievalMiss,
 } from '../../askTools.js';
-import type { ResearchIntent } from '../contracts.js';
+import type { ConversationTurn, ResearchIntent } from '../contracts.js';
 
 export class InterpretNotConfiguredError extends Error {}
 
@@ -48,7 +48,20 @@ export interface InterpretResult {
   misses: RetrievalMiss[];
 }
 
-function buildSystemPrompt(): string {
+/* Oldest-first (ResearchRequest.history's own documented order). Each turn is rendered as its
+ * question, the refs its answer actually rested on (a D:/N: ref already encodes country+indicator
+ * — "D:TT:oil_exports" — so this alone carries most of what a follow-up needs to resolve "their"
+ * or "that"), and the headline as a compact summary of what was concluded. Never the full
+ * claims[] — see ConversationTurn's own doc comment (contracts.ts) for why headline-only is what
+ * "compact" means here. */
+function describeHistory(history: ConversationTurn[]): string[] {
+  return history.map(
+    (turn, i) =>
+      `${i + 1}. Q: "${turn.question}" — refs: ${turn.refs.length ? turn.refs.join(', ') : '(none)'} — answered: "${turn.headline}"`,
+  );
+}
+
+function buildSystemPrompt(history: ConversationTurn[]): string {
   const countries = listCountries()
     .map(c => `${c.code}=${c.name}`)
     .join(', ');
@@ -56,11 +69,26 @@ function buildSystemPrompt(): string {
     .map(i => `${i.slug}=${i.label}`)
     .join(', ');
 
-  return [
+  const sections = [
     'You turn a question about Caribbean macroeconomics into structured JSON so a deterministic',
     'retrieval layer can look up real data. You never answer the question yourself, and naming a',
     'country or indicator that is not in the lists below is fine — it will be reported as',
     'unavailable rather than guessed, so do not avoid a name just because you are unsure of it.',
+  ];
+
+  if (history.length) {
+    sections.push(
+      '',
+      'RECENT CONVERSATION (oldest first) — use this ONLY to resolve a pronoun or omission in the',
+      'new question below ("their", "that country", "now", "what about exports instead"). The new',
+      'question is authoritative: if it already names its own country or indicator, IGNORE the',
+      'conversation below entirely rather than blend the two — never let an earlier topic leak',
+      'into a question that did not ask about it.',
+      ...describeHistory(history),
+    );
+  }
+
+  sections.push(
     '',
     `Countries in the hub (code=name): ${countries}`,
     `Indicators in the hub (slug=label): ${indicators}`,
@@ -73,10 +101,12 @@ function buildSystemPrompt(): string {
     '- Either the code or the name resolves for a country — use whichever the question used.',
     '- yearFrom/yearTo are null unless the question names a specific year or range.',
     '- newsKeywords are only used for "news" questions: short terms, not the question restated.',
-  ].join('\n');
+  );
+
+  return sections.join('\n');
 }
 
-export async function interpret(question: string): Promise<InterpretResult> {
+export async function interpret(question: string, history: ConversationTurn[] = []): Promise<InterpretResult> {
   const resolved = resolveRoleFully('interpret');
   if (!resolved) {
     throw new InterpretNotConfiguredError(
@@ -85,7 +115,7 @@ export async function interpret(question: string): Promise<InterpretResult> {
   }
 
   const messages: ChatMessage[] = [
-    { role: 'system', content: buildSystemPrompt() },
+    { role: 'system', content: buildSystemPrompt(history) },
     { role: 'user', content: question },
   ];
 

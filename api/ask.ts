@@ -24,6 +24,8 @@ import { InterpretNotConfiguredError, InterpretParseError } from '../src/lib/ai/
 import { PlanNotConfiguredError, PlanParseError } from '../src/lib/ai/roles/plan.js';
 import { SynthesizeNotConfiguredError, SynthesizeParseError } from '../src/lib/ai/roles/synthesize.js';
 import { StagedProviderFailure } from '../src/lib/ai/providerFailure.js';
+import { MAX_HISTORY_TURNS, MAX_REHYDRATED_REFS } from '../src/lib/ai/config.js';
+import type { ConversationTurn, EvidenceRef } from '../src/lib/ai/contracts.js';
 
 /* finishReason/completionTokens are the diagnostic pair that tells apart the two very different
    ways a role can fail to produce parseable JSON: 'length' means the completion was cut off
@@ -45,6 +47,55 @@ function structuredOutputFailure(
 }
 
 const MAX_QUESTION_CHARS = 500;
+
+/* The trust boundary for ConversationTurn (ARCHITECTURE.md §2.7, §2.4 C3) — the ONE place raw
+ * client JSON becomes the sanitized shape research()/interpret() are allowed to trust, exactly
+ * the same discipline `question` itself already gets a few lines below. Malformed input degrades
+ * (a bad entry is dropped, never a 400) — history is optional enrichment, not a hard dependency,
+ * the same fail-soft precedent this pipeline already applies everywhere else optional context can
+ * go missing. Never throws.
+ *
+ * Security-critical: only "D:" / "N:" refs survive. A "W:" ref is dropped unconditionally — web
+ * evidence is turn-local and must NEVER be accepted back from a client, because the browser is an
+ * untrusted boundary that could echo back a fabricated "here is what that page said" while keeping
+ * the schema valid, and the grounding gate would then verify a fabricated quote against fabricated
+ * evidence. This is not a length limit or a format nicety; it is the one rule in this function that
+ * may never be relaxed. */
+function sanitizeHistory(raw: unknown): ConversationTurn[] {
+  if (!Array.isArray(raw)) return [];
+
+  const turns: ConversationTurn[] = [];
+  for (const entry of raw) {
+    if (!entry || typeof entry !== 'object') continue;
+    const e = entry as Record<string, unknown>;
+
+    const question = typeof e.question === 'string' ? e.question.trim().slice(0, MAX_QUESTION_CHARS) : '';
+    if (!question) continue; // a turn with no question text carries nothing usable — drop it
+
+    const headline = typeof e.headline === 'string' ? e.headline.trim().slice(0, MAX_QUESTION_CHARS) : '';
+    const rawRefs = Array.isArray(e.refs) ? e.refs : [];
+    const refs = rawRefs.filter(
+      (r): r is EvidenceRef => typeof r === 'string' && (r.startsWith('D:') || r.startsWith('N:')),
+    );
+    turns.push({ question, headline, refs });
+  }
+
+  // Most recent MAX_HISTORY_TURNS only — oldest turns beyond the window are simply forgotten.
+  const clamped = turns.slice(-MAX_HISTORY_TURNS);
+
+  // Aggregate ref cap: trim from the OLDEST turns first, since a stale early ref is the least
+  // useful context to a follow-up question — the newest turn's refs are what "their"/"that"
+  // almost always resolves to.
+  let totalRefs = clamped.reduce((sum, t) => sum + t.refs.length, 0);
+  for (let i = 0; i < clamped.length && totalRefs > MAX_REHYDRATED_REFS; i++) {
+    const drop = Math.min(totalRefs - MAX_REHYDRATED_REFS, clamped[i].refs.length);
+    if (drop > 0) {
+      clamped[i] = { ...clamped[i], refs: clamped[i].refs.slice(drop) };
+      totalRefs -= drop;
+    }
+  }
+  return clamped;
+}
 
 function json(body: unknown, status: number): Response {
   return new Response(JSON.stringify(body), {
@@ -72,9 +123,11 @@ export default {
     }
 
     let question: string;
+    let history: ConversationTurn[];
     try {
-      const body = (await request.json()) as { question?: unknown };
+      const body = (await request.json()) as { question?: unknown; history?: unknown };
       question = String(body.question ?? '').trim();
+      history = sanitizeHistory(body.history);
     } catch {
       return json({ error: 'bad_request', message: 'Body must be JSON.' }, 400);
     }
@@ -91,7 +144,7 @@ export default {
     const startedAt = Date.now();
     const requestId = crypto.randomUUID();
     try {
-      const result = await research({ question });
+      const result = await research({ question, history });
       return json({ ok: true, result, elapsedMs: Date.now() - startedAt }, 200);
     } catch (error) {
       /* Missing role configuration is the server's own fail-closed rule (config.ts) surfacing

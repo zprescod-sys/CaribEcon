@@ -222,8 +222,50 @@ export interface Claim {
 
 export interface ResearchAnswer {
   headline: string;
+  /* The evidence the HEADLINE itself rests on. Exists because the headline is prose the user
+   * actually reads, but — unlike a Claim — it carried no refs and no figures, so the grounding
+   * gate had nothing to check it against and it shipped unfiltered even when the claim backing it
+   * was dropped (observed live: a headline asserting the economy "nearly tripled" survived after
+   * the only claim carrying that period-average figure failed check 4). Giving the headline refs
+   * is what lets verify() hold it to the same standard as the claims beneath it. May be empty for
+   * a purely qualitative headline that asserts nothing specific. */
+  headlineRefs: EvidenceRef[];
   claims: Claim[];
   gaps: string[]; // what the final answer could not address — see anticipatedGaps note above
+}
+
+/* Bounded conversational memory (ARCHITECTURE.md §2.7, §2.4 C3). A request-shape concept, not a
+ * pipeline-internal type like ResearchAnswer above it — it describes INPUT the client supplies,
+ * sanitized once at the api/ask.ts trust boundary before research()/interpret() ever see it, the
+ * same discipline `question` itself already gets there. Lives here rather than beside
+ * ResearchRequest in research.ts purely to avoid a research.ts <-> interpret.ts import cycle
+ * (research.ts imports interpret(), so interpret.ts cannot import a type back from research.ts).
+ * Its existence does not violate §2.7 rule 3 ("no contract may depend on OpenClaw memory
+ * types") — this is a small, self-contained shape this buildathon defines itself, with no
+ * dependency on any external memory system; every OTHER contract (ResearchIntent, EvidencePackage,
+ * ResearchAnswer, ResearchResult) still type-checks and works identically whether or not any
+ * caller ever populates a ConversationTurn.
+ *
+ * `headline`, not the full claims[]: §2.7 rule 2 requires memory stay "compact turns... never
+ * evidence bodies." A prior headline is already a dense one-line summary and is never itself
+ * evidence (it is model prose, distinct from the D:/N:/W: evidence it was built from) — used here
+ * only as a LEAD for interpret()'s OWN new resolution, per rule 1, never re-asserted as fact.
+ * Included even when that turn's `publishedHeadline` was false: an ungrounded headline is still a
+ * legitimate hint about what the conversation is ABOUT (topic continuity), and using it to steer
+ * intent resolution never bypasses the NEW turn's own re-retrieval and grounding — it cannot let
+ * anything skip verification, only help find it.
+ *
+ * `refs`: D:/N: only, by construction of where this type is populated — api/ask.ts strips any W:
+ * before a ConversationTurn is ever constructed, since web evidence is turn-local and must never
+ * be accepted back from the client (§2.4 C3: a client echoing back "here is what that page said"
+ * could alter the text while keeping the schema valid, defeating the grounding gate). Not
+ * re-validated for hub existence here: a stale or hallucinated ref just fails to help interpret(),
+ * exactly like an unresolvable slug already does — never trusted as evidence, only used to nudge
+ * a prompt. */
+export interface ConversationTurn {
+  question: string;
+  headline: string;
+  refs: EvidenceRef[];
 }
 
 // ── Verification (§2.3(b), §2.6) ────────────────────────────────────────────────────────────
@@ -285,6 +327,14 @@ export interface VerificationVerdict {
   grounding: GroundingResult;
   audit: ClaimsAudit;
   publishedClaims: string[]; // Claim.id[]
+  /* True iff every ResearchAnswer.headlineRefs entry is carried by a claim that survived into
+   * publishedClaims — an empty headlineRefs is vacuously true (a purely qualitative headline
+   * asserts nothing specific, so there is nothing to violate, the same convention "zero claims ->
+   * PASS" already uses below). False means the headline itself must not be shown as verified: its
+   * evidence was dropped, or it cited something no claim ever carried at all. verify.ts derives
+   * this the same way it derives publishedClaims — the caller (taskpane.js) decides what to
+   * render instead, this module only decides whether the headline is presentable. */
+  publishedHeadline: boolean;
   reasonCategories: ReasonCategory[];
 }
 

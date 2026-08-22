@@ -102,7 +102,7 @@ function describeItem(item: EvidenceItem): string {
 const ANALYST_INSTRUCTIONS = [
   'You are an economic analyst, not a general explainer. Write for an intelligent reader who is',
   'not an economist — simple language — but do not lose the analytical edge: real economic',
-  'reasoning, named mechanisms, and evidence, not a plain-English summary of the headline result.',
+  'reasoning, named mechanisms when useful, and evidence, not a plain-English summary of the headline result.',
   '',
   'Preferred flow — adapt the order to whatever makes THIS question clearest; do not force a',
   'question into this shape if another order explains it better:',
@@ -141,7 +141,7 @@ const ANALYST_INSTRUCTIONS = [
   '- Keep company announcements, policy changes, and individual news developments subordinate:',
   '  include them only when they help explain the main economic story, never because they were',
   '  retrieved.',
-  '- Keep the answer semi-concise — a focused explanation, not an analyst memo or a long report.',
+  '- Keep the answer semi-concise — a focused explanation that is easily interpretable, not an analyst memo or a long report.',
   '- Never write a separate "evidence limitations" or "caveats" paragraph inside the narrative.',
   '  Anything the evidence could not establish belongs in gaps[], not in claim text.',
   '- Each claim\'s "text" must read as a complete, self-contained statement. It is rendered as its',
@@ -207,6 +207,9 @@ function buildSystemPrompt(compiled: CompiledEvidence): string {
     JSON.stringify(
       {
         headline: 'string',
+        headlineRefs: ['e.g. "D:GY:gdp_growth" — every ref the HEADLINE itself relies on, even a',
+          'ref also cited by a claim below. Empty ONLY if the headline is pure framing with no',
+          'specific figure or development named in it.'],
         claims: [
           {
             text: 'string',
@@ -249,9 +252,22 @@ function buildSystemPrompt(compiled: CompiledEvidence): string {
     '- A closing "what this means" / "what to watch" claim is usually type "framing" (no required',
     '  refs) unless it cites a specific evidence-backed figure — and belongs LAST, since it is the',
     '  first claim dropped if the answer runs long.',
+    '- "headlineRefs" must name every ref the headline itself depends on, even one already cited',
+    '  by a claim below — the headline is checked against evidence exactly like a claim is, so an',
+    '  unlisted ref means the headline can be suppressed even if every claim is fine.',
   );
 
   return sections.join('\n');
+}
+
+/* The exact two-message request is exported for the diagnostic replay harness. Keeping message
+ * construction here prevents the harness from duplicating a long, safety-sensitive prompt and
+ * accidentally testing something other than production synthesis. */
+export function buildSynthesisMessages(compiled: CompiledEvidence): ChatMessage[] {
+  return [
+    { role: 'system', content: buildSystemPrompt(compiled) },
+    { role: 'user', content: 'Write the research answer now, following the rules and shape exactly.' },
+  ];
 }
 
 // ── Structural validation only — see the file header for why grounding checks are NOT here ──
@@ -319,6 +335,17 @@ function capVisibleClaims(headline: string, claims: Claim[]): Claim[] {
   return kept;
 }
 
+// Permissive, same discipline as plan.ts's toFilteredStringArray for scope/anticipatedGaps: an
+// omitted or malformed headlineRefs degrades to [], never fails the whole answer. That default is
+// also the SAFE one — an empty headlineRefs is vacuously trusted by verify.ts's
+// computeHeadlinePublished (a headline making no specific claim has nothing to violate), so a
+// model that forgets this brand-new field regresses to exactly today's unchecked behaviour,
+// never to a newly-broken one.
+function toRefArray(v: unknown): EvidenceRef[] {
+  if (!Array.isArray(v)) return [];
+  return v.filter((x): x is string => typeof x === 'string' && x.trim().length > 0) as EvidenceRef[];
+}
+
 function coerceAnswer(raw: unknown): ResearchAnswer | null {
   if (!raw || typeof raw !== 'object') return null;
   const r = raw as Record<string, unknown>;
@@ -341,8 +368,30 @@ function coerceAnswer(raw: unknown): ResearchAnswer | null {
     console.warn(`synthesize(): capped ${claims.length} claims to ${visible.length} for the visible-answer ceiling`);
   }
 
-  return { headline: r.headline, claims: visible, gaps: r.gaps as string[] };
+  return { headline: r.headline, headlineRefs: toRefArray(r.headlineRefs), claims: visible, gaps: r.gaps as string[] };
 }
+
+/* Shared by synthesize() and the diagnostic replay. It deliberately performs the same parse and
+ * structural coercion as the live role, so replay timing includes all local synthesis work after
+ * the provider response without storing model text. */
+export function parseSynthesisResponse(response: {
+  text: string;
+  finishReason: string | null;
+  usage: { promptTokens: number | null; completionTokens: number | null } | null;
+}): ResearchAnswer {
+  const raw = parseModelJson(response.text);
+  const answer = raw === null ? null : coerceAnswer(raw);
+  if (answer === null) {
+    throw new SynthesizeParseError(response.text, response.finishReason, response.usage?.completionTokens ?? null);
+  }
+  return answer;
+}
+
+export const SYNTHESIS_MODEL_OPTIONS = {
+  temperature: 0,
+  maxTokens: 12_000,
+  timeoutMs: 120_000,
+} as const;
 
 export async function synthesize(compiled: CompiledEvidence): Promise<ResearchAnswer> {
   const resolved = resolveRoleFully('synthesis');
@@ -352,13 +401,9 @@ export async function synthesize(compiled: CompiledEvidence): Promise<ResearchAn
     );
   }
 
-  const messages: ChatMessage[] = [
-    { role: 'system', content: buildSystemPrompt(compiled) },
-    { role: 'user', content: 'Write the research answer now, following the rules and shape exactly.' },
-  ];
+  const messages = buildSynthesisMessages(compiled);
 
   const response = await callModel(resolved.connection, resolved.model, messages, {
-    temperature: 0,
     /* Raised 6000 -> 12000. Stage D's live measurement (completionTokens 1836/2095, comfortably
        under 6000) is now STALE: it was taken against the pre-restructure prompt (Stage D landed
        Aug 19; the ANALYST_INSTRUCTIONS rewrite landed the next morning), so it no longer bounds
@@ -373,14 +418,8 @@ export async function synthesize(compiled: CompiledEvidence): Promise<ResearchAn
        cannot make this call slower on its own, only let a call that used to die mid-<think>
        finish instead. See interpret.ts's maxTokens comment for why timeouts, not tokens, are the
        scarce budget across this pipeline (vercel.json's 240s api/ask.ts ceiling). */
-    maxTokens: 12_000,
-    timeoutMs: 120_000,
+    ...SYNTHESIS_MODEL_OPTIONS,
   });
 
-  const raw = parseModelJson(response.text);
-  const answer = raw === null ? null : coerceAnswer(raw);
-  if (answer === null) {
-    throw new SynthesizeParseError(response.text, response.finishReason, response.usage?.completionTokens ?? null);
-  }
-  return answer;
+  return parseSynthesisResponse(response);
 }
