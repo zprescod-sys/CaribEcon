@@ -3,7 +3,17 @@
    configured routes, neither of which belongs in this first failure-handling pass. */
 import { ProviderCallError } from './providers/openaiCompatible.js';
 
-export type PipelineStage = 'interpret' | 'plan' | 'execute' | 'news_extract' | 'synthesize' | 'verify';
+// 'route_plan' is the merged Interpret+Plan role's stage label (CARIBECON_ROUTE_MODE=combined) —
+// distinct from 'interpret'/'plan' so a combined-call failure logs under its own name rather than
+// misleadingly claiming to be one half of a call that didn't run.
+export type PipelineStage =
+  | 'interpret'
+  | 'plan'
+  | 'route_plan'
+  | 'execute'
+  | 'news_extract'
+  | 'synthesize'
+  | 'verify';
 
 export type ProviderFailureCode =
   | 'provider_timeout'
