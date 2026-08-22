@@ -1,5 +1,43 @@
 [
   {
+    "id": "guyana-chronicle-4a18dbf0",
+    "title": "Guyana’s fifth, largest FPSO arrives",
+    "source": "Guyana Chronicle",
+    "date": "2026-08-22",
+    "country": "GY",
+    "url": "https://guyanachronicle.com/2026/08/22/guyanas-fifth-largest-fpso-arrives/",
+    "tags": [
+      "news"
+    ],
+    "category": "",
+    "group": "Energy",
+    "decision": "review",
+    "confidence": "low",
+    "reason": "Recognized editorial edge-case vocabulary; suggested Energy.",
+    "classifier": "heuristic",
+    "approved": false,
+    "suggestedCategory": "Energy"
+  },
+  {
+    "id": "guyana-chronicle-c382dbd7",
+    "title": "GuySuCo’s CEO sues opposition leader over defamatory Facebook post",
+    "source": "Guyana Chronicle",
+    "date": "2026-08-22",
+    "country": "GY",
+    "url": "https://guyanachronicle.com/2026/08/22/guysucos-ceo-sues-opposition-leader-over-defamatory-facebook-post/",
+    "tags": [
+      "news"
+    ],
+    "category": "",
+    "group": "Finance",
+    "decision": "review",
+    "confidence": "low",
+    "reason": "Recognized editorial edge-case vocabulary; suggested Corporate.",
+    "classifier": "heuristic",
+    "approved": false,
+    "suggestedCategory": "Corporate"
+  },
+  {
     "id": "guyana-chronicle-733ccdce",
     "title": "Gov’t welcomes arrival of fifth FPSO",
     "source": "Guyana Chronicle",
