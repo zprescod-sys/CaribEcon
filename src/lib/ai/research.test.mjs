@@ -309,3 +309,126 @@ test('a fixed retrievedAt option produces a reproducible evidenceMeta.retrievedA
     },
   );
 });
+
+// ── CARIBECON_ROUTE_MODE=combined — the merged routePlan() role in place of interpret()+plan() ──
+// plans/interpret-plan-merge-latency-review.md. Same composition proof as the staged tests above,
+// but through the single combined call, with the specific property staged mode cannot have: this
+// mode makes exactly ONE model call before executeResearchPlan(), not two.
+
+const ROUTEPLAN_OK = () =>
+  JSON.stringify({
+    interpretation: {
+      questionType: 'indicator', countries: ['GY'], indicators: ['gdp_growth'],
+      yearFrom: null, yearTo: null, newsKeywords: [],
+    },
+    plan: {
+      scope: { countries: ['GY'], indicators: ['gdp_growth'], yearFrom: null, yearTo: null },
+      steps: [
+        { id: 's1', tool: 'get_series', country: 'GY', indicator: 'gdp_growth', yearFrom: null, yearTo: null, why: 'test' },
+      ],
+      anticipatedGaps: [],
+    },
+  });
+
+async function withCombinedResearchProviders({ routePlanRespond, synthesisRespond }, test_) {
+  const routePlanReceived = [];
+  const synthesisReceived = [];
+  const routePlanServer = jsonServer(routePlanRespond, routePlanReceived);
+  const synthesisServer = jsonServer(synthesisRespond, synthesisReceived);
+  await Promise.all([
+    new Promise(resolve => routePlanServer.listen(0, '127.0.0.1', resolve)),
+    new Promise(resolve => synthesisServer.listen(0, '127.0.0.1', resolve)),
+  ]);
+
+  try {
+    await withEnv(
+      {
+        CARIBECON_ROUTE_MODE: 'combined',
+        CARIBECON_ROUTEPLAN_PROVIDER: 'nebius',
+        CARIBECON_ROUTEPLAN_MODEL: 'test-model',
+        NEBIUS_BASE_URL: `http://127.0.0.1:${routePlanServer.address().port}`,
+        NEBIUS_API_KEY: 'test-key',
+        CARIBECON_SYNTHESIS_PROVIDER: 'minimax',
+        CARIBECON_SYNTHESIS_MODEL: 'test-model',
+        MINIMAX_BASE_URL: `http://127.0.0.1:${synthesisServer.address().port}`,
+        MINIMAX_API_KEY: 'test-key',
+        // Deliberately left configured but unreachable-if-called: staged-mode roles must never
+        // fire when CARIBECON_ROUTE_MODE=combined. If either fires, the test's own assertion on
+        // routePlanReceived.length below would still catch it (one call would become two), but
+        // leaving these unset entirely is a stronger guarantee — an accidental staged-path call
+        // would throw NotConfiguredError instead of silently succeeding against a stray server.
+        CARIBECON_INTERPRET_PROVIDER: undefined,
+        CARIBECON_INTERPRET_MODEL: undefined,
+        CARIBECON_PLAN_PROVIDER: undefined,
+        CARIBECON_PLAN_MODEL: undefined,
+      },
+      () => test_({ routePlanReceived, synthesisReceived }),
+    );
+  } finally {
+    await Promise.all([
+      new Promise(resolve => routePlanServer.close(resolve)),
+      new Promise(resolve => synthesisServer.close(resolve)),
+    ]);
+  }
+}
+
+test('CARIBECON_ROUTE_MODE=combined: composes routePlan -> validateResearchPlan -> executeResearchPlan -> synthesize with exactly ONE model call before execution', async () => {
+  await withCombinedResearchProviders(
+    {
+      routePlanRespond: ROUTEPLAN_OK,
+      synthesisRespond: body => {
+        const system = body.messages[0].content;
+        assert.ok(system.includes('D:GY:gdp_growth'));
+        return JSON.stringify({
+          headline: 'Guyana GDP growth',
+          claims: [{ text: 'General context.', type: 'framing', refs: [], figures: [] }],
+          gaps: [],
+        });
+      },
+    },
+    async ({ routePlanReceived }) => {
+      const result = await research({ question: 'GDP growth in Guyana?' });
+      assert.equal(routePlanReceived.length, 1, 'exactly one call to the combined role, not two');
+      assert.equal(result.answer.headline, 'Guyana GDP growth');
+      assert.equal(result.evidence.data[0].country, 'GY');
+      assert.equal(result.verdict.outcome, 'PASS');
+    },
+  );
+});
+
+test('CARIBECON_ROUTE_MODE=combined: a hallucinated country from the interpretation half still reaches evidence.misses and the synthesis prompt', async () => {
+  await withCombinedResearchProviders(
+    {
+      routePlanRespond: () =>
+        JSON.stringify({
+          interpretation: {
+            questionType: 'indicator', countries: ['Atlantis'], indicators: ['gdp_growth'],
+            yearFrom: null, yearTo: null, newsKeywords: [],
+          },
+          plan: { scope: { countries: [], indicators: ['gdp_growth'], yearFrom: null, yearTo: null }, steps: [], anticipatedGaps: [] },
+        }),
+      synthesisRespond: body => {
+        const system = body.messages[0].content;
+        assert.ok(system.includes('Atlantis'));
+        return JSON.stringify({ headline: 'x', claims: [], gaps: ['Atlantis is not a covered economy.'] });
+      },
+    },
+    async () => {
+      const result = await research({ question: 'GDP growth in Atlantis?' });
+      assert.ok(result.evidence.misses.some(m => m.kind === 'country' && m.detail.includes('Atlantis')));
+    },
+  );
+});
+
+test('CARIBECON_ROUTE_MODE unset (or anything but "combined") still runs the original two-call staged path — the default is unchanged', async () => {
+  await withResearchProviders(
+    { interpretRespond: INTERPRET_OK, planRespond: PLAN_OK, synthesisRespond: () => JSON.stringify({ headline: 'x', claims: [], gaps: [] }) },
+    async ({ interpretReceived, planReceived }) => {
+      await withEnv({ CARIBECON_ROUTE_MODE: undefined }, async () => {
+        await research({ question: 'GDP growth in Guyana?' });
+        assert.equal(interpretReceived.length, 1);
+        assert.equal(planReceived.length, 1);
+      });
+    },
+  );
+});

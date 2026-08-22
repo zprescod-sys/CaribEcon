@@ -224,8 +224,13 @@ function coerceScope(raw: unknown): ResearchPlan['scope'] {
    own, not something a model can be trusted to reproduce character-for-character, the same
    reasoning synthesize.ts applies to Claim.id). Returns null only when the response cannot be
    read as a plan at all; a malformed individual step is dropped in place, not a reason to fail
-   the whole thing. */
-function coercePlan(raw: unknown): Omit<ResearchPlan, 'question'> | null {
+   the whole thing.
+   Exported so routePlan.ts (the merged Interpret+Plan role) can reuse this EXACT structural
+   validator on the "plan" half of its combined output, instead of a second implementation that
+   could drift from this one — the same "map before you build" reasoning this file already
+   applies to why real-name checks live in exactly one place (askTools.ts), extended to shape
+   checks too. */
+export function coercePlan(raw: unknown): Omit<ResearchPlan, 'question'> | null {
   if (!raw || typeof raw !== 'object') return null;
   const r = raw as Record<string, unknown>;
   if (!Array.isArray(r.steps)) return null;

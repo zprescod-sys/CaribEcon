@@ -36,9 +36,17 @@
  * from the same CompiledEvidence, deterministically, and returned alongside the answer for the
  * task pane to show (a short inline line plus a collapsible detailed list) without the model ever
  * generating that count or that prose itself.
+ *
+ * CARIBECON_ROUTE_MODE (plans/interpret-plan-merge-latency-review.md): 'combined' runs the merged
+ * routePlan() role (one model call) in place of interpret()+plan() (two sequential calls).
+ * Anything else, including unset, is 'staged' — today's original behavior, and the default. This
+ * is a rollback switch, not a rewrite: everything from validateResearchPlan() onward is byte-for-
+ * byte identical either way, because both paths converge on the same ResearchIntent/ResearchPlan
+ * shapes before that call.
  */
 import { interpret } from './roles/interpret.js';
 import { plan } from './roles/plan.js';
+import { routePlan } from './roles/routePlan.js';
 import { synthesize } from './roles/synthesize.js';
 import { verify } from './verify.js';
 import { validateResearchPlan } from '../askTools.js';
@@ -46,7 +54,13 @@ import { executeResearchPlan } from './executor.js';
 import { compileEvidence, buildEvidenceNote } from './evidenceCompiler.js';
 import { classifyProviderFailure, StagedProviderFailure, type PipelineStage } from './providerFailure.js';
 import { ProviderCallError } from './providers/openaiCompatible.js';
-import type { ConversationTurn, ResearchResult } from './contracts.js';
+import type {
+  ConversationTurn,
+  ResearchResult,
+  ResearchIntent,
+  ResearchPlan,
+  RetrievalMiss,
+} from './contracts.js';
 
 export interface ResearchRequest {
   question: string;
@@ -72,9 +86,27 @@ export async function research(
   request: ResearchRequest,
   { retrievedAt }: { retrievedAt?: string } = {},
 ): Promise<ResearchResult> {
-  const { intent, misses } = await runModelStage('interpret', () => interpret(request.question, request.history));
+  // Read per-call, not cached at module scope — same discipline every other env-driven decision
+  // in this pipeline already follows (config.ts's resolveRole/resolveProvider both read
+  // process.env fresh on every call), so a test can flip CARIBECON_ROUTE_MODE per case and so a
+  // running server picks up a config change without a restart.
+  const combined = process.env.CARIBECON_ROUTE_MODE === 'combined';
 
-  const researchPlan = await runModelStage('plan', () => plan(request.question, intent));
+  let intent: ResearchIntent;
+  let misses: RetrievalMiss[];
+  let researchPlan: ResearchPlan;
+  if (combined) {
+    const routed = await runModelStage('route_plan', () => routePlan(request.question, request.history));
+    intent = routed.intent;
+    misses = routed.misses;
+    researchPlan = routed.plan;
+  } else {
+    const interpreted = await runModelStage('interpret', () => interpret(request.question, request.history));
+    intent = interpreted.intent;
+    misses = interpreted.misses;
+    researchPlan = await runModelStage('plan', () => plan(request.question, intent));
+  }
+
   const { plan: validatedPlan, misses: planMisses } = validateResearchPlan(researchPlan);
 
   const evidence = await executeResearchPlan(validatedPlan, retrievedAt);

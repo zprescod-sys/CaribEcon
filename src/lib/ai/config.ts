@@ -19,8 +19,19 @@
  * own model config) and is pre-filled as a default, still overridable via NOINFRA_BASE_URL.
  */
 
-export type Role = 'interpret' | 'plan' | 'synthesis' | 'verify' | 'newsExtract' | 'webExtract';
-export const ROLES: readonly Role[] = ['interpret', 'plan', 'synthesis', 'verify', 'newsExtract', 'webExtract'];
+export type Role = 'interpret' | 'plan' | 'routePlan' | 'synthesis' | 'verify' | 'newsExtract' | 'webExtract';
+export const ROLES: readonly Role[] = [
+  'interpret',
+  'plan',
+  // 'routePlan' is the merged Interpret+Plan role (CARIBECON_ROUTE_MODE=combined) — kept alongside
+  // 'interpret'/'plan', not replacing them, so CARIBECON_ROUTE_MODE=staged (the default) still
+  // resolves the original two-call path. See research.ts.
+  'routePlan',
+  'synthesis',
+  'verify',
+  'newsExtract',
+  'webExtract',
+];
 
 export type ProviderName = 'nebius' | 'minimax' | 'noinfra';
 // Impala is added here once access lands and its API shape is confirmed OpenAI-compatible

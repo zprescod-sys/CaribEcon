@@ -22,6 +22,7 @@ import { CORS_HEADERS, checkToken, clientIp, rateLimited } from '../src/lib/apiG
 import { research } from '../src/lib/ai/research.js';
 import { InterpretNotConfiguredError, InterpretParseError } from '../src/lib/ai/roles/interpret.js';
 import { PlanNotConfiguredError, PlanParseError } from '../src/lib/ai/roles/plan.js';
+import { RoutePlanNotConfiguredError, RoutePlanParseError } from '../src/lib/ai/roles/routePlan.js';
 import { SynthesizeNotConfiguredError, SynthesizeParseError } from '../src/lib/ai/roles/synthesize.js';
 import { StagedProviderFailure } from '../src/lib/ai/providerFailure.js';
 import { MAX_HISTORY_TURNS, MAX_REHYDRATED_REFS } from '../src/lib/ai/config.js';
@@ -36,11 +37,16 @@ import type { ConversationTurn, EvidenceRef } from '../src/lib/ai/contracts.js';
    client response, per this function's existing discipline). */
 function structuredOutputFailure(
   error: unknown,
-): { stage: 'interpretation' | 'planning' | 'answer'; rawLength: number; finishReason: string | null; completionTokens: number | null } | null {
+): { stage: 'interpretation' | 'planning' | 'route_plan' | 'answer'; rawLength: number; finishReason: string | null; completionTokens: number | null } | null {
   if (error instanceof InterpretParseError)
     return { stage: 'interpretation', rawLength: error.rawText.length, finishReason: error.finishReason, completionTokens: error.completionTokens };
   if (error instanceof PlanParseError)
     return { stage: 'planning', rawLength: error.rawText.length, finishReason: error.finishReason, completionTokens: error.completionTokens };
+  // The merged Interpret+Plan role (CARIBECON_ROUTE_MODE=combined) gets its own stage label —
+  // its failure can't be truthfully claimed as either 'interpretation' or 'planning' alone, since
+  // one model call was doing both jobs at once.
+  if (error instanceof RoutePlanParseError)
+    return { stage: 'route_plan', rawLength: error.rawText.length, finishReason: error.finishReason, completionTokens: error.completionTokens };
   if (error instanceof SynthesizeParseError)
     return { stage: 'answer', rawLength: error.rawText.length, finishReason: error.finishReason, completionTokens: error.completionTokens };
   return null;
@@ -155,6 +161,7 @@ export default {
       if (
         error instanceof InterpretNotConfiguredError ||
         error instanceof PlanNotConfiguredError ||
+        error instanceof RoutePlanNotConfiguredError ||
         error instanceof SynthesizeNotConfiguredError
       ) {
         console.warn('api/ask: provider configuration failure', { requestId });
