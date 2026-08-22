@@ -6,6 +6,14 @@ const CustomFunctionsMetadataPlugin = require("custom-functions-metadata-plugin"
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const webpack = require("webpack");
 
+// Office caches add-in icons by URL in the WKWebView/Trident cache, not by content — the
+// icon-*.png filenames below never change build to build, so once an icon (even a bad or
+// blank one from an earlier build) is cached against this add-in's manifest, re-exporting
+// the PNG with the same name never invalidates it; only clearing the client's Office cache
+// or changing the URL does. Appending the package version as a query string below is the
+// change-the-URL half, so a version bump always forces a fresh fetch.
+const iconVersion = require("./package.json").version;
+
 // Where the add-in's OWN files (taskpane.html, functions.js, icons) are served from.
 // Rewritten into manifest.xml on a production build.
 //
@@ -240,14 +248,14 @@ module.exports = async (env, options) => {
             from: "manifest*.xml",
             to: "[name]" + "[ext]",
             transform(content) {
-              if (dev) {
-                return content;
-              } else {
-                // replaceAll, not replace: a string first argument replaces only the
-                // FIRST match, which previously left six of the seven manifest URLs
-                // pointing at localhost while one flipped to the production host.
-                return content.toString().replaceAll(urlDev, urlProd);
-              }
+              // replaceAll, not replace: a string first argument replaces only the
+              // FIRST match, which previously left six of the seven manifest URLs
+              // pointing at localhost while one flipped to the production host.
+              const withHost = dev ? content.toString() : content.toString().replaceAll(urlDev, urlProd);
+              // Cache-bust every icon reference (IconUrl, HighResolutionIconUrl, and the
+              // three bt:Image entries) so a version bump always fetches fresh, per the
+              // iconVersion comment above.
+              return withHost.replace(/icon-(16|32|64|80|128)\.png/g, `icon-$1.png?v=${iconVersion}`);
             },
           },
         ],

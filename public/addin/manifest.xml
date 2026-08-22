@@ -9,8 +9,8 @@
   <DefaultLocale>en-US</DefaultLocale>
   <DisplayName DefaultValue="CaribEcon" />
   <Description DefaultValue="Sourced Caribbean macroeconomic data as live Excel functions." />
-  <IconUrl DefaultValue="https://caribecon.org/addin/assets/icon-32.png"/>
-  <HighResolutionIconUrl DefaultValue="https://caribecon.org/addin/assets/icon-64.png"/>
+  <IconUrl DefaultValue="https://caribecon.org/addin/assets/icon-32.png?v=0.0.2"/>
+  <HighResolutionIconUrl DefaultValue="https://caribecon.org/addin/assets/icon-64.png?v=0.0.2"/>
   <SupportUrl DefaultValue="https://caribecon.org"/>
   <AppDomains>
     <AppDomain>https://caribecon.org</AppDomain>
@@ -87,9 +87,9 @@
     </Hosts>
     <Resources>
       <bt:Images>
-        <bt:Image id="Icon.16x16" DefaultValue="https://caribecon.org/addin/assets/icon-16.png"/>
-        <bt:Image id="Icon.32x32" DefaultValue="https://caribecon.org/addin/assets/icon-32.png"/>
-        <bt:Image id="Icon.80x80" DefaultValue="https://caribecon.org/addin/assets/icon-80.png"/>
+        <bt:Image id="Icon.16x16" DefaultValue="https://caribecon.org/addin/assets/icon-16.png?v=0.0.2"/>
+        <bt:Image id="Icon.32x32" DefaultValue="https://caribecon.org/addin/assets/icon-32.png?v=0.0.2"/>
+        <bt:Image id="Icon.80x80" DefaultValue="https://caribecon.org/addin/assets/icon-80.png?v=0.0.2"/>
       </bt:Images>
       <bt:Urls>
         <bt:Url id="Functions.Script.Url" DefaultValue="https://caribecon.org/addin/functions.js" />
