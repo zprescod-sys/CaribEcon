@@ -239,6 +239,10 @@ function buildSystemPrompt(compiled: CompiledEvidence): string {
     '- "calculation" must be null (a raw/reported value) or exactly one of the pre-computed values',
     '  shown above for that ref — never compute your own change or average.',
     '- Only cite a ref shown above. Never invent one.',
+    '- "ref" must be copied EXACTLY as shown above, up to (not including) the first " — ". A stat',
+    '  line may show a trailing "[pp_change]"/"[yoy_change]"/"[period_average]" label — that names',
+    '  which fact the line is, it is never part of the ref. Put that same value in "calculation"',
+    '  instead; never append it to "ref".',
     '- A concept item (marked "no ref") may back only a "context" or "framing" claim, never a',
     '  figure — the same restriction a W: item with no extract is already held to.',
     '- "refs" may be empty ONLY when type is "framing" (general commentary, no specific evidence',
@@ -275,6 +279,19 @@ export function buildSynthesisMessages(compiled: CompiledEvidence): ChatMessage[
 const VALID_CLAIM_TYPES: readonly Claim['type'][] = ['figure', 'trend', 'context', 'framing'];
 const VALID_CALCULATIONS: readonly CalculationName[] = ['yoy_change', 'pp_change', 'period_average'];
 
+/* Defensive normalization, not the primary fix (that's the explicit "ref must be copied exactly"
+ * prompt rule above) — a model can still fold describeItem()'s trailing "[pp_change]"/
+ * "[yoy_change]"/"[period_average]" label into the ref it emits, since a calculated stat's three
+ * facts (raw value, change, average) all share one base ref in the prompt and that label is the
+ * only thing distinguishing them there. Stripping it here never changes which fact a ref points
+ * to — `calculation` already carries that, redundantly — it only removes a duplicate the model
+ * should not have copied into `ref`. A real D:/N:/W: ref never legitimately ends in "[...]", so
+ * this can only ever turn an invented-looking ref into a real, matchable one, never the reverse. */
+const REF_CALC_SUFFIX = /\s*\[(?:yoy_change|pp_change|period_average)\]$/;
+function normalizeRef(ref: string): EvidenceRef {
+  return ref.replace(REF_CALC_SUFFIX, '') as EvidenceRef;
+}
+
 function coerceFigure(raw: unknown): StatedFigure | null {
   if (!raw || typeof raw !== 'object') return null;
   const r = raw as Record<string, unknown>;
@@ -287,7 +304,7 @@ function coerceFigure(raw: unknown): StatedFigure | null {
   const year = typeof r.year === 'number' && Number.isInteger(r.year) ? r.year : null;
 
   return {
-    ref: r.ref as EvidenceRef,
+    ref: normalizeRef(r.ref),
     year,
     value: r.value,
     unit: r.unit,
@@ -310,7 +327,13 @@ function coerceClaim(raw: unknown, id: string): Claim | null {
     console.warn(`synthesize(): dropped ${figuresRaw.length - figures.length} malformed figure(s) on claim "${id}"`);
   }
 
-  return { id, text: r.text, refs: r.refs as EvidenceRef[], type: r.type as Claim['type'], figures };
+  return {
+    id,
+    text: r.text,
+    refs: (r.refs as string[]).map(normalizeRef),
+    type: r.type as Claim['type'],
+    figures,
+  };
 }
 
 // A cheap, deliberately conservative estimate (~4 chars/token for English) — not an exact
@@ -343,7 +366,9 @@ function capVisibleClaims(headline: string, claims: Claim[]): Claim[] {
 // never to a newly-broken one.
 function toRefArray(v: unknown): EvidenceRef[] {
   if (!Array.isArray(v)) return [];
-  return v.filter((x): x is string => typeof x === 'string' && x.trim().length > 0) as EvidenceRef[];
+  return v
+    .filter((x): x is string => typeof x === 'string' && x.trim().length > 0)
+    .map(normalizeRef);
 }
 
 function coerceAnswer(raw: unknown): ResearchAnswer | null {
@@ -389,7 +414,7 @@ export function parseSynthesisResponse(response: {
 
 export const SYNTHESIS_MODEL_OPTIONS = {
   temperature: 0,
-  maxTokens: 12_000,
+  maxTokens: 24_000,
   timeoutMs: 120_000,
 } as const;
 
@@ -404,20 +429,20 @@ export async function synthesize(compiled: CompiledEvidence): Promise<ResearchAn
   const messages = buildSynthesisMessages(compiled);
 
   const response = await callModel(resolved.connection, resolved.model, messages, {
-    /* Raised 6000 -> 12000. Stage D's live measurement (completionTokens 1836/2095, comfortably
-       under 6000) is now STALE: it was taken against the pre-restructure prompt (Stage D landed
-       Aug 19; the ANALYST_INSTRUCTIONS rewrite landed the next morning), so it no longer bounds
-       what the current prompt actually asks the model to produce. Rather than re-measure a prompt
-       that this same change is about to rewrite again, this adopts interpret.ts's general rule
-       (a runaway backstop set generously above normal use, not a size estimate) at twice
-       newsExtract.ts's measured-safe 8000 floor, since this role's reasoning trace plus prose
-       answer is the largest completion of the three JSON roles.
-       timeoutMs stays 90s, UNCHANGED and now the deliberately sole binding constraint: Stage D's
-       own two samples already showed 3x wall-clock variance (13s vs 43-45s) at near-identical
-       compiled input size — provider-side latency variance, not token count, so raising maxTokens
-       cannot make this call slower on its own, only let a call that used to die mid-<think>
-       finish instead. See interpret.ts's maxTokens comment for why timeouts, not tokens, are the
-       scarce budget across this pipeline (vercel.json's 240s api/ask.ts ceiling). */
+    /* Raised 12000 -> 24000, this time against a REAL live failure, not a reasoned guess: a
+       news-heavy question (extract_web pages now also carry structured insights, via the
+       'webExtract' role — more real, verified figures competing for MAX_KEY_FACTS/
+       MAX_DRIVER_ITEMS/MAX_EXTERNAL_FINDINGS than before) hit completionTokens: 12000,
+       finishReason: 'length', truncated mid-figures-array on claim 4 of what would have been a
+       full answer — a hard SynthesizeParseError, not a narrowed one. Doubling again follows the
+       same "runaway backstop set generously above normal use" rule the 6000->12000 bump already
+       used (see git history), since evidence density — and therefore how much figures[] JSON a
+       claim needs — has only grown since that estimate, not shrunk.
+       timeoutMs stays UNCHANGED and remains the deliberately sole binding constraint under normal
+       operation: raising maxTokens cannot make a call slower on its own, it only lets a call that
+       used to die mid-truncation finish instead. See interpret.ts's maxTokens comment for why
+       timeouts, not tokens, are the scarce budget across this pipeline (vercel.json's 240s
+       api/ask.ts ceiling). */
     ...SYNTHESIS_MODEL_OPTIONS,
   });
 

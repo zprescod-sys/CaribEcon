@@ -233,6 +233,55 @@ test('an empty-string entry inside headlineRefs is filtered out, real entries ke
   );
 });
 
+// ── ref normalization — the model sometimes folds describeItem()'s trailing "[pp_change]"/
+//    "[yoy_change]"/"[period_average]" label into the ref it emits, since a calculated stat's
+//    three facts share one base ref in the prompt (observed live: ref_existence dropped 4/7
+//    claims on a real compare_series question this way). Stripped at parse time so grounding's
+//    ref_existence check sees the real, matchable ref. ────────────────────────────────────────
+
+test('a figure ref with a trailing calculation-label suffix is normalized to the bare ref', async () => {
+  await withSynthesisProvider(
+    () => JSON.stringify({
+      ...WELL_FORMED,
+      claims: [
+        {
+          text: 'Guyana GDP growth rose 4.3 percentage points.',
+          type: 'trend',
+          refs: [`${realRef} [pp_change]`],
+          figures: [{ ref: `${realRef} [pp_change]`, year: 2022, value: 4.3, unit: 'pp', calculation: 'pp_change', asWritten: '4.3' }],
+        },
+      ],
+    }),
+    async () => {
+      const answer = await synthesize(compiled);
+      assert.equal(answer.claims.length, 1);
+      assert.deepEqual(answer.claims[0].refs, [realRef]);
+      assert.equal(answer.claims[0].figures[0].ref, realRef);
+    },
+  );
+});
+
+test('a headlineRefs entry with a trailing calculation-label suffix is normalized the same way', async () => {
+  await withSynthesisProvider(
+    () => JSON.stringify({ ...WELL_FORMED, headlineRefs: [`${realRef} [period_average]`] }),
+    async () => {
+      const answer = await synthesize(compiled);
+      assert.deepEqual(answer.headlineRefs, [realRef]);
+    },
+  );
+});
+
+test('a ref with no calculation-label suffix is left exactly as-is', async () => {
+  await withSynthesisProvider(
+    () => JSON.stringify(WELL_FORMED),
+    async () => {
+      const answer = await synthesize(compiled);
+      assert.equal(answer.claims[0].refs[0], realRef);
+      assert.equal(answer.claims[0].figures[0].ref, realRef);
+    },
+  );
+});
+
 test('refs: [] is accepted for type "framing" but the claim is dropped for any other type', async () => {
   await withSynthesisProvider(
     () => JSON.stringify({
