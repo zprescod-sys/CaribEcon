@@ -383,6 +383,33 @@ function rankAndTruncate<T extends { compilerQualityTier: CompilerQualityTier }>
     .slice(0, max);
 }
 
+/* News ages quickly. Once an item has made it into the validated evidence package, freshness is
+   the primary ordering rule for synthesis-facing news: a newer relevant Tavily finding must not
+   be buried behind an older News Hub headline merely because it entered through a different
+   retrieval path. Relevance and source quality still break ties on the same publication date.
+   Missing/unparseable dates sort last rather than pretending to be current. */
+function newsPublishedAt(item: NewsContextItem): number {
+  if (!item.date) return Number.NEGATIVE_INFINITY;
+  const timestamp = Date.parse(item.date);
+  return Number.isFinite(timestamp) ? timestamp : Number.NEGATIVE_INFINITY;
+}
+
+function rankNewsAndTruncate(
+  items: NewsContextItem[],
+  relevance: (item: NewsContextItem) => number,
+  max: number,
+): NewsContextItem[] {
+  return [...items]
+    .sort((a, b) => {
+      const freshness = newsPublishedAt(b) - newsPublishedAt(a);
+      if (freshness !== 0) return freshness;
+      const rel = relevance(b) - relevance(a);
+      if (rel !== 0) return rel;
+      return TIER_RANK[b.compilerQualityTier] - TIER_RANK[a.compilerQualityTier];
+    })
+    .slice(0, max);
+}
+
 // ── Gaps — deterministic, from evidence metadata, never model-generated (Stage C reads this) ──
 
 function computeGaps(pkg: EvidencePackage): EvidenceLimitation[] {
@@ -444,11 +471,11 @@ export function compileEvidence(intent: ResearchIntent, plan: ResearchPlan, pkg:
     question: plan.question,
     analysisGoal: buildAnalysisGoal(intent),
     keyFacts: rankAndTruncate(statistics, item => statisticRelevance(item, intent), MAX_KEY_FACTS),
-    driverEvidence: rankAndTruncate(driverItems, item => newsContextRelevance(item, intent), MAX_DRIVER_ITEMS),
+    driverEvidence: rankNewsAndTruncate(driverItems, item => newsContextRelevance(item, intent), MAX_DRIVER_ITEMS),
     // Knowledge Hub placeholder (deferred per the plan) — always empty this pass; MAX_CONCEPTS
     // exists as the enforced cap for whenever concept items are actually populated.
     economicConcepts: [],
-    externalEvidence: rankAndTruncate(contextOnlyItems, item => newsContextRelevance(item, intent), MAX_EXTERNAL_FINDINGS),
+    externalEvidence: rankNewsAndTruncate(contextOnlyItems, item => newsContextRelevance(item, intent), MAX_EXTERNAL_FINDINGS),
     contradictions: contradictions.slice(0, MAX_CONTRADICTIONS),
     gaps: computeGaps(pkg),
     caveats: pkg.caveats,

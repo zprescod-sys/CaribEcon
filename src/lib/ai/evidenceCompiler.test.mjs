@@ -498,6 +498,25 @@ test('externalEvidence never exceeds MAX_EXTERNAL_FINDINGS regardless of how man
   assert.ok(result.externalEvidence.length <= MAX_EXTERNAL_FINDINGS, `expected <= ${MAX_EXTERNAL_FINDINGS}, got ${result.externalEvidence.length}`);
 });
 
+test('newer Tavily news ranks ahead of an older News Hub item for synthesis', () => {
+  const result = compileEvidence(
+    intent(),
+    plan(),
+    pkg({
+      news: [{
+        id: 'older-hub', title: 'Older hub development', source: 'Hub outlet', date: '2025-01-15',
+        country: 'GY', url: 'https://hub.example/older',
+      }],
+      web: [webItem({
+        id: 'W:newer-tavily', title: 'Newer Tavily development', publishedDate: '2026-06-01',
+        snippet: 'Newer Tavily development',
+      })],
+    }),
+  );
+  assert.equal(result.externalEvidence[0].refs[0], 'W:newer-tavily');
+  assert.equal(result.externalEvidence[1].refs[0], 'N:older-hub');
+});
+
 test('contradictions never exceeds MAX_CONTRADICTIONS', () => {
   const web = [];
   for (let i = 0; i < 6; i++) {
