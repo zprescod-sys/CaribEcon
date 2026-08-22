@@ -177,10 +177,11 @@ function normalizeNewsItem(n: NewsEvidence): NewsContextItem {
 /* Per the plan's Stage-B revision: a plain Tavily item (no Stage-A structured insights) compiles
  * from its `snippet` ONLY — never a slice of `extract.text`. A raw-text slice is exactly the
  * "evidence dump sneaking back into synthesis" this stage exists to prevent; the full text stays
- * exclusively in the untouched EvidencePackage for grounding/provenance. Stated tradeoff: a
- * Tavily-extracted page's specific figures won't reliably reach synthesis as citable content this
- * pass — extending Stage A's structured extraction to Tavily-sourced pages is the natural fix,
- * explicitly out of scope here. */
+ * exclusively in the untouched EvidencePackage for grounding/provenance. extract_web pages now DO
+ * get Stage-A structured extraction (executor.ts's extract_web branch calls
+ * extractArticleInsights() with the 'webExtract' role, newsExtract.ts) — this branch is what
+ * still applies when that role is unconfigured, or the model call/parse failed, so `insights` is
+ * null: the page still compiles, just from its snippet rather than losing it entirely. */
 function normalizeWebItem(w: WebEvidence): { context: NewsContextItem[]; figures: StatisticItem[] } {
   const ref: EvidenceRef = w.id.startsWith('W:') ? (w.id as EvidenceRef) : (`W:${w.id}` as EvidenceRef);
   const tier = tierForWeb(w);

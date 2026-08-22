@@ -310,13 +310,26 @@ export async function executeResearchPlan(
     extractBudget -= urlsToExtract.length;
     const extracted = await extractWeb(urlsToExtract);
     pushTool('extractWeb');
-    for (const url of urlsToExtract) {
-      const hit = extracted.get(url);
-      // Same object reference as the one already pushed into pkg.web by the search_web branch
-      // above — mutating it here populates `extract` in place. One URL, one evidence entry.
-      const entry = target.find(w => w.url === url);
-      if (hit && entry) entry.extract = { text: hit.text, chars: hit.chars, summary: null, insights: null };
-    }
+    // Enrichment via the 'webExtract' role — same fail-soft extractArticleInsights() the
+    // search_news digest path uses (newsExtract.ts), just resolved against
+    // CARIBECON_WEBEXTRACT_PROVIDER/_MODEL instead of CARIBECON_NEWSEXTRACT_*, so the two paths'
+    // concurrency and volume don't have to share one model's rate limits. Never throws; a null
+    // here (unconfigured role, model failure, unparseable response) leaves extract.insights null
+    // exactly as it always has, so this cannot turn an existing working request into a failure.
+    await Promise.all(
+      urlsToExtract.map(async url => {
+        const hit = extracted.get(url);
+        // Same object reference as the one already pushed into pkg.web by the search_web branch
+        // above — mutating it here populates `extract` in place. One URL, one evidence entry.
+        const entry = target.find(w => w.url === url);
+        if (!hit || !entry) return;
+        const insights = await extractArticleInsights(
+          { title: entry.title, text: hit.text, publishedDate: entry.publishedDate },
+          'webExtract',
+        );
+        entry.extract = { text: hit.text, chars: hit.chars, summary: null, insights };
+      }),
+    );
     const missingCount = urlsToExtract.length - extracted.size;
     if (missingCount > 0) {
       pkg.misses.push({

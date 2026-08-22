@@ -19,8 +19,8 @@
  * own model config) and is pre-filled as a default, still overridable via NOINFRA_BASE_URL.
  */
 
-export type Role = 'interpret' | 'plan' | 'synthesis' | 'verify' | 'newsExtract';
-export const ROLES: readonly Role[] = ['interpret', 'plan', 'synthesis', 'verify', 'newsExtract'];
+export type Role = 'interpret' | 'plan' | 'synthesis' | 'verify' | 'newsExtract' | 'webExtract';
+export const ROLES: readonly Role[] = ['interpret', 'plan', 'synthesis', 'verify', 'newsExtract', 'webExtract'];
 
 export type ProviderName = 'nebius' | 'minimax' | 'noinfra';
 // Impala is added here once access lands and its API shape is confirmed OpenAI-compatible

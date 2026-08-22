@@ -94,11 +94,11 @@ test('resolveProvider: NOINFRA_BASE_URL overrides the verified default rather th
 
 // ── resolveRole ────────────────────────────────────────────────────────────────────────────
 
-test('ROLES lists exactly the five roles ARCHITECTURE.md §4.5 plus newsExtract (2h) configures', () => {
-  assert.deepEqual([...ROLES].sort(), ['interpret', 'newsExtract', 'plan', 'synthesis', 'verify']);
+test('ROLES lists exactly the five roles ARCHITECTURE.md §4.5 plus newsExtract (2h) and webExtract configure', () => {
+  assert.deepEqual([...ROLES].sort(), ['interpret', 'newsExtract', 'plan', 'synthesis', 'verify', 'webExtract']);
 });
 
-for (const role of ['interpret', 'plan', 'synthesis', 'verify', 'newsExtract']) {
+for (const role of ['interpret', 'plan', 'synthesis', 'verify', 'newsExtract', 'webExtract']) {
   test(`resolveRole('${role}'): reads CARIBECON_${role.toUpperCase()}_PROVIDER/_MODEL specifically`, () => {
     withEnv(
       { [`CARIBECON_${role.toUpperCase()}_PROVIDER`]: 'nebius', [`CARIBECON_${role.toUpperCase()}_MODEL`]: 'test-model' },

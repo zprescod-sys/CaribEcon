@@ -48,7 +48,7 @@
  * at the final grounding gate, the one time any of this actually gets checked against a claim a
  * synthesizer chose to cite.
  */
-import { resolveRoleFully } from '../config.js';
+import { resolveRoleFully, type Role } from '../config.js';
 import { callModel, type ChatMessage } from '../providers/openaiCompatible.js';
 import { parseModelJson } from './parseModelJson.js';
 import { figureMatches, NUMBER_PATTERN } from '../grounding.js';
@@ -194,9 +194,18 @@ export function verifyImportantFigures(
 }
 
 /* Returns structured insights, or null if enrichment could not happen for any reason — see the
-   fail-soft contract in the file header. Never throws. */
-export async function extractArticleInsights(article: ArticleContext): Promise<ArticleInsights | null> {
-  const resolved = resolveRoleFully('newsExtract');
+   fail-soft contract in the file header. Never throws.
+
+   `role` selects which provider/model config to resolve — 'newsExtract' (default) for the
+   search_news digest path, 'webExtract' for the extract_web/Tavily path (executor.ts). Same
+   prompt, same coercion, same fail-soft contract either way; only the underlying model differs,
+   since the two paths can run at different concurrency and warrant independently-tuned models
+   (CARIBECON_NEWSEXTRACT_* vs CARIBECON_WEBEXTRACT_*). */
+export async function extractArticleInsights(
+  article: ArticleContext,
+  role: Role = 'newsExtract',
+): Promise<ArticleInsights | null> {
+  const resolved = resolveRoleFully(role);
   if (!resolved) return null;
 
   const messages: ChatMessage[] = [
@@ -222,7 +231,7 @@ export async function extractArticleInsights(article: ArticleContext): Promise<A
          truncate. Candidates in a digest batch run concurrently (Promise.all in executor.ts), so
          this is the per-call ceiling, not a per-request multiplier. timeoutMs keeps real margin
          above the worst completion observed (17-18s). */
-      maxTokens: 8_000,
+      maxTokens: 16_000,
       timeoutMs: 45_000,
     });
     responseText = response.text;
