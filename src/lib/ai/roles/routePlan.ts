@@ -68,6 +68,18 @@ function describeHistory(history: ConversationTurn[]): string[] {
   );
 }
 
+/* The "news" bullet in Part 1 and the frugality bullets in Part 2 below are deliberately written
+ * to reinforce each other (routeplanBenchmark.mjs live sweep, 2026-08-22): because both halves
+ * come from the SAME completion, Part 2 is conditioned on the Part 1 the model just wrote, and a
+ * broad economy-state question ("How is Trinidad doing?") that Part 1 left "indicators": [] on
+ * (news being defined only negatively — "not a specific data series" — made it the default bucket
+ * for exactly this kind of question) reliably collapsed Part 2 to a single search_news step with
+ * zero structured retrieval. Fixing Part 1 alone was not enough on its own to guarantee coverage,
+ * so Part 2 also now explicitly ties its frugality rule to the indicators Part 1 already listed —
+ * that same coupling is also what keeps this fix from over-correcting a plain one-indicator or
+ * comparison question, since there Part 1 lists exactly one/one-per-country and Part 2 stays at
+ * one step.
+ */
 function buildSystemPrompt(history: ConversationTurn[]): string {
   const countries = listCountries()
     .map(c => `${c.code}=${c.name}`)
@@ -110,7 +122,21 @@ function buildSystemPrompt(history: ConversationTurn[]): string {
     'A structured read of the question as a whole:',
     '{"questionType":"indicator"|"comparison"|"news","countries":string[],"indicators":string[],"yearFrom":number|null,"yearTo":number|null,"newsKeywords":string[]}',
     '- "comparison" is for comparing 2+ economies on one indicator.',
-    '- "news" is for questions about recent events, not a specific data series.',
+    '- "news" is for a specific recent event (a headline, an announcement, "what happened",',
+    '  "recent developments") — NOT for a question about an economy\'s overall condition,',
+    '  performance, fiscal position, structural change, or an economic mechanism. A question like',
+    '  that is "indicator" or "comparison" even when it names no specific series and even when it',
+    '  reads as vague or short ("How is X doing?", "X economy?", "Is Y showing signs of Z?"): in',
+    '  that case populate "indicators" yourself with the core hub indicators the question\'s',
+    '  economic concept implies (pick real slugs from the catalog above) — do not leave',
+    '  "indicators" empty just because the question itself named none. An empty "indicators" here',
+    '  is what starves Part 2 below of anything to retrieve, so treat populating it as part of',
+    '  answering Part 1, not optional.',
+    '  BUT KEEP IT SHORT: name the 4-5 indicators MOST central to the question, ranked most',
+    '  important first — not every indicator that is arguably relevant. A broad question does not',
+    '  mean an exhaustive list: listing 15+ indicators is a failure, not thoroughness, because the',
+    '  plan below has a hard step budget and the extras are discarded unread. If more than about',
+    '  five feel relevant, choose the five that best characterise the economy for THIS question.',
     '- Either the code or the name resolves for a country — use whichever the question used.',
     '- yearFrom/yearTo are null unless the question names a specific year or range.',
     '- newsKeywords are only used for "news" questions: short terms, not the question restated.',
@@ -143,9 +169,24 @@ function buildSystemPrompt(history: ConversationTurn[]): string {
     '- Give every step a short, unique id ("s1", "s2", ...) — never reuse one.',
     '- Use the fewest steps that actually answer the question; do not add a step "for coverage".',
     '  A plain factual question about one country and one indicator needs exactly one get_series',
-    '  step — do not add search_news or search_web just because they exist.',
+    '  step — do not add search_news or search_web just because they exist. A comparison question',
+    '  needs exactly one compare_series step, not several.',
     '- Only add search_news/search_web/extract_web when the question genuinely needs recent',
     '  events, context, or qualitative research the internal hub data cannot answer alone.',
+    '- Frugality above means not adding steps for tools UNRELATED to the question — it does not',
+    '  mean answering a broad question with less evidence than it needs. Every slug you listed in',
+    '  Part 1\'s "indicators" should have a matching get_series/compare_series step here: you just',
+    '  decided those indicators were relevant, so dropping most of them now is not "frugal", it is',
+    '  under-planning against your own interpretation.',
+    '- HARD BUDGET: this plan may contain AT MOST 8 steps in total. Anything beyond the eighth is',
+    '  discarded before it ever runs, so a 15-step plan is not a thorough plan — it is a 8-step',
+    '  plan with the tail silently cut off. Spend the budget deliberately.',
+    '- For a broad question about an economy\'s condition, performance, or a structural change,',
+    '  structured data and current context BOTH matter: plan the 4-5 get_series steps for the',
+    '  indicators you named in Part 1 AND 2-3 news/web steps alongside them (search_news, and where',
+    '  the question needs qualitative explanation a search_web + extract_web pair). News supplements',
+    '  the structured evidence and explains it — it neither replaces the indicators nor is replaced',
+    '  by them. Do not return an indicator-only plan for a question of this kind.',
     '',
     'Respond with ONLY a JSON object in exactly this shape — no prose, no markdown fences:',
     JSON.stringify(

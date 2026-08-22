@@ -118,6 +118,29 @@ test('the prompt describes all five tool shapes, same as plan.ts', async () => {
   );
 });
 
+// ── Part1→Part2 coupling fix (routeplanBenchmark.mjs live sweep, 2026-08-22) ───────────────
+// A broad economy-state question ("How is Trinidad doing?") used to fall into "news" by default
+// (defined only negatively) and leave "indicators" empty, which then starved the plan half of any
+// structured step. These two bullets are the fix — assert they're both actually in the prompt.
+
+test('the prompt tells the model to populate indicators for a broad economy-state question, not default it to "news"', async () => {
+  await withRoutePlanProvider(
+    () => combinedResponse({}),
+    async received => {
+      await routePlan('anything');
+      const system = received[0].messages[0].content;
+      assert.ok(
+        system.includes('is what starves Part 2 below of anything to retrieve'),
+        'Part 1 must instruct the model to populate indicators for economy-state questions',
+      );
+      assert.ok(
+        system.includes('under-planning against your own interpretation'),
+        'Part 2 must tie its frugality rule to the indicators Part 1 already listed',
+      );
+    },
+  );
+});
+
 // ── Bounded conversational memory — history reaches the combined prompt ────────────────────
 
 test('with no history argument, the prompt carries no RECENT CONVERSATION section at all', async () => {

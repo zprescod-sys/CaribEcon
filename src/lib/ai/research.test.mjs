@@ -23,6 +23,7 @@ import { createServer } from 'node:http';
 import { research } from './research.ts';
 import { InterpretNotConfiguredError } from './roles/interpret.ts';
 import { PlanNotConfiguredError } from './roles/plan.ts';
+import { RoutePlanNotConfiguredError } from './roles/routePlan.ts';
 
 /* async, and awaits `run()` itself before restoring — unlike a synchronous finally. research()
    composes several sequential role calls (interpret, then plan, then synthesize), and each
@@ -80,6 +81,11 @@ async function withResearchProviders({ interpretRespond, planRespond, synthesisR
   try {
     await withEnv(
       {
+        // This helper's whole purpose is exercising the staged interpret()+plan() path, so it
+        // must pin CARIBECON_ROUTE_MODE explicitly now that combined is the default — otherwise
+        // every one of this helper's callers would silently start hitting the (unconfigured, in
+        // this helper) routePlan role instead of the two stand-in servers it actually set up.
+        CARIBECON_ROUTE_MODE: 'staged',
         CARIBECON_INTERPRET_PROVIDER: 'nebius',
         CARIBECON_INTERPRET_MODEL: 'test-model',
         NEBIUS_BASE_URL: `http://127.0.0.1:${interpretServer.address().port}`,
@@ -123,22 +129,36 @@ const PLAN_OK = () =>
 
 // ── Not configured — fails closed before any network call, at whichever stage is unconfigured ──
 
-test('rejects with InterpretNotConfiguredError, no network call, when interpret is unconfigured', async () => {
+test('rejects with RoutePlanNotConfiguredError, no network call, when routePlan is unconfigured (the default combined path)', async () => {
   await withEnv(
-    { CARIBECON_INTERPRET_PROVIDER: undefined, CARIBECON_INTERPRET_MODEL: undefined },
+    { CARIBECON_ROUTEPLAN_PROVIDER: undefined, CARIBECON_ROUTEPLAN_MODEL: undefined },
+    async () => {
+      await assert.rejects(() => research({ question: 'GDP growth in Guyana?' }), RoutePlanNotConfiguredError);
+    },
+  );
+});
+
+// These two exercise the staged path's OWN fail-closed behavior specifically, so — same as
+// withResearchProviders above — they must pin CARIBECON_ROUTE_MODE: 'staged' explicitly now that
+// combined is the default, or an unconfigured routePlan role would reject first.
+
+test('rejects with InterpretNotConfiguredError, no network call, when interpret is unconfigured (staged path)', async () => {
+  await withEnv(
+    { CARIBECON_ROUTE_MODE: 'staged', CARIBECON_INTERPRET_PROVIDER: undefined, CARIBECON_INTERPRET_MODEL: undefined },
     async () => {
       await assert.rejects(() => research({ question: 'GDP growth in Guyana?' }), InterpretNotConfiguredError);
     },
   );
 });
 
-test('rejects with PlanNotConfiguredError when interpret succeeds but plan is unconfigured', async () => {
+test('rejects with PlanNotConfiguredError when interpret succeeds but plan is unconfigured (staged path)', async () => {
   const interpretReceived = [];
   const interpretServer = jsonServer(INTERPRET_OK, interpretReceived);
   await new Promise(resolve => interpretServer.listen(0, '127.0.0.1', resolve));
   try {
     await withEnv(
       {
+        CARIBECON_ROUTE_MODE: 'staged',
         CARIBECON_INTERPRET_PROVIDER: 'nebius',
         CARIBECON_INTERPRET_MODEL: 'test-model',
         NEBIUS_BASE_URL: `http://127.0.0.1:${interpretServer.address().port}`,
@@ -330,7 +350,7 @@ const ROUTEPLAN_OK = () =>
     },
   });
 
-async function withCombinedResearchProviders({ routePlanRespond, synthesisRespond }, test_) {
+async function withCombinedResearchProviders({ routePlanRespond, synthesisRespond, routeMode = 'combined' }, test_) {
   const routePlanReceived = [];
   const synthesisReceived = [];
   const routePlanServer = jsonServer(routePlanRespond, routePlanReceived);
@@ -343,7 +363,11 @@ async function withCombinedResearchProviders({ routePlanRespond, synthesisRespon
   try {
     await withEnv(
       {
-        CARIBECON_ROUTE_MODE: 'combined',
+        // routeMode: undefined exercises the actual default (unset env var) rather than assuming
+        // it behaves the same as an explicit 'combined' — see the "unset now defaults to combined"
+        // test below, which is the one that would catch research.ts's own default drifting from
+        // this helper's.
+        CARIBECON_ROUTE_MODE: routeMode,
         CARIBECON_ROUTEPLAN_PROVIDER: 'nebius',
         CARIBECON_ROUTEPLAN_MODEL: 'test-model',
         NEBIUS_BASE_URL: `http://127.0.0.1:${routePlanServer.address().port}`,
@@ -420,15 +444,27 @@ test('CARIBECON_ROUTE_MODE=combined: a hallucinated country from the interpretat
   );
 });
 
-test('CARIBECON_ROUTE_MODE unset (or anything but "combined") still runs the original two-call staged path — the default is unchanged', async () => {
+test('CARIBECON_ROUTE_MODE unset now defaults to the combined routePlan() path (Qwen3-30B validated — plans/interpret-plan-merge-latency-review.md §7 Step 4)', async () => {
+  await withCombinedResearchProviders(
+    { routeMode: undefined, routePlanRespond: ROUTEPLAN_OK, synthesisRespond: () => JSON.stringify({ headline: 'x', claims: [], gaps: [] }) },
+    async ({ routePlanReceived }) => {
+      await research({ question: 'GDP growth in Guyana?' });
+      assert.equal(routePlanReceived.length, 1, 'unset CARIBECON_ROUTE_MODE calls the combined role, not the staged pair');
+    },
+  );
+});
+
+test('CARIBECON_ROUTE_MODE=staged is the explicit fallback: still runs the original two-call interpret()+plan() path', async () => {
+  // withResearchProviders itself now pins CARIBECON_ROUTE_MODE: 'staged' (see its own comment) —
+  // every one of its callers is already proof this value keeps working, but this test names the
+  // claim directly: staged is not merely "not yet deleted", it is a first-class, load-bearing
+  // rollback path this repo intends to keep working.
   await withResearchProviders(
     { interpretRespond: INTERPRET_OK, planRespond: PLAN_OK, synthesisRespond: () => JSON.stringify({ headline: 'x', claims: [], gaps: [] }) },
     async ({ interpretReceived, planReceived }) => {
-      await withEnv({ CARIBECON_ROUTE_MODE: undefined }, async () => {
-        await research({ question: 'GDP growth in Guyana?' });
-        assert.equal(interpretReceived.length, 1);
-        assert.equal(planReceived.length, 1);
-      });
+      await research({ question: 'GDP growth in Guyana?' });
+      assert.equal(interpretReceived.length, 1);
+      assert.equal(planReceived.length, 1);
     },
   );
 });

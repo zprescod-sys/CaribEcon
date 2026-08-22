@@ -103,6 +103,12 @@ async function withRoleProviders(
   try {
     await withEnv(
       {
+        // This helper stands up interpret/plan/synthesis stand-ins specifically to exercise the
+        // staged two-call path through api/ask.ts, so it must pin CARIBECON_ROUTE_MODE now that
+        // combined is the default — otherwise research() would reach for the (unconfigured, here)
+        // routePlan role instead of these three servers. Same fix as research.test.mjs's
+        // withResearchProviders.
+        CARIBECON_ROUTE_MODE: 'staged',
         CARIBECON_RESEARCH_TOKEN: TOKEN,
         CARIBECON_INTERPRET_PROVIDER: 'nebius',
         CARIBECON_INTERPRET_MODEL: 'test-model',

@@ -37,12 +37,19 @@
  * task pane to show (a short inline line plus a collapsible detailed list) without the model ever
  * generating that count or that prose itself.
  *
- * CARIBECON_ROUTE_MODE (plans/interpret-plan-merge-latency-review.md): 'combined' runs the merged
- * routePlan() role (one model call) in place of interpret()+plan() (two sequential calls).
- * Anything else, including unset, is 'staged' — today's original behavior, and the default. This
- * is a rollback switch, not a rewrite: everything from validateResearchPlan() onward is byte-for-
- * byte identical either way, because both paths converge on the same ResearchIntent/ResearchPlan
- * shapes before that call.
+ * CARIBECON_ROUTE_MODE (plans/interpret-plan-merge-latency-review.md): default (unset, or anything
+ * other than 'staged') runs the merged routePlan() role — one model call producing both the
+ * interpretation and the plan — in place of the original interpret()+plan() two-call sequence.
+ * §7 Step 4's parity bar was met on live-audit sweeps (N=3 per question, multiple question
+ * categories) against CARIBECON_ROUTEPLAN_PROVIDER/_MODEL=nebius/Qwen3-30B-A3B-Instruct-2507: zero
+ * misses, stable plan composition, and a prompt fix (routePlan.ts's buildSystemPrompt) that closed
+ * the one real gap found — broad economy-condition questions ("How is X doing?") collapsing to a
+ * news-only plan with no structured retrieval. That gap does not exist in the staged path (plan()
+ * re-reads the question independently of what interpret() returned), which is why 'staged' is kept
+ * as an explicit fallback rather than removed: set CARIBECON_ROUTE_MODE=staged to roll back to the
+ * original two-call path with no redeploy. Every deterministic function from
+ * validateResearchPlan() onward is byte-for-byte identical either way, because both paths converge
+ * on the same ResearchIntent/ResearchPlan shapes before that call.
  */
 import { interpret } from './roles/interpret.js';
 import { plan } from './roles/plan.js';
@@ -90,36 +97,60 @@ export async function research(
   // in this pipeline already follows (config.ts's resolveRole/resolveProvider both read
   // process.env fresh on every call), so a test can flip CARIBECON_ROUTE_MODE per case and so a
   // running server picks up a config change without a restart.
-  const combined = process.env.CARIBECON_ROUTE_MODE === 'combined';
+  // 'staged' is the one explicit opt-out; unset or any other value runs the combined role (see the
+  // header comment for why this is now the default, not 'combined' as an opt-in).
+  const combined = process.env.CARIBECON_ROUTE_MODE !== 'staged';
+
+  // Per-stage timing (plans/interpret-plan-merge-latency-review.md §7 Step 0 — "wire a
+  // performance.now() wrap around each of the four sequential calls, log it server-side").
+  // Additive/diagnostic only: logged, never returned in ResearchResult, so this changes no
+  // contract api/ask.ts or the task pane depends on.
+  const requestStartedAt = performance.now();
+  const timings: Record<string, number> = {};
 
   let intent: ResearchIntent;
   let misses: RetrievalMiss[];
   let researchPlan: ResearchPlan;
   if (combined) {
+    const stageStartedAt = performance.now();
     const routed = await runModelStage('route_plan', () => routePlan(request.question, request.history));
+    timings.routePlanMs = Math.round(performance.now() - stageStartedAt);
     intent = routed.intent;
     misses = routed.misses;
     researchPlan = routed.plan;
   } else {
+    const interpretStartedAt = performance.now();
     const interpreted = await runModelStage('interpret', () => interpret(request.question, request.history));
+    timings.interpretMs = Math.round(performance.now() - interpretStartedAt);
     intent = interpreted.intent;
     misses = interpreted.misses;
+    const planStartedAt = performance.now();
     researchPlan = await runModelStage('plan', () => plan(request.question, intent));
+    timings.planMs = Math.round(performance.now() - planStartedAt);
   }
 
   const { plan: validatedPlan, misses: planMisses } = validateResearchPlan(researchPlan);
 
+  const executeStartedAt = performance.now();
   const evidence = await executeResearchPlan(validatedPlan, retrievedAt);
+  timings.executeMs = Math.round(performance.now() - executeStartedAt);
   // Merge, never drop — same pattern this file has always used for interpret()'s misses, now
   // extended to the plan-validation and execution stages too (see header comment).
   evidence.misses = [...misses, ...planMisses, ...evidence.misses];
 
   const compiled = compileEvidence(intent, validatedPlan, evidence);
+  const synthesizeStartedAt = performance.now();
   const answer = await runModelStage('synthesize', () => synthesize(compiled));
+  timings.synthesizeMs = Math.round(performance.now() - synthesizeStartedAt);
   // verify() checks `answer` against `evidence` — the ORIGINAL EvidencePackage, never `compiled`.
   // Third argument (the model claims audit) is intentionally omitted — see header comment.
+  const verifyStartedAt = performance.now();
   const verdict = verify(answer, evidence);
+  timings.verifyMs = Math.round(performance.now() - verifyStartedAt);
   const evidenceNote = buildEvidenceNote(compiled);
+
+  timings.totalMs = Math.round(performance.now() - requestStartedAt);
+  console.log('research: stage timings', { mode: combined ? 'combined' : 'staged', ...timings });
 
   return { answer, evidence, verdict, evidenceNote };
 }
