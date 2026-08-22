@@ -46,6 +46,7 @@ import { executeResearchPlan } from './executor.js';
 import { compileEvidence, buildEvidenceNote } from './evidenceCompiler.js';
 import { classifyProviderFailure, StagedProviderFailure, type PipelineStage } from './providerFailure.js';
 import { ProviderCallError } from './providers/openaiCompatible.js';
+import { throwIfAborted } from './cancellation.js';
 import type { ConversationTurn, ResearchResult } from './contracts.js';
 
 export interface ResearchRequest {
@@ -70,20 +71,21 @@ async function runModelStage<T>(stage: PipelineStage, work: () => Promise<T>): P
 
 export async function research(
   request: ResearchRequest,
-  { retrievedAt }: { retrievedAt?: string } = {},
+  { retrievedAt, signal }: { retrievedAt?: string; signal?: AbortSignal } = {},
 ): Promise<ResearchResult> {
-  const { intent, misses } = await runModelStage('interpret', () => interpret(request.question, request.history));
+  throwIfAborted(signal);
+  const { intent, misses } = await runModelStage('interpret', () => interpret(request.question, request.history, { signal }));
 
-  const researchPlan = await runModelStage('plan', () => plan(request.question, intent));
+  const researchPlan = await runModelStage('plan', () => plan(request.question, intent, { signal }));
   const { plan: validatedPlan, misses: planMisses } = validateResearchPlan(researchPlan);
 
-  const evidence = await executeResearchPlan(validatedPlan, retrievedAt);
+  const evidence = await executeResearchPlan(validatedPlan, retrievedAt, { signal });
   // Merge, never drop — same pattern this file has always used for interpret()'s misses, now
   // extended to the plan-validation and execution stages too (see header comment).
   evidence.misses = [...misses, ...planMisses, ...evidence.misses];
 
   const compiled = compileEvidence(intent, validatedPlan, evidence);
-  const answer = await runModelStage('synthesize', () => synthesize(compiled));
+  const answer = await runModelStage('synthesize', () => synthesize(compiled, { signal }));
   // verify() checks `answer` against `evidence` — the ORIGINAL EvidencePackage, never `compiled`.
   // Third argument (the model claims audit) is intentionally omitted — see header comment.
   const verdict = verify(answer, evidence);

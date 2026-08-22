@@ -46,6 +46,7 @@
  */
 
 import { MAX_EXTRACT_CHARS } from './ai/config.js';
+import { signalWithTimeout, throwIfAborted } from './ai/cancellation.js';
 
 const FETCH_TIMEOUT_MS = 10_000;
 
@@ -128,14 +129,15 @@ function htmlToText(html: string): string {
 /* Fetches a News Hub item's own `link` and reduces it to readable text. Never throws for a
    normal external-fetch failure — see the file header's fail-soft note. Returns null when the
    fetch fails, the response isn't HTML, or the extracted text is too short to be useful. */
-export async function fetchArticleText(url: string): Promise<FetchedArticle | null> {
+export async function fetchArticleText(url: string, signal?: AbortSignal): Promise<FetchedArticle | null> {
   let response: Response;
   try {
     response = await fetch(url, {
       headers: { 'User-Agent': USER_AGENT },
-      signal: AbortSignal.timeout(FETCH_TIMEOUT_MS),
+      signal: signalWithTimeout(signal, FETCH_TIMEOUT_MS),
     });
   } catch {
+    throwIfAborted(signal);
     // Network error, DNS failure, or timeout — fail soft.
     return null;
   }

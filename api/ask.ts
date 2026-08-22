@@ -144,9 +144,14 @@ export default {
     const startedAt = Date.now();
     const requestId = crypto.randomUUID();
     try {
-      const result = await research({ question, history });
+      const result = await research({ question, history }, { signal: request.signal });
       return json({ ok: true, result, elapsedMs: Date.now() - startedAt }, 200);
     } catch (error) {
+      if (request.signal.aborted) {
+        // The signal also aborts all outbound provider and evidence fetches, preventing a later
+        // pipeline stage from starting after the user selected Stop.
+        return json({ error: 'request_cancelled' }, 499);
+      }
       /* Missing role configuration is the server's own fail-closed rule (config.ts) surfacing
          at request time, so 503 — same status apiGuard's own checkToken uses for the same
          reason. A model that returned unparseable output is an upstream failure, not the

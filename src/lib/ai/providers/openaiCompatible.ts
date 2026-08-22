@@ -12,7 +12,7 @@
  * single-call primitive.
  */
 import type { ResolvedProvider } from '../config.js';
-import { DeadlineExpiredError } from '../budget.js';
+import { signalWithTimeout, throwIfAborted } from '../cancellation.js';
 
 export interface ChatMessage {
   role: 'system' | 'user' | 'assistant';
@@ -30,6 +30,8 @@ export interface CallModelOptions {
      time-to-response-headers (TTFB), not time-to-first-token. Observers must never be able to
      change the outcome of a provider call. */
   onResponseHeaders?: (elapsedMs: number) => void;
+  /** Request-level cancellation; unlike a timeout it must not become a provider error. */
+  signal?: AbortSignal;
 }
 
 export interface ModelResponse {
@@ -94,9 +96,10 @@ export async function callModel(
         ...(options.temperature !== undefined ? { temperature: options.temperature } : {}),
         ...(options.maxTokens !== undefined ? { max_tokens: options.maxTokens } : {}),
       }),
-      signal: AbortSignal.timeout(timeoutMs),
+      signal: signalWithTimeout(options.signal, timeoutMs),
     });
   } catch (error) {
+    throwIfAborted(options.signal);
     const timedOut = error instanceof Error && error.name === 'TimeoutError';
     throw new ProviderCallError(
       timedOut

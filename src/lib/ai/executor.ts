@@ -71,6 +71,7 @@ import { searchWeb, extractWeb } from '../webEvidence.js';
 import { fetchArticleText } from '../newsArticleFetch.js';
 import { extractArticleInsights } from './roles/newsExtract.js';
 import { plan as planFollowUp } from './roles/plan.js';
+import { throwIfAborted } from './cancellation.js';
 import { MAX_TAVILY_SEARCHES, MAX_TAVILY_EXTRACTS, MAX_NEWS_DIGESTS } from './config.js';
 import type {
   ResearchPlan,
@@ -150,6 +151,7 @@ function scopeToSyntheticIntent(researchPlan: ResearchPlan): ResearchIntent {
 export async function executeResearchPlan(
   researchPlan: ResearchPlan,
   retrievedAt: string = new Date().toISOString(),
+  { signal }: { signal?: AbortSignal } = {},
 ): Promise<EvidencePackage> {
   const pkg: EvidencePackage = {
     data: [],
@@ -175,16 +177,17 @@ export async function executeResearchPlan(
   }
 
   async function runNewsDigest(step: ResearchStep & { tool: 'search_news' }, results: NewsEvidence[]): Promise<void> {
+    throwIfAborted(signal);
     const candidates = results.filter(hasRealUrl).slice(0, MAX_NEWS_DIGESTS);
     const settled = await Promise.all(
       candidates.map(async (item): Promise<WebEvidence | null> => {
-        const fetched = await fetchArticleText(item.url);
+        const fetched = await fetchArticleText(item.url, signal);
         if (!fetched) return null; // fetch failed — no evidence to emit for this article at all
         const insights = await extractArticleInsights({
           title: item.title,
           text: fetched.text,
           publishedDate: item.date ?? null,
-        });
+        }, 'newsExtract', { signal });
         return {
           id: `W:${sha256Hex(item.url)}`,
           title: item.title,
@@ -202,6 +205,7 @@ export async function executeResearchPlan(
   }
 
   async function runStep(step: ResearchStep): Promise<void> {
+    throwIfAborted(signal);
     executedSignatures.add(stepSignature(step));
 
     if (step.tool === 'get_series') {
@@ -275,7 +279,7 @@ export async function executeResearchPlan(
         return;
       }
       searchCalls += 1;
-      const results = await searchWeb(step.query, step.dateFrom, step.dateTo);
+      const results = await searchWeb(step.query, step.dateFrom, step.dateTo, signal);
       // searchWeb() deliberately leaves authorizedBy as '' (see webEvidence.ts) — the executor is
       // the only caller that knows which step authorized this call, so it MUST overwrite it here.
       const authorized: WebEvidence[] = results.map(r => ({ ...r, authorizedBy: step.id }));
@@ -308,7 +312,7 @@ export async function executeResearchPlan(
     }
     const urlsToExtract = target.slice(0, Math.min(step.maxUrls, extractBudget)).map(w => w.url);
     extractBudget -= urlsToExtract.length;
-    const extracted = await extractWeb(urlsToExtract);
+    const extracted = await extractWeb(urlsToExtract, signal);
     pushTool('extractWeb');
     // Enrichment via the 'webExtract' role — same fail-soft extractArticleInsights() the
     // search_news digest path uses (newsExtract.ts), just resolved against
@@ -326,6 +330,7 @@ export async function executeResearchPlan(
         const insights = await extractArticleInsights(
           { title: entry.title, text: hit.text, publishedDate: entry.publishedDate },
           'webExtract',
+          { signal },
         );
         entry.extract = { text: hit.text, chars: hit.chars, summary: null, insights };
       }),
@@ -364,6 +369,7 @@ export async function executeResearchPlan(
    *     through to runStep()'s own searchWebResultsByStep authorization check exactly as before —
    *     this function only ever adds a wait; it never weakens what that check allows. */
   async function runStepsConcurrently(steps: ResearchStep[]): Promise<void> {
+    throwIfAborted(signal);
     const stepPromises = new Map<string, Promise<void>>();
     const promises = steps.map(step => {
       const promise = (async () => {
@@ -393,7 +399,7 @@ export async function executeResearchPlan(
         missSummary,
       ].join('\n');
 
-      const rawReplan = await planFollowUp(followUpQuestion, scopeToSyntheticIntent(researchPlan));
+      const rawReplan = await planFollowUp(followUpQuestion, scopeToSyntheticIntent(researchPlan), { signal });
       const { plan: validatedReplan, misses: replanMisses } = validateResearchPlan(rawReplan);
       pkg.misses.push(...replanMisses);
 
@@ -408,6 +414,7 @@ export async function executeResearchPlan(
       const newSteps = validatedReplan.steps.filter(s => !executedSignatures.has(stepSignature(s)));
       await runStepsConcurrently(newSteps);
     } catch {
+      throwIfAborted(signal);
       // plan() throws PlanNotConfiguredError/PlanParseError when unconfigured or unparseable.
       // The re-plan is optional enrichment (docs plan §2d) — swallow and keep the first pass's
       // results, the same fail-soft precedent as summarizeArticle()/fetchArticleText() elsewhere

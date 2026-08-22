@@ -204,6 +204,7 @@ export function verifyImportantFigures(
 export async function extractArticleInsights(
   article: ArticleContext,
   role: Role = 'newsExtract',
+  { signal }: { signal?: AbortSignal } = {},
 ): Promise<ArticleInsights | null> {
   const resolved = resolveRoleFully(role);
   if (!resolved) return null;
@@ -233,6 +234,7 @@ export async function extractArticleInsights(
          above the worst completion observed (17-18s). */
       maxTokens: 16_000,
       timeoutMs: 45_000,
+      signal,
     });
     responseText = response.text;
   } catch {

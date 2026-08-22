@@ -478,7 +478,10 @@ export const SYNTHESIS_MODEL_OPTIONS = {
   timeoutMs: 120_000,
 } as const;
 
-export async function synthesize(compiled: CompiledEvidence): Promise<ResearchAnswer> {
+export async function synthesize(
+  compiled: CompiledEvidence,
+  { signal }: { signal?: AbortSignal } = {},
+): Promise<ResearchAnswer> {
   const resolved = resolveRoleFully('synthesis');
   if (!resolved) {
     throw new SynthesizeNotConfiguredError(
@@ -504,6 +507,7 @@ export async function synthesize(compiled: CompiledEvidence): Promise<ResearchAn
        timeouts, not tokens, are the scarce budget across this pipeline (vercel.json's 240s
        api/ask.ts ceiling). */
     ...SYNTHESIS_MODEL_OPTIONS,
+    signal,
   });
 
   return parseSynthesisResponse(response);

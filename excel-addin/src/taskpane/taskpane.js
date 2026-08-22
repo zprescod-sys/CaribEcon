@@ -1010,8 +1010,10 @@ function appendUserMessage(question) {
 // footprint, never the server's actual guarantee.
 const MAX_CLIENT_HISTORY_TURNS = 4;
 let askHistory = [];
+let activeAskController = null;
 
 async function ask() {
+  if (activeAskController) return;
   const question = el('question').value.trim();
   if (!question) return;
 
@@ -1021,9 +1023,22 @@ async function ask() {
 }
 
 async function submitAsk(question, showUserMessage = true) {
+  if (activeAskController) return;
   showChatView();
   if (showUserMessage) appendUserMessage(question);
-  const pending = appendMessage('msg msg--assistant msg--pending', `<div class="msg__bubble">Researching…</div>`);
+  const controller = new AbortController();
+  activeAskController = controller;
+  const pending = appendMessage(
+    'msg msg--assistant msg--pending',
+    '<div class="msg__bubble">Researching… <button class="msg__stop" type="button">Stop</button></div>',
+  );
+  const stop = pending.querySelector('.msg__stop');
+  stop.addEventListener('click', () => {
+    if (controller.signal.aborted) return;
+    stop.disabled = true;
+    pending.querySelector('.msg__bubble').firstChild.textContent = 'Stopping research… ';
+    controller.abort();
+  });
   el('ask').disabled = true;
 
   try {
@@ -1032,6 +1047,7 @@ async function submitAsk(question, showUserMessage = true) {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'X-CaribEcon-Token': RESEARCH_TOKEN },
       body: JSON.stringify({ question, history: askHistory }),
+      signal: controller.signal,
     });
     const body = await res.json();
     pending.remove();
@@ -1044,11 +1060,16 @@ async function submitAsk(question, showUserMessage = true) {
     else appendLegacyAssistantMessage(question, body);
   } catch (error) {
     pending.remove();
+    if (controller.signal.aborted) {
+      appendMessage('msg msg--assistant msg--cancelled', '<div class="msg__bubble">Research stopped.</div>');
+      return;
+    }
     appendMessage(
       'msg msg--assistant msg--error',
       `<div class="msg__bubble">Could not reach the research endpoint: ${esc(error.message)}</div>`,
     );
   } finally {
+    if (activeAskController === controller) activeAskController = null;
     el('ask').disabled = false;
   }
 }

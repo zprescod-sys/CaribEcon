@@ -47,6 +47,7 @@
 import { createHash } from 'node:crypto';
 import { MAX_EXTRACT_CHARS, MAX_EXTRACT_TOTAL } from './ai/config.js';
 import type { WebEvidence } from './ai/contracts.js';
+import { signalWithTimeout, throwIfAborted } from './ai/cancellation.js';
 
 const TAVILY_SEARCH_URL = 'https://api.tavily.com/search';
 const TAVILY_EXTRACT_URL = 'https://api.tavily.com/extract';
@@ -98,6 +99,7 @@ export async function searchWeb(
   query: string,
   dateFrom: string | null,
   dateTo: string | null,
+  signal?: AbortSignal,
 ): Promise<WebEvidence[]> {
   const apiKey = process.env.TAVILY_API_KEY;
   if (!apiKey) return [];
@@ -116,9 +118,10 @@ export async function searchWeb(
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(requestBody),
-      signal: AbortSignal.timeout(FETCH_TIMEOUT_MS),
+      signal: signalWithTimeout(signal, FETCH_TIMEOUT_MS),
     });
   } catch {
+    throwIfAborted(signal);
     return []; // network error, DNS failure, or timeout
   }
   if (!response.ok) return []; // 401 / 429 / 5xx etc.
@@ -166,7 +169,10 @@ interface TavilyExtractResponse {
  * prevent cheaply: MAX_EXTRACT_CHARS per URL, MAX_EXTRACT_TOTAL summed across every URL in this
  * call, both from ai/config.ts. Truncates rather than erroring — a shorter-than-requested extract
  * is still usable evidence; refusing it outright would not be. */
-export async function extractWeb(urls: string[]): Promise<Map<string, { text: string; chars: number }>> {
+export async function extractWeb(
+  urls: string[],
+  signal?: AbortSignal,
+): Promise<Map<string, { text: string; chars: number }>> {
   const out = new Map<string, { text: string; chars: number }>();
   if (!urls.length) return out;
 
@@ -179,9 +185,10 @@ export async function extractWeb(urls: string[]): Promise<Map<string, { text: st
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ api_key: apiKey, urls }),
-      signal: AbortSignal.timeout(FETCH_TIMEOUT_MS),
+      signal: signalWithTimeout(signal, FETCH_TIMEOUT_MS),
     });
   } catch {
+    throwIfAborted(signal);
     return out;
   }
   if (!response.ok) return out;

@@ -32,6 +32,20 @@ const post = (body, headers = { 'X-CaribEcon-Token': TOKEN }) =>
     }),
   );
 
+const postWithSignal = (body, signal) =>
+  ask.fetch(
+    new Request('http://localhost/api/ask', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CaribEcon-Token': TOKEN,
+        'x-forwarded-for': `198.51.100.${++callerCount % 250}`,
+      },
+      body: JSON.stringify(body),
+      signal,
+    }),
+  );
+
 /* async, and awaits `run()` before restoring — see src/lib/ai/research.test.mjs's withEnv for
    why a synchronous finally is wrong here: this endpoint composes two sequential awaited role
    calls, and synthesize()'s config read happens after interpret()'s first await. */
@@ -52,14 +66,16 @@ async function withEnv(vars, run) {
   }
 }
 
-function jsonServer(respond, status = 200) {
+function jsonServer(respond, status = 200, delayMs = 0) {
   return createServer((req, res) => {
     let raw = '';
     req.on('data', chunk => (raw += chunk));
     req.on('end', () => {
       const text = respond(JSON.parse(raw));
-      res.writeHead(status, { 'Content-Type': 'application/json' });
-      res.end(JSON.stringify({ choices: [{ message: { content: text }, finish_reason: 'stop' }] }));
+      setTimeout(() => {
+        res.writeHead(status, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ choices: [{ message: { content: text }, finish_reason: 'stop' }] }));
+      }, delayMs);
     });
   });
 }
@@ -89,10 +105,11 @@ async function withRoleProviders(
     planRespond = PLAN_OK,
     synthesisRespond = SYNTHESIZE_OK,
     interpretStatus = 200,
+    interpretDelayMs = 0,
   },
   run,
 ) {
-  const interpretServer = jsonServer(interpretRespond, interpretStatus);
+  const interpretServer = jsonServer(interpretRespond, interpretStatus, interpretDelayMs);
   const planServer = jsonServer(planRespond);
   const synthesisServer = jsonServer(synthesisRespond);
   await Promise.all([
@@ -147,6 +164,17 @@ test('returns a canonical ResearchResult with a stubbed PASS verdict', async () 
       reasonCategories: [],
     });
     assert.equal(typeof body.elapsedMs, 'number');
+  });
+});
+
+test('cancelling the client request aborts the active research pipeline', async () => {
+  await withRoleProviders({ interpretDelayMs: 200 }, async () => {
+    const controller = new AbortController();
+    const response = postWithSignal({ question: 'GDP growth in Guyana?' }, controller.signal);
+    setTimeout(() => controller.abort(), 20);
+    const res = await response;
+    assert.equal(res.status, 499);
+    assert.deepEqual(await res.json(), { error: 'request_cancelled' });
   });
 });
 

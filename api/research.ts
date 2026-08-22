@@ -309,7 +309,7 @@ export default {
           system: SYSTEM,
           tools: TOOLS,
           messages,
-        });
+        }, { signal: request.signal });
 
         if (response.stop_reason !== 'tool_use') {
           const answer = response.content
@@ -364,6 +364,7 @@ export default {
         504,
       );
     } catch (error) {
+      if (request.signal.aborted) return json({ error: 'request_cancelled' }, 499);
       return json(
         { error: 'upstream', message: error instanceof Error ? error.message : 'Research failed.' },
         502,

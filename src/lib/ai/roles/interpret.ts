@@ -106,7 +106,11 @@ function buildSystemPrompt(history: ConversationTurn[]): string {
   return sections.join('\n');
 }
 
-export async function interpret(question: string, history: ConversationTurn[] = []): Promise<InterpretResult> {
+export async function interpret(
+  question: string,
+  history: ConversationTurn[] = [],
+  { signal }: { signal?: AbortSignal } = {},
+): Promise<InterpretResult> {
   const resolved = resolveRoleFully('interpret');
   if (!resolved) {
     throw new InterpretNotConfiguredError(
@@ -142,6 +146,7 @@ export async function interpret(question: string, history: ConversationTurn[] = 
        before any Tavily time. Wall clock is the scarce budget here; tokens are not. */
     maxTokens: 8_000,
     timeoutMs: 20_000,
+    signal,
   });
 
   const raw = parseModelJson(response.text);

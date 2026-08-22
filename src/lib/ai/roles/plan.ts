@@ -249,7 +249,11 @@ function coercePlan(raw: unknown): Omit<ResearchPlan, 'question'> | null {
   return { scope: coerceScope(r.scope), steps, anticipatedGaps: toFilteredStringArray(r.anticipatedGaps) };
 }
 
-export async function plan(question: string, intent: ResearchIntent): Promise<ResearchPlan> {
+export async function plan(
+  question: string,
+  intent: ResearchIntent,
+  { signal }: { signal?: AbortSignal } = {},
+): Promise<ResearchPlan> {
   const resolved = resolveRoleFully('plan');
   if (!resolved) {
     throw new PlanNotConfiguredError(
@@ -274,6 +278,7 @@ export async function plan(question: string, intent: ResearchIntent): Promise<Re
        timeoutMs stays 30s: wall clock, not tokens, is the constrained budget (interpret.ts). */
     maxTokens: 8_000,
     timeoutMs: 30_000,
+    signal,
   });
 
   const raw = parseModelJson(response.text);
