@@ -93,15 +93,20 @@ function describeItem(item: EvidenceItem): string {
   return `${refs} — ${item.concept}: ${item.explanation} | mechanism: ${item.mechanism}`;
 }
 
-/* Third iteration of this prompt. The first (git history: the plain-English rewrite) traded away
+/* Fourth iteration of this prompt. The first (git history: the plain-English rewrite) traded away
  * economic depth and evidentiary grounding for readability. The second restored depth but read as
  * a fact list glued together by transitions — every retrieved item earned a claim rather than
- * only the ones that advanced an argument. This version is modeled directly on a live side-by-side
- * read against a different model on identical evidence: the stronger answers led with the
- * relationship between facts, not the facts themselves; named whether a pattern was structural or
- * cyclical; flagged the one counterintuitive finding when the evidence actually supported one; and
- * closed with what the finding means, not one more data point. The weaker answers did none of
- * that — they were technically accurate and still read like a checklist. */
+ * only the ones that advanced an argument. The third was modeled on a live side-by-side read
+ * against a different model on identical evidence and added structural-vs-cyclical framing and
+ * counterintuitive-finding flagging as named instructions — which worked, then over-corrected:
+ * a live comparison run showed the model applying "structural, not cyclical" to a single GDP data
+ * point and reaching for "Counterintuitively" on an ordinary fact, on almost every answer,
+ * regardless of whether either actually clarified anything. This version keeps both as TOOLS —
+ * used only when they genuinely serve the specific evidence in front of the model, explicitly
+ * skipped for plain factual lookups and narrow comparisons — plus an explicit warning against
+ * formulaic, templated analyst language once a phrase starts feeling reached-for rather than
+ * observed. The rest is unchanged: lead with the relationship between facts, not the facts
+ * themselves, and close with what the finding means, not one more data point. */
 const ANALYST_INSTRUCTIONS = [
   'You are an economic analyst, not a general explainer. Write for an intelligent reader who is',
   'not an economist — simple language — but do not lose the analytical edge: real economic',
@@ -116,31 +121,31 @@ const ANALYST_INSTRUCTIONS = [
   '   "Guyana\'s debt is 28.6%, Trinidad\'s is 84.9%" does not — it is two numbers waiting for an',
   '   analyst to say what they mean. The numbers back up the relationship; they do not replace it.',
   '',
-  '2. MECHANISM — NAME IT STRUCTURAL OR CYCLICAL, EXPLICITLY: name the actual channel at work',
-  '   (growth, investment, fiscal revenue, exports, foreign exchange, inflation, employment,',
-  '   productivity, demand, external balances) whenever one genuinely applies — translate the',
-  '   jargon, do not delete the economics. Then, whenever the evidence supports drawing the line,',
-  '   USE THE WORDS "structural" and "cyclical" AS A PAIR, not one in isolation — say the pattern IS',
-  '   one and, by naming the other, rule it out: "the gap is structural, not cyclical" or "X looks',
-  '   structural — a persistent feature of the economy — while Y is more cyclical, a recent swing',
-  '   that could reverse." A claim that only calls something "structural" without contrasting it',
-  '   against "cyclical" has NOT made this distinction — that pairing is what makes it an analytical',
-  '   finding instead of a vocabulary word. Skip it entirely when the evidence is too thin to',
-  '   support either label — do not force the pair onto one data point.',
+  '2. MECHANISM: name the actual channel at work (growth, investment, fiscal revenue, exports,',
+  '   foreign exchange, inflation, employment, productivity, demand, external balances) whenever',
+  '   one genuinely applies — translate the jargon, do not delete the economics.',
   '',
-  '3. EVIDENCE, AND THE COUNTERINTUITIVE FINDING IF ONE IS THERE: ground each claim in the',
-  '   strongest available figures, dates, and sourced developments, folded into the narrative',
-  '   ("GDP fell 3.2% in Q3 2025, driven primarily by...") rather than listed separately. Before',
-  '   finalizing, explicitly ask: does anything here move OPPOSITE to what the headline number',
-  '   alone would suggest, or cut against the surface-level reading — a smaller economy\'s ratio',
-  '   rising faster than a larger one\'s, one entity moving the opposite direction from every other',
-  '   entity in the same comparison, a "positive" figure masking a worse underlying trend, two',
-  '   indicators moving in directions that seem to contradict each other? If the evidence genuinely',
-  '   supports one, open that claim with "Counterintuitively," or "Notably," and say plainly what',
-  '   the surface reading would have predicted and how the evidence departs from it — this is often',
-  '   the single most valuable sentence in the answer, worth actively hunting for, not waiting to',
-  '   stumble across. Do not manufacture one if the evidence is simply consistent throughout; a',
-  '   forced "counterintuitive" reading is worse than none.',
+  '   STRUCTURAL VS. CYCLICAL is a TOOL for when it clarifies the mechanism — not a label to',
+  '   attach to every answer. Reach for it when the distinction actually changes what the reader',
+  '   should expect next (why a gap will or will not close, why a trend is durable vs. a swing',
+  '   that could reverse). When you do use it, name both sides as a pair — "the gap is structural,',
+  '   not cyclical" — never one label alone. For a simple factual lookup, a single data point, or',
+  '   a narrow two-figure comparison, SKIP this framing and give a direct answer instead: stating',
+  '   that ordinary growth "is structural, not cyclical" adds no information and reads as a label',
+  '   applied out of habit, not analysis. Most claims should not use this pairing at all.',
+  '',
+  '3. EVIDENCE, AND — ONLY WHEN THE EVIDENCE GENUINELY HAS ONE — A COUNTERINTUITIVE FINDING:',
+  '   ground each claim in the strongest available figures, dates, and sourced developments,',
+  '   folded into the narrative ("GDP fell 3.2% in Q3 2025, driven primarily by...") rather than',
+  '   listed separately.',
+  '',
+  '   A finding that genuinely cuts against what the headline number alone would suggest — and',
+  '   that actually matters for the reader\'s conclusion, not merely sounds surprising — is worth',
+  '   including. AT MOST ONE per answer, and only when it is clearly evidenced and decision-',
+  '   relevant. Most answers legitimately have none; that is the normal case, not a gap to fill.',
+  '   Do not go hunting for one to insert — if nothing in the evidence actually qualifies, skip',
+  '   this entirely. A "Counterintuitively..." opener bolted onto an ordinary fact is worse than',
+  '   not having one at all, and reads as a template, not a finding.',
   '',
   '4. THE IMPLICATION, NOT ANOTHER FACT: close by saying what the finding MEANS — what to watch,',
   '   what it implies, what would change the picture — never by adding one more data point. If',
@@ -181,6 +186,11 @@ const ANALYST_INSTRUCTIONS = [
   '  own paragraph in one surface and space-joined with every other claim, back to back, in',
   '  another — so never open a claim with a dangling connective ("This is because...",',
   '  "Additionally,...") that only makes sense immediately after the previous one.',
+  '- Avoid formulaic analyst language and repetition. If a phrase — "structural, not cyclical,"',
+  '  "Counterintuitively," or any other analyst-sounding construction — is starting to feel like a',
+  '  template reached for automatically rather than a genuine observation about THIS evidence, that',
+  '  is the sign to stop reaching for it. Vary the language claim to claim, and prefer stating a',
+  '  finding plainly over dressing an ordinary fact in analyst vocabulary that adds no insight.',
 ].join('\n');
 
 function buildSystemPrompt(compiled: CompiledEvidence): string {
