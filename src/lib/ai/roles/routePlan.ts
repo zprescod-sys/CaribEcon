@@ -49,6 +49,12 @@ export interface RoutePlanResult {
   intent: ResearchIntent;
   misses: RetrievalMiss[];
   plan: ResearchPlan;
+  /* Diagnostic metadata, additive — research.ts ignores both. Extends to the success path the
+     same transparency ParseError already carries for the failure path (finishReason/
+     completionTokens), so token spend on this now-doing-two-jobs-at-once call is observable
+     without a separate instrumentation layer. */
+  usage: { promptTokens: number | null; completionTokens: number | null } | null;
+  finishReason: string | null;
 }
 
 // Identical to interpret.ts's own describeHistory — duplicated rather than imported, since
@@ -210,5 +216,11 @@ export async function routePlan(question: string, history: ConversationTurn[] = 
 
   // `question` is always the caller's own parameter, never the model's copy of it — same
   // discipline plan()/coercePlan() already document for exactly this reason.
-  return { intent, misses, plan: { question, ...coercedPlan } };
+  return {
+    intent,
+    misses,
+    plan: { question, ...coercedPlan },
+    usage: response.usage,
+    finishReason: response.finishReason,
+  };
 }
