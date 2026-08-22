@@ -12,6 +12,7 @@
  * single-call primitive.
  */
 import type { ResolvedProvider } from '../config.js';
+import { DeadlineExpiredError } from '../budget.js';
 
 export interface ChatMessage {
   role: 'system' | 'user' | 'assistant';
@@ -25,6 +26,10 @@ export interface CallModelOptions {
      explicitly a "reasoned guess... treat as a default to calibrate once real latency... is
      observed" — overridable per call for exactly that calibration. */
   timeoutMs?: number;
+  /* Diagnostic-only observation point. The normal adapter remains non-streaming, so this is
+     time-to-response-headers (TTFB), not time-to-first-token. Observers must never be able to
+     change the outcome of a provider call. */
+  onResponseHeaders?: (elapsedMs: number) => void;
 }
 
 export interface ModelResponse {
@@ -71,6 +76,7 @@ export async function callModel(
   messages: ChatMessage[],
   options: CallModelOptions = {},
 ): Promise<ModelResponse> {
+  const startedAt = performance.now();
   const timeoutMs = options.timeoutMs ?? DEFAULT_TIMEOUT_MS;
   const url = `${connection.baseUrl.replace(/\/+$/, '')}/chat/completions`;
 
@@ -102,6 +108,14 @@ export async function callModel(
       '/chat/completions',
       timedOut ? 'timeout' : 'unreachable',
     );
+  }
+
+  if (options.onResponseHeaders) {
+    try {
+      options.onResponseHeaders(performance.now() - startedAt);
+    } catch {
+      // Diagnostics must never make an otherwise-valid provider call fail.
+    }
   }
 
   const raw = await response.text();
