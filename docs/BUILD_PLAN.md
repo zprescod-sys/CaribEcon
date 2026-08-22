@@ -9,6 +9,12 @@
 > is a frozen snapshot kept for continuity and is not maintained in lockstep.** If the two ever
 > disagree on phase content or status, this file is current.
 
+> **2026-08-22 routing update.** The active sequence below supersedes the older phase labels in
+> this document. `docs/VERIFICATION_AUDIT.md` records the code-based basis for the change, and
+> `docs/DEEP_DIVE_PLAN.md` is the current Deep Dive plan. The detailed notes after the active
+> roadmap remain an implementation history; they are not authorization to build a MiniMax audit
+> or a standalone Country Comparison endpoint.
+
 ---
 
 ## The smallest architecture that is still correct
@@ -27,20 +33,54 @@ on this list can be added later without rework.
 Everything else — planner, Tavily, model auditor, chat polish, observability, portability hardening —
 is incremental.
 
-## Phases
+## Active roadmap
 
 Implementation proceeds **one small step at a time with explicit approval** — no batching.
 
 | Phase | Status |
 | --- | --- |
 | 0a — Housekeeping | **Done** |
-| 0b — NoInfra connectivity + OpenClaw spike | **Done — runtime decision reversed, see below** |
-| 1 — Vertical slice + chat pane | **Done** |
-| 2 — Grounding gate | **Done** |
-| 3 — Planner + Tavily | In progress |
-| 4 — MiniMax claims audit | Not started |
-| 5 — Country Comparison endpoint | Not started |
-| Post-buildathon | Not started |
+| 0b — NoInfra connectivity + OpenClaw spike | **Done — Vercel selected for the request path** |
+| 1 — Bounded Ask vertical slice | **Done** |
+| 2 — Deterministic grounding and publish/drop | **Done** |
+| 3 — Validated planning, deterministic executor, and web evidence | **Done; final latency validation remains** |
+| 4 — Verification audit and hardening | **Audit complete; hardening follows model/latency lock** |
+| 5 — Deep Dive refinement | Planned |
+| 6 — UX/demo polish | Planned |
+| Standalone Country Comparison endpoint | **Deferred — Deep Dive owns the comparison workflow** |
+
+1. **Model and prompt lock.** Validate the intended default path before changing product scope:
+   a combined interpret-plus-plan Qwen path, tuned Qwen synthesis, and the existing deterministic
+   publish/drop verdict. The current code still has separate `interpret()` and `plan()` calls and
+   no Qwen provider entry, so this is a measured configuration/prompt decision, not a completed
+   implementation fact. Record model/prompt versions, latency, and grounding outcomes.
+2. **End-to-end latency validation.** Run the locked default path against a representative fixed
+   question set. Measure total time plus stage time; do not add a heavy reasoning model to the
+   default path unless the results identify a specific unmet requirement.
+3. **Verification hardening.** Start from the deterministic audit, not from a presumed new
+   verifier. Close only the documented real gaps, add safe aggregate observability, and extend
+   tests where a failure can otherwise be published. A model claims audit is deferred/experimental
+   until benchmarks show a material failure class that survives the deterministic gate.
+4. **Deep Dive refinement.** Build on the stable default pipeline using
+   `docs/DEEP_DIVE_PLAN.md`: deterministic retrieval, calculations, comparability, sources,
+   workbook layout and charts; then a bounded Deep Dive Analyst only for concise narrative
+   judgment. The first selected indicator is the primary indicator; up to two others are context.
+5. **UX and demo polish.** Complete Excel-host smoke testing, failure states, layout, and a
+   rehearsed demo only after the Deep Dive and verification contracts are stable.
+
+### Explicitly deferred
+
+- A MiniMax or any model-based claims-audit agent. The model proposes; deterministic code decides
+  publication. Reconsider only with benchmark/production evidence, including latency, cost,
+  provider-dependency and measured incremental rejection value.
+- `api/comparison.ts` as a standalone near-term endpoint. Deep Dive will own the user-facing
+  comparison workflow and must apply the same deterministic comparability rules.
+- Deep reasoning mode in the default path.
+
+## Historical implementation notes
+
+The sections below retain the completed-path record and prior rationale. The active roadmap above
+controls sequencing and status.
 
 **Phase 0a — Housekeeping (half a day, no behavior change)**
 
